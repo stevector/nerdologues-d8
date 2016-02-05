@@ -7,10 +7,7 @@
 
 namespace Drupal\system\Tests\Theme;
 
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\Url;
-use Drupal\language\Entity\ConfigurableLanguage;
 use Drupal\simpletest\WebTestBase;
 
 /**
@@ -259,7 +256,7 @@ msgid "I have context."
 msgstr "I HAZ KONTEX."
 EOF;
     }
-    else if ($langcode === 'zz') {
+    elseif ($langcode === 'zz') {
       return <<< EOF
 msgid ""
 msgstr ""

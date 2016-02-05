@@ -44,7 +44,7 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $this->entityManager = $this->container->get('entity.manager');
@@ -60,7 +60,7 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
   public function testSingleUpdates() {
     // Create a test entity.
     $user_ids = [mt_rand(), mt_rand()];
-    $entity = EntityTest::create(['name' => $this->randomString(),  'user_id' => $user_ids]);
+    $entity = EntityTest::create(['name' => $this->randomString(), 'user_id' => $user_ids]);
     $entity->save();
 
     // Check that only a single value is stored for 'user_id'.
@@ -108,7 +108,7 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
   public function testMultipleUpdates() {
     // Create a test entity.
     $user_ids = [mt_rand(), mt_rand()];
-    $entity = EntityTest::create(['name' => $this->randomString(),  'user_id' => $user_ids]);
+    $entity = EntityTest::create(['name' => $this->randomString(), 'user_id' => $user_ids]);
     $entity->save();
 
     // Check that only a single value is stored for 'user_id'.
@@ -138,20 +138,20 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
    */
   function testStatusReport() {
     // Create a test entity.
-    $entity = EntityTest::create(['name' => $this->randomString(),  'user_id' => mt_rand()]);
+    $entity = EntityTest::create(['name' => $this->randomString(), 'user_id' => mt_rand()]);
     $entity->save();
 
     // Check that the status report initially displays no error.
     $this->drupalGet('admin/reports/status');
     $this->assertNoRaw('Out of date');
-    $this->assertNoRaw('Mismatch detected');
+    $this->assertNoRaw('Mismatched entity and/or field definitions');
 
     // Enable an entity update and check that we have a dedicated status report
     // item.
     $this->container->get('state')->set('entity_test.remove_name_field', TRUE);
     $this->drupalGet('admin/reports/status');
     $this->assertNoRaw('Out of date');
-    $this->assertRaw('Mismatch detected');
+    $this->assertRaw('Mismatched entity and/or field definitions');
 
     // Enable a db update and check that now the entity update status report
     // item is no longer displayed. We assume an update function will fix the
@@ -159,13 +159,13 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
     $this->enableUpdates('entity_test', 'status_report', 8001);
     $this->drupalGet('admin/reports/status');
     $this->assertRaw('Out of date');
-    $this->assertNoRaw('Mismatch detected');
+    $this->assertRaw('Mismatched entity and/or field definitions');
 
     // Apply db updates and check that entity updates were not applied.
     $this->applyUpdates();
     $this->drupalGet('admin/reports/status');
     $this->assertNoRaw('Out of date');
-    $this->assertRaw('Mismatch detected');
+    $this->assertRaw('Mismatched entity and/or field definitions');
 
     // Check that en exception would be triggered when trying to apply them with
     // existing data.
@@ -181,7 +181,7 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
     // Check the status report is the same after trying to apply updates.
     $this->drupalGet('admin/reports/status');
     $this->assertNoRaw('Out of date');
-    $this->assertRaw('Mismatch detected');
+    $this->assertRaw('Mismatched entity and/or field definitions');
 
     // Delete entity data, enable a new update, run updates again and check that
     // entity updates were not applied even when no data exists.
@@ -190,7 +190,7 @@ class UpdateApiEntityDefinitionUpdateTest extends WebTestBase {
     $this->applyUpdates();
     $this->drupalGet('admin/reports/status');
     $this->assertNoRaw('Out of date');
-    $this->assertRaw('Mismatch detected');
+    $this->assertRaw('Mismatched entity and/or field definitions');
   }
 
   /**

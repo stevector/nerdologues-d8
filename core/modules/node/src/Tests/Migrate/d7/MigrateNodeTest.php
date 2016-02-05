@@ -39,6 +39,7 @@ class MigrateNodeTest extends MigrateDrupal7TestBase {
     $this->installEntitySchema('node');
     $this->installEntitySchema('comment');
     $this->installEntitySchema('taxonomy_term');
+    $this->installEntitySchema('file');
     $this->installConfig(static::$modules);
     $this->installSchema('node', ['node_access']);
     $this->installSchema('system', ['sequences']);
@@ -51,6 +52,7 @@ class MigrateNodeTest extends MigrateDrupal7TestBase {
       'd7_field',
       'd7_field_instance',
       'd7_node__test_content_type',
+      'd7_node__article',
     ]);
   }
 
@@ -123,7 +125,7 @@ class MigrateNodeTest extends MigrateDrupal7TestBase {
    */
   public function testNode() {
     $this->assertEntity(1, 'test_content_type', 'en', 'A Node', '2', TRUE, '1421727515', '1441032132', TRUE, FALSE);
-    $this->assertRevision(1, 'A Node', '2', NULL, '1441032132');
+    $this->assertRevision(1, 'A Node', '1', NULL, '1441032132');
 
     $node = Node::load(1);
     $this->assertTrue($node->field_boolean->value);
@@ -134,6 +136,17 @@ class MigrateNodeTest extends MigrateDrupal7TestBase {
     $this->assertIdentical('Some more text', $node->field_text_list[0]->value);
     $this->assertIdentical('7', $node->field_integer_list[0]->value);
     $this->assertIdentical('qwerty', $node->field_text->value);
+    $this->assertIdentical('2', $node->field_file->target_id);
+    $this->assertIdentical('file desc', $node->field_file->description);
+    $this->assertTrue($node->field_file->display);
+    $this->assertIdentical('1', $node->field_images->target_id);
+    $this->assertIdentical('alt text', $node->field_images->alt);
+    $this->assertIdentical('title text', $node->field_images->title);
+    $this->assertIdentical('93', $node->field_images->width);
+    $this->assertIdentical('93', $node->field_images->height);
+
+    $node = Node::load(2);
+    $this->assertIdentical("...is that it's the absolute best show ever. Trust me, I would know.", $node->body->value);
   }
 
 }

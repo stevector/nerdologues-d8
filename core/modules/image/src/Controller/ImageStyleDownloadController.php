@@ -85,13 +85,13 @@ class ImageStyleDownloadController extends FileDownloadController {
    * @param \Drupal\image\ImageStyleInterface $image_style
    *   The image style to deliver.
    *
+   * @return \Symfony\Component\HttpFoundation\BinaryFileResponse|\Symfony\Component\HttpFoundation\Response
+   *   The transferred file as response or some error response.
+   *
    * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
    *   Thrown when the user does not have access to the file.
    * @throws \Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException
    *   Thrown when the file is still being generated.
-   *
-   * @return \Symfony\Component\HttpFoundation\BinaryFileResponse|\Symfony\Component\HttpFoundation\Response
-   *   The transferred file as response or some error response.
    */
   public function deliver(Request $request, $scheme, ImageStyleInterface $image_style) {
     $target = $request->query->get('file');
@@ -142,7 +142,7 @@ class ImageStyleDownloadController extends FileDownloadController {
       $path_info = pathinfo($image_uri);
       $converted_image_uri = $path_info['dirname'] . DIRECTORY_SEPARATOR . $path_info['filename'];
       if (!file_exists($converted_image_uri)) {
-        $this->logger->notice('Source image at %source_image_path not found while trying to generate derivative image at %derivative_path.',  array('%source_image_path' => $image_uri, '%derivative_path' => $derivative_uri));
+        $this->logger->notice('Source image at %source_image_path not found while trying to generate derivative image at %derivative_path.', array('%source_image_path' => $image_uri, '%derivative_path' => $derivative_uri));
         return new Response($this->t('Error generating image, missing source file.'), 404);
       }
       else {

@@ -238,6 +238,9 @@ function editor_form_filter_admin_format_submit($form, FormStateInterface $form_
 /**
  * Loads an individual configured text editor based on text format ID.
  *
+ * @param int $format_id
+ *   A text format ID.
+ *
  * @return \Drupal\editor\Entity\Editor|null
  *   A text editor object, or NULL.
  */
@@ -464,7 +467,11 @@ function _editor_get_file_uuids_by_field(EntityInterface $entity) {
 
   $formatted_text_fields = _editor_get_formatted_text_fields($entity);
   foreach ($formatted_text_fields as $formatted_text_field) {
-    $text = $entity->get($formatted_text_field)->value;
+    $text = '';
+    $field_items = $entity->get($formatted_text_field);
+    foreach ($field_items as $field_item) {
+      $text .= $field_item->value;
+    }
     $uuids[$formatted_text_field] = _editor_parse_file_uuids($text);
   }
   return $uuids;

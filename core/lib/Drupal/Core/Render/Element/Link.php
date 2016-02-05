@@ -9,12 +9,25 @@ namespace Drupal\Core\Render\Element;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Html as HtmlUtility;
-use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Url as CoreUrl;
 
 /**
  * Provides a link render element.
+ *
+ * Properties:
+ * - #title: The link text.
+ * - #url: \Drupal\Url object containing URL information pointing to a internal
+ *   or external link . See \Drupal\Core\Utility\LinkGeneratorInterface.
+ *
+ * Usage example:
+ * @code
+ * $build['examples_link'] = [
+ *   '#title' => $this->t('Examples'),
+ *   '#type' => 'link',
+ *   '#url' => Url::fromRoute('examples.description')
+ * ];
+ * @endcode
  *
  * @RenderElement("link")
  */

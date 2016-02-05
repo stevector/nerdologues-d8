@@ -489,7 +489,7 @@ class XssTest extends UnitTestCase {
   }
 
   /**
-   * Check that strings in HTML attributes are are correctly processed.
+   * Check that strings in HTML attributes are correctly processed.
    *
    * @covers ::attributes
    * @dataProvider providerTestAttributes
@@ -515,6 +515,12 @@ class XssTest extends UnitTestCase {
         '<img src="http://example.com/foo.jpg" data-caption="Drupal 8: The best release ever.">',
         'Image tag with data attribute',
         array('img')
+      ),
+      array(
+        '<a data-a2a-url="foo"></a>',
+        '<a data-a2a-url="foo"></a>',
+        'Link tag with numeric data attribute',
+        array('a')
       ),
     );
   }

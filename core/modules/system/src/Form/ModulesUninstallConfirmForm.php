@@ -14,7 +14,6 @@ use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\KeyValueStore\KeyValueStoreExpirableInterface;
 
@@ -149,7 +148,7 @@ class ModulesUninstallConfirmForm extends ConfirmFormBase {
     );
 
     // List the dependent entities.
-    $this->addDependencyListsToForm($form, 'module', $this->modules ,$this->configManager, $this->entityManager);
+    $this->addDependencyListsToForm($form, 'module', $this->modules , $this->configManager, $this->entityManager);
 
     return parent::buildForm($form, $form_state);
   }

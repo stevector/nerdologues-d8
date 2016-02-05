@@ -10,6 +10,13 @@ migrate_plugin:
 migrate_destination:
   type: migrate_plugin
   label: 'Destination'
+  mapping:
+    overwrite_properties:
+      type: sequence
+      label: 'Properties to overwrite'
+      sequence:
+        type: string
+        label: 'Property'
 
 migrate_source:
   type: migrate_plugin
@@ -18,6 +25,10 @@ migrate_source:
     constants:
       type: ignore
       label: 'Constants'
+
+migrate_process:
+  type: migrate_plugin
+  label: 'Process'
 
 # Base schema for migrate source plugins that extend
 # \Drupal\migrate\Plugin\migrate\source\SqlBase.

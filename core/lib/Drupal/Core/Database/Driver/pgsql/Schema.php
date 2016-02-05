@@ -8,8 +8,6 @@
 namespace Drupal\Core\Database\Driver\pgsql;
 
 use Drupal\Component\Utility\Unicode;
-use Drupal\Core\Database\Database;
-use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\SchemaObjectExistsException;
 use Drupal\Core\Database\SchemaObjectDoesNotExistException;
 use Drupal\Core\Database\Schema as DatabaseSchema;
@@ -19,6 +17,9 @@ use Drupal\Core\Database\Schema as DatabaseSchema;
  * @{
  */
 
+/**
+ * PostgreSQL implementation of \Drupal\Core\Database\Schema.
+ */
 class Schema extends DatabaseSchema {
 
   /**
@@ -38,7 +39,7 @@ class Schema extends DatabaseSchema {
    * Value will usually be set to a 63 chars limit but PostgreSQL allows
    * to higher this value before compiling, so we need to check for that.
    *
-   * @var integer
+   * @var int
    */
   protected $maxIdentifierLength;
 

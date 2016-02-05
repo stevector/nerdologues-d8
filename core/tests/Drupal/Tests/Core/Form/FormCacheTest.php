@@ -7,7 +7,6 @@
 
 namespace Drupal\Tests\Core\Form;
 
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Form\FormCache;
 use Drupal\Core\Form\FormState;
 use Drupal\Tests\UnitTestCase;
@@ -15,8 +14,6 @@ use Drupal\Tests\UnitTestCase;
 /**
  * @coversDefaultClass \Drupal\Core\Form\FormCache
  * @group Form
- * @runTestsInSeparateProcesses
- * @preserveGlobalState disabled
  */
 class FormCacheTest extends UnitTestCase {
 
@@ -89,6 +86,16 @@ class FormCacheTest extends UnitTestCase {
    * @var \Drupal\Core\PageCache\RequestPolicyInterface|\PHPUnit_Framework_MockObject_MockObject
    */
   protected $requestPolicy;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $runTestInSeparateProcess = TRUE;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $preserveGlobalState = FALSE;
 
   /**
    * {@inheritdoc}

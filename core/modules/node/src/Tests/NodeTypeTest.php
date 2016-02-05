@@ -10,6 +10,7 @@ namespace Drupal\node\Tests;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\node\Entity\NodeType;
 use Drupal\Core\Url;
+use Drupal\node\NodeTypeInterface;
 
 /**
  * Ensures that node type functions work correctly.
@@ -124,6 +125,17 @@ class NodeTypeTest extends NodeTestBase {
     $this->assertRaw('Foo', 'Title field was found.');
     $this->assertRaw('Body', 'Body field was found.');
 
+    // Change the name through the API
+    /** @var NodeTypeInterface $node_type */
+    $node_type = NodeType::load('page');
+    $node_type->set('name', 'NewBar');
+    $node_type->save();
+
+    /** @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface $bundle_info */
+    $bundle_info = \Drupal::service('entity_type.bundle.info');
+    $node_bundles = $bundle_info->getBundleInfo('node');
+    $this->assertEqual($node_bundles['page']['label'], 'NewBar', 'Node type bundle cache is updated');
+
     // Remove the body field.
     $this->drupalPostForm('admin/structure/types/manage/page/fields/node.page.body/delete', array(), t('Delete'));
     // Resave the settings for this type.
@@ -218,6 +230,9 @@ class NodeTypeTest extends NodeTestBase {
    * Tests for when there are no content types defined.
    */
   public function testNodeTypeNoContentType() {
+    /** @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface $bundle_info */
+    $bundle_info = \Drupal::service('entity_type.bundle.info');
+    $this->assertEqual(2, count($bundle_info->getBundleInfo('node')), 'The bundle information service has 2 bundles for the Node entity type.');
     $web_user = $this->drupalCreateUser(['administer content types']);
     $this->drupalLogin($web_user);
 
@@ -231,6 +246,9 @@ class NodeTypeTest extends NodeTestBase {
     $this->assertRaw(t('No content types available. <a href=":link">Add content type</a>.', [
         ':link' => Url::fromRoute('node.type_add')->toString()
       ]), 'Empty text when there are no content types in the system is correct.');
+
+    $bundle_info->clearCachedBundles();
+    $this->assertEqual(0, count($bundle_info->getBundleInfo('node')), 'The bundle information service has 0 bundles for the Node entity type.');
   }
 
 }

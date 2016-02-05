@@ -101,6 +101,10 @@ class LinkFieldTest extends WebTestBase {
     // strings displayed to the user).
     $valid_external_entries = array(
       'http://www.example.com/' => 'http://www.example.com/',
+      // Strings within parenthesis without leading space char.
+      'http://www.example.com/strings_(string_within_parenthesis)' => 'http://www.example.com/strings_(string_within_parenthesis)',
+      // Numbers within parenthesis without leading space char.
+      'http://www.example.com/numbers_(9999)' => 'http://www.example.com/numbers_(9999)',
     );
     $valid_internal_entries = array(
       '/entity_test/add' => '/entity_test/add',
@@ -129,8 +133,6 @@ class LinkFieldTest extends WebTestBase {
       'entity:user/1' => '- Restricted access - (1)',
       // URI for an entity that doesn't exist, but with a valid ID.
       'entity:user/999999' => 'entity:user/999999',
-      // URI for an entity that doesn't exist, with an invalid ID.
-      'entity:user/invalid-parameter' => 'entity:user/invalid-parameter',
     );
 
     // Define some invalid URLs.
@@ -146,6 +148,8 @@ class LinkFieldTest extends WebTestBase {
     $invalid_internal_entries = array(
       'no-leading-slash' => $validation_error_2,
       'entity:non_existing_entity_type/yar' => $validation_error_1,
+      // URI for an entity that doesn't exist, with an invalid ID.
+      'entity:user/invalid-parameter' => $validation_error_1,
     );
 
     // Test external and internal URLs for 'link_type' = LinkItemInterface::LINK_GENERIC.
@@ -318,7 +322,7 @@ class LinkFieldTest extends WebTestBase {
     $edit = array(
       "{$field_name}[0][title]" => $title,
     );
-    $this->drupalPostForm("entity_test/manage/$id", $edit, t('Save'));
+    $this->drupalPostForm("entity_test/manage/$id/edit", $edit, t('Save'));
     $this->assertText(t('entity_test @id has been updated.', array('@id' => $id)));
 
     $this->renderTestEntity($id);

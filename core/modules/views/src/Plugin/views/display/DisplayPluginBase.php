@@ -17,15 +17,12 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Plugin\PluginDependencyTrait;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Theme\Registry;
 use Drupal\Core\Url;
 use Drupal\views\Form\ViewsForm;
 use Drupal\views\Plugin\views\area\AreaPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\PluginBase;
 use Drupal\views\Views;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
-use Symfony\Component\DependencyInjection\Exception\RuntimeException as DependencyInjectionRuntimeException;
 
 /**
  * Base class for views display plugins.
@@ -62,7 +59,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   protected $extenders = [];
 
   /**
-   * Overrides Drupal\views\Plugin\Plugin::$usesOptions.
+   * {@inheritdoc}
    */
   protected $usesOptions = TRUE;
 
@@ -2338,13 +2335,17 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
       '#cache_properties' => ['#view_id', '#view_display_show_admin_links', '#view_display_plugin_id'],
     ];
 
+    // When something passes $cache = FALSE, they're asking us not to create our
+    // own render cache for it. However, we still need to include certain pieces
+    // of cacheability metadata (e.g.: cache contexts), so they can bubble up.
+    // Thus, we add the cacheability metadata first, then modify / remove the
+    // cache keys depending on the $cache argument.
+    $this->applyDisplayCachablityMetadata($this->view->element);
     if ($cache) {
       $this->view->element['#cache'] += ['keys' => []];
       // Places like \Drupal\views\ViewExecutable::setCurrentPage() set up an
       // additional cache context.
       $this->view->element['#cache']['keys'] = array_merge(['views', 'display', $this->view->element['#name'], $this->view->element['#display_id']], $this->view->element['#cache']['keys']);
-
-      $this->applyDisplayCachablityMetadata($this->view->element);
     }
     else {
       // Remove the cache keys, to ensure render caching is not triggered. We

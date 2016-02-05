@@ -81,7 +81,7 @@ class Migration extends ConfigEntityBase implements MigrationInterface, Requirem
    *
    * @var array
    */
-  protected $process;
+  protected $process = [];
 
   /**
    * The cached process plugins.
@@ -320,10 +320,10 @@ class Migration extends ConfigEntityBase implements MigrationInterface, Requirem
    * {@inheritdoc}
    */
   public function getDestinationPlugin($stub_being_requested = FALSE) {
+    if ($stub_being_requested && !empty($this->destination['no_stub'])) {
+      throw new MigrateSkipRowException;
+    }
     if (!isset($this->destinationPlugin)) {
-      if ($stub_being_requested && !empty($this->destination['no_stub'])) {
-        throw new MigrateSkipRowException;
-      }
       $this->destinationPlugin = \Drupal::service('plugin.manager.migrate.destination')->createInstance($this->destination['plugin'], $this->destination, $this);
     }
     return $this->destinationPlugin;
@@ -585,8 +585,11 @@ class Migration extends ConfigEntityBase implements MigrationInterface, Requirem
     parent::calculateDependencies();
     $this->calculatePluginDependencies($this->getSourcePlugin());
     $this->calculatePluginDependencies($this->getDestinationPlugin());
-    // Add dependencies on required migration dependencies.
-    foreach ($this->getMigrationDependencies()['required'] as $dependency) {
+
+    // Add hard dependencies on required migrations.
+    $dependencies = $this->getEntityManager()->getStorage($this->entityTypeId)
+      ->getVariantIds($this->getMigrationDependencies()['required']);
+    foreach ($dependencies as $dependency) {
       $this->addDependency('config', $this->getEntityType()->getConfigPrefix() . '.' . $dependency);
     }
 

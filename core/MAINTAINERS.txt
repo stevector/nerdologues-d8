@@ -49,6 +49,7 @@ maintainer. Current subsystem maintainers for Drupal 8:
 Ajax system
 - Alex Bronstein 'effulgentsia' https://www.drupal.org/u/effulgentsia
 - Earl Miles 'merlinofchaos' https://www.drupal.org/u/merlinofchaos
+- Tim Plunkett 'tim.plunkett' https://www.drupal.org/u/tim.plunkett
 
 Asset library system
 - ?
@@ -86,7 +87,6 @@ Cron system
 
 CSS
 - John Albin Wilkins 'JohnAlbin' https://www.drupal.org/u/johnalbin
-- Lewis Nyman 'LewisNyman' https://www.drupal.org/u/lewisnyman
 
 Database system
 - Larry Garfield 'Crell' https://www.drupal.org/u/crell
@@ -282,6 +282,7 @@ Breakpoint module
 
 CKEditor module
 - Wim Leers 'Wim Leers' https://www.drupal.org/u/wim-leers
+- Marek 'mlewand' Lewandowski https://www.drupal.org/u/mlewand
 
 Color module
 - ?
@@ -484,7 +485,10 @@ Classy theme
 - Morten Birch Heide-Jørgensen 'mortendk' https://www.drupal.org/u/mortendk
 
 Seven theme
-- Lewis Nyman 'LewisNyman' https://www.drupal.org/u/lewisnyman
+- ?
+
+Stable theme
+- Scott Reeves 'Cottser' https://www.drupal.org/u/cottser
 
 Stark theme
 - John Albin Wilkins 'JohnAlbin' https://www.drupal.org/u/johnalbin

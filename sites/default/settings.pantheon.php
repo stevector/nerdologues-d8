@@ -13,6 +13,22 @@
  */
 
 /**
+ * Version of Pantheon files.
+ *
+ * This is a monotonically-increasing sequence number that is
+ * incremented whenever a change is made to any Pantheon file.
+ * Not changed if Drupal core is updated without any change to
+ * any Pantheon file.
+ *
+ * The Pantheon version is included in the git tag only if a
+ * release is made that includes changes to Pantheon files, but
+ * not to any Drupal files.
+ */
+if (!defined("PANTHEON_VERSION")) {
+  define("PANTHEON_VERSION", "2");
+}
+
+/**
  * Set the default location for the 'private' directory.  Note
  * that this location is protected when running on the Pantheon
  * environment, but may be exposed if you migrate your site to
@@ -47,20 +63,6 @@ else {
   );
 }
 
-/**
- * Override the $install_state variable to let Drupal know that the settings are verified
- * since they are being passed directly by the Pantheon.
- *
- * Issue: https://github.com/pantheon-systems/drops-8/issues/9
- *
- */
-if (
-  isset($_ENV['PANTHEON_ENVIRONMENT']) &&
-  $is_installer_url &&
-  (php_sapi_name() != "cli")
-) {
-  $GLOBALS['install_state']['settings_verified'] = TRUE;
-}
 
 /**
  * Allow Drupal 8 to Cleanly Redirect to Install.php For New Sites.
@@ -73,7 +75,7 @@ if (
 if (
   isset($_ENV['PANTHEON_ENVIRONMENT']) &&
   !$is_installer_url &&
-  (!is_dir(__DIR__ . '/files/styles')) &&
+  (isset($_SERVER['PANTHEON_DATABASE_STATE']) && ($_SERVER['PANTHEON_DATABASE_STATE'] == 'empty')) &&
   (empty($GLOBALS['install_state'])) &&
   (php_sapi_name() != "cli")
 ) {
@@ -121,6 +123,16 @@ if (isset($_SERVER['PRESSFLOW_SETTINGS'])) {
  */
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   $settings['hash_salt'] = $_ENV['DRUPAL_HASH_SALT'];
+}
+
+/**
+ * Define appropriate location for tmp directory
+ *
+ * Issue: https://github.com/pantheon-systems/drops-8/issues/114
+ *
+ */
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  $config['system.file']['path']['temporary'] = $_SERVER['HOME'] .'/tmp';
 }
 
 

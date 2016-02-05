@@ -10,9 +10,7 @@ namespace Drupal\editor\Tests;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\EventSubscriber\AjaxResponseSubscriber;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\quickedit\EditorSelector;
 use Drupal\quickedit\MetadataGenerator;
-use Drupal\quickedit\Plugin\InPlaceEditorManager;
 use Drupal\quickedit\Tests\QuickEditTestBase;
 use Drupal\quickedit_test\MockEditEntityFieldAccessCheck;
 use Drupal\editor\EditorController;
@@ -113,7 +111,17 @@ class QuickEditIntegrationTest extends QuickEditTestBase {
   }
 
   /**
-   * Returns the in-place editor that Edit selects.
+   * Returns the in-place editor that quickedit selects.
+   *
+   * @param int $entity_id
+   *   An entity ID.
+   * @param string $field_name
+   *   A field name.
+   * @param string $view_mode
+   *   A view mode.
+   *
+   * @return string
+   *   Returns the selected in-place editor.
    */
   protected function getSelectedEditor($entity_id, $field_name, $view_mode = 'default') {
     $entity = entity_load('entity_test', $entity_id, TRUE);

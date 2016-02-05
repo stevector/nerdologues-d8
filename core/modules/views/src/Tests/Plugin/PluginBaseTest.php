@@ -24,7 +24,7 @@ class PluginBaseTest extends KernelTestBase {
    */
   var $testPluginBase;
 
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
     $this->testPluginBase = new TestPluginBase();
   }
@@ -41,6 +41,20 @@ class PluginBaseTest extends KernelTestBase {
     });
 
     $this->assertIdentical($result, 'en means English');
+  }
+
+  /**
+   * Test that the token replacement in views works correctly with dots.
+   */
+  public function testViewsTokenReplaceWithDots() {
+    $text = '{{ argument.first }} comes before {{ argument.second }}';
+    $tokens = ['{{ argument.first }}' => 'first', '{{ argument.second }}' => 'second'];
+
+    $result = \Drupal::service('renderer')->executeInRenderContext(new RenderContext(), function () use ($text, $tokens) {
+      return $this->testPluginBase->viewsTokenReplace($text, $tokens);
+    });
+
+    $this->assertIdentical($result, 'first comes before second');
   }
 
   /**

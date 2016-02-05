@@ -33,7 +33,7 @@ class StackedKernelPassTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     $this->stackedKernelPass = new StackedKernelPass();
     $this->containerBuilder = new ContainerBuilder();
   }
@@ -98,7 +98,7 @@ class StackedKernelPassTest extends UnitTestCase {
    * Creates a middleware definition.
    *
    * @param bool $tag
-   *   Whether ot not to set the http_middleware tag.
+   *   Whether or not to set the http_middleware tag.
    * @param int $priority
    *   The priority to be used for the tag.
    *

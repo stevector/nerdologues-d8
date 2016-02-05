@@ -8,12 +8,9 @@
 namespace Drupal\rest\Routing;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Drupal\rest\Plugin\Type\ResourcePluginManager;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
@@ -78,7 +75,7 @@ class ResourceRoutes extends RouteSubscriberBase {
         $methods = $route->getMethods();
         // Only expose routes where the method is enabled in the configuration.
         if ($methods && ($method = $methods[0]) && $method && isset($enabled_methods[$method])) {
-          $route->setRequirement('_access_rest_csrf',  'TRUE');
+          $route->setRequirement('_access_rest_csrf', 'TRUE');
 
           // Check that authentication providers are defined.
           if (empty($enabled_methods[$method]['supported_auth']) || !is_array($enabled_methods[$method]['supported_auth'])) {

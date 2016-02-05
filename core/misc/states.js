@@ -5,7 +5,7 @@
 
 (function ($) {
 
-  "use strict";
+  'use strict';
 
   /**
    * The base States namespace.
@@ -635,7 +635,7 @@
   $(document).on('state:collapsed', function (e) {
     if (e.trigger) {
       if ($(e.target).is('[open]') === e.value) {
-        $(e.target).find('> summary a').trigger('click');
+        $(e.target).find('> summary').trigger('click');
       }
     }
   });

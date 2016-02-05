@@ -9,7 +9,6 @@ namespace Drupal\Tests\views\Unit\Plugin\field {
 
 use Drupal\Core\GeneratedUrl;
 use Drupal\Core\Language\Language;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGenerator;
@@ -257,6 +256,23 @@ class FieldPluginBaseTest extends UnitTestCase {
     $expected_result = 'a long <a href="/%3Cfront%3E" class="views-more-link">more link</a>';
     $result = $field->advancedRender($row);
     $this->assertEquals($expected_result, $result);
+  }
+
+  /**
+   * Tests the "No results text" rendering.
+   *
+   * @covers ::renderText
+   */
+  public function testRenderNoResult() {
+    $this->setupDisplayWithEmptyArgumentsAndFields();
+    $field = $this->setupTestField(['empty' => 'This <strong>should work</strong>.']);
+    $field->field_alias = 'key';
+    $row = new ResultRow(['key' => '']);
+
+    $expected_result = 'This <strong>should work</strong>.';
+    $result = $field->advancedRender($row);
+    $this->assertEquals($expected_result, $result);
+    $this->assertInstanceOf('\Drupal\views\Render\ViewsRenderPipelineMarkup', $result);
   }
 
   /**

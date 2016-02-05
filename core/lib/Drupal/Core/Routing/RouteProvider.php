@@ -19,8 +19,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\RouteCollection;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-
 use \Drupal\Core\Database\Connection;
 
 /**
@@ -248,7 +246,7 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
    * @return array
    *   An array of outlines that could match the specified path parts.
    */
-  public function getCandidateOutlines(array $parts) {
+  protected function getCandidateOutlines(array $parts) {
     $number_parts = count($parts);
     $ancestors = array();
     $length = $number_parts - 1;
@@ -259,7 +257,7 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
     if ($number_parts == 1) {
       $masks = array(1);
     }
-    elseif ($number_parts <= 3) {
+    elseif ($number_parts <= 3 && $number_parts > 0) {
       // Optimization - don't query the state system for short paths. This also
       // insulates against the state entry for masks going missing for common
       // user-facing paths since we generate all values without checking state.
@@ -273,7 +271,6 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
       // Get the actual patterns that exist out of state.
       $masks = (array) $this->state->get('routing.menu_masks.' . $this->tableName, array());
     }
-
 
     // Only examine patterns that actually exist as router items (the masks).
     foreach ($masks as $i) {
@@ -357,7 +354,7 @@ class RouteProvider implements PreloadableRouteProviderInterface, PagedRouteProv
   /**
    * Comparison function for usort on routes.
    */
-  public function routeProviderRouteCompare(array $a, array $b) {
+  protected function routeProviderRouteCompare(array $a, array $b) {
     if ($a['fit'] == $b['fit']) {
       return strcmp($a['name'], $b['name']);
     }

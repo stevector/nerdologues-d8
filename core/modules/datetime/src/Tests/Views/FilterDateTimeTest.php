@@ -7,7 +7,6 @@
 
 namespace Drupal\datetime\Tests\Views;
 
-use Drupal\Core\Datetime\Element\Datetime;
 use Drupal\views\Views;
 
 /**
@@ -35,7 +34,7 @@ class FilterDateTimeTest extends DateTimeHandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     static::$date = REQUEST_TIME + 86400;

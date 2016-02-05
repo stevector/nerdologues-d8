@@ -109,6 +109,16 @@ class ThemeInitialization implements ThemeInitializationInterface {
     $ancestor = $theme_name;
     while ($ancestor && isset($themes[$ancestor]->base_theme)) {
       $ancestor = $themes[$ancestor]->base_theme;
+      if (!$this->themeHandler->themeExists($ancestor)) {
+        if ($ancestor == 'stable') {
+          // Themes that depend on Stable will be fixed by system_update_8014().
+          // There is no harm in not adding it as an ancestor since at worst
+          // some people might experience slight visual regressions on
+          // update.php.
+          continue;
+        }
+        throw new MissingThemeDependencyException(sprintf('Base theme %s has not been installed.', $ancestor), $ancestor);
+      }
       $base_themes[] = $themes[$ancestor];
     }
 
@@ -257,7 +267,7 @@ class ThemeInitialization implements ThemeInitializationInterface {
    */
   protected function getExtensions() {
     if (!isset($this->extensions)) {
-      $this->extensions = array_merge($this->moduleHandler->getModuleList(),  $this->themeHandler->listInfo());
+      $this->extensions = array_merge($this->moduleHandler->getModuleList(), $this->themeHandler->listInfo());
     }
     return $this->extensions;
   }
@@ -308,7 +318,6 @@ class ThemeInitialization implements ThemeInitializationInterface {
     $stylesheets_remove = array();
     // Grab stylesheets from base theme.
     foreach ($base_themes as $base) {
-      $base_theme_path = $base->getPath();
       if (!empty($base->info['stylesheets-remove'])) {
         foreach ($base->info['stylesheets-remove'] as $css_file) {
           $css_file = $this->resolveStyleSheetPlaceholders($css_file);

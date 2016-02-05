@@ -8,7 +8,6 @@
 namespace Drupal\user\Tests;
 
 use Drupal\simpletest\WebTestBase;
-use Drupal\Core\Password\PhpassHashedPassword;
 use Drupal\user\Entity\User;
 
 /**
@@ -31,7 +30,7 @@ class UserLoginTest extends WebTestBase {
     $this->drupalGet('user/login', array('query' => array('destination' => 'foo')));
     $edit = array('name' => $user->getUserName(), 'pass' => $user->pass_raw);
     $this->drupalPostForm(NULL, $edit, t('Log in'));
-    $this->assertUrl('foo', [],  'Redirected to the correct URL');
+    $this->assertUrl('foo', [], 'Redirected to the correct URL');
   }
 
   /**

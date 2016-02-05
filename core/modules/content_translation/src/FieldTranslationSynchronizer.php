@@ -9,7 +9,6 @@ namespace Drupal\content_translation;
 
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 
 /**
@@ -188,7 +187,7 @@ class FieldTranslationSynchronizer implements FieldTranslationSynchronizerInterf
    *
    * @param array $items
    *   An array of field items.
-   * @param integer $delta
+   * @param int $delta
    *   The delta identifying the item to be processed.
    * @param array $columns
    *   An array of column names to be synchronized.

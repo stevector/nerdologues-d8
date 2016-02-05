@@ -7,7 +7,6 @@
 
 namespace Drupal\user\Plugin\Validation\Constraint;
 
-use Drupal\Component\Utility\Html;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\ExecutionContextInterface;
@@ -42,7 +41,7 @@ class UserMailRequired extends Constraint implements ConstraintValidatorInterfac
   protected $context;
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function initialize(ExecutionContextInterface $context) {
     $this->context = $context;

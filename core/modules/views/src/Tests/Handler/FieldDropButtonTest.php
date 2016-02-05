@@ -7,8 +7,6 @@
 
 namespace Drupal\views\Tests\Handler;
 
-use Drupal\views\Tests\ViewTestData;
-
 /**
  * Tests the dropbutton field handler.
  *
@@ -34,7 +32,7 @@ class FieldDropButtonTest extends HandlerTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $admin_user = $this->drupalCreateUser(['access content overview', 'administer nodes', 'bypass node access']);

@@ -8,13 +8,11 @@
 namespace Drupal\views\Plugin\views\field;
 
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Component\Utility\Xss;
-use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Renderer;
 use Drupal\Core\Url as CoreUrl;
@@ -88,9 +86,11 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
   public $original_value = NULL;
 
   /**
-   * @var array
-   * Stores additional fields which get's added to the query.
+   * Stores additional fields that get added to the query.
+   *
    * The generated aliases are stored in $aliases.
+   *
+   * @var array
    */
   var $additional_fields = array();
 
@@ -109,7 +109,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
   protected $renderer;
 
   /**
-   * Overrides Drupal\views\Plugin\views\HandlerBase::init().
+   * {@inheritdoc}
    */
   public function init(ViewExecutable $view, DisplayPluginBase $display, array &$options = NULL) {
     parent::init($view, $display, $options);
@@ -1250,10 +1250,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
     if ($alter['phase'] == static::RENDER_TEXT_PHASE_EMPTY && $no_rewrite_for_empty) {
       // If we got here then $alter contains the value of "No results text"
       // and so there is nothing left to do.
-      if ($value_is_safe) {
-        $value = ViewsRenderPipelineMarkup::create($value);
-      }
-      return $value;
+      return ViewsRenderPipelineMarkup::create($value);
     }
 
     if (!empty($alter['strip_tags'])) {
@@ -1389,7 +1386,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
       // In that case the original path looks like
       // internal:/admin/content/files/usage/{{ fid }}, which will be escaped by
       // the toUriString() call above.
-      $path = preg_replace(['/(\%7B){2}(\%20)*/', '/(\%20)*(\%7D){2}/'], ['{{','}}'], $path);
+      $path = preg_replace(['/(\%7B){2}(\%20)*/', '/(\%20)*(\%7D){2}/'], ['{{', '}}'], $path);
 
       // Use strip tags as there should never be HTML in the path.
       // However, we need to preserve special characters like " that are escaped

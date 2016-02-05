@@ -10,7 +10,6 @@ namespace Drupal\Tests\forum\Unit\Breadcrumb;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Link;
 use Drupal\Tests\UnitTestCase;
-use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
@@ -22,7 +21,7 @@ class ForumListingBreadcrumbBuilderTest extends UnitTestCase {
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
 
     $cache_contexts_manager = $this->getMockBuilder('Drupal\Core\Cache\Context\CacheContextsManager')

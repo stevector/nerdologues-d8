@@ -19,7 +19,6 @@ use Drupal\Core\Menu\MenuLinkTreeElement;
 use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Routing\UrlGeneratorTrait;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGeneratorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -292,8 +291,6 @@ class MenuForm extends EntityForm {
         // TableDrag: Mark the table row as draggable.
         $form['links'][$id]['#attributes'] = $element['#attributes'];
         $form['links'][$id]['#attributes']['class'][] = 'draggable';
-
-        $form['links'][$id]['#item'] = $element['#item'];
 
         // TableDrag: Sort the table row according to its existing/configured weight.
         $form['links'][$id]['#weight'] = $element['#item']->link->getWeight();

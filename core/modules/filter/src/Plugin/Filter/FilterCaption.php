@@ -55,31 +55,35 @@ class FilterCaption extends FilterBase {
         // Given the updated node and caption: re-render it with a caption, but
         // bubble up the value of the class attribute of the captioned element,
         // this allows it to collaborate with e.g. the filter_align filter.
+        $tag = $node->tagName;
         $classes = $node->getAttribute('class');
         $node->removeAttribute('class');
+        $node = ($node->parentNode->tagName === 'a') ? $node->parentNode : $node;
         $filter_caption = array(
           '#theme' => 'filter_caption',
           // We pass the unsanitized string because this is a text format
           // filter, and after filtering, we always assume the output is safe.
           // @see \Drupal\filter\Element\ProcessedText::preRenderText()
           '#node' => FilteredMarkup::create($node->C14N()),
-          '#tag' => $node->tagName,
+          '#tag' => $tag,
           '#caption' => $caption,
           '#classes' => $classes,
         );
         $altered_html = drupal_render($filter_caption);
 
         // Load the altered HTML into a new DOMDocument and retrieve the element.
-        $updated_node = Html::load($altered_html)->getElementsByTagName('body')
+        $updated_nodes = Html::load($altered_html)->getElementsByTagName('body')
           ->item(0)
-          ->childNodes
-          ->item(0);
+          ->childNodes;
 
-        // Import the updated node from the new DOMDocument into the original
-        // one, importing also the child nodes of the updated node.
-        $updated_node = $dom->importNode($updated_node, TRUE);
-        // Finally, replace the original image node with the new image node!
-        $node->parentNode->replaceChild($updated_node, $node);
+        foreach ($updated_nodes as $updated_node) {
+          // Import the updated node from the new DOMDocument into the original
+          // one, importing also the child nodes of the updated node.
+          $updated_node = $dom->importNode($updated_node, TRUE);
+          $node->parentNode->insertBefore($updated_node, $node);
+        }
+        // Finally, remove the original data-caption node.
+        $node->parentNode->removeChild($node);
       }
 
       $result->setProcessedText(Html::serialize($dom))

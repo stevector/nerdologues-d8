@@ -240,7 +240,7 @@ class CommentNonNodeTest extends WebTestBase {
    * @param string $subject
    *   Comment subject to find.
    *
-   * @return integer
+   * @return int
    *   Comment ID.
    */
   function getUnapprovedComment($subject) {
@@ -435,7 +435,7 @@ class CommentNonNodeTest extends WebTestBase {
     $data = array('bundle' => 'entity_test', 'name' => $random_label);
     $new_entity = entity_create('entity_test', $data);
     $new_entity->save();
-    $this->drupalGet('entity_test/manage/' . $new_entity->id());
+    $this->drupalGet('entity_test/manage/' . $new_entity->id() . '/edit');
     $this->assertNoFieldChecked('edit-field-foobar-0-status-1');
     $this->assertFieldChecked('edit-field-foobar-0-status-2');
     $this->assertNoField('edit-field-foobar-0-status-0');

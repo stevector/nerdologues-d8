@@ -11,7 +11,6 @@ use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Render\Markup;
 use Drupal\Tests\UnitTestCase;
 use Drupal\Core\Config\Config;
-use Drupal\Component\Utility\SafeMarkup;
 
 /**
  * Tests the Config.
@@ -59,7 +58,7 @@ class ConfigTest extends UnitTestCase {
    */
   protected $cacheTagsInvalidator;
 
-  public function setUp() {
+  protected function setUp() {
     $this->storage = $this->getMock('Drupal\Core\Config\StorageInterface');
     $this->eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
     $this->typedConfig = $this->getMock('\Drupal\Core\Config\TypedConfigManagerInterface');

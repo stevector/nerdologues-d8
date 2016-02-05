@@ -9,62 +9,88 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Timer;
 use Drupal\Component\Uuid\Php;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Form\FormState;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\Core\Test\TestRunnerKernel;
 use Drupal\simpletest\Form\SimpletestResultsForm;
+use Drupal\simpletest\TestBase;
 use Symfony\Component\HttpFoundation\Request;
 
 $autoloader = require_once __DIR__ . '/../../autoload.php';
 
-const SIMPLETEST_SCRIPT_COLOR_PASS = 32; // Green.
-const SIMPLETEST_SCRIPT_COLOR_FAIL = 31; // Red.
-const SIMPLETEST_SCRIPT_COLOR_EXCEPTION = 33; // Brown.
+// Define some colors for display.
+// A nice calming green.
+const SIMPLETEST_SCRIPT_COLOR_PASS = 32;
+// An alerting Red.
+const SIMPLETEST_SCRIPT_COLOR_FAIL = 31;
+// An annoying brown.
+const SIMPLETEST_SCRIPT_COLOR_EXCEPTION = 33;
 
 // Restricting the chunk of queries prevents memory exhaustion.
 const SIMPLETEST_SCRIPT_SQLITE_VARIABLE_LIMIT = 350;
+
+const SIMPLETEST_SCRIPT_EXIT_SUCCESS = 0;
+const SIMPLETEST_SCRIPT_EXIT_FAILURE = 1;
+const SIMPLETEST_SCRIPT_EXIT_EXCEPTION = 2;
 
 // Set defaults and get overrides.
 list($args, $count) = simpletest_script_parse_args();
 
 if ($args['help'] || $count == 0) {
   simpletest_script_help();
-  exit;
+  exit(($count == 0) ? SIMPLETEST_SCRIPT_EXIT_FAILURE : SIMPLETEST_SCRIPT_EXIT_SUCCESS);
 }
 
 simpletest_script_init();
 
-$request = Request::createFromGlobals();
-$kernel = TestRunnerKernel::createFromRequest($request, $autoloader);
-$kernel->prepareLegacyRequest($request);
+try {
+  $request = Request::createFromGlobals();
+  $kernel = TestRunnerKernel::createFromRequest($request, $autoloader);
+  $kernel->prepareLegacyRequest($request);
+}
+catch (Exception $e) {
+  echo (string) $e;
+  exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+}
 
 if ($args['execute-test']) {
   simpletest_script_setup_database();
   simpletest_script_run_one_test($args['test-id'], $args['execute-test']);
   // Sub-process exited already; this is just for clarity.
-  exit;
+  exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
 }
 
 if ($args['list']) {
   // Display all available tests.
   echo "\nAvailable test groups & classes\n";
-  echo   "-------------------------------\n\n";
-  $groups = simpletest_test_get_all($args['module']);
+  echo "-------------------------------\n\n";
+  try {
+    $groups = simpletest_test_get_all($args['module']);
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
   foreach ($groups as $group => $tests) {
     echo $group . "\n";
     foreach ($tests as $class => $info) {
       echo " - $class\n";
     }
   }
-  exit;
+  exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
 }
 
 simpletest_script_setup_database(TRUE);
 
 if ($args['clean']) {
   // Clean up left-over tables and directories.
-  simpletest_clean_environment();
+  try {
+    simpletest_clean_environment();
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
   echo "\nEnvironment cleaned.\n";
 
   // Get the status messages and print them.
@@ -72,7 +98,7 @@ if ($args['clean']) {
   foreach ($messages['status'] as $text) {
     echo " - " . $text . "\n";
   }
-  exit;
+  exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
 }
 
 $test_list = simpletest_script_get_test_list();
@@ -87,7 +113,7 @@ for ($i = 0; $i < $args['repeat']; $i++) {
 }
 
 // Execute tests.
-simpletest_script_execute_batch($tests_to_run);
+$status = simpletest_script_execute_batch($tests_to_run);
 
 // Stop the timer.
 simpletest_script_reporter_timer_stop();
@@ -106,11 +132,17 @@ if ($args['xml']) {
 
 // Clean up all test results.
 if (!$args['keep-results']) {
-  simpletest_clean_results_table();
+  try {
+    simpletest_clean_results_table();
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
 }
 
 // Test complete, exit.
-exit;
+exit($status);
 
 /**
  * Print help text.
@@ -241,7 +273,8 @@ EOF;
 /**
  * Parse execution argument and ensure that all are valid.
  *
- * @return The list of arguments.
+ * @return array
+ *   The list of arguments.
  */
 function simpletest_script_parse_args() {
   // Set default values.
@@ -297,7 +330,7 @@ function simpletest_script_parse_args() {
       else {
         // Argument not found in list.
         simpletest_script_print_error("Unknown argument '$arg'.");
-        exit;
+        exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
       }
     }
     else {
@@ -307,10 +340,10 @@ function simpletest_script_parse_args() {
     }
   }
 
-  // Validate the concurrency argument
+  // Validate the concurrency argument.
   if (!is_numeric($args['concurrency']) || $args['concurrency'] <= 0) {
     simpletest_script_print_error("--concurrency must be a strictly positive integer.");
-    exit;
+    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
   }
 
   if ($args['browser']) {
@@ -329,23 +362,25 @@ function simpletest_script_init() {
   $path = '';
   $port = '80';
 
-  // Determine location of php command automatically, unless a command line argument is supplied.
+  // Determine location of php command automatically, unless a command line
+  // argument is supplied.
   if (!empty($args['php'])) {
     $php = $args['php'];
   }
   elseif ($php_env = getenv('_')) {
-    // '_' is an environment variable set by the shell. It contains the command that was executed.
+    // '_' is an environment variable set by the shell. It contains the command
+    // that was executed.
     $php = $php_env;
   }
   elseif ($sudo = getenv('SUDO_COMMAND')) {
     // 'SUDO_COMMAND' is an environment variable set by the sudo program.
     // Extract only the PHP interpreter, not the rest of the command.
-    list($php, ) = explode(' ', $sudo, 2);
+    list($php) = explode(' ', $sudo, 2);
   }
   else {
     simpletest_script_print_error('Unable to automatically determine the path to the PHP interpreter. Supply the --php command line argument.');
     simpletest_script_help();
-    exit();
+    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
   }
 
   // Get URL from arguments.
@@ -381,11 +416,11 @@ function simpletest_script_init() {
   $_SERVER['SERVER_PORT'] = $port;
   $_SERVER['SERVER_SOFTWARE'] = NULL;
   $_SERVER['SERVER_NAME'] = 'localhost';
-  $_SERVER['REQUEST_URI'] = $path .'/';
+  $_SERVER['REQUEST_URI'] = $path . '/';
   $_SERVER['REQUEST_METHOD'] = 'GET';
-  $_SERVER['SCRIPT_NAME'] = $path .'/index.php';
-  $_SERVER['SCRIPT_FILENAME'] = $path .'/index.php';
-  $_SERVER['PHP_SELF'] = $path .'/index.php';
+  $_SERVER['SCRIPT_NAME'] = $path . '/index.php';
+  $_SERVER['SCRIPT_FILENAME'] = $path . '/index.php';
+  $_SERVER['PHP_SELF'] = $path . '/index.php';
   $_SERVER['HTTP_USER_AGENT'] = 'Drupal command line';
 
   if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
@@ -432,7 +467,6 @@ function simpletest_script_setup_database($new = FALSE) {
   // hold the default database connection already. This connection is assumed to
   // be valid, and this connection will be used in tests, so that they run
   // against e.g. MySQL instead of SQLite.
-
   // However, in case no Drupal installation exists, this default database
   // connection can be set and/or overridden with the --dburl parameter.
   if (!empty($args['dburl'])) {
@@ -443,7 +477,7 @@ function simpletest_script_setup_database($new = FALSE) {
     }
     catch (\InvalidArgumentException $e) {
       simpletest_script_print_error('Invalid --dburl. Reason: ' . $e->getMessage());
-      exit(1);
+      exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
     }
   }
   // Otherwise, use the default database connection from settings.php.
@@ -454,7 +488,7 @@ function simpletest_script_setup_database($new = FALSE) {
   // If there is no default database connection for tests, we cannot continue.
   if (!isset($databases['default']['default'])) {
     simpletest_script_print_error('Missing default database connection for tests. Use --dburl to specify one.');
-    exit(1);
+    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
   }
   Database::addConnectionInfo('default', 'default', $databases['default']['default']);
 
@@ -498,21 +532,33 @@ function simpletest_script_setup_database($new = FALSE) {
   }
   catch (\PDOException $e) {
     simpletest_script_print_error($databases['test-runner']['default']['driver'] . ': ' . $e->getMessage());
-    exit(1);
+    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
   }
   if ($new && $sqlite) {
     require_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'simpletest') . '/simpletest.install';
     foreach (simpletest_schema() as $name => $table_spec) {
-      if ($schema->tableExists($name)) {
-        $schema->dropTable($name);
+      try {
+        if ($schema->tableExists($name)) {
+          $schema->dropTable($name);
+        }
+        $schema->createTable($name, $table_spec);
       }
-      $schema->createTable($name, $table_spec);
+      catch (Exception $e) {
+        echo (string) $e;
+        exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+      }
     }
   }
   // Verify that the Simpletest database schema exists by checking one table.
-  if (!$schema->tableExists('simpletest')) {
-    simpletest_script_print_error('Missing Simpletest database schema. Either install Simpletest module or use the --sqlite parameter.');
-    exit(1);
+  try {
+    if (!$schema->tableExists('simpletest')) {
+      simpletest_script_print_error('Missing Simpletest database schema. Either install Simpletest module or use the --sqlite parameter.');
+      exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
+    }
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
   }
 }
 
@@ -522,6 +568,8 @@ function simpletest_script_setup_database($new = FALSE) {
 function simpletest_script_execute_batch($test_classes) {
   global $args, $test_ids;
 
+  $total_status = SIMPLETEST_SCRIPT_EXIT_SUCCESS;
+
   // Multi-process execution.
   $children = array();
   while (!empty($test_classes) || !empty($children)) {
@@ -530,8 +578,16 @@ function simpletest_script_execute_batch($test_classes) {
         break;
       }
 
-      $test_id = Database::getConnection('default', 'test-runner')
-        ->insert('simpletest_test_id')->useDefaults(array('test_id'))->execute();
+      try {
+        $test_id = Database::getConnection('default', 'test-runner')
+          ->insert('simpletest_test_id')
+          ->useDefaults(array('test_id'))
+          ->execute();
+      }
+      catch (Exception $e) {
+        echo (string) $e;
+        exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+      }
       $test_ids[] = $test_id;
 
       $test_class = array_shift($test_classes);
@@ -541,7 +597,7 @@ function simpletest_script_execute_batch($test_classes) {
 
       if (!is_resource($process)) {
         echo "Unable to fork test process. Aborting.\n";
-        exit;
+        exit(SIMPLETEST_SCRIPT_EXIT_SUCCESS);
       }
 
       // Register our new child.
@@ -562,12 +618,23 @@ function simpletest_script_execute_batch($test_classes) {
       if (empty($status['running'])) {
         // The child exited, unregister it.
         proc_close($child['process']);
-        if ($status['exitcode']) {
-          echo 'FATAL ' . $child['class'] . ': test runner returned a non-zero error code (' . $status['exitcode'] . ').' . "\n";
+        if ($status['exitcode'] === SIMPLETEST_SCRIPT_EXIT_FAILURE) {
+          $total_status = max($status['exitcode'], $total_status);
+        }
+        elseif ($status['exitcode']) {
+          $message = 'FATAL ' . $child['class'] . ': test runner returned a non-zero error code (' . $status['exitcode'] . ').';
+          echo $message . "\n";
+          // Insert a fail for xml results.
+          TestBase::insertAssert($child['test_id'], $child['class'], FALSE, $message, 'run-tests.sh check');
+          // Ensure that an error line is displayed for the class.
+          simpletest_script_reporter_display_summary(
+            $child['class'],
+            ['#pass' => 0, '#fail' => 1, '#exception' => 0, '#debug' => 0]
+          );
           if ($args['die-on-fail']) {
-            list($db_prefix, ) = simpletest_last_test_get($child['test_id']);
+            list($db_prefix) = simpletest_last_test_get($child['test_id']);
             $test_directory = 'sites/simpletest/' . substr($db_prefix, 10);
-            echo 'Simpletest database and files kept and test exited immediately on fail so should be reproducible if you change settings.php to use the database prefix '. $db_prefix . ' and config directories in '. $test_directory . "\n";
+            echo 'Simpletest database and files kept and test exited immediately on fail so should be reproducible if you change settings.php to use the database prefix ' . $db_prefix . ' and config directories in ' . $test_directory . "\n";
             $args['keep-results'] = TRUE;
             // Exit repeat loop immediately.
             $args['repeat'] = -1;
@@ -583,19 +650,19 @@ function simpletest_script_execute_batch($test_classes) {
       }
     }
   }
+  return $total_status;
 }
 
 /**
- * Run a group of phpunit tests.
+ * Run a PHPUnit-based test.
  */
 function simpletest_script_run_phpunit($test_id, $class) {
-
   $reflection = new \ReflectionClass($class);
   if ($reflection->hasProperty('runLimit')) {
     set_time_limit($reflection->getStaticPropertyValue('runLimit'));
   }
 
-  $results = simpletest_run_phpunit_tests($test_id, array($class));
+  $results = simpletest_run_phpunit_tests($test_id, array($class), $status);
   simpletest_process_phpunit_results($results);
 
   // Map phpunit results to a data structure we can pass to
@@ -615,12 +682,15 @@ function simpletest_script_run_phpunit($test_id, $class) {
       case 'pass':
         $summaries[$result['test_class']]['#pass']++;
         break;
+
       case 'fail':
         $summaries[$result['test_class']]['#fail']++;
         break;
+
       case 'exception':
         $summaries[$result['test_class']]['#exception']++;
         break;
+
       case 'debug':
         $summaries[$result['test_class']]['#debug']++;
         break;
@@ -630,10 +700,11 @@ function simpletest_script_run_phpunit($test_id, $class) {
   foreach ($summaries as $class => $summary) {
     simpletest_script_reporter_display_summary($class, $summary);
   }
+  return $status;
 }
 
 /**
- * Bootstrap Drupal and run a single test.
+ * Run a single test, bootstrapping Drupal if needed.
  */
 function simpletest_script_run_one_test($test_id, $test_class) {
   global $args;
@@ -650,33 +721,41 @@ function simpletest_script_run_one_test($test_id, $test_class) {
     }
     $test = new $class_name($test_id);
     if (is_subclass_of($test_class, '\PHPUnit_Framework_TestCase')) {
-      simpletest_script_run_phpunit($test_id, $test_class);
+      $status = simpletest_script_run_phpunit($test_id, $test_class);
     }
     else {
       $test->dieOnFail = (bool) $args['die-on-fail'];
       $test->verbose = (bool) $args['verbose'];
       $test->run($methods);
       simpletest_script_reporter_display_summary($test_class, $test->results);
+
+      $status = SIMPLETEST_SCRIPT_EXIT_SUCCESS;
+      // Finished, kill this runner.
+      if ($test->results['#fail'] || $test->results['#exception']) {
+        $status = SIMPLETEST_SCRIPT_EXIT_FAILURE;
+      }
     }
 
-    // Finished, kill this runner.
-    exit(0);
+    exit($status);
   }
   // DrupalTestCase::run() catches exceptions already, so this is only reached
   // when an exception is thrown in the wrapping test runner environment.
   catch (Exception $e) {
     echo (string) $e;
-    exit(1);
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
   }
 }
 
 /**
  * Return a command used to run a test in a separate process.
  *
- * @param $test_id
- *  The current test ID.
- * @param $test_class
- *  The name of the test class to run.
+ * @param int $test_id
+ *   The current test ID.
+ * @param string $test_class
+ *   The name of the test class to run.
+ *
+ * @return string
+ *   The assembled command string.
  */
 function simpletest_script_command($test_id, $test_class) {
   global $args, $php;
@@ -728,7 +807,13 @@ function simpletest_script_cleanup($test_id, $test_class, $exitcode) {
     return;
   }
   // Retrieve the last database prefix used for testing.
-  list($db_prefix, ) = simpletest_last_test_get($test_id);
+  try {
+    list($db_prefix) = simpletest_last_test_get($test_id);
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
 
   // If no database prefix was found, then the test was not set up correctly.
   if (empty($db_prefix)) {
@@ -743,7 +828,13 @@ function simpletest_script_cleanup($test_id, $test_class, $exitcode) {
   $messages[] = "- Found database prefix '$db_prefix' for test ID $test_id.";
 
   // Read the log file in case any fatal errors caused the test to crash.
-  simpletest_log_read($test_id, $db_prefix, $test_class);
+  try {
+    simpletest_log_read($test_id, $db_prefix, $test_class);
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
 
   // Check whether a test site directory was setup already.
   // @see \Drupal\simpletest\TestBase::prepareEnvironment()
@@ -765,12 +856,19 @@ function simpletest_script_cleanup($test_id, $test_class, $exitcode) {
   }
 
   // Clear out all database tables from the test.
-  $schema = Database::getConnection('default', 'default')->schema();
-  $count = 0;
-  foreach ($schema->findTables($db_prefix . '%') as $table) {
-    $schema->dropTable($table);
-    $count++;
+  try {
+    $schema = Database::getConnection('default', 'default')->schema();
+    $count = 0;
+    foreach ($schema->findTables($db_prefix . '%') as $table) {
+      $schema->dropTable($table);
+      $count++;
+    }
   }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
+
   if ($count) {
     $messages[] = "- Removed $count leftover tables.";
   }
@@ -782,19 +880,26 @@ function simpletest_script_cleanup($test_id, $test_class, $exitcode) {
 }
 
 /**
- * Get list of tests based on arguments. If --all specified then
- * returns all available tests, otherwise reads list of tests.
+ * Get list of tests based on arguments.
  *
- * Will print error and exit if no valid tests were found.
+ * If --all specified then return all available tests, otherwise reads list of
+ * tests.
  *
- * @return List of tests.
+ * @return array
+ *   List of tests.
  */
 function simpletest_script_get_test_list() {
   global $args;
 
   $test_list = array();
   if ($args['all'] || $args['module']) {
-    $groups = simpletest_test_get_all($args['module']);
+    try {
+      $groups = simpletest_test_get_all($args['module']);
+    }
+    catch (Exception $e) {
+      echo (string) $e;
+      exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+    }
     $all_tests = array();
     foreach ($groups as $group => $tests) {
       $all_tests = array_merge($all_tests, array_keys($tests));
@@ -805,19 +910,25 @@ function simpletest_script_get_test_list() {
     if ($args['class']) {
       $test_list = array();
       foreach ($args['test_names'] as $test_class) {
-        list($class_name, ) = explode('::', $test_class, 2);
+        list($class_name) = explode('::', $test_class, 2);
         if (class_exists($class_name)) {
           $test_list[] = $test_class;
         }
         else {
-          $groups = simpletest_test_get_all();
+          try {
+            $groups = simpletest_test_get_all();
+          }
+          catch (Exception $e) {
+            echo (string) $e;
+            exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+          }
           $all_classes = array();
           foreach ($groups as $group) {
             $all_classes = array_merge($all_classes, array_keys($group));
           }
           simpletest_script_print_error('Test class not found: ' . $class_name);
           simpletest_script_print_alternatives($class_name, $all_classes, 6);
-          exit(1);
+          exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
         }
       }
     }
@@ -826,7 +937,7 @@ function simpletest_script_get_test_list() {
       foreach ($args['test_names'] as $file) {
         if (!file_exists($file)) {
           simpletest_script_print_error('File not found: ' . $file);
-          exit;
+          exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
         }
         $content = file_get_contents($file);
         // Extract a potential namespace.
@@ -870,13 +981,13 @@ function simpletest_script_get_test_list() {
         // '/Tests/' can be contained anywhere in the file's path (there can be
         // sub-directories below /Tests), but must be contained literally.
         // Case-insensitive to match all Simpletest and PHPUnit tests:
-        //   ./lib/Drupal/foo/Tests/Bar/Baz.php
-        //   ./foo/src/Tests/Bar/Baz.php
-        //   ./foo/tests/Drupal/foo/Tests/FooTest.php
-        //   ./foo/tests/src/FooTest.php
+        // ./lib/Drupal/foo/Tests/Bar/Baz.php
+        // ./foo/src/Tests/Bar/Baz.php
+        // ./foo/tests/Drupal/foo/Tests/FooTest.php
+        // ./foo/tests/src/FooTest.php
         // $file->filename doesn't give us a directory, so we use $file->uri
-        // Strip the drupal root directory and trailing slash off the URI
-        $filename = substr($file->uri, strlen(DRUPAL_ROOT)+1);
+        // Strip the drupal root directory and trailing slash off the URI.
+        $filename = substr($file->uri, strlen(DRUPAL_ROOT) + 1);
         if (stripos($filename, '/Tests/')) {
           $files[$filename] = $filename;
         }
@@ -905,7 +1016,13 @@ function simpletest_script_get_test_list() {
       }
     }
     else {
-      $groups = simpletest_test_get_all();
+      try {
+        $groups = simpletest_test_get_all();
+      }
+      catch (Exception $e) {
+        echo (string) $e;
+        exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+      }
       foreach ($args['test_names'] as $group_name) {
         if (isset($groups[$group_name])) {
           $test_list = array_merge($test_list, array_keys($groups[$group_name]));
@@ -913,7 +1030,7 @@ function simpletest_script_get_test_list() {
         else {
           simpletest_script_print_error('Test group not found: ' . $group_name);
           simpletest_script_print_alternatives($group_name, array_keys($groups));
-          exit(1);
+          exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
         }
       }
     }
@@ -921,7 +1038,7 @@ function simpletest_script_get_test_list() {
 
   if (empty($test_list)) {
     simpletest_script_print_error('No valid tests were specified.');
-    exit;
+    exit(SIMPLETEST_SCRIPT_EXIT_FAILURE);
   }
   return $test_list;
 }
@@ -935,7 +1052,7 @@ function simpletest_script_reporter_init() {
   $results_map = array(
     'pass' => 'Pass',
     'fail' => 'Fail',
-    'exception' => 'Exception'
+    'exception' => 'Exception',
   );
 
   echo "\n";
@@ -979,10 +1096,10 @@ function simpletest_script_reporter_display_summary($class, $results) {
   // by default (more than 999 assertions are rare).
   $output = vsprintf('%-60.60s %10s %9s %14s %12s', array(
     $class,
-                                   $results['#pass']      . ' passes',
-    !$results['#fail']      ? '' : $results['#fail']      . ' fails',
+    $results['#pass'] . ' passes',
+    !$results['#fail'] ? '' : $results['#fail'] . ' fails',
     !$results['#exception'] ? '' : $results['#exception'] . ' exceptions',
-    !$results['#debug']     ? '' : $results['#debug']     . ' messages',
+    !$results['#debug'] ? '' : $results['#debug'] . ' messages',
   ));
 
   $status = ($results['#fail'] || $results['#exception'] ? 'fail' : 'pass');
@@ -995,7 +1112,13 @@ function simpletest_script_reporter_display_summary($class, $results) {
 function simpletest_script_reporter_write_xml_results() {
   global $args, $test_ids, $results_map;
 
-  $results = simpletest_script_load_messages_by_test_id($test_ids);
+  try {
+    $results = simpletest_script_load_messages_by_test_id($test_ids);
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
 
   $test_class = '';
   $xml_files = array();
@@ -1003,7 +1126,8 @@ function simpletest_script_reporter_write_xml_results() {
   foreach ($results as $result) {
     if (isset($results_map[$result->status])) {
       if ($result->test_class != $test_class) {
-        // We've moved onto a new class, so write the last classes results to a file:
+        // We've moved onto a new class, so write the last classes results to a
+        // file:
         if (isset($xml_files[$test_class])) {
           file_put_contents($args['xml'] . '/' . str_replace('\\', '_', $test_class) . '.xml', $xml_files[$test_class]['doc']->saveXML());
           unset($xml_files[$test_class]);
@@ -1031,7 +1155,8 @@ function simpletest_script_reporter_write_xml_results() {
       }
       $case->setAttribute('name', $name);
 
-      // Passes get no further attention, but failures and exceptions get to add more detail:
+      // Passes get no further attention, but failures and exceptions get to add
+      // more detail:
       if ($result->status == 'fail') {
         $fail = $dom_document->createElement('failure');
         $fail->setAttribute('type', 'failure');
@@ -1085,7 +1210,13 @@ function simpletest_script_reporter_display_results() {
     echo "Detailed test results\n";
     echo "---------------------\n";
 
-    $results = simpletest_script_load_messages_by_test_id($test_ids);
+    try {
+      $results = simpletest_script_load_messages_by_test_id($test_ids);
+    }
+    catch (Exception $e) {
+      echo (string) $e;
+      exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+    }
     $test_class = '';
     foreach ($results as $result) {
       if (isset($results_map[$result->status])) {
@@ -1106,10 +1237,10 @@ function simpletest_script_reporter_display_results() {
 }
 
 /**
- * Format the result so that it fits within the default 80 character
- * terminal size.
+ * Format the result so that it fits within 80 characters.
  *
- * @param $result The result object to format.
+ * @param object $result
+ *   The result object to format.
  */
 function simpletest_script_format_result($result) {
   global $args, $results_map, $color;
@@ -1130,21 +1261,25 @@ function simpletest_script_format_result($result) {
 }
 
 /**
- * Print error message prefixed with "  ERROR: " and displayed in fail color
- * if color output is enabled.
+ * Print error messages so the user will notice them.
  *
- * @param $message The message to print.
+ * Print error message prefixed with "  ERROR: " and displayed in fail color if
+ * color output is enabled.
+ *
+ * @param string $message
+ *   The message to print.
  */
 function simpletest_script_print_error($message) {
   simpletest_script_print("  ERROR: $message\n", SIMPLETEST_SCRIPT_COLOR_FAIL);
 }
 
 /**
- * Print a message to the console, if color is enabled then the specified
- * color code will be used.
+ * Print a message to the console, using a color.
  *
- * @param $message The message to print.
- * @param $color_code The color code to use for coloring.
+ * @param string $message
+ *   The message to print.
+ * @param int $color_code
+ *   The color code to use for coloring.
  */
 function simpletest_script_print($message, $color_code) {
   global $args;
@@ -1159,19 +1294,26 @@ function simpletest_script_print($message, $color_code) {
 /**
  * Get the color code associated with the specified status.
  *
- * @param $status The status string to get code for.
- * @return Color code.
+ * @param string $status
+ *   The status string to get code for. Special cases are: 'pass', 'fail', or
+ *   'exception'.
+ *
+ * @return int
+ *   Color code. Returns 0 for default case.
  */
 function simpletest_script_color_code($status) {
   switch ($status) {
     case 'pass':
       return SIMPLETEST_SCRIPT_COLOR_PASS;
+
     case 'fail':
       return SIMPLETEST_SCRIPT_COLOR_FAIL;
+
     case 'exception':
       return SIMPLETEST_SCRIPT_COLOR_EXCEPTION;
   }
-  return 0; // Default formatting.
+  // Default formatting.
+  return 0;
 }
 
 /**
@@ -1179,8 +1321,6 @@ function simpletest_script_color_code($status) {
  *
  * Searches the provided array of string values for close matches based on the
  * Levenshtein algorithm.
- *
- * @see http://php.net/manual/en/function.levenshtein.php
  *
  * @param string $string
  *   A string to test.
@@ -1191,6 +1331,8 @@ function simpletest_script_color_code($status) {
  *   4 means that the function will return strings from $array if the candidate
  *   string in $array would be identical to $string by changing 1/4 or fewer of
  *   its characters.
+ *
+ * @see http://php.net/manual/en/function.levenshtein.php
  */
 function simpletest_script_print_alternatives($string, $array, $degree = 4) {
   $alternatives = array();
@@ -1233,10 +1375,16 @@ function simpletest_script_load_messages_by_test_id($test_ids) {
   }
 
   foreach ($test_id_chunks as $test_id_chunk) {
-    $result_chunk = Database::getConnection('default', 'test-runner')
-      ->query("SELECT * FROM {simpletest} WHERE test_id IN ( :test_ids[] ) ORDER BY test_class, message_id", array(
-        ':test_ids[]' => $test_id_chunk,
-      ))->fetchAll();
+    try {
+      $result_chunk = Database::getConnection('default', 'test-runner')
+        ->query("SELECT * FROM {simpletest} WHERE test_id IN ( :test_ids[] ) ORDER BY test_class, message_id", array(
+          ':test_ids[]' => $test_id_chunk,
+        ))->fetchAll();
+    }
+    catch (Exception $e) {
+      echo (string) $e;
+      exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+    }
     if ($result_chunk) {
       $results = array_merge($results, $result_chunk);
     }
@@ -1251,14 +1399,20 @@ function simpletest_script_load_messages_by_test_id($test_ids) {
 function simpletest_script_open_browser() {
   global $test_ids;
 
-  $connection = Database::getConnection('default', 'test-runner');
-  $results = $connection->select('simpletest')
-    ->fields('simpletest')
-    ->condition('test_id', $test_ids, 'IN')
-    ->orderBy('test_class')
-    ->orderBy('message_id')
-    ->execute()
-    ->fetchAll();
+  try {
+    $connection = Database::getConnection('default', 'test-runner');
+    $results = $connection->select('simpletest')
+      ->fields('simpletest')
+      ->condition('test_id', $test_ids, 'IN')
+      ->orderBy('test_class')
+      ->orderBy('message_id')
+      ->execute()
+      ->fetchAll();
+  }
+  catch (Exception $e) {
+    echo (string) $e;
+    exit(SIMPLETEST_SCRIPT_EXIT_EXCEPTION);
+  }
 
   // Get the results form.
   $form = array();
@@ -1267,7 +1421,11 @@ function simpletest_script_open_browser() {
   // Get the assets to make the details element collapsible and theme the result
   // form.
   $assets = new \Drupal\Core\Asset\AttachedAssets();
-  $assets->setLibraries(['core/drupal.collapse', 'system/admin', 'simpletest/drupal.simpletest']);
+  $assets->setLibraries([
+    'core/drupal.collapse',
+    'system/admin',
+    'simpletest/drupal.simpletest',
+  ]);
   $resolver = \Drupal::service('asset.resolver');
   list($js_assets_header, $js_assets_footer) = $resolver->getJsAssets($assets, FALSE);
   $js_collection_renderer = \Drupal::service('asset.js.collection_renderer');
@@ -1277,14 +1435,20 @@ function simpletest_script_open_browser() {
 
   // Make the html page to write to disk.
   $render_service = \Drupal::service('renderer');
-  $html = '<head>' . $render_service->renderPlain($js_assets_header) . $render_service->renderPlain($css_assets) . '</head><body>' . $render_service->renderPlain($form) . $render_service->renderPlain($js_assets_footer) .'</body>';
+  $html = '<head>' . $render_service->renderPlain($js_assets_header) . $render_service->renderPlain($css_assets) . '</head><body>' . $render_service->renderPlain($form) . $render_service->renderPlain($js_assets_footer) . '</body>';
 
-  // Ensure we have assets verbose directory - tests with no verbose output will not
-  // have created one.
+  // Ensure we have assets verbose directory - tests with no verbose output will
+  // not have created one.
   $directory = PublicStream::basePath() . '/simpletest/verbose';
   file_prepare_directory($directory, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
-  $uuid = new Php();
-  $filename = $directory .'/results-'. $uuid->generate() .'.html';
+  $php = new Php();
+  $uuid = $php->generate();
+  $filename = $directory . '/results-' . $uuid . '.html';
+  $base_url = getenv('SIMPLETEST_BASE_URL');
+  if (empty($base_url)) {
+    simpletest_script_print_error("--browser needs argument --url.");
+  }
+  $url = $base_url . '/' . PublicStream::basePath() . '/simpletest/verbose/results-' . $uuid . '.html';
   file_put_contents($filename, $html);
 
   // See if we can find an OS helper to open URLs in default browser.
@@ -1300,7 +1464,7 @@ function simpletest_script_open_browser() {
   }
 
   if ($browser) {
-    shell_exec($browser . ' ' . escapeshellarg($filename));
+    shell_exec($browser . ' ' . escapeshellarg($url));
   }
   else {
     // Can't find assets valid browser.

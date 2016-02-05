@@ -49,7 +49,7 @@ class FilterHtml extends FilterBase {
       '#type' => 'textfield',
       '#title' => $this->t('Allowed HTML tags'),
       '#default_value' => $this->settings['allowed_html'],
-      '#maxlength' => 1024,
+      '#maxlength' => 2048,
       '#description' => $this->t('A list of HTML tags that can be used. By default only the <em>lang</em> and <em>dir</em> attributes are allowed for all HTML tags. Each HTML tag may have attributes which are treated as allowed attribute names for that HTML tag. Each attribute may allow all values, or only allow specific values. Attribute names or values may be written as a prefix and wildcard like <em>jump-*</em>. JavaScript event attributes, JavaScript URLs, and CSS are always stripped.'),
       '#size' => 250,
       '#attached' => array(
@@ -275,16 +275,27 @@ class FilterHtml extends FilterBase {
         foreach ($node->attributes as $name => $attribute) {
           // Put back any trailing * on wildcard attribute name.
           $name = str_replace($star_protector, '*', $name);
-          if ($attribute->value === '') {
+
+          // Put back any trailing * on wildcard attribute value and parse out
+          // the allowed attribute values.
+          $allowed_attribute_values = preg_split('/\s+/', str_replace($star_protector, '*', $attribute->value), -1, PREG_SPLIT_NO_EMPTY);
+
+          // Sanitize the attribute value: it lists the allowed attribute values
+          // but one allowed attribute value that some may be tempted to use
+          // is specifically nonsensical: the asterisk. A prefix is required for
+          // allowed attribute values with a wildcard. A wildcard by itself
+          // would mean whitelisting all possible attribute values. But in that
+          // case, one would not specify an attribute value at all.
+          $allowed_attribute_values = array_filter($allowed_attribute_values, function ($value) use ($star_protector) { return $value !== '*'; });
+
+          if (empty($allowed_attribute_values)) {
             // If the value is the empty string all values are allowed.
             $restrictions['allowed'][$tag][$name] = TRUE;
           }
           else {
             // A non-empty attribute value is assigned, mark each of the
             // specified attribute values as allowed.
-            foreach (preg_split('/\s+/', $attribute->value, -1, PREG_SPLIT_NO_EMPTY) as $value) {
-              // Put back any trailing * on wildcard attribute value.
-              $value = str_replace($star_protector, '*', $value);
+            foreach ($allowed_attribute_values as $value) {
               $restrictions['allowed'][$tag][$name][$value] = TRUE;
             }
           }

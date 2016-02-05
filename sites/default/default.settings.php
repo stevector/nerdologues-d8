@@ -223,22 +223,24 @@ $databases = array();
  * Location of the site configuration files.
  *
  * The $config_directories array specifies the location of file system
- * directories used for configuration data. On install, "active" and "sync"
- * directories are created for configuration. The sync directory is used for
- * configuration imports; the active directory is not used by default, since the
- * default storage for active configuration is the database rather than the file
- * system (this can be changed; see "Active configuration settings" below).
+ * directories used for configuration data. On install, the "sync" directory is
+ * created. This is used for configuration imports. The "active" directory is
+ * not created by default since the default storage for active configuration is
+ * the database rather than the file system. (This can be changed. See "Active
+ * configuration settings" below).
  *
- * The default location for the active and sync directories is inside a
- * randomly-named directory in the public files path; this setting allows you to
- * override these locations. If you use files for the active configuration, you
- * can enhance security by putting the active configuration outside your
- * document root.
+ * The default location for the "sync" directory is inside a randomly-named
+ * directory in the public files path. The setting below allows you to override
+ * the "sync" location.
+ *
+ * If you use files for the "active" configuration, you can tell the
+ * Configuration system where this directory is located by adding an entry with
+ * array key CONFIG_ACTIVE_DIRECTORY.
  *
  * Example:
  * @code
  *   $config_directories = array(
- *     CONFIG_SYNC_DIRECTORY => '/another/directory/outside/webroot',
+ *     CONFIG_SYNC_DIRECTORY => '/directory/outside/webroot',
  *   );
  * @endcode
  */
@@ -311,20 +313,25 @@ $settings['update_free_access'] = FALSE;
 /**
  * External access proxy settings:
  *
- * If your site must access the Internet via a web proxy then you can enter
- * the proxy settings here. Currently only basic authentication is supported
- * by using the username and password variables. The proxy_user_agent variable
- * can be set to NULL for proxies that require no User-Agent header or to a
- * non-empty string for proxies that limit requests to a specific agent. The
- * proxy_exceptions variable is an array of host names to be accessed directly,
- * not via proxy.
+ * If your site must access the Internet via a web proxy then you can enter the
+ * proxy settings here. Set the full URL of the proxy, including the port, in
+ * variables:
+ * - $settings['http_client_config']['proxy']['http']: The proxy URL for HTTP
+ *   requests.
+ * - $settings['http_client_config']['proxy']['https']: The proxy URL for HTTPS
+ *   requests.
+ * You can pass in the user name and password for basic authentication in the
+ * URLs in these settings.
+ *
+ * You can also define an array of host names that can be accessed directly,
+ * bypassing the proxy, in $settings['http_client_config']['proxy']['no'].
+ *
+ * If these settings are not configured, the system environment variables
+ * HTTP_PROXY, HTTPS_PROXY, and NO_PROXY on the web server will be used instead.
  */
-# $settings['proxy_server'] = '';
-# $settings['proxy_port'] = 8080;
-# $settings['proxy_username'] = '';
-# $settings['proxy_password'] = '';
-# $settings['proxy_user_agent'] = '';
-# $settings['proxy_exceptions'] = array('127.0.0.1', 'localhost');
+# $settings['http_client_config']['proxy']['http'] = 'http://proxy_user:proxy_pass@example.com:8080';
+# $settings['http_client_config']['proxy']['https'] = 'http://proxy_user:proxy_pass@example.com:8080';
+# $settings['http_client_config']['proxy']['no'] = ['127.0.0.1', 'localhost'];
 
 /**
  * Reverse Proxy Configuration:
@@ -369,7 +376,31 @@ $settings['update_free_access'] = FALSE;
  * Set this value if your proxy server sends the client IP in a header
  * other than X-Forwarded-For.
  */
-# $settings['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
+# $settings['reverse_proxy_header'] = 'X_CLUSTER_CLIENT_IP';
+
+/**
+ * Set this value if your proxy server sends the client protocol in a header
+ * other than X-Forwarded-Proto.
+ */
+# $settings['reverse_proxy_proto_header'] = 'X_FORWARDED_PROTO';
+
+/**
+ * Set this value if your proxy server sends the client protocol in a header
+ * other than X-Forwarded-Host.
+ */
+# $settings['reverse_proxy_host_header'] = 'X_FORWARDED_HOST';
+
+/**
+ * Set this value if your proxy server sends the client protocol in a header
+ * other than X-Forwarded-Port.
+ */
+# $settings['reverse_proxy_port_header'] = 'X_FORWARDED_PORT';
+
+/**
+ * Set this value if your proxy server sends the client protocol in a header
+ * other than Forwarded.
+ */
+# $settings['reverse_proxy_forwarded_header'] = 'FORWARDED';
 
 /**
  * Page caching:
@@ -446,7 +477,7 @@ if ($settings['hash_salt']) {
 # $settings['allow_authorize_operations'] = FALSE;
 
 /**
- * Default mode for for directories and files written by Drupal.
+ * Default mode for directories and files written by Drupal.
  *
  * Value should be in PHP Octal Notation, with leading zero.
  */
@@ -556,6 +587,10 @@ if ($settings['hash_salt']) {
  * By default, the active configuration is stored in the database in the
  * {config} table. To use a different storage mechanism for the active
  * configuration, do the following prior to installing:
+ * - Create an "active" directory and declare its path in $config_directories
+ *   as explained under the 'Location of the site configuration files' section
+ *   above in this file. To enhance security, you can declare a path that is
+ *   outside your document root.
  * - Override the 'bootstrap_config_storage' setting here. It must be set to a
  *   callable that returns an object that implements
  *   \Drupal\Core\Config\StorageInterface.
@@ -670,6 +705,17 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  */
 
 /**
+ * Include the Pantheon-specific settings file.
+ *
+ * n.b. The settings.pantheon.php file makes some changes
+ *      that affect all envrionments that this site
+ *      exists in.  Always include this file, even in
+ *      a local development environment, to insure that
+ *      the site settings remain consistent.
+ */
+include __DIR__ . "/settings.pantheon.php";
+
+/**
  * Load local development override configuration, if available.
  *
  * Use settings.local.php to override variables on secondary (staging,
@@ -679,6 +725,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  *
  * Keep this code block at the end of this file to take full effect.
  */
-# if (file_exists(__DIR__ . '/settings.local.php')) {
-#   include __DIR__ . '/settings.local.php';
-# }
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
+}

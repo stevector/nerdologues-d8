@@ -7,9 +7,9 @@
 
 namespace Drupal\migrate\Plugin\migrate\destination;
 
-use Drupal\migrate\Row;
-
 /**
+ * Provides entity field instance plugin.
+ *
  * @MigrateDestination(
  *   id = "entity:field_config"
  * )

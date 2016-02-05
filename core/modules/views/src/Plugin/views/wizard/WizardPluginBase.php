@@ -15,7 +15,6 @@ use Drupal\views\Views;
 use Drupal\views_ui\ViewUI;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\PluginBase;
-use Drupal\views\Plugin\views\wizard\WizardInterface;
 
 /**
  * @defgroup views_wizard_plugins Views wizard plugins
@@ -1250,7 +1249,7 @@ abstract class WizardPluginBase extends PluginBase implements WizardInterface {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public function createView(array $form, FormStateInterface $form_state) {
     $view = $this->retrieveValidatedView($form, $form_state);

@@ -3,6 +3,9 @@
 /**
  * @file
  * Contains \Drupal\Core\Routing\LinkGeneratorTrait.
+ *
+ * @deprecated in Drupal 8.0.0 and will be removed before Drupal 9.0.0.
+ *   Use \Drupal\Core\Link instead.
  */
 
 namespace Drupal\Core\Routing;
@@ -10,7 +13,6 @@ namespace Drupal\Core\Routing;
 
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGeneratorInterface;
-use Drupal\Core\Routing\UrlGeneratorInterface;
 
 /**
  * Wrapper methods for the Link Generator.
@@ -38,6 +40,9 @@ trait LinkGeneratorTrait {
    * @return \Drupal\Core\GeneratedLink
    *   A GeneratedLink object containing a link to the given route and
    *   parameters and bubbleable metadata.
+   *
+   * @deprecated in Drupal 8.0.0 and will be removed before Drupal 9.0.0.
+   *   Use \Drupal\Core\Link instead.
    */
   protected function l($text, Url $url) {
     return $this->getLinkGenerator()->generate($text, $url);

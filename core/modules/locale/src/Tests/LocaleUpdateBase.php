@@ -8,7 +8,6 @@
 namespace Drupal\locale\Tests;
 
 use Drupal\Core\StreamWrapper\PublicStream;
-use Drupal\Core\Url;
 use Drupal\simpletest\WebTestBase;
 use Drupal\Component\Utility\SafeMarkup;
 
@@ -20,28 +19,28 @@ abstract class LocaleUpdateBase extends WebTestBase {
   /**
    * Timestamp for an old translation.
    *
-   * @var integer
+   * @var int
    */
   protected $timestampOld;
 
   /**
    * Timestamp for a medium aged translation.
    *
-   * @var integer
+   * @var int
    */
   protected $timestampMedium;
 
   /**
    * Timestamp for a new translation.
    *
-   * @var integer
+   * @var int
    */
   protected $timestampNew;
 
   /**
    * Timestamp for current time.
    *
-   * @var integer
+   * @var int
    */
   protected $timestampNow;
 

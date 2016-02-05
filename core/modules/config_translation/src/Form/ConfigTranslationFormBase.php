@@ -11,7 +11,6 @@ use Drupal\config_translation\ConfigMapperManagerInterface;
 use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
-use Drupal\Core\TypedData\TraversableTypedDataInterface;
 use Drupal\Core\Form\BaseFormIdInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -117,8 +116,8 @@ abstract class ConfigTranslationFormBase extends FormBase implements BaseFormIdI
    *   An associative array containing the structure of the form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
-   * @param \Symfony\Component\HttpFoundation\Request $request
-   *   (optional) Page request object.
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   *   (optional) The route match.
    * @param string $plugin_id
    *   (optional) The plugin ID of the mapper.
    * @param string $langcode

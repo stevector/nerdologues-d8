@@ -29,7 +29,7 @@
 
 (function ($, Drupal) {
 
-  "use strict";
+  'use strict';
 
   /**
    * Provides an API for managing page tabbing order modifications.
@@ -127,7 +127,7 @@
     },
 
     /**
-     * Makes all elements outside the of the tabbingContext's set untabbable.
+     * Makes all elements outside of the tabbingContext's set untabbable.
      *
      * Elements made untabbable have their original tabindex and autofocus
      * values stored so that they might be restored later when this

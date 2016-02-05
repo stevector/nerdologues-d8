@@ -24,7 +24,7 @@ class RevisionRelationshipsTest extends ViewTestBase {
    *
    * @var array
    */
-  public static $modules = array('block_content' ,'block_content_test_views');
+  public static $modules = array('block_content' , 'block_content_test_views');
 
   /**
    * Views used by this test.
@@ -60,7 +60,7 @@ class RevisionRelationshipsTest extends ViewTestBase {
     $column_map = array(
       'revision_id' => 'revision_id',
       'id_1' => 'id_1',
-      'block_content_block_content_revision_id' => 'block_content_block_content_revision_id',
+      'block_content_field_data_block_content_field_revision_id' => 'block_content_field_data_block_content_field_revision_id',
     );
 
     // Here should be two rows.
@@ -70,12 +70,12 @@ class RevisionRelationshipsTest extends ViewTestBase {
       array(
         'revision_id' => '1',
         'id_1' => '1',
-        'block_content_block_content_revision_id' => '1',
+        'block_content_field_data_block_content_field_revision_id' => '1',
       ),
       array(
         'revision_id' => '2',
         'id_1' => '1',
-        'block_content_block_content_revision_id' => '1',
+        'block_content_field_data_block_content_field_revision_id' => '1',
       ),
     );
     $this->assertIdenticalResultset($view_id, $resultset_id, $column_map);
@@ -87,7 +87,7 @@ class RevisionRelationshipsTest extends ViewTestBase {
       array(
         'revision_id' => '2',
         'id_1' => '1',
-        'block_content_block_content_revision_id' => '1',
+        'block_content_field_data_block_content_field_revision_id' => '1',
       ),
     );
     $this->assertIdenticalResultset($view_revision_id, $resultset_revision_id, $column_map);

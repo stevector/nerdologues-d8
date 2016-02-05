@@ -7,7 +7,6 @@
 
 use Drupal\comment\CommentInterface;
 use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
-use Drupal\Component\Utility\Xss;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
@@ -502,7 +501,12 @@ function template_preprocess_forums(&$variables) {
           }
 
           $row[] = array(
-            'data' => $topic->comment_count . $new_replies,
+            'data' => [
+              [
+                '#prefix' => $topic->comment_count,
+                '#markup' => $new_replies,
+              ],
+            ],
             'class' => array('forum__replies'),
           );
           $row[] = array(

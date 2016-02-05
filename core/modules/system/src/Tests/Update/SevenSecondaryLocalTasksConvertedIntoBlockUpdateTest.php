@@ -7,8 +7,6 @@
 
 namespace Drupal\system\Tests\Update;
 
-use Drupal\node\Entity\Node;
-
 /**
  * Tests the upgrade path for converting seven secondary local tasks into a block.
  *
@@ -31,7 +29,7 @@ class SevenSecondaryLocalTasksConvertedIntoBlockUpdateTest extends UpdatePathTes
   /**
    * {@inheritdoc}
    */
-  public function setUp() {
+  protected function setUp() {
     parent::setUp();
     /** @var \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler */
     $theme_handler = \Drupal::service('theme_handler');
