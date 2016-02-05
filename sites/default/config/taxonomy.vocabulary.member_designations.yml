@@ -1,0 +1,9 @@
+uuid: 7f28989f-0e1b-49f2-8e5e-948ad2df39dd
+langcode: en
+status: true
+dependencies: {  }
+name: 'Member Designations'
+vid: member_designations
+description: ''
+hierarchy: 0
+weight: 0

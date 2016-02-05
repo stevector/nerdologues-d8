@@ -1,0 +1,24 @@
+uuid: 20e12bbf-1b00-4adf-8600-cb4838d221f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video.body
+    - node.type.video
+  module:
+    - text
+    - user
+id: node.video.default
+targetEntityType: node
+bundle: video
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

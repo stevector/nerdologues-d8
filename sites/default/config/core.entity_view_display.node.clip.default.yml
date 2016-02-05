@@ -1,0 +1,24 @@
+uuid: 0ad73681-29fe-4eba-9c00-a56fa67e0a2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.clip.body
+    - node.type.clip
+  module:
+    - text
+    - user
+id: node.clip.default
+targetEntityType: node
+bundle: clip
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

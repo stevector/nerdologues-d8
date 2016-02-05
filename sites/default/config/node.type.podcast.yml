@@ -1,0 +1,18 @@
+uuid: cf420235-f849-41a4-8604-4aa76220a3cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Podcast
+type: podcast
+description: 'Your Stories, MBSing, And the Nerdologuecast.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

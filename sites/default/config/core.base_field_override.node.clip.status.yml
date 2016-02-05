@@ -1,0 +1,22 @@
+uuid: 67febbe9-5a1f-4141-a000-e8ba054ded21
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.clip
+id: node.clip.status
+field_name: status
+entity_type: node
+bundle: clip
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

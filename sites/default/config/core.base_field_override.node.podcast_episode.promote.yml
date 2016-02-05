@@ -1,0 +1,22 @@
+uuid: 21396c08-1425-4c99-8714-20b1f33da4c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast_episode
+id: node.podcast_episode.promote
+field_name: promote
+entity_type: node
+bundle: podcast_episode
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

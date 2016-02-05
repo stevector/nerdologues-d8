@@ -1,0 +1,26 @@
+uuid: 25f34f99-14a1-4762-b604-4e3e15f88b99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.clip.body
+    - node.type.clip
+  module:
+    - text
+    - user
+id: node.clip.teaser
+targetEntityType: node
+bundle: clip
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

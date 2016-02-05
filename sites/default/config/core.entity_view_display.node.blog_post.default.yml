@@ -1,0 +1,24 @@
+uuid: 666f7043-88d4-436d-a900-fb6c732a3b12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.blog_post.body
+    - node.type.blog_post
+  module:
+    - text
+    - user
+id: node.blog_post.default
+targetEntityType: node
+bundle: blog_post
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

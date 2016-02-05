@@ -1,0 +1,9 @@
+uuid: de4fc141-ad44-4b4c-b605-5a34b2849027
+langcode: en
+status: true
+dependencies: {  }
+name: 'iTunes Category'
+vid: itunes_category
+description: ''
+hierarchy: 0
+weight: 0

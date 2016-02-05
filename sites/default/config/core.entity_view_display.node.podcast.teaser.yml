@@ -1,0 +1,21 @@
+uuid: cf6c9c45-4a73-4464-b500-00730e7d5ca6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.podcast.field_body
+    - field.field.node.podcast.field_image
+    - node.type.podcast
+  module:
+    - user
+id: node.podcast.teaser
+targetEntityType: node
+bundle: podcast
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_body: true
+  field_image: true

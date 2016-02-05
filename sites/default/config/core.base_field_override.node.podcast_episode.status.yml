@@ -1,0 +1,22 @@
+uuid: 5f58708c-b19d-4b30-9018-248097b0889c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast_episode
+id: node.podcast_episode.status
+field_name: status
+entity_type: node
+bundle: podcast_episode
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

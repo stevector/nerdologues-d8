@@ -1,0 +1,22 @@
+uuid: 48d92a1a-832c-4b74-b905-5ffa9711b1da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.podcast_episode
+  module:
+    - text
+id: node.podcast_episode.body
+field_name: body
+entity_type: node
+bundle: podcast_episode
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary
