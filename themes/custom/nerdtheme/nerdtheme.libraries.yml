@@ -3,3 +3,10 @@ global-styling:
     component:
       css/styles.css: {}
       fonts.css: {}
+  js:
+    js/nerdtheme.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
