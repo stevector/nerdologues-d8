@@ -1,0 +1,19 @@
+uuid: a888cb8c-e8c0-4489-bf00-a969da551e85
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ref_creators
+field_name: field_ref_creators
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 42cdff67-a113-4ee2-b12e-46a4b310d335
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - youtube
+id: node.field_youtube
+field_name: field_youtube
+entity_type: node
+type: youtube
+settings: {  }
+module: youtube
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

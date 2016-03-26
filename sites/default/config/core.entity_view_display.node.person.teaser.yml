@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.person.field_body
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_ref_term_designation
     - node.type.person
   module:
     - user
@@ -14,4 +17,7 @@ mode: teaser
 content:
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_body: true
+  field_last_name: true
+  field_ref_term_designation: true

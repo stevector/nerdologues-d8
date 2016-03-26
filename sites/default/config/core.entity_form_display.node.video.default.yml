@@ -4,10 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.video.body
+    - field.field.node.video.field_date_published
+    - field.field.node.video.field_ref_creators
+    - field.field.node.video.field_youtube
     - node.type.video
   module:
+    - datetime
     - path
     - text
+    - youtube
 id: node.video.default
 targetEntityType: node
 bundle: video
@@ -26,6 +31,24 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_date_published:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_ref_creators:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_youtube:
+    weight: 33
+    settings: {  }
+    third_party_settings: {  }
+    type: youtube
   path:
     type: path
     weight: 30
