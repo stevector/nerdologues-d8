@@ -1,0 +1,22 @@
+<div class="l-2up  clearfix">
+
+  {% if quote %}
+  <div class="teaser-with-image--quote">
+    <div class="inside">{{ quote }}</div>
+  </div>
+  {% endif %}
+
+  {% if header %}
+  <div class="teaser-with-image--header">
+    <div class="inside">{{ header }}</div>
+  </div>
+  {% endif %}
+
+  <div class="teaser-with-image--image">
+    <div class="inside">{{ left }}</div>
+  </div>
+
+  <div class="teaser-with-image--text">
+    <div class="inside">{{ right }}</div>
+  </div>
+</div>

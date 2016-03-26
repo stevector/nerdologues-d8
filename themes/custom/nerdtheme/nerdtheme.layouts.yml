@@ -1,0 +1,15 @@
+teaser_with_image:
+  label: Teaser with Image
+  category: Custom
+  template: templates/layouts/teaser-with-image
+  type: partial
+  class: '\Drupal\ds\Plugin\DsLayout'
+  regions:
+    header:
+      label: header
+    quote:
+      label: Quote
+    right:
+      label: right
+    left:
+      label: left
