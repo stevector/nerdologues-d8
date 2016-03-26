@@ -1,0 +1,16 @@
+/**
+ * @file
+ * Styling for the view of a full node.
+ *
+ */
+//@import "base";
+
+.node-person.view-mode-full figure {
+  float: left;
+  width: 30%;
+  margin: 0 10px 10px 0;
+
+  @include breakpoint($bp3, $no-query: true) {
+    width: 25%;
+  }
+}

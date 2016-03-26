@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Styles that I'm not sure where to put.
+ *
+ */
+//@import "base";
+
+h1,
+h2,
+h3,
+h4 {
+  a:link,
+  a:visited {
+    color: #000;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: $link-color;
+  }
+}

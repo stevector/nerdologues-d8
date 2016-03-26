@@ -1,0 +1,67 @@
+/**
+ * @file
+ * Hero image used on home.
+ *
+ */
+@import "header-logo-and-title";
+.whitebox,
+.region-footer,
+%whitebox {
+  padding: 15px 25px;
+  margin:20px 0 0 0;
+  @include rgba-background-inline(rgba(#fff, 0.8));
+  @include box-shadow(#333 2px 2px 10px);
+}
+
+body.page-home .page__title {
+  display:none;
+}
+
+html.lt-ie9  .whitebox--hero {
+  background-image:url('../images/new-cover-1200.jpg');
+}
+
+
+.whitebox--hero {
+  padding: 30px;
+  background-image:url('../images/new-cover.jpg');
+  background-color: #000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 60% bottom;
+  color: #fff;
+  height:390px;
+  // background-attachment: local;
+  h1 {
+    margin: 0 0 0 0;
+  }
+  a {
+    color: #000;
+  }
+  @include breakpoint($bp1) {
+    background-position: 65% bottom;
+  }
+
+  @include breakpoint($bp2) {
+    background-position: 80% bottom;
+  }
+  @include breakpoint($bp3, $no-query: true) {
+    background-position: 100% bottom;
+  }
+
+  position: relative;
+  p {
+    @include rgba-background-inline(rgba(#fff, 0.9));
+    padding: 20px;
+   // width:100%;
+    bottom: 0;
+     position: absolute;
+    color: #000;
+    @include breakpoint($bp2, $no-query: true) {
+      width:30%;
+    }
+    @include breakpoint($bp3, $no-query: true) {
+      width:20%;
+    }
+  }
+}

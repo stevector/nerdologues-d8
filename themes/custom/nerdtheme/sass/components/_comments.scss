@@ -1,0 +1,37 @@
+/**
+ * @file
+ * Comments.
+ */
+
+/* Wrapper for the list of comments and its title. */
+.comments {
+  margin: rhythm(1) 0;
+}
+
+.comments__title,      /* Comment section heading. */
+.comments__form-title, /* Comment form heading. */
+.comment__title {      /* Comment title. */
+  margin: 0;
+}
+
+/* Preview of the comment before submitting new or updated comment. */
+.comment-preview {
+  /* Drupal core will use a #ffffea background. See #1110842. */
+  background-color: #ffffea;
+}
+
+/* Wrapper for a single comment. */
+.comment {
+
+  /* Comment's permalink wrapper. */
+  .permalink {
+    text-transform: uppercase;
+    font-size: 75%;
+  }
+}
+
+/* Nested comments are indented. */
+.indented {
+  /* Drupal core uses a 25px left margin. */
+  margin-left: $indent-amount; /* LTR */
+}

@@ -1,0 +1,33 @@
+/**
+ * @file
+ * Navigation bar.
+ */
+.main-navigation {
+  /* Sometimes you want to prevent overlapping with main div. */
+  /* overflow: hidden; */
+
+  .block {
+    margin-bottom: 0;
+  }
+
+  .block-menu .block__title,
+  .block-menu-block .block__title {
+    @extend %element-invisible;
+  }
+
+  /* Main menu and secondary menu links and menu block links. */
+  .links,
+  .menu {
+    margin: 0;
+    padding: 0;
+    text-align: left; /* LTR */
+
+    li {
+      /* A simple method to get navigation links to appear in one line. */
+      float: left; /* LTR */
+      padding: 0 10px 0 0; /* LTR */
+      list-style-type: none;
+      list-style-image: none;
+    }
+  }
+}

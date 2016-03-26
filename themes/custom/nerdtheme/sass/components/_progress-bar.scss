@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Progress bar.
+ *
+ * @see progress.js
+ */
+
+.progress {
+  font-weight: bold;
+
+  .bar {
+    background: #ccc;
+    border-color: #666;
+    margin: 0 0.2em;
+    @include border-radius(3px);
+  }
+  .filled {
+    background-color: #0072b9;
+    background-image: image-url("progress.gif");
+  }
+}

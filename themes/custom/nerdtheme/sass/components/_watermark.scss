@@ -1,0 +1,39 @@
+/**
+ * @file
+ * Watermark.
+ *
+ * Make the element appear beneath sibling elements, like a watermark.
+ */
+
+%watermark {
+  height: 0;
+  overflow: visible;
+}
+%watermark--unpublished {
+  @extend %watermark;
+  // Remove background highlighting from <mark> in normalize.
+  background-color: transparent;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word;
+}
+%watermark__wrapper {
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    // Otherwise adjacent elements will appear below the watermark text.
+    > * {
+      *position: relative;
+    }
+  }
+}
+.watermark {
+  @extend %watermark--unpublished;
+}
+.watermark__wrapper {
+  // The watermark's wrapper only needs CSS for IE 6/7.
+ // @extend %watermark__wrapper;
+}

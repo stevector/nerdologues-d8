@@ -1,0 +1,32 @@
+/**
+ * @file
+ * RTL companion for the styles.scss file.
+ */
+
+/* Import Sass mixins, variables, Compass modules, etc. */
+@import "init";
+
+/* HTML element (SMACSS base) rules */
+@import "normalize-rtl";
+
+/* Layout rules */
+@import "layouts/responsive-rtl";
+
+/* Component (SMACSS module) rules */
+@import "components/inline-rtl";
+
+@import "components/forms-drupal-rtl";
+@import "components/collapsible-fieldsets-rtl";
+@import "components/form-tables-rtl";
+
+@import "components/comments-rtl";
+@import "components/header-rtl";
+@import "components/messages-rtl";
+@import "components/more-link-rtl";
+@import "components/navbar-rtl";
+@import "components/side-menu-rtl";
+@import "components/tabs-rtl";
+
+/* SMACSS theme rules */
+/* @import "theme-A-rtl"; */
+/* @import "theme-B-rtl"; */

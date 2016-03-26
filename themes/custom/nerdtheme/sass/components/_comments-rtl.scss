@@ -1,0 +1,10 @@
+/**
+ * @file
+ * The RTL language extension of the comments component.
+ */
+
+/* Nested comments are indented. */
+.indented {
+  margin-left: 0;
+  margin-right: $indent-amount;
+}

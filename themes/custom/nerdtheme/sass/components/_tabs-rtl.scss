@@ -1,0 +1,17 @@
+/**
+ * The RTL language extension of the tabs component.
+ */
+
+%tabs__tab {
+  float: right;
+}
+.tabs-primary__tab {
+  @extend %tabs__tab;
+}
+.tabs-primary__tab.is-active {
+  @extend .tabs-primary__tab;
+}
+.tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  @extend %tabs__tab;
+}

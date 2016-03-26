@@ -1,0 +1,25 @@
+/**
+ * @file
+ * Make an element visually hidden, but accessible.
+ */
+
+.element-invisible,
+%element-invisible {
+  @include element-invisible;
+}
+
+/* Turns off the element-invisible effect. */
+%element-invisible-off {
+  @include element-invisible-off;
+}
+
+/* Makes an element visually hidden by default, but visible when focused. */
+.element-focusable,
+%element-focusable {
+  @extend %element-invisible;
+
+  &:active,
+  &:focus {
+    @extend %element-invisible-off;
+  }
+}

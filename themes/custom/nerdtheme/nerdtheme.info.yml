@@ -12,5 +12,5 @@ base theme: classy
 regions:
   content: Content
   header: Header
-  help: Help
   footer: Footer
+  system: System

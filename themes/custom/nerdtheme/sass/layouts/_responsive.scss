@@ -1,0 +1,89 @@
+/**
+ * @file
+ * Positioning for a responsive layout.
+ *
+ * Define CSS classes to create a fluid grid layout with optional sidebars
+ * depending on whether blocks are placed in the left or right sidebars.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
+
+// We are going to create a fluid grid with 1, 3, or 5 columns and 20px gutters
+// between columns (applied as 10px of left/right padding on each column).
+$zen-column-count:  1;
+$zen-gutter-width:  20px;
+
+// If you need IE6/7 support for box-sizing: border-box (default), see _init.scss
+//$zen-box-sizing: content-box;
+
+// You can generate more efficient CSS if you manually apply the
+// zen-grid-item-base mixin to all grid items from within a single ruleset.
+$zen-auto-include-item-base: false;
+// $zen-auto-include-flow-item-base: false;
+
+// Suppress this section of CSS for RTL layouts since it contains no LTR-specific styles.
+@if $zen-reverse-all-floats == false {
+
+/**
+ * Center the page.
+ *
+ * For screen sizes larger than 1200px, prevent excessively long lines of text
+ * by setting a max-width.
+ */
+.html.lt-ie9.page {
+      max-width: 1200px;
+}
+
+.main,
+.main-content.whitebox,
+.main-content,
+.social-footer,
+.region-bottom {
+  margin-left: 0;
+  margin-right: 0;
+  @include breakpoint($bp3, $no-query: true) {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Apply the shared properties of grid items in a single, efficient ruleset. */
+.header,
+// .main-content,
+.main-navigation,
+.region-sidebar-first,
+.region-sidebar-second,
+.footer {
+  // See the note about $zen-auto-include-item-base above.
+  @include zen-grid-item-base();
+}
+
+/* Containers for grid items and flow items. */
+.header,
+.main,
+.footer {
+  @include zen-grid-container();
+}
+
+
+
+
+/* Navigation bar */
+@media all and (min-width: 480px) {
+  .main {
+    /* Move all the children of .main down to make room. */
+    position: relative;
+  }
+  .main-navigation {
+    /* Move the navbar up inside .main's padding. */
+    position: absolute;
+    top: 0;
+    height: $nav-height;
+    width: $zen-grid-width;
+  }
+}
+
+} // End of @if $zen-reverse-all-floats == true
+
+

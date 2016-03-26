@@ -1,0 +1,13 @@
+/**
+ * The RTL language extension of the header component.
+ */
+
+/* Wrapping link for logo. */
+.header__logo {
+  float: right;
+}
+
+/* The secondary menu (login, etc.) */
+.header__secondary-menu {
+  float: left;
+}

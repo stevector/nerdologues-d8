@@ -1,0 +1,19 @@
+/**
+ * @file
+ * The RTL language extension of the collapsible-fieldset component.
+ */
+
+.fieldset-legend {
+  html.js .collapsible & {
+    background-position: 98% 75%;
+    padding-left: 0;
+    padding-right: 15px;
+  }
+  html.js .collapsed & {
+    background-image: inline-image("menu-collapsed-rtl.png");
+    @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+      *background-image: image-url("menu-collapsed-rtl.png");
+    }
+    background-position: 98% 50%;
+  }
+}

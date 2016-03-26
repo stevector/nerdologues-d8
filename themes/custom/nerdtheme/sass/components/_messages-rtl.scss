@@ -1,0 +1,17 @@
+/**
+ * The RTL language extension of the messages component.
+ */
+
+.messages {
+  padding: 10px 50px 10px 10px;
+  background-position: 99% 8px;
+}
+.messages--status {
+  @extend .messages;
+}
+.messages--warning {
+  @extend .messages;
+}
+.messages--error {
+  @extend .messages;
+}

@@ -1,0 +1,20 @@
+/**
+ * @file
+ * "More" links.
+ */
+
+.more-link {
+  text-align: right; /* LTR */
+}
+.more-help-link {
+  text-align: right; /* LTR */
+}
+.more-help-link a {
+  background-image: inline-image("help.png");
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    *background-image: image-url("help.png");
+  }
+  background-position: 0 50%; /* LTR */
+  background-repeat: no-repeat;
+  padding: 1px 0 1px 20px; /* LTR */
+}
