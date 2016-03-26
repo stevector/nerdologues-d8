@@ -1,0 +1,81 @@
+/**
+ * @file
+ * Positioning for responsive layout for the header image and h1
+ *
+ */
+//@import "base";
+
+
+.header-logo-and-title h1 {
+  font-family: "Single Sleeve";
+  font-weight: normal;
+  @include breakpoint($bp3, $no-query: true) {
+      width: $bp3;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
+.header-logo-and-title--snowman {
+  background-image:url('../images/nerdologues-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+html.lt-ie9 {
+  .header-logo-and-title h1 {
+  margin-bottom: 5px;
+  }
+  .header-logo-and-title--snowman {
+    background-image:url('../images/nerdologues-logo--small.png');
+  }
+}
+
+// This chunk should be breakpoint with no query.
+.header-logo-and-title h1 {
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    // @todo, color variable.
+    color: #666;
+    text-decoration: none;
+  }
+  font-size: (8.4px * 16);
+  line-height: (8.7px * 16);
+}
+
+@mixin headerlogo($multiplier, $no-query-bool) {
+  @include breakpoint((50px * $multiplier), $no-query: $no-query-bool) {
+    body .header-logo-and-title h1 {
+      margin-bottom: (3px - ($multiplier / 2));
+      font-size: (8.4px * $multiplier);
+      line-height: (8.7px * $multiplier);
+    }
+  }
+}
+
+html.lt-ie9 body .header-logo-and-title h1 {
+  font-size: 75.6px;
+  line-height: 78.3px;
+}
+
+// Header logo 500px through 800px
+@include headerlogo(3, false);
+@include headerlogo(4, false);
+@include headerlogo(5, false);
+@include headerlogo(6, false);
+@include headerlogo(7, false);
+@include headerlogo(8, false);
+@include headerlogo(9, false);
+@include headerlogo(10, false);
+@include headerlogo(11, false);
+@include headerlogo(12, false);
+@include headerlogo(13, false);
+@include headerlogo(14, false);
+@include headerlogo(15, false);
+@include headerlogo(16, true);

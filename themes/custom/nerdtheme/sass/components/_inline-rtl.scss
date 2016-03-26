@@ -1,0 +1,15 @@
+/**
+ * The RTL language extension of the inline component.
+ */
+
+/* List of links */
+.inline li {
+  /* Bug in Safari causes display: inline to fail. */
+  display: inline-block;
+  padding: 0 0 0 1em;
+}
+
+/* The inline field label used by the Fences.module */
+span.field-label {
+  padding: 0 0 0 1em;
+}

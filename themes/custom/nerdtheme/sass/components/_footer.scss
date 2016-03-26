@@ -1,0 +1,90 @@
+/**
+ * @file
+ * Footer styles
+ *
+ */
+//@import "base";
+
+
+
+footer.social-footer {
+
+//  @import "compass/utilities/sprites";
+//  @import "social-icons/*.png";
+//  @include all-social-icons-sprites;
+
+//  $zen-column-count: 12;
+//  $zen-gutter-width: 10px;
+
+  @include zen-grid-container;
+  // @todo, variables for all colors.
+  ul {
+    @include zen-grid-container;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  li {
+    list-style: none;
+     float: left;
+
+     @include breakpoint($bp2, $no-query: true) {
+       @include zen-grid-flow-item(1, 8);
+       // I think these are overriding from zen-grid-flow-item;
+       margin-right: 0px;
+       padding: 5px;
+     }
+
+     @include zen-grid-flow-item(1, 4);
+     // I think these are overriding from zen-grid-flow-item;
+     margin-right: 0px;
+     padding: 15px;
+  }
+
+/*  li:nth-of-type(odd) {
+    @include zen-clear(both);
+    @include zen-grid-item(5, 2);
+  }
+
+  li:nth-of-type(even) {
+    @include zen-grid-item(5, 8);
+  }*/
+  a {
+    display: block;
+    background-color: #000;
+    line-height:0;
+    padding: 16px;
+  }
+
+  a.social-icons-facebook {
+    background-color: #3B5998;
+  }
+  a.social-icons-twitter {
+    background-color: #00ACED;
+  }
+  a.social-icons-email {
+    background-color: #EE8811;
+  }
+  a.social-icons-youtube {
+    background-color: #CD332D;
+  }
+  a.social-icons-instagram {
+    background-color: #3F729B;
+  }
+  a.social-icons-vine {
+    background-color: #00A47A;
+  }
+  a.social-icons-tumblr {
+    background-color: #2C4762;
+  }
+  a.social-icons-rss {
+    background-color: #FF8300;
+  }
+
+  a:hover {
+    background-color: #666;
+  }
+
+  svg path {
+    fill: #fff;
+  }
+}

@@ -1,0 +1,18 @@
+/**
+ * @file
+ * Styling for the deck at the top of pages like /video and /nerds
+ *
+ */
+//@import "base";
+
+.deck-text {
+  background: #eee;
+  padding: 20px;
+  margin-bottom: 20px;
+  p {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+}
+
+

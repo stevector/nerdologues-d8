@@ -1,0 +1,22 @@
+/**
+ * @file
+ * Positioning nerd ul and li. Used on emeritus nerds.
+ *
+ */
+
+$zen-column-count: 12;
+$zen-gutter-width: 10px;
+
+@include breakpoint($bp1, $no-query: true) {
+  .nerd-list ul {
+    @include zen-grid-container;
+    .views-row-odd {
+        @include zen-grid-item(6, 1);
+        @include zen-clear(both);
+    }
+    .views-row-even {
+        @include zen-grid-item(6, 7);
+    }
+  }
+}
+

@@ -1,0 +1,16 @@
+/**
+ * @file
+ * Highlight mark.
+ */
+
+%highlight-mark {
+  color: #c00;
+  /* Remove background highlighting from <mark> in normalize. */
+  background-color: transparent;
+}
+
+/* The "new" or "updated" marker. */
+.new,
+.update {
+  @extend %highlight-mark;
+}

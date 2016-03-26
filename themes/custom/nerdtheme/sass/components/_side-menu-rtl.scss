@@ -1,0 +1,10 @@
+/**
+ * The RTL language extension of the side-menu component.
+ */
+
+.menu__item.is-collapsed {
+  list-style-image: inline-image("menu-collapsed-rtl.png");
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    *list-style-image: image-url("menu-collapsed-rtl.png");
+  }
+}

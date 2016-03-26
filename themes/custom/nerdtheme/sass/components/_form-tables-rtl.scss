@@ -1,0 +1,12 @@
+/**
+ * @file
+ * The RTL language extension of the form-tables component.
+ */
+
+form {
+  th {
+    text-align: right;
+    padding-left: 1em;
+    padding-right: 0;
+  }
+}

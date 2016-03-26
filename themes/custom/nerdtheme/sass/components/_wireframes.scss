@@ -1,0 +1,28 @@
+/**
+ * @file
+ * Wireframes.
+ */
+
+%wireframe {
+  outline: 1px solid #ccc;
+
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    .lt-ie8 & {
+      /* IE6/7 do not support the outline property. */
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.with-wireframes {
+  .header,
+  .main,
+  .main-content,
+  .main-navigation,
+  .region-sidebar-first,
+  .region-sidebar-second,
+  .footer,
+  .region-bottom {
+    @extend %wireframe;
+  }
+}

@@ -1,0 +1,17 @@
+/**
+ * The RTL language extension of the navbar component.
+ */
+
+/* Main menu and secondary menu links and menu block links. */
+.main-navigation {
+  .links,
+  .menu {
+    text-align: right;
+
+    li {
+      /* A simple method to get navigation links to appear in one line. */
+      float: right;
+      padding: 0 0 0 10px;
+    }
+  }
+}

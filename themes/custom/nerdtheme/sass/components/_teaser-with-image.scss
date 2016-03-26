@@ -1,0 +1,149 @@
+/**
+ * @file
+ * Positioning for teasers.
+ *
+ */
+//@import "base";
+
+$zen-column-count: 12;
+$zen-gutter-width: 10px;
+
+%teaser-list-item {
+  border-bottom: 3px solid #ccc;
+  margin-bottom: 40px;
+}
+
+.teaser-with-image .l-2up,
+%teaser-with-image {
+  //@extend %whitebox;
+  @extend %teaser-list-item;
+  @include zen-grid-container;
+
+  h2 {
+    font-variant:small-caps;
+    margin-bottom: 0;
+  }
+}
+
+.teaser-with-image--image,
+%teaser-with-image--image {
+  @include zen-grid-item(6, 4);
+  @include zen-clear(left);
+  @include breakpoint($bp2, $no-query: true) {
+    @include zen-grid-item(5, 1);
+  }
+}
+
+.teaser-with-image--header,
+.teaser-with-image--text,
+%teaser-with-image--text {
+  @include zen-grid-item(12, 1);
+  @include zen-clear(both);
+  @include breakpoint($bp2, $no-query: true) {
+    @include zen-clear(right);
+    @include zen-grid-item(7, 1, right);
+  }
+}
+
+body div.node.teaser-with-image-small,
+%teaser-with-image-small {
+  @extend %teaser-with-image;
+}
+
+.teaser-with-image-small .teaser-with-image--image,
+%teaser-with-image-small--image {
+  @extend %teaser-with-image--image;
+    @include zen-grid-item(4, 5);
+  @include breakpoint($bp1, $no-query: true){
+    @include zen-grid-item(2, 1);
+  }
+}
+
+.teaser-with-image-small .teaser-with-image--header,
+.teaser-with-image-small .teaser-with-image--text,
+%teaser-with-image-small--text {
+  @extend %teaser-with-image--text;
+
+  @include breakpoint($bp1, $no-query: true) {
+    @include zen-clear(right);
+    @include zen-grid-item(10, 1, right);
+  }
+}
+
+// @todo, this is a hold over from old panels layout.
+.l-2up .inside {
+  margin: 0 0.5em 1em 0;
+}
+
+// Used on /home
+h3.name-of-content-type {
+  margin: 0 0 0 0;
+  color: #666;
+/*  a:link,
+    a:visited {
+    color: #333;
+  }*/
+}
+
+.teaser-with-image--quote {
+  display: block;
+  background: #444;
+  color: #fff;
+  padding: 40px 30px 10px;
+  font-size: 2em;
+  line-height: 1.2em;
+  position: relative;
+  margin-bottom: 40px;
+  a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      color: lighten($link_color, 5%);
+    }
+  }
+}
+
+.teaser-with-image--quote:after {
+  top: 100%;
+  left: 0%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-top-color: #444;
+  border-width: 30px;
+  //margin-left: -30px;
+}
+
+
+
+
+
+
+
+
+/*
+%quote-hover-after,
+.teaser-with-image--quote a:after {
+  top: 100%;
+  left: 0%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-top-color: #444;
+  border-width: 30px;
+  //margin-left: -30px;
+}
+
+.teaser-with-image--quote a:hover:after {
+  @extend %quote-hover-after;
+  pointer-events: none;
+  border-top-color: #000;
+}
+
+*/

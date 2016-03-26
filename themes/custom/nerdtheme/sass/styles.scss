@@ -1,0 +1,64 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+@import "breakpoint";
+@import "rgbapng";
+
+/* Import Sass mixins, variables, Compass modules, etc. */
+@import "init";
+
+/* HTML element (SMACSS base) rules */
+@import "normalize";
+
+/* Layout rules */
+@import "layouts/responsive";
+
+/* Component (SMACSS module) rules */
+@import "components/element-invisible";
+@import "components/inline";
+
+@import "components/forms-drupal";
+@import "components/autocomplete";
+@import "components/button";
+@import "components/collapsible-fieldsets";
+@import "components/form-tables";
+@import "components/progress-bar";
+@import "components/tabledrag";
+
+@import "components/block";
+@import "components/breadcrumb";
+@import "components/comments";
+@import "components/highlight-mark";
+@import "components/messages";
+@import "components/more-link";
+@import "components/navbar";
+@import "components/pager";
+// @import "components/side-menu";
+@import "components/skip-link";
+@import "components/tabs";
+@import "components/watermark";
+@import "components/wireframes";
+
+
+@import "components/deck-text";
+@import "components/embedded-video";
+@import "components/footer";
+@import "components/full-node";
+@import "components/header-logo-and-title";
+@import "components/main-nav";
+@import "components/misc";
+@import "components/nerd-list";
+@import "components/teaser-with-image";
+@import "components/whitebox";
+
+
+@import "print";
+
+/* SMACSS theme rules */
+/* @import "theme-A"; */
+/* @import "theme-B"; */

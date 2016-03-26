@@ -1,0 +1,19 @@
+/*!
+ * @file
+ * Styles for IE 8 and lower.
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+// Set the legacy IE support variables.
+$legacy-support-for-ie6 : false;
+$legacy-support-for-ie7 : true;
+$legacy-support-for-ie8 : true;
+
+// Force the breakpoint mixin to discard all media queries except ones with
+// $no-query set to true.
+$breakpoint-no-queries: true;
+$breakpoint-no-query-fallbacks: true;
+
+@import "styles";

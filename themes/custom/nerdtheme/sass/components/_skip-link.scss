@@ -1,0 +1,31 @@
+/**
+ * @file
+ * The "skip link".
+ *
+ * To make the link completely hidden until a user tabs to the link, combine it
+ * with the visually-hidden component.
+ */
+
+%skip-link__wrapper {
+  margin: 0;
+}
+
+%skip-link {
+  &:link,
+  &:visited {
+    display: block;
+    width: 100%;
+    padding: 2px 0 3px 0;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+  }
+}
+
+.skip-link {
+  @extend %skip-link__wrapper;
+
+  a {
+    @extend %skip-link;
+  }
+}

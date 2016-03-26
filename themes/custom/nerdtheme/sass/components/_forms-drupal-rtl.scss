@@ -1,0 +1,15 @@
+/**
+ * The RTL language extension of the forms component.
+ */
+
+/* Drupal's default login form block */
+#user-login-form {
+  text-align: right;
+}
+
+html.js #user-login-form li.openid-link,
+#user-login-form li.openid-link {
+  /* Un-do some of the padding on the ul list. */
+  margin-left: 0;
+  margin-right: -20px;
+}

@@ -1,0 +1,112 @@
+/**
+ * @file
+ * Main Navigation design object
+ *
+ */
+//@import "base";
+
+
+.main-nav {
+   @include zen-grid-container;
+  // @todo, variables for all colors.
+  background-color: #333;
+
+//  border-bottom: #000 5px solid;
+//  border-top: #000 5px solid;
+  padding: 0 0 0 0;
+  ul {
+    clear: both;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    ul {
+      margin-left: 20px;
+    }
+  }
+  li {
+    width: 100%;
+    list-style: none;
+    border-top: #aaa solid 1px;
+  }
+  a {
+    background-color: #333;
+    display: block;
+    padding: 10px 20px;
+    color: #eee;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover {
+    background-color: #666;
+  }
+  a.active {
+    color: $link-color;
+  }
+  @include breakpoint($bp2, $no-query: true) {
+   // border-bottom: #000 10px solid;
+   // border-top: #000 10px solid;
+    li {
+      width: auto;
+      float: left;
+      border-top: none;
+      border-right: #aaa 1px solid;
+      border-bottom: none;
+    }
+    a {
+      padding: 20px 20px;
+    }
+  }
+  @include breakpoint($bp3, $no-query: true) {
+    ul {
+      width: $bp3;
+      margin-left: auto;
+      margin-right: auto;
+      li:first-child {
+        border-left: #aaa 1px solid;
+      }
+    }
+  }
+}
+
+
+a.hide-menu-button,
+a.show-menu-button {
+  border: 1px #fff solid;
+  @include border-radius(4px, 4px);
+  margin: 5px;
+  float: right;
+  display: none;
+}
+
+html.js .main-nav {
+
+  a.show-menu-button {
+    display:block;
+    @include breakpoint($bp2, $no-query: true) {
+      display: none;
+    }
+  }
+  &.show-menu {
+    a.show-menu-button {
+      display:none;
+    }
+    a.hide-menu-button {
+      display:block;
+      @include breakpoint($bp2, $no-query: true) {
+        display: none;
+      }
+    }
+    ul {
+      display:block;
+    }
+  }
+  ul {
+    display: none;
+    @include breakpoint($bp2, $no-query: true) {
+      display: block;
+      // Don't display the second level.
+      ul.menu {
+        display:none
+      }
+    }
+  }
+}
