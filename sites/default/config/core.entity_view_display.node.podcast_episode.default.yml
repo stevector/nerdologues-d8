@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_date_published
     - node.type.podcast_episode
   module:
+    - datetime
     - text
     - user
 id: node.podcast_episode.default
@@ -19,6 +21,14 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+  field_date_published:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
   links:
     weight: 100
 hidden: {  }

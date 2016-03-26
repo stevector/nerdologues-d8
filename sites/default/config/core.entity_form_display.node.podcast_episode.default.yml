@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_date_published
     - node.type.podcast_episode
   module:
+    - datetime
     - path
     - text
 id: node.podcast_episode.default
@@ -26,6 +28,11 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_date_published:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
   path:
     type: path
     weight: 30
