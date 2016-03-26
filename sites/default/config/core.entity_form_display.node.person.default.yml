@@ -4,10 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.person.field_body
+    - field.field.node.person.field_image
+    - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
+    - image.style.thumbnail
     - node.type.person
   module:
+    - image
     - path
     - text
 id: node.person.default
@@ -27,6 +31,20 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_image:
+    weight: 34
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_image_lead:
+    weight: 35
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
   field_last_name:
     weight: 32
     settings:

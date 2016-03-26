@@ -1,0 +1,21 @@
+uuid: f04c0887-641f-4451-a314-2060f6b1b62c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_published
+    - node.type.video
+  module:
+    - datetime
+id: node.video.field_date_published
+field_name: field_date_published
+entity_type: node
+bundle: video
+label: 'Date Published'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

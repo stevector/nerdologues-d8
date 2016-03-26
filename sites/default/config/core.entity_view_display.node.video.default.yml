@@ -4,10 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.video.body
+    - field.field.node.video.field_date_published
+    - field.field.node.video.field_ref_creators
+    - field.field.node.video.field_youtube
     - node.type.video
   module:
+    - datetime
     - text
     - user
+    - youtube
 id: node.video.default
 targetEntityType: node
 bundle: video
@@ -19,6 +24,31 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+  field_date_published:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_ref_creators:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_youtube:
+    weight: 103
+    label: above
+    settings:
+      image_style: large
+      image_link: content
+    third_party_settings: {  }
+    type: youtube_thumbnail
   links:
     weight: 100
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
