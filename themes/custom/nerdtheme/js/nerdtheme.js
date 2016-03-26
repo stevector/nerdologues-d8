@@ -14,7 +14,6 @@
    */
   Drupal.behaviors.nerdThemeMenu = {
     attach: function (context, settings) {
-
       $(".show-menu-button").click(function() {
         $( ".main-nav" ).addClass('show-menu');
       });

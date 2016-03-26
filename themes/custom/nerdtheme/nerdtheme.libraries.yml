@@ -3,6 +3,7 @@ global-styling:
     component:
       css/styles.css: {}
       fonts.css: {}
+  # @todo, it is excessive to use this much JS for one menu toggle.
   js:
     js/nerdtheme.js: {}
   dependencies:
