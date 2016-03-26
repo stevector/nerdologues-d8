@@ -1,0 +1,20 @@
+uuid: 0a1d2abc-16cc-41bd-a008-8cb67309c07e
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - nerdtheme
+id: nerdtheme_help
+theme: nerdtheme
+region: content
+weight: -5
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,24 @@
+uuid: ea5ae49f-a91f-4e16-8c00-e17854a087e4
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - nerdtheme
+id: nerdtheme_account_menu
+theme: nerdtheme
+region: '-1'
+weight: -1
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

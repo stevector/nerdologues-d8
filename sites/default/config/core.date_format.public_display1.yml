@@ -1,0 +1,8 @@
+uuid: 6111d604-bc63-418d-9100-f08ce1619c98
+langcode: en
+status: true
+dependencies: {  }
+id: public_display1
+label: public_display1
+locked: false
+pattern: 'l, F jS, Y'

@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.video.body
     - field.field.node.video.field_date_published
+    - field.field.node.video.field_ref_creators
     - field.field.node.video.field_youtube
     - node.type.video
   module:
@@ -27,4 +28,5 @@ content:
     weight: 100
 hidden:
   field_date_published: true
+  field_ref_creators: true
   field_youtube: true
