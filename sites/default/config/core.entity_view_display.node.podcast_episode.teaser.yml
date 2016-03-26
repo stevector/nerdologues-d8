@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_date_published
     - node.type.podcast_episode
   module:
     - text
@@ -23,4 +24,5 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_date_published: true

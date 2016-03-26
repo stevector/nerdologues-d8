@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.person.field_body
+    - field.field.node.person.field_image
+    - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
     - node.type.person
   module:
+    - image
     - text
     - user
 id: node.person.default
@@ -21,6 +24,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_image:
+    weight: 104
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_image_lead:
+    weight: 105
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
   field_last_name:
     weight: 102
     label: above
