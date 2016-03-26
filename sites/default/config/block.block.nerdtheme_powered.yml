@@ -1,0 +1,20 @@
+uuid: aac8575f-afc9-492e-b21b-2723dd6bccdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nerdtheme
+id: nerdtheme_powered
+theme: nerdtheme
+region: footer
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

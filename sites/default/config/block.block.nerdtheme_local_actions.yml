@@ -1,0 +1,18 @@
+uuid: 4a388d14-9966-43a6-b943-675e6d0ea002
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nerdtheme
+id: nerdtheme_local_actions
+theme: nerdtheme
+region: content
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

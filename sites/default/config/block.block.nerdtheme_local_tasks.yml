@@ -1,0 +1,20 @@
+uuid: 6f98641b-6c1c-44e5-8422-34ddb176663b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nerdtheme
+id: nerdtheme_local_tasks
+theme: nerdtheme
+region: content
+weight: -6
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

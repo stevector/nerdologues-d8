@@ -1,0 +1,20 @@
+uuid: b9b279ab-a11d-45a4-a507-07666ef0b033
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - nerdtheme
+id: nerdtheme_messages
+theme: nerdtheme
+region: system
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

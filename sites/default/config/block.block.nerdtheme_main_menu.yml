@@ -1,0 +1,24 @@
+uuid: 5cf05bed-b3f6-45c9-9d00-dbe4f8f965cc
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - nerdtheme
+id: nerdtheme_main_menu
+theme: nerdtheme
+region: '-1'
+weight: -2
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }
