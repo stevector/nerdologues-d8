@@ -1,0 +1,16 @@
+name: nerdtheme
+type: theme
+description: A custom theme for nerdologues.com
+package: Custom
+core: 8.x
+libraries:
+  - nerdtheme/global-styling
+
+base theme: classy
+#Using Classy as a base theme https://www.drupal.org/theme-guide/8/classy
+
+regions:
+  content: Content
+  header: Header
+  help: Help
+  footer: Footer
