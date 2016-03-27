@@ -3,12 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_lede
+    - field.field.node.podcast_episode.field_link
+    - field.field.node.podcast_episode.field_link_paywall_content
     - field.field.node.podcast_episode.field_ref_podcast
+    - field.field.node.podcast_episode.field_text_original_mp3_url
     - node.type.podcast_episode
   module:
     - datetime
+    - link
     - path
     - text
 id: node.podcast_episode.default
@@ -16,24 +21,44 @@ targetEntityType: node
 bundle: podcast_episode
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 31
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_body:
+    weight: 34
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   field_date_published:
     weight: 32
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_lede:
+    weight: 35
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_link:
+    weight: 36
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_link_paywall_content:
+    weight: 37
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
   field_ref_podcast:
     weight: 33
     settings:
@@ -42,6 +67,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_text_original_mp3_url:
+    weight: 38
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
   path:
     type: path
     weight: 30

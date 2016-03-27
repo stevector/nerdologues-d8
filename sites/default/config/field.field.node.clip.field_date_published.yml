@@ -1,0 +1,21 @@
+uuid: e47fbfb3-fd2a-4e4c-8e06-6d61aaaefcee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_published
+    - node.type.clip
+  module:
+    - datetime
+id: node.clip.field_date_published
+field_name: field_date_published
+entity_type: node
+bundle: clip
+label: 'Date this clip is the featured "from the archive" clip'
+description: 'BY ENTERING A DATE IN THIS FIELD YOU WILL PUT THIS CLIP IN THE HOME PAGE FEED. This field is not required. This field is used to highlight old clips on the home page and sort them among videos and podcast episodes. You can enter a date in the future to schedule a clip be featured on the home page on that day.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

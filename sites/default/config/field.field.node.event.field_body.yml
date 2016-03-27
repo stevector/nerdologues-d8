@@ -1,14 +1,14 @@
-uuid: 2c3e50ed-8a1f-477d-9503-3ddb8cf40178
+uuid: bdcc8386-c98a-4b5e-8c04-4d9f72203831
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.event
   module:
     - text
-id: node.event.body
-field_name: body
+id: node.event.field_body
+field_name: field_body
 entity_type: node
 bundle: event
 label: Body
@@ -17,6 +17,5 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

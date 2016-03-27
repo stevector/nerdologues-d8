@@ -3,13 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_lede
+    - field.field.node.podcast_episode.field_link
+    - field.field.node.podcast_episode.field_link_paywall_content
     - field.field.node.podcast_episode.field_ref_podcast
+    - field.field.node.podcast_episode.field_text_original_mp3_url
     - node.type.podcast_episode
   module:
     - datetime
     - ds
+    - link
     - text
     - user
 third_party_settings:
@@ -42,12 +47,12 @@ targetEntityType: node
 bundle: podcast_episode
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 1
+  field_body:
+    weight: 4
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: text_default
   field_date_published:
     weight: 0
     label: hidden
@@ -56,6 +61,34 @@ content:
       format_type: public_display1
     third_party_settings: {  }
     type: datetime_default
+  field_lede:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_link:
+    weight: 6
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_link_paywall_content:
+    weight: 7
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
   field_ref_podcast:
     weight: 2
     label: hidden
@@ -63,6 +96,12 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_text_original_mp3_url:
+    weight: 8
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
   links:
     weight: 3
     settings: {  }

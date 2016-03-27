@@ -1,0 +1,23 @@
+uuid: bf0be264-e02d-4ddd-aa33-5163b0771293
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.event
+  module:
+    - link
+id: node.event.field_link
+field_name: field_link
+entity_type: node
+bundle: event
+label: Link
+description: 'Link to the Facebook event or other relevant page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -4,11 +4,15 @@ status: true
 dependencies:
   config:
     - field.field.node.clip.field_body
+    - field.field.node.clip.field_date_published
+    - field.field.node.clip.field_int_end_time
+    - field.field.node.clip.field_int_start_time
     - field.field.node.clip.field_ref_creators
     - field.field.node.clip.field_ref_podcast
     - field.field.node.clip.field_ref_podcast_episode
     - node.type.clip
   module:
+    - datetime
     - text
     - user
 id: node.clip.default
@@ -22,6 +26,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_date_published:
+    weight: 108
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_int_end_time:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_int_start_time:
+    weight: 106
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
   field_ref_creators:
     weight: 102
     label: above

@@ -1,0 +1,21 @@
+uuid: df68921c-b508-4f57-9531-491438ec2156
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lede
+    - node.type.event
+  module:
+    - text
+id: node.event.field_lede
+field_name: field_lede
+entity_type: node
+bundle: event
+label: Lede
+description: "This is the text used in the sidebar display of the event.\r\n"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

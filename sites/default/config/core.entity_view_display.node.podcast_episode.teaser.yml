@@ -4,25 +4,16 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.podcast_episode.body
     - field.field.node.podcast_episode.field_date_published
     - field.field.node.podcast_episode.field_ref_podcast
     - node.type.podcast_episode
   module:
-    - text
     - user
 id: node.podcast_episode.teaser
 targetEntityType: node
 bundle: podcast_episode
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
   links:
     weight: 100
 hidden:

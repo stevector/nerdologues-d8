@@ -1,0 +1,26 @@
+uuid: 431854e2-6732-4f9e-ba05-5a7f5cdd5be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ref_location
+    - node.type.event
+    - node.type.location
+id: node.event.field_ref_location
+field_name: field_ref_location
+entity_type: node
+bundle: event
+label: ref_location
+description: 'Reference to the location at which this event occurs. If this is the first event at this location you will probably need to add an event node first.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: _none
+field_type: entity_reference

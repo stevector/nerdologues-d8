@@ -1,0 +1,19 @@
+uuid: a6bc4184-734a-40f7-8700-dfdc500a8a5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_original_mp3_url
+    - node.type.podcast_episode
+id: node.podcast_episode.field_text_original_mp3_url
+field_name: field_text_original_mp3_url
+entity_type: node
+bundle: podcast_episode
+label: 'Podbean mp3'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
