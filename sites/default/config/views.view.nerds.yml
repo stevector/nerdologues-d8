@@ -7,6 +7,7 @@ dependencies:
     - node.type.person
   module:
     - node
+    - taxonomy
     - user
 id: nerds
 label: nerds
@@ -175,6 +176,44 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_ref_term_designation
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: 'Current Member'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
       sorts:
         field_last_name_value:
           id: field_last_name_value
@@ -203,7 +242,16 @@ display:
           plugin_id: text_custom
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        field_ref_term_designation:
+          id: field_ref_term_designation
+          table: node__field_ref_term_designation
+          field: field_ref_term_designation
+          relationship: none
+          group_type: group
+          admin_label: 'field_ref_term_designation: Taxonomy term'
+          required: true
+          plugin_id: standard
       arguments: {  }
       display_extenders: {  }
     cache_metadata:
