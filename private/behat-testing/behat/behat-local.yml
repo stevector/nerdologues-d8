@@ -22,4 +22,4 @@ default:
       blackbox: ~
       api_driver: 'drush'
       drush:
-        alias: '@pantheon.nerdologues.behatting'
+        root: ../../
