@@ -10,6 +10,7 @@ use \Drupal\node\NodeInterface;
  function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array &$context) {
 
 
+if ($entity->bundle() === 'person') {
 
 
    $links['node']['#links']['node-readmore'] = array(
@@ -24,6 +25,11 @@ use \Drupal\node\NodeInterface;
      ),
    );
 
+} else {
 
+  if (!empty($links['node']['#links']['node-readmore'])) {
+    unset ($links['node']['#links']['node-readmore']);
+  }
+}
 
  }
