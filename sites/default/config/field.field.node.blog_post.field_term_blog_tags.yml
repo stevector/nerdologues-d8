@@ -10,7 +10,7 @@ id: node.blog_post.field_term_blog_tags
 field_name: field_term_blog_tags
 entity_type: node
 bundle: blog_post
-label: term_blog_tags
+label: 'Blog tags'
 description: ''
 required: false
 translatable: false
