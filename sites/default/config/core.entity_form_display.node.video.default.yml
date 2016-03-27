@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.video.body
+    - field.field.node.video.field_body
     - field.field.node.video.field_date_published
     - field.field.node.video.field_ref_creators
     - field.field.node.video.field_youtube
@@ -18,19 +18,18 @@ targetEntityType: node
 bundle: video
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 31
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_body:
+    weight: 35
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   field_date_published:
     weight: 32
     settings: {  }

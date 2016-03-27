@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.video.body
+    - field.field.node.video.field_body
     - field.field.node.video.field_date_published
     - field.field.node.video.field_ref_creators
     - field.field.node.video.field_youtube
@@ -39,6 +39,7 @@ third_party_settings:
         - node_title
         - field_date_published
         - body
+        - field_body
       left:
         - field_youtube
     fields:
@@ -56,10 +57,10 @@ targetEntityType: node
 bundle: video
 mode: teaser
 content:
-  body:
-    label: hidden
+  field_body:
     type: text_default
-    weight: 2
+    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
   field_date_published:
@@ -72,20 +73,20 @@ content:
     third_party_settings: {  }
   field_ref_creators:
     type: entity_reference_entity_id
-    weight: 12
+    weight: 13
     label: above
     settings: {  }
     third_party_settings: {  }
   field_youtube:
     type: youtube_thumbnail
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       image_style: large
       image_link: content
     third_party_settings: {  }
   links:
-    weight: 9
+    weight: 12
     settings: {  }
     third_party_settings: {  }
 hidden: {  }
