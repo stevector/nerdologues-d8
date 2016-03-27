@@ -1,22 +1,21 @@
-uuid: b5450b90-3525-46bc-b300-0a4fa0c66ac5
+uuid: b8879f0b-4e22-45ec-b200-bc7d82a2a2a2
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.clip
   module:
     - text
-id: node.clip.body
-field_name: body
+id: node.clip.field_body
+field_name: field_body
 entity_type: node
 bundle: clip
-label: Body
+label: 'Story description'
 description: ''
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

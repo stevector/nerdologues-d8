@@ -1,0 +1,26 @@
+uuid: 66187f03-6801-4e5f-b102-2e2e34427a26
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ref_podcast_episode
+    - node.type.clip
+    - node.type.podcast_episode
+id: node.clip.field_ref_podcast_episode
+field_name: field_ref_podcast_episode
+entity_type: node
+bundle: clip
+label: 'From the episode'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      podcast_episode: podcast_episode
+    sort:
+      field: _none
+field_type: entity_reference
