@@ -13,21 +13,47 @@ dependencies:
     - node.type.clip
   module:
     - datetime
+    - ds
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      right:
+        - field_ref_podcast
+        - field_ref_podcast_episode
+        - field_ref_creators
+        - field_body
 id: node.clip.default
 targetEntityType: node
 bundle: clip
 mode: default
 content:
   field_body:
-    weight: 105
-    label: above
+    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_date_published:
-    weight: 108
+    weight: 15
     label: above
     settings:
       format_type: medium
@@ -35,7 +61,7 @@ content:
     third_party_settings: {  }
     type: datetime_default
   field_int_end_time:
-    weight: 107
+    weight: 14
     label: above
     settings:
       thousand_separator: ''
@@ -43,7 +69,7 @@ content:
     third_party_settings: {  }
     type: number_integer
   field_int_start_time:
-    weight: 106
+    weight: 13
     label: above
     settings:
       thousand_separator: ''
@@ -51,26 +77,28 @@ content:
     third_party_settings: {  }
     type: number_integer
   field_ref_creators:
-    weight: 102
-    label: above
+    weight: 2
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_ref_podcast:
-    weight: 103
-    label: above
+    weight: 0
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_ref_podcast_episode:
-    weight: 104
-    label: above
+    weight: 1
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   links:
-    weight: 100
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
