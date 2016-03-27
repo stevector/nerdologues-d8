@@ -10,8 +10,47 @@ dependencies:
     - field.field.node.video.field_youtube
     - node.type.video
   module:
+    - datetime
+    - ds
     - text
     - user
+    - youtube
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      right:
+        - node_title
+        - field_date_published
+        - body
+      left:
+        - field_youtube
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.video.teaser
 targetEntityType: node
 bundle: video
@@ -19,14 +58,34 @@ mode: teaser
 content:
   body:
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_date_published:
+    type: datetime_default
+    weight: 1
+    label: hidden
     settings:
-      trim_length: 600
+      timezone_override: ''
+      format_type: public_display1
+    third_party_settings: {  }
+  field_ref_creators:
+    type: entity_reference_entity_id
+    weight: 12
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_youtube:
+    type: youtube_thumbnail
+    weight: 3
+    label: hidden
+    settings:
+      image_style: large
+      image_link: content
     third_party_settings: {  }
   links:
-    weight: 100
-hidden:
-  field_date_published: true
-  field_ref_creators: true
-  field_youtube: true
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
