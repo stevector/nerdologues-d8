@@ -5,19 +5,94 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.person.field_body
+    - field.field.node.person.field_image
+    - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
     - node.type.person
   module:
+    - ds
+    - image
+    - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      right:
+        - node_title
+        - field_body
+        - links
+      left:
+        - field_image
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.person.teaser
 targetEntityType: node
 bundle: person
 mode: teaser
 content:
+  field_body:
+    type: text_default
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: image
+    weight: 3
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_image_lead:
+    type: image
+    weight: 11
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_ref_term_designation:
+    type: entity_reference_entity_id
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 100
-hidden:
-  field_body: true
-  field_last_name: true
-  field_ref_term_designation: true
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
