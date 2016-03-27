@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.podcast_episode.body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_ref_podcast
     - node.type.podcast_episode
   module:
     - text
@@ -26,3 +27,4 @@ content:
     weight: 100
 hidden:
   field_date_published: true
+  field_ref_podcast: true
