@@ -10,7 +10,7 @@ id: node.event.field_ref_location
 field_name: field_ref_location
 entity_type: node
 bundle: event
-label: ref_location
+label: Location
 description: 'Reference to the location at which this event occurs. If this is the first event at this location you will probably need to add an event node first.'
 required: false
 translatable: false
