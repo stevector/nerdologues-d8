@@ -38,8 +38,6 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      header:
-        - links
       right:
         - node_title
         - field_date_published
