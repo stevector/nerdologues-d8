@@ -4,23 +4,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.clip.body
+    - field.field.node.clip.field_ref_creators
+    - field.field.node.clip.field_ref_podcast
+    - field.field.node.clip.field_ref_podcast_episode
     - node.type.clip
   module:
-    - text
     - user
 id: node.clip.teaser
 targetEntityType: node
 bundle: clip
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_ref_creators: true
+  field_ref_podcast: true
+  field_ref_podcast_episode: true

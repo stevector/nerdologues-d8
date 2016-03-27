@@ -1,0 +1,26 @@
+uuid: a7d841ad-6e82-4c55-b855-85a26fb0a313
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ref_creators
+    - node.type.clip
+    - node.type.person
+id: node.clip.field_ref_creators
+field_name: field_ref_creators
+entity_type: node
+bundle: clip
+label: Storytellers
+description: 'If the storyteller hasn''t been added to the system yet you can add them at //www.nerdologues.com/node/add/person'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: _none
+field_type: entity_reference

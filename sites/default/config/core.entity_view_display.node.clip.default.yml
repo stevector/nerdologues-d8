@@ -3,7 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.clip.body
+    - field.field.node.clip.field_body
+    - field.field.node.clip.field_ref_creators
+    - field.field.node.clip.field_ref_podcast
+    - field.field.node.clip.field_ref_podcast_episode
     - node.type.clip
   module:
     - text
@@ -13,12 +16,33 @@ targetEntityType: node
 bundle: clip
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
+  field_body:
+    weight: 105
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: text_default
+  field_ref_creators:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_ref_podcast:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_ref_podcast_episode:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   links:
     weight: 100
 hidden: {  }
