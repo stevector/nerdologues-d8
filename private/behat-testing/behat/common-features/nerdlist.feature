@@ -27,6 +27,6 @@ Feature: Nerdlist
       And I check "Current Member"
       And I press "Save and publish"
       Then I should see "New Nerdologues Member"
-      And I break
+
       When I visit "nerds"
       Then I should see "New Nerdologues Member"
