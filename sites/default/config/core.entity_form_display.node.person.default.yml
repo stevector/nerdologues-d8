@@ -54,12 +54,9 @@ content:
     type: string_textfield
   field_ref_term_designation:
     weight: 33
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_buttons
   path:
     type: path
     weight: 30
