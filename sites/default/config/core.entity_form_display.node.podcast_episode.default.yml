@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.podcast_episode.body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_ref_podcast
     - node.type.podcast_episode
   module:
     - datetime
@@ -33,6 +34,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_ref_podcast:
+    weight: 33
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   path:
     type: path
     weight: 30
