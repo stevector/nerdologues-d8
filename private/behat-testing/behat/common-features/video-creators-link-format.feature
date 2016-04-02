@@ -40,7 +40,6 @@ And I follow "Some video"
     Then I should see the link "Jane Member"
     # Should see the text but not a link
     Then I should see the text "Joe Non-member"
-    And I break
     Then I should not see the link "Joe Non-member"
 
 
