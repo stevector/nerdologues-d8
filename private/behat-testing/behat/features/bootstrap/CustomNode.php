@@ -41,13 +41,10 @@ class CustomNode implements Context, SnippetAcceptingContext {
      * @Then that video does not appear on the video page
      */
     public function thatVideoDoesNotAppearOnTheVideoPage()
-
     {
         $this->minkContext->visit('videos');
-        $this->minkContext->printLastResponse();
         $this->minkContext->assertNotLinkVisible('future video. Randomize and track?');
-        
-    }    
+    }
 }
 
 
