@@ -18,7 +18,7 @@ dependencies:
     - composer global require drush/drush:8.*
 test:
   pre:
-    - 	php -d sendmail_path=$(which true) drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - 	php -d sendmail_path=$(which true) &&  drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     - drush config-list
   override:
     # Run phpcs
