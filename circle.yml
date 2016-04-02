@@ -23,8 +23,9 @@ test:
     #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     - drush --yes --root=$DOCROOT site-install minimal  --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME
     - drush config-list
-    - chmod +x private/behat-testing/scripts/start-circle-server
-    - ./private/behat-testing/scripts/start-circle-server
+    #- chmod +x private/behat-testing/scripts/start-circle-server
+    #- ./private/behat-testing/scripts/start-circle-server
+    - drush runserver   --uri=http://localhost:8086 --server=builtin --strict=0  &>$HOME/server.log   &
     - curl http://localhost:8088
   override:
     # Run phpcs
