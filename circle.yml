@@ -25,6 +25,7 @@ test:
     - drush config-list
     - chmod +x private/behat-testing/scripts/start-circle-server
     - ./private/behat-testing/scripts/start-circle-server
+    - curl http://localhost:8088
   override:
     # Run phpcs
     # @todo, figure out why running these from phpcs.sh no longer causes
