@@ -14,6 +14,7 @@ class CustomNode implements Context, SnippetAcceptingContext {
     private $minkContext;
 
     /** @BeforeScenario */
+    // Thanks http://docs.behat.org/en/v3.0/cookbooks/context_communication.html
     public function gatherContexts(BeforeScenarioScope $scope)
     {
         $environment = $scope->getEnvironment();
@@ -25,25 +26,28 @@ class CustomNode implements Context, SnippetAcceptingContext {
      * @When I create a video with a published date two minutes in the future
      */
     public function iCreateAVideoWithAPublishedDateTwoMinutesInTheFuture()
-    {
-        print_r(get_class($this->minkContext));
-        
+    {   
         $this->minkContext->visit('node/add/video');
         $this->minkContext->printLastResponse();
-        $this->minkContext->fillField('title[0][value]', '@todo, future video. Randomize and track?');
+        // @todo
+        $this->minkContext->fillField('title[0][value]', 'future video. Randomize and track?');
         // @todo, fine-grain date and timezone handling.
         $this->minkContext->fillField('field_date_published[0][value][date]', '2016-04-29');
         $this->minkContext->fillField('field_date_published[0][value][time]', '12:01:59');
-        
-        
-        
         $this->minkContext->pressButton('Save and publish');
-        
-        
-        
-        
-
     }
+    
+    /**
+     * @Then that video does not appear on the video page
+     */
+    public function thatVideoDoesNotAppearOnTheVideoPage()
+
+    {
+        $this->minkContext->visit('videos');
+        $this->minkContext->printLastResponse();
+        $this->minkContext->assertNotLinkVisible('future video. Randomize and track?');
+        
+    }    
 }
 
 

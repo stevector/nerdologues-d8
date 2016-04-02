@@ -10,7 +10,7 @@ Feature: Date list
     When I create a video with a published date two minutes in the future
     And I break
     Then that video does not appear on the video page
-    And that video does not appear the homepage "Nerds Online" section.
+    # And that video does not appear the homepage "Nerds Online" section.
 
   @api
   Scenario: Close past date
