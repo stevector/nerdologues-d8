@@ -17,7 +17,7 @@ default:
       goutte: ~
       selenium2: ~
       files_path: './data-files'
-      base_url: $SERVER
+      base_url: http://server.local/
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drush'
