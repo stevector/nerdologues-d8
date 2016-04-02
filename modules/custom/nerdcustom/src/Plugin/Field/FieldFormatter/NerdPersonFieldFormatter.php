@@ -57,38 +57,31 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
     $elements = array();
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-
-
-
-
-// @todo, need a test for cacheability!
-
       if ($this->showEntityLink($entity)) {
         $elements[$delta] = array('#markup' => $entity->link());
       }
       else {
         $elements[$delta] = array('#markup' => $entity->label());
       }
-
-
+      $elements[$delta]['#cache']['tags'] = $entity->getCacheTags();
     }
 
     return $elements;
   }
 
   // @todo, type hinting.
-  public function getReferencedEntityLabels($entity, $field_name = '') {
+  protected function getReferencedEntityLabels($entity, $field_name = '') {
     $labels = [];
     // To make this code more contrib-able, make the field name a variable.
-    foreach ($entity->field_ref_term_designation->referencedEntities() as $term) {
+    foreach ($entity->{$field_name}->referencedEntities() as $term) {
       $labels[] = $term->label();
     }
     return $labels;
   }
 
   // @todo, type hinting.
-  public function showEntityLink($entity) {
-    $labels =  $this->getReferencedEntityLabels($entity);
+  protected function showEntityLink($entity) {
+    $labels =  $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
     return in_array('Viewable bio page', $labels);
   }
 }
