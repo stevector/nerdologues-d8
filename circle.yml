@@ -12,4 +12,5 @@ dependencies:
 test:
   override:
     # Run phpcs
-    - cd private/behat-testing/  && bash scripts/phpcs.sh
+    - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
+    - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
