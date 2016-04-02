@@ -15,6 +15,7 @@ class CustomNode implements Context, SnippetAcceptingContext {
 
     /** @BeforeScenario */
     // Thanks http://docs.behat.org/en/v3.0/cookbooks/context_communication.html
+    // Also see https://github.com/Behat/Behat/issues/96
     public function gatherContexts(BeforeScenarioScope $scope)
     {
         $environment = $scope->getEnvironment();
