@@ -2,7 +2,9 @@
 
 /**
  * @file
- * Contains \Drupal\nerdcustom\Plugin\Field\FieldFormatter\NerdPersonFieldFormatter.
+ * A field formatter to return a person node as a link or plain text.
+ *
+ * Only nerdologues members should have bio pages.
  */
 
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
@@ -13,9 +15,7 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
-
-
-use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter ;
+use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
 
 /**
  * Plugin implementation of the 'nerd_person_field_formatter' formatter.
@@ -70,7 +70,15 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
     return $elements;
   }
 
-  // @todo, type hinting.
+  /**
+   * Get the referenced entities as an array of labels (strings).
+   *
+   * @param EntityInterface $entity
+   *   The person node to be checked.
+   *
+   * @return array
+   *   An array of strings that are the entity labels.
+   */
   protected function getReferencedEntityLabels(EntityInterface $entity, $field_name = '') {
     $labels = [];
     // To make this code more contrib-able, make the field name a variable.
@@ -81,9 +89,13 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
   }
 
   /**
-   * Determin of the 
-   * @param type $entity
-   * @return type
+   * Determine of the entity should be shown as a link.
+   *
+   * @param EntityInterface $entity
+   *   The person node to be checked.
+   *
+   * @return bool
+   *   True or false for whether the link should be shown.
    */
   protected function showEntityLink(EntityInterface $entity) {
     $labels = $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
