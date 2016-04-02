@@ -22,7 +22,7 @@ test:
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
     - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     - drush config-list
-    - drush runserver --server=builtin --strict=0 </dev/null &>$HOME/server.log
+    - ./private/behat-testing/scripts/start-circle-server
   override:
     # Run phpcs
     # @todo, figure out why running these from phpcs.sh no longer causes

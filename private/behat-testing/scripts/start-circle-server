@@ -1,0 +1,14 @@
+
+#!/bin/bash
+#
+# start-webserver
+#
+# Start the PHP built-in webserver.
+#
+
+drush runserver  --server=builtin --strict=0 </dev/null &>$HOME/server.log &
+if [ $? != 0 ]
+then
+  echo "Could not start php built-in webserver" >&2
+  exit 1
+fi
