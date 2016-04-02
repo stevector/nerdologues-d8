@@ -1,31 +1,5 @@
 <?php
 
-
-
-
-
-
-
-
-
-
-// @todo, make an include file for this
-$databases['default']['default'] = array(
-      'driver' => 'mysql',
-       'database' => 'circle_test',
-       'username' => 'ubuntu',
-       'password' => '',
-       'host' => '127.0.0.1',
-       'prefix' => '',
-       );
-$settings['hash_salt'] = 'adsfasdfqwer';
-
-
-
-
-
-
-
 /**
  * Load services definition file.
  */
@@ -51,20 +25,3 @@ if (file_exists($local_settings)) {
 }
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/config';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$settings['install_profile'] = 'minimal';
