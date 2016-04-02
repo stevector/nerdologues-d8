@@ -13,6 +13,9 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 
+
+use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter ;
+
 /**
  * Plugin implementation of the 'nerd_person_field_formatter' formatter.
  *
@@ -24,61 +27,68 @@ use Drupal\Core\Form\FormStateInterface;
  *   }
  * )
  */
-class NerdPersonFieldFormatter extends FormatterBase {
+class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
   /**
    * {@inheritdoc}
    */
   public static function defaultSettings() {
-    return array(
-      // Implement default settings.
-    ) + parent::defaultSettings();
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    return array(
-      // Implement settings form.
-    ) + parent::settingsForm($form, $form_state);
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function settingsSummary() {
-    $summary = [];
-    // Implement settings summary.
-
-    return $summary;
+    return [];
   }
 
   /**
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = [];
+    $view_mode = $this->getSetting('view_mode');
+    $elements = array();
 
-    foreach ($items as $delta => $item) {
-      $elements[$delta] = ['#markup' => $this->viewValue($item)];
+    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
+
+
+
+
+// @todo, need a test for cacheability!
+
+      if ($this->showEntityLink($entity)) {
+        $elements[$delta] = array('#markup' => $entity->link());
+      }
+      else {
+        $elements[$delta] = array('#markup' => $entity->label());
+      }
+
+
     }
 
     return $elements;
   }
 
-  /**
-   * Generate the output appropriate for one field item.
-   *
-   * @param \Drupal\Core\Field\FieldItemInterface $item
-   *   One field item.
-   *
-   * @return string
-   *   The textual output generated.
-   */
-  protected function viewValue(FieldItemInterface $item) {
-    // The text value has no text format assigned to it, so the user input
-    // should equal the output, including newlines.
-    return nl2br(Html::escape($item->value));
+  // @todo, type hinting.
+  public function getReferencedEntityLabels($entity, $field_name = '') {
+    $labels = [];
+    // To make this code more contrib-able, make the field name a variable.
+    foreach ($entity->field_ref_term_designation->referencedEntities() as $term) {
+      $labels[] = $term->label();
+    }
+    return $labels;
   }
 
+  // @todo, type hinting.
+  public function showEntityLink($entity) {
+    $labels =  $this->getReferencedEntityLabels($entity);
+    return in_array('Viewable bio page', $labels);
+  }
 }
