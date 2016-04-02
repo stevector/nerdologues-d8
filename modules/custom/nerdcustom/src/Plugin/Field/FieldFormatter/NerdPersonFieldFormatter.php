@@ -81,7 +81,7 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
 
   // @todo, type hinting.
   protected function showEntityLink($entity) {
-    $labels =  $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
+    $labels = $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
     return in_array('Viewable bio page', $labels);
   }
 }
