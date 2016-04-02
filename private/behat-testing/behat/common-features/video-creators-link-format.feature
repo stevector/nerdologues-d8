@@ -7,11 +7,11 @@
   Scenario: video
     Given I am logged in as a user with the "administrator" role
 #  @todo, this part of the test should fail once migrations start
-#    When I visit "admin/structure/taxonomy/manage/member_designations/overview"
-#    Then I should not see the text "Viewable bio page"
-#    And I follow "Add term"
-#    And I fill in "name[0][value]" with "Viewable bio page"
-#    And I press "Save"
+    When I visit "admin/structure/taxonomy/manage/member_designations/overview"
+    Then I should not see the text "Viewable bio page"
+    And I follow "Add term"
+    And I fill in "name[0][value]" with "Viewable bio page"
+    And I press "Save"
 
     # Make two people
     When I visit "node/add/person"
