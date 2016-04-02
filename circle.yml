@@ -21,7 +21,7 @@ test:
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
     #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
-    - drush --yes --root=$DOCROOT minimal config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - drush --yes --root=$DOCROOT minimal  --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     - drush config-list
     - chmod +x private/behat-testing/scripts/start-circle-server
     - ./private/behat-testing/scripts/start-circle-server
