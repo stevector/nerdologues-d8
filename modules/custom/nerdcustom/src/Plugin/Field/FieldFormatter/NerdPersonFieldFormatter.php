@@ -12,6 +12,7 @@ use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
 
 
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter ;
@@ -70,7 +71,7 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
   }
 
   // @todo, type hinting.
-  protected function getReferencedEntityLabels($entity, $field_name = '') {
+  protected function getReferencedEntityLabels(EntityInterface $entity, $field_name = '') {
     $labels = [];
     // To make this code more contrib-able, make the field name a variable.
     foreach ($entity->{$field_name}->referencedEntities() as $term) {
@@ -79,8 +80,12 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
     return $labels;
   }
 
-  // @todo, type hinting.
-  protected function showEntityLink($entity) {
+  /**
+   * Determin of the 
+   * @param type $entity
+   * @return type
+   */
+  protected function showEntityLink(EntityInterface $entity) {
     $labels = $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
     return in_array('Viewable bio page', $labels);
   }
