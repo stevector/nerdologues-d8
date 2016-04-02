@@ -13,7 +13,9 @@
 
 
 
-        "drush/drush": "8.*"
+        "drush/drush": "8.*",
+        "drupal/coder": "8.2.0-beta1",
+        "squizlabs/php_codesniffer": "2.0.*@dev"
 
 
 
@@ -31,7 +33,8 @@
         ]
     },
     "config": {
-        "bin-dir": "bin/"
+        "bin-dir": "bin/",
+        "secure-http": false
     },
 
     "extra": {
