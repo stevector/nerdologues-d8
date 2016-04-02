@@ -12,4 +12,4 @@ dependencies:
 test:
   override:
     # Run phpcs
-    - cd private/behat-testing/  && sh  scripts/phpcs.sh
+    - cd private/behat-testing/  && ./scripts/phpcs.sh
