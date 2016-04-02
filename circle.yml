@@ -12,5 +12,9 @@ dependencies:
 test:
   override:
     # Run phpcs
+    # @todo, figure out why running these from phpcs.sh no longer causes
+    # circle fails.
+    # Circle did fail here: https://circleci.com/gh/stevector/nerdologues-d8/4
+    # But not here: https://circleci.com/gh/stevector/nerdologues-d8/18
     - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
     - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
