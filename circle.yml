@@ -10,6 +10,8 @@ dependencies:
   post:
     -  cd private/behat-testing/ && composer install
 test:
+  pre:
+    - drush si config_installer -y
   override:
     # Run phpcs
     # @todo, figure out why running these from phpcs.sh no longer causes
