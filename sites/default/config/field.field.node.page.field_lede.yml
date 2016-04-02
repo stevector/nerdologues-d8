@@ -1,0 +1,21 @@
+uuid: aca8ec55-b5be-4bbe-ae08-8a24ff187bfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lede
+    - node.type.page
+  module:
+    - text
+id: node.page.field_lede
+field_name: field_lede
+entity_type: node
+bundle: page
+label: Lede
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

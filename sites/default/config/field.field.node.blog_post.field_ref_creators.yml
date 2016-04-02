@@ -1,18 +1,18 @@
-uuid: 30b90d9e-2160-46f5-8934-52e7e77cc045
+uuid: 6f6100f3-165f-4804-b504-049e1c2cfff8
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_ref_podcast
-    - node.type.clip
-    - node.type.podcast
-id: node.clip.field_ref_podcast
-field_name: field_ref_podcast
+    - field.storage.node.field_ref_creators
+    - node.type.blog_post
+    - node.type.person
+id: node.blog_post.field_ref_creators
+field_name: field_ref_creators
 entity_type: node
-bundle: clip
-label: 'From the podcast'
+bundle: blog_post
+label: Authors
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -20,7 +20,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      podcast: podcast
+      person: person
     sort:
       field: _none
 field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: 8a8ee125-5249-4748-8a04-4b39f59ffe94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_int_start_time
+    - node.type.clip
+id: node.clip.field_int_start_time
+field_name: field_int_start_time
+entity_type: node
+bundle: clip
+label: 'Start Time'
+description: 'media.nerdologues.com will regenerate mp3 files for recently save clips every five minutes. If you have just entered a start and stop time then this clip will be generated soon.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

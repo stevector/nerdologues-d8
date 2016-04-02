@@ -4,23 +4,105 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.blog_post.body
+    - field.field.node.blog_post.field_body
+    - field.field.node.blog_post.field_date_published
+    - field.field.node.blog_post.field_image
+    - field.field.node.blog_post.field_lede
+    - field.field.node.blog_post.field_ref_creators
+    - field.field.node.blog_post.field_term_blog_tags
+    - image.style.large
     - node.type.blog_post
   module:
+    - datetime
+    - ds
+    - image
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      right:
+        - node_title
+        - field_date_published
+        - field_ref_creators
+        - field_lede
+      left:
+        - field_image
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.blog_post.teaser
 targetEntityType: node
 bundle: blog_post
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_body:
+    type: text_trimmed
+    weight: 14
+    label: above
     settings:
       trim_length: 600
     third_party_settings: {  }
+  field_date_published:
+    type: datetime_default
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: public_display1
+    third_party_settings: {  }
+  field_image:
+    type: image
+    weight: 5
+    label: hidden
+    settings:
+      image_style: large
+      image_link: content
+    third_party_settings: {  }
+  field_lede:
+    type: text_default
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_ref_creators:
+    type: entity_reference_entity_id
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_term_blog_tags:
+    type: entity_reference_entity_id
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

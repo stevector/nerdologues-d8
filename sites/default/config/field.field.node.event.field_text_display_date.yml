@@ -1,0 +1,21 @@
+uuid: 61692ff4-e086-4e9b-824c-76303f618f65
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_display_date
+    - node.type.event
+  module:
+    - text
+id: node.event.field_text_display_date
+field_name: field_text_display_date
+entity_type: node
+bundle: event
+label: 'Date display text'
+description: 'If this field is filed out, the automatic date fields will not display. Use this field for repeating events like "May 23rd - June 29th. Fridays and Saturdays at 8pm, Sundays at 2pm"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

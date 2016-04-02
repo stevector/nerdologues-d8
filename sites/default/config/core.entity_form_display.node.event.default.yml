@@ -3,9 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.body
+    - field.field.node.event.field_body
+    - field.field.node.event.field_image
+    - field.field.node.event.field_lede
+    - field.field.node.event.field_link
+    - field.field.node.event.field_ref_location
+    - field.field.node.event.field_text_display_date
+    - image.style.thumbnail
     - node.type.event
   module:
+    - image
+    - link
     - path
     - text
 id: node.event.default
@@ -13,19 +21,54 @@ targetEntityType: node
 bundle: event
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 31
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_body:
+    weight: 36
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_image:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_lede:
+    weight: 33
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_link:
+    weight: 32
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_ref_location:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_text_display_date:
+    weight: 35
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   path:
     type: path
     weight: 30
