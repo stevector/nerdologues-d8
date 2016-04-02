@@ -1,0 +1,15 @@
+# https://circleci.com/docs/configuration#machine
+machine:
+  php:
+    # https://circleci.com/docs/environment#php
+    version: 5.5.11
+
+dependencies:
+  cache_directories:
+    - ~/.composer/cache
+  post:
+    -  cd private/behat-testing/ && composer install
+test:
+  override:
+    # Run phpcs
+    - cd private/behat-testing/  && sh  scripts/phpcs.sh

@@ -1,0 +1,23 @@
+uuid: 93760213-4b72-4fb3-bf09-9d2567a80f29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.podcast_episode
+  module:
+    - link
+id: node.podcast_episode.field_link
+field_name: field_link
+entity_type: node
+bundle: podcast_episode
+label: 'Link to original podbean page'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -4,27 +4,121 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.podcast_episode.body
+    - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_lede
+    - field.field.node.podcast_episode.field_link
+    - field.field.node.podcast_episode.field_link_paywall_content
     - field.field.node.podcast_episode.field_ref_podcast
+    - field.field.node.podcast_episode.field_text_original_mp3_url
     - node.type.podcast_episode
   module:
+    - datetime
+    - ds
+    - link
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      header:
+        - links
+      right:
+        - node_title
+        - field_date_published
+        - field_lede
+      left:
+        - field_ref_podcast
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
 id: node.podcast_episode.teaser
 targetEntityType: node
 bundle: podcast_episode
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_body:
+    type: text_trimmed
+    weight: 15
+    label: above
     settings:
       trim_length: 600
     third_party_settings: {  }
+  field_date_published:
+    type: datetime_default
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: public_display1
+    third_party_settings: {  }
+  field_lede:
+    type: text_default
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_link_paywall_content:
+    type: link
+    weight: 12
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_ref_podcast:
+    type: entity_reference_label
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_text_original_mp3_url:
+    type: basic_string
+    weight: 13
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 100
-hidden:
-  field_date_published: true
-  field_ref_podcast: true
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.video.body
+    - field.field.node.video.field_body
     - field.field.node.video.field_date_published
     - field.field.node.video.field_ref_creators
     - field.field.node.video.field_youtube
@@ -18,12 +18,12 @@ targetEntityType: node
 bundle: video
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 3
+  field_body:
+    weight: 4
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: text_default
   field_date_published:
     weight: 0
     label: hidden

@@ -3,9 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.blog_post.body
+    - field.field.node.blog_post.field_body
+    - field.field.node.blog_post.field_date_published
+    - field.field.node.blog_post.field_image
+    - field.field.node.blog_post.field_lede
+    - field.field.node.blog_post.field_ref_creators
+    - field.field.node.blog_post.field_term_blog_tags
     - node.type.blog_post
   module:
+    - datetime
+    - image
     - text
     - user
 id: node.blog_post.default
@@ -13,12 +20,39 @@ targetEntityType: node
 bundle: blog_post
 mode: default
 content:
-  body:
+  field_body:
+    weight: 3
     label: hidden
-    type: text_default
-    weight: 101
     settings: {  }
     third_party_settings: {  }
+    type: text_default
+  field_date_published:
+    weight: 2
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_ref_creators:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   links:
-    weight: 100
-hidden: {  }
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_lede: true
+  field_term_blog_tags: true

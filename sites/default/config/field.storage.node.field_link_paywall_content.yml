@@ -1,0 +1,19 @@
+uuid: 354229cd-2c28-4b75-a000-e65ce33552b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_link_paywall_content
+field_name: field_link_paywall_content
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

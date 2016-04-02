@@ -1,14 +1,14 @@
-uuid: fb752fe6-1ea1-4f3c-b800-f2e43331f5c1
+uuid: a2a51089-2b06-4fc5-a608-8d8f16b2c11d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.video
   module:
     - text
-id: node.video.body
-field_name: body
+id: node.video.field_body
+field_name: field_body
 entity_type: node
 bundle: video
 label: Body
@@ -17,6 +17,5 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-field_type: text_with_summary
+settings: {  }
+field_type: text_long
