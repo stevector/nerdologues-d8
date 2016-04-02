@@ -8,10 +8,12 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
   post:
-    -  cd private/behat-testing/ && composer install
+    - cd private/behat-testing/ && composer install
+    - composer global require drupal/devel:8.*
 test:
   pre:
-    - drush si config_installer -y
+    - drush --yes --root=$DOCROOT site-install config_installe --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)
+    - drush config-list
   override:
     # Run phpcs
     # @todo, figure out why running these from phpcs.sh no longer causes
