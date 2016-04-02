@@ -18,7 +18,7 @@ $databases['default']['default'] = array(
        'host' => '127.0.0.1',
        'prefix' => '',
        );
-
+$settings['hash_salt'] = 'adsfasdfqwer';
 
 
 
