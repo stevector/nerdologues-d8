@@ -49,8 +49,8 @@ test:
     - composer global require drush/drush:8.*
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-    #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
-    - drush --yes --root=$DOCROOT site-install minimal  --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME
+    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    #- drush --yes --root=$DOCROOT site-install minimal  --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME
     - drush config-list
     #- chmod +x private/behat-testing/scripts/start-circle-server
     #- ./private/behat-testing/scripts/start-circle-server
@@ -64,3 +64,4 @@ test:
     # But not here: https://circleci.com/gh/stevector/nerdologues-d8/18
     - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
     - cd private/behat-testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
+    - cd private/behat-testing/  && ./bin/behat --config=behat/behat-circle.yml behat/common-features/nerdlist.feature
