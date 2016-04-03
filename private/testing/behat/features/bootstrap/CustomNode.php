@@ -24,12 +24,12 @@ class CustomNode implements Context, SnippetAcceptingContext {
     }    
     
     /**
-     * @When I create a video with a published date two minutes in the future
+     * @When I create a video with a published date in the future
      */
-    public function iCreateAVideoWithAPublishedDateTwoMinutesInTheFuture()
+    public function iCreateAVideoWithAPublishedDateInTheFuture()
     {   
         $this->minkContext->visit('node/add/video');
-        $this->minkContext->printLastResponse();
+       // $this->minkContext->printLastResponse();
         // @todo
         $this->minkContext->fillField('title[0][value]', 'future video. Randomize and track?');
         // @todo, fine-grain date and timezone handling.

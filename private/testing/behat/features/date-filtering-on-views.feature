@@ -7,7 +7,7 @@ Feature: Date list
   Scenario: Close future date
     # @todo, change to content creator
     Given I am logged in as a user with the "administrator" role
-    When I create a video with a published date two minutes in the future
+    When I create a video with a published date in the future
     Then that video does not appear on the video page
     # And that video does not appear the homepage "Nerds Online" section.
 
