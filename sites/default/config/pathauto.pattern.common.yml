@@ -1,0 +1,24 @@
+uuid: cec24b70-73a2-4a05-9e3e-62836f2b14a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: common
+label: Common
+type: 'canonical_entities:node'
+pattern: '[node:content-type:machine-name]s/[node:title]'
+selection_criteria:
+  533e4e5a-de09-4b02-9b23-35f6f2885a21:
+    id: node_type
+    bundles:
+      event: event
+      location: location
+      video: video
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 533e4e5a-de09-4b02-9b23-35f6f2885a21
+selection_logic: and
+weight: -5
+relationships: {  }
