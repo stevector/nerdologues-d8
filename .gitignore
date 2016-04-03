@@ -55,6 +55,6 @@ Thumbs.db
 
 
 
-private/behat-testing/bin
-private/behat-testing/drush
-private/behat-testing/vendor
+private/testing/bin
+private/testing/drush
+private/testing/vendor

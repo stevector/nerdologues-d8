@@ -20,6 +20,8 @@ default:
       base_url: http://127.0.0.1:8888/
     Drupal\DrupalExtension:
       blackbox: ~
-      api_driver: 'drush'
+      drupal:
+        drupal_root: ../../
+      api_driver: 'drupal'
       drush:
         root: ../../
