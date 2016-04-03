@@ -1,0 +1,22 @@
+uuid: 5d99d3c3-b755-44ee-bc00-b17fe82eb857
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: person
+label: person
+type: 'canonical_entities:node'
+pattern: 'nerds/[node:title]'
+selection_criteria:
+  6c713c25-4feb-4955-a205-0526ad150f9e:
+    id: node_type
+    bundles:
+      person: person
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 6c713c25-4feb-4955-a205-0526ad150f9e
+selection_logic: and
+weight: -6
+relationships: {  }

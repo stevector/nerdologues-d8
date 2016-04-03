@@ -1,0 +1,22 @@
+uuid: 2f5a9d01-0a10-4855-bb00-aaf62864e091
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: clip
+label: Clip
+type: 'canonical_entities:node'
+pattern: 'podcasts/[node:field_ref_podcast]/clips/[node:title]'
+selection_criteria:
+  d9981e63-e2c8-431e-8300-e7a8d52fb2a7:
+    id: node_type
+    bundles:
+      clip: clip
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d9981e63-e2c8-431e-8300-e7a8d52fb2a7
+selection_logic: and
+weight: -7
+relationships: {  }
