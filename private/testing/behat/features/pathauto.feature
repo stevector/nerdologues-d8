@@ -9,8 +9,6 @@ Feature: Pathauto
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
     And I fill in "field_date_published[0][value][time]" with "15:05:05"
     And I press "Save and publish"
-    #Then print last response
-    #And I break
     Then the response should contain "<link rel=\"canonical\" href=\"/blog/2015-10-31/blog-post-title\" />"
                                  
   @api
@@ -26,7 +24,6 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
     And I press "Save and publish"
-    Then print last response
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someone-s-cool-podcast/episodes/one-podcast-episode\" />"
 
     # CLIP
@@ -41,7 +38,6 @@ Feature: Pathauto
   Scenario: Basic page
     Given I am an anonymous user
     Given I am viewing a page with the title "Some Random Basic Page"
-    #Then print last response
     Then the response should contain "<link rel=\"canonical\" href=\"/some-random-basic-page\" />"
 
   @api
@@ -66,7 +62,6 @@ Feature: Pathauto
   Scenario: Video
     Given I am an anonymous user
     Given I am viewing a video with the title "Here is a video"
-    #Then print last response
     Then the response should contain "<link rel=\"canonical\" href=\"/videos/here-video\" />"
   
 
