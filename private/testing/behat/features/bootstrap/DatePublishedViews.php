@@ -8,7 +8,7 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 /**
  * Define application features from the specific context.
  */
-class CustomNode implements Context, SnippetAcceptingContext {
+class DatePublishedViews implements Context, SnippetAcceptingContext {
 
     /** @var \Behat\MinkExtension\Context\MinkContext */
     private $minkContext;
