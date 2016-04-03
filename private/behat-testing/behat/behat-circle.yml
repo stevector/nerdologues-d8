@@ -1,0 +1,25 @@
+#
+# behat.yml file for testing with a Drupal site on Circle.
+#
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features
+        - %paths.base%/common-features
+      contexts:
+        #- FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      files_path: './data-files'
+      base_url: http://server.local/
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drush'
+      drush:
+        root: ../../
