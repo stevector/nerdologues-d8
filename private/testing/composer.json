@@ -9,17 +9,9 @@
 
     ],
     "require": {
-
-
-
-
         "drush/drush": "8.*",
         "drupal/coder": "8.2.0-beta1",
         "squizlabs/php_codesniffer": "2.0.*@dev"
-
-
-
-
     },
     "require-dev": {
         "drush-ops/behat-drush-endpoint": "*",
@@ -38,10 +30,7 @@
     },
 
     "extra": {
-
-
         "preserve-paths": [
-
         ]
     },
     "minimum-stability": "dev",
