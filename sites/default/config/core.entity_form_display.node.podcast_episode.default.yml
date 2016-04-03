@@ -61,12 +61,9 @@ content:
     type: link_default
   field_ref_podcast:
     weight: 7
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_buttons
   field_text_original_mp3_url:
     weight: 12
     settings:
