@@ -8,10 +8,11 @@ default:
         - %paths.base%/features
         - %paths.base%/common-features
       contexts:
-        #- FeatureContext
+        - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MinkContext
+        - DatePublishedViews
   extensions:
     Behat\MinkExtension:
       goutte: ~
