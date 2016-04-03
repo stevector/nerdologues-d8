@@ -1,8 +1,9 @@
-uuid: 666f7043-88d4-436d-a900-fb6c732a3b12
+uuid: 39835461-019b-4817-8e09-9cba3cfbacbf
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.token
     - field.field.node.blog_post.field_body
     - field.field.node.blog_post.field_date_published
     - field.field.node.blog_post.field_image
@@ -15,10 +16,10 @@ dependencies:
     - image
     - text
     - user
-id: node.blog_post.default
+id: node.blog_post.token
 targetEntityType: node
 bundle: blog_post
-mode: default
+mode: token
 content:
   field_body:
     weight: 3
@@ -31,7 +32,7 @@ content:
     label: hidden
     settings:
       timezone_override: ''
-      format_type: public_display1
+      format_type: html_date
     third_party_settings: {  }
     type: datetime_default
   field_image:
