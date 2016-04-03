@@ -42,8 +42,3 @@
     Then I should see the link "Jane Member"
     # This assertion is the one really being tested.
     Then I should see the link "Joe Non-member"
-
-  @api
-  Scenario: Podcast clip
-    # @todo, change to content creator
-    Given I am logged in as a user with the "administrator" role
