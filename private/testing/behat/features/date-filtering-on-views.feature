@@ -9,13 +9,15 @@ Feature: Date list
     Given I am logged in as a user with the "administrator" role
     When I create a video with a published date in the future
     Then that video does not appear on the video page
+    # @todo
     # And that video does not appear the homepage "Nerds Online" section.
 
   @api
   Scenario: Close past date
     # @todo, change to content creator
     Given I am logged in as a user with the "administrator" role
-    When I create a video with a published date two minutes in the past
+    When I create a video with a published date in the past
     Then that video appears on the video page
-    And it appears on the homepage "Nerds Online" section.
+    # @todo
+    # And it appears on the homepage "Nerds Online" section.
 

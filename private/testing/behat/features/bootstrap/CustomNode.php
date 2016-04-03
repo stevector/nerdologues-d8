@@ -29,11 +29,12 @@ class CustomNode implements Context, SnippetAcceptingContext {
     public function iCreateAVideoWithAPublishedDateInTheFuture()
     {   
         $this->minkContext->visit('node/add/video');
-       // $this->minkContext->printLastResponse();
-        // @todo
-        $this->minkContext->fillField('title[0][value]', 'future video. Randomize and track?');
+        $video_title = 'future video title';
+        $this->minkContext->fillField('title[0][value]', $video_title);
+        // @todo, is this how variable are supposed to be passed around.
+        $this->video_title = $video_title;
         // @todo, fine-grain date and timezone handling.
-        $this->minkContext->fillField('field_date_published[0][value][date]', '2016-04-29');
+        $this->minkContext->fillField('field_date_published[0][value][date]', date('Y-m-d', time() + (60 * 60 * 72)));
         $this->minkContext->fillField('field_date_published[0][value][time]', '12:01:59');
         $this->minkContext->pressButton('Save and publish');
     }
@@ -44,7 +45,32 @@ class CustomNode implements Context, SnippetAcceptingContext {
     public function thatVideoDoesNotAppearOnTheVideoPage()
     {
         $this->minkContext->visit('videos');
-        $this->minkContext->assertNotLinkVisible('future video. Randomize and track?');
+        $this->minkContext->assertNotLinkVisible($this->video_title);
+    }
+
+    /**
+     * @When I create a video with a published date in the past
+     */
+    public function iCreateAVideoWithAPublishedDateInThePast()
+    {
+        $this->minkContext->visit('node/add/video');
+        $video_title = 'past video title';
+        $this->minkContext->fillField('title[0][value]', $video_title);
+        // @todo, is this how variable are supposed to be passed around.
+        $this->video_title = $video_title;
+        // @todo, fine-grain date and timezone handling.
+        $this->minkContext->fillField('field_date_published[0][value][date]', date('Y-m-d', time() - (60 * 60 * 72)));
+        $this->minkContext->fillField('field_date_published[0][value][time]', '12:01:59');
+        $this->minkContext->pressButton('Save and publish');
+    }
+
+    /**
+     * @Then that video appears on the video page
+     */
+    public function thatVideoAppearsOnTheVideoPage()
+    {
+        $this->minkContext->visit('videos');
+        $this->minkContext->assertLinkVisible($this->video_title);
     }
 }
 
