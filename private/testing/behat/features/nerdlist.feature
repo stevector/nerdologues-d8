@@ -5,8 +5,7 @@ Feature: Nerdlist
 
   @api
   Scenario: Bio without proper term does not appear on the nerd page.
-    # @todo, change to content creator
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "content_administrator" role
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Some Random Name"
     And I press "Save and publish"
@@ -16,8 +15,7 @@ Feature: Nerdlist
 
   @api
     Scenario: Bio with 'Current Member' term does appear on nerd page..
-      # @todo, change to content creator
-      Given I am logged in as a user with the "administrator" role
+      Given I am logged in as a user with the "content_administrator" role
       Given a "member_designations" term with the name "Current Member"
       When I visit "node/add/person"
       # @todo, figure out random handling.

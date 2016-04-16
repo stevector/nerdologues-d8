@@ -5,7 +5,7 @@
 
   @api
   Scenario: video
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "content_administrator" role
    Given a "member_designations" term with the name "Viewable bio page"
 
     # Make two people
