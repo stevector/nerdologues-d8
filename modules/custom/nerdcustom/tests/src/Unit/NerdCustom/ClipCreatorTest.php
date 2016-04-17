@@ -10,33 +10,34 @@ use Drupal\Tests\UnitTestCase;
 use Drupal\nerdcustom\ClipGenerator;
 
 /**
+ * Testing for ClipCreator.
+ *
  * @coversDefaultClass \Drupal\nerdcustom\ClipGenerator
  * @group nerdcustom
  */
 class ClipCreatorTest extends UnitTestCase {
 
   /**
-   * 
    * {@inheritdoc}
    */
   protected function setUp() {
     parent::setUp();
     $this->entityManager = $this->getMock('Drupal\Core\Entity\EntityManagerInterface');
-    $this->clipGenerator = new ClipGenerator($this->entityManager);    
+    $this->clipGenerator = new ClipGenerator($this->entityManager);
   }
 
   /**
    * Tests ClipGenerator::extractClipTitles().
    *
    * @param string $body_text
-   *   The body text of a podcast_episode
-   * @param array extracted_titles
+   *   The body text of a podcast_episode.
+   * @param array $extracted_titles
    *   Clip titles extracted from body field.
    *
    * @dataProvider providerClipTitles
    * @covers ::extractClipTitles
    */
-  public function testExtractClipTitles($body_text, $extracted_titles) {
+  public function testExtractClipTitles($body_text, array $extracted_titles) {
     $this->assertEquals($extracted_titles, $this->clipGenerator->extractClipTitles($body_text));
   }
 
@@ -44,6 +45,7 @@ class ClipCreatorTest extends UnitTestCase {
    * Data provider for testExtractClipTitles.
    *
    * @return array
+   *   An array of test data.
    */
   public function providerClipTitles() {
     $data = array();
