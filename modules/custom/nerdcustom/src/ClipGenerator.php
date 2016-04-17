@@ -9,6 +9,7 @@ namespace Drupal\nerdcustom;
 
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\node\NodeInterface;
+use SimpleXMLElement;
 
 /**
  * Class ClipGenerator.
@@ -30,25 +31,26 @@ class ClipGenerator {
   public function __construct(EntityManagerInterface $entity_manager) {
     $this->entity_manager = $entity_manager;
   }
-
   
   public function generateClips(NodeInterface $podcast_episode_node) {
   }
-  
-  
+
   protected function getBodyField(NodeInterface $podcast_episode_node) {
     // @todo, don't hard code this.
     return '';
   }
-  
-  
-    public function hello() {
-    
-return  array(1,2,3);
-  }
-  
-  public function extractClipTitles() {
-    
-return  'just getting started';
+
+  public function extractClipTitles($body_field) {
+    // Clean problem tags and characters from a string that only needs to be
+    // the lists.
+    $cleaned_body = strip_tags($body_field, '<ul><li>');
+    $cleaned_body = str_replace('&nbsp;', ' ', $cleaned_body);
+    // Strip all tags that aren't ul and li because font tags were causing errors.
+    $xml = new SimpleXMLElement('<root>' . $cleaned_body . '</root>');
+    $result = $xml->xpath('//li');
+    while(list( , $thing) = each($result)) {
+       $return[] = $thing . '';
+    }
+    return $return;
   }
 }
