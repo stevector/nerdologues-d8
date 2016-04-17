@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\Tests\forum\Unit\Breadcrumb\ForumBreadcrumbBuilderBaseTest.
+ * Contains \Drupal\Tests\nerdcustom\Unit\ClipCreator\ClipCreatorTest.
  */
 
 namespace Drupal\Tests\nerdcustom\Unit\ClipCreator;
@@ -10,7 +10,7 @@ use Drupal\Tests\UnitTestCase;
 use Drupal\nerdcustom\ClipGenerator;
 
 /**
- * @coversDefaultClass \Drupal\forum\Breadcrumb\ForumBreadcrumbBuilderBase
+ * @coversDefaultClass \Drupal\nerdcustom\ClipGenerator
  * @group nerdcustom
  */
 class ClipCreatorTest extends UnitTestCase {
@@ -34,7 +34,7 @@ class ClipCreatorTest extends UnitTestCase {
    *   Clip titles extracted from body field.
    *
    * @dataProvider providerClipTitles
-   * @covers ::__construct
+   * @covers ::extractClipTitles
    */
   public function testExtractClipTitles($body_text, $extracted_titles) {
     $this->assertEquals($extracted_titles, $this->clipGenerator->extractClipTitles($body_text));

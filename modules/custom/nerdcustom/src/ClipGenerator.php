@@ -40,7 +40,16 @@ class ClipGenerator {
     return '';
   }
 
+  /**
+   * Take a body field string and return all the potential clip titles in lis.
+   *
+   * @param type $body_field
+   *   A node's body field.
+   * @return array
+   *   An array of clip titles.
+   */
   public function extractClipTitles($body_field) {
+    //$return = [];
     // Clean problem tags and characters from a string that only needs to be
     // the lists.
     $cleaned_body = strip_tags($body_field, '<ul><li>');
