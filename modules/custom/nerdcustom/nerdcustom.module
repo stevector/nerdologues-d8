@@ -35,6 +35,7 @@ function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array
 
 
 function nerdcustom_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
-
-  \Drupal::service('nerdcustom.clipgenerator')->generateClips($entity); 
+  if ($entity instanceof NodeInterface) {
+    \Drupal::service('nerdcustom.clipgenerator')->generateClips($entity);
+  }
 }
