@@ -12,19 +12,10 @@ And I select the radio button "Your Stories"
     And I fill in "title[0][value]" with "Some Random Name"
     And I fill in "field_body[0][value]" with "<p>Maybe it seems weird</p><ul><li>Cover Stories: Love Never Felt So Good</li><li>James D'Amato: Progression</li><li>Nathan Robert: Will You Please Spend New Years Eve with Me?</li></ul><p>If you're in Chicago, come on down to our</p><ul><li>Cover Stories: Take Me to Church</li></ul>"
 
-     And I press "Save and publish"
-     And I break
-     Then I visit "admin/content"
-Then I should see the link "Cover Stories: Love Never Felt So Good"
-Then I should see the link "James D'Amato: Progression"
-Then I should see the link "Nathan Robert: Will You Please Spend New Years Eve with Me?"
-Then I should see the link "Cover Stories: Take Me to Church"
-
-
-
-
-
-
-
-
-
+    And I press "Save and publish"
+    And I break
+    Then I visit "admin/content"
+    Then I should see the link "Cover Stories: Love Never Felt So Good"
+    Then I should see the link "James D'Amato: Progression"
+    Then I should see the link "Nathan Robert: Will You Please Spend New Years Eve with Me?"
+    Then I should see the link "Cover Stories: Take Me to Church"
