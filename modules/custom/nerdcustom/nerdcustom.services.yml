@@ -1,0 +1,5 @@
+services:
+  nerdcustom.clipgenerator:
+    class: Drupal\nerdcustom\ClipGenerator
+    arguments: ["@entity.manager"]
+
