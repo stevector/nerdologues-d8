@@ -5,8 +5,7 @@ Feature: Date list
 
   @api
   Scenario: Close future date
-    # @todo, change to content creator
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "content_administrator" role
     When I create a video with a published date in the future
     Then that video does not appear on the video page
     # @todo
@@ -14,8 +13,7 @@ Feature: Date list
 
   @api
   Scenario: Close past date
-    # @todo, change to content creator
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "content_administrator" role
     When I create a video with a published date in the past
     Then that video appears on the video page
     # @todo

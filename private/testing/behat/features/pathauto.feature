@@ -3,7 +3,7 @@ Feature: Pathauto
   @api
   Scenario: blog post
     # @todo role   
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "content_administrator" role
     When I visit "node/add/blog_post"
     And I fill in "title[0][value]" with "A Blog Post Title"
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
