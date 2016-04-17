@@ -7,7 +7,7 @@
 
 namespace Drupal\nerdcustom;
 
-use Drupal\Core\Entity\EntityManager;
+use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -27,7 +27,7 @@ class ClipGenerator {
   /**
    * Constructor.
    */
-  public function __construct(EntityManager $entity_manager) {
+  public function __construct(EntityManagerInterface $entity_manager) {
     $this->entity_manager = $entity_manager;
   }
 
@@ -41,4 +41,14 @@ class ClipGenerator {
     return '';
   }
   
+  
+    public function hello() {
+    
+return  array(1,2,3);
+  }
+  
+  public function extractClipTitles() {
+    
+return  'just getting started';
+  }
 }
