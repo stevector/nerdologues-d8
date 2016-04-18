@@ -67,7 +67,9 @@ class ClipGenerator {
 
       $clip_values = [
         'type' => 'clip',
-        'title' => strip_tags($clip_title)
+        'title' => strip_tags($clip_title),
+        'field_ref_podcast' => $podcast_episode_node->field_ref_podcast->referencedEntities()[0],
+        'field_ref_podcast_episode' => $podcast_episode_node->id()
       ];
 
       $clip = $this->entityManager->getStorage('node')->create($clip_values);
