@@ -64,7 +64,14 @@ class ClipGenerator {
     }
     $body_text = $podcast_episode_node->field_body->getValue()[0]['value'];
     foreach ($this->extractClipTitles($body_text) as $clip_title) {
-      // dsm($clip_title);
+
+      $clip_values = [
+        'type' => 'clip',
+        'title' => strip_tags($clip_title)
+      ];
+
+      $clip = $this->entityManager->getStorage('node')->create($clip_values);
+      $clip->save();
     }
   }
 
