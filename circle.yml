@@ -73,4 +73,4 @@ test:
     #### Migration testing
     #### @todo, reinstall Drupal
     - drush mi --all
-    #### @todo run migration tests
+    - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
