@@ -17,8 +17,8 @@ machine:
 database:
   override:
     - mysql -u ubuntu -e "create database migration_source_db"
-    #- wget $(terminus site backups get --site=nerdologues-d8 --env=dev --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
-    #- mysql -u ubuntu migration_source_db < test_fs.sql
+    - wget $(terminus site backups get --site=nerdologues-d8 --env=dev --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    - mysql -u ubuntu migration_source_db < test_fs.sql
 dependencies:
   cache_directories:
     - ~/.composer/cache
@@ -72,4 +72,3 @@ test:
     - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/ --strict
     #### Migration testing
-    - 
