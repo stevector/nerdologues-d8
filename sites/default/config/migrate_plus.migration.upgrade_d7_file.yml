@@ -9,6 +9,10 @@ migration_group: migrate_drupal_7
 label: Files
 source:
   plugin: d7_file
+  
+  
+  scheme:
+   - public
 process:
   fid: fid
   filename: filename
