@@ -1,0 +1,22 @@
+uuid: 63881494-f3d8-4229-ad4e-9b2d14290ece
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_menu_settings
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Menu UI configuration'
+source:
+  plugin: variable
+  variables:
+    - menu_override_parent_selector
+process:
+  override_parent_selector: menu_override_parent_selector
+destination:
+  plugin: config
+  config_name: menu_ui.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }
