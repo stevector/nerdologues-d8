@@ -1,0 +1,21 @@
+uuid: 746022f4-d262-4494-8d8d-905bc71683ed
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_settings
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Node configuration'
+source:
+  plugin: variable
+  variables:
+    - node_admin_theme
+process:
+  use_admin_theme: node_admin_theme
+destination:
+  plugin: config
+  config_name: node.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }

@@ -1,0 +1,51 @@
+uuid: 6f807e3f-a578-45fa-98ed-4e1d9964df13
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_archive_item
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Nodes (Archive item)'
+source:
+  plugin: d7_node
+  node_type: archive_item
+process:
+  nid: nid
+  vid: vid
+  type: type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  field_body: field_body
+  field_date_published: field_date_published
+  field_image:
+    plugin: iterator
+    source: field_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_lede: field_lede
+  field_link_paywall_content: field_link_paywall_content
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

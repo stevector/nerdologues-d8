@@ -1,0 +1,30 @@
+uuid: 238a5d5c-125d-4f5b-9e0d-147cf330776b
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_url_alias
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'URL aliases'
+source:
+  plugin: d7_url_alias
+  constants:
+    slash: /
+process:
+  source:
+    plugin: concat
+    source:
+      - constants/slash
+      - source
+  alias:
+    plugin: concat
+    source:
+      - constants/slash
+      - alias
+  langcode: language
+destination:
+  plugin: url_alias
+migration_dependencies:
+  required: {  }
+  optional: {  }

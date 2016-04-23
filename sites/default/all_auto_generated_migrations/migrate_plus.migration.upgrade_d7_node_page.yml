@@ -1,0 +1,54 @@
+uuid: c2e97a05-6e69-4950-bc44-e1a11fa69e5d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_page
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Nodes (Basic page)'
+source:
+  plugin: d7_node
+  node_type: page
+process:
+  nid: nid
+  vid: vid
+  type: type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  field_body: field_body
+  field_image:
+    plugin: iterator
+    source: field_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_lede: field_lede
+  field_term_blog_tags:
+    plugin: iterator
+    source: field_term_blog_tags
+    process:
+      target_id: tid
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
