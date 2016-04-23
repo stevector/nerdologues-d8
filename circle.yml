@@ -53,8 +53,8 @@ test:
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
     - composer global require pantheon-systems/terminus
-    - terminus auth login --machine-token=$TerminusToken
-    - wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    #- terminus auth login --machine-token=$TerminusToken
+    #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
     # Copy the settings.local into place
     - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
