@@ -26,7 +26,7 @@ destination:
   plugin: 'entity:file'
   source_path_property: filepath
   urlencode: true
-  source_base_path: 'https://www.nerdologues.com/'
+  source_base_path: '/Users/stevepersch/Downloads/files_migrateprep/'
 migration_dependencies:
   required: {  }
   optional: {  }
