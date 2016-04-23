@@ -47,5 +47,9 @@ process:
 destination:
   plugin: 'entity:node'
 migration_dependencies:
-  required: {  }
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_taxonomy_term
+    - upgrade_d7_file
+    - upgrade_d7_filter_format
   optional: {  }
