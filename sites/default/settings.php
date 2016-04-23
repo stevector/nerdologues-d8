@@ -24,4 +24,5 @@ if (file_exists($local_settings)) {
   include $local_settings;
 }
 $settings['install_profile'] = 'standard';
+
 $config_directories['sync'] = 'sites/default/config';
