@@ -11,7 +11,8 @@ Feature: Nerdlist
     Then I should see "iTunes Category"
     Then I should see "Member Designations"
     Then I should see "Tags"
-    
+
+    # Verify individual terms.    
     When I visit "admin/structure/taxonomy/manage/member_designations/overview"
     Then I should see the link "Current Member"
     Then I should see the link "Emeritus"
