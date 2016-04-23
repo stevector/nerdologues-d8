@@ -71,3 +71,5 @@ test:
     - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/ --strict
     #### Migration testing
+    #### @todo, reinstall Drupal
+    - drush mi --all
