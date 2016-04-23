@@ -17,8 +17,6 @@ machine:
 database:
   override:
     - mysql -u ubuntu -e "create database migration_source_db"
-    - wget $(terminus site backups get --site=nerdologues-d8 --env=dev --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
-    - mysql -u ubuntu migration_source_db < test_fs.sql
 dependencies:
   cache_directories:
     - ~/.composer/cache
@@ -53,8 +51,9 @@ test:
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
     - composer global require pantheon-systems/terminus
-    #- terminus auth login --machine-token=$TerminusToken
-    #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    - terminus auth login --machine-token=$TerminusToken
+    - wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    - mysql -u ubuntu migration_source_db < latest_db.sql
     # Copy the settings.local into place
     - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
