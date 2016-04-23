@@ -16,7 +16,6 @@ machine:
     server.local: 127.0.0.1
 database:
   override:
-    - mysql -u ubuntu -e "create database circle_test"
     - mysql -u ubuntu -e "create database migration_source_db"
     #- mysql -u ubuntu migration_source_db < test_fs.sql
 dependencies:
