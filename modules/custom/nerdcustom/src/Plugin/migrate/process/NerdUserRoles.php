@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\migrate\Plugin\migrate\process;
+namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 
 /**
- * This plugin sets missing values on the destination.
+ * This plugin maps old roles to new roles.
  *
  * @MigrateProcessPlugin(
  *   id = "nerd_user_roles"
