@@ -24,8 +24,7 @@ process:
   preferred_admin_langcode: language
   init: init
   roles:
-    plugin: migration
-    migration: upgrade_d7_user_role
+    plugin: nerd_user_roles
     source: roles
   user_picture:
     -
