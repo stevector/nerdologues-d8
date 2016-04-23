@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @file
+ * A process plugin to map old roles to new.
+ *
+ * Only nerdologues members should have bio pages.
+ */
+
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
@@ -21,11 +28,10 @@ class NerdUserRoles extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
     if ($value == 3) {
-      return 'administrator';          
+      return 'administrator';
     }
-    else if ($value == 4) {
+    elseif ($value == 4) {
       return 'content_administrator';
     }
   }
 }
-
