@@ -75,4 +75,6 @@ test:
     #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     ###########################################- drush mi --all
     ###########################################- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
-    terminus site connection-info  --field=git_url
+    - composer global require pantheon-systems/terminus
+    - terminus auth login --machine-token=$TerminusToken
+    - terminus site connection-info  --field=git_url
