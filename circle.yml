@@ -50,8 +50,8 @@ test:
   pre:
     ###########################################- cd private/testing/ && composer install
     ###########################################- composer global require drush/drush:8.*
-    ###########################################- composer global require pantheon-systems/terminus
-    ###########################################- terminus auth login --machine-token=$TerminusToken
+    - composer global require pantheon-systems/terminus
+    - terminus auth login --machine-token=$TerminusToken
     ###########################################- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
     ###########################################- mysql -u ubuntu migration_source_db < latest_db.sql
     # Copy the settings.local into place
