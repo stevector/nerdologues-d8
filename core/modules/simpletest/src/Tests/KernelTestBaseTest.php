@@ -323,13 +323,13 @@ EOS;
   }
 
   /**
-   * Tests that drupal_get_profile() returns NULL.
+   * Tests that \Drupal::installProfile() returns FALSE.
    *
    * As the currently active installation profile is used when installing
    * configuration, for example, this is essential to ensure test isolation.
    */
   public function testDrupalGetProfile() {
-    $this->assertNull(drupal_get_profile());
+    $this->assertFalse(\Drupal::installProfile());
   }
 
   /**

@@ -623,7 +623,7 @@ function drupal_valid_test_ua($new_prefix = NULL) {
   $user_agent = isset($_COOKIE['SIMPLETEST_USER_AGENT']) ? $_COOKIE['SIMPLETEST_USER_AGENT'] : $http_user_agent;
   if (isset($user_agent) && preg_match("/^(simpletest\d+):(.+):(.+):(.+)$/", $user_agent, $matches)) {
     list(, $prefix, $time, $salt, $hmac) = $matches;
-    $check_string =  $prefix . ':' . $time . ':' . $salt;
+    $check_string = $prefix . ':' . $time . ':' . $salt;
     // Read the hash salt prepared by drupal_generate_test_ua().
     // This function is called before settings.php is read and Drupal's error
     // handlers are set up. While Drupal's error handling may be properly
@@ -715,31 +715,19 @@ function drupal_installation_attempted() {
  * When this function is called during Drupal's initial installation process,
  * the name of the profile that's about to be installed is stored in the global
  * installation state. At all other times, the "install_profile" setting will be
- * available in settings.php.
+ * available in settings.php, or declared as a Distribution.
  *
  * @return string|null $profile
  *   The name of the installation profile or NULL if no installation profile is
  *   currently active. This is the case for example during the first steps of
  *   the installer or during unit tests.
+ *
+ * @deprecated in Drupal 8.2.0, will be removed before Drupal 9.0.0.
+ *   Use the install_profile container parameter or \Drupal::installProfile()
+ *   instead.
  */
 function drupal_get_profile() {
-  global $install_state;
-
-  if (drupal_installation_attempted()) {
-    // If the profile has been selected return it.
-    if (isset($install_state['parameters']['profile'])) {
-      $profile = $install_state['parameters']['profile'];
-    }
-    else {
-      $profile = NULL;
-    }
-  }
-  else {
-    // Fall back to NULL, if there is no 'install_profile' setting.
-    $profile = Settings::get('install_profile');
-  }
-
-  return $profile;
+  return \Drupal::installProfile();
 }
 
 /**
