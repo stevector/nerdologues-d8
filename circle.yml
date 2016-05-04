@@ -77,4 +77,8 @@ test:
     ###########################################- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
     - composer global require pantheon-systems/terminus
     - terminus auth login --machine-token=$TerminusToken
-    - terminus site connection-info  --field=git_url
+    - git remote add pantheon $(terminus site connection-info  --field=git_url)
+    ############## @todo, variable for branch name
+    - git push pantheon p2p
+    - terminus site --site=nerdologues-d8 --env=p2p set-connection-mode --mode=sftp
+    - terminus drush --site=nerdologues-d8 --env=p2p  "si -y config_installer"
