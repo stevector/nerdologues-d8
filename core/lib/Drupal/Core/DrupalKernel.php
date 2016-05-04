@@ -14,8 +14,10 @@ use Drupal\Core\DependencyInjection\ServiceModifierInterface;
 use Drupal\Core\DependencyInjection\ServiceProviderInterface;
 use Drupal\Core\DependencyInjection\YamlFileLoader;
 use Drupal\Core\Extension\ExtensionDiscovery;
+use Drupal\Core\Extension\InfoParser;
 use Drupal\Core\File\MimeType\MimeTypeGuesser;
 use Drupal\Core\Http\TrustedHostsRequestFactory;
+use Drupal\Core\Installer\Exception\TooManyDistributionsException;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Site\Settings;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
@@ -1126,6 +1128,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
     $container = $this->getContainerBuilder();
     $container->set('kernel', $this);
     $container->setParameter('container.modules', $this->getModulesParameter());
+    $container->setParameter('install_profile', $this->getInstallProfile());
 
     // Get a list of namespaces and put it onto the container.
     $namespaces = $this->getModuleNamespacesPsr4($this->getModuleFileNames());
@@ -1474,4 +1477,41 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
   protected function addServiceFiles(array $service_yamls) {
     $this->serviceYamls['site'] = array_filter($service_yamls, 'file_exists');
   }
+
+  /**
+   * Gets the active install profile.
+   *
+   * @return string|null
+   *   The name of the any active install profile or distribution.
+   */
+  protected function getInstallProfile() {
+    $install_profile = Settings::get('install_profile');
+    if (empty($install_profile)) {
+      $install_profile = $this->getDistribution();
+    }
+    return $install_profile;
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDistribution() {
+    $listing = new ExtensionDiscovery($this->root);
+    $listing->setProfileDirectories(array());
+    $info_parser = new InfoParser();
+    $distributions = [];
+    foreach ($listing->scan('profile') as $profile) {
+      $info = $info_parser->parse($profile->getPathname());
+      if (!empty($info['distribution'])) {
+        $distributions[] = $profile->getName();
+      }
+    }
+    // There can be only one.
+    if (count($distributions) > 1) {
+      throw new TooManyDistributionsException('A site can only have one distribution, multiple installation profiles discovered: ' . implode(', ', $distributions));
+    }
+    return reset($distributions);
+  }
+
 }

@@ -334,7 +334,7 @@ function drupal_rewrite_settings($settings = array(), $settings_file = NULL) {
     }
 
     // Write the new settings file.
-    if (file_put_contents($settings_file, $buffer) === FALSE) {
+    if (@file_put_contents($settings_file, $buffer) === FALSE) {
       throw new Exception(t('Failed to modify %settings. Verify the file permissions.', array('%settings' => $settings_file)));
     }
     else {
