@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Usage:
+#
+#   ./bin/local-test
+#
+
+composer global require pantheon-systems/terminus
+terminus auth login --machine-token=$TerminusToken
+git remote add pantheon $(terminus site connection-info  --field=git_url)
+############## @todo, variable for branch name
+git checkout -b $CIRCLE_BUILD_NUM
+terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
+git push pantheon $CIRCLE_BUILD_NUM -f
+terminus site --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM set-connection-mode --mode=sftp
+terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "si -y config_installer"
