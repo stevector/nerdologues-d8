@@ -33,7 +33,7 @@ $get_secrets = function ($required_keys, $defaults)
     die('Could not parse json in secrets file. Aborting!');
   }
   $secrets += $defaults;
-  $missing = array_diff($requiredKeys, array_keys($secrets));
+  $missing = array_diff($required_keys, array_keys($secrets));
   if (!empty($missing)) {
     die('Missing required keys in json secrets file: ' . implode(',', $missing) . '. Aborting!');
   }
