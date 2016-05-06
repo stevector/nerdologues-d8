@@ -23,5 +23,11 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+$migrate_settings = __DIR__ . "/settings.migrate.php";
+if (file_exists($migrate_settings)) {
+  include $migrate_settings;
+}
+
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/config';
