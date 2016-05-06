@@ -11,6 +11,18 @@ git remote add pantheon $(terminus site connection-info  --field=git_url)
 ############## @todo, variable for branch name
 git checkout -b $CIRCLE_BUILD_NUM
 terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
+
+
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__db_name      $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__host         $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__port         $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
+
+
 git push pantheon $CIRCLE_BUILD_NUM -f
 terminus site --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM set-connection-mode --mode=sftp
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "si -y config_installer"
+
+terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
+terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "mi --all"
