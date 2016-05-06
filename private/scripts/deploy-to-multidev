@@ -13,6 +13,10 @@ git checkout -b $CIRCLE_BUILD_NUM
 terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
 
 
+
+mkdir -p ~/terminus/plugins
+git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
+
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__db_name      $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
