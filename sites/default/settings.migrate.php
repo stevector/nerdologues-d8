@@ -21,7 +21,7 @@ $required_keys = [
 
 
 $defaults= array();
-$secrets = function ($required_keys, $defaults)
+$get_secrets = function ($required_keys, $defaults)
 {
   $secretsFile = $_SERVER['HOME'] . '/files/private/secrets.json';
   if (!file_exists($secretsFile)) {
@@ -39,6 +39,8 @@ $secrets = function ($required_keys, $defaults)
   }
   return $secrets;
 };
+
+$secrets = $get_secrets($required_keys, $defaults);
 
 
 if (!empty($secrets['migrate_source_db__password'])) {
