@@ -19,7 +19,27 @@ $required_keys = [
   'migrate_source_db__port'
 ];
 
-$secrets = _get_secrets($required_keys, array());
+
+$defaults= array();
+$secrets = function ($required_keys, $defaults)
+{
+  $secretsFile = $_SERVER['HOME'] . '/files/private/secrets.json';
+  if (!file_exists($secretsFile)) {
+    die('No secrets file found. Aborting!');
+  }
+  $secretsContents = file_get_contents($secretsFile);
+  $secrets = json_decode($secretsContents, 1);
+  if ($secrets == FALSE) {
+    die('Could not parse json in secrets file. Aborting!');
+  }
+  $secrets += $defaults;
+  $missing = array_diff($requiredKeys, array_keys($secrets));
+  if (!empty($missing)) {
+    die('Missing required keys in json secrets file: ' . implode(',', $missing) . '. Aborting!');
+  }
+  return $secrets;
+}
+
 
 if (!empty($secrets['migrate_source_db__password'])) {
 
