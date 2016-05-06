@@ -25,7 +25,7 @@ if (file_exists($local_settings)) {
 }
 
 $migrate_settings = __DIR__ . "/settings.migrate.php";
-if (file_exists($migrate_settings)) {
+if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   include $migrate_settings;
 }
 
