@@ -38,7 +38,7 @@ $secrets = function ($required_keys, $defaults)
     die('Missing required keys in json secrets file: ' . implode(',', $missing) . '. Aborting!');
   }
   return $secrets;
-}
+};
 
 
 if (!empty($secrets['migrate_source_db__password'])) {
