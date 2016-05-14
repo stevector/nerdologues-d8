@@ -30,7 +30,6 @@ class ClipCreator {
    */
   public function __construct(EntityManagerInterface $entity_manager) {
     $this->entityManager = $entity_manager;
-
   }
 
   /**
