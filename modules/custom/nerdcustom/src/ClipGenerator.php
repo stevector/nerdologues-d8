@@ -35,20 +35,6 @@ class ClipGenerator {
   }
 
   /**
-   * Returns the body field string from a node.
-   *
-   * @param NodeInterface $podcast_episode_node
-   *   The node being passed in from hook_entity_insert.
-   *
-   * @return string
-   *   The body field string.
-   */
-  protected function getBodyField(NodeInterface $podcast_episode_node) {
-    // @todo, don't hard code this.
-    return '';
-  }
-
-  /**
    * Create podcast clips based on an episode.
    *
    * @param NodeInterface $podcast_episode_node
