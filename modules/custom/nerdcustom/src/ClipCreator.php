@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\nerdcustom\ClipGenerator.
+ * Contains \Drupal\nerdcustom\ClipCreator.
  */
 
 namespace Drupal\nerdcustom;
@@ -12,12 +12,11 @@ use Drupal\node\NodeInterface;
 use SimpleXMLElement;
 
 /**
- * Class ClipGenerator.
+ * Class ClipCreator.
  *
  * @package Drupal\nerdcustom
  */
-// @todo, change name to creator, not generator.
-class ClipGenerator {
+class ClipCreator {
 
   /**
    * Drupal\Core\Entity\EntityManager definition.
@@ -40,7 +39,7 @@ class ClipGenerator {
    * @param NodeInterface $podcast_episode_node
    *   The node being passed in from hook_entity_insert.
    */
-  public function generateClips(NodeInterface $podcast_episode_node) {
+  public function createClips(NodeInterface $podcast_episode_node) {
 
     if (!$this->validateEpisode($podcast_episode_node)) {
       return;

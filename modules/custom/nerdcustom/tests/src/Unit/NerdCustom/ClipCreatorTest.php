@@ -7,12 +7,12 @@
 
 namespace Drupal\Tests\nerdcustom\Unit\ClipCreator;
 use Drupal\Tests\UnitTestCase;
-use Drupal\nerdcustom\ClipGenerator;
+use Drupal\nerdcustom\ClipCreator;
 
 /**
  * Testing for ClipCreator.
  *
- * @coversDefaultClass \Drupal\nerdcustom\ClipGenerator
+ * @coversDefaultClass \Drupal\nerdcustom\ClipCreator
  * @group nerdcustom
  */
 class ClipCreatorTest extends UnitTestCase {
@@ -23,11 +23,11 @@ class ClipCreatorTest extends UnitTestCase {
   protected function setUp() {
     parent::setUp();
     $this->entityManager = $this->getMock('Drupal\Core\Entity\EntityManagerInterface');
-    $this->clipGenerator = new ClipGenerator($this->entityManager);
+    $this->clipCreator = new ClipCreator($this->entityManager);
   }
 
   /**
-   * Tests ClipGenerator::extractClipTitles().
+   * Tests ClipCreator::extractClipTitles().
    *
    * @param string $body_text
    *   The body text of a podcast_episode.
@@ -38,7 +38,7 @@ class ClipCreatorTest extends UnitTestCase {
    * @covers ::extractClipTitles
    */
   public function testExtractClipTitles($body_text, array $extracted_titles) {
-    $this->assertEquals($extracted_titles, $this->clipGenerator->extractClipTitles($body_text));
+    $this->assertEquals($extracted_titles, $this->clipCreator->extractClipTitles($body_text));
   }
 
   /**
