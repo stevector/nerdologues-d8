@@ -26,7 +26,9 @@ terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__port         $(t
 
 git push pantheon $CIRCLE_BUILD_NUM -f
 terminus site --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM set-connection-mode --mode=sftp
-terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "si -y config_installer"
+# Send to dev null so that the generated admin password does not show.
+# Hiding all output might be overkill to accomplish that goal.
+terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "si -y config_installer" > /dev/null 2>&1
 
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "mi --all"
