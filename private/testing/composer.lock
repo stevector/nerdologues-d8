@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e78e43e20a263c7072d6ac49a2bf4ae",
+    "hash": "3cfa45b7b29ed5d811d75d2a092d3b41",
     "content-hash": "75f8c3cb17f6229df9e74752b3626a2c",
     "packages": [
         {
@@ -262,16 +262,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v2.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "ce5be709d59b32dd8a88c80259028759991a4206"
+                "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ce5be709d59b32dd8a88c80259028759991a4206",
-                "reference": "ce5be709d59b32dd8a88c80259028759991a4206",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
+                "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
                 "shasum": ""
             },
             "require": {
@@ -287,7 +287,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -309,7 +309,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-02-28 19:48:28"
+            "time": "2016-04-19 13:41:41"
         },
         {
             "name": "pear/console_table",
@@ -1251,16 +1251,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.23",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
                 "shasum": ""
             },
             "require": {
@@ -1282,8 +1282,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1298,12 +1298,14 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -1345,7 +1347,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-01-27 12:54:22"
+            "time": "2016-04-13 19:46:30"
         },
         {
             "name": "drupal/drupal-driver",
@@ -1353,12 +1355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "204a770cc79031a484c2c46a8323dbddbca2ca97"
+                "reference": "25d6ceed27d2538324171fe30f11a846c3c7496f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/204a770cc79031a484c2c46a8323dbddbca2ca97",
-                "reference": "204a770cc79031a484c2c46a8323dbddbca2ca97",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/25d6ceed27d2538324171fe30f11a846c3c7496f",
+                "reference": "25d6ceed27d2538324171fe30f11a846c3c7496f",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1404,7 @@
                 "test",
                 "web"
             ],
-            "time": "2016-03-29 18:26:16"
+            "time": "2016-04-14 18:16:06"
         },
         {
             "name": "drupal/drupal-extension",
@@ -1410,12 +1412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/drupalextension.git",
-                "reference": "9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e"
+                "reference": "83aeb0d4ecb318fe60cda7dce28e04d66a0e9a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e",
-                "reference": "9aec37ba55f2c515f58af4f9dd8ae2bb2bfbd37e",
+                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/83aeb0d4ecb318fe60cda7dce28e04d66a0e9a43",
+                "reference": "83aeb0d4ecb318fe60cda7dce28e04d66a0e9a43",
                 "shasum": ""
             },
             "require": {
@@ -1463,7 +1465,7 @@
                 "test",
                 "web"
             ],
-            "time": "2016-03-08 16:36:12"
+            "time": "2016-04-08 16:39:51"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
@@ -1662,16 +1664,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/31382fef2889136415751badebbd1cb022a4ed72",
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72",
                 "shasum": ""
             },
             "require": {
@@ -1716,7 +1718,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-02-18 21:54:00"
+            "time": "2016-04-13 19:56:01"
         },
         {
             "name": "instaclick/php-webdriver",

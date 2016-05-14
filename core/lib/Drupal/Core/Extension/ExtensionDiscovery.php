@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Core\Extension\ExtensionDiscovery.
- */
-
 namespace Drupal\Core\Extension;
 
 use Drupal\Component\FileCache\FileCacheFactory;
@@ -514,6 +509,13 @@ class ExtensionDiscovery {
       $this->infoParser = new InfoParser();
     }
     return $this->infoParser;
+  }
+
+  /**
+   * Reset the discovered files.
+   */
+  public static function reset() {
+    static::$files = [];
   }
 
 }

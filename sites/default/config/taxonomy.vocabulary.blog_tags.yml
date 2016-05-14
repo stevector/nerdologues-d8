@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Blog Tags'
 vid: blog_tags
-description: ''
+description: 'Categories for blog posts'
 hierarchy: 0
 weight: 0

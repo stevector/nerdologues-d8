@@ -1,0 +1,39 @@
+uuid: a8497f57-80f9-400b-a37a-36146631c292
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_location
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Nodes (Location)'
+source:
+  plugin: d7_node
+  node_type: location
+process:
+  nid: nid
+  vid: vid
+  type: type
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  field_address: field_address
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance

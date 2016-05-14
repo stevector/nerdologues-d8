@@ -1,0 +1,22 @@
+uuid: ac2a6e52-82b1-4352-b9ca-69c6164fe0e9
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_text_settings
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'Drupal teaser length configuration'
+source:
+  plugin: variable
+  variables:
+    - teaser_length
+process:
+  default_summary_length: teaser_length
+destination:
+  plugin: config
+  config_name: text.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }
