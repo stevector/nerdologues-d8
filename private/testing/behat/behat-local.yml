@@ -20,6 +20,9 @@ default:
       base_url: http://127.0.0.1:8888/
     Drupal\DrupalExtension:
       blackbox: ~
+      region_map:
+        From the podcast: ".field--name-field-ref-podcast"
+        From the episode: ".field--name-field-ref-podcast-episode"
       drupal:
         drupal_root: ../../
       api_driver: 'drupal'

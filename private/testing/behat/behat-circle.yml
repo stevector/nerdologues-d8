@@ -20,6 +20,9 @@ default:
       base_url: http://server.local/
     Drupal\DrupalExtension:
       blackbox: ~
+      region_map:
+        From the podcast: ".field--name-field-ref-podcast"
+        From the episode: ".field--name-field-ref-podcast-episode"
       drupal:
         drupal_root: ../../
       api_driver: 'drupal'
