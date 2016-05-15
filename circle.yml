@@ -81,6 +81,7 @@ test:
     #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     #- drush mi --all
     #- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
-    - cd private/scripts/ && chmod +x deploy-to-multidev && ./deploy-to-multidev
+    - chmod +x private/scripts/deploy-to-multidev
+    - cd private/scripts/ && ./deploy-to-multidev
     #- export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$CIRCLE_BUILD_NUM'-nerdologues-d8.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'
     #- echo $BEHAT_PARAMS && export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$CIRCLE_BUILD_NUM'-nerdologues-d8.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'  && cd private/testing/ && ./bin/behat --config=behat/behat-pantheon.yml   behat/features/migration/
