@@ -1,34 +1,27 @@
 #!/bin/bash
 #
-# Usage:
+# Deploy the current Circle CI build to multidev
 #
-#   ./bin/local-test
-#
-
-composer global require pantheon-systems/terminus
-terminus auth login --machine-token=$TerminusToken
-git remote add pantheon $(terminus site connection-info  --field=git_url)
-############## @todo, variable for branch name
+git remote add pantheon $(terminus site connection-info --field=git_url)
+# @todo, Consider naming based on PR number instead of build number.
 git checkout -b $CIRCLE_BUILD_NUM
-terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
-
-
 
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__db_name      $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__host         $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__port         $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
-
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__db_name  $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__host     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__port     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
 
 git push pantheon $CIRCLE_BUILD_NUM -f
+# @todo Don't switch to sftp after 
+# https://www.drupal.org/node/2156401 lands
 terminus site --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM set-connection-mode --mode=sftp
 # Send to dev null so that the generated admin password does not show.
-# Hiding all output might be overkill to accomplish that goal.
+# Hiding all output might be overkill for accomplishing that goal.
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "si -y config_installer" > /dev/null 2>&1
-
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "mi --all"
+terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
