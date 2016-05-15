@@ -60,7 +60,7 @@ test:
     # @todo "Should" is a bad sign in the previous comment. Figure
     # out a way to verify that the environment exists when needed.
     - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
-        background: true
+          background: true
     
     # These commands were used when migration testing was done on Circle.
     #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
