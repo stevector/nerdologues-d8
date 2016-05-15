@@ -14,9 +14,12 @@ machine:
     WEB_GROUP: www-data
   hosts:
     server.local: 127.0.0.1
-database:
-  override:
-    - mysql -u ubuntu -e "create database migration_source_db"
+
+# This override were used when migration testing was done on Circle.
+#database:
+#  override:
+#    - mysql -u ubuntu -e "create database migration_source_db"
+
 dependencies:
   cache_directories:
     - ~/.composer/cache
@@ -52,8 +55,17 @@ test:
     - composer global require drush/drush:8.*
     - composer global require pantheon-systems/terminus
     - terminus auth login --machine-token=$TerminusToken
-    - wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
-    - mysql -u ubuntu migration_source_db < latest_db.sql
+    # Create environment as background process.
+    # It should be done by the time it is needed at the end of the build.
+    # @todo "Should" is a bad sign in the previous comment. Figure
+    # out a way to verify that the environment exists when needed.
+    # - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev &
+    #      background: true
+    
+    # These commands were used when migration testing was done on Circle.
+    #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    #- mysql -u ubuntu migration_source_db < latest_db.sql
+    
     # Copy the settings.local into place
     - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
@@ -71,8 +83,11 @@ test:
     - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
     - ./vendor/bin/phpunit -c core/ --group=nerdcustom modules/custom/ -v
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
-    #### Migration testing
-    #### @todo, reinstall Drupal
+    #### Migration testing on Circle is now commented out.
     #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
-    - drush mi --all
-    - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
+    #- drush mi --all
+    #- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
+
+    # Make a multidev environment and deploy to it.
+    - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
+    - chmod +x private/scripts/deploy-to-multidev && ./private/scripts/deploy-to-multidev
