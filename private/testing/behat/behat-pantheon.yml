@@ -17,9 +17,11 @@ default:
       goutte: ~
       selenium2: ~
       files_path: './data-files'
-      base_url: http://dev-nerdologues-d8.pantheon.io/
+# Supplied by env variable.
+#     base_url: http://170-nerdologues-d8.pantheonsite.io/
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drush'
       drush:
-        alias: '@pantheon.nerdologues-d8.dev'
+# Supplied by env variable.
+#       alias: '@pantheon.nerdologues-d8.170'
