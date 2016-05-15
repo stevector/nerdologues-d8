@@ -48,19 +48,24 @@ dependencies:
     - sudo service apache2 restart
 test:
   pre:
-    ###########################################- cd private/testing/ && composer install
-    ###########################################- composer global require drush/drush:8.*
-    ###########################################- composer global require pantheon-systems/terminus
-    ###########################################- terminus auth login --machine-token=$TerminusToken
-    ###########################################- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
-    ###########################################- mysql -u ubuntu migration_source_db < latest_db.sql
+    - cd private/testing/ && composer install
+    - composer global require drush/drush:8.*
+    - composer global require pantheon-systems/terminus
+    - terminus auth login --machine-token=$TerminusToken
+    # Create environment as background process.
+    # It should be done by the time it is needed at the end of the build.
+    # @todo "Should" is a bad sign in the previous comment. Figure
+    # out a way to verify that the environment exists when needed.
+    - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev &
+    - wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
+    - mysql -u ubuntu migration_source_db < latest_db.sql
     # Copy the settings.local into place
-    ###########################################- cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
+    - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
-    ###########################################- echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-    ###########################################- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
+    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     # The behat tests fail if the site isn't curled first. Which is weird.
-    ###########################################- curl $SERVER
+    - curl $SERVER
   override:
     # Run phpcs
     # @todo, figure out why running these from phpcs.sh no longer causes
