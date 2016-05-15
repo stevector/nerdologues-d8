@@ -14,7 +14,7 @@ body .field__label {
 /**
  * Patreon element.
  */
-.main-nav--patreon {
+.main-nav.main-nav--patreon {
   background-color: #232D32;
 }
 
@@ -22,8 +22,8 @@ body .field__label {
   max-width: 800px;
   margin: 0 auto;
 }
-
-.main-nav--patreon-link {
+/* There are no winners in CSS specificity wars */
+.main-nav a.main-nav--patreon-link {
   background-color: #232D32;
   text-align: right;
   font-size: 14px;
