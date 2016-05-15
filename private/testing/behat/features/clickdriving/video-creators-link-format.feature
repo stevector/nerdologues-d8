@@ -2,7 +2,6 @@
    And protect privacy of non-members
    Only group members names should be linked from videos and podcast class.
 
-
   @api
   Scenario: video
     Given I am logged in as a user with the "content_administrator" role
