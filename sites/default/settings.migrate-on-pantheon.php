@@ -5,6 +5,7 @@
  *
  * @param array $requiredKeys  List of keys in secrets file that must exist.
  */
+// These secret keys come from the script deploy-to-multidev. 
 $required_keys = [
   'migrate_source_db__database',
   'migrate_source_db__username',
