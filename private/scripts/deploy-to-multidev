@@ -9,14 +9,14 @@ git checkout -b $CIRCLE_BUILD_NUM
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
-terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__db_name  $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
+terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__database $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__host     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__port     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
 
 git push pantheon $CIRCLE_BUILD_NUM -f
-# @todo Don't switch to sftp after 
+# @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus site --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM set-connection-mode --mode=sftp
 # Send to dev null so that the generated admin password does not show.
