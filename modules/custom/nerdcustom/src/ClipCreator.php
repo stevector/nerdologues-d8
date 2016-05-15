@@ -51,7 +51,9 @@ class ClipCreator {
 
       $clip_values = [
         'type' => 'clip',
+        // No HTML should be present in node titles.
         'title' => strip_tags($clip_title),
+        // @todo, is there a cleaner way to target this id?
         'field_ref_podcast' => $podcast_episode_node->field_ref_podcast->referencedEntities()[0],
         'field_ref_podcast_episode' => $podcast_episode_node->id()
       ];
@@ -65,7 +67,8 @@ class ClipCreator {
    * Validate that this node should have clips created for it.
    *
    * @param NodeInterface $podcast_episode_node
-   *   The node being passed in from hook_entity_insert.
+   *   The node being passed in from hook_entity_insert. This node might not
+   *   actually be a podcast_episode.
    */
   protected function validateEpisode(NodeInterface $podcast_episode_node) {
     if ($podcast_episode_node->bundle() === 'podcast_episode' && $podcast_episode_node->field_ref_podcast->referencedEntities()[0]->label() === 'Your Stories') {

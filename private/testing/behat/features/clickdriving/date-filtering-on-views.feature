@@ -18,4 +18,3 @@ Feature: Date list
     Then that video appears on the video page
     # @todo
     # And it appears on the homepage "Nerds Online" section.
-
