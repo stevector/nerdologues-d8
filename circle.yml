@@ -59,8 +59,8 @@ test:
     # It should be done by the time it is needed at the end of the build.
     # @todo "Should" is a bad sign in the previous comment. Figure
     # out a way to verify that the environment exists when needed.
-    - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
-          background: true
+    # - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev &
+    #      background: true
     
     # These commands were used when migration testing was done on Circle.
     #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
@@ -88,4 +88,6 @@ test:
     #- drush mi --all
     #- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
 
+    # Make a multidev environment and deploy to it.
+    - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
     - chmod +x private/scripts/deploy-to-multidev && ./private/scripts/deploy-to-multidev
