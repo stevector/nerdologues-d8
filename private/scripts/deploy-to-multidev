@@ -9,6 +9,8 @@ git checkout -b $CIRCLE_BUILD_NUM
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
+# @todo, make a terminus plugin to encapsulate these five lines.
+# Something like terminus site set-migration-source-secrets --from-site=nerdololgues --from-env=migrateprep
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__database $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__username $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
 terminus secrets set --env=$CIRCLE_BUILD_NUM migrate_source_db__password $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
@@ -28,6 +30,7 @@ terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
 
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
 terminus sites aliases
+# Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
 export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$CIRCLE_BUILD_NUM'-nerdologues-d8.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'
