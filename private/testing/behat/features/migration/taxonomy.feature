@@ -1,7 +1,4 @@
-Feature: Nerdlist
-  In order promote members of the group
-  As a content creator
-  I need to create bios and have them appear on the nerd list
+Feature: Taxonomy migration
 
   @api
   Scenario: Bio without proper term does not appear on the nerd page.
@@ -12,7 +9,7 @@ Feature: Nerdlist
     Then I should see "Member Designations"
     Then I should see "Tags"
 
-    # Verify individual terms.    
+    # Verify individual terms.
     When I visit "admin/structure/taxonomy/manage/member_designations/overview"
     Then I should see the link "Current Member"
     Then I should see the link "Emeritus"
