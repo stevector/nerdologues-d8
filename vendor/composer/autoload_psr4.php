@@ -48,6 +48,10 @@ return array(
     'Drupal\\Component\\' => array($baseDir . '/core/lib/Drupal/Component'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
+    'CommerceGuys\\Zone\\' => array($vendorDir . '/commerceguys/zone/src'),
+    'CommerceGuys\\Intl\\' => array($vendorDir . '/commerceguys/intl/src'),
+    'CommerceGuys\\Enum\\' => array($vendorDir . '/commerceguys/enum/src'),
+    'CommerceGuys\\Addressing\\' => array($vendorDir . '/commerceguys/addressing/src'),
     'Behat\\Mink\\Driver\\' => array($vendorDir . '/behat/mink-browserkit-driver/src', $vendorDir . '/behat/mink-goutte-driver/src'),
     'Behat\\Mink\\' => array($vendorDir . '/behat/mink/src'),
 );
