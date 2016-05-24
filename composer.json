@@ -40,5 +40,11 @@
         "post-autoload-dump": "Drupal\\Core\\Composer\\Composer::ensureHtaccess",
         "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
         "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org/"
+        }
     }
 }
