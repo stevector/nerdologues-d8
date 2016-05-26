@@ -24,7 +24,7 @@ destination:
   plugin: 'entity:file'
   source_path_property: filepath
   urlencode: true
-  source_base_path: /Users/stevepersch/Downloads/files_migrateprep/
+  source_base_path: sites/default/files/_from_d7/
 migration_dependencies:
   required: {  }
   optional: {  }
