@@ -28,10 +28,14 @@ terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "mi --all"
 terminus drush --site=nerdologues-d8 --env=$CIRCLE_BUILD_NUM  "ms"
 
+
+
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
 terminus sites aliases
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
 export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$CIRCLE_BUILD_NUM'-nerdologues-d8.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'
+# Make sure the site is accessible over the web before making requests to it with Behat.
+curl curl http://$CIRCLE_BUILD_NUM-nerdologues-d8.pantheonsite.io/
 cd private/testing/ && ./bin/behat --config=behat/behat-pantheon.yml   behat/features/migration/
