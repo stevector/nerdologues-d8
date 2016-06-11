@@ -13,7 +13,6 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Installer\Exception\AlreadyInstalledException;
 use Drupal\Core\Installer\Exception\InstallerException;
 use Drupal\Core\Installer\Exception\NoProfilesException;
-use Drupal\Core\Installer\Exception\TooManyDistributionsException;
 use Drupal\Core\Installer\InstallerKernel;
 use Drupal\Core\Language\Language;
 use Drupal\Core\Language\LanguageManager;
@@ -1207,14 +1206,13 @@ function _install_select_profile(&$install_state) {
       return $profile;
     }
   }
-  // Check for a distribution. If the site has more than one distribution force
-  // the user to choose which will ensure that settings.php has to be written.
-  try {
-    if ($distribution = \Drupal::service('kernel')->getDistribution()) {
-      return $distribution;
+  // Check for a distribution profile.
+  foreach ($install_state['profiles'] as $profile) {
+    $profile_info = install_profile_info($profile->getName());
+    if (!empty($profile_info['distribution'])) {
+      return $profile->getName();
     }
   }
-  catch (TooManyDistributionsException $e) {}
 
   // Get all visible (not hidden) profiles.
   $visible_profiles = array_filter($install_state['profiles'], function ($profile) {
@@ -2166,30 +2164,13 @@ function install_display_requirements($install_state, $requirements) {
 }
 
 /**
- * Installation task; writes profile to settings.php (absent a distribution).
+ * Installation task; ensures install profile is written to settings.php.
  *
  * @param array $install_state
  *   An array of information about the current installation state.
  */
 function install_write_profile($install_state) {
-  $settings_value = Settings::get('install_profile');
-  // We need to write to settings.php if the value in settings.php does not
-  // equal the selected profile.
-  $need_to_write = $settings_value !== $install_state['parameters']['profile'];
-  // However, if we're dealing with a distribution and the profile is not
-  // writable do not write the value to settings.php if the current value is not
-  // set.
-  $distribution = FALSE;
-  try {
-    $distribution = \Drupal::service('kernel')->getDistribution();
-  }
-  catch (TooManyDistributionsException $e) {}
-
-  if ($settings_value == '' && $distribution && !is_writable(\Drupal::service('site.path') . '/settings.php')) {
-    $need_to_write = FALSE;
-  }
-
-  if ($need_to_write) {
+  if (Settings::get('install_profile') !== $install_state['parameters']['profile']) {
     // Remember the profile which was used.
     $settings['settings']['install_profile'] = (object) array(
       'value' => $install_state['parameters']['profile'],

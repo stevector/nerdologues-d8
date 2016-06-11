@@ -511,11 +511,4 @@ class ExtensionDiscovery {
     return $this->infoParser;
   }
 
-  /**
-   * Reset the discovered files.
-   */
-  public static function reset() {
-    static::$files = [];
-  }
-
 }
