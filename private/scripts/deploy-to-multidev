@@ -37,5 +37,5 @@ echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
 export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$CIRCLE_BUILD_NUM'-nerdologues-d8.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'
 # Make sure the site is accessible over the web before making requests to it with Behat.
-curl curl http://$CIRCLE_BUILD_NUM-nerdologues-d8.pantheonsite.io/
+curl http://$CIRCLE_BUILD_NUM-nerdologues-d8.pantheonsite.io/
 cd private/testing/ && ./bin/behat --config=behat/behat-pantheon.yml   behat/features/migration/
