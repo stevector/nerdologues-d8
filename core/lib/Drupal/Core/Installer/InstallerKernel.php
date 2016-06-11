@@ -27,7 +27,7 @@ class InstallerKernel extends DrupalKernel {
    * re-instantiated during a single install request. Most drivers will not
    * need this method.
    *
-   * @see \Drupal\Core\Database\Install\Tasks::runTasks().
+   * @see \Drupal\Core\Database\Install\Tasks::runTasks()
    */
   public function resetConfigStorage() {
     $this->configStorage = NULL;
@@ -44,26 +44,6 @@ class InstallerKernel extends DrupalKernel {
    */
   public function getConfigStorage() {
     return parent::getConfigStorage();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getInstallProfile() {
-    global $install_state;
-    if ($install_state && empty($install_state['installation_finished'])) {
-      // If the profile has been selected return it.
-      if (isset($install_state['parameters']['profile'])) {
-        $profile = $install_state['parameters']['profile'];
-      }
-      else {
-        $profile = NULL;
-      }
-    }
-    else {
-      $profile = parent::getInstallProfile();
-    }
-    return $profile;
   }
 
 }

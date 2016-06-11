@@ -61,11 +61,11 @@ test:
     # out a way to verify that the environment exists when needed.
     # - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev &
     #      background: true
-    
+
     # These commands were used when migration testing was done on Circle.
     #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
     #- mysql -u ubuntu migration_source_db < latest_db.sql
-    
+
     # Copy the settings.local into place
     - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
@@ -90,4 +90,5 @@ test:
 
     # Make a multidev environment and deploy to it.
     - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
+    # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
     - chmod +x private/scripts/deploy-to-multidev && ./private/scripts/deploy-to-multidev

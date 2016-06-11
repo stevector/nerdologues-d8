@@ -140,18 +140,4 @@ interface DrupalKernelInterface extends HttpKernelInterface, ContainerAwareInter
    */
   public function loadLegacyIncludes();
 
-  /**
-   * Get the name of any discovered profile that is a distribution.
-   *
-   * If multiple profiles are distributions an exception will be thrown.
-   *
-   * @return string|FALSE
-   *   The machine name of any discovered distribution. FALSE if there are no
-   *   distributions.
-   *
-   * @throws \Drupal\Core\Installer\Exception\TooManyDistributionsException
-   *   Thrown when a site has more than one distribution installation profile.
-   */
-  public function getDistribution();
-
 }
