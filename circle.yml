@@ -95,7 +95,7 @@ test:
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
     #### Migration testing on Circle is now commented out.
-    - cd web && drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    #- cd web && drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     - cd web && drush mi --all
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
 
