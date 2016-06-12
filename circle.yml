@@ -89,8 +89,8 @@ test:
     # circle fails.
     # Circle did fail here: https://circleci.com/gh/stevector/nerdologues-d8/4
     # But not here: https://circleci.com/gh/stevector/nerdologues-d8/18
-    -  ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/modules/custom
-    -  ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/themes/custom
+    -  ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=web/modules/contrib/coder/coder_sniffer/Drupal/  web/modules/custom
+    -  ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=web/modules/contrib/coder/coder_sniffer/Drupal/  web/themes/custom
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - ./vendor/bin/behat --config=private/testing/behat/behat-circle.yml private/testing/behat/features/clickdriving/ --strict
 
