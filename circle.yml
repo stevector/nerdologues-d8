@@ -8,7 +8,7 @@ machine:
     DB_NAME: "circle_test"
     DB_USERNAME: "ubuntu"
     DB_PASSWORD: ""
-    DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/"
+    DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
@@ -53,8 +53,19 @@ test:
   pre:
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
-    - composer global require pantheon-systems/terminus
-    - terminus auth login --machine-token=$TerminusToken
+
+
+
+    ########################- composer global require pantheon-systems/terminus
+    ########################- terminus auth login --machine-token=$TerminusToken
+
+
+
+
+
+
+
+
     # Create environment as background process.
     # It should be done by the time it is needed at the end of the build.
     # @todo "Should" is a bad sign in the previous comment. Figure
@@ -67,10 +78,10 @@ test:
     #- mysql -u ubuntu migration_source_db < latest_db.sql
 
     # Copy the settings.local into place
-    - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
+    - cp  private/testing/scripts/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - cd web && drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
@@ -79,14 +90,14 @@ test:
     # circle fails.
     # Circle did fail here: https://circleci.com/gh/stevector/nerdologues-d8/4
     # But not here: https://circleci.com/gh/stevector/nerdologues-d8/18
-    - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
-    - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
-    - ./vendor/bin/phpunit -c core/ --group=nerdcustom modules/custom/ -v
+    - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/modules/custom
+    - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/themes/custom
+    - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
     #### Migration testing on Circle is now commented out.
-    #- drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
-    #- drush mi --all
-    #- cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
+    - cd web && drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - cd web && drush mi --all
+    - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/migration --strict
 
     # Make a multidev environment and deploy to it.
     #- terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
