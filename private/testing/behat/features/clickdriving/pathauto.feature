@@ -14,7 +14,7 @@ Feature: Pathauto
     Scenario: Podcast, Podcast Episode, and clip
     Given I am an anonymous user
     Given I am viewing a podcast with the title "Someone's cool podcast"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someone-s-cool-podcast\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast\" />"
 
     # PODCAST EPISODE
     Given I am logged in as a user with the "content_administrator" role
