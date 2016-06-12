@@ -51,7 +51,6 @@ dependencies:
     - sudo service apache2 restart
 test:
   pre:
-    - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
 
 
