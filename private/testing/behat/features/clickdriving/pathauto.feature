@@ -22,7 +22,7 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
     And I press "Save and publish"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someone-s-cool-podcast/episodes/one-podcast-episode\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-podcast-episode\" />"
 
     # CLIP
     When I visit "node/add/clip"
@@ -30,7 +30,7 @@ Feature: Pathauto
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I press "Save and publish"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someone-s-cool-podcast/clips/clip-story\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/clip-story\" />"
 
   @api
   Scenario: Basic page
