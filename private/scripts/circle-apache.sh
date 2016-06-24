@@ -1,5 +1,5 @@
 #!bin/bash
-
+sudo usermod -a -G $WEB_GROUP $WEB_USER
 echo "<VirtualHost *:80>
           UseCanonicalName Off
           DocumentRoot %DOCROOT%
