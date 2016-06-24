@@ -24,10 +24,8 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
   pre:
-    # Modify user to make sure that there will be no permission issues.
-    - sudo usermod -a -G $WEB_GROUP $WEB_USER
     # Add apache config.
-    - ./private/scripts/circle-apache.sh
+    - chmod +x private/scripts/circle-apache.sh && ./private/scripts/circle-apache.sh
     
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
