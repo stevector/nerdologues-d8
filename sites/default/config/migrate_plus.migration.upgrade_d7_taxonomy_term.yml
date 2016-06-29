@@ -18,7 +18,6 @@ process:
   name: name
   description: description
   weight: weight
-  # Only attempt to stub real (non-zero) parents.
   parent_id:
     -
       plugin: skip_on_empty
