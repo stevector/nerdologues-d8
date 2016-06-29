@@ -4,7 +4,7 @@
 #
 git remote add pantheon $(terminus site connection-info --field=git_url)
 # @todo, Consider naming based on PR number instead of build number.
-git checkout -b $CIRCLE_BUILD_NUM
+git checkout -b $TERMINUS_ENV
 
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
@@ -17,7 +17,7 @@ terminus secrets set migrate_source_db__password $(terminus site  connection-inf
 terminus secrets set migrate_source_db__host     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
 terminus secrets set migrate_source_db__port     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
 
-git push pantheon $CIRCLE_BUILD_NUM -f
+git push pantheon $TERMINUS_ENV -f
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus site set-connection-mode --mode=sftp
