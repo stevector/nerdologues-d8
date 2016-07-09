@@ -11,6 +11,7 @@ git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus
 
 # @todo, make a terminus plugin to encapsulate these five lines.
 # Something like terminus site set-migration-source-secrets --from-site=nerdololgues --from-env=migrateprep
+terminus site connection-info --site=nerdologues --env=migrateprep
 terminus secrets set migrate_source_db__database $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
 terminus secrets set migrate_source_db__username $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
 terminus secrets set migrate_source_db__password $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
