@@ -12,60 +12,24 @@ machine:
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
+    TERMINUS_ENV: $CIRCLE_BUILD_NUM
+    TERMINUS_SITE: nerdologues-d8    
   hosts:
     server.local: 127.0.0.1
-
-# This override were used when migration testing was done on Circle.
-#database:
-#  override:
-#    - mysql -u ubuntu -e "create database migration_source_db"
 
 dependencies:
   cache_directories:
     - ~/.composer/cache
   pre:
-    # Modify user to make sure that there will be no permission issues.
-    - sudo usermod -a -G $WEB_GROUP $WEB_USER
     # Add apache config.
-    - |
-      echo "<VirtualHost *:80>
-          UseCanonicalName Off
-          DocumentRoot %DOCROOT%
-          ServerName %SERVER%
-        <Directory %DOCROOT%>
-          Options FollowSymLinks
-          AllowOverride All
-          RewriteEngine On
-          RewriteBase /
-          RewriteCond %{REQUEST_FILENAME} !-f
-          RewriteCond %{REQUEST_FILENAME} !-d
-          RewriteRule %DOCROOT%/(.*)$ index.php/?q=$1 [L,QSA]
-          Order allow,deny
-          Allow from all
-        </Directory>
-      </VirtualHost>" > apache-vhost.conf
-    - cp apache-vhost.conf /etc/apache2/sites-available/default
-    - sudo sed -e "s?%DOCROOT%?$DOCROOT?g" --in-place /etc/apache2/sites-available/default
-    - sudo sed -e "s?%SERVER%?$SERVER?g" --in-place /etc/apache2/sites-available/default
-    - sudo a2enmod rewrite
-    - sudo service apache2 restart
-test:
-  pre:
+    - chmod +x private/scripts/circle-apache.sh && ./private/scripts/circle-apache.sh
+    
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
     - composer global require pantheon-systems/terminus
     - terminus auth login --machine-token=$TerminusToken
-    # Create environment as background process.
-    # It should be done by the time it is needed at the end of the build.
-    # @todo "Should" is a bad sign in the previous comment. Figure
-    # out a way to verify that the environment exists when needed.
-    # - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev &
-    #      background: true
-    
-    # These commands were used when migration testing was done on Circle.
-    #- wget $(terminus site backups get --site=nerdologues --env=migrateprep --element=db --latest) -O latest_db.sql.gz && gunzip latest_db.sql.gz
-    #- mysql -u ubuntu migration_source_db < latest_db.sql
-    
+test:
+  pre:
     # Copy the settings.local into place
     - cp  private/testing/scripts/settings.cirlceci.php sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
@@ -74,16 +38,12 @@ test:
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
-    # Run phpcs
-    # @todo, figure out why running these from phpcs.sh no longer causes
-    # circle fails.
-    # Circle did fail here: https://circleci.com/gh/stevector/nerdologues-d8/4
-    # But not here: https://circleci.com/gh/stevector/nerdologues-d8/18
     - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
     - cd private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
     - ./vendor/bin/phpunit -c core/ --group=nerdcustom modules/custom/ -v
     - cd private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
     # Make a multidev environment and deploy to it.
-    - terminus site create-env --to-env=$CIRCLE_BUILD_NUM --from-env=dev
+    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+    # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
     - chmod +x private/scripts/deploy-to-multidev && ./private/scripts/deploy-to-multidev
