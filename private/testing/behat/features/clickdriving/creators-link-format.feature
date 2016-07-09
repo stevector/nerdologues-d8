@@ -3,7 +3,7 @@
    Only group members names should be linked from videos and podcast class.
 
   @api
-  Scenario: video
+  Scenario: video and clips
     Given I am logged in as a user with the "content_administrator" role
    Given a "member_designations" term with the name "Viewable bio page"
 
@@ -27,6 +27,25 @@
     And I press "Save"
     And I follow "Some video"
     Then I should see the text "Some video"
+    Then I should see the link "Jane Member"
+    # Should see the text but not a link
+    Then I should see the text "Joe Non-member"
+    Then I should not see the link "Joe Non-member"
+
+    # CLIP
+    Given I am viewing a podcast with the title "Someone's cool podcast"
+    # PODCAST EPISODE
+    Given I am logged in as a user with the "content_administrator" role
+    When I visit "node/add/podcast_episode"
+    And I fill in "title[0][value]" with "That one podcast episode"
+    And I select the radio button "Someone's cool podcast"
+    And I press "Save and publish"
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Joe Non-member, Jane Member"
+    And I press "Save and publish"
     Then I should see the link "Jane Member"
     # Should see the text but not a link
     Then I should see the text "Joe Non-member"
