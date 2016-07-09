@@ -14,6 +14,7 @@ dependencies:
   module:
     - datetime
     - ds
+    - nerdcustom
     - text
     - user
 third_party_settings:
@@ -79,10 +80,9 @@ content:
   field_ref_creators:
     weight: 2
     label: inline
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_label
+    type: nerd_person_field_formatter
   field_ref_podcast:
     weight: 0
     label: inline
