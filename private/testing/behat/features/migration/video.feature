@@ -1,12 +1,12 @@
-Feature: Person
+Feature: Video
 
   @api
-  Scenario: Person bio pages
+  Scenario: Video nodes table
     Given I am logged in as a user with the "administrator" role
-    When I visit "admin/content-migration"
+    When I visit "admin/content-migration/video"
     Then I should see the following table portion
-    |Chris Geiger | Person | Current Member, Founding Member, Viewable bio page | public://geiger-square.png | public://geiger-square.png | Geiger |
+    | Kay Liston Reviews the World - Cat Sweater | https://www.youtube.com/watch?v=5OUSsxXkUdk | Joe Gennaro, Claire Friedman, Mary Beth Smith | 2014-02-13 |
     Then I should see the following table portion
-    | Claire Friedman | Person | Emeritus, Viewable bio page | public://friedman-profile_0.jpg	| public://friedman-profile_0.jpg | Friedman |
-    Then I should see the following table portion    
-    | Renata Graw     | Person |                             |                                  |                                 | Graw |
+    | Repossessed | https://www.youtube.com/watch?v=dn8p_m5wcYo | Chris Geiger, Michael Jando, Steve Persch, Kevin Reader | 2014-01-30 |
+    Then I should see the following table portion
+    | Intro to "Fisticuffs!" - an Instructional Video | https://www.youtube.com/watch?v=22DlIjcieJc | Chris Geiger | 2016-02-08 |
