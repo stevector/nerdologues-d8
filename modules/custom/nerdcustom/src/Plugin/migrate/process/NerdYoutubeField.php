@@ -41,12 +41,5 @@ class NerdYoutubeField extends ProcessPluginBase {
                 return $return;
             }
             
-      return 'https://www.youtube.com/watch?v=c-YdT7_w91Y';
-    if ($value == 3) {
-      return 'administrator';
-    }
-    elseif ($value == 4) {
-      return 'content_administrator';
-    }
   }
 }
