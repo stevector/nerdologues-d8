@@ -28,7 +28,9 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_date_published: field_date_published
+  field_date_published:
+    plugin: nerd_date_published
+    source: field_date_published
   field_body: field_body
   field_youtube:
     plugin: nerd_youtube_field
