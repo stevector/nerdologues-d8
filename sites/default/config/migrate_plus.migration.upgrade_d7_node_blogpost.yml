@@ -13,7 +13,9 @@ source:
 process:
   nid: nid
   vid: vid
-  type: type
+  type:
+    plugin: nerd_blog_post_type
+    source: type
   langcode:
     plugin: default_value
     source: language
@@ -29,7 +31,9 @@ process:
   revision_log: log
   revision_timestamp: timestamp
   field_body: field_body
-  field_date_published: field_date_published
+  field_date_published:
+    plugin: nerd_date_published
+    source: field_date_published
   field_image:
     plugin: iterator
     source: field_image
@@ -51,6 +55,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
-    - upgrade_d7_node_type
+    - upgrade_d7_taxonomy_term
+    - upgrade_d7_file
+    - upgrade_d7_filter_format
   optional:
     - upgrade_d7_field_instance
