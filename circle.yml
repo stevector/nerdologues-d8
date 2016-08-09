@@ -26,7 +26,8 @@ dependencies:
     
     - cd private/testing/ && composer install
     - composer global require drush/drush:8.*
-    - composer global require pantheon-systems/terminus
+    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
+
     - terminus auth login --machine-token=$TerminusToken
 test:
   pre:
