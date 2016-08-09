@@ -25,7 +25,7 @@ dependencies:
     - chmod +x private/scripts/circle-apache.sh && ./private/scripts/circle-apache.sh
     
     - cd private/testing/ && composer install
-    - composer global require drush/drush:8.*
+    - composer global require drush/drush
     - composer global require pantheon-systems/terminus
     - terminus auth login --machine-token=$TerminusToken
 test:
