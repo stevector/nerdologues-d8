@@ -71,7 +71,7 @@ class ClipCreator {
    *   actually be a podcast_episode.
    */
   protected function validateEpisode(NodeInterface $podcast_episode_node) {
-    if ($podcast_episode_node->bundle() === 'podcast_episode' && $podcast_episode_node->field_ref_podcast->referencedEntities()[0]->label() === 'Your Stories') {
+    if ($podcast_episode_node->bundle() === 'podcast_episode' && !empty($podcast_episode_node->field_ref_podcast->referencedEntities()[0]) &&  $podcast_episode_node->field_ref_podcast->referencedEntities()[0]->label() === 'Your Stories') {
       return TRUE;
     }
     else {
