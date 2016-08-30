@@ -29,38 +29,20 @@ process:
   revision_log: log
   revision_timestamp: timestamp
   field_body: field_body
-  field_date_published: field_date_published
-  field_file:
-    plugin: iterator
-    source: field_file
-    process:
-      target_id: fid
-      display: display
-      description: description
+  field_date_published:
+    plugin: nerd_date_published
+    source: field_date_published
+  # field_file:
+  #   plugin: iterator
+  #   source: field_file
+  #   process:
+  #     target_id: fid
+  #     display: display
+  #     description: description
   field_lede: field_lede
   field_link: field_link
   field_ref_podcast: field_ref_podcast
-  field_text_original_mp3_url:
-    plugin: iterator
-    source: field_text_original_mp3_url
-    process:
-      value: value
-      format:
-        -
-          plugin: static_map
-          bypass: true
-          source: format
-          map:
-            - null
-        -
-          plugin: skip_on_empty
-          method: process
-        -
-          plugin: migration
-          migration:
-            - d6_filter_format
-            - d7_filter_format
-          source: format
+  field_text_original_mp3_url: field_text_original_mp3_url
   field_link_paywall_content: field_link_paywall_content
 destination:
   plugin: 'entity:node'
