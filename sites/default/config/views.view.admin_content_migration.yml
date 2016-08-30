@@ -69,7 +69,7 @@ display:
       pager:
         type: none
         options:
-          offset: 100
+          offset: 0
       style:
         type: table
       row:
@@ -1805,7 +1805,7 @@ display:
           relationship: field_ref_podcast
           group_type: group
           admin_label: ''
-          label: Title
+          label: Podcast
           exclude: false
           alter:
             alter_text: false
@@ -2298,7 +2298,7 @@ display:
           relationship: field_ref_podcast
           group_type: group
           admin_label: ''
-          label: Title
+          label: Podcast
           exclude: false
           alter:
             alter_text: false
@@ -2553,24 +2553,6 @@ display:
           field_api_classes: false
           plugin_id: field
       relationships:
-        field_image_target_id:
-          id: field_image_target_id
-          table: node__field_image
-          field: field_image_target_id
-          relationship: none
-          group_type: group
-          admin_label: 'image from field_image'
-          required: false
-          plugin_id: standard
-        field_image_lead_target_id:
-          id: field_image_lead_target_id
-          table: node__field_image_lead
-          field: field_image_lead_target_id
-          relationship: none
-          group_type: group
-          admin_label: 'image from field_image_lead'
-          required: false
-          plugin_id: standard
         field_ref_podcast:
           id: field_ref_podcast
           table: node__field_ref_podcast
