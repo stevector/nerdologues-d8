@@ -81,7 +81,7 @@ class Drupal {
   /**
    * The current system version.
    */
-  const VERSION = '8.1.1';
+  const VERSION = '8.1.5';
 
   /**
    * Core API compatibility.
@@ -179,16 +179,6 @@ class Drupal {
    */
   public static function root() {
     return static::getContainer()->get('app.root');
-  }
-
-  /**
-   * Gets the active install profile.
-   *
-   * @return string|null
-   *   The name of the any active install profile or distribution.
-   */
-  public static function installProfile() {
-    return static::getContainer()->getParameter('install_profile');
   }
 
   /**
