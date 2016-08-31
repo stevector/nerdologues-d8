@@ -29,8 +29,14 @@ process:
   revision_log: log
   revision_timestamp: timestamp
   field_address:
-    plugin: nerd_address_field
+    plugin: iterator
     source: field_address
+    process:
+      country_code: country
+      locality: locality
+      address_line1: thoroughfare
+      administrative_area: administrative_area
+      postal_code: postal_code
 destination:
   plugin: 'entity:node'
 migration_dependencies:
