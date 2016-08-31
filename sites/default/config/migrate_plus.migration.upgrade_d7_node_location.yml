@@ -28,7 +28,9 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_address: field_address
+  field_address:
+    plugin: nerd_address_field
+    source: field_address
 destination:
   plugin: 'entity:node'
 migration_dependencies:
