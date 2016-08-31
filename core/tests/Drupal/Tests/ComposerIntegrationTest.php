@@ -48,10 +48,12 @@ class ComposerIntegrationTest extends UnitTestCase {
       $this->root . '/core/lib/Drupal/Component/Assertion',
       $this->root . '/core/lib/Drupal/Component/Bridge',
       $this->root . '/core/lib/Drupal/Component/Datetime',
+      $this->root . '/core/lib/Drupal/Component/DependencyInjection',
       $this->root . '/core/lib/Drupal/Component/Diff',
       $this->root . '/core/lib/Drupal/Component/Discovery',
       $this->root . '/core/lib/Drupal/Component/EventDispatcher',
       $this->root . '/core/lib/Drupal/Component/FileCache',
+      $this->root . '/core/lib/Drupal/Component/FileSystem',
       $this->root . '/core/lib/Drupal/Component/Gettext',
       $this->root . '/core/lib/Drupal/Component/Graph',
       $this->root . '/core/lib/Drupal/Component/HttpFoundation',
@@ -62,6 +64,7 @@ class ComposerIntegrationTest extends UnitTestCase {
       $this->root . '/core/lib/Drupal/Component/Serialization',
       $this->root . '/core/lib/Drupal/Component/Transliteration',
       $this->root . '/core/lib/Drupal/Component/Utility',
+      $this->root . '/core/lib/Drupal/Component/Uuid',
     ];
   }
 

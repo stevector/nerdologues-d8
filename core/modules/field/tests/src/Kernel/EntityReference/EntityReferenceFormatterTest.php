@@ -66,7 +66,7 @@ class EntityReferenceFormatterTest extends EntityKernelTestBase {
     // Use Classy theme for testing markup output.
     \Drupal::service('theme_handler')->install(['classy']);
     \Drupal::service('theme_handler')->setDefault('classy');
-
+    $this->installEntitySchema('entity_test');
     // Grant the 'view test entity' permission.
     $this->installConfig(array('user'));
     Role::load(RoleInterface::ANONYMOUS_ID)
@@ -195,14 +195,24 @@ class EntityReferenceFormatterTest extends EntityKernelTestBase {
           </div>
 ';
     $renderer->renderRoot($build[0]);
-    $this->assertEqual($build[0]['#markup'], 'default | ' . $this->referencedEntity->label() .  $expected_rendered_name_field_1 . $expected_rendered_body_field_1, sprintf('The markup returned by the %s formatter is correct for an item with a saved entity.', $formatter));
+    $this->assertEqual($build[0]['#markup'], 'default | ' . $this->referencedEntity->label() . $expected_rendered_name_field_1 . $expected_rendered_body_field_1, sprintf('The markup returned by the %s formatter is correct for an item with a saved entity.', $formatter));
     $expected_cache_tags = Cache::mergeTags(\Drupal::entityManager()->getViewBuilder($this->entityType)->getCacheTags(), $this->referencedEntity->getCacheTags());
     $expected_cache_tags = Cache::mergeTags($expected_cache_tags, FilterFormat::load('full_html')->getCacheTags());
     $this->assertEqual($build[0]['#cache']['tags'], $expected_cache_tags, format_string('The @formatter formatter has the expected cache tags.', array('@formatter' => $formatter)));
 
     // Test the second field item.
+    $expected_rendered_name_field_2 = '
+            <div class="field field--name-name field--type-string field--label-hidden field__item">' . $this->unsavedReferencedEntity->label() . '</div>
+      ';
+    $expected_rendered_body_field_2 = '
+  <div class="clearfix text-formatted field field--name-body field--type-text field--label-above">
+    <div class="field__label">Body</div>
+              <div class="field__item"><p>Hello, unsaved world!</p></div>
+          </div>
+';
+
     $renderer->renderRoot($build[1]);
-    $this->assertEqual($build[1]['#markup'], $this->unsavedReferencedEntity->label(), sprintf('The markup returned by the %s formatter is correct for an item with a unsaved entity.', $formatter));
+    $this->assertEqual($build[1]['#markup'], 'default | ' . $this->unsavedReferencedEntity->label() . $expected_rendered_name_field_2 . $expected_rendered_body_field_2, sprintf('The markup returned by the %s formatter is correct for an item with a unsaved entity.', $formatter));
   }
 
   /**
@@ -271,6 +281,7 @@ class EntityReferenceFormatterTest extends EntityKernelTestBase {
    * Tests the label formatter.
    */
   public function testLabelFormatter() {
+    $this->installEntitySchema('entity_test_label');
     /** @var \Drupal\Core\Render\RendererInterface $renderer */
     $renderer = $this->container->get('renderer');
     $formatter = 'entity_reference_label';

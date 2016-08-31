@@ -11,7 +11,8 @@
     "require": {
         "drush/drush": "8.*",
         "drupal/coder": "8.2.0-beta1",
-        "squizlabs/php_codesniffer": "2.0.*@dev"
+        "squizlabs/php_codesniffer": "2.0.*@dev",
+        "knplabs/friendly-contexts": "^0.7.0"
     },
     "require-dev": {
         "drush-ops/behat-drush-endpoint": "*",

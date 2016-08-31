@@ -290,7 +290,7 @@ services:
       - { name: event_subscriber }
   config.installer:
     class: Drupal\Core\Config\ConfigInstaller
-    arguments: ['@config.factory', '@config.storage', '@config.typed', '@config.manager', '@event_dispatcher', '%install_profile%']
+    arguments: ['@config.factory', '@config.storage', '@config.typed', '@config.manager', '@event_dispatcher']
     lazy: true
   config.storage:
     class: Drupal\Core\Config\CachedStorage
@@ -315,7 +315,7 @@ services:
       - { name: backend_overridable }
   config.storage.schema:
     class: Drupal\Core\Config\ExtensionInstallStorage
-    arguments: ['@config.storage', '%install_profile%', 'config/schema']
+    arguments: ['@config.storage', 'config/schema']
   config.typed:
     class: Drupal\Core\Config\TypedConfigManager
     arguments: ['@config.storage', '@config.storage.schema', '@cache.discovery', '@module_handler']
@@ -921,7 +921,7 @@ services:
     class: Drupal\Core\ParamConverter\EntityRevisionParamConverter
     tags:
       - { name: paramconverter }
-    arguments: ['@entity_type.manager']
+    arguments: ['@entity_type.manager', '@entity.repository']
   paramconverter.configentity_admin:
     class: Drupal\Core\ParamConverter\AdminPathConfigEntityConverter
     tags:
@@ -1604,5 +1604,9 @@ services:
   response_filter.active_link:
     class: Drupal\Core\EventSubscriber\ActiveLinkResponseFilter
     arguments: ['@current_user', '@path.current', '@path.matcher', '@language_manager']
+    tags:
+      - { name: event_subscriber }
+  response_filter.rss.relative_url:
+    class: Drupal\Core\EventSubscriber\RssResponseRelativeUrlFilter
     tags:
       - { name: event_subscriber }

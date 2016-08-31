@@ -11,6 +11,7 @@ default:
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MinkContext
+        - Knp\FriendlyContexts\Context\TableContext
         - DatePublishedViews
   extensions:
     Behat\MinkExtension:

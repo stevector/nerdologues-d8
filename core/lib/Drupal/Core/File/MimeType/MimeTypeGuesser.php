@@ -41,7 +41,7 @@ class MimeTypeGuesser implements MimeTypeGuesserInterface {
   /**
    * Constructs a MimeTypeGuesser object.
    *
-   * @param StreamWrapperManagerInterface $streamWrapperManager
+   * @param StreamWrapperManagerInterface $stream_wrapper_manager
    *   The stream wrapper manager.
    */
   public function __construct(StreamWrapperManagerInterface $stream_wrapper_manager) {
@@ -53,8 +53,12 @@ class MimeTypeGuesser implements MimeTypeGuesserInterface {
    */
   public function guess($path) {
     if ($wrapper = $this->streamWrapperManager->getViaUri($path)) {
-      // Get the real path from the stream wrapper.
-      $path = $wrapper->realpath();
+      // Get the real path from the stream wrapper, if available. Files stored
+      // in remote file systems will not have one.
+      $real_path = $wrapper->realpath();
+      if ($real_path !== FALSE) {
+        $path = $real_path;
+      }
     }
 
     if ($this->sortedGuessers === NULL) {

@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\simpletest\Functional;
 
+use Drupal\Core\Url;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -31,6 +32,21 @@ class BrowserTestBaseTest extends BrowserTestBase {
 
     // Test page contains some text.
     $this->assertSession()->pageTextContains('Test page text.');
+
+    // Response includes cache tags that we can assert.
+    $this->assertSession()->responseHeaderEquals('X-Drupal-Cache-Tags', 'rendered');
+
+    // Test that we can read the JS settings.
+    $js_settings = $this->getDrupalSettings();
+    $this->assertSame('azAZ09();.,\\\/-_{}', $js_settings['test-setting']);
+
+    // Test drupalGet with a url object.
+    $url = Url::fromRoute('test_page_test.render_title');
+    $this->drupalGet($url);
+    $this->assertSession()->statusCodeEquals(200);
+
+    // Test page contains some text.
+    $this->assertSession()->pageTextContains('Hello Drupal');
   }
 
   /**
