@@ -85,6 +85,10 @@ class ComposerStaticInitDrupal8
         'C' => 
         array (
             'Composer\\Semver\\' => 16,
+            'CommerceGuys\\Zone\\' => 18,
+            'CommerceGuys\\Intl\\' => 18,
+            'CommerceGuys\\Enum\\' => 18,
+            'CommerceGuys\\Addressing\\' => 24,
         ),
         'B' => 
         array (
@@ -261,6 +265,22 @@ class ComposerStaticInitDrupal8
         'Composer\\Semver\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
+        'CommerceGuys\\Zone\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/zone/src',
+        ),
+        'CommerceGuys\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/intl/src',
+        ),
+        'CommerceGuys\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/enum/src',
+        ),
+        'CommerceGuys\\Addressing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/commerceguys/addressing/src',
         ),
         'Behat\\Mink\\Driver\\' => 
         array (

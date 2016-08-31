@@ -756,24 +756,23 @@
         },
         {
             "name": "drupal/address",
-            "version": "8.1.0-beta2",
+            "version": "8.1.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/address.git",
-                "reference": "1d7a705dc2aec409cc13b09848b25d06b34c932e"
+                "reference": "436f4f45c86e1c041110f05f9cfb35ac317f9f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/address-8.x-1.0-beta2.zip",
+                "url": "https://ftp.drupal.org/files/projects/address-8.x-1.0-beta3.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "commerceguys/addressing": "dev-master",
-                "commerceguys/intl": "dev-master",
-                "commerceguys/zone": "dev-master",
-                "drupal/core": "8.*",
-                "drupal/field": "8.*"
+                "commerceguys/addressing": "~0.8",
+                "commerceguys/intl": "~0.7",
+                "commerceguys/zone": "~0.7",
+                "drupal/core": "8.*"
             },
             "type": "drupal-module",
             "extra": {
@@ -787,7 +786,7 @@
             ],
             "description": "Provides functionality for handling postal addresses.",
             "homepage": "http://drupal.org/project/address",
-            "time": "2015-11-13 21:06:23"
+            "time": "2016-06-02 19:30:35"
         },
         {
             "name": "easyrdf/easyrdf",
