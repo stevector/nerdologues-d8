@@ -1,6 +1,10 @@
 #
 # behat.yml file for testing with a Drupal site on Pantheon.
 #
+
+imports:
+  - behat-base.yml
+
 default:
   suites:
     default:
