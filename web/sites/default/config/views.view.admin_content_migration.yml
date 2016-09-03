@@ -94,6 +94,7 @@ display:
             field_int_end_time: field_int_end_time
             field_int_start_time: field_int_start_time
             title_2: title_2
+            field_date_published: field_date_published
           info:
             title:
               sortable: true
@@ -129,6 +130,13 @@ display:
               empty_column: false
               responsive: ''
             title_2:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_date_published:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -2238,6 +2246,49 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_date_published_value:
+          id: field_date_published_value
+          table: node__field_date_published
+          field: field_date_published_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>'
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_published_value_op
+            label: 'Date published is greater than'
+            description: ''
+            use_operator: false
+            operator: field_date_published_value_op
+            identifier: field_date_published_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              content_administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       defaults:
         filters: false
         filter_groups: false
@@ -2759,6 +2810,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
