@@ -497,17 +497,17 @@ display:
           id: created
           table: node_field_data
           field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
       title: admin-content-migration
       header: {  }
       footer: {  }
@@ -1669,6 +1669,7 @@ display:
         filter_groups: false
         fields: false
         relationships: false
+        sorts: false
       filter_groups:
         operator: AND
         groups:
@@ -2092,6 +2093,22 @@ display:
           admin_label: 'field_ref_podcast: Content'
           required: false
           plugin_id: standard
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
     cache_metadata:
       max-age: 0
       contexts:
