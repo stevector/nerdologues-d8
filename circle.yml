@@ -41,8 +41,8 @@ test:
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
-    - cd circle-scripts/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/modules/custom
-    - cd circle-scripts/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/themes/custom
+    - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/modules/custom
+    - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../web/themes/custom
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd circle-scripts/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
