@@ -2,6 +2,7 @@
 
 namespace Drupal\address\Plugin\Validation\Constraint;
 
+use CommerceGuys\Addressing\Enum\AddressField;
 use Symfony\Component\Validator\Constraint;
 
 /**

@@ -1,18 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\youtube\Plugin\Field\FieldFormatter\YouTubeThumbFormatter.
- */
-
 namespace Drupal\youtube\Plugin\Field\FieldFormatter;
+
 use Drupal\Component\Utility\Html;
-use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Url;
-
 
 /**
  * Plugin implementation of the 'youtube_url' formatter.
@@ -99,11 +93,12 @@ class YouTubeUrlFormatter extends FormatterBase {
       }
       else {
         $element[$delta] = array(
-          '#markup' => SafeMarkup::checkPlain($item->input),
+          '#markup' => Html::escape($item->input),
         );
       }
     }
 
     return $element;
   }
+
 }

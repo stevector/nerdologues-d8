@@ -32,13 +32,6 @@ process:
   field_date_published:
     plugin: nerd_date_published
     source: field_date_published
-  # field_file:
-  #   plugin: iterator
-  #   source: field_file
-  #   process:
-  #     target_id: fid
-  #     display: display
-  #     description: description
   field_lede: field_lede
   field_link: field_link
   field_ref_podcast: field_ref_podcast

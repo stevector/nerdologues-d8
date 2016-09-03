@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+             "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
@@ -22,7 +22,17 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
-        "drupal/address": "^8.1@beta"
+        "drupal/address": "1.x-dev",
+        "drupal/ctools": "3.x-dev",
+        "drupal/devel": "1.x-dev",
+        "drupal/ds": "^2.5",
+        "drupal/layout_plugin": "1.x-dev",
+        "drupal/migrate_plus": "^2.0-beta1",
+        "drupal/migrate_tools": "2.x-dev",
+        "drupal/pathauto": "1.x-dev",
+        "drupal/token": "1.x-dev",
+        "drupal/youtube": "1.x-dev",
+        "drupal/migrate_upgrade": "^2.0-beta1"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -33,7 +43,7 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8"
     },
-    "conflict": {
+    "replace": {
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",

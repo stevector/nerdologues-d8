@@ -1,15 +1,9 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DataCollector\EventsDataCollector.
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\webprofiler\DrupalDataCollectorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpKernel\DataCollector\EventDataCollector as BaseEventDataCollector;
 
 /**

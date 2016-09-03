@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Form\PatternEditForm.
- */
-
 namespace Drupal\pathauto\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -12,8 +7,6 @@ use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Plugin\Context\Context;
-use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\pathauto\AliasTypeManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -73,7 +66,7 @@ class PatternEditForm extends EntityForm {
     $this->manager = $manager;
     $this->entityTypeBundleInfo = $entity_type_bundle_info;
     $this->entityTypeManager = $entity_type_manager;
-    $this->languageManager= $language_manager;
+    $this->languageManager = $language_manager;
   }
 
   /**
@@ -82,7 +75,7 @@ class PatternEditForm extends EntityForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $options = [];
-    foreach ($this->manager->getDefinitions() as $plugin_id => $plugin_definition) {
+    foreach ($this->manager->getVisibleDefinitions() as $plugin_id => $plugin_definition) {
       $options[$plugin_id] = $plugin_definition['label'];
     }
     $form['type'] = [
@@ -118,10 +111,11 @@ class PatternEditForm extends EntityForm {
         '#default_value' => $this->entity->getPattern(),
         '#size' => 65,
         '#maxlength' => 1280,
-        '#element_validate' => array('token_element_validate'),
+        '#element_validate' => array('token_element_validate', 'pathauto_pattern_validate'),
         '#after_build' => array('token_element_validate'),
         '#token_types' => $alias_type->getTokenTypes(),
         '#min_tokens' => 1,
+        '#required' => TRUE,
       );
 
       // Show the token help relevant to this pattern type.
@@ -193,6 +187,12 @@ class PatternEditForm extends EntityForm {
         'exists' => 'Drupal\pathauto\Entity\PathautoPattern::load',
       ),
     );
+
+    $form['status'] = [
+      '#title' => $this->t('Enabled'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->entity->status(),
+    ];
 
     return parent::buildForm($form, $form_state);
   }

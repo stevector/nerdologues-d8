@@ -1,6 +1,11 @@
 pathauto.settings:
   type: config_object
   mapping:
+    enabled_entity_types:
+      label: Enabled entity types
+      type: sequence
+      sequence:
+        type: string
     punctuation:
       type: sequence
       sequence:
@@ -28,4 +33,4 @@ pathauto.settings:
 
 action.configuration.pathauto_update_alias:
   type: action_configuration_default
-  label: 'Update URL-Alias'
+  label: 'Update URL alias'

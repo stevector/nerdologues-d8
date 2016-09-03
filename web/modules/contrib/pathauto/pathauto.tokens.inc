@@ -5,7 +5,6 @@
  * Token integration for the Pathauto module.
  */
 
-use Drupal\Core\Render\Element;
 use Drupal\Core\Render\BubbleableMetadata;
 
 /**
@@ -34,7 +33,6 @@ function pathauto_tokens($type, $tokens, array $data, array $options, Bubbleable
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'join-path':
-          module_load_include('inc', 'pathauto');
           $values = array();
           foreach (token_element_children($array) as $key) {
             $value = is_array($array[$key]) ? render($array[$key]) : (string) $array[$key];

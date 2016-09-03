@@ -14,6 +14,7 @@ use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate_tools\MigrateExecutable;
 use Drupal\migrate_tools\DrushLogMigrateMessage;
 use Drupal\Core\Datetime\DateFormatter;
+use Drupal\migrate_plus\Entity\MigrationGroup;
 
 /**
  * Implements hook_drush_command().
@@ -22,7 +23,7 @@ function migrate_tools_drush_command() {
   $items['migrate-status'] = [
     'description' => 'List all migrations with current status.',
     'options' => [
-      'group' => 'Name of the migration group to list',
+      'group' => 'A comma-separated list of migration groups to list',
       'names-only' => 'Only return names, not all the details (faster)',
     ],
     'arguments' => [
@@ -41,7 +42,7 @@ function migrate_tools_drush_command() {
     'description' => 'Perform one or more migration processes.',
     'options' => [
       'all' => 'Process all migrations.',
-      'group' => 'Name of the migration group to import',
+      'group' => 'A comma-separated list of migration groups to import',
       'limit' => 'Limit on the number of items to process in each migration',
       'feedback' => 'Frequency of progress messages, in items processed',
       'idlist' => 'Comma-separated list of IDs to import',
@@ -67,7 +68,7 @@ function migrate_tools_drush_command() {
     'description' => 'Rollback one or more migrations.',
     'options' => array(
       'all' => 'Process all migrations.',
-      'group' => 'Name of the migration group to rollback',
+      'group' => 'A comma-separated list of migration groups to rollback',
       'feedback' => 'Frequency of progress messages, in items processed',
     ),
     'arguments' => array(
@@ -134,22 +135,24 @@ function migrate_tools_drush_command() {
  * @param string $migration_names
  */
 function drush_migrate_tools_migrate_status($migration_names = '') {
-  $group_name = drush_get_option('group');
+  $group_names = drush_get_option('group');
   $names_only = drush_get_option('names-only');
 
-  $migrations = drush_migrate_tools_migration_list($group_name, $migration_names);
+  $migrations = drush_migrate_tools_migration_list($group_names, $migration_names);
 
   $table = [];
   // Take it one group at a time, listing the migrations within each group.
   foreach ($migrations as $group_id => $migration_list) {
+    $group = MigrationGroup::load($group_id);
+    $group_name = !empty($group) ? "{$group->label()} ({$group->id()})" : $group_id;
     if ($names_only) {
       $table[] = [
-        dt('Group: @name', array('@name' => $group_id))
+        dt('Group: @name', array('@name' => $group_name))
       ];
     }
     else {
       $table[] = [
-        dt('Group: @name', array('@name' => $group_id)),
+        dt('Group: @name', array('@name' => $group_name)),
         dt('Status'),
         dt('Total'),
         dt('Imported'),
@@ -214,10 +217,10 @@ function drush_migrate_tools_migrate_status($migration_names = '') {
  * @param string $migration_names
  */
 function drush_migrate_tools_migrate_import($migration_names = '') {
-  $group_name = drush_get_option('group');
+  $group_names = drush_get_option('group');
   $all = drush_get_option('all');
   $options = [];
-  if (!$all && !$group_name && !$migration_names) {
+  if (!$all && !$group_names && !$migration_names) {
     drush_set_error('MIGRATE_ERROR', dt('You must specify --all, --group, or one or more migration names separated by commas'));
     return;
   }
@@ -228,7 +231,10 @@ function drush_migrate_tools_migrate_import($migration_names = '') {
     }
   }
 
-  $migrations = drush_migrate_tools_migration_list($group_name, $migration_names);
+  $migrations = drush_migrate_tools_migration_list($group_names, $migration_names);
+  if (empty($migrations)) {
+    drush_log(dt('No migrations found.'), 'error');
+  }
 
   // Take it one group at a time, importing the migrations within each group.
   foreach ($migrations as $group_id => $migration_list) {
@@ -273,10 +279,10 @@ function _drush_migrate_tools_execute_migration(MigrationInterface $migration, $
  * @param string $migration_names
  */
 function drush_migrate_tools_migrate_rollback($migration_names = '') {
-  $group_name = drush_get_option('group');
+  $group_names = drush_get_option('group');
   $all = drush_get_option('all');
   $options = [];
-  if (!$all && !$group_name && !$migration_names) {
+  if (!$all && !$group_names && !$migration_names) {
     drush_set_error('MIGRATE_ERROR', dt('You must specify --all, --group, or one or more migration names separated by commas'));
     return;
   }
@@ -287,7 +293,10 @@ function drush_migrate_tools_migrate_rollback($migration_names = '') {
 
   $log = new DrushLogMigrateMessage();
 
-  $migrations = drush_migrate_tools_migration_list($group_name, $migration_names);
+  $migrations = drush_migrate_tools_migration_list($group_names, $migration_names);
+  if (empty($migrations)) {
+     drush_log(dt('No migrations found.'), 'error');
+  }
 
   // Take it one group at a time, rolling back the migrations within each group.
   foreach ($migrations as $group_id => $migration_list) {
@@ -418,22 +427,23 @@ function drush_migrate_tools_migrate_fields_source($migration_id) {
 /**
  * Retrieve a list of active migrations.
  *
- * @param string $group_id
- *  Group machine name - if present, return only migrations in this group.
+ * @param string $group_ids
+ *  A single group machine name or a comma-separated list of group machine names
+ *  - if present, return only migrations in these groups.
  * @param string $migration_ids
  *  Comma-separated list of migrations - if present, return only these migrations.
  *
  * @return MigrationInterface[][]
  *   An array keyed by migration group, each value containing an array of migrations.
  */
-function drush_migrate_tools_migration_list($group_id = '', $migration_ids = '') {
+function drush_migrate_tools_migration_list($group_ids = '', $migration_ids = '') {
+  $group_ids = !empty($group_ids) ? explode(',', Unicode::strtolower($group_ids)) : [];
   if (!empty($migration_ids)) {
     $migration_ids = explode(',', Unicode::strtolower($migration_ids));
   }
   else {
     $migration_ids = [];
   }
-
   $manager = \Drupal::service('plugin.manager.config_entity_migration');
   $plugins = $manager->createInstances([]);
   $migrations = [];
@@ -442,7 +452,7 @@ function drush_migrate_tools_migration_list($group_id = '', $migration_ids = '')
     if (empty($configured_group_id)) {
       $configured_group_id = 'default';
     }
-    if (empty($group_id) || $group_id == $configured_group_id) {
+    if (empty($group_ids) || in_array($configured_group_id, $group_ids)) {
       if (empty($migration_ids) || in_array(Unicode::strtolower($id), $migration_ids)) {
         $migrations[$configured_group_id][$id] = $migration;
       }

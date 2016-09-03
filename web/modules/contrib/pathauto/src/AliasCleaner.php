@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\pathauto\AliasCleaner
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Component\Render\PlainTextOutput;
@@ -181,8 +176,8 @@ class AliasCleaner implements AliasCleanerInterface {
         $action = $config->get('punctuation.' . $name);
         switch ($action) {
           case PathautoGeneratorInterface::PUNCTUATION_REMOVE:
-            $cache['punctuation'][$details['value']] = '';
-            $this->cleanStringCache;
+            $this->cleanStringCache['punctuation'][$details['value']] = '';
+            break;
 
           case PathautoGeneratorInterface::PUNCTUATION_REPLACE:
             $this->cleanStringCache['punctuation'][$details['value']] = $this->cleanStringCache['separator'];

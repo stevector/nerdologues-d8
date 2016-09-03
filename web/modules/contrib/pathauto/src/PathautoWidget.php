@@ -1,14 +1,11 @@
 <?php
-/**
- * @file
- * Contains \Drupal\pathauto\PathautoWidget.
- */
 
 namespace Drupal\pathauto;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\path\Plugin\Field\FieldWidget\PathWidget;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Extends the core path widget.
@@ -41,8 +38,6 @@ class PathautoWidget extends PathWidget {
       '#element_validate' => array('path_form_element_validate'),
     );*/
 
-
-
     $pattern = \Drupal::service('pathauto.generator')->getPatternByEntity($entity);
     if (empty($pattern)) {
       return $element;
@@ -52,13 +47,13 @@ class PathautoWidget extends PathWidget {
       '#type' => 'checkbox',
       '#title' => $this->t('Generate automatic URL alias'),
       '#default_value' => $entity->path->pathauto,
-      '#description' => $this->t('Uncheck this to create a custom alias below. <a href="@admin_link">Configure URL alias patterns.</a>', array('@admin_link' => \Drupal::url('entity.pathauto_pattern.collection'))),
+      '#description' => $this->t('Uncheck this to create a custom alias below. <a href="@admin_link">Configure URL alias patterns.</a>', array('@admin_link' => Url::fromRoute('entity.pathauto_pattern.collection')->toString())),
       '#weight' => -1,
     );
 
     // Add JavaScript that will disable the path textfield when the automatic
     // alias checkbox is checked.
-    $element['alias']['#states']['!enabled']['input[name="path[pathauto]"]'] = array('checked' => TRUE);
+    $element['alias']['#states']['disabled']['input[name="path[' . $delta . '][pathauto]"]'] = array('checked' => TRUE);
 
 
     // Override path.module's vertical tabs summary.
@@ -68,7 +63,6 @@ class PathautoWidget extends PathWidget {
       $element['alias']['#default_value'] = $entity->path->old_alias;
       $entity->path->alias = $entity->path->old_alias;
     }
-
 
     // For Pathauto to remember the old alias and prevent the Path module from
     // deleting it when Pathauto wants to preserve it.
@@ -81,4 +75,5 @@ class PathautoWidget extends PathWidget {
 
     return $element;
   }
+
 }

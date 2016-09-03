@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate_plus\DataParserPluginBase.
- */
-
 namespace Drupal\migrate_plus;
 
 use Drupal\Core\Plugin\PluginBase;

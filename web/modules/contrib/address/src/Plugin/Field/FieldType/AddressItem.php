@@ -230,7 +230,9 @@ class AddressItem extends FieldItemBase implements AddressInterface {
       $this->langcode = $override;
     }
     elseif (!$this->getEntity()->isTranslatable()) {
-      $this->langcode = $language_manager->getConfigOverrideLanguage()->getId();
+      // The getCurrentLanguage fallback is a workaround for core bug #2684873.
+      $language = $language_manager->getConfigOverrideLanguage() ?: $language_manager->getCurrentLanguage();
+      $this->langcode = $language->getId();
     }
 
     return $this->langcode;
