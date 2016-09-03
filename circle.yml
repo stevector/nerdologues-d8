@@ -22,7 +22,7 @@ dependencies:
     - ~/.composer/cache
   pre:
     # Add apache config.
-    - chmod +x circle-scripts/circle-apache.sh && ./circle-scripts/circle-apache.sh
+    - ./circle-scripts/circle-apache.sh
 
     - cd circle-scripts/testing/ && composer install
     - composer global require drush/drush:8.*
