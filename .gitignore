@@ -1,19 +1,19 @@
 # Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
+web/sites/*/files
+web/sites/*/private
 files/*
 
 # Pantheon commits a settings.php for environment-specific settings.
 # Place local settings in settings.local.php
-sites/*/settings.local.php
-sites/*/services*.yml
+web/sites/*/settings.local.php
+web/sites/*/services*.yml
 
 # ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
-/sites/default/**/files
-/sites/default/**/private
+/web/sites/default/**/files
+/web/sites/default/**/private
 
 # Ignore SimpleTest multi-site environment.
-sites/simpletest
+web/sites/simpletest
 
 # Packages #
 ############
@@ -51,10 +51,14 @@ Thumbs.db
 .sass-cache
 
 # Things in the core directory that Drupal 8 commits in the repository.
-!core/**/*.gz
+!web/core/**/*.gz
 
 
 
-private/testing/bin
-private/testing/drush
-private/testing/vendor
+web/private/testing/bin
+web/private/testing/drush
+web/private/testing/vendor
+
+
+# Ignore Drupal's file directory
+web/sites/*/files
