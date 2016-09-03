@@ -4904,95 +4904,6 @@
         ]
     },
     {
-        "name": "drupal/console",
-        "version": "1.0.0-beta3",
-        "version_normalized": "1.0.0.0-beta3",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hechoendrupal/DrupalConsole.git",
-            "reference": "e1be5a726935e23472abaf193dfef40c3157214e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/e1be5a726935e23472abaf193dfef40c3157214e",
-            "reference": "e1be5a726935e23472abaf193dfef40c3157214e",
-            "shasum": ""
-        },
-        "require": {
-            "alchemy/zippy": "0.3.5",
-            "composer/installers": "~1.0",
-            "dflydev/placeholder-resolver": "~1.0",
-            "doctrine/annotations": "1.2.*",
-            "gabordemooij/redbean": "@stable",
-            "guzzlehttp/guzzle": "~6.1",
-            "padraic/phar-updater": "~1.0@dev",
-            "php": ">=5.5.9",
-            "phpseclib/phpseclib": "2.*",
-            "stecman/symfony-console-completion": "^0.5.1",
-            "symfony/config": "~2.8",
-            "symfony/console": "~2.8",
-            "symfony/css-selector": "~2.7",
-            "symfony/debug": "~2.7",
-            "symfony/dependency-injection": "~2.8",
-            "symfony/dom-crawler": "~2.7",
-            "symfony/event-dispatcher": "~2.8",
-            "symfony/filesystem": "~2.8",
-            "symfony/finder": "~2.8",
-            "symfony/http-foundation": "~2.8",
-            "symfony/translation": "~2.8",
-            "symfony/yaml": "~2.8",
-            "twig/twig": "^1.23.1"
-        },
-        "time": "2016-06-29 06:04:48",
-        "bin": [
-            "bin/drupal"
-        ],
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Drupal\\Console\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "David Flores",
-                "email": "dmousex@gmail.com",
-                "homepage": "http://dmouse.net"
-            },
-            {
-                "name": "Jesus Manuel Olivas",
-                "email": "jesus.olivas@gmail.com",
-                "homepage": "http://jmolivas.com"
-            },
-            {
-                "name": "Drupal Console Contributors",
-                "homepage": "https://github.com/hechoendrupal/DrupalConsole/graphs/contributors"
-            },
-            {
-                "name": "Eduardo Garcia",
-                "email": "enzo@enzolutions.com",
-                "homepage": "http://enzolutions.com/"
-            },
-            {
-                "name": "Omar Aguirre",
-                "email": "omersguchigu@gmail.com"
-            }
-        ],
-        "description": "The Drupal Console is a CLI tool to generate boilerplate code, interact and debug Drupal 8.",
-        "homepage": "http://drupalconsole.com/",
-        "keywords": [
-            "console",
-            "development",
-            "drupal",
-            "symfony"
-        ]
-    },
-    {
         "name": "drupal/core",
         "version": "8.1.8",
         "version_normalized": "8.1.8.0",
@@ -6749,65 +6660,6 @@
         ]
     },
     {
-        "name": "drupal/drupal-driver",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jhedstrom/DrupalDriver.git",
-            "reference": "801f70790332d1ca9f5c6de722d3edd27b8802b8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/801f70790332d1ca9f5c6de722d3edd27b8802b8",
-            "reference": "801f70790332d1ca9f5c6de722d3edd27b8802b8",
-            "shasum": ""
-        },
-        "require": {
-            "symfony/dependency-injection": "~2.6|~3.0",
-            "symfony/process": "~2.5|~3.0"
-        },
-        "require-dev": {
-            "drupal/coder": "~8.2.0",
-            "drush-ops/behat-drush-endpoint": "*",
-            "mockery/mockery": "0.9.4",
-            "phpspec/phpspec": "~2.0",
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2016-06-20 16:28:37",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Drupal\\Component": "src/",
-                "Drupal\\Driver": "src/",
-                "Drupal\\Tests\\Driver": "tests/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Hedstrom",
-                "email": "jhedstrom@gmail.com"
-            }
-        ],
-        "description": "A collection of reusable Drupal drivers",
-        "homepage": "http://github.com/jhedstrom/DrupalDriver",
-        "keywords": [
-            "drupal",
-            "test",
-            "web"
-        ]
-    },
-    {
         "name": "behat/mink-extension",
         "version": "v2.2",
         "version_normalized": "2.2.0.0",
@@ -7088,69 +6940,6 @@
             "web service"
         ],
         "abandoned": "guzzlehttp/guzzle"
-    },
-    {
-        "name": "drupal/drupal-extension",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jhedstrom/drupalextension.git",
-            "reference": "203929d9d71bc0f30ff2c73a8053727b014451e1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/203929d9d71bc0f30ff2c73a8053727b014451e1",
-            "reference": "203929d9d71bc0f30ff2c73a8053727b014451e1",
-            "shasum": ""
-        },
-        "require": {
-            "behat/behat": "~3.1.0-rc2",
-            "behat/mink": "~1.5",
-            "behat/mink-extension": "~2.0",
-            "behat/mink-goutte-driver": "~1.0",
-            "behat/mink-selenium2-driver": "~1.1",
-            "drupal/drupal-driver": "dev-master",
-            "symfony/dependency-injection": "~2.7",
-            "symfony/event-dispatcher": "~2.7"
-        },
-        "require-dev": {
-            "behat/mink-zombie-driver": "^1.2",
-            "phpspec/phpspec": "~2.0",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2016-08-26 21:41:11",
-        "type": "behat-extension",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.0.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Drupal\\Drupal": "src/",
-                "Drupal\\Exception": "src/",
-                "Drupal\\DrupalExtension": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Hedstrom",
-                "email": "jhedstrom@gmail.com"
-            }
-        ],
-        "description": "Drupal extension for Behat",
-        "homepage": "http://drupal.org/project/drupalextension",
-        "keywords": [
-            "drupal",
-            "test",
-            "web"
-        ]
     },
     {
         "name": "squizlabs/php_codesniffer",
@@ -7671,6 +7460,95 @@
         ]
     },
     {
+        "name": "drupal/console",
+        "version": "1.0.0-beta3",
+        "version_normalized": "1.0.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hechoendrupal/DrupalConsole.git",
+            "reference": "e1be5a726935e23472abaf193dfef40c3157214e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/e1be5a726935e23472abaf193dfef40c3157214e",
+            "reference": "e1be5a726935e23472abaf193dfef40c3157214e",
+            "shasum": ""
+        },
+        "require": {
+            "alchemy/zippy": "0.3.5",
+            "composer/installers": "~1.0",
+            "dflydev/placeholder-resolver": "~1.0",
+            "doctrine/annotations": "1.2.*",
+            "gabordemooij/redbean": "@stable",
+            "guzzlehttp/guzzle": "~6.1",
+            "padraic/phar-updater": "~1.0@dev",
+            "php": ">=5.5.9",
+            "phpseclib/phpseclib": "2.*",
+            "stecman/symfony-console-completion": "^0.5.1",
+            "symfony/config": "~2.8",
+            "symfony/console": "~2.8",
+            "symfony/css-selector": "~2.7",
+            "symfony/debug": "~2.7",
+            "symfony/dependency-injection": "~2.8",
+            "symfony/dom-crawler": "~2.7",
+            "symfony/event-dispatcher": "~2.8",
+            "symfony/filesystem": "~2.8",
+            "symfony/finder": "~2.8",
+            "symfony/http-foundation": "~2.8",
+            "symfony/translation": "~2.8",
+            "symfony/yaml": "~2.8",
+            "twig/twig": "^1.23.1"
+        },
+        "time": "2016-06-29 06:04:48",
+        "bin": [
+            "bin/drupal"
+        ],
+        "type": "project",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Drupal\\Console\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "David Flores",
+                "email": "dmousex@gmail.com",
+                "homepage": "http://dmouse.net"
+            },
+            {
+                "name": "Jesus Manuel Olivas",
+                "email": "jesus.olivas@gmail.com",
+                "homepage": "http://jmolivas.com"
+            },
+            {
+                "name": "Drupal Console Contributors",
+                "homepage": "https://github.com/hechoendrupal/DrupalConsole/graphs/contributors"
+            },
+            {
+                "name": "Eduardo Garcia",
+                "email": "enzo@enzolutions.com",
+                "homepage": "http://enzolutions.com/"
+            },
+            {
+                "name": "Omar Aguirre",
+                "email": "omersguchigu@gmail.com"
+            }
+        ],
+        "description": "The Drupal Console is a CLI tool to generate boilerplate code, interact and debug Drupal 8.",
+        "homepage": "http://drupalconsole.com/",
+        "keywords": [
+            "console",
+            "development",
+            "drupal",
+            "symfony"
+        ]
+    },
+    {
         "name": "drupal/coder",
         "version": "8.2.0-rc1",
         "version_normalized": "8.2.0.0-RC1",
@@ -7705,6 +7583,128 @@
             "code review",
             "phpcs",
             "standards"
+        ]
+    },
+    {
+        "name": "drupal/drupal-driver",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jhedstrom/DrupalDriver.git",
+            "reference": "801f70790332d1ca9f5c6de722d3edd27b8802b8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/801f70790332d1ca9f5c6de722d3edd27b8802b8",
+            "reference": "801f70790332d1ca9f5c6de722d3edd27b8802b8",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/dependency-injection": "~2.6|~3.0",
+            "symfony/process": "~2.5|~3.0"
+        },
+        "require-dev": {
+            "drupal/coder": "~8.2.0",
+            "drush-ops/behat-drush-endpoint": "*",
+            "mockery/mockery": "0.9.4",
+            "phpspec/phpspec": "~2.0",
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2016-06-20 16:28:37",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Drupal\\Component": "src/",
+                "Drupal\\Driver": "src/",
+                "Drupal\\Tests\\Driver": "tests/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Hedstrom",
+                "email": "jhedstrom@gmail.com"
+            }
+        ],
+        "description": "A collection of reusable Drupal drivers",
+        "homepage": "http://github.com/jhedstrom/DrupalDriver",
+        "keywords": [
+            "drupal",
+            "test",
+            "web"
+        ]
+    },
+    {
+        "name": "drupal/drupal-extension",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jhedstrom/drupalextension.git",
+            "reference": "203929d9d71bc0f30ff2c73a8053727b014451e1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/203929d9d71bc0f30ff2c73a8053727b014451e1",
+            "reference": "203929d9d71bc0f30ff2c73a8053727b014451e1",
+            "shasum": ""
+        },
+        "require": {
+            "behat/behat": "~3.1.0-rc2",
+            "behat/mink": "~1.5",
+            "behat/mink-extension": "~2.0",
+            "behat/mink-goutte-driver": "~1.0",
+            "behat/mink-selenium2-driver": "~1.1",
+            "drupal/drupal-driver": "dev-master",
+            "symfony/dependency-injection": "~2.7",
+            "symfony/event-dispatcher": "~2.7"
+        },
+        "require-dev": {
+            "behat/mink-zombie-driver": "^1.2",
+            "phpspec/phpspec": "~2.0",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2016-08-26 21:41:11",
+        "type": "behat-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Drupal\\Drupal": "src/",
+                "Drupal\\Exception": "src/",
+                "Drupal\\DrupalExtension": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Hedstrom",
+                "email": "jhedstrom@gmail.com"
+            }
+        ],
+        "description": "Drupal extension for Behat",
+        "homepage": "http://drupal.org/project/drupalextension",
+        "keywords": [
+            "drupal",
+            "test",
+            "web"
         ]
     }
 ]

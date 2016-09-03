@@ -1,0 +1,18 @@
+description: 'Afişează Modulele curente pentru aplicaţie'
+options:
+    status: 'Starea Modulului [activat|dezactivat]'
+    type: 'Tipul Modulului [core|no-core]'
+messages:
+    id: ID
+    name: Nume
+    status: Stare
+    origin: Origine
+    package: Pachet
+    enabled: Activat
+    disabled: Dezactivat
+    version: Version
+    schema-version: 'Versiunea schemei'
+    total-downloads: 'Total installs'
+    total-monthly: 'Monthly installs'
+    total-daily: 'Daily installs'
+    no-results: 'Module %s was not found in the repository'
