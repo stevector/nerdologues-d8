@@ -1,0 +1,18 @@
+description: 'Muestra los módulos actualmente disponibles para la aplicación'
+options:
+    status: 'Estado del módulo [habilitado|deshabilitado]'
+    type: 'Tipo de módulo [core|no-core]'
+messages:
+    id: ID
+    name: Nombre
+    status: Estado
+    origin: Origen
+    package: Paquete
+    enabled: Habilitado
+    disabled: Deshabilitado
+    version: Versión
+    schema-version: 'Versión del esquema'
+    total-downloads: 'Total installs'
+    total-monthly: 'Monthly installs'
+    total-daily: 'Daily installs'
+    no-results: 'Module %s was not found in the repository'

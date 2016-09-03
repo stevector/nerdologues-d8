@@ -1,0 +1,5 @@
+description: 'Afișează configurarea curentă.'
+arguments:
+    name: 'Numele configurării.'
+errors:
+    not-exists: 'The configuration "%s" does not exists.'
