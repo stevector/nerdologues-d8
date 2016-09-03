@@ -47,4 +47,4 @@ test:
     # Make a multidev environment and deploy to it.
     - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
     # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-    - chmod +x private/scripts/deploy-to-multidev && ./private/scripts/deploy-to-multidev
+    - chmod +x web/private/scripts/deploy-to-multidev && ./web/private/scripts/deploy-to-multidev
