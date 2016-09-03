@@ -1,31 +1,11 @@
 #
 # behat.yml file for testing with a Drupal site on Pantheon.
 #
+
+imports:
+  - behat-base.yml
+
 default:
-  suites:
-    default:
-      paths:
-        - %paths.base%/features
-      contexts:
-        - FeatureContext
-        - Drupal\DrupalExtension\Context\DrupalContext
-        - Drupal\DrupalExtension\Context\DrushContext
-        - Drupal\DrupalExtension\Context\MinkContext
-        - Knp\FriendlyContexts\Context\TableContext
-        - DatePublishedViews
   extensions:
     Behat\MinkExtension:
-      goutte: ~
-      selenium2: ~
-      files_path: './data-files'
       base_url: http://127.0.0.1:8888/
-    Drupal\DrupalExtension:
-      blackbox: ~
-      region_map:
-        From the podcast: ".field--name-field-ref-podcast"
-        From the episode: ".field--name-field-ref-podcast-episode"
-      drupal:
-        drupal_root: ../../
-      api_driver: 'drupal'
-      drush:
-        root: ../../
