@@ -26,7 +26,7 @@ terminus site set-connection-mode --mode=sftp
 # Hiding all output might be overkill for accomplishing that goal.
 terminus drush "si -y config_installer" > /dev/null 2>&1
 terminus drush "ms"
-terminus drush "mi --all"
+terminus drush "mi --all -feedback='50 items'"
 terminus drush "ms"
 
 
