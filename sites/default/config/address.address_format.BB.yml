@@ -1,0 +1,18 @@
+uuid: e9312d61-7970-4c7d-8e42-6946a5712a9d
+langcode: en
+status: true
+dependencies: {  }
+countryCode: BB
+format: "%recipient\n%organization\n%addressLine1\n%addressLine2\n%locality %postalCode"
+requiredFields:
+  - recipient
+  - addressLine1
+  - locality
+uppercaseFields:
+  - locality
+administrativeAreaType: null
+localityType: city
+dependentLocalityType: null
+postalCodeType: postal
+postalCodePattern: 'BB\d{5}'
+postalCodePrefix: null

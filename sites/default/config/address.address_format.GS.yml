@@ -1,0 +1,20 @@
+uuid: f5c184ca-9ab8-4e51-abf8-f77ee307465c
+langcode: en
+status: true
+dependencies: {  }
+countryCode: GS
+format: "%recipient\n%organization\n%addressLine1\n%addressLine2\n%sortingCode\n%locality\n%postalCode"
+requiredFields:
+  - recipient
+  - addressLine1
+  - locality
+  - postalCode
+uppercaseFields:
+  - locality
+  - postalCode
+administrativeAreaType: null
+localityType: city
+dependentLocalityType: null
+postalCodeType: postal
+postalCodePattern: 'SIQQ 1ZZ'
+postalCodePrefix: null

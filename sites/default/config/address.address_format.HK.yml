@@ -1,0 +1,18 @@
+uuid: 6d0ecf34-a5c1-44d4-a4cd-51169de88f2f
+langcode: en
+status: true
+dependencies: {  }
+countryCode: HK
+format: "%recipient\n%organization\n%addressLine1\n%addressLine2\n%locality\n%administrativeArea"
+requiredFields:
+  - recipient
+  - addressLine1
+  - administrativeArea
+uppercaseFields:
+  - administrativeArea
+administrativeAreaType: area
+localityType: district
+dependentLocalityType: null
+postalCodeType: null
+postalCodePattern: null
+postalCodePrefix: null

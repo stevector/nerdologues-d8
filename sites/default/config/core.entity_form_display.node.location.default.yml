@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.location.field_address
     - node.type.location
   module:
+    - address
     - path
 id: node.location.default
 targetEntityType: node
@@ -16,6 +18,12 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_address:
+    weight: 31
+    settings:
+      default_country: US
+    third_party_settings: {  }
+    type: address_default
   path:
     type: path
     weight: 30

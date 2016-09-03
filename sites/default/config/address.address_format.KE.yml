@@ -1,0 +1,18 @@
+uuid: 134eba1a-d0b1-44d6-b61d-16e8955ea659
+langcode: en
+status: true
+dependencies: {  }
+countryCode: KE
+format: "%recipient\n%organization\n%addressLine1\n%addressLine2\n%locality\n%postalCode"
+requiredFields:
+  - recipient
+  - addressLine1
+  - locality
+uppercaseFields:
+  - locality
+administrativeAreaType: null
+localityType: city
+dependentLocalityType: null
+postalCodeType: postal
+postalCodePattern: '\d{5}'
+postalCodePrefix: null
