@@ -1,10 +1,11 @@
 #
 # behat.yml file for testing with a Drupal site on Pantheon.
 #
+
+imports:
+  - behat-base.yml
+
 default:
   extensions:
     Behat\MinkExtension:
       base_url: http://127.0.0.1:8888/
-
-imports:
-  - behat-base.yml
