@@ -6,27 +6,6 @@ imports:
   - behat-base.yml
 
 default:
-  suites:
-    default:
-      paths:
-        - %paths.base%/features
-        - %paths.base%/common-features
-      contexts:
-        #- FeatureContext
-        - Drupal\DrupalExtension\Context\DrupalContext
-        - Drupal\DrupalExtension\Context\DrushContext
-        - Drupal\DrupalExtension\Context\MinkContext
-        - Knp\FriendlyContexts\Context\TableContext
   extensions:
-    Behat\MinkExtension:
-      goutte: ~
-      selenium2: ~
-      files_path: './data-files'
-# Supplied by env variable.
-#     base_url: http://170-nerdologues-d8.pantheonsite.io/
     Drupal\DrupalExtension:
-      blackbox: ~
       api_driver: 'drush'
-      drush:
-# Supplied by env variable.
-#       alias: '@pantheon.nerdologues-d8.170'
