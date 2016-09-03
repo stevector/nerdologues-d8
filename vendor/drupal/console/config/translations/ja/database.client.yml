@@ -1,0 +1,5 @@
+description: データベースクライアントを起動
+arguments:
+    database: settings.phpのデータベースのキー
+messages:
+    connection: 'Connection: %s'
