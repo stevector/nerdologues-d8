@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\PathautoGenerator.
- */
-
 namespace Drupal\pathauto;
 
 use Drupal\Component\Utility\Unicode;
@@ -18,6 +13,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Utility\Token;
 use Drupal\token\TokenEntityMapperInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Provides methods for generating path aliases.
@@ -95,6 +91,11 @@ class PathautoGenerator implements PathautoGeneratorInterface {
   protected $tokenEntityMapper;
 
   /**
+   * @var Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * Creates a new Pathauto manager.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -113,8 +114,10 @@ class PathautoGenerator implements PathautoGeneratorInterface {
    *   The messenger service.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    *   The string translation service.
+   * @param Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager
    */
-  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $module_handler, Token $token, AliasCleanerInterface $alias_cleaner, AliasStorageHelperInterface $alias_storage_helper, AliasUniquifierInterface $alias_uniquifier, MessengerInterface $messenger, TranslationInterface $string_translation, TokenEntityMapperInterface $token_entity_mappper) {
+  public function __construct(ConfigFactoryInterface $config_factory, ModuleHandlerInterface $module_handler, Token $token, AliasCleanerInterface $alias_cleaner, AliasStorageHelperInterface $alias_storage_helper, AliasUniquifierInterface $alias_uniquifier, MessengerInterface $messenger, TranslationInterface $string_translation, TokenEntityMapperInterface $token_entity_mappper, EntityTypeManagerInterface $entity_type_manager) {
     $this->configFactory = $config_factory;
     $this->moduleHandler = $module_handler;
     $this->token = $token;
@@ -124,6 +127,7 @@ class PathautoGenerator implements PathautoGeneratorInterface {
     $this->messenger = $messenger;
     $this->stringTranslation = $string_translation;
     $this->tokenEntityMapper = $token_entity_mappper;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -248,6 +252,7 @@ class PathautoGenerator implements PathautoGeneratorInterface {
       $ids = \Drupal::entityQuery('pathauto_pattern')
         ->condition('type', array_keys(\Drupal::service('plugin.manager.alias_type')
           ->getPluginDefinitionByType($this->tokenEntityMapper->getTokenTypeForEntityType($entity_type_id))))
+        ->condition('status', 1)
         ->sort('weight')
         ->execute();
 
@@ -320,7 +325,13 @@ class PathautoGenerator implements PathautoGeneratorInterface {
       }
     }
 
-    $result = $this->createEntityAlias($entity, $op);
+    try {
+      $result = $this->createEntityAlias($entity, $op);
+    }
+    catch (\InvalidArgumentException $e) {
+      drupal_set_message($e->getMessage(), 'error');
+      return NULL;
+    }
 
     // @todo Move this to a method on the pattern plugin.
     if ($type == 'taxonomy_term') {
@@ -342,7 +353,7 @@ class PathautoGenerator implements PathautoGeneratorInterface {
    *   An array of term objects that are the children of the term $tid.
    */
   protected function loadTermChildren($tid) {
-    return \Drupal::entityManager()->getStorage('taxonomy_term')->loadChildren($tid);
+    return $this->entityTypeManager->getStorage('taxonomy_term')->loadChildren($tid);
   }
 
 }

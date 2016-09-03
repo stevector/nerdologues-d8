@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\address_test\EventSubscriber\AddressTestEventSubscriber.
- */
-
 namespace Drupal\address_test\EventSubscriber;
 
 use Drupal\address\Event\AddressEvents;

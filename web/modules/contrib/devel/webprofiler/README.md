@@ -2,7 +2,7 @@
 
 #Dependencies:
 
-- d3.js: Webprofiler module requires D3 library to proper render data.
+- d3.js: Webprofiler module requires D3 library 3.x (not 4.x) to render data.
   Download https://github.com/mbostock/d3 into /libraries/d3/d3.min.js
   
 - highlight.js: Webprofiler module requires highlight library to syntax highlight collected queries.
@@ -20,7 +20,7 @@ an IDE, you can configure the url of those link based on the IDE you are using:
 #Timeline:
 
 Now it is possible to also collect the time needed to instantiate every single service used in a request, to make it 
-work you need to add this two lines to settings.php (or, event better, to settings.local.php):
+work you need to add these two lines to settings.php (or, event better, to settings.local.php):
 
 ```
 $class_loader->addPsr4('Drupal\\webprofiler\\', [ __DIR__ . '/../../modules/contrib/devel/webprofiler/src']);

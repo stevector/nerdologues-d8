@@ -2,7 +2,7 @@ name: 'CTools Views test views'
 type: module
 description: 'Provides default views for CTools Views tests.'
 package: Testing
-# core: 8.x
+core: 8.x
 dependencies:
     - views
     - block
@@ -12,9 +12,3 @@ dependencies:
     - user
     - node
     - taxonomy
-
-# Information added by Drupal.org packaging script on 2016-04-01
-version: '8.x-3.0-alpha25'
-core: '8.x'
-project: 'ctools'
-datestamp: 1459542842

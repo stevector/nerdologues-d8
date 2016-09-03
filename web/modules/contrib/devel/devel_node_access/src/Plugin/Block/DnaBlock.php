@@ -1,31 +1,19 @@
 <?php
-/**
- * @file
- * Contains \Drupal\devel_node_access\Plugin\Block\DnaBlock.
- */
 
 namespace Drupal\devel_node_access\Plugin\Block;
 
-use Drupal\Component\Render\FormattableMarkup;
-use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Annotation\Translation;
-use Drupal\Core\Block\Annotation\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Form\FormBuilderInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RedirectDestinationTrait;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Session\AnonymousUserSession;
 use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
-use Drupal\user\Entity\Role;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 
 /**
  * Provides the "Devel Node Access" block.
@@ -241,20 +229,20 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
     }
     else {
       $tr = 't';
-      $variables = array('!na' => '{node_access}');
+      $variables = array('@na' => '{node_access}');
       $states = array(
-        'default'      => array(t('default'),      'ok',      t('Default record supplied by core in the absence of any other non-empty records; in !na.', $variables)),
-        'ok'           => array(t('ok'),           'ok',      t('Highest priority record; in !na.', $variables)),
-        'removed'      => array(t('removed'),      '',        t('Was removed in @func; not in !na.', $variables + array('@func' => 'hook_node_access_records_alter()'))),
-        'static'       => array(t('static'),       'ok',      t('Non-standard record in !na.', $variables)),
-        'unexpected'   => array(t('unexpected'),   'warning', t('The 0/all/0/... record applies to all nodes and all users -- usually it should not be present in !na if any node access module is active!')),
-        'ignored'      => array(t('ignored'),      'warning', t('Lower priority record; not in !na and thus ignored.', $variables)),
-        'empty'        => array(t('empty'),        'warning', t('Does not grant any access, but could block lower priority records; not in !na.', $variables)),
-        'wrong'        => array(t('wrong'),        'error',   t('Is rightfully in !na but at least one access flag is wrong!', $variables)),
-        'missing'      => array(t('missing'),      'error',   t("Should be in !na but isn't!", $variables)),
-        'removed!'     => array(t('removed!'),     'error',   t('Was removed in @func; should NOT be in !na!', $variables + array('@func' => 'hook_node_access_records_alter()'))),
-        'illegitimate' => array(t('illegitimate'), 'error',   t('Should NOT be in !na because of lower priority!', $variables)),
-        'alien'        => array(t('alien'),        'error',   t('Should NOT be in !na because of unknown origin!', $variables)),
+        'default'      => array(t('default'),      'ok',      t('Default record supplied by core in the absence of any other non-empty records; in @na.', $variables)),
+        'ok'           => array(t('ok'),           'ok',      t('Highest priority record; in @na.', $variables)),
+        'removed'      => array(t('removed'),      '',        t('Was removed in @func; not in @na.', $variables + array('@func' => 'hook_node_access_records_alter()'))),
+        'static'       => array(t('static'),       'ok',      t('Non-standard record in @na.', $variables)),
+        'unexpected'   => array(t('unexpected'),   'warning', t('The 0/all/0/... record applies to all nodes and all users -- usually it should not be present in @na if any node access module is active!')),
+        'ignored'      => array(t('ignored'),      'warning', t('Lower priority record; not in @na and thus ignored.', $variables)),
+        'empty'        => array(t('empty'),        'warning', t('Does not grant any access, but could block lower priority records; not in @na.', $variables)),
+        'wrong'        => array(t('wrong'),        'error',   t('Is rightfully in @na but at least one access flag is wrong!', $variables)),
+        'missing'      => array(t('missing'),      'error',   t("Should be in @na but isn't!", $variables)),
+        'removed!'     => array(t('removed!'),     'error',   t('Was removed in @func; should NOT be in @na!', $variables + array('@func' => 'hook_node_access_records_alter()'))),
+        'illegitimate' => array(t('illegitimate'), 'error',   t('Should NOT be in @na because of lower priority!', $variables)),
+        'alien'        => array(t('alien'),        'error',   t('Should NOT be in @na because of unknown origin!', $variables)),
       );
       $active_states = array('default', 'ok', 'static', 'unexpected', 'wrong', 'illegitimate', 'alien');
       $headers = array(t('node'), t('prio'), t('status'), t('realm'), t('gid'), t('view'), t('update'), t('delete'), t('explained'));
@@ -556,10 +544,10 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
       );
 
       if ($error_count > 0) {
-        $variables['!Rebuild_permissions'] = '<a href="' . url('admin/reports/status/rebuild') . '">' . $tr('Rebuild permissions') . '</a>';
+        $variables['@Rebuild_permissions'] = '<a href="' . url('admin/reports/status/rebuild') . '">' . $tr('Rebuild permissions') . '</a>';
         $output[] = array(
           '#prefix' => "\n<span class=\"error\">",
-          '#markup' => t("You have errors in your !na table! You may be able to fix these for now by running !Rebuild_permissions, but this is likely to destroy the evidence and make it impossible to identify the underlying issues. If you don't fix those, the errors will probably come back again. <br /> DON'T do this just yet if you intend to ask for help with this situation.", $variables),
+          '#markup' => t("You have errors in your @na table! You may be able to fix these for now by running @Rebuild_permissions, but this is likely to destroy the evidence and make it impossible to identify the underlying issues. If you don't fix those, the errors will probably come back again. <br /> DON'T do this just yet if you intend to ask for help with this situation.", $variables),
           '#suffix' => "</span><br />\n",
         );
       }
@@ -571,23 +559,23 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
       $accounts = array();
       $variables += array(
         //'!username' => '<em class="placeholder">' . theme('username', array('account' => $user)) . '</em>',
-        '!username' => '<em class="placeholder">' . $user->getDisplayName() . '</em>',
+        '@username' => '<em class="placeholder">' . $user->getDisplayName() . '</em>',
         '%uid'      => $user->id(),
       );
 
       if (\Drupal::currentUser()->hasPermission('bypass node access')) {
         $variables['%bypass_node_access'] = $tr('bypass node access');
         $output[] = array(
-          '#markup' => t('!username has the %bypass_node_access permission and thus full access to all nodes.', $variables),
+          '#markup' => t('@username has the %bypass_node_access permission and thus full access to all nodes.', $variables),
           '#suffix' => '<br />&nbsp;',
         );
       }
       else {
-        $variables['!list'] = '<div style="margin-left: 2em">' . self::get_grant_list($grants_data['view']) . '</div>';
+        $variables['@list'] = '<div style="margin-left: 2em">' . self::get_grant_list($grants_data['view']) . '</div>';
         $variables['%access'] = 'view';
         $output[] = array(
           '#prefix' => "\n<div style='text-align: left' title='" . t('These are the grants returned by hook_node_grants() for this user.') . "'>",
-          '#markup' => t('!username (user %uid) can use these grants (if they are present above) for %access access: !list', $variables),
+          '#markup' => t('@username (user %uid) can use these grants (if they are present above) for %access access: @list', $variables),
           '#suffix' => "</div>\n",
         );
         $accounts[] = $user;
@@ -610,7 +598,7 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
               '#theme'  => 'item_list',
               '#items'  => $op_items,
               '#type'   => 'ul',
-              '#prefix' => t('to node !nid:', array('!nid' => l($nid, 'node/' . $nid))) . "\n<div style='margin-left: 2em'>",
+              '#prefix' => t('to node @nid:', array('@nid' => l($nid, 'node/' . $nid))) . "\n<div style='margin-left: 2em'>",
               '#suffix' => '</div>',
             );
           }
@@ -626,11 +614,11 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
               '#suffix' => '</div>',
             );
           }
-          $variables['!username'] = '<em class="placeholder">' . theme('username', array('account' => $account)) . '</em>';
+          $variables['@username'] = '<em class="placeholder">' . theme('username', array('account' => $account)) . '</em>';
           $output[] = array(
             '#prefix' => "\n<div style='text-align: left'>",
             '#type'   => 'item',
-            'lead-in' => array('#markup' => t("!username has the following access", $variables) . ' '),
+            'lead-in' => array('#markup' => t("@username has the following access", $variables) . ' '),
             'items'   => $account_items,
             '#suffix' => "\n</div>\n",
           );
@@ -1114,7 +1102,7 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
     if (!in_array($op, array('view', 'update', 'delete', 'create'), TRUE)) {
       return array(
         FALSE,
-        t('!NO: invalid $op', array('!NO' => t('NO'))),
+        t('@NO: invalid $op', array('@NO' => t('NO'))),
         t("'@op' is an invalid operation!", array('@op' => $op)),
       );
     }
@@ -1145,25 +1133,25 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
     }
 
     $variables = array(
-      '!NO'                 => t('NO'),
-      '!YES'                => t('YES'),
-      '!bypass_node_access' => t('bypass node access'),
-      '!access_content'     => t('access content'),
+      '@NO'                 => t('NO'),
+      '@YES'                => t('YES'),
+      '@bypass_node_access' => t('bypass node access'),
+      '@access_content'     => t('access content'),
     );
 
     if (Drupal::currentUser()->hasPermission('bypass node access')) {
       return array(
         TRUE,
-        t('!YES: bypass node access', $variables),
-        t("!YES: This user has the '!bypass_node_access' permission and may do everything with nodes.", $variables),
+        t('@YES: bypass node access', $variables),
+        t("@YES: This user has the '@bypass_node_access' permission and may do everything with nodes.", $variables),
       );
     }
 
     if (!Drupal::currentUser()->hasPermission('access content')) {
       return array(
         FALSE,
-        t('!NO: access content', $variables),
-        t("!NO: This user does not have the '!access_content' permission and is denied doing anything with content.", $variables),
+        t('@NO: access content', $variables),
+        t("@NO: This user does not have the '@access_content' permission and is denied doing anything with content.", $variables),
       );
     }
 
@@ -1197,21 +1185,21 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
       );
       return [
         FALSE,
-        t('!NO: by %module', $variables),
+        t('@NO: by %module', $variables),
         empty($allowed_by)
-          ? t("!NO: hook_node_access() of the following module(s) denies this: @deniers.", $variables)
-          : t("!NO: hook_node_access() of the following module(s) denies this: @deniers &ndash; even though the following module(s) would allow it: @allowers.", $variables),
+          ? t("@NO: hook_node_access() of the following module(s) denies this: @deniers.", $variables)
+          : t("@NO: hook_node_access() of the following module(s) denies this: @deniers &ndash; even though the following module(s) would allow it: @allowers.", $variables),
       ];
     }
     if (!empty($allowed_by)) {
       $variables += array(
         '%module' => $allowed_by[0] . (count($allowed_by) > 1 ? '+' : ''),
-        '!view_own_unpublished_content' => t('view own unpublished content'),
+        '@view_own_unpublished_content' => t('view own unpublished content'),
       );
       return array(
         TRUE,
-        t('!YES: by %module', $variables),
-        t("!YES: hook_node_access() of the following module(s) allows this: @allowers.", $variables),
+        t('@YES: by %module', $variables),
+        t("@YES: hook_node_access() of the following module(s) allows this: @allowers.", $variables),
       );
     }
 
@@ -1219,8 +1207,8 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
     if ($op == 'view' && !$node->isPublished() && Drupal::currentUser()->hasPermission('view own unpublished content') && $user->id() == $node->getRevisionAuthor()->id() && $user->id() != 0) {
       return array(
         TRUE,
-        t('!YES: view own unpublished content', $variables),
-        t("!YES: The node is unpublished, but the user has the '!view_own_unpublished_content' permission.", $variables),
+        t('@YES: view own unpublished content', $variables),
+        t("@YES: The node is unpublished, but the user has the '@view_own_unpublished_content' permission.", $variables),
       );
     }
 
@@ -1232,16 +1220,16 @@ class DnaBlock extends BlockBase implements ContainerFactoryPluginInterface {
         $variables['@node_access_table'] = '{node_access}';
         return array(
           TRUE,
-          t('!YES: @node_access_table', $variables),
-          t('!YES: Node access allows this based on one or more records in the @node_access_table table (see the other DNA block!).', $variables),
+          t('@YES: @node_access_table', $variables),
+          t('@YES: Node access allows this based on one or more records in the @node_access_table table (see the other DNA block!).', $variables),
         );
       }
     }
 
     return array(
       FALSE,
-      t('!NO: no reason', $variables),
-      t("!NO: None of the checks resulted in allowing this, so it's denied.", $variables)
+      t('@NO: no reason', $variables),
+      t("@NO: None of the checks resulted in allowing this, so it's denied.", $variables)
       . ($op == 'create' ? ' ' . t('This is most likely due to a withheld permission.') : ''),
     );
   }

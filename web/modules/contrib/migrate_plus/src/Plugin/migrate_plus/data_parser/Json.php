@@ -1,70 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\migrate_plus\Plugin\migrate_plus\data_parser\JSON.
- *
- * This parser can traverse multidimensional arrays and retrieve results
- * by locating subarrays that contain a known identifier field at a known depth.
- * It can locate id fields that are nested in the results and pull out all other
- * content that is at the same level. If that content contains additional nested
- * arrays or needs other manipulation, extend this class and massage the data further
- * in the getSourceFields() method.
- *
- * For example, a file that adheres to the JSON API might look like this:
- *
- * Source:
- * [
- *   links [
- *     self: http://example.com/this_path.json
- *   ],
- *   data [
- *     entry [
- *       id: 1
- *       value1: 'something'
- *       value2: [
- *         0: green
- *         1: blue
- *       ]
- *     ]
- *     entry [
- *       id: 2
- *       value1: 'something else'
- *       value2: [
- *         0: yellow
- *         1: purple
- *       ]
- *     ]
- *   ]
- * ]
- *
- * The resulting source fields array, using identifier = 'id' and identifierDepth = 2, would be:
- * [
- *   0 [
- *     id: 1
- *     value1: 'something'
- *     value2: [
- *       0: green
- *       1: blue
- *     ]
- *   ]
- *   1 [
- *     id: 2,
- *     value1: 'something else'
- *     value2: [
- *       0: yellow
- *       1: purple
- *     ]
- *   ]
- * ]
- *
- * In the above example, the id field and the value1 field would be transformed
- * to top-level key/value pairs, as required by Migrate. The value2 field,
- * if needed, might require further manipulation by extending this class.
- *
- * @see http://php.net/manual/en/class.recursiveiteratoriterator.php
- */
-
 namespace Drupal\migrate_plus\Plugin\migrate_plus\data_parser;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -113,12 +48,13 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
     // expected depth, pull that array out as a distinct item.
     $identifierDepth = $this->itemSelector;
     $items = [];
+    $iterator->rewind();
     while ($iterator->valid()) {
-      $iterator->next();
       $item = $iterator->current();
       if (is_array($item) && $iterator->getDepth() == $identifierDepth) {
         $items[] = $item;
       }
+      $iterator->next();
     }
     return $items;
   }

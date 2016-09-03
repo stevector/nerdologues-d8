@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\youtube\Plugin\Field\FieldFormatter\YouTubeThumbFormatter.
- */
-
 namespace Drupal\youtube\Plugin\Field\FieldFormatter;
+
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Url;
-
 
 /**
  * Plugin implementation of the 'youtube_thumbnail' formatter.
@@ -97,7 +92,7 @@ class YouTubeThumbFormatter extends FormatterBase {
     // Check if the formatter involves a link.
     if (!empty($image_link)) {
       if ($image_link == 'content') {
-        $url = $entity->urlInfo();
+        $url = $entity->toUrl();
         $url->setOption('html', TRUE);
       }
       elseif ($image_link == 'youtube') {
@@ -108,7 +103,7 @@ class YouTubeThumbFormatter extends FormatterBase {
     foreach ($items as $delta => $item) {
       // If the thumbnail is linked to its youtube page, take the original url.
       if (isset($link_youtube) && $link_youtube) {
-        $url = \Drupal\Core\Url::fromUri($item->input);
+        $url = Url::fromUri($item->input);
         $url->setOption('html', TRUE);
       }
 
@@ -123,4 +118,5 @@ class YouTubeThumbFormatter extends FormatterBase {
 
     return $element;
   }
+
 }

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\youtube\Tests\YouTubeTest.
- */
-
 namespace Drupal\youtube\Tests;
 
 use Drupal\simpletest\WebTestBase;
@@ -19,6 +14,9 @@ class YouTubeTest extends WebTestBase {
 
   public static $modules = array('node', 'youtube', 'field_ui', 'image', 'file');
 
+  /**
+   * {@inheritdoc}
+   */
   public static function getInfo() {
     return array(
       'name' => 'YouTube field',
@@ -27,7 +25,10 @@ class YouTubeTest extends WebTestBase {
     );
   }
 
-  function setUp() {
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
     parent::setUp();
 
     // Create Basic page and Article node types.
@@ -51,7 +52,10 @@ class YouTubeTest extends WebTestBase {
     $this->drupalLogin($this->rootUser);
   }
 
-  function testRemoteImage() {
+  /**
+   * Test downloading a remote image.
+   */
+  public function testRemoteImage() {
     $field_name = Unicode::strtolower($this->randomMachineName());
     // Create a field.
     $field_storage = entity_create('field_storage_config', array(
@@ -99,7 +103,7 @@ class YouTubeTest extends WebTestBase {
 
     $video_id = 'T5y3dJYHb_A';
 
-    // Verify that the image markup is displayed
+    // Verify that the image markup is displayed.
     $matches = array();
     $subject = $this->getRawContent();
     $pattern = '/<img .*src="(.*?' . $video_id . '[\/\d+]*\.[jpg].*?)"/s';
@@ -112,7 +116,10 @@ class YouTubeTest extends WebTestBase {
     $this->assertResponse(200, 'Remote image downloaded');
   }
 
-  function testVideo() {
+  /**
+   * Test ID validation and the proper video display of a valid ID.
+   */
+  public function testVideo() {
     $field_name = Unicode::strtolower($this->randomMachineName());
     // Create a field.
     $field_storage = entity_create('field_storage_config', array(
@@ -160,7 +167,7 @@ class YouTubeTest extends WebTestBase {
     $this->assertText(t('Article Test has been created.'));
     $this->assertRaw($embed_value);
 
-    // Verify thta the video is displayed.
+    // Verify that the video is displayed.
     $pattern = '<iframe.*src="' . $embed_value;
     $pattern = str_replace('/', '\/', $pattern);
     $pattern = '/' . $pattern . '/s';
@@ -178,5 +185,3 @@ class YouTubeTest extends WebTestBase {
   }
 
 }
-
-?>

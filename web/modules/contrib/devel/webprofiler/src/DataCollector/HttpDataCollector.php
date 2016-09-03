@@ -1,17 +1,10 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\DataCollector\HttpDataCollector.
- */
-
 namespace Drupal\webprofiler\DataCollector;
 
 use Drupal\webprofiler\Http\HttpClientMiddleware;
 use Drupal\webprofiler\DrupalDataCollectorInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use GuzzleHttp\TransferStats;
-use Psr\Log\LogLevel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;

@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains: \Drupal\pathauto\Plugin\Action\UpdateAction
- */
 
 namespace Drupal\pathauto\Plugin\Action;
 
@@ -16,7 +12,7 @@ use Drupal\pathauto\PathautoState;
  *
  * @Action(
  *   id = "pathauto_update_alias",
- *   label = @Translation("Update URL-Alias of an entity"),
+ *   label = @Translation("Update URL alias of an entity"),
  * )
  */
 class UpdateAction extends ActionBase {
@@ -36,4 +32,5 @@ class UpdateAction extends ActionBase {
     $result = AccessResult::allowedIfHasPermission($account, 'create url aliases');
     return $return_as_object ? $result : $result->isAllowed();
   }
+
 }

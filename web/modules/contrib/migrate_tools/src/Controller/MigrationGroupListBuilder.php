@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains Drupal\migrate_tools\Controller\MigrationGroupListBuilder.
- */
 
 namespace Drupal\migrate_tools\Controller;
 

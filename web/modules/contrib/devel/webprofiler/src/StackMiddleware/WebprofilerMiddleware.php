@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\webprofiler\StackMiddleware\WebprofilerMiddleware.
- */
-
 namespace Drupal\webprofiler\StackMiddleware;
 
 use Drupal\Core\Database\Database;
@@ -37,8 +32,9 @@ class WebprofilerMiddleware implements HttpKernelInterface {
    * {@inheritdoc}
    */
   public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = TRUE) {
-    Database::startLog('webprofiler');
-
+    foreach (Database::getAllConnectionInfo() as $key => $info) {
+      Database::startLog('webprofiler', $key);
+    }
     return $this->httpKernel->handle($request, $type, $catch);
   }
 

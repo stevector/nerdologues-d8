@@ -27,3 +27,6 @@ composer update -n --lock --verbose
 
 # Enable main module and submodules.
 drush en -y address
+
+# Turn on PhantomJS for functional Javascript tests
+phantomjs --ssl-protocol=any --ignore-ssl-errors=true $DRUPAL_TI_DRUPAL_DIR/vendor/jcalderonzumba/gastonjs/src/Client/main.js 8510 1024 768 2>&1 >> /dev/null &

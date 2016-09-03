@@ -7,4 +7,4 @@ services:
     parent: default_plugin_manager
   plugin.manager.config_entity_migration:
     class: Drupal\migrate_plus\Plugin\MigrationConfigEntityPluginManager
-    arguments: ['@module_handler', '@cache.discovery', '@language_manager']
+    parent: plugin.manager.migration

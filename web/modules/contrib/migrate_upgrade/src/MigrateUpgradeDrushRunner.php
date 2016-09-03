@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate_upgrade\MigrateUpgradeDrushRunner.
- */
-
 namespace Drupal\migrate_upgrade;
 
 use Drupal\migrate\Plugin\MigrationInterface;
@@ -15,6 +10,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\migrate_drupal\MigrationCreationTrait;
 use Drupal\migrate_plus\Entity\Migration;
 use Drupal\migrate_plus\Entity\MigrationGroup;
+use Drupal\Core\Database\Database;
 
 class MigrateUpgradeDrushRunner {
 
@@ -56,14 +52,25 @@ class MigrateUpgradeDrushRunner {
    * @throws \Exception
    */
   public function configure() {
-    $db_url = drush_get_option('legacy-db-url');
-    $db_spec = drush_convert_db_from_db_url($db_url);
-    $db_prefix = drush_get_option('legacy-db-prefix');
-    $db_spec['prefix'] = $db_prefix;
+    $legacy_db_key = drush_get_option('legacy-db-key');
+    if (!empty($legacy_db_key)) {
+      $connection = Database::getConnection('default', drush_get_option('legacy-db-key'));
+      $this->version = $this->getLegacyDrupalVersion($connection);
+      $database_state['key'] = drush_get_option('legacy-db-key');
+      $database_state_key = 'migrate_drupal_' . $this->version;
+      \Drupal::state()->set($database_state_key, $database_state);
+      \Drupal::state()->set('migrate.fallback_state_key', $database_state_key);
+    }
+    else {
+      $db_url = drush_get_option('legacy-db-url');
+      $db_spec = drush_convert_db_from_db_url($db_url);
+      $db_prefix = drush_get_option('legacy-db-prefix');
+      $db_spec['prefix'] = $db_prefix;
+      $connection = $this->getConnection($db_spec);
+      $this->version = $this->getLegacyDrupalVersion($connection);
+      $this->createDatabaseStateSettings($db_spec, $this->version);
+    }
 
-    $connection = $this->getConnection($db_spec);
-    $this->version = $this->getLegacyDrupalVersion($connection);
-    $this->createDatabaseStateSettings($db_spec, $this->version);
     $this->databaseStateKey = 'migrate_drupal_' . $this->version;
     $migrations = $this->getMigrations($this->databaseStateKey, $this->version);
     $this->migrationList = [];
@@ -111,10 +118,16 @@ class MigrateUpgradeDrushRunner {
       'shared_configuration' => [
         'source' => [
           'key' => 'drupal_' . $this->version,
-          'database' => $db_info['database'],
         ]
       ]
     ];
+
+    // Only add the database connection info to the configuration entity
+    // if it was passed in as a parameter.
+    if (!empty(drush_get_option('legacy-db-url'))) {
+      $group['shared_configuration']['source']['database'] = $db_info['database'];
+    }
+
     $group = MigrationGroup::create($group);
     $group->save();
     foreach ($this->migrationList as $migration_id => $migration) {
@@ -150,15 +163,37 @@ class MigrateUpgradeDrushRunner {
         $entity_array['migration_dependencies'][$type][$key] = $this->modifyId($dependency);
       }
     }
-    foreach ($entity_array['process'] as $destination => $process) {
-      if (is_array($process)) {
-        if ($process['plugin'] == 'migration') {
-          $entity_array['process'][$destination]['migration'] =
-            $this->modifyId($process['migration']);
+    $this->substituteMigrationIds($entity_array['process']);
+    return $entity_array;
+  }
+
+  /**
+   * Recursively substitute IDs for migration plugins.
+   *
+   * @param mixed $process
+   */
+  protected function substituteMigrationIds(&$process) {
+    if (is_array($process)) {
+      // We found a migration plugin, change the ID.
+      if (isset($process['plugin']) && $process['plugin'] == 'migration') {
+        if (is_array($process['migration'])) {
+          $new_migration = [];
+          foreach ($process['migration'] as $migration) {
+            $new_migration[] = $this->modifyId($migration);
+          }
+          $process['migration'] = $new_migration;
+        }
+        else {
+          $process['migration'] = $this->modifyId($process['migration']);
+        }
+      }
+      else {
+        // Recurse on each array member.
+        foreach ($process as &$subprocess) {
+          $this->substituteMigrationIds($subprocess);
         }
       }
     }
-    return $entity_array;
   }
 
   /**

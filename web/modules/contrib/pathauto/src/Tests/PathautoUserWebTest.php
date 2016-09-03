@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\pathauto\Tests\PathautoUserWebTest.
- */
-
 namespace Drupal\pathauto\Tests;
 use Drupal\Component\Utility\Unicode;
 use Drupal\simpletest\WebTestBase;
@@ -87,10 +82,8 @@ class PathautoUserWebTest extends WebTestBase {
       'action' => 'pathauto_update_alias_user',
       "user_bulk_form[$key]" => TRUE,
     );
-    $this->drupalPostForm('admin/people', $edit, t('Apply'));
-    $this->assertRaw(\Drupal::translation()->formatPlural(1, '%action was applied to @count item.', '%action was applied to @count items.', array(
-      '%action' => 'Update URL-Alias',
-    )));
+    $this->drupalPostForm('admin/people', $edit, t('Apply to selected items'));
+    $this->assertText('Update URL alias was applied to 1 item.');
 
     $this->assertEntityAlias($account, '/users/' . Unicode::strtolower($account->getUsername()));
     $this->assertEntityAlias($this->adminUser, '/user/' . $this->adminUser->id());

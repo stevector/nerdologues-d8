@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\migrate_tools\Form\MigrationFormBase.
- */
-
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Entity\EntityForm;

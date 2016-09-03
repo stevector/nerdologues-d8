@@ -1,14 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\migrate_plus\Plugin\migrate_plus\data_fetcher\Http.
- *
- * Uses the Guzzle HTTP Client library, which is wrapped by \Drupal::httpClient.
- *
- * @see http://docs.guzzlephp.org/
- */
-
 namespace Drupal\migrate_plus\Plugin\migrate_plus\data_fetcher;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;

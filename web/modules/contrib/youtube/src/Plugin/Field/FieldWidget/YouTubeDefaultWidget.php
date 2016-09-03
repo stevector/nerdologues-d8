@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\youtube\Plugin\Field\FieldWidget\YouTubeDefaultWidget.
- */
-
 namespace Drupal\youtube\Plugin\Field\FieldWidget;
 
 use Drupal\Core\Field\FieldItemListInterface;

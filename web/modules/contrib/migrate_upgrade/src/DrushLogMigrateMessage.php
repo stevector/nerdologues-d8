@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\migrate_upgrade\DrushLogMigrateMessage.
- */
-
 namespace Drupal\migrate_upgrade;
 
 use Drupal\migrate\MigrateMessageInterface;
