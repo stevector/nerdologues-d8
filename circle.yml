@@ -26,7 +26,7 @@ dependencies:
 
     - cd web/private/testing/ && composer install
     - composer global require drush/drush:8.*
-    - chmod +x /home/ubuntu/.composer/vendor/drush/drush/includes/startup.in 
+    - chmod +x /home/ubuntu/.composer/vendor/drush/drush/includes/startup.inc
     - chmod +x /home/ubuntu/nerdologues-d8/vendor/drush/drush/drush.launcher
     - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
 
