@@ -8,16 +8,12 @@ Feature: Pathauto
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
     And I fill in "field_date_published[0][value][time]" with "15:05:05"
     And I press "Save and publish"
-
     Then the response should contain "<link rel=\"canonical\" href=\"/blog/2015-10-31/blog-post-title\" />"
-
-
 
   @api
     Scenario: Podcast, Podcast Episode, and clip
     Given I am an anonymous user
     Given I am viewing a podcast with the title "Someone's cool podcast"
-And I break
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast\" />"
 
     # PODCAST EPISODE
