@@ -22,7 +22,6 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
     And I press "Save and publish"
-
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-podcast-episode\" />"
 
     # CLIP
