@@ -55,9 +55,9 @@ Thumbs.db
 
 
 
-web/private/testing/bin
-web/private/testing/drush
-web/private/testing/vendor
+circle-scripts/testing/bin
+circle-scripts/testing/drush
+circle-scripts/testing/vendor
 
 
 # Ignore Drupal's file directory

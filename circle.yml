@@ -22,9 +22,8 @@ dependencies:
     - ~/.composer/cache
   pre:
     # Add apache config.
-    - chmod +x web/private/scripts/circle-apache.sh && ./web/private/scripts/circle-apache.sh
+    - ./circle-scripts/circle-apache.sh
 
-    - cd web/private/testing/ && composer install
     - composer global require drush/drush:8.*
     - chmod +x /home/ubuntu/.composer/vendor/drush/drush/includes/startup.inc
     - chmod +x /home/ubuntu/nerdologues-d8/vendor/drush/drush/drush.launcher
@@ -34,19 +33,22 @@ dependencies:
 test:
   pre:
     # Copy the settings.local into place
-    - cp  web/private/testing/scripts/settings.cirlceci.php web/sites/default/settings.local.php
+    - cp  circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
     - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
-    - cd web/private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../modules/custom
-    - cd web/private/testing/  && ./bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/  ../../themes/custom
+    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom
+    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
-    - cd web/private/testing/  && ./bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
+    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
+
+
+
 
     # Make a multidev environment and deploy to it.
     - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
     # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-    - chmod +x web/private/scripts/deploy-to-multidev && ./web/private/scripts/deploy-to-multidev
+    - ./circle-scripts/deploy-to-multidev.sh
