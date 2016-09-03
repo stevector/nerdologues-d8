@@ -2,7 +2,7 @@
 
 /**
  * @file
- * This plugin maps "blogpost" to "blog_post"
+ * This plugin maps "blogpost" to "blog_post".
  */
 
 namespace Drupal\nerdcustom\Plugin\migrate\process;
@@ -14,7 +14,7 @@ use Drupal\Core\Database\Database;
 
 
 /**
- * This plugin maps "blogpost" to "blog_post"
+ * This plugin maps "blogpost" to "blog_post".
  *
  * @MigrateProcessPlugin(
  *   id = "nerd_blog_post_type"
