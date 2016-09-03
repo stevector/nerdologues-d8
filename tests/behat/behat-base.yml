@@ -24,5 +24,5 @@ default:
         From the podcast: ".field--name-field-ref-podcast"
         From the episode: ".field--name-field-ref-podcast-episode"
       drupal:
-        drupal_root: ../../web
+        drupal_root: ../web
       api_driver: 'drupal'
