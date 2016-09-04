@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_file
     - field.field.node.podcast_episode.field_lede
     - field.field.node.podcast_episode.field_link
     - field.field.node.podcast_episode.field_link_paywall_content
@@ -14,7 +15,7 @@ dependencies:
   module:
     - datetime
     - ds
-    - link
+    - file
     - text
     - user
 third_party_settings:
@@ -24,6 +25,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -38,6 +40,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       right:
+        - field_file
         - field_date_published
         - field_body
       left:
@@ -48,62 +51,35 @@ bundle: podcast_episode
 mode: default
 content:
   field_body:
-    weight: 4
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_date_published:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
     type: datetime_default
-  field_lede:
-    weight: 5
+  field_file:
+    weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
-  field_link:
-    weight: 6
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-  field_link_paywall_content:
-    weight: 7
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
+    type: file_url_plain
   field_ref_podcast:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_text_original_mp3_url:
-    weight: 8
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-  links:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_lede: true
+  field_link: true
+  field_link_paywall_content: true
+  field_text_original_mp3_url: true
+  links: true
