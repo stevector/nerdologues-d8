@@ -74,7 +74,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 200
+          items_per_page: 0
           offset: 0
       style:
         type: table
@@ -2629,6 +2629,7 @@ display:
         fields: false
         relationships: false
         sorts: false
+        pager: false
       filter_groups:
         operator: AND
         groups:
@@ -3205,6 +3206,11 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
+      pager:
+        type: some
+        options:
+          items_per_page: 200
+          offset: 0
     cache_metadata:
       max-age: 0
       contexts:
