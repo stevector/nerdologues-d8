@@ -64,9 +64,7 @@ class EntityContentBase extends Entity {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration = NULL) {
-
-      
-      $entity_type = static::getEntityTypeId($plugin_id);
+    $entity_type = static::getEntityTypeId($plugin_id);
     return new static(
       $configuration,
       $plugin_id,
@@ -83,9 +81,6 @@ class EntityContentBase extends Entity {
    * {@inheritdoc}
    */
   public function import(Row $row, array $old_destination_id_values = array()) {
-      
-      
-      
     $this->rollbackAction = MigrateIdMapInterface::ROLLBACK_DELETE;
     $entity = $this->getEntity($row, $old_destination_id_values);
     if (!$entity) {
