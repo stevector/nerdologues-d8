@@ -33,8 +33,7 @@
         "drupal/token": "1.x-dev",
         "drupal/youtube": "1.x-dev",
         "drupal/migrate_upgrade": "^2.0-beta1",
-        "drupal/remote_stream_wrapper": "^1.0",
-        "drupal/file_browser": "1.x-dev"
+        "drupal/remote_stream_wrapper": "^1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
