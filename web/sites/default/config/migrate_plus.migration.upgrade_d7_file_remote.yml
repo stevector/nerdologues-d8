@@ -22,7 +22,7 @@ process:
   changed: timestamp
   uid: uid
 destination:
-  plugin: entity
+  plugin: fileremote
   source_path_property: filepath
   urlencode: true
   source_base_path: sites/default/files/_from_d7/

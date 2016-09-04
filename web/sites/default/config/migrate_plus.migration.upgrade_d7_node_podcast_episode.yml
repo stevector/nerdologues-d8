@@ -49,5 +49,8 @@ migration_dependencies:
     - upgrade_d7_user
     - upgrade_d7_node_type
     - upgrade_d7_node_podcast
+    - upgrade_d7_node_person
+    - upgrade_d7_file_remote
+    - upgrade_d7_file
   optional:
     - upgrade_d7_field_instance
