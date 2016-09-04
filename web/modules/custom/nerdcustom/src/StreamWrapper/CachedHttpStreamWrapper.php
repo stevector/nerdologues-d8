@@ -14,6 +14,8 @@ use GuzzleHttp\Exception\ServerException;
 use Drupal\remote_stream_wrapper\StreamWrapper\HttpStreamWrapper;
 use Drupal\Core\Database\Database;
 
+require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/HttpStreamWrapper.php';
+require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
 /**
  * HTTP(s) stream wrapper.
  */

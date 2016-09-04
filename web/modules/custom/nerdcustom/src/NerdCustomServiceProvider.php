@@ -20,8 +20,8 @@ class NerdCustomServiceProvider extends ServiceProviderBase {
    */
   public function alter(ContainerBuilder $container) {
     $definition = $container->getDefinition('stream_wrapper.http');
-    $definition->setClass('Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper');
+    $definition->setClass('\Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper');
     $definition = $container->getDefinition('stream_wrapper.https');
-    $definition->setClass('Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper');
+    $definition->setClass('\Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper');
   }
 }

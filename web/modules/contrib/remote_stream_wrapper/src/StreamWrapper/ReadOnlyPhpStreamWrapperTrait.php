@@ -15,6 +15,8 @@ namespace Drupal\remote_stream_wrapper\StreamWrapper;
  *
  * @codingStandardsIgnoreStart
  */
+
+
 trait ReadOnlyPhpStreamWrapperTrait {
 
   /**
