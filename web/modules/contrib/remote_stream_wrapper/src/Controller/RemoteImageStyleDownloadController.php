@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+require_once 'core/modules/image/src/Controller/ImageStyleDownloadController.php';
+
 /**
  * Defines a controller to serve image styles.
  */
