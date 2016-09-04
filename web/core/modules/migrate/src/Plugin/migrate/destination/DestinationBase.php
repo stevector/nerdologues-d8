@@ -70,12 +70,7 @@ abstract class DestinationBase extends PluginBase implements MigrateDestinationI
    * {@inheritdoc}
    */
   public function checkRequirements() {
-      
-  
     if (empty($this->pluginDefinition['requirements_met'])) {
-        
-        print_r("Through it");
-        
       throw new RequirementsException();
     }
   }
