@@ -11,8 +11,6 @@ source:
   plugin: d7_file
   scheme:
     - public
-    - https
-    - http
 process:
   fid: fid
   filename: filename
