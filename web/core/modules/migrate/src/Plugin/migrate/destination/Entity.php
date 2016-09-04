@@ -63,9 +63,7 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition, MigrationInterface $migration = NULL) {
-   
-      
-      $entity_type_id = static::getEntityTypeId($plugin_id);
+    $entity_type_id = static::getEntityTypeId($plugin_id);
     return new static(
       $configuration,
       $plugin_id,
@@ -100,9 +98,6 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
    *   The bundle for this row.
    */
   public function getBundle(Row $row) {
-      
-      
-
     $default_bundle = isset($this->configuration['default_bundle']) ? $this->configuration['default_bundle'] : '';
     $bundle_key = $this->getKey('bundle');
     return $row->getDestinationProperty($bundle_key) ?: $default_bundle;
@@ -127,11 +122,6 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
    *   The entity we are importing into.
    */
   protected function getEntity(Row $row, array $old_destination_id_values) {
-      
-      
-      
-      
-   
     $entity_id = reset($old_destination_id_values) ?: $this->getEntityId($row);
     if (!empty($entity_id) && ($entity = $this->storage->load($entity_id))) {
       // Allow updateEntity() to change the entity.
@@ -150,9 +140,6 @@ abstract class Entity extends DestinationBase implements ContainerFactoryPluginI
       $entity = $this->storage->create($row->getDestination());
       $entity->enforceIsNew();
     }
-    
-
-    
     return $entity;
   }
 
