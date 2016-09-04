@@ -476,13 +476,21 @@ class Migration extends PluginBase implements MigrationInterface, RequirementsIn
       $this->getDestinationPlugin()->checkRequirements();
     }
 
+   
+    
+    
     if (empty($this->requirements)) {
       // There are no requirements to check.
       return;
     }
+    
+    
     /** @var \Drupal\migrate\Plugin\MigrationInterface[] $required_migrations */
     $required_migrations = $this->getMigrationPluginManager()->createInstances($this->requirements);
 
+    
+    
+    
     $missing_migrations = array_diff($this->requirements, array_keys($required_migrations));
     // Check if the dependencies are in good shape.
     foreach ($required_migrations as $migration_id => $required_migration) {

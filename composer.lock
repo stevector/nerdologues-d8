@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b9bee37afd46da45beb2919523488a6",
-    "content-hash": "14d10e9a530d976979ec16f489557608",
+    "hash": "8dc98aa676aad2d1fc7292f15f4be0bc",
+    "content-hash": "3386172c666b15ce6767fa4776407905",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1566,6 +1566,127 @@
             "time": "2016-09-03 10:12:17"
         },
         {
+            "name": "drupal/dropzonejs",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/dropzonejs",
+                "reference": "8.x-1.0-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/dropzonejs-8.x-1.0-alpha2.zip",
+                "reference": "8.x-1.0-alpha2",
+                "shasum": "1b234bd9bf7d25413d6500c871f3921fa99ac6ab"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/dropzonejs_eb_widget",
+                "drupal/entity_browser": "Required by drupal/dropzonejs_eb_widget"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha2",
+                    "datestamp": "1470169139"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "Drupal media CI",
+                    "homepage": "https://www.drupal.org/user/3057985"
+                },
+                {
+                    "name": "Primsi",
+                    "homepage": "https://www.drupal.org/user/282629"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                },
+                {
+                    "name": "wouters_f",
+                    "homepage": "https://www.drupal.org/user/721548"
+                },
+                {
+                    "name": "zkday",
+                    "homepage": "https://www.drupal.org/user/888644"
+                }
+            ],
+            "description": "DropzoneJS",
+            "homepage": "https://www.drupal.org/project/dropzonejs",
+            "support": {
+                "source": "http://cgit.drupalcode.org/dropzonejs"
+            }
+        },
+        {
+            "name": "drupal/dropzonejs_eb_widget",
+            "version": "1.0.0-alpha2",
+            "require": {
+                "drupal/core": "*",
+                "drupal/dropzonejs": "self.version",
+                "drupal/entity_browser": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha2",
+                    "datestamp": "1470169139"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "Drupal media CI",
+                    "homepage": "https://www.drupal.org/user/3057985"
+                },
+                {
+                    "name": "Primsi",
+                    "homepage": "https://www.drupal.org/user/282629"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                },
+                {
+                    "name": "wouters_f",
+                    "homepage": "https://www.drupal.org/user/721548"
+                },
+                {
+                    "name": "zkday",
+                    "homepage": "https://www.drupal.org/user/888644"
+                }
+            ],
+            "description": "DropzoneJS Entity browser widget",
+            "homepage": "https://www.drupal.org/project/dropzonejs",
+            "support": {
+                "source": "http://cgit.drupalcode.org/dropzonejs"
+            }
+        },
+        {
             "name": "drupal/ds",
             "version": "2.5.0",
             "source": {
@@ -1634,6 +1755,253 @@
                 "issues": "https://www.drupal.org/project/issues/ds",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
+        },
+        {
+            "name": "drupal/embed",
+            "version": "1.0.0-rc3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/embed",
+                "reference": "8.x-1.0-rc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/embed-8.x-1.0-rc3.zip",
+                "reference": "8.x-1.0-rc3",
+                "shasum": "9138d016313a47a52c6c9805fb7d034ff5105f3a"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc3",
+                    "datestamp": "1468176563"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "Devin Carlson",
+                    "homepage": "https://www.drupal.org/user/290182"
+                },
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "cs_shadow",
+                    "homepage": "https://www.drupal.org/user/2828287"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                }
+            ],
+            "description": "Provide a framework for various different types of embeds in WYSIWYG editors, common functionality, interfaces, and standards.",
+            "homepage": "https://www.drupal.org/project/embed",
+            "support": {
+                "source": "http://cgit.drupalcode.org/embed",
+                "issues": "https://www.drupal.org/project/issues/embed",
+                "irc": "irc://irc.freenode.org/drupal-media"
+            }
+        },
+        {
+            "name": "drupal/entity_browser",
+            "version": "1.0.0-alpha8",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/entity_browser",
+                "reference": "8.x-1.0-alpha8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0-alpha8.zip",
+                "reference": "8.x-1.0-alpha8",
+                "shasum": "1013ad3c85b1ce73636df9dfe8dcf20515f51b8d"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/entity_browser_example",
+                "drupal/ctools": "Required by drupal/entity_browser",
+                "drupal/inline_entity_form": "Required by drupal/entity_browser_entity_form",
+                "drupal/token": "Required by drupal/entity_browser"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev",
+                    "dev-8.x-1.x": "8.1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha8",
+                    "datestamp": "1472759639"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Janez Urevc",
+                    "homepage": "https://github.com/slashrsm",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Primoz Hmeljak",
+                    "homepage": "https://github.com/primsi",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/1943336/committers",
+                    "role": "contributor"
+                },
+                {
+                    "name": "Primsi",
+                    "homepage": "https://www.drupal.org/user/282629"
+                },
+                {
+                    "name": "marcingy",
+                    "homepage": "https://www.drupal.org/user/77320"
+                },
+                {
+                    "name": "samuel.mortenson",
+                    "homepage": "https://www.drupal.org/user/2582268"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                }
+            ],
+            "description": "Entity browsing and selecting component.",
+            "homepage": "http://drupal.org/project/entity_browser",
+            "support": {
+                "source": "http://cgit.drupalcode.org/entity_browser",
+                "issues": "http://drupal.org/project/issues/entity_browser",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/entity_embed",
+            "version": "1.0.0-alpha3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/entity_embed",
+                "reference": "8.x-1.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_embed-8.x-1.0-alpha3.zip",
+                "reference": "8.x-1.0-alpha3",
+                "shasum": "5c0bbd1860cc857e56eaca665e0233a8eb11ea7f"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/embed": "*"
+            },
+            "suggest": {
+                "drupal/entity_browser": "Required by drupal/entity_embed"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha3",
+                    "datestamp": "1470170039"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "Devin Carlson",
+                    "homepage": "https://www.drupal.org/user/290182"
+                },
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "cs_shadow",
+                    "homepage": "https://www.drupal.org/user/2828287"
+                },
+                {
+                    "name": "slashrsm",
+                    "homepage": "https://www.drupal.org/user/744628"
+                }
+            ],
+            "description": "Allows any entity to be embedded within a text area using a WYSIWYG editor.",
+            "homepage": "https://www.drupal.org/project/entity_embed",
+            "support": {
+                "source": "http://cgit.drupalcode.org/entity_embed",
+                "issues": "https://www.drupal.org/project/issues/entity_embed",
+                "irc": "irc://irc.freenode.org/drupal-media"
+            }
+        },
+        {
+            "name": "drupal/file_browser",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/file_browser",
+                "reference": "ac6bde35e211f976d1e723edfb7f055b0c571601"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/dropzonejs": "*",
+                "drupal/dropzonejs_eb_widget": "*",
+                "drupal/entity_browser": "*",
+                "drupal/entity_embed": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1+5-dev",
+                    "datestamp": "1472511539"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "samuel.mortenson",
+                    "homepage": "https://www.drupal.org/user/2582268"
+                }
+            ],
+            "description": "Provides a default Entity Browser for files, using Masonry and Imagesloaded.",
+            "homepage": "https://www.drupal.org/project/file_browser",
+            "support": {
+                "source": "http://cgit.drupalcode.org/file_browser"
+            },
+            "time": "2016-08-29 22:54:08"
         },
         {
             "name": "drupal/layout_plugin",
@@ -1786,7 +2154,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-2.0-rc1.zip",
-                "reference": null,
+                "reference": "8.x-2.0-rc1",
                 "shasum": "fc87aabef6b17a221ccc6ba0f4dd8ec11541c58a"
             },
             "require": {
@@ -1890,6 +2258,57 @@
                 "source": "http://cgit.drupalcode.org/pathauto"
             },
             "time": "2016-08-07 10:52:55"
+        },
+        {
+            "name": "drupal/remote_stream_wrapper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/remote_stream_wrapper",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/remote_stream_wrapper-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "442094c0a6c097b5d7d757a9c17a6006f2618caa"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1471532939"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "arthurf",
+                    "homepage": "https://www.drupal.org/user/27259"
+                },
+                {
+                    "name": "becw",
+                    "homepage": "https://www.drupal.org/user/81067"
+                }
+            ],
+            "description": "Provides the ability to use external files over HTTP",
+            "homepage": "https://www.drupal.org/project/remote_stream_wrapper",
+            "support": {
+                "source": "http://cgit.drupalcode.org/remote_stream_wrapper"
+            }
         },
         {
             "name": "drupal/token",
@@ -7479,6 +7898,7 @@
         "drupal/pathauto": 20,
         "drupal/token": 20,
         "drupal/youtube": 20,
+        "drupal/file_browser": 20,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20

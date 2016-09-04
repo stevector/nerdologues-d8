@@ -76,6 +76,8 @@ class EntityFile extends EntityContentBase {
    * {@inheritdoc}
    */
   protected function getEntity(Row $row, array $old_destination_id_values) {
+      
+      
     // For stub rows, there is no real file to deal with, let the stubbing
     // process take its default path.
     if ($row->isStub()) {
@@ -96,44 +98,11 @@ class EntityFile extends EntityContentBase {
    * {@inheritdoc}
    */
   public function import(Row $row, array $old_destination_id_values = array()) {
-    // For stub rows, there is no real file to deal with, let the stubbing
-    // process create the stub entity.
-    if ($row->isStub()) {
+      
+
+
       return parent::import($row, $old_destination_id_values);
-    }
-
-    $file = $row->getSourceProperty($this->configuration['source_path_property']);
-    $destination = $row->getDestinationProperty($this->configuration['destination_path_property']);
-    $source = $this->configuration['source_base_path'] . $file;
-
-    // Ensure the source file exists, if it's a local URI or path.
-    if ($this->isLocalUri($source) && !file_exists($source)) {
-      throw new MigrateException("File '$source' does not exist.");
-    }
-
-    // If the start and end file is exactly the same, there is nothing to do.
-    if ($this->isLocationUnchanged($source, $destination)) {
-      return parent::import($row, $old_destination_id_values);
-    }
-
-    $replace = $this->getOverwriteMode($row);
-    $success = $this->writeFile($source, $destination, $replace);
-    if (!$success) {
-      $dir = $this->getDirectory($destination);
-      if (file_prepare_directory($dir, FILE_CREATE_DIRECTORY)) {
-        $success = $this->writeFile($source, $destination, $replace);
-      }
-      else {
-        throw new MigrateException("Could not create directory '$dir'");
-      }
-    }
-
-    if ($success) {
-      return parent::import($row, $old_destination_id_values);
-    }
-    else {
-      throw new MigrateException("File $source could not be copied to $destination.");
-    }
+    
   }
 
   /**

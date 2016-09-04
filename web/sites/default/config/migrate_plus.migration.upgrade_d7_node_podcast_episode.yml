@@ -37,6 +37,12 @@ process:
   field_ref_podcast: field_ref_podcast
   field_text_original_mp3_url: field_text_original_mp3_url
   field_link_paywall_content: field_link_paywall_content
+  
+  field_file:
+    plugin: iterator
+    source: field_file
+    process:
+      target_id: fid
 destination:
   plugin: 'entity:node'
 migration_dependencies:
