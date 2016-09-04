@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * Overriding core file migration for remote files.
+ */
 
 namespace Drupal\nerdcustom\Plugin\migrate\destination;
 
@@ -9,15 +13,14 @@ use Drupal\migrate\MigrateException;
 use Drupal\migrate\Plugin\MigrateIdMapInterface;
 
 /**
- * Every migration that uses this destination must have an optional
- * dependency on the d6_file migration to ensure it runs first.
+ * Overriding core file migration for remote files.
  *
  * @MigrateDestination(
  *   id = "fileremote"
  * )
  */
 class EntityFileRemote extends EntityFile {
-  
+
   /**
    * Finds the entity type from configuration or plugin ID.
    *
@@ -48,7 +51,4 @@ class EntityFileRemote extends EntityFile {
     }
     return $ids;
   }
-
-
-
 }
