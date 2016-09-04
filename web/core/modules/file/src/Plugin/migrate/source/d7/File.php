@@ -88,8 +88,6 @@ class File extends DrupalSqlBase {
     //   configuration and figure out if this is even needed at all?
     $path = str_replace($this->migration->getDestinationConfiguration()['source_base_path'], NULL, $path);
     $row->setSourceProperty('filepath', $path);
-    
-    
     return parent::prepareRow($row);
   }
 
