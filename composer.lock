@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b9bee37afd46da45beb2919523488a6",
-    "content-hash": "14d10e9a530d976979ec16f489557608",
+    "hash": "469e3b15abd12d79b20462e4751d6837",
+    "content-hash": "fb8cbb3c42af33a6ee8cfe2f221fd560",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1786,7 +1786,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-2.0-rc1.zip",
-                "reference": null,
+                "reference": "8.x-2.0-rc1",
                 "shasum": "fc87aabef6b17a221ccc6ba0f4dd8ec11541c58a"
             },
             "require": {
@@ -1890,6 +1890,57 @@
                 "source": "http://cgit.drupalcode.org/pathauto"
             },
             "time": "2016-08-07 10:52:55"
+        },
+        {
+            "name": "drupal/remote_stream_wrapper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/remote_stream_wrapper",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/remote_stream_wrapper-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "442094c0a6c097b5d7d757a9c17a6006f2618caa"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1471532939"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "arthurf",
+                    "homepage": "https://www.drupal.org/user/27259"
+                },
+                {
+                    "name": "becw",
+                    "homepage": "https://www.drupal.org/user/81067"
+                }
+            ],
+            "description": "Provides the ability to use external files over HTTP",
+            "homepage": "https://www.drupal.org/project/remote_stream_wrapper",
+            "support": {
+                "source": "http://cgit.drupalcode.org/remote_stream_wrapper"
+            }
         },
         {
             "name": "drupal/token",

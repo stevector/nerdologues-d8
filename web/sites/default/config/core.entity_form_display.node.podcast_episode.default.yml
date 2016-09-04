@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
+    - field.field.node.podcast_episode.field_file
     - field.field.node.podcast_episode.field_lede
     - field.field.node.podcast_episode.field_link
     - field.field.node.podcast_episode.field_link_paywall_content
@@ -14,6 +15,7 @@ dependencies:
   module:
     - datetime
     - link
+    - nerdcustom
     - path
     - text
 id: node.podcast_episode.default
@@ -38,6 +40,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_file:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: nerd_remote_uri
   field_lede:
     weight: 8
     settings:

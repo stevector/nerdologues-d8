@@ -37,6 +37,11 @@ process:
   field_ref_podcast: field_ref_podcast
   field_text_original_mp3_url: field_text_original_mp3_url
   field_link_paywall_content: field_link_paywall_content
+  field_file:
+    plugin: iterator
+    source: field_file
+    process:
+      target_id: fid
 destination:
   plugin: 'entity:node'
 migration_dependencies:
@@ -44,5 +49,8 @@ migration_dependencies:
     - upgrade_d7_user
     - upgrade_d7_node_type
     - upgrade_d7_node_podcast
+    - upgrade_d7_node_person
+    - upgrade_d7_file_remote
+    - upgrade_d7_file
   optional:
     - upgrade_d7_field_instance
