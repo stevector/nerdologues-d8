@@ -7,10 +7,6 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 
-
-
-use Drupal\Core\Database\Database;
-
 /**
  * HTTP(s) stream wrapper.
  */
@@ -261,30 +257,7 @@ class HttpStreamWrapper implements RemoteStreamWrapperInterface {
       'blocks' => 0,            // number of blocks allocated
     ];
 
-    $files = &drupal_static(__METHOD__, array());
-    if (empty($files)) {
-        print_r("\n \n \n in the static \n \n \n \n ");
-
-      $files = [];
-      $results = Database::getConnection('default', 'drupal_7')
-        ->select('file_managed')
-        ->fields('file_managed')->execute();
-
-       foreach ($results as $result) {
-         $files[$result->uri] = [
-             'size' => $result->filesize,
-             'mtime' => $result->timestamp
-         ];
-      }
-    }
-
-    if (!empty($files[$this->uri])) {
-      $stat =  $files[$this->uri] + $stat;
-      return $stat;
-    }
-
     try {
-      print_r("REQUEST");
       $response = $this->requestTryHeadLookingForHeader('Content-Length');
 
       if ($response->hasHeader('Content-Length')) {
