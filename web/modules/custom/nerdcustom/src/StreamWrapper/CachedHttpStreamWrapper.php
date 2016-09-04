@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Statically cache file sizes during a migration.
+ */
+
 namespace Drupal\nerdcustom\StreamWrapper;
 
 use Drupal\Core\StreamWrapper\StreamWrapperInterface;
@@ -34,11 +39,10 @@ class CachedHttpStreamWrapper extends HttpStreamWrapper {
       'blksize' => 0,           // blocksize of filesystem IO
       'blocks' => 0,            // number of blocks allocated
     ];
-
     $files = &drupal_static(__METHOD__, array());
-    if (empty($files)) {
-        print_r("\n \n \n in the static \n \n \n \n ");
 
+    if (empty($files) && function_exists('drush_print') && !empty(Database::getConnectionInfo('drupal_7'))) {
+      drush_print("Loading all files from Drupal 7 database");
       $files = [];
       $results = Database::getConnection('default', 'drupal_7')
         ->select('file_managed')
@@ -46,8 +50,8 @@ class CachedHttpStreamWrapper extends HttpStreamWrapper {
 
        foreach ($results as $result) {
          $files[$result->uri] = [
-             'size' => $result->filesize,
-             'mtime' => $result->timestamp
+           'size' => $result->filesize,
+           'mtime' => $result->timestamp
          ];
       }
     }
