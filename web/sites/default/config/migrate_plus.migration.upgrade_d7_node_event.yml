@@ -51,4 +51,3 @@ migration_dependencies:
     - upgrade_d7_node_type
   optional:
     - upgrade_d7_field_instance
-    
