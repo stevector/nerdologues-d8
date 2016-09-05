@@ -1,0 +1,23 @@
+uuid: 6cd7b373-a068-4112-80e2-d1aad79ccfa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_int_duration
+    - node.type.podcast_episode
+id: node.podcast_episode.field_int_duration
+field_name: field_int_duration
+entity_type: node
+bundle: podcast_episode
+label: Duration
+description: 'The number of seconds in the podcast mp3'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
