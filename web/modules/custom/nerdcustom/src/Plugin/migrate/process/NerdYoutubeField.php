@@ -35,8 +35,12 @@ class NerdYoutubeField extends ProcessPluginBase {
       ->condition('file_managed.fid', $value['fid'])->execute();
 
     foreach ($results as $result) {
-      $return = str_replace('oembed://', '', urldecode($result->uri));
-      $return = str_replace('&feature=youtu.be', '', $return);
+      $url = str_replace('oembed://', '', urldecode($result->uri));
+      $url = str_replace('&feature=youtu.be', '', $url);
+      $return = [
+        'input' => $url,
+        'video_id' => youtube_get_video_id($url)
+      ];
       return $return;
     }
   }
