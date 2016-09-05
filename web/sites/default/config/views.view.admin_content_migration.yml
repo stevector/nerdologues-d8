@@ -2623,6 +2623,49 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_date_published_value:
+          id: field_date_published_value
+          table: node__field_date_published
+          field: field_date_published_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_date_published_value_op
+            label: 'Date Published'
+            description: ''
+            use_operator: true
+            operator: field_date_published_value_op
+            identifier: field_date_published_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              content_administrator: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       defaults:
         filters: false
         filter_groups: false
@@ -3207,15 +3250,32 @@ display:
           granularity: second
           plugin_id: datetime
       pager:
-        type: some
+        type: full
         options:
           items_per_page: 200
           offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
     cache_metadata:
       max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
