@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_address
     - field.storage.node.field_date_published
+    - field.storage.node.field_int_duration
     - field.storage.node.field_int_end_time
     - field.storage.node.field_int_start_time
     - field.storage.node.field_last_name
@@ -3132,6 +3133,70 @@ display:
           entity_type: file
           entity_field: filesize
           plugin_id: field
+        field_int_duration:
+          id: field_int_duration
+          table: node__field_int_duration
+          field: field_int_duration
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Duration
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         uri:
           id: uri
           table: file_managed
@@ -3281,6 +3346,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_date_published'
+        - 'config:field.storage.node.field_int_duration'
         - 'config:field.storage.node.field_link'
         - 'config:field.storage.node.field_link_paywall_content'
         - 'config:field.storage.node.field_text_original_mp3_url'
