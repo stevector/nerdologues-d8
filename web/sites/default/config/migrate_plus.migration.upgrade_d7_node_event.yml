@@ -37,11 +37,16 @@ process:
       title: title
       width: width
       height: height
-  field_link: field_link
+  field_link:
+    plugin: iterator
+    source: field_link
+    process:
+      uri: url
+      title: title
   field_body: field_body
   field_lede: field_lede
   field_fc_dates: field_fc_dates
-  field_location: field_location
+  field_ref_location: field_location
   field_text_display_date: field_text_display_date
 destination:
   plugin: 'entity:node'

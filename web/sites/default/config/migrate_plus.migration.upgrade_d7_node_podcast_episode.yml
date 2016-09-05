@@ -33,15 +33,32 @@ process:
     plugin: nerd_date_published
     source: field_date_published
   field_lede: field_lede
-  field_link: field_link
+  field_link:
+    plugin: iterator
+    source: field_link
+    process:
+      uri: url
+      title: title
   field_ref_podcast: field_ref_podcast
   field_text_original_mp3_url: field_text_original_mp3_url
-  field_link_paywall_content: field_link_paywall_content
+  field_link_paywall_content:
+    plugin: iterator
+    source: field_link_paywall_content
+    process:
+      uri: url
+      title: title
   field_file:
     plugin: iterator
     source: field_file
     process:
       target_id: fid
+  field_int_duration:
+    plugin: iterator
+    source: field_file
+    process:
+      value:
+        plugin: nerd_audio_duration_field
+        source: fid
 destination:
   plugin: 'entity:node'
 migration_dependencies:
