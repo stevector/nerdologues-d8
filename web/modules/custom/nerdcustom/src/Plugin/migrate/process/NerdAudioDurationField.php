@@ -2,7 +2,7 @@
 
 /**
  * @file
- * A process plugin to set audio duration
+ * A process plugin to set audio duration.
  *
  * Only nerdologues members should have bio pages.
  */
@@ -13,8 +13,6 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 use Drupal\Core\Database\Database;
-
-
 
 /**
  * A process plugin to set audio duration.
@@ -36,7 +34,6 @@ class NerdAudioDurationField extends ProcessPluginBase {
       ->fields('field_data_field_int_duration', ['field_int_duration_value'])
       ->condition('field_data_field_int_duration.entity_id', $value)->execute();
 
-    
     foreach ($results as $result) {
       $return = $result->field_int_duration_value;
     }
