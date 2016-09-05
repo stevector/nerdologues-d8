@@ -52,6 +52,13 @@ process:
     source: field_file
     process:
       target_id: fid
+  field_int_duration:
+    plugin: iterator
+    source: field_file
+    process:
+      value:
+        plugin: nerd_audio_duration_field
+        source: fid
 destination:
   plugin: 'entity:node'
 migration_dependencies:
