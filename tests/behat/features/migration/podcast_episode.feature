@@ -208,3 +208,5 @@ Feature: Podcast Episode
       | Episode 183: Going Hollywood with Andy St. Clair                         | 2012-08-30     | Poor Choices Archive | http://poorchoicesshow.podbean.com/mf/feed/f8n6ji/andystclair3.mp3         | http://poorchoicesshow.podbean.com/e/episode-183-going-hollywood-with-andy-st-c… |                                                        | 32.11 MB  | http://podcasts.nerdologues.com/poorchoicesshow/andystclair3.mp3                                            |
       | September 2012 Part 1: It’s Just a Theory                                | 2012-09-01     | Your Stories         | http://yourstories.podbean.com/mf/feed/6zbmx4/SeptemberPart1.mp3           | http://yourstories.podbean.com/2012/09/01/september-2012-part-1-its-just-a-theo… | https://www.patreon.com/posts/your-stories-1-4868607   | 42.15 MB  | https://podcasts.nerdologues.com/yourstories/SeptemberPart1.mp3                                             |
       
+
+
