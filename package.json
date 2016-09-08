@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "sitespeed.io": "^3.11.5"
+  }
+}
