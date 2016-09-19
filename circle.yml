@@ -20,6 +20,7 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
+    - ~/node_modules
   pre:
     # Add apache config.
     - ./circle-scripts/circle-apache.sh
