@@ -43,16 +43,9 @@ test:
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
-
-
-
-    # Make a multidev environment and deploy to it.
-    #- terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
-    # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-    #
-    
 deployment:
   feature:
     branch: /gh_.*/
     commands:
-      - ./circle-scripts/deploy_test.sh  
+      - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+      - ./circle-scripts/deploy-to-multidev.sh  
