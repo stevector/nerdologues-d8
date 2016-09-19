@@ -9,16 +9,11 @@ git checkout -b $TERMINUS_ENV
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
-# @todo, make a terminus plugin to encapsulate these five lines.
-# Something like terminus site set-migration-source-secrets --from-site=nerdololgues --from-env=migrateprep
-terminus site wake --site=nerdologues --env=migrateprep
-terminus secrets set migrate_source_db__database $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_database)
-terminus secrets set migrate_source_db__username $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_username)
-terminus secrets set migrate_source_db__password $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_password)
-terminus secrets set migrate_source_db__host     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_host)
-terminus secrets set migrate_source_db__port     $(terminus site  connection-info  --site=nerdologues  --env=migrateprep  --field=mysql_port)
+terminus site wake
+export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migrateprep --field=mysql_url)
+terminus secrets set migrate_source_db__url $D7_MYSQL_URL
 
-git push pantheon $TERMINUS_ENV -f
+git push pantheon $TERMINUS_ENV
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus site set-connection-mode --mode=sftp
@@ -28,8 +23,6 @@ terminus drush "si -y config_installer" > /dev/null 2>&1
 terminus drush "ms"
 terminus drush "mi --all --feedback='50 items'"
 terminus drush "ms"
-
-
 
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
 terminus sites aliases
