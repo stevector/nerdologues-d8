@@ -1236,16 +1236,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.1.8",
+            "version": "8.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-core.git",
-                "reference": "3f06f574ccc1e18b61ef150780fb1900c2f40abc"
+                "reference": "b4fce409224b6351dce94f74b1e48f82515e191d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/3f06f574ccc1e18b61ef150780fb1900c2f40abc",
-                "reference": "3f06f574ccc1e18b61ef150780fb1900c2f40abc",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/b4fce409224b6351dce94f74b1e48f82515e191d",
+                "reference": "b4fce409224b6351dce94f74b1e48f82515e191d",
                 "shasum": ""
             },
             "require": {
@@ -1404,7 +1404,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2016-08-03 14:09:08"
+            "time": "2016-09-07 19:16:42"
         },
         {
             "name": "drupal/ctools",
