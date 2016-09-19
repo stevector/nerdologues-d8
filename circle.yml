@@ -47,6 +47,12 @@ test:
 
 
     # Make a multidev environment and deploy to it.
-    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+    #- terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
     # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-    - ./circle-scripts/deploy-to-multidev.sh
+    #
+    
+deployment:
+  feature:
+    branch: /gh_.*/
+    commands:
+      - ./circle-scripts/deploy_test.sh  
