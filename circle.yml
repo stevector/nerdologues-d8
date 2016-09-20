@@ -28,6 +28,8 @@ dependencies:
     - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
 
     - terminus auth login --machine-token=$TerminusToken
+    - npm install -g sitespeed.io
+    - sitespeed.io -h
 test:
   pre:
     # Copy the settings.local into place
