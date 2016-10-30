@@ -47,7 +47,7 @@ test:
 #    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
 
-    - ./bin/run-backstop.sh
+    - ./scripts/run-backstop.sh
 
 
     # Make a multidev environment and deploy to it.
