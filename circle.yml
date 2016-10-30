@@ -34,10 +34,10 @@ dependencies:
 test:
   pre:
     # Copy the settings.local into place
-    - cp  circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
+    - cp circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - drush --yes --root=$DOCROOT site-install config_installer
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
@@ -46,9 +46,10 @@ test:
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
-    # Make a multidev environment and deploy to it.
-    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
-    # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-    - ./circle-scripts/deploy-to-multidev.sh
-
-    - ./scripts/run-backstop.sh
+deployment:
+  feature:
+    branch: /gh_.*/
+    commands:
+      - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+      - ./circle-scripts/deploy-to-multidev.sh
+      - ./scripts/run-backstop.sh
