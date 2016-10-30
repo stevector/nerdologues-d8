@@ -2,13 +2,12 @@
 
 set -x
 
+sed -i -e "s/dev-nerdologues-d8/${TERMINUS_ENV}-nerdologues-d8/g" ~/nerdologues-d8/backstop.json
+
+
     # install node dependencies
     echo -e "\nRunning npm install..."
     npm install
-
-    # ping the multidev environment to wake it from sleep
-    echo -e "\nPinging the ${MULTIDEV} multidev environment to wake it from sleep..."
-    curl -I https://update-wp-wp-microsite.pantheonsite.io/
 
     # backstop visual regression
     echo -e "\nRunning BackstopJS tests..."
