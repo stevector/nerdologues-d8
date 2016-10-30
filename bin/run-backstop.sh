@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+set -x
 
     # install node dependencies
     echo -e "\nRunning npm install..."
@@ -23,4 +23,4 @@
     echo "${VISUAL_REGRESSION_RESULTS}"
 
 
-    cp -r /home/ubuntu/nerdologues-d8/backstop_data $CIRCLE_ARTIFACTS
+    rsync  -rlvz   /home/ubuntu/nerdologues-d8/backstop_data $CIRCLE_ARTIFACTS
