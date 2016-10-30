@@ -9,7 +9,7 @@ git checkout -b $TERMINUS_ENV
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
-terminus site wake
+terminus site wake --site=nerdologues --env=migrateprep
 export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migrateprep --field=mysql_url)
 terminus secrets set migrate_source_db__url $D7_MYSQL_URL
 
