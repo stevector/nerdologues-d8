@@ -21,3 +21,6 @@
     VISUAL_REGRESSION_RESULTS=$(npm run test)
 
     echo "${VISUAL_REGRESSION_RESULTS}"
+
+
+    cp -r /home/ubuntu/nerdologues-d8/backstop_data $CIRCLE_ARTIFACTS
