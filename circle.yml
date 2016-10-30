@@ -20,6 +20,7 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
+    - ~/node_modules
   pre:
     # Add apache config.
     - ./circle-scripts/circle-apache.sh
@@ -28,6 +29,8 @@ dependencies:
     - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
 
     - terminus auth login --machine-token=$TerminusToken
+    - echo Installing gulp globally
+    - npm install -g gulp
 test:
   pre:
     # Copy the settings.local into place
@@ -48,4 +51,5 @@ deployment:
     branch: /gh_.*/
     commands:
       - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
-      - ./circle-scripts/deploy-to-multidev.sh  
+      - ./circle-scripts/deploy-to-multidev.sh
+      - ./scripts/run-backstop.sh
