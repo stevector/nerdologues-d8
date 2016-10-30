@@ -25,32 +25,30 @@ dependencies:
     # Add apache config.
     - ./circle-scripts/circle-apache.sh
 
-#    - composer global require drush/drush:8.*
-#    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
+    - composer global require drush/drush:8.*
+    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
 
-#    - terminus auth login --machine-token=$TerminusToken
+    - terminus auth login --machine-token=$TerminusToken
     - echo Installing gulp globally
     - npm install -g gulp
 test:
   pre:
     # Copy the settings.local into place
-#    - cp  circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
+    - cp  circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
-#    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-#    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
+    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
+    - drush --yes --root=$DOCROOT site-install config_installer --db-url=mysql://$DB_USERNAME:$DB_PASSWORD@127.0.0.1/$DB_NAME install_configure_form.update_status_module='array(FALSE,FALSE)'
     # The behat tests fail if the site isn't curled first. Which is weird.
-#    - curl $SERVER
+    - curl $SERVER
   override:
-#    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --ignore=CachedHttpStreamWrapper.php --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom
-#    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom
-#    - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
-#    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
-
-
-    - ./scripts/run-backstop.sh
-
+    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --ignore=CachedHttpStreamWrapper.php --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom
+    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom
+    - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
+    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
     # Make a multidev environment and deploy to it.
-#    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
     # @todo - terminus site wipe --env=--env=$CIRCLE_BUILD_NUM
-#    - ./circle-scripts/deploy-to-multidev.sh
+    - ./circle-scripts/deploy-to-multidev.sh
+
+    - ./scripts/run-backstop.sh
