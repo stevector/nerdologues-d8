@@ -47,6 +47,18 @@
       "misMatchThreshold" : 0.1
     },
     {
+      "label": "Events",
+      "url": "https://www.nerdologues.com/events",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/events",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
       "label": "Nerds",
       "url": "https://www.nerdologues.com/nerds",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds",
@@ -69,7 +81,223 @@
       "readyEvent": null,
       "delay": 1500,
       "misMatchThreshold" : 0.1
-    }
+    },
+    {
+      "label": "Nerd bio 2, MBS",
+      "url": "https://www.nerdologues.com/nerds/mary-beth-smith",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/mary-beth-smith",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Nerd bio, No clips, Jando",
+      "url": "https://www.nerdologues.com/nerds/michael-jando",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/michael-jando",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Nerd videos",
+      "url": "https://www.nerdologues.com/node/72/videos",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/72/videos",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Nerd videos 2",
+      "url": "https://www.nerdologues.com/node/73/videos",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/videos",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Clips by person",
+      "url": "https://www.nerdologues.com/node/29/clips",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/29/clips",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Clips by person 2",
+      "url": "https://www.nerdologues.com/node/73/clips",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/clips",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Blog post",
+      "url": "https://www.nerdologues.com/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "about",
+      "url": "https://www.nerdologues.com/nerds-are-funny",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds-are-funny",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "podcasts",
+      "url": "https://www.nerdologues.com/podcasts",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Your stories",
+      "url": "https://www.nerdologues.com/podcasts/your-stories",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Episode",
+      "url": "https://www.nerdologues.com/podcasts/your-stories/episodes/may-2015-press-start-part-1",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Episode 2",
+      "url": "https://www.nerdologues.com/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Clip archive",
+      "url": "https://www.nerdologues.com/podcasts/your-stories/clips",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "clip 1",
+      "url": "https://www.nerdologues.com/podcasts/your-stories/clips/cover-stories-because-night",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "clip 2",
+      "url": "https://www.nerdologues.com/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "videos",
+      "url": "https://www.nerdologues.com/videos",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Video 1",
+      "url": "https://www.nerdologues.com/videos/twerking-hard-or-hardly-twerking",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Video 2",
+      "url": "https://www.nerdologues.com/videos/friends-nerdologues-tim-dunn",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    }    
   ],
   "paths": {
     "bitmaps_reference": "../../backstop_data/bitmaps_reference",
