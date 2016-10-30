@@ -33,6 +33,42 @@
       "readyEvent": null,
       "delay": 1500,
       "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Homepage, Next page",
+      "url": "https://www.nerdologues.com/home?page=1",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/home?page=1",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Nerds",
+      "url": "https://www.nerdologues.com/nerds",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Nerd bio",
+      "url": "https://www.nerdologues.com/nerds/eric-garneau",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/eric-garneau",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
     }
   ],
   "paths": {
