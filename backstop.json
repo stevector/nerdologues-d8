@@ -47,7 +47,9 @@
       "label": "Video 1",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
-      "hideSelectors": [],
+      "hideSelectors": [
+        "iframe"
+      ],
       "selectors": [
         "document"
       ],
@@ -59,7 +61,9 @@
       "label": "Video 2",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
-      "hideSelectors": [],
+      "hideSelectors": [
+        "iframe"
+      ],
       "selectors": [
         "document"
       ],
