@@ -24,7 +24,7 @@
   "scenarios": [
     {
       "label": "Homepage",
-      "url": "https://www.nerdologues.com/",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/",
       "hideSelectors": [],
       "selectors": [
@@ -36,7 +36,7 @@
     },
     {
       "label": "Homepage, Next page",
-      "url": "https://www.nerdologues.com/home?page=1",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/home?page=1",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/home?page=1",
       "hideSelectors": [],
       "selectors": [
@@ -48,7 +48,7 @@
     },
     {
       "label": "Events",
-      "url": "https://www.nerdologues.com/events",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/events",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/events",
       "hideSelectors": [],
       "selectors": [
@@ -60,7 +60,7 @@
     },
     {
       "label": "Nerds",
-      "url": "https://www.nerdologues.com/nerds",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/nerds",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds",
       "hideSelectors": [],
       "selectors": [
@@ -72,7 +72,7 @@
     },
     {
       "label": "Nerd bio",
-      "url": "https://www.nerdologues.com/nerds/eric-garneau",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/nerds/eric-garneau",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/eric-garneau",
       "hideSelectors": [],
       "selectors": [
@@ -84,7 +84,7 @@
     },
     {
       "label": "Nerd bio 2, MBS",
-      "url": "https://www.nerdologues.com/nerds/mary-beth-smith",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/nerds/mary-beth-smith",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/mary-beth-smith",
       "hideSelectors": [],
       "selectors": [
@@ -96,7 +96,7 @@
     },
     {
       "label": "Nerd bio, No clips, Jando",
-      "url": "https://www.nerdologues.com/nerds/michael-jando",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/nerds/michael-jando",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/michael-jando",
       "hideSelectors": [],
       "selectors": [
@@ -108,7 +108,7 @@
     },
     {
       "label": "Nerd videos",
-      "url": "https://www.nerdologues.com/node/72/videos",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/node/72/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/72/videos",
       "hideSelectors": [],
       "selectors": [
@@ -120,7 +120,7 @@
     },
     {
       "label": "Nerd videos 2",
-      "url": "https://www.nerdologues.com/node/73/videos",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/node/73/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/videos",
       "hideSelectors": [],
       "selectors": [
@@ -132,7 +132,7 @@
     },
     {
       "label": "Clips by person",
-      "url": "https://www.nerdologues.com/node/29/clips",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/node/29/clips",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/29/clips",
       "hideSelectors": [],
       "selectors": [
@@ -144,7 +144,7 @@
     },
     {
       "label": "Clips by person 2",
-      "url": "https://www.nerdologues.com/node/73/clips",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/node/73/clips",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/clips",
       "hideSelectors": [],
       "selectors": [
@@ -156,7 +156,7 @@
     },
     {
       "label": "Blog post",
-      "url": "https://www.nerdologues.com/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "hideSelectors": [],
       "selectors": [
@@ -168,7 +168,7 @@
     },
     {
       "label": "about",
-      "url": "https://www.nerdologues.com/nerds-are-funny",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/nerds-are-funny",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds-are-funny",
       "hideSelectors": [],
       "selectors": [
@@ -180,7 +180,7 @@
     },
     {
       "label": "podcasts",
-      "url": "https://www.nerdologues.com/podcasts",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts",
       "hideSelectors": [],
       "selectors": [
@@ -192,7 +192,7 @@
     },
     {
       "label": "Your stories",
-      "url": "https://www.nerdologues.com/podcasts/your-stories",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/your-stories",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories",
       "hideSelectors": [],
       "selectors": [
@@ -204,7 +204,7 @@
     },
     {
       "label": "Episode",
-      "url": "https://www.nerdologues.com/podcasts/your-stories/episodes/may-2015-press-start-part-1",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "hideSelectors": [],
       "selectors": [
@@ -216,7 +216,7 @@
     },
     {
       "label": "Episode 2",
-      "url": "https://www.nerdologues.com/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "hideSelectors": [],
       "selectors": [
@@ -228,7 +228,7 @@
     },
     {
       "label": "Clip archive",
-      "url": "https://www.nerdologues.com/podcasts/your-stories/clips",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/your-stories/clips",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips",
       "hideSelectors": [],
       "selectors": [
@@ -240,7 +240,7 @@
     },
     {
       "label": "clip 1",
-      "url": "https://www.nerdologues.com/podcasts/your-stories/clips/cover-stories-because-night",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "hideSelectors": [],
       "selectors": [
@@ -252,7 +252,7 @@
     },
     {
       "label": "clip 2",
-      "url": "https://www.nerdologues.com/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "hideSelectors": [],
       "selectors": [
@@ -264,7 +264,7 @@
     },
     {
       "label": "videos",
-      "url": "https://www.nerdologues.com/videos",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos",
       "hideSelectors": [],
       "selectors": [
@@ -276,7 +276,7 @@
     },
     {
       "label": "Video 1",
-      "url": "https://www.nerdologues.com/videos/twerking-hard-or-hardly-twerking",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
       "hideSelectors": [],
       "selectors": [
@@ -288,7 +288,7 @@
     },
     {
       "label": "Video 2",
-      "url": "https://www.nerdologues.com/videos/friends-nerdologues-tim-dunn",
+      "url": "http://migrateprep-nerdologues.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
       "hideSelectors": [],
       "selectors": [
@@ -297,7 +297,7 @@
       "readyEvent": null,
       "delay": 1500,
       "misMatchThreshold" : 0.1
-    }    
+    }
   ],
   "paths": {
     "bitmaps_reference": "../../backstop_data/bitmaps_reference",
