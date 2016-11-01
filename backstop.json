@@ -57,7 +57,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 10
     },
     {
       "label": "Video 2",
@@ -73,7 +73,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 10
     }
   ],
   "paths": {
