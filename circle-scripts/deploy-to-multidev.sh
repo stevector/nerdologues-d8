@@ -9,8 +9,8 @@ git checkout -b $TERMINUS_ENV
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
 
-terminus site wake
-export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migrateprep --field=mysql_url)
+terminus site wake --site=nerdologues --env=migr-prep2
+export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migr-prep2 --field=mysql_url)
 terminus secrets set migrate_source_db__url $D7_MYSQL_URL
 
 git push pantheon $TERMINUS_ENV
@@ -29,7 +29,7 @@ terminus sites aliases
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
-export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$TERMINUS_ENV'-'$TERMINUS_SITE'.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$CIRCLE_BUILD_NUM'" }}}}'
+export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$TERMINUS_ENV'-'$TERMINUS_SITE'.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.nerdologues-d8.'$TERMINUS_ENV'" }}}}'
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 

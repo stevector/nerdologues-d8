@@ -10,6 +10,7 @@ dependencies:
     - node.type.video
   module:
     - datetime
+    - ds
     - nerdcustom
     - text
     - user
@@ -21,7 +22,7 @@ mode: default
 content:
   field_body:
     weight: 4
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
@@ -35,9 +36,11 @@ content:
     type: datetime_default
   field_ref_creators:
     weight: 1
-    label: above
+    label: inline
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
     type: nerd_person_field_formatter
   field_youtube:
     weight: 2

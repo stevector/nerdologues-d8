@@ -1,0 +1,90 @@
+{
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 1080
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Homepage",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "clip 2",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "videos",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Video 1",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
+      "removeSelectors": [
+        "iframe",
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Video 2",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
+      "removeSelectors": [
+        "iframe",
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "../../backstop_data/bitmaps_reference",
+    "bitmaps_test": "../../backstop_data/bitmaps_test",
+    "compare_data": "../../backstop_data/bitmaps_test/compare.json",
+    "casper_scripts": "../../backstop_data/casper_scripts"
+  },
+  "engine": "phantomjs",
+  "report": [ "CLI" ],
+  "casperFlags": [],
+  "debug": false,
+  "port": 3001
+}
