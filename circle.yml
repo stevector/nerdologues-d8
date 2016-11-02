@@ -26,7 +26,7 @@ dependencies:
     - ./circle-scripts/circle-apache.sh
 
     - composer global require drush/drush:8.*
-    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.13.x/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
+    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
     - terminus auth login --machine-token=$TerminusToken
     - echo Installing gulp globally
     - npm install -g gulp
