@@ -50,5 +50,6 @@ deployment:
     branch: /gh_.*/
     commands:
       - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+      - terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
       - ./circle-scripts/deploy-to-multidev.sh
       - ./scripts/run-backstop.sh
