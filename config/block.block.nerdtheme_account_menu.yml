@@ -11,7 +11,7 @@ dependencies:
 id: nerdtheme_account_menu
 theme: nerdtheme
 region: '-1'
-weight: -1
+weight: -2
 provider: null
 plugin: 'system_menu_block:account'
 settings:

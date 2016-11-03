@@ -33,4 +33,12 @@ class PositionResource extends ResourceBase {
     return $response;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function permissions() {
+    // Remove permissions so the resource is available to all.
+    return [];
+  }
+
 }

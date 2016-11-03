@@ -52,10 +52,15 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 10
+          items_per_page: 0
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -64,11 +69,6 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
           quantity: 9
       style:
         type: default
@@ -81,39 +81,54 @@ display:
           id: title
           table: node_field_data
           field: title
-          entity_type: node
-          entity_field: title
-          label: ''
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            trim: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            html: false
-          hide_empty: false
-          empty_zero: false
-          settings:
-            link_to_entity: true
-          plugin_id: field
           relationship: none
           group_type: group
           admin_label: ''
+          label: ''
           exclude: false
-          element_type: ''
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: '0'
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
+          hide_empty: false
+          empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: string
+          settings:
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -124,9 +139,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
       filters:
         status:
-          value: true
+          value: '1'
           table: node_field_data
           field: status
           plugin_id: boolean
@@ -260,6 +278,287 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  attachment_emeritus:
+    display_plugin: attachment
+    id: attachment_emeritus
+    display_title: Emeritus
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            person: person
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_ref_term_designation
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: Emeritus
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+      defaults:
+        filters: false
+        filter_groups: false
+        style: false
+        row: false
+        header: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: nerd-list
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      pager:
+        type: some
+        options:
+          items_per_page: 0
+          offset: 0
+      displays:
+        page_1: page_1
+      attachment_position: after
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: "<div class=\"deck-text\" >\n<h2 class=\"pane-title deck-text__title\">Emeritus Members</h2>\n\n<p>Those in The Nerdologues consider this group more than collaborators, or even friends - we are family.  These are the aunts and uncles that have moved to Florida after putting in 40-plus years at the factory.  Their contributions will always be valued, just as we hope they treasure the gold watch we gave them before they left.  (By the way, your 401(k) is depleted)  Thank you!</p>\n </div>\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+          plugin_id: text_custom
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  attachment_honorary:
+    display_plugin: attachment
+    id: attachment_honorary
+    display_title: Honorary
+    position: 4
+    display_options:
+      display_extenders: {  }
+      displays:
+        page_1: page_1
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            person: person
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_ref_term_designation
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: 'Honorary member'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+      defaults:
+        filters: false
+        filter_groups: false
+        header: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      attachment_position: after
+      display_description: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: "<div class=\"deck-text\" >\n<h2 class=\"pane-title deck-text__title\">Honorary Members</h2>\n<p>Amidst their faux-hatred of each other, Dwight and Shelby share a special bond. In recognition of their contributions to Your Stories and the important roles they play in The Nerdologues community, they are honorary members of The Nerdologues (with none of the rights and privileges therein).</p>\n </div>"
+          plugin_id: text_custom
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

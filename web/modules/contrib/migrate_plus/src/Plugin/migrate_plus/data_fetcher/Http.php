@@ -32,11 +32,31 @@ class Http extends DataFetcherPluginBase implements ContainerFactoryPluginInterf
   protected $headers = [];
 
   /**
+   * The data retrieval client.
+   *
+   * @var \Drupal\migrate_plus\AuthenticationPluginInterface
+   */
+  protected $authenticationPlugin;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->httpClient = \Drupal::httpClient();
+  }
+
+  /**
+   * Returns the initialized authentication plugin.
+   *
+   * @return \Drupal\migrate_plus\AuthenticationPluginInterface
+   *   The authentication plugin.
+   */
+  public function getAuthenticationPlugin() {
+    if (!isset($this->authenticationPlugin)) {
+      $this->authenticationPlugin = \Drupal::service('plugin.manager.migrate_plus.authentication')->createInstance($this->configuration['authentication']['plugin'], $this->configuration['authentication']);
+    }
+    return $this->authenticationPlugin;
   }
 
   /**
@@ -50,7 +70,7 @@ class Http extends DataFetcherPluginBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function getRequestHeaders() {
-    return !empty($this->headers) ? $this->headers : array();
+    return !empty($this->headers) ? $this->headers : [];
   }
 
   /**
@@ -58,11 +78,11 @@ class Http extends DataFetcherPluginBase implements ContainerFactoryPluginInterf
    */
   public function getResponse($url) {
     try {
-      $response = $this->httpClient->get($url, array(
-        'headers' => $this->getRequestHeaders(),
-        // Uncomment the following to debug the request.
-        //'debug' => true,
-      ));
+      $options = ['headers' => $this->getRequestHeaders()];
+      if (!empty($this->configuration['authentication'])) {
+        $options = array_merge($options, $this->getAuthenticationPlugin()->getAuthenticationOptions());
+      }
+      $response = $this->httpClient->get($url, $options);
       if (empty($response)) {
         throw new MigrateException('No response at ' . $url . '.');
       }

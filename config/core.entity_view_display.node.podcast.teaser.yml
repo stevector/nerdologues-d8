@@ -71,4 +71,5 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_int_sort_order: true

@@ -19,7 +19,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.0",
+        "drupal/core": "^8.2",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "drupal/address": "1.x-dev",
@@ -27,13 +27,14 @@
         "drupal/devel": "1.x-dev",
         "drupal/ds": "^2.5",
         "drupal/layout_plugin": "1.x-dev",
-        "drupal/migrate_plus": "^2.0-beta1",
-        "drupal/migrate_tools": "2.x-dev",
         "drupal/pathauto": "1.x-dev",
         "drupal/token": "1.x-dev",
         "drupal/youtube": "1.x-dev",
-        "drupal/migrate_upgrade": "^2.0-beta1",
-        "drupal/remote_stream_wrapper": "^1.0"
+        "drupal/remote_stream_wrapper": "^1.0",
+        "drupal/page_manager": "1.x-dev",
+        "drupal/migrate_tools": "^3.0",
+        "drupal/migrate_upgrade": "^3.0",
+        "drupal/migrate_plus": "^3.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -90,5 +91,12 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         }
+    },
+    "drupal-scaffold": {
+        "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
+        "includes": [
+            "sites/default/default.services.pantheon.preproduction.yml",
+            "sites/default/settings.pantheon.php"
+        ]
     }
 }

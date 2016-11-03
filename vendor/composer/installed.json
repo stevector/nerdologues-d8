@@ -522,65 +522,6 @@
         ]
     },
     {
-        "name": "symfony-cmf/routing",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony-cmf/Routing.git",
-            "reference": "8e87981d72c6930a27585dcd3119f3199f6cb2a6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/8e87981d72c6930a27585dcd3119f3199f6cb2a6",
-            "reference": "8e87981d72c6930a27585dcd3119f3199f6cb2a6",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "psr/log": "~1.0",
-            "symfony/http-kernel": "~2.2",
-            "symfony/routing": "~2.2"
-        },
-        "require-dev": {
-            "symfony/config": "~2.2",
-            "symfony/dependency-injection": "~2.0@stable",
-            "symfony/event-dispatcher": "~2.1"
-        },
-        "suggest": {
-            "symfony/event-dispatcher": "DynamicRouter can optionally trigger an event at the start of matching. Minimal version ~2.1"
-        },
-        "time": "2014-10-20 20:55:17",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.3-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Cmf\\Component\\Routing\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Symfony CMF community",
-                "homepage": "https://github.com/symfony-cmf/Routing/contributors"
-            }
-        ],
-        "description": "Extends the Symfony2 routing component for dynamic routes and chaining several routers",
-        "homepage": "http://cmf.symfony.com",
-        "keywords": [
-            "database",
-            "routing"
-        ]
-    },
-    {
         "name": "symfony/psr-http-message-bridge",
         "version": "v0.2",
         "version_normalized": "0.2.0.0",
@@ -6142,165 +6083,6 @@
         }
     },
     {
-        "name": "drupal/migrate_plus",
-        "version": "2.0.0-beta2",
-        "version_normalized": "2.0.0.0-beta2",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/migrate_plus",
-            "reference": "8.x-2.0-beta2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-2.0-beta2.zip",
-            "reference": "8.x-2.0-beta2",
-            "shasum": "0b29113a3c00c7ab3ba73e811da3450edca4c0bb"
-        },
-        "require": {
-            "drupal/core": "^8.1"
-        },
-        "suggest": {
-            "drupal/core": "Required by drupal/migrate_example_advanced",
-            "drupal/migrate_example_advanced_setup": "Required by drupal/migrate_example_advanced",
-            "drupal/migrate_example_setup": "Required by drupal/migrate_example"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-2.x": "2.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-2.0-beta2",
-                "datestamp": "1470428639"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Mike Ryan",
-                "homepage": "https://www.drupal.org/u/mikeryan",
-                "role": "Maintainer"
-            }
-        ],
-        "description": "Enhancements to core migration support.",
-        "homepage": "https://www.drupal.org/project/migrate_plus",
-        "support": {
-            "source": "https://cgit.drupalcode.org/migrate_plus",
-            "issues": "https://www.drupal.org/project/issues/migrate_plus",
-            "irc": "irc://irc.freenode.org/drupal-migrate"
-        }
-    },
-    {
-        "name": "drupal/migrate_tools",
-        "version": "dev-2.x",
-        "version_normalized": "dev-2.x",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/migrate_tools",
-            "reference": "aefe7ad7d548ed9631344a85671dc03d0ec5ad15"
-        },
-        "require": {
-            "drupal/core": "^8.1",
-            "drupal/migrate_plus": "*"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-2.x": "2.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-2.0-beta1+3-dev",
-                "datestamp": "1470330853"
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "mikeryan",
-                "homepage": "https://www.drupal.org/user/4420"
-            }
-        ],
-        "description": "Tools to assist in developing and running migrations.",
-        "homepage": "https://www.drupal.org/project/migrate_tools",
-        "support": {
-            "source": "http://cgit.drupalcode.org/migrate_tools"
-        }
-    },
-    {
-        "name": "drupal/migrate_upgrade",
-        "version": "2.0.0-rc1",
-        "version_normalized": "2.0.0.0-RC1",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/migrate_upgrade",
-            "reference": "8.x-2.0-rc1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-2.0-rc1.zip",
-            "reference": "8.x-2.0-rc1",
-            "shasum": "fc87aabef6b17a221ccc6ba0f4dd8ec11541c58a"
-        },
-        "require": {
-            "drupal/core": ">=8.1, <8.2",
-            "drupal/migrate_plus": "*"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-2.x": "2.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-2.0-rc1",
-                "datestamp": "1472752139"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Ryan Weal",
-                "homepage": "https://www.drupal.org/user/412402"
-            },
-            {
-                "name": "abhishek-anand",
-                "homepage": "https://www.drupal.org/user/468982"
-            },
-            {
-                "name": "ksenzee",
-                "homepage": "https://www.drupal.org/user/139855"
-            },
-            {
-                "name": "mikeryan",
-                "homepage": "https://www.drupal.org/user/4420"
-            },
-            {
-                "name": "ultimike",
-                "homepage": "https://www.drupal.org/user/51132"
-            },
-            {
-                "name": "xjm",
-                "homepage": "https://www.drupal.org/user/65776"
-            }
-        ],
-        "description": "Drush support for direct upgrades from older Drupal versions.",
-        "homepage": "https://www.drupal.org/project/migrate_upgrade",
-        "support": {
-            "source": "http://cgit.drupalcode.org/migrate_upgrade"
-        }
-    },
-    {
         "name": "behat/transliterator",
         "version": "v1.1.0",
         "version_normalized": "1.1.0.0",
@@ -7587,21 +7369,183 @@
         }
     },
     {
-        "name": "drupal/core",
-        "version": "8.1.10",
-        "version_normalized": "8.1.10.0",
+        "name": "drupal/page_manager",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
         "source": {
             "type": "git",
-            "url": "https://github.com/drupal-composer/drupal-core.git",
-            "reference": "9562f733cdefd735337bf827b3ba5ad031aba4c3"
+            "url": "https://git.drupal.org/project/page_manager",
+            "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
+        },
+        "require": {
+            "drupal/core": "^8.0.5",
+            "drupal/ctools": "~3"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha24+2-dev",
+                "datestamp": "1476303839"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Tim Plunkett",
+                "homepage": "https://www.drupal.org/u/tim.plunkett",
+                "role": "Maintainer"
+            },
+            {
+                "name": "dsnopek",
+                "homepage": "https://www.drupal.org/user/266527"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Provides a way to place blocks on a custom page.",
+        "homepage": "https://www.drupal.org/project/page_manager",
+        "support": {
+            "source": "https://git.drupal.org/project/page_manager.git",
+            "issues": "https://www.drupal.org/project/issues/page_manager",
+            "irc": "irc://irc.freenode.org/drupal-contribute"
+        }
+    },
+    {
+        "name": "asm89/stack-cors",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/asm89/stack-cors.git",
+            "reference": "3ae8ef219bb4c9a6caf857421719aa07fa7776cc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/9562f733cdefd735337bf827b3ba5ad031aba4c3",
-            "reference": "9562f733cdefd735337bf827b3ba5ad031aba4c3",
+            "url": "https://api.github.com/repos/asm89/stack-cors/zipball/3ae8ef219bb4c9a6caf857421719aa07fa7776cc",
+            "reference": "3ae8ef219bb4c9a6caf857421719aa07fa7776cc",
             "shasum": ""
         },
         "require": {
+            "php": ">=5.3.2",
+            "symfony/http-foundation": "~2.1|~3.0",
+            "symfony/http-kernel": "~2.1|~3.0"
+        },
+        "time": "2016-08-01 12:05:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Asm89\\Stack": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alexander",
+                "email": "iam.asm89@gmail.com"
+            }
+        ],
+        "description": "Cross-origin resource sharing library and stack middleware",
+        "homepage": "https://github.com/asm89/stack-cors",
+        "keywords": [
+            "cors",
+            "stack"
+        ]
+    },
+    {
+        "name": "symfony-cmf/routing",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony-cmf/Routing.git",
+            "reference": "b93704ca098334f56e9b317932f21a4362e620db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony-cmf/Routing/zipball/b93704ca098334f56e9b317932f21a4362e620db",
+            "reference": "b93704ca098334f56e9b317932f21a4362e620db",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.3.9|^7.0",
+            "psr/log": "1.*",
+            "symfony/http-kernel": "^2.2|3.*",
+            "symfony/routing": "^2.2|3.*"
+        },
+        "require-dev": {
+            "friendsofsymfony/jsrouting-bundle": "^1.1",
+            "symfony-cmf/testing": "^1.3",
+            "symfony/config": "^2.2|3.*",
+            "symfony/dependency-injection": "^2.0.5|3.*",
+            "symfony/event-dispatcher": "^2.1|3.*"
+        },
+        "suggest": {
+            "symfony/event-dispatcher": "DynamicRouter can optionally trigger an event at the start of matching. Minimal version (~2.1)"
+        },
+        "time": "2016-03-31 09:11:39",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Cmf\\Component\\Routing\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony CMF Community",
+                "homepage": "https://github.com/symfony-cmf/Routing/contributors"
+            }
+        ],
+        "description": "Extends the Symfony2 routing component for dynamic routes and chaining several routers",
+        "homepage": "http://cmf.symfony.com",
+        "keywords": [
+            "database",
+            "routing"
+        ]
+    },
+    {
+        "name": "drupal/core",
+        "version": "8.2.2",
+        "version_normalized": "8.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drupal-composer/drupal-core.git",
+            "reference": "399b52eee9e80492ce6928d6784a8399e0da961c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drupal-composer/drupal-core/zipball/399b52eee9e80492ce6928d6784a8399e0da961c",
+            "reference": "399b52eee9e80492ce6928d6784a8399e0da961c",
+            "shasum": ""
+        },
+        "require": {
+            "asm89/stack-cors": "~1.0",
             "composer/semver": "~1.0",
             "doctrine/annotations": "1.2.*",
             "doctrine/common": "2.5.*",
@@ -7612,7 +7556,7 @@
             "paragonie/random_compat": "~1.0",
             "php": ">=5.5.9",
             "stack/builder": "1.0.*",
-            "symfony-cmf/routing": "1.3.*",
+            "symfony-cmf/routing": "~1.4",
             "symfony/class-loader": "~2.8",
             "symfony/console": "~2.8",
             "symfony/dependency-injection": "~2.8",
@@ -7641,6 +7585,7 @@
             "drupal/big_pipe": "self.version",
             "drupal/block": "self.version",
             "drupal/block_content": "self.version",
+            "drupal/block_place": "self.version",
             "drupal/book": "self.version",
             "drupal/breakpoint": "self.version",
             "drupal/ckeditor": "self.version",
@@ -7650,6 +7595,7 @@
             "drupal/config": "self.version",
             "drupal/config_translation": "self.version",
             "drupal/contact": "self.version",
+            "drupal/content_moderation": "self.version",
             "drupal/content_translation": "self.version",
             "drupal/contextual": "self.version",
             "drupal/core-annotation": "self.version",
@@ -7674,6 +7620,7 @@
             "drupal/core-utility": "self.version",
             "drupal/core-uuid": "self.version",
             "drupal/datetime": "self.version",
+            "drupal/datetime_range": "self.version",
             "drupal/dblog": "self.version",
             "drupal/dynamic_page_cache": "self.version",
             "drupal/editor": "self.version",
@@ -7699,6 +7646,7 @@
             "drupal/minimal": "self.version",
             "drupal/node": "self.version",
             "drupal/options": "self.version",
+            "drupal/outside_in": "self.version",
             "drupal/page_cache": "self.version",
             "drupal/path": "self.version",
             "drupal/quickedit": "self.version",
@@ -7735,7 +7683,7 @@
             "phpunit/phpunit": "~4.8",
             "symfony/css-selector": "~2.8"
         },
-        "time": "2016-09-21 17:09:42",
+        "time": "2016-11-02 17:43:45",
         "type": "drupal-core",
         "installation-source": "dist",
         "autoload": {
@@ -7759,5 +7707,171 @@
             "GPL-2.0+"
         ],
         "description": "Drupal is an open source content management platform powering millions of websites and applications."
+    },
+    {
+        "name": "drupal/migrate_plus",
+        "version": "3.0.0-beta1",
+        "version_normalized": "3.0.0.0-beta1",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/migrate_plus",
+            "reference": "8.x-3.0-beta1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/migrate_plus-8.x-3.0-beta1.zip",
+            "reference": "8.x-3.0-beta1",
+            "shasum": "7bae5c758a432053863b7b19c94fc1b829debf00"
+        },
+        "require": {
+            "drupal/core": "^8.2"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/migrate_example_advanced",
+            "drupal/migrate_example_advanced_setup": "Required by drupal/migrate_example_advanced",
+            "drupal/migrate_example_setup": "Required by drupal/migrate_example",
+            "sainsburys/guzzle-oauth2-plugin": "3.0 required for the OAuth2 authentication plugin"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta1",
+                "datestamp": "1476307739"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Mike Ryan",
+                "homepage": "https://www.drupal.org/u/mikeryan",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "Enhancements to core migration support.",
+        "homepage": "https://www.drupal.org/project/migrate_plus",
+        "support": {
+            "source": "https://cgit.drupalcode.org/migrate_plus",
+            "issues": "https://www.drupal.org/project/issues/migrate_plus",
+            "irc": "irc://irc.freenode.org/drupal-migrate"
+        }
+    },
+    {
+        "name": "drupal/migrate_upgrade",
+        "version": "3.0.0-rc1",
+        "version_normalized": "3.0.0.0-RC1",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/migrate_upgrade",
+            "reference": "8.x-3.0-rc1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-3.0-rc1.zip",
+            "reference": "8.x-3.0-rc1",
+            "shasum": "0141d36fb99b166c5e114b946b140780489620e3"
+        },
+        "require": {
+            "drupal/core": "*",
+            "drupal/migrate_plus": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-rc1",
+                "datestamp": "1476200639"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Ryan Weal",
+                "homepage": "https://www.drupal.org/user/412402"
+            },
+            {
+                "name": "abhishek-anand",
+                "homepage": "https://www.drupal.org/user/468982"
+            },
+            {
+                "name": "ksenzee",
+                "homepage": "https://www.drupal.org/user/139855"
+            },
+            {
+                "name": "mikeryan",
+                "homepage": "https://www.drupal.org/user/4420"
+            },
+            {
+                "name": "ultimike",
+                "homepage": "https://www.drupal.org/user/51132"
+            },
+            {
+                "name": "xjm",
+                "homepage": "https://www.drupal.org/user/65776"
+            }
+        ],
+        "description": "Drush support for direct upgrades from older Drupal versions.",
+        "homepage": "https://www.drupal.org/project/migrate_upgrade",
+        "support": {
+            "source": "http://cgit.drupalcode.org/migrate_upgrade"
+        }
+    },
+    {
+        "name": "drupal/migrate_tools",
+        "version": "3.0.0-beta1",
+        "version_normalized": "3.0.0.0-beta1",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/migrate_tools",
+            "reference": "8.x-3.0-beta1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-3.0-beta1.zip",
+            "reference": null,
+            "shasum": "1511d1da1444743fa2defa54a17e62264e8ab836"
+        },
+        "require": {
+            "drupal/core": "^8.2",
+            "drupal/migrate_plus": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta1",
+                "datestamp": "1476313439"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "mikeryan",
+                "homepage": "https://www.drupal.org/user/4420"
+            }
+        ],
+        "description": "Tools to assist in developing and running migrations.",
+        "homepage": "https://www.drupal.org/project/migrate_tools",
+        "support": {
+            "source": "http://cgit.drupalcode.org/migrate_tools"
+        }
     }
 ]

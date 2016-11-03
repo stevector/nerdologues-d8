@@ -1,0 +1,55 @@
+uuid: c54190c4-de3e-4d1c-a0ad-33035adcfee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+    - views.view.clips_by_person
+  module:
+    - ctools
+    - views
+id: node_view-block_display-0
+label: Person
+variant: block_display
+variant_settings:
+  blocks:
+    9d8a0599-9620-4a9d-95c8-83da8f06f8d6:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: full
+      region: top
+      weight: -10
+      uuid: 9d8a0599-9620-4a9d-95c8-83da8f06f8d6
+      context_mapping:
+        entity: node
+    21b9f2b1-810e-4d2b-acde-cce29f15019b:
+      id: 'views_block:clips_by_person-block_1'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: bottom
+      weight: -10
+      uuid: 21b9f2b1-810e-4d2b-acde-cce29f15019b
+      context_mapping: {  }
+  id: block_display
+  uuid: ee80a4d1-908f-4529-8a9e-ed597ec78f6e
+  label: null
+  weight: 0
+  status_code: '404'
+  page_title: Person
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      person: person
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }
