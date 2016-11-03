@@ -1,0 +1,23 @@
+uuid: 2e405541-eee2-4595-940a-eb2ce9c498cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_int_sort_order
+    - node.type.podcast_episode
+id: node.podcast_episode.field_int_sort_order
+field_name: field_int_sort_order
+entity_type: node
+bundle: podcast_episode
+label: 'Sort Order'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
