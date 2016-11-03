@@ -125,3 +125,4 @@ content:
 hidden:
   field_file: true
   field_int_duration: true
+  field_int_sort_order: true

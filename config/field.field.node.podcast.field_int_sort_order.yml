@@ -1,0 +1,23 @@
+uuid: 60fb8d22-5a68-42bf-8476-6dd598b6af6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_int_sort_order
+    - node.type.podcast
+id: node.podcast.field_int_sort_order
+field_name: field_int_sort_order
+entity_type: node
+bundle: podcast
+label: 'Sort Order'
+description: "Used to set the order of Podcasts on nerdologues.com/podcasts. Lower numbers appear at the top.\r\n"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
