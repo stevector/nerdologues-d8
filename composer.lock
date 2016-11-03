@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ec87c676d8547fba1a054ad26970667",
-    "content-hash": "12ce625a162bfa53cd048eeb30e3ddf6",
+    "hash": "0afbc8a0c55964b2cbccc5772173949e",
+    "content-hash": "82eecc904b224d678af3fa35d9769f33",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1787,30 +1787,30 @@
         },
         {
             "name": "drupal/migrate_tools",
-            "version": "1.0.0-beta1",
+            "version": "3.0.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/migrate_tools",
-                "reference": "8.x-1.0-beta1"
+                "reference": "8.x-3.0-beta1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-1.0-beta1.zip",
-                "reference": "8.x-1.0-beta1",
-                "shasum": "db3b150dde6e09db8f3de89a8d569f4c556c03ef"
+                "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-3.0-beta1.zip",
+                "reference": null,
+                "shasum": "1511d1da1444743fa2defa54a17e62264e8ab836"
             },
             "require": {
-                "drupal/core": "~8.0",
+                "drupal/core": "^8.2",
                 "drupal/migrate_plus": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1",
-                    "datestamp": "1458167758"
+                    "version": "8.x-3.0-beta1",
+                    "datestamp": "1476313439"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1831,30 +1831,30 @@
         },
         {
             "name": "drupal/migrate_upgrade",
-            "version": "2.0.0-beta1",
+            "version": "3.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/migrate_upgrade",
-                "reference": "8.x-2.0-beta1"
+                "reference": "8.x-3.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-2.0-beta1.zip",
-                "reference": null,
-                "shasum": "d5458312b74f2d6975b76d5f1115368b364c91b7"
+                "url": "https://ftp.drupal.org/files/projects/migrate_upgrade-8.x-3.0-rc1.zip",
+                "reference": "8.x-3.0-rc1",
+                "shasum": "0141d36fb99b166c5e114b946b140780489620e3"
             },
             "require": {
-                "drupal/core": "^8.1",
+                "drupal/core": "*",
                 "drupal/migrate_plus": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta1",
-                    "datestamp": "1472752139"
+                    "version": "8.x-3.0-rc1",
+                    "datestamp": "1476200639"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",

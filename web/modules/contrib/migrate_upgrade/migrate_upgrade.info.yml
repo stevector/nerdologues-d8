@@ -2,17 +2,15 @@ name: Drupal Upgrade
 type: module
 description: 'Drush support for direct upgrades from older Drupal versions.'
 package: Migration
-# version: VERSION
 # core: 8.x
 dependencies:
-  - system (>=8.1)
-  - migrate
-  - migrate_drupal
-  - migrate_plus
-  - dblog
+  - drupal:migrate (>=8.2)
+  - drupal:migrate_drupal
+  - migrate_plus:migrate_plus
+  - drupal:dblog
 
-# Information added by Drupal.org packaging script on 2016-04-14
-version: '8.x-2.0-beta1'
+# Information added by Drupal.org packaging script on 2016-10-11
+version: '8.x-3.0-rc1'
 core: '8.x'
 project: 'migrate_upgrade'
-datestamp: 1460667540
+datestamp: 1476200662

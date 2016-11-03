@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains Drupal\migrate_tools\Form\MigrationEditForm.
- */
-
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Form\FormStateInterface;
@@ -37,9 +32,6 @@ class MigrationEditForm extends MigrationFormBase {
   public function actions(array $form, FormStateInterface $form_state) {
     $actions = parent::actions($form, $form_state);
     $actions['submit']['#value'] = t('Update Migration');
-
-    // Add the group parameter to the delete URL.
-    $this->addGroupParameter($actions['delete']['#url'], $this->getEntity()->get('migration_group'));
 
     return $actions;
   }
