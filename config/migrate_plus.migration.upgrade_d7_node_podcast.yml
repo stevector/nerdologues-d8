@@ -28,6 +28,7 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
+  field_int_sort_order: field_int_sort_order
   field_body: field_body
   field_image:
     plugin: iterator
