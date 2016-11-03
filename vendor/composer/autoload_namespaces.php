@@ -40,4 +40,5 @@ return array(
     'Behat\\MinkExtension' => array($vendorDir . '/behat/mink-extension/src'),
     'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
     'Behat\\Behat' => array($vendorDir . '/behat/behat/src'),
+    'Asm89\\Stack' => array($vendorDir . '/asm89/stack-cors/src'),
 );

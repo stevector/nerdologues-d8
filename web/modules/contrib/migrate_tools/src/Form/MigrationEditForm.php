@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains Drupal\migrate_tools\Form\MigrationEditForm.
+ */
+
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Form\FormStateInterface;

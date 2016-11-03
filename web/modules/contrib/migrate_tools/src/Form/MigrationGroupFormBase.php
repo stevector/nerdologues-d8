@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains Drupal\migrate_tools\Form\MigrationGroupFormBase.
+ */
+
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Entity\EntityForm;
@@ -39,12 +44,6 @@ class MigrationGroupFormBase extends EntityForm {
 
   /**
    * Factory method for MigrationGroupFormBase.
-   *
-   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-   *   A container interface service.
-   *
-   * @return \Drupal\migrate_tools\Form\MigrationFormBase
-   *
    */
   public static function create(ContainerInterface $container) {
     return new static($container->get('entity.query'));
@@ -57,7 +56,7 @@ class MigrationGroupFormBase extends EntityForm {
    *
    * @param array $form
    *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param array $form_state
    *   An associative array containing the current state of the form.
    *
    * @return array
@@ -161,8 +160,6 @@ class MigrationGroupFormBase extends EntityForm {
    *   An associative array containing the structure of the form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   An associative array containing the current state of the form.
-   *
-   * @return $this
    */
   public function save(array $form, FormStateInterface $form_state) {
     $migration_group = $this->getEntity();

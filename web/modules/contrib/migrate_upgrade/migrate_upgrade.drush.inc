@@ -14,8 +14,7 @@ function migrate_upgrade_drush_command() {
   $items['migrate-upgrade'] = [
     'description' => 'Perform one or more upgrade processes.',
     'options' => [
-      'legacy-db-url' => 'A Drupal 6 style database URL. Required if you do not set legacy-db-key.',
-      'legacy-db-key' => 'A database connection key from settings.php. Use as an alternative to legacy-db-url',
+      'legacy-db-url' => 'A Drupal 6 style database URL. Required.',
       'legacy-db-prefix' => 'Prefix of the legacy Drupal installation.',
       'legacy-root' => 'Site address or root of the legacy Drupal installation',
       'configure-only' => 'Set up the appropriate upgrade processes but do not perform them',
@@ -23,7 +22,6 @@ function migrate_upgrade_drush_command() {
     ],
     'examples' => [
       'migrate-upgrade --legacy-db-url=\'mysql://root:pass@127.0.0.1/d6\'' => 'Upgrade a Drupal 6 database to Drupal 8',
-      'migrate-upgrade --legacy-db-key=\'drupal_7\'' => 'Upgrade Drupal 7 database where the connection to Drupal 7 has already been created in settings.php ($databases[\'drupal_7\'])',
       'migrate-upgrade --legacy-db-url=\'mysql://root:pass@127.0.0.1/d7\' --configure-only --migration-prefix=d7_custom_' => 'Generate migrations for a custom migration from Drupal 7 to Drupal 8',
     ],
     'drupal dependencies' => ['migrate_upgrade'],

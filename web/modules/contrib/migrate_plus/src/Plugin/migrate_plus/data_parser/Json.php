@@ -3,9 +3,7 @@
 namespace Drupal\migrate_plus\Plugin\migrate_plus\data_parser;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\migrate\MigrateException;
 use Drupal\migrate_plus\DataParserPluginBase;
-use GuzzleHttp\Exception\RequestException;
 
 /**
  * Obtain JSON data for migration.
@@ -32,22 +30,57 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
   protected $iterator;
 
   /**
-   * {@inheritdoc}
+   * Retrieves the JSON data and returns it as an array.
+   *
+   * @param string $url
+   *   URL of a JSON feed.
+   *
+   * @return array
+   *   The selected data to be iterated.
+   *
+   * @throws \GuzzleHttp\Exception\RequestException
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  protected function getSourceData($url) {
+    $response = $this->getDataFetcherPlugin()->getResponseContent($url);
+
+    // json_decode() expects utf8 data so let's make sure it gets it.
+    $utf8response = utf8_encode($response);
+
+    // Convert objects to associative arrays.
+    $source_data = json_decode($utf8response, TRUE);
+    // Backwards-compatibility for depth selection.
+    if (is_int($this->itemSelector)) {
+      return $this->selectByDepth($source_data);
+    }
+
+    // Otherwise, we're using xpath-like selectors.
+    $selectors = explode('/', trim($this->itemSelector, '/'));
+    foreach ($selectors as $selector) {
+      $source_data = $source_data[$selector];
+    }
+    return $source_data;
   }
 
   /**
-   * {@inheritdoc}
+   * Get the source data for reading.
+   *
+   * @param array $raw_data
+   *   Raw data from the JSON feed.
+   *
+   * @return array
+   *   Selected items at the requested depth of the JSON feed.
    */
-  protected function getSourceData($url) {
-    $iterator = $this->getSourceIterator($url);
-
-    // Recurse through the result array. When there is an array of items at the
-    // expected depth, pull that array out as a distinct item.
-    $identifierDepth = $this->itemSelector;
+  protected function selectByDepth(array $raw_data) {
+    // Return the results in a recursive iterator that can traverse
+    // multidimensional arrays.
+    $iterator = new \RecursiveIteratorIterator(
+      new \RecursiveArrayIterator($raw_data),
+      \RecursiveIteratorIterator::SELF_FIRST);
     $items = [];
+    // Backwards-compatibility - an integer item_selector is interpreted as a
+    // depth. When there is an array of items at the expected depth, pull that
+    // array out as a distinct item.
+    $identifierDepth = $this->itemSelector;
     $iterator->rewind();
     while ($iterator->valid()) {
       $item = $iterator->current();
@@ -57,33 +90,6 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
       $iterator->next();
     }
     return $items;
-  }
-
-  /**
-   * Get the source data for reading.
-   *
-   * @param string $url
-   *   The URL to read the source data from.
-   *
-   * @return \RecursiveIteratorIterator|resource
-   *
-   * @throws \Drupal\migrate\MigrateException
-   */
-  protected function getSourceIterator($url) {
-    try {
-      $response = $this->getDataFetcherPlugin()->getResponseContent($url);
-      // The TRUE setting means decode the response into an associative array.
-      $array = json_decode($response, TRUE);
-
-      // Return the results in a recursive iterator that
-      // can traverse multidimensional arrays.
-      return new \RecursiveIteratorIterator(
-        new \RecursiveArrayIterator($array),
-        \RecursiveIteratorIterator::SELF_FIRST);
-    }
-    catch (RequestException $e) {
-      throw new MigrateException($e->getMessage(), $e->getCode(), $e);
-    }
   }
 
   /**
@@ -103,7 +109,15 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
     $current = $this->iterator->current();
     if ($current) {
       foreach ($this->fieldSelectors() as $field_name => $selector) {
-        $this->currentItem[$field_name] = $current[$selector];
+        $field_data = $current;
+        $field_selectors = explode('/', trim($selector, '/'));
+        foreach ($field_selectors as $field_selector) {
+          $field_data = $field_data[$field_selector];
+        }
+        $this->currentItem[$field_name] = $field_data;
+      }
+      if (!empty($this->configuration['include_raw_data'])) {
+        $this->currentItem['raw'] = $current;
       }
       $this->iterator->next();
     }

@@ -73,7 +73,6 @@ abstract class DataParserPluginBase extends PluginBase implements DataParserPlug
     return new static($configuration, $plugin_id, $plugin_definition);
   }
 
-
   /**
    * Returns the initialized data fetcher plugin.
    *

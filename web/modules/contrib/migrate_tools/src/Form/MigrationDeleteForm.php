@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains Drupal\migrate_tools\Form\MigrationDeleteForm.
+ */
+
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Entity\EntityConfirmFormBase;

@@ -1,13 +1,19 @@
 <?php
 
+/**
+ * @file
+ * Contains Drupal\migrate_tools\Form\MigrationFormBase.
+ */
+
 namespace Drupal\migrate_tools\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\migrate_plus\Entity\MigrationGroup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Entity\MigrationInterface;
 
 /**
  * Class MigrationFormBase.
@@ -40,11 +46,6 @@ class MigrationFormBase extends EntityForm {
 
   /**
    * Factory method for MigrationFormBase.
-   *
-   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-   *   A container interface service.
-   *
-   * @return \Drupal\migrate_tools\Form\MigrationGroupFormBase
    */
   public static function create(ContainerInterface $container) {
     return new static($container->get('entity.query'));
@@ -57,7 +58,7 @@ class MigrationFormBase extends EntityForm {
    *
    * @param array $form
    *   An associative array containing the structure of the form.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   * @param array $form_state
    *   An associative array containing the current state of the form.
    *
    * @return array
@@ -171,8 +172,6 @@ class MigrationFormBase extends EntityForm {
    *   An associative array containing the structure of the form.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   An associative array containing the current state of the form.
-   *
-   * @return $this
    */
   public function save(array $form, FormStateInterface $form_state) {
     $migration = $this->getEntity();
