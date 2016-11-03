@@ -1,0 +1,32 @@
+uuid: 77e47336-e61a-473b-8405-99baeeae1fb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  module:
+    - system
+id: node_view-block_display-1
+label: Default
+variant: block_display
+variant_settings:
+  blocks:
+    5b79c3ca-198d-4b92-8aaf-54a92b22383b:
+      id: system_main_block
+      label: 'Main page content'
+      provider: system
+      label_display: '0'
+      region: top
+      weight: 0
+      uuid: 5b79c3ca-198d-4b92-8aaf-54a92b22383b
+      context_mapping: {  }
+  id: block_display
+  uuid: 40f44d1a-c455-488d-a76d-e066288a85cd
+  label: null
+  weight: 0
+  page_title: ''
+page: node_view
+weight: 9
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }
