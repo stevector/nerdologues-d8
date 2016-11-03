@@ -1,0 +1,19 @@
+uuid: d109b474-99f0-434b-9c68-16e8f2270836
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body_plain
+    - paragraphs.paragraphs_type.quotes
+id: paragraph.quotes.field_body_plain
+field_name: field_body_plain
+entity_type: paragraph
+bundle: quotes
+label: Quote
+description: 'Include opening and closing " marks around the quote.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,30 @@
+uuid: 0097595e-3c89-44db-8650-7c1ce5cb6b23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_para_quotes
+    - node.type.clip
+    - paragraphs.paragraphs_type.quotes
+  module:
+    - entity_reference_revisions
+id: node.clip.field_para_quotes
+field_name: field_para_quotes
+entity_type: node
+bundle: clip
+label: Quotes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      quotes: quotes
+    target_bundles_drag_drop:
+      quotes:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

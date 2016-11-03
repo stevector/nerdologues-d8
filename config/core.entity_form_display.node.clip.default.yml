@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.clip.field_date_published
     - field.field.node.clip.field_int_end_time
     - field.field.node.clip.field_int_start_time
+    - field.field.node.clip.field_para_quotes
     - field.field.node.clip.field_ref_creators
     - field.field.node.clip.field_ref_podcast
     - field.field.node.clip.field_ref_podcast_episode
     - node.type.clip
   module:
     - datetime
+    - paragraphs
     - path
     - text
 id: node.clip.default
@@ -49,6 +51,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: number
+  field_para_quotes:
+    type: entity_reference_paragraphs
+    weight: 39
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
   field_ref_creators:
     weight: 32
     settings:

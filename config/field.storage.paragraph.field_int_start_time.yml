@@ -1,0 +1,20 @@
+uuid: 8124c16b-07ec-4674-9391-5d4b330c079e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_int_start_time
+field_name: field_int_start_time
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

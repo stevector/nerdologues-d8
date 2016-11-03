@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.clip.field_date_published
     - field.field.node.clip.field_int_end_time
     - field.field.node.clip.field_int_start_time
+    - field.field.node.clip.field_para_quotes
     - field.field.node.clip.field_ref_creators
     - field.field.node.clip.field_ref_podcast
     - field.field.node.clip.field_ref_podcast_episode
@@ -14,6 +15,7 @@ dependencies:
   module:
     - datetime
     - ds
+    - entity_reference_revisions
     - nerdcustom
     - text
     - user
@@ -77,6 +79,14 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+  field_para_quotes:
+    type: entity_reference_revisions_entity_view
+    weight: 16
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_ref_creators:
     weight: 2
     label: inline
