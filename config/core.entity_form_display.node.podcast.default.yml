@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.podcast.field_body
     - field.field.node.podcast.field_image
+    - field.field.node.podcast.field_int_sort_order
     - image.style.thumbnail
     - node.type.podcast
   module:
@@ -35,6 +36,12 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_int_sort_order:
+    weight: 34
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
   path:
     type: path
     weight: 30
