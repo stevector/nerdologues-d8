@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.podcast_episode.field_date_published
     - field.field.node.podcast_episode.field_file
     - field.field.node.podcast_episode.field_int_duration
-    - field.field.node.podcast_episode.field_int_sort_order
     - field.field.node.podcast_episode.field_lede
     - field.field.node.podcast_episode.field_link
     - field.field.node.podcast_episode.field_link_paywall_content
@@ -51,12 +50,6 @@ content:
     type: nerd_remote_uri
   field_int_duration:
     weight: 27
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
-  field_int_sort_order:
-    weight: 28
     settings:
       placeholder: ''
     third_party_settings: {  }
