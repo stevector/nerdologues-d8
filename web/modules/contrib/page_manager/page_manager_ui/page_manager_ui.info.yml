@@ -1,0 +1,7 @@
+type: module
+name: Page Manager UI
+description: 'Provides a simple UI for Page Manager.'
+package: Layout
+core: 8.x
+dependencies:
+  - page_manager
