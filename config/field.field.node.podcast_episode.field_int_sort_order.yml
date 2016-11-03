@@ -10,7 +10,7 @@ field_name: field_int_sort_order
 entity_type: node
 bundle: podcast_episode
 label: 'Sort Order'
-description: ''
+description: 'Used to set the order of Podcasts on nerdologues.com/podcasts. Lower numbers appear at the top.'
 required: false
 translatable: false
 default_value: {  }
