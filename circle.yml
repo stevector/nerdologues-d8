@@ -23,7 +23,7 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   pre:
     # Add apache config.
-    - ./circle-scripts/circle-apache.sh
+    - ./scripts/circle-ci/circle-apache.sh
 
     - composer global require drush/drush:8.*
     - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
@@ -33,7 +33,7 @@ dependencies:
 test:
   pre:
     # Copy the settings.local into place
-    - cp circle-scripts/settings.cirlceci.php web/sites/default/settings.local.php
+    - cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
     - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
     - drush --yes --root=$DOCROOT site-install config_installer
@@ -51,5 +51,5 @@ deployment:
     commands:
       - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
       - yes | terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
-      - ./circle-scripts/deploy-to-multidev.sh
+      - ./scripts/circle-ci/deploy-to-multidev.sh
       - ./scripts/run-backstop.sh
