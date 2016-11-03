@@ -34,6 +34,8 @@ module:
   node: 0
   options: 0
   page_cache: 0
+  page_manager: 0
+  page_manager_ui: 0
   path: 0
   quickedit: 0
   rdf: 0
