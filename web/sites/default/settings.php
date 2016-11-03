@@ -38,3 +38,5 @@ $local_services_file = __DIR__ . '/services.local.yml';
 if (file_exists($local_services_file)) {
   $settings['container_yamls'][] = $local_services_file;
 }
+
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
