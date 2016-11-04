@@ -22,9 +22,11 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
+    # The memory limit of 128M was breached on site install when adding paragrapphs module.
+    - echo "memory_limit = 256M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
+
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
-
     - composer global require drush/drush:8.*
     - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.11.3/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
     - terminus auth login --machine-token=$TerminusToken
