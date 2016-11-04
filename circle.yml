@@ -27,6 +27,7 @@ dependencies:
 
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
+    - composer global require consolidation/cgr
     - composer global require drush/drush:8.*
     - composer global require pantheon-systems/terminus ">=0.13.3"
     - terminus auth login --machine-token=$TerminusToken
