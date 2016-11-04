@@ -22,8 +22,8 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
-    # Add apache config.
     - echo "memory_limit = 256M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
+    # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
 
     - composer global require drush/drush:8.*
