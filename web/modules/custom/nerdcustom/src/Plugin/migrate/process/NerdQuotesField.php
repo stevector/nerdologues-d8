@@ -13,7 +13,7 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 use Drupal\Core\Database\Database;
-
+use Drupal\paragraphs\Entity\Paragraph;
 /**
  * A process plugin to set audio duration.
  *
@@ -28,38 +28,42 @@ class NerdQuotesField extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-
-
-    print_r("\n\n");    print_r("\n\n");
-    print_r($value['value']);
-
-    print_r("\n\n");
-    $return = 0;
     $query = Database::getConnection('default', 'drupal_7')
-      ->select('field_data_field_body');
-    $query->join('field_data_field_int_start_time', 'field_data_field_int_start_time', 'field_data_field_int_start_time.entity_id=field_data_field_body.entity_id');
+      ->select('field_data_field_body', 'fdfb');
+    $query->join('field_data_field_int_start_time', 'fdfi', 'fdfi.entity_id=fdfb.entity_id');
 
-      $results = $query->fields('field_data_field_body', ['field_body_value'])
-          ->fields('field_data_field_int_start_time', ['field_int_start_time_value'])
-      ->condition('field_data_field_body.entity_id', $value['value'])
-        ->condition('field_data_field_int_start_time.bundle', 'field_fc_quotes ')
-        ->condition('field_data_field_body.bundle', 'field_fc_quotes ')->execute();
+      $results = $query->fields('fdfb', ['field_body_value'])
+          ->fields('fdfi', ['field_int_start_time_value'])
+      ->condition('fdfb.entity_id', $value['value'])
+        ->condition('fdfi.bundle', 'field_fc_quotes ')
+        ->condition('fdfb.bundle', 'field_fc_quotes ')->execute();
 
+      // There really should be only one value in this lloo
     foreach ($results as $result) {
-
-      print_r($result);
+        if (!empty($result->field_body_value)) {
+            return $this->makeParagraph($result->field_body_value, $result->field_int_start_time_value);
+        }
     }
 
-
-    print_r($return);
-
-
-    //return $return;
-
-
-    return null;
+    return NULL;
   }
+  protected function makeParagraph($body, $int_start = NULL) {
 
+    $paragraph = Paragraph::create([
+        'type' => 'quotes',   // paragraph type machine name
+        'field_body_plain' => [   // paragraph's field machine name
+            'value' => $body,                  // body field value
+        ],
+        'field_int_start_time' => [
+            'value' => $int_start,
+        ],
+    ]);
 
-  
+    $paragraph->save();
+
+    return [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
 }
