@@ -27,9 +27,8 @@ dependencies:
 
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
-    - composer global require consolidation/cgr
     - composer global require drush/drush:8.*
-    - composer global require pantheon-systems/terminus ">=0.13.3"
+    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.x/terminus.phar -L -o /usr/local/bin/terminus  && sudo chmod +x /usr/local/bin/terminus
     - terminus auth login --machine-token=$TerminusToken
     - echo Installing gulp globally
     - npm install -g gulp
