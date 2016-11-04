@@ -41,7 +41,7 @@ test:
     # Copy the settings.local into place
     - cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
-    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
+    - echo 'sendmail_path = /bin/true' >> /opt/circleci/php/$(phpenv global)/etc/conf.d/mail.ini
     - drush --yes --root=$DOCROOT site-install config_installer
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
