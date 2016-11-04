@@ -2,7 +2,7 @@
 machine:
   php:
     # https://circleci.com/docs/environment#php
-    version: 5.5.11
+    version: 7.0.7
   environment:
     # DB config. Using default CircleCI's database.
     DB_NAME: "circle_test"
@@ -23,6 +23,7 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   pre:
     # Add apache config.
+    - echo "memory_limit = 256M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
     - ./scripts/circle-ci/circle-apache.sh
 
     - composer global require drush/drush:8.*
