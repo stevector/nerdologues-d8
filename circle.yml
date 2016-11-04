@@ -2,7 +2,7 @@
 machine:
   php:
     # https://circleci.com/docs/environment#php
-    version: 5.5.11
+    version: 7.0.7
   environment:
     # DB config. Using default CircleCI's database.
     DB_NAME: "circle_test"
@@ -22,6 +22,12 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
+    - sudo add-apt-repository ppa:ondrej/php -y
+    - sudo apt-get update
+    - sudo apt-get install php7.0 php7.0-mysql
+    - sudo a2dismod php5
+    - sudo a2enmod php7.0
+    - echo "memory_limit = 256M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
 
@@ -35,7 +41,7 @@ test:
     # Copy the settings.local into place
     - cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
     # Disable sendmail binary to suppress any mailouts.
-    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
+    - echo 'sendmail_path = /bin/true' >> /opt/circleci/php/$(phpenv global)/etc/conf.d/mail.ini
     - drush --yes --root=$DOCROOT site-install config_installer
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER

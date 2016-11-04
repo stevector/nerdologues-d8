@@ -16,7 +16,7 @@ echo "<VirtualHost *:80>
           Allow from all
         </Directory>
       </VirtualHost>" > apache-vhost.conf
-cp apache-vhost.conf /etc/apache2/sites-available/default
+sudo cp apache-vhost.conf /etc/apache2/sites-available/default
 sudo sed -e "s?%DOCROOT%?$DOCROOT?g" --in-place /etc/apache2/sites-available/default
 sudo sed -e "s?%SERVER%?$SERVER?g" --in-place /etc/apache2/sites-available/default
 sudo a2enmod rewrite
