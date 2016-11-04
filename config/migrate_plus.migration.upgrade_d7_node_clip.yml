@@ -37,8 +37,8 @@ process:
   field_ref_podcast: field_ref_podcast
   field_ref_podcast_episode: field_ref_podcast_episode
   field_para_quotes:
-      plugin: nerd_quotes_field
-      source: field_fc_quotes
+    plugin: nerd_quotes_field
+    source: field_fc_quotes
   field_date_published:
     plugin: nerd_date_published
     source: field_date_published
