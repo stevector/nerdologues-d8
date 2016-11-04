@@ -23,7 +23,7 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   pre:
     # The memory limit of 128M was breached on site install when adding paragrapphs module.
-    - echo "memory_limit = 256M" > /opt/circleci/php/$(phpenv global)/etc/conf.d/memory.ini
+    - echo "memory_limit = 256M" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/memory.ini
 
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
