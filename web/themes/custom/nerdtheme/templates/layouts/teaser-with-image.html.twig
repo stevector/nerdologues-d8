@@ -1,6 +1,9 @@
 <div class="l-2up  clearfix">
 
-  {% if quote %}
+  {# I don't understand why an empty quote reports as having
+  a length of 1.
+  #}
+  {% if quote|length > 1 %}
   <div class="teaser-with-image--quote">
     <div class="inside">{{ quote }}</div>
   </div>
