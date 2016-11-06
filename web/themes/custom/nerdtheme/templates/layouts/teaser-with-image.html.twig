@@ -3,7 +3,7 @@
   {# I don't understand why an empty quote reports as having
   a length of 1.
   #}
-  {% if quote|length > 1 %}
+  {% if quote|render is not empty %}
   <div class="teaser-with-image--quote">
     <div class="inside">{{ quote }}</div>
   </div>
