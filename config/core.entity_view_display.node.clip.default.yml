@@ -14,7 +14,6 @@ dependencies:
     - node.type.clip
   module:
     - ds
-    - entity_reference_revisions
     - nerdcustom
     - text
     - user
@@ -39,8 +38,6 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      header:
-        - field_para_quotes
       right:
         - field_ref_podcast
         - field_ref_podcast_episode
@@ -57,16 +54,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_para_quotes:
-    type: entity_reference_revisions_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings:
-      ds:
-        ds_limit: '1'
   field_ref_creators:
     weight: 3
     label: inline
@@ -91,4 +78,5 @@ hidden:
   field_date_published: true
   field_int_end_time: true
   field_int_start_time: true
+  field_para_quotes: true
   links: true
