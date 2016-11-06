@@ -60,11 +60,13 @@ content:
   field_para_quotes:
     type: entity_reference_revisions_entity_view
     weight: 0
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: '1'
   field_ref_creators:
     weight: 3
     label: inline

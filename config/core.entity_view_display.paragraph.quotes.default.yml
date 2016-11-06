@@ -13,16 +13,9 @@ mode: default
 content:
   field_body_plain:
     weight: 0
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: basic_string
-  field_int_start_time:
-    weight: 1
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-hidden: {  }
+hidden:
+  field_int_start_time: true
