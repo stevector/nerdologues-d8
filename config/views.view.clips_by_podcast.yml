@@ -179,7 +179,7 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-      title: 'Podcast clips'
+      title: 'Podcast Clips'
       header: {  }
       footer: {  }
       empty:
@@ -312,7 +312,9 @@ display:
           plugin_id: http_status_code
       defaults:
         empty: false
+        title: false
       display_description: 'the block for node/%/clips'
+      title: ''
     cache_metadata:
       max-age: -1
       contexts:
