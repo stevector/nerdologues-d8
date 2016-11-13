@@ -1,4 +1,4 @@
-uuid: c54190c4-de3e-4d1c-a0ad-33035adcfee5
+uuid: 57df9582-e734-4ded-993d-6c7c3afb32a2
 langcode: en
 status: true
 dependencies:
@@ -7,40 +7,45 @@ dependencies:
     - views.view.clips_by_person
   module:
     - ctools
+    - panels
     - views
-id: node_view-block_display-0
+id: node_view-panels_variant-1
 label: Person
-variant: block_display
+variant: panels_variant
 variant_settings:
   blocks:
-    9d8a0599-9620-4a9d-95c8-83da8f06f8d6:
+    e101a029-b026-451e-94b4-a2b7b60146f9:
       id: 'entity_view:node'
       label: 'Entity view (Content)'
       provider: ctools
       label_display: '0'
-      view_mode: full
-      region: top
-      weight: -10
-      uuid: 9d8a0599-9620-4a9d-95c8-83da8f06f8d6
+      view_mode: default
+      region: middle
+      weight: 0
+      uuid: e101a029-b026-451e-94b4-a2b7b60146f9
       context_mapping:
         entity: node
-    21b9f2b1-810e-4d2b-acde-cce29f15019b:
+    560c05a8-4fb5-47dd-9db9-1241490a3b8a:
       id: 'views_block:clips_by_person-block_1'
       label: ''
       provider: views
-      label_display: visible
+      label_display: '0'
       views_label: ''
       items_per_page: none
-      region: bottom
-      weight: -10
-      uuid: 21b9f2b1-810e-4d2b-acde-cce29f15019b
+      region: middle
+      weight: 0
+      uuid: 560c05a8-4fb5-47dd-9db9-1241490a3b8a
       context_mapping: {  }
-  id: block_display
-  uuid: ee80a4d1-908f-4529-8a9e-ed597ec78f6e
+  id: panels_variant
+  uuid: 69389842-ff42-4521-a87a-fee4f4716931
   label: null
   weight: 0
-  status_code: '404'
-  page_title: Person
+  layout: onecol
+  layout_settings: {  }
+  page_title: '[node:title]'
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-1
+  builder: standard
 page: node_view
 weight: 0
 selection_criteria:
