@@ -7369,61 +7369,6 @@
         }
     },
     {
-        "name": "drupal/page_manager",
-        "version": "dev-1.x",
-        "version_normalized": "dev-1.x",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/page_manager",
-            "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
-        },
-        "require": {
-            "drupal/core": "^8.0.5",
-            "drupal/ctools": "~3"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-1.0-alpha24+2-dev",
-                "datestamp": "1476303839"
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Tim Plunkett",
-                "homepage": "https://www.drupal.org/u/tim.plunkett",
-                "role": "Maintainer"
-            },
-            {
-                "name": "dsnopek",
-                "homepage": "https://www.drupal.org/user/266527"
-            },
-            {
-                "name": "japerry",
-                "homepage": "https://www.drupal.org/user/45640"
-            },
-            {
-                "name": "tim.plunkett",
-                "homepage": "https://www.drupal.org/user/241634"
-            }
-        ],
-        "description": "Provides a way to place blocks on a custom page.",
-        "homepage": "https://www.drupal.org/project/page_manager",
-        "support": {
-            "source": "https://git.drupal.org/project/page_manager.git",
-            "issues": "https://www.drupal.org/project/issues/page_manager",
-            "irc": "irc://irc.freenode.org/drupal-contribute"
-        }
-    },
-    {
         "name": "asm89/stack-cors",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -8058,6 +8003,64 @@
             "source": "http://git.drupal.org/project/panels.git",
             "issues": "https://www.drupal.org/project/issues/panels",
             "irc": "irc://irc.freenode.org/drupal-scotch"
+        }
+    },
+    {
+        "name": "drupal/page_manager",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/page_manager",
+            "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
+        },
+        "require": {
+            "drupal/core": "^8.0.5",
+            "drupal/ctools": "~3"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha24+2-dev",
+                "datestamp": "1476303839"
+            },
+            "patches_applied": {
+                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Tim Plunkett",
+                "homepage": "https://www.drupal.org/u/tim.plunkett",
+                "role": "Maintainer"
+            },
+            {
+                "name": "dsnopek",
+                "homepage": "https://www.drupal.org/user/266527"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Provides a way to place blocks on a custom page.",
+        "homepage": "https://www.drupal.org/project/page_manager",
+        "support": {
+            "source": "https://git.drupal.org/project/page_manager.git",
+            "issues": "https://www.drupal.org/project/issues/page_manager",
+            "irc": "irc://irc.freenode.org/drupal-contribute"
         }
     }
 ]

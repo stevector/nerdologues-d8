@@ -341,6 +341,38 @@ class VariantRouteFilterTest extends UnitTestCase {
   }
 
   /**
+   * @covers ::filter
+   */
+  public function testFilterPreservingBaseRouteName() {
+    $route_collection = new RouteCollection();
+    $request = new Request();
+
+    // Add routes in different order to also test order preserving
+    $route1 = new Route('/path/with/{slug}', ['page_manager_page_variant' => 'variant1', 'base_route_name' => 'preserved_route_name']);
+    $route2 = new Route('/path/with/{slug}', ['page_manager_page_variant' => 'variant2']);
+    $route3 = new Route('/path/with/{slug}', []);
+    $route4 = new Route('/path/with/{slug}', []);
+    $route_collection->add('route_4', $route4);
+    $route_collection->add('route_3', $route3);
+    $route_collection->add('route_1', $route1);
+    $route_collection->add('route_2', $route2);
+
+    $page_variant1 = $this->prophesize(PageVariantInterface::class);
+    $page_variant1->access('view')->willReturn(TRUE);
+    $page_variant2 = $this->prophesize(PageVariantInterface::class);
+    $page_variant2->access('view')->willReturn(FALSE);
+
+    $this->currentPath->getPath($request)->willReturn('');
+    $this->pageVariantStorage->load('variant1')->willReturn($page_variant1->reveal())->shouldBeCalled();
+    $this->pageVariantStorage->load('variant2')->willReturn($page_variant2->reveal())->shouldBeCalled();
+
+    $result = $this->routeFilter->filter($route_collection, $request);
+
+    $expected = ['preserved_route_name' => $route1, 'route_4' => $route4, 'route_3' => $route3];
+    $this->assertSame($expected, $result->all());
+  }
+
+  /**
    * @covers ::getRequestAttributes
    */
   public function testGetRequestAttributes() {

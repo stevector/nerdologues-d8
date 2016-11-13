@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5b16ea98819013817e64fafbc4300d1a",
-    "content-hash": "65f9e315fc56e47d7d068865431a7e34",
+    "hash": "36abb922417949483496aea20e97f4cb",
+    "content-hash": "5c3aae7f32ba63067b1adef81d763374",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1961,6 +1961,9 @@
                 "drupal": {
                     "version": "8.x-1.0-alpha24+2-dev",
                     "datestamp": "1476303839"
+                },
+                "patches_applied": {
+                    "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1992,7 +1995,8 @@
                 "source": "https://git.drupal.org/project/page_manager.git",
                 "issues": "https://www.drupal.org/project/issues/page_manager",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
+            },
+            "time": "2016-10-12 20:23:12"
         },
         {
             "name": "drupal/panels",
