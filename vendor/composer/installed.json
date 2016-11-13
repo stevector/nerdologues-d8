@@ -7979,5 +7979,85 @@
         "support": {
             "source": "http://cgit.drupalcode.org/entity_reference_revisions"
         }
+    },
+    {
+        "name": "drupal/panels",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/panels",
+            "reference": "ddadd53d538b30a20e79ddc1ad9de394000b2c49"
+        },
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/ctools": ">=3.0.0-alpha26",
+            "drupal/layout_plugin": ">=1.0.0-alpha22"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/panels_ipe",
+            "drupal/page_manager": "Required by drupal/panels",
+            "drupal/panelizer": "Required by drupal/panels"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta5+1-dev",
+                "datestamp": "1478998440"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jakob Perry",
+                "homepage": "https://www.drupal.org/u/japerry"
+            },
+            {
+                "name": "Samuel Mortenson",
+                "homepage": "https://www.drupal.org/u/samuel.mortenson"
+            },
+            {
+                "name": "See other contributors",
+                "homepage": "https://www.drupal.org/node/74958/committers"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "merlinofchaos",
+                "homepage": "https://www.drupal.org/user/26979"
+            },
+            {
+                "name": "neclimdul",
+                "homepage": "https://www.drupal.org/user/48673"
+            },
+            {
+                "name": "samuel.mortenson",
+                "homepage": "https://www.drupal.org/user/2582268"
+            },
+            {
+                "name": "sdboyer",
+                "homepage": "https://www.drupal.org/user/146719"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Core Panels display functions; provides no external UI, at least one other Panels module should be enabled.",
+        "homepage": "https://www.drupal.org/project/panels",
+        "support": {
+            "source": "http://git.drupal.org/project/panels.git",
+            "issues": "https://www.drupal.org/project/issues/panels",
+            "irc": "irc://irc.freenode.org/drupal-scotch"
+        }
     }
 ]
