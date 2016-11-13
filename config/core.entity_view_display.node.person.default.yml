@@ -8,12 +8,38 @@ dependencies:
     - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
-    - image.style.medium
+    - image.style.teaser_square
     - node.type.person
   module:
+    - ds
     - image
     - text
     - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      left:
+        - field_image_lead
+      header:
+        - field_body
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -25,16 +51,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_image:
+  field_image_lead:
+    type: image
     weight: 0
     label: hidden
     settings:
-      image_style: medium
+      image_style: teaser_square
       image_link: ''
     third_party_settings: {  }
-    type: image
 hidden:
-  field_image_lead: true
+  field_image: true
   field_last_name: true
   field_ref_term_designation: true
   links: true
