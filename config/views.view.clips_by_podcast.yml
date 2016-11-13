@@ -1,4 +1,4 @@
-uuid: fe20a338-df67-4bfb-9afd-6ca79b2def5c
+uuid: 407ff58c-dac2-4716-9c2b-e6eb29599610
 langcode: en
 status: true
 dependencies:
@@ -9,8 +9,8 @@ dependencies:
     - datetime
     - node
     - user
-id: clips_by_person
-label: clips_by_person
+id: clips_by_podcast
+label: clips_by_podcast
 module: views
 description: ''
 tag: ''
@@ -212,12 +212,21 @@ display:
           admin_label: 'field_ref_creators: Content'
           required: false
           plugin_id: standard
+        field_ref_podcast:
+          id: field_ref_podcast
+          table: node__field_ref_podcast
+          field: field_ref_podcast
+          relationship: none
+          group_type: group
+          admin_label: 'field_ref_podcast: Content'
+          required: true
+          plugin_id: standard
       arguments:
         nid:
           id: nid
           table: node_field_data
           field: nid
-          relationship: field_ref_creators
+          relationship: field_ref_podcast
           group_type: group
           admin_label: ''
           default_action: default
@@ -226,7 +235,7 @@ display:
             title_enable: false
             title: All
           title_enable: true
-          title: 'Podcast clips featuring {{ arguments.nid }}'
+          title: 'Podcast clips from {{ arguments.nid }}'
           default_argument_type: node
           default_argument_options: {  }
           default_argument_skip_url: false
