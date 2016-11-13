@@ -1,16 +1,16 @@
-uuid: 407ff58c-dac2-4716-9c2b-e6eb29599610
+uuid: 00ad27b5-d4b5-41e3-9909-448ff5a86338
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - node.type.clip
+    - node.type.video
   module:
     - datetime
     - node
     - user
-id: clips_by_podcast
-label: clips_by_podcast
+id: videos_by_person
+label: videos_by_person
 module: views
 description: ''
 tag: ''
@@ -160,8 +160,39 @@ display:
           id: type
           table: node_field_data
           field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
           value:
-            clip: clip
+            video: video
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           entity_type: node
           entity_field: type
           plugin_id: bundle
@@ -170,7 +201,7 @@ display:
           id: field_date_published_value
           table: node__field_date_published
           field: field_date_published_value
-          relationship: field_ref_podcast_episode
+          relationship: none
           group_type: group
           admin_label: ''
           order: DESC
@@ -179,7 +210,22 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-      title: 'Podcast Clips'
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+      title: Videos
       header: {  }
       footer: {  }
       empty:
@@ -194,15 +240,6 @@ display:
           status_code: 404
           plugin_id: http_status_code
       relationships:
-        field_ref_podcast_episode:
-          id: field_ref_podcast_episode
-          table: node__field_ref_podcast_episode
-          field: field_ref_podcast_episode
-          relationship: none
-          group_type: group
-          admin_label: 'field_ref_podcast_episode: Content'
-          required: true
-          plugin_id: standard
         field_ref_creators:
           id: field_ref_creators
           table: node__field_ref_creators
@@ -212,21 +249,12 @@ display:
           admin_label: 'field_ref_creators: Content'
           required: false
           plugin_id: standard
-        field_ref_podcast:
-          id: field_ref_podcast
-          table: node__field_ref_podcast
-          field: field_ref_podcast
-          relationship: none
-          group_type: group
-          admin_label: 'field_ref_podcast: Content'
-          required: true
-          plugin_id: standard
       arguments:
         nid:
           id: nid
           table: node_field_data
           field: nid
-          relationship: field_ref_podcast
+          relationship: field_ref_creators
           group_type: group
           admin_label: ''
           default_action: default
@@ -235,7 +263,7 @@ display:
             title_enable: false
             title: All
           title_enable: true
-          title: 'Podcast clips from {{ arguments.nid }}'
+          title: 'Podcast clips featuring {{ arguments.nid }}'
           default_argument_type: node
           default_argument_options: {  }
           default_argument_skip_url: false
@@ -259,6 +287,11 @@ display:
           entity_field: nid
           plugin_id: node_nid
       display_extenders: {  }
+      use_more: false
+      use_more_always: true
+      use_more_text: 'More Podcast Clips'
+      link_url: 'node/{{ raw_arguments.nid }}/clips-page'
+      link_display: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -283,6 +316,16 @@ display:
           offset: 0
       defaults:
         pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+      use_more: true
+      use_more_always: false
+      use_more_text: 'More Videos'
+      link_display: custom_url
+      link_url: 'node/{{ raw_arguments.nid }}/videos'
     cache_metadata:
       max-age: -1
       contexts:
