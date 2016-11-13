@@ -23,17 +23,12 @@ Feature: Clip creation
     Then I should see the link "Your Stories" in the "From the podcast" region
     Then I should see the link "Some Random Episode" in the "From the episode" region
 
-    And I click "Your Stories"
-    And I go to it's clip page
-    Then the response status code should be 200
-    And I see the text "Clips from Your Stories"
-
-
 
   @api
   Scenario: More link becomes visible after three clips
 
     Given I am logged in as a user with the "content_administrator" role
+    Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
     When I visit "node/add/person"
@@ -48,6 +43,7 @@ Feature: Clip creation
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
     And I press "Save and publish"
+
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
     And I select the radio button "Someone's cool podcast"
@@ -56,5 +52,78 @@ Feature: Clip creation
     And I press "Save and publish"
     Then I should see the link "Jane Member"
 
+    And I break
+
     And I click "Jane Member"
-    And I should see the text "That one podcast episode"
+    And I should see the text "A Clip of a story"
+
+    And I should not see the link "More Podcast Clips"
+
+
+
+
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A second Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I press "Save and publish"
+    Then I should see the link "Jane Member"
+
+    And I click "Jane Member"
+    And I should see the text "A Clip of a story"
+    And I should see the text "A second Clip of a story"
+    And I should not see the link "More Podcast Clips"
+
+
+
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A third Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I press "Save and publish"
+    Then I should see the link "Jane Member"
+
+    And I click "Jane Member"
+    And I should see the text "A Clip of a story"
+    And I should see the text "A second Clip of a story"
+    And I should see the text "A third Clip of a story"
+    And I should not see the link "More Podcast Clips"
+
+
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A 4th Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I press "Save and publish"
+    Then I should see the link "Jane Member"
+
+    And I click "Jane Member"
+    And I should see the text "A second Clip of a story"
+    And I should see the text "A third Clip of a story"
+    And I should see the text "A 4th Clip of a story"
+    # The oldest clip should fall off and now there is a link.
+    And I should not see the text "A Clip of a story"
+
+    # All four should be on the full list.
+    And I click "More Podcast Clips"
+    And I should see the text "A second Clip of a story"
+    And I should see the text "A third Clip of a story"
+    And I should see the text "A 4th Clip of a story"
+    And I should see the text "A Clip of a story"
+
+
+    And I click "That one podcast episode"
+    And I click "Someone's cool podcast"
+    And I go to it's clip page
+    Then the response status code should be 200
+    And I see the text "Clips from Someone's cool podcast"
+
+
+
+
+
+
+
