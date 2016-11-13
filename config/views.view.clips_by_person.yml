@@ -265,6 +265,11 @@ display:
           entity_field: nid
           plugin_id: node_nid
       display_extenders: {  }
+      use_more: false
+      use_more_always: true
+      use_more_text: 'More Podcast Clips'
+      link_url: 'node/{{ raw_arguments.nid }}/clips-page'
+      link_display: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -289,6 +294,16 @@ display:
           offset: 0
       defaults:
         pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+      use_more: true
+      use_more_always: false
+      use_more_text: 'More Podcast Clips'
+      link_display: custom_url
+      link_url: 'node/{{ raw_arguments.nid }}/clips-page'
     cache_metadata:
       max-age: -1
       contexts:
