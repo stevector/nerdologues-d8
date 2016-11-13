@@ -182,7 +182,17 @@ display:
       title: 'Podcast clips'
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        http_status_code:
+          id: http_status_code
+          table: views
+          field: http_status_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          status_code: 404
+          plugin_id: http_status_code
       relationships:
         field_ref_podcast_episode:
           id: field_ref_podcast_episode
@@ -281,6 +291,19 @@ display:
     display_options:
       display_extenders: {  }
       path: node/%/clips
+      empty:
+        http_status_code:
+          id: http_status_code
+          table: views
+          field: http_status_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          status_code: 404
+          plugin_id: http_status_code
+      defaults:
+        empty: false
     cache_metadata:
       max-age: -1
       contexts:

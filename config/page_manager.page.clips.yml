@@ -1,0 +1,26 @@
+uuid: 12726bdf-7f68-482a-b69e-8e860aba3370
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+id: clips
+label: Clips
+description: ''
+use_admin_theme: false
+path: '/node/{node}/clips-page'
+access_logic: and
+access_conditions:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      person: person
+      podcast: podcast
+    negate: false
+    context_mapping:
+      node: node
+parameters:
+  node:
+    machine_name: node
+    type: 'entity:node'
+    label: Node
