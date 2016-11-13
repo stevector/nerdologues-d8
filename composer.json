@@ -36,7 +36,8 @@
         "drupal/migrate_upgrade": "^3.0",
         "drupal/migrate_plus": "^3.0",
         "drupal/paragraphs": "1.x-dev",
-        "drupal/entity_reference_revisions": "1.x-dev"
+        "drupal/entity_reference_revisions": "1.x-dev",
+        "drupal/panels": "3.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
