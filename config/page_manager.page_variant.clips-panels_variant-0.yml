@@ -21,7 +21,7 @@ variant_settings:
       label_display: visible
       views_label: ''
       items_per_page: none
-      region: right
+      region: middle
       weight: 0
       uuid: d67ed96b-46cb-4287-8046-cbaae8a88bda
       context_mapping: {  }
@@ -29,7 +29,7 @@ variant_settings:
   uuid: 1965a06d-baf9-49a1-91eb-b44f28fad20d
   label: null
   weight: 0
-  layout: twocol
+  layout: onecol
   layout_settings: {  }
   page_title: 'Clips featuring [node:title]'
   storage_type: page_manager
