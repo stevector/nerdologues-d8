@@ -52,8 +52,6 @@ Feature: Clip creation
     And I press "Save and publish"
     Then I should see the link "Jane Member"
 
-    And I break
-
     And I click "Jane Member"
     And I should see the text "A Clip of a story"
 
