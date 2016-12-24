@@ -42,14 +42,12 @@ function nerdcustom_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_HOOK().
  */
-function nerdcustom_preprocess_ds_entity_view(&$variables) {
+function nerdcustom_canonical_helper(&$variables, $node) {
 
-  if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
-    $node = $variables['content']['#' . $variables['content']['#entity_type']];
+
 
     foreach ($node->uriRelationships() as $rel) {
       $url = $node->toUrl($rel);
@@ -63,7 +61,7 @@ function nerdcustom_preprocess_ds_entity_view(&$variables) {
       // This means that the page will vary by user.permissions. We also rely on
       // the access checking fallback to ensure the correct cacheability
       // metadata if we have to check access.
-      if ('a' === 'a' /* $this->currentUser->isAuthenticated() || $url->access($this->currentUser)*/) {
+      if ($variables['user']->isAuthenticated() || $url->access($variables['user'])) {
         // Set the node path as the canonical URL to prevent duplicate content.
         $variables['#attached']['html_head_link'][] = array(
           array(
@@ -85,5 +83,33 @@ function nerdcustom_preprocess_ds_entity_view(&$variables) {
         );
       }
     }
+
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function nerdcustom_preprocess_ds_entity_view(&$variables) {
+
+  if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
+    $node = $variables['content']['#' . $variables['content']['#entity_type']];
+    nerdcustom_canonical_helper($variables, $node);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function nerdcustom_preprocess_node(&$variables) {
+
+  dsm('asdf');
+
+  dsm(array_keys($variables));
+  if ($variables['view_mode'] === 'full') {
+    nerdcustom_canonical_helper($variables, $variables['node']);
+  }
+}
+
+
+
