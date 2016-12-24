@@ -8028,7 +8028,8 @@
                 "datestamp": "1476303839"
             },
             "patches_applied": {
-                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch"
+                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
+                "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
             }
         },
         "installation-source": "source",

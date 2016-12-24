@@ -330,7 +330,6 @@ class PanelsDisplayVariant extends BlockDisplayVariant implements PluginWizardIn
 
     // Allow other module to alter the built panel.
     $this->moduleHandler->alter('panels_build', $build, $this);
-
     return $build;
   }
 

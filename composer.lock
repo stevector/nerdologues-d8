@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "36abb922417949483496aea20e97f4cb",
-    "content-hash": "5c3aae7f32ba63067b1adef81d763374",
+    "hash": "ab4edacacaf8281cb61a8bda2073ce24",
+    "content-hash": "6e923857df10c1dfa03665ecfabbcdcf",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1963,7 +1963,8 @@
                     "datestamp": "1476303839"
                 },
                 "patches_applied": {
-                    "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch"
+                    "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
+                    "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2074,8 +2075,7 @@
                 "source": "http://git.drupal.org/project/panels.git",
                 "issues": "https://www.drupal.org/project/issues/panels",
                 "irc": "irc://irc.freenode.org/drupal-scotch"
-            },
-            "time": "2016-11-13 00:53:07"
+            }
         },
         {
             "name": "drupal/paragraphs",
