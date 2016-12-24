@@ -17,7 +17,7 @@ variant_settings:
       label: 'Entity view (Content)'
       provider: ctools
       label_display: '0'
-      view_mode: default
+      view_mode: full
       region: middle
       weight: 0
       uuid: 01ef726e-6c47-4302-9f44-e28313f7cc28
