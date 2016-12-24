@@ -1,0 +1,23 @@
+uuid: 0504a143-3047-4c2a-985a-8cd06d31d9ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_int_start_time
+    - paragraphs.paragraphs_type.quotes
+id: paragraph.quotes.field_int_start_time
+field_name: field_int_start_time
+entity_type: paragraph
+bundle: quotes
+label: int_start_time
+description: "We don't know if we'll ever need the start time. It might be useful in the future.\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

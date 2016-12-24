@@ -28,7 +28,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -212,6 +212,8 @@ display:
           entity_field: nid
           plugin_id: node_nid
       display_extenders: {  }
+      link_url: 'node/{{ raw_arguments.nid }}/episodes'
+      link_display: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -240,10 +242,14 @@ display:
         use_more_always: false
         use_more_text: false
         title: false
+        link_display: false
+        link_url: false
       use_more: true
       use_more_always: false
       use_more_text: 'More Episodes'
       title: Episodes
+      link_display: custom_url
+      link_url: 'node/{{ raw_arguments.nid }}/episodes'
     cache_metadata:
       max-age: -1
       contexts:
@@ -253,14 +259,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: Page
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Page block'
     position: 1
     display_options:
       display_extenders: {  }
-      path: node/%/episodes
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:

@@ -41,11 +41,10 @@ third_party_settings:
           layout_class: {  }
     regions:
       right:
+        - field_ref_podcast
         - field_file
         - field_date_published
         - field_body
-      left:
-        - field_ref_podcast
 id: node.podcast_episode.default
 targetEntityType: node
 bundle: podcast_episode
@@ -71,22 +70,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: file_url_plain
-  field_int_duration:
-    weight: 4
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
   field_ref_podcast:
-    weight: 3
+    weight: -1
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
 hidden:
+  field_int_duration: true
   field_lede: true
   field_link: true
   field_link_paywall_content: true

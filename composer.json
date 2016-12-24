@@ -34,7 +34,10 @@
         "drupal/page_manager": "1.x-dev",
         "drupal/migrate_tools": "^3.0",
         "drupal/migrate_upgrade": "^3.0",
-        "drupal/migrate_plus": "^3.0"
+        "drupal/migrate_plus": "^3.0",
+        "drupal/paragraphs": "1.x-dev",
+        "drupal/entity_reference_revisions": "1.x-dev",
+        "drupal/panels": "3.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -90,8 +93,15 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "patches": {
+            "drupal/page_manager": {
+                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
+                "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
+            }
         }
     },
+
     "drupal-scaffold": {
         "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
         "includes": [

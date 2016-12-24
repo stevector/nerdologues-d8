@@ -2,9 +2,17 @@
 #
 # Deploy the current Circle CI build to multidev.
 #
+
+set -x
+
+git config user.email "stevepersch+circleci@gmail.com"
+git config user.name "Circle CI Automation"
+
 git remote add pantheon $(terminus site connection-info --field=git_url)
+git fetch pantheon
 # @todo, Consider naming based on PR number instead of build number.
 git checkout -b $TERMINUS_ENV
+git pull pantheon $TERMINUS_ENV
 
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
@@ -13,7 +21,7 @@ terminus site wake --site=nerdologues --env=migr-prep2
 export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migr-prep2 --field=mysql_url)
 terminus secrets set migrate_source_db__url $D7_MYSQL_URL
 
-git push pantheon $TERMINUS_ENV
+git push pantheon $TERMINUS_ENV -f
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus site set-connection-mode --mode=sftp

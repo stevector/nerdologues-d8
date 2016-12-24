@@ -19,6 +19,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -55,16 +56,6 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-  field_int_sort_order:
-    weight: 4
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-  links:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_int_sort_order: true
+  links: true

@@ -256,7 +256,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<div class=\"deck-text\" >\n<p>The Nerdologues started podcasting with Your Stories back in 2011. We loved sharing our night of nerding out across the world. Now a few hundred stories later we've grown the podcast family to four by adding The Nerdologuecast and bringing ensemble member Mary Beth Smith's MBSing and Tim Dunn and Clayton Margeson's Talking Games podcast into the fold.</p>\n </div>"
+          content: "<div class=\"deck-text\" >\n<p>Much like the Justice League, the Avengers, or even the West Coast Avengers, The Nerdologues has seen many iterations over the years.  We have seen members come and go, and sometimes come back again, but one thing remains constant: we’re always doin’ stuff.  Whether it be performing, writing, teching, or directing, these are the members that are currently active in one form or another - or, more likely, “all of the above.”</p>\n </div>\n<h2 class=\"pane-title pane__title\">Ensemble Members</h2>"
           plugin_id: text_custom
       footer: {  }
       empty: {  }

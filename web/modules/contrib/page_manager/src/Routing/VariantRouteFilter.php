@@ -121,6 +121,15 @@ class VariantRouteFilter implements RouteFilterInterface {
       }
     }
 
+    // Iterate over the routes, using the base_route_name if one is specified.
+    // All routes must be removed and re-added to the collection to ensure the
+    // original order is kept.
+    foreach ($collection as $route_name => $route_item) {
+      $base_route_name = $route_item->getDefault('base_route_name') ?: $route_name;
+      $collection->remove($route_name);
+      $collection->add($base_route_name, $route_item);
+    }
+
     return $collection;
   }
 

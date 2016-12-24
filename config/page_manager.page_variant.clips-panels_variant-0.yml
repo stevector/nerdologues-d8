@@ -1,0 +1,49 @@
+uuid: 9e18e361-8784-4616-8cd9-c3386b4d5b3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.clips
+    - views.view.clips_by_person
+  module:
+    - ctools
+    - panels
+    - views
+id: clips-panels_variant-0
+label: 'Person Clips'
+variant: panels_variant
+variant_settings:
+  blocks:
+    d67ed96b-46cb-4287-8046-cbaae8a88bda:
+      id: 'views_block:clips_by_person-block_2'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: d67ed96b-46cb-4287-8046-cbaae8a88bda
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 1965a06d-baf9-49a1-91eb-b44f28fad20d
+  label: null
+  weight: 0
+  layout: onecol
+  layout_settings: {  }
+  page_title: 'Clips featuring [node:title]'
+  storage_type: page_manager
+  storage_id: clips-panels_variant-0
+  builder: standard
+page: clips
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      person: person
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

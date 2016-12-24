@@ -1,0 +1,25 @@
+uuid: 0ca03863-4236-49ac-98ce-8e2b5ee34f1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+id: videos_by_person
+label: 'videos by person'
+description: ''
+use_admin_theme: false
+path: '/node/{node}/videos'
+access_logic: and
+access_conditions:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      person: person
+    negate: false
+    context_mapping:
+      node: node
+parameters:
+  node:
+    machine_name: node
+    type: 'entity:node'
+    label: Node

@@ -1,0 +1,49 @@
+uuid: d047b907-0321-4145-bcbc-220136a17f94
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.clips
+    - views.view.clips_by_podcast
+  module:
+    - ctools
+    - panels
+    - views
+id: clips-panels_variant-1
+label: Podcast
+variant: panels_variant
+variant_settings:
+  blocks:
+    1921da64-72e5-4c90-a8e6-e6cd1542d99c:
+      id: 'views_block:clips_by_podcast-block_2'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: 1921da64-72e5-4c90-a8e6-e6cd1542d99c
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 1965a06d-baf9-49a1-91eb-b44f28fad20d
+  label: null
+  weight: 0
+  layout: onecol
+  layout_settings: {  }
+  page_title: 'Clips from [node:title]'
+  storage_type: page_manager
+  storage_id: clips-panels_variant-1
+  builder: standard
+page: clips
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      podcast: podcast
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

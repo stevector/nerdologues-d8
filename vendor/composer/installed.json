@@ -7369,61 +7369,6 @@
         }
     },
     {
-        "name": "drupal/page_manager",
-        "version": "dev-1.x",
-        "version_normalized": "dev-1.x",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/page_manager",
-            "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
-        },
-        "require": {
-            "drupal/core": "^8.0.5",
-            "drupal/ctools": "~3"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-1.0-alpha24+2-dev",
-                "datestamp": "1476303839"
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Tim Plunkett",
-                "homepage": "https://www.drupal.org/u/tim.plunkett",
-                "role": "Maintainer"
-            },
-            {
-                "name": "dsnopek",
-                "homepage": "https://www.drupal.org/user/266527"
-            },
-            {
-                "name": "japerry",
-                "homepage": "https://www.drupal.org/user/45640"
-            },
-            {
-                "name": "tim.plunkett",
-                "homepage": "https://www.drupal.org/user/241634"
-            }
-        ],
-        "description": "Provides a way to place blocks on a custom page.",
-        "homepage": "https://www.drupal.org/project/page_manager",
-        "support": {
-            "source": "https://git.drupal.org/project/page_manager.git",
-            "issues": "https://www.drupal.org/project/issues/page_manager",
-            "irc": "irc://irc.freenode.org/drupal-contribute"
-        }
-    },
-    {
         "name": "asm89/stack-cors",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -7840,7 +7785,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-3.0-beta1.zip",
-            "reference": null,
+            "reference": "8.x-3.0-beta1",
             "shasum": "1511d1da1444743fa2defa54a17e62264e8ab836"
         },
         "require": {
@@ -7872,6 +7817,251 @@
         "homepage": "https://www.drupal.org/project/migrate_tools",
         "support": {
             "source": "http://cgit.drupalcode.org/migrate_tools"
+        }
+    },
+    {
+        "name": "drupal/paragraphs",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/paragraphs",
+            "reference": "1d2f92c020f9b873abcd6070d74f08aeaf4cf862"
+        },
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/entity_reference_revisions": "*"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/paragraphs_demo",
+            "drupal/diff": "Required by drupal/paragraphs",
+            "drupal/inline_entity_form": "Required by drupal/paragraphs",
+            "drupal/replicate": "Required by drupal/paragraphs",
+            "drupal/search_api": "Required by drupal/paragraphs_demo",
+            "drupal/search_api_db": "Required by drupal/paragraphs_demo"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0+17-dev",
+                "datestamp": "1478036944"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Frans",
+                "homepage": "https://www.drupal.org/user/514222"
+            },
+            {
+                "name": "jeroen.b",
+                "homepage": "https://www.drupal.org/user/1853532"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Enables the creation of paragraphs entities.",
+        "homepage": "https://www.drupal.org/project/paragraphs",
+        "support": {
+            "source": "http://cgit.drupalcode.org/paragraphs"
+        }
+    },
+    {
+        "name": "drupal/entity_reference_revisions",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/entity_reference_revisions",
+            "reference": "c1941b799f16b49b33d94f7c96d56f1d9849e01e"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "suggest": {
+            "drupal/diff": "Required by drupal/entity_reference_revisions"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0+6-dev",
+                "datestamp": "1476599639"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Frans",
+                "homepage": "https://www.drupal.org/user/514222"
+            },
+            {
+                "name": "jeroen.b",
+                "homepage": "https://www.drupal.org/user/1853532"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Adds a Entity Reference field type with revision support.",
+        "homepage": "https://www.drupal.org/project/entity_reference_revisions",
+        "support": {
+            "source": "http://cgit.drupalcode.org/entity_reference_revisions"
+        }
+    },
+    {
+        "name": "drupal/panels",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/panels",
+            "reference": "ddadd53d538b30a20e79ddc1ad9de394000b2c49"
+        },
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/ctools": ">=3.0.0-alpha26",
+            "drupal/layout_plugin": ">=1.0.0-alpha22"
+        },
+        "suggest": {
+            "drupal/core": "Required by drupal/panels_ipe",
+            "drupal/page_manager": "Required by drupal/panels",
+            "drupal/panelizer": "Required by drupal/panels"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta5+1-dev",
+                "datestamp": "1478998440"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jakob Perry",
+                "homepage": "https://www.drupal.org/u/japerry"
+            },
+            {
+                "name": "Samuel Mortenson",
+                "homepage": "https://www.drupal.org/u/samuel.mortenson"
+            },
+            {
+                "name": "See other contributors",
+                "homepage": "https://www.drupal.org/node/74958/committers"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "merlinofchaos",
+                "homepage": "https://www.drupal.org/user/26979"
+            },
+            {
+                "name": "neclimdul",
+                "homepage": "https://www.drupal.org/user/48673"
+            },
+            {
+                "name": "samuel.mortenson",
+                "homepage": "https://www.drupal.org/user/2582268"
+            },
+            {
+                "name": "sdboyer",
+                "homepage": "https://www.drupal.org/user/146719"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Core Panels display functions; provides no external UI, at least one other Panels module should be enabled.",
+        "homepage": "https://www.drupal.org/project/panels",
+        "support": {
+            "source": "http://git.drupal.org/project/panels.git",
+            "issues": "https://www.drupal.org/project/issues/panels",
+            "irc": "irc://irc.freenode.org/drupal-scotch"
+        }
+    },
+    {
+        "name": "drupal/page_manager",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/page_manager",
+            "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
+        },
+        "require": {
+            "drupal/core": "^8.0.5",
+            "drupal/ctools": "~3"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha24+2-dev",
+                "datestamp": "1476303839"
+            },
+            "patches_applied": {
+                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
+                "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Tim Plunkett",
+                "homepage": "https://www.drupal.org/u/tim.plunkett",
+                "role": "Maintainer"
+            },
+            {
+                "name": "dsnopek",
+                "homepage": "https://www.drupal.org/user/266527"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Provides a way to place blocks on a custom page.",
+        "homepage": "https://www.drupal.org/project/page_manager",
+        "support": {
+            "source": "https://git.drupal.org/project/page_manager.git",
+            "issues": "https://www.drupal.org/project/issues/page_manager",
+            "irc": "irc://irc.freenode.org/drupal-contribute"
         }
     }
 ]

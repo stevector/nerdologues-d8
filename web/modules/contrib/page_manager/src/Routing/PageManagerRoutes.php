@@ -62,6 +62,7 @@ class PageManagerRoutes extends RouteSubscriberBase {
 
       $parameters = [];
       $requirements = [];
+      $title_callback = NULL;
       if ($route_name = $this->findPageRouteName($entity, $collection)) {
         $this->cacheTagsInvalidator->invalidateTags(["page_manager_route_name:$route_name"]);
 
@@ -69,7 +70,7 @@ class PageManagerRoutes extends RouteSubscriberBase {
         $path = $collection_route->getPath();
         $parameters = $collection_route->getOption('parameters') ?: [];
         $requirements = $collection_route->getRequirements();
-
+        $title_callback = $collection_route->getDefault('_title_callback') ?: NULL;
         $collection->remove($route_name);
       }
       else {
@@ -92,25 +93,40 @@ class PageManagerRoutes extends RouteSubscriberBase {
       $first = TRUE;
       foreach ($entity->getVariants() as $variant_id => $variant) {
         // Construct and add a new route.
+        $new_defaults = [
+          '_entity_view' => 'page_manager_page_variant',
+          '_title' => $entity->label(),
+          'page_manager_page_variant' => $variant_id,
+          'page_manager_page' => $page_id,
+          'page_manager_page_variant_weight' => $variant->getWeight(),
+          // When adding multiple variants, the variant ID is added to the
+          // route name. In order to convey the base route name for this set
+          // of variants, add it as a parameter.
+          'base_route_name' => $route_name,
+        ];
+
+        // Set title callback if the page variant title is empty.
+        // This provides a meaningful breadcrumb title instead of the
+        // page name, ex. "Taxonomy Term View".
+        // @TODO: Set "_title" for variants with an entered page_title config.
+        if ($title_callback && ($variant_plugin = $variant->getVariantPlugin())) {
+          $variant_plugin_config = $variant_plugin->getConfiguration();
+          if (empty($variant_plugin_config['page_title'])) {
+            $new_defaults['_title_callback'] = $title_callback;
+          }
+        }
+
+        // Build the new route.
         $route = new Route(
           $path,
-          [
-            '_entity_view' => 'page_manager_page_variant',
-            '_title' => $entity->label(),
-            'page_manager_page_variant' => $variant_id,
-            'page_manager_page' => $page_id,
-            'page_manager_page_variant_weight' => $variant->getWeight(),
-            // When adding multiple variants, the variant ID is added to the
-            // route name. In order to convey the base route name for this set
-            // of variants, add it as a parameter.
-            'base_route_name' => $route_name,
-          ],
+          $new_defaults,
           $requirements,
           [
             'parameters' => $parameters,
             '_admin_route' => $entity->usesAdminTheme(),
           ]
         );
+
         $collection->add($first ? $route_name : $route_name . '_' . $variant_id, $route);
         $first = FALSE;
       }

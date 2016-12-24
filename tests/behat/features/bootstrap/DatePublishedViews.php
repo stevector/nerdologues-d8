@@ -21,13 +21,13 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
         $environment = $scope->getEnvironment();
 
         $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
-    }    
-    
+    }
+
     /**
      * @When I create a video with a published date in the future
      */
     public function iCreateAVideoWithAPublishedDateInTheFuture()
-    {   
+    {
         $this->minkContext->visit('node/add/video');
         $video_title = 'future video title';
         $this->minkContext->fillField('title[0][value]', $video_title);
@@ -38,7 +38,7 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
         $this->minkContext->fillField('field_date_published[0][value][time]', '12:01:59');
         $this->minkContext->pressButton('Save and publish');
     }
-    
+
     /**
      * @Then that video does not appear on the video page
      */
@@ -73,5 +73,3 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
         $this->minkContext->assertLinkVisible($this->video_title);
     }
 }
-
-

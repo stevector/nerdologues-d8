@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
     - field.field.node.podcast_episode.field_file
+    - field.field.node.podcast_episode.field_int_duration
     - field.field.node.podcast_episode.field_lede
     - field.field.node.podcast_episode.field_link
     - field.field.node.podcast_episode.field_link_paywall_content
@@ -16,7 +17,6 @@ dependencies:
   module:
     - datetime
     - ds
-    - link
     - text
     - user
 third_party_settings:
@@ -26,6 +26,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -62,13 +63,6 @@ targetEntityType: node
 bundle: podcast_episode
 mode: teaser
 content:
-  field_body:
-    type: text_trimmed
-    weight: 15
-    label: above
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
   field_date_published:
     type: datetime_default
     weight: 2
@@ -83,46 +77,23 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_link:
-    type: link
-    weight: 11
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-  field_link_paywall_content:
-    type: link
-    weight: 12
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
   field_ref_podcast:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     weight: 4
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
-  field_text_original_mp3_url:
-    type: basic_string
-    weight: 13
-    label: above
-    settings: {  }
+      view_mode: image_only
+      link: false
     third_party_settings: {  }
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_body: true
   field_file: true
   field_int_duration: true
   field_int_sort_order: true
+  field_link: true
+  field_link_paywall_content: true
+  field_text_original_mp3_url: true
