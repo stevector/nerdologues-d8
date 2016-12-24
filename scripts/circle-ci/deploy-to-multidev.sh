@@ -13,7 +13,7 @@ terminus site wake --site=nerdologues --env=migr-prep2
 export D7_MYSQL_URL=$(terminus site connection-info --site=nerdologues --env=migr-prep2 --field=mysql_url)
 terminus secrets set migrate_source_db__url $D7_MYSQL_URL
 
-git push pantheon $TERMINUS_ENV
+git push pantheon $TERMINUS_ENV -f
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus site set-connection-mode --mode=sftp
