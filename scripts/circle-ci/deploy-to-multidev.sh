@@ -9,6 +9,7 @@ git remote add pantheon $(terminus site connection-info --field=git_url)
 git fetch pantheon
 # @todo, Consider naming based on PR number instead of build number.
 git checkout -b $TERMINUS_ENV
+git pull pantheon $TERMINUS_ENV
 
 mkdir -p ~/terminus/plugins
 git clone https://github.com/greg-1-anderson/terminus-secrets-plugin  ~/terminus/plugins/terminus-secrets-plugin
