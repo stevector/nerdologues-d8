@@ -74,7 +74,7 @@ content:
     weight: -1
     label: hidden
     settings:
-      link: false
+      link: true
     third_party_settings: {  }
     type: entity_reference_label
 hidden:
