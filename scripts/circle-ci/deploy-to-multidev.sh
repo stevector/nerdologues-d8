@@ -2,7 +2,11 @@
 #
 # Deploy the current Circle CI build to multidev.
 #
+
+set -x
+
 git remote add pantheon $(terminus site connection-info --field=git_url)
+git fetch pantheon
 # @todo, Consider naming based on PR number instead of build number.
 git checkout -b $TERMINUS_ENV
 
