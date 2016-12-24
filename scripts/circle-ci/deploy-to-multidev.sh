@@ -5,6 +5,9 @@
 
 set -x
 
+git config user.email "stevepersch+circleci@gmail.com"
+git config user.name "Circle CI Automation"
+
 git remote add pantheon $(terminus site connection-info --field=git_url)
 git fetch pantheon
 # @todo, Consider naming based on PR number instead of build number.
