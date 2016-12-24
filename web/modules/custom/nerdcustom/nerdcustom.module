@@ -48,48 +48,42 @@ function nerdcustom_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
  */
 function nerdcustom_preprocess_ds_entity_view(&$variables) {
 
-if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
+  if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
+    $node = $variables['content']['#' . $variables['content']['#entity_type']];
 
-$node = $variables['content']['#' . $variables['content']['#entity_type']];
+    foreach ($node->uriRelationships() as $rel) {
+      $url = $node->toUrl($rel);
+      // Add link relationships if the user is authenticated or if the anonymous
+      // user has access. Access checking must be done for anonymous users to
+      // avoid traffic to inaccessible pages from web crawlers. For
+      // authenticated users, showing the links in HTML head does not impact
+      // user experience or security, since the routes are access checked when
+      // visited and only visible via view source. This prevents doing
+      // potentially expensive and hard to cache access checks on every request.
+      // This means that the page will vary by user.permissions. We also rely on
+      // the access checking fallback to ensure the correct cacheability
+      // metadata if we have to check access.
+      if ('a' === 'a' /* $this->currentUser->isAuthenticated() || $url->access($this->currentUser)*/) {
+        // Set the node path as the canonical URL to prevent duplicate content.
+        $variables['#attached']['html_head_link'][] = array(
+          array(
+            'rel' => $rel,
+            'href' => $url->toString(),
+          ),
+          TRUE,
+        );
+      }
 
-  foreach ($node->uriRelationships() as $rel) {
-    $url = $node->toUrl($rel);
-    // Add link relationships if the user is authenticated or if the anonymous
-    // user has access. Access checking must be done for anonymous users to
-    // avoid traffic to inaccessible pages from web crawlers. For
-    // authenticated users, showing the links in HTML head does not impact
-    // user experience or security, since the routes are access checked when
-    // visited and only visible via view source. This prevents doing
-    // potentially expensive and hard to cache access checks on every request.
-    // This means that the page will vary by user.permissions. We also rely on
-    // the access checking fallback to ensure the correct cacheability
-    // metadata if we have to check access.
-    if ('a' === 'a' /* $this->currentUser->isAuthenticated() || $url->access($this->currentUser)*/) {
-      // Set the node path as the canonical URL to prevent duplicate content.
-      $variables['#attached']['html_head_link'][] = array(
-        array(
-          'rel' => $rel,
-          'href' => $url->toString(),
-        ),
-        TRUE,
-      );
-    }
-
-
-
-
-
-    if ($rel == 'canonical') {
-      // Set the non-aliased canonical path as a default shortlink.
-      $variables['#attached']['html_head_link'][] = array(
-        array(
-          'rel' => 'shortlink',
-          'href' => $url->setOption('alias', TRUE)->toString(),
-        ),
-        TRUE,
-      );
+      if ($rel == 'canonical') {
+        // Set the non-aliased canonical path as a default shortlink.
+        $variables['#attached']['html_head_link'][] = array(
+          array(
+            'rel' => 'shortlink',
+            'href' => $url->setOption('alias', TRUE)->toString(),
+          ),
+          TRUE,
+        );
+      }
     }
   }
 }
-}
-
