@@ -47,11 +47,8 @@ test:
     - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
     - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
-deployment:
-  feature:
-    branch: /gh_.*/
-    commands:
-      - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
-      - yes | terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
-      - ./scripts/circle-ci/deploy-to-multidev.sh
-      - ./scripts/run-backstop.sh
+  post:
+    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+    - yes | terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
+    - ./scripts/circle-ci/deploy-to-multidev.sh
+    - ./scripts/run-backstop.sh
