@@ -71,22 +71,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: file_url_plain
-  field_int_duration:
-    weight: 4
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
   field_ref_podcast:
     weight: 3
     label: hidden
     settings:
-      link: true
+      view_mode: image_only
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
 hidden:
+  field_int_duration: true
   field_lede: true
   field_link: true
   field_link_paywall_content: true
