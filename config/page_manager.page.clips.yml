@@ -8,7 +8,7 @@ id: clips
 label: Clips
 description: ''
 use_admin_theme: false
-path: '/node/{node}/clips-page'
+path: '/node/{node}/clips'
 access_logic: and
 access_conditions:
   -
