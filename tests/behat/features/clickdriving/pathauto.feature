@@ -52,7 +52,7 @@ Feature: Pathauto
 
   @api
   Scenario: event
-    Given I am an anonymous user
+    Given I am logged in as a user with the "content_administrator" role
     Given I am viewing a event with the title "Your Stories November"
     Then the response should contain "<link rel=\"canonical\" href=\"/events/your-stories-november\" />"
 
