@@ -13,13 +13,15 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Utility\Token;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\rabbit_hole\Plugin\RabbitHoleBehaviorPluginBase;
 use Drupal\rabbit_hole\Exception\InvalidRedirectResponseException;
 use Drupal\rabbit_hole\BehaviorSettingsManagerInterface;
 use Drupal\rabbit_hole\Plugin\RabbitHoleEntityPluginManager;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
+
 
 /**
  * Redirects to another page.
@@ -172,7 +174,7 @@ class PageRedirect extends RabbitHoleBehaviorPluginBase implements ContainerFact
       case self::REDIRECT_SEE_OTHER:
       case self::REDIRECT_TEMPORARY_REDIRECT:
         if ($current_response === NULL) {
-          return new RedirectResponse($target, $response_code);
+          return new TrustedRedirectResponse($target, $response_code);
         }
         else {
           // If a response already exists we don't need to do anything with it.

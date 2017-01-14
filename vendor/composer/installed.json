@@ -8093,6 +8093,9 @@
             "drupal": {
                 "version": "8.x-1.0-beta1",
                 "datestamp": "1480471987"
+            },
+            "patches_applied": {
+                "trusted": "https://www.drupal.org/files/issues/trusted-2843564-1.patch"
             }
         },
         "installation-source": "dist",
