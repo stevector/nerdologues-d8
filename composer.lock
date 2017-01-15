@@ -1947,7 +1947,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/page_manager",
-                "reference": "08597212d1e0363d5cbcf8e30d32bd19add0b07b"
+                "reference": "a4108a53ddf3b229152b2d1179d67d59a49a8c29"
             },
             "require": {
                 "drupal/core": "^8.0.5",
@@ -1959,8 +1959,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha24+2-dev",
-                    "datestamp": "1476303839"
+                    "version": "8.x-1.0-alpha24+3-dev",
+                    "datestamp": "1481152983"
                 },
                 "patches_applied": {
                     "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
@@ -1997,7 +1997,7 @@
                 "issues": "https://www.drupal.org/project/issues/page_manager",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2016-10-12 20:23:12"
+            "time": "2016-12-07 23:22:34"
         },
         {
             "name": "drupal/panels",
@@ -2194,7 +2194,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/rabbit_hole-8.x-1.0-beta1.zip",
-                "reference": null,
+                "reference": "8.x-1.0-beta1",
                 "shasum": "e1e4ec9ea0f1200543697a59fd542c3fcc79456b"
             },
             "require": {
