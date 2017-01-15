@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.podcast.field_body
     - field.field.node.podcast.field_image
+    - field.field.node.podcast.field_int_sort_order
     - image.style.large
     - node.type.podcast
   module:
@@ -20,6 +21,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -33,15 +35,16 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      right:
+      header:
         - node_title
+      right:
         - field_body
       left:
         - field_image
     fields:
       node_title:
         plugin_id: node_title
-        weight: 6
+        weight: 0
         label: hidden
         formatter: default
         settings:
@@ -55,21 +58,18 @@ mode: teaser
 content:
   field_body:
     type: text_default
-    weight: 10
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_image:
     type: image
-    weight: 7
+    weight: 2
     label: hidden
     settings:
       image_style: large
       image_link: content
     third_party_settings: {  }
-  links:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   field_int_sort_order: true
+  links: true
