@@ -194,6 +194,20 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
       title: 'Podcast clips'
       header: {  }
       footer: {  }
