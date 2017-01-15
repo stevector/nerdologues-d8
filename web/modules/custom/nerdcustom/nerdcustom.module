@@ -6,6 +6,11 @@
  */
 
 use \Drupal\node\NodeInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+
 
 /**
  * Implements hook_node_links_alter().
@@ -101,4 +106,24 @@ function nerdcustom_preprocess_node(&$variables) {
   if ($variables['view_mode'] === 'full') {
     nerdcustom_canonical_helper($variables, $variables['node']);
   }
+}
+
+function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  // field_file
+ //	field_link_paywall_content
+  $entity = $items->getEntity();
+  if ($field_definition->getName() == 'field_file' && $entity->bundle() === 'podcast_episode' && $operation == 'view') {
+
+    if (!empty($entity->field_date_published->first()->getString())) {
+      if (!empty($entity->field_link_paywall_content->first())) {
+dsm($entity->field_link_paywall_content->first()->getValue('uri'));
+
+      }
+
+    }
+
+
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
 }
