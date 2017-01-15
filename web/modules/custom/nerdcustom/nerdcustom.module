@@ -115,8 +115,9 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
   if ($field_definition->getName() == 'field_file' && $entity->bundle() === 'podcast_episode' && $operation == 'view') {
 
     if (!empty($entity->field_date_published->first()->getString())) {
-      if (!empty($entity->field_link_paywall_content->first())) {
-dsm($entity->field_link_paywall_content->first()->getValue('uri'));
+      if (!empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
+        $date = $entity->field_date_published->first()->getString();
+
 
       }
 
