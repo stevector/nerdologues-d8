@@ -31,17 +31,7 @@ class PageVariantViewBuilder implements EntityViewBuilderInterface {
     if ($variant_plugin instanceof RefinableCacheableDependencyInterface) {
       $variant_plugin->addCacheableDependency($entity);
     }
-
-   $build = $variant_plugin->build();
-
-
-
-
-
-
-
-
-    return $build;
+    return $variant_plugin->build();
   }
 
   /**
