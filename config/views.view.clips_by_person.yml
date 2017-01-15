@@ -194,6 +194,20 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
       title: 'Podcast clips'
       header: {  }
       footer: {  }
@@ -268,7 +282,7 @@ display:
       use_more: false
       use_more_always: true
       use_more_text: 'More Podcast Clips'
-      link_url: 'node/{{ raw_arguments.nid }}/clips-page'
+      link_url: 'node/{{ raw_arguments.nid }}/clips'
       link_display: '0'
     cache_metadata:
       max-age: -1
@@ -303,7 +317,7 @@ display:
       use_more_always: false
       use_more_text: 'More Podcast Clips'
       link_display: custom_url
-      link_url: 'node/{{ raw_arguments.nid }}/clips-page'
+      link_url: 'node/{{ raw_arguments.nid }}/clips'
     cache_metadata:
       max-age: -1
       contexts:

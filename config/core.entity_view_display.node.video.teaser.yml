@@ -22,6 +22,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -35,10 +36,10 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      right:
+      header:
         - node_title
+      right:
         - field_date_published
-        - body
         - field_body
       left:
         - field_youtube
@@ -71,12 +72,6 @@ content:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
-  field_ref_creators:
-    type: entity_reference_entity_id
-    weight: 13
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   field_youtube:
     type: youtube_thumbnail
     weight: 4
@@ -85,8 +80,6 @@ content:
       image_style: large
       image_link: content
     third_party_settings: {  }
-  links:
-    weight: 12
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_ref_creators: true
+  links: true

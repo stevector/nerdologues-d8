@@ -37,8 +37,9 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      right:
+      header:
         - node_title
+      right:
         - field_body
         - links
       left:
