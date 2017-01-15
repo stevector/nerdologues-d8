@@ -7,6 +7,7 @@ set -x
 if [ "$CIRCLE_BRANCH" != "master" ]
 then
     echo -e "Screenshots only run on master branch. Quitting script."
+    exit 0;
 fi
 
 
