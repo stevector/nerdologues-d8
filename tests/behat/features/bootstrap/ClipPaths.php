@@ -30,7 +30,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
   public function iGoToItSClipPage()
   {
     $this->minkContext->clickLink('Edit');
-    $clip_path = str_replace('edit', 'clips-page', $this->minkContext->getSession()->getCurrentUrl());
+    $clip_path = str_replace('edit', 'clips', $this->minkContext->getSession()->getCurrentUrl());
     print_r($clip_path);
     $this->minkContext->visit($clip_path);
     print_r($this->minkContext->getSession()->getCurrentUrl());
