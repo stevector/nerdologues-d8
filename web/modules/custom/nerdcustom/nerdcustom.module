@@ -111,9 +111,9 @@ function nerdcustom_preprocess_node(&$variables) {
 function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
   // field_file
  //	field_link_paywall_content
-  $entity = $items->getEntity();
-  if ($field_definition->getName() == 'field_file' && $entity->bundle() === 'podcast_episode' && $operation == 'view') {
-
+  
+  if ($field_definition->getName() == 'field_file' && $items->getEntity()->bundle() === 'podcast_episode' && $operation == 'view') {
+$entity = $items->getEntity();
     if (!empty($entity->field_date_published->first()->getString())) {
       if (!empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
         $date = $entity->field_date_published->first()->getString();
