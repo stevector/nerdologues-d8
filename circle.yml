@@ -23,20 +23,15 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
-    # The memory limit of 128M was breached on site install when adding paragraphs module.
-    - echo "memory_limit = 256M" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/memory.ini
+    - ./scripts/circle-ci/php-setup.sh
 
     # Add apache config.
-    - ./scripts/circle-ci/circle-apache.sh
+    - ./scripts/circle-ci/prepare-drupal-server.sh
     - ./scripts/circle-ci/install-globals.sh
 
 test:
   pre:
-    # Copy the settings.local into place
-    - cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
-    # Disable sendmail binary to suppress any mailouts.
-    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
-    - drush --yes --root=$DOCROOT site-install config_installer
+   - drush --yes --root=$DOCROOT site-install config_installer
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
