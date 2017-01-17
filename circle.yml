@@ -46,7 +46,7 @@ test:
     - curl $SERVER
   override:
     - composer code-sniff
-    - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
+    - composer unit-test
     - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
 
   post:
