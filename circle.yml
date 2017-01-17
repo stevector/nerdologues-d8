@@ -24,7 +24,6 @@ dependencies:
 test:
   override:
     - composer circle-tests
-
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - ./scripts/run-backstop.sh
