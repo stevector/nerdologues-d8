@@ -5,6 +5,10 @@ machine:
     version: 5.5.11
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
+    # DB config. Using default CircleCI's database.
+    DB_NAME: "circle_test"
+    DB_USERNAME: "ubuntu"
+    DB_PASSWORD: ""
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
@@ -24,7 +28,6 @@ dependencies:
 test:
   override:
     - composer circle-tests
-
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - ./scripts/run-backstop.sh
