@@ -22,8 +22,6 @@ dependencies:
     - ./scripts/circle-ci/install-globals.sh
     - ./scripts/circle-ci/prepare-drupal-server.sh
 test:
-  pre:
-   - drush --yes --root=$DOCROOT site-install config_installer
   override:
     - composer circle-tests
 

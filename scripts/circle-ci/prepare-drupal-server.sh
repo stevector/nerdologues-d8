@@ -34,3 +34,6 @@ sudo sed -e "s?%SERVER%?$SERVER?g" --in-place /etc/apache2/sites-available/defau
 sudo a2enmod rewrite
 sudo service apache2 restart
 
+# Install Drupal
+drush --yes --root=$DOCROOT site-install config_installer
+
