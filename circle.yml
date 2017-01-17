@@ -4,10 +4,6 @@ machine:
     # https://circleci.com/docs/environment#php
     version: 5.5.11
   environment:
-    # DB config. Using default CircleCI's database.
-    DB_NAME: "circle_test"
-    DB_USERNAME: "ubuntu"
-    DB_PASSWORD: ""
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     SERVER: server.local
     WEB_USER: $(whoami)
