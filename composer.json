@@ -72,6 +72,10 @@
         ]
     },
     "scripts": {
+        "code-sniff": [
+            "phpcs --report=full --extensions=php,module,inc,theme,info --ignore=CachedHttpStreamWrapper.php --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom",
+            "phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom"
+        ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
