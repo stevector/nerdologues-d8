@@ -12,7 +12,7 @@ machine:
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
-    TERMINUS_ENV: $CIRCLE_BUILD_NUM
+    TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
     TERMINUS_SITE: nerdologues-d8
     PATH: $PATH:~/.composer/vendor/bin
   hosts:
@@ -23,18 +23,13 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
-    # The memory limit of 128M was breached on site install when adding paragrapphs module.
+    # The memory limit of 128M was breached on site install when adding paragraphs module.
     - echo "memory_limit = 256M" > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/memory.ini
 
     # Add apache config.
     - ./scripts/circle-ci/circle-apache.sh
-    - composer global require "consolidation/cgr"
-    - composer global require "hirak/prestissimo:^0.3"
-    - cgr "drush/drush:~8"
-    - sudo curl https://github.com/pantheon-systems/terminus/releases/download/0.13.6/terminus.phar -L -o /usr/local/bin/terminus && sudo chmod +x /usr/local/bin/terminus
-    - terminus auth login --machine-token=$TerminusToken
-    - echo Installing gulp globally
-    - npm install -g gulp
+    - ./scripts/circle-ci/install-globals.sh
+
 test:
   pre:
     # Copy the settings.local into place
@@ -45,13 +40,8 @@ test:
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
-    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --ignore=CachedHttpStreamWrapper.php --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom
-    - ./vendor/bin/phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom
-    - ./vendor/bin/phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v
-    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
+    - composer circle-tests
 
   post:
-    - terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
-    - yes | terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - ./scripts/run-backstop.sh
