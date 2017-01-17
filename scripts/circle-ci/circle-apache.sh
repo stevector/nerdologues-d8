@@ -21,3 +21,4 @@ sudo sed -e "s?%DOCROOT%?$DOCROOT?g" --in-place /etc/apache2/sites-available/def
 sudo sed -e "s?%SERVER%?$SERVER?g" --in-place /etc/apache2/sites-available/default
 sudo a2enmod rewrite
 sudo service apache2 restart
+
