@@ -8,9 +8,12 @@ set -x
 git config user.email "stevepersch+circleci@gmail.com"
 git config user.name "Circle CI Automation"
 
+
+terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+yes | terminus site clone-content --to-env=$TERMINUS_ENV --from-env=dev
+
 git remote add pantheon $(terminus site connection-info --field=git_url)
 git fetch pantheon
-# @todo, Consider naming based on PR number instead of build number.
 git checkout -b $TERMINUS_ENV
 git pull pantheon $TERMINUS_ENV
 
@@ -41,4 +44,4 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-cd tests  && ./../vendor/bin/behat --config=behat/behat-pantheon.yml behat/features/migration/ --strict
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict
