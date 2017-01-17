@@ -24,11 +24,9 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   pre:
     - ./scripts/circle-ci/install-globals.sh
+  post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
 test:
-  pre:
-   - drush --yes --root=$DOCROOT site-install config_installer
-   - curl $SERVER
   override:
     - composer circle-tests
   post:
