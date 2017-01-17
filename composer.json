@@ -79,6 +79,12 @@
         "unit-test": [
             "phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v"
         ],
+        "circle-tests": [
+            "@code-sniff",
+            "@unit-test",
+            "echo 'cURLing server because Behat tests fail without the server getting hit first'; curl $SERVER",
+            "behat --config=tests/behat/behat-circle.yml tests/behat/features/clickdriving --strict"
+        ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"

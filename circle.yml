@@ -40,9 +40,7 @@ test:
     # The behat tests fail if the site isn't curled first. Which is weird.
     - curl $SERVER
   override:
-    - composer code-sniff
-    - composer unit-test
-    - cd tests  && ./../vendor/bin/behat --config=behat/behat-circle.yml behat/features/clickdriving --strict
+    - composer circle-tests
 
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
