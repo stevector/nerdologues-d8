@@ -19,15 +19,9 @@ dependencies:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
   pre:
-    - ./scripts/circle-ci/php-setup.sh
-
-    # Add apache config.
-    - ./scripts/circle-ci/prepare-drupal-server.sh
     - ./scripts/circle-ci/install-globals.sh
-
+    - ./scripts/circle-ci/prepare-drupal-server.sh
 test:
-  pre:
-   - drush --yes --root=$DOCROOT site-install config_installer
   override:
     - composer circle-tests
 
