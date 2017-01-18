@@ -14,6 +14,7 @@ machine:
     WEB_GROUP: www-data
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
     TERMINUS_SITE: nerdologues-d8
+    SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
     PATH: $PATH:~/.composer/vendor/bin
   hosts:
     server.local: 127.0.0.1
