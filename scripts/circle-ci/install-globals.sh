@@ -15,7 +15,12 @@ mkdir -p ~/.terminus/plugins
 composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:dev-reuse-multidev
 composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:~1
 
-terminus auth:login -n --machine-token="$TerminusToken"
+
+{
+ terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
+} &> /dev/null
+
+terminus whoami
 
 echo "Installing gulp globally"
 npm install -g gulp
