@@ -19,12 +19,12 @@ git pull pantheon $TERMINUS_ENV
 
 terminus env:wake nerdologues.migr-prep2
 export D7_MYSQL_URL=$(terminus connection:info nerdologues.migr-prep2 --field=mysql_url)
-terminus secrets:set site.env $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
+terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 
 git push pantheon $TERMINUS_ENV -f
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
-terminus site set-connection-mode --mode=sftp
+terminus connection:set $SITE_ENV sftp
 # Send to dev null so that the generated admin password does not show.
 # Hiding all output might be overkill for accomplishing that goal.
 terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
