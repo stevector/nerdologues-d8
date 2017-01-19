@@ -5,7 +5,10 @@ set -x
 composer global require -n "consolidation/cgr"
 composer global require -n "hirak/prestissimo:^0.3"
 cgr "drush/drush:~8"
-cd ~ && curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar && php -d memory_limit=-1 installer.phar install
+
+git clone --branch master https://github.com/pantheon-systems/terminus.git ~/terminus
+cd ~/terminus && composer install
+
 terminus --version
 mkdir -p ~/.terminus/plugins
 # todo, do I really want the dev-reusue-multidev branch?
