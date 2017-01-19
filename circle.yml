@@ -29,6 +29,7 @@ dependencies:
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
+
 test:
   override:
     - composer circle-tests
