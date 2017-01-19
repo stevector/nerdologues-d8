@@ -1,8 +1,8 @@
 # https://circleci.com/docs/configuration#machine
 machine:
-  php:
+  #php:
     # https://circleci.com/docs/environment#php
-    version: 5.5.11
+   # version: 5.5.11
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     # DB config. Using default CircleCI's database.
