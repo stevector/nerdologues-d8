@@ -25,7 +25,7 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   override:
     - composer global require -n "consolidation/cgr"
-    - cgr "pantheon-systems/terminus:~1" --stability=beta
+    - curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar && php installer.phar
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
