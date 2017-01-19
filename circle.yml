@@ -16,7 +16,6 @@ machine:
     TERMINUS_SITE: nerdologues-d8
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
-
   hosts:
     server.local: 127.0.0.1
 
