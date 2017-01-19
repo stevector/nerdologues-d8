@@ -23,7 +23,7 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
-  pre:
+  override:
     - composer global require -n "consolidation/cgr"
     - cgr "pantheon-systems/terminus:~1" --stability=beta
     - ./scripts/circle-ci/install-globals.sh
