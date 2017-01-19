@@ -29,28 +29,6 @@ terminus connection:set $SITE_ENV sftp
 # Hiding all output might be overkill for accomplishing that goal.
 terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 terminus drush $SITE_ENV -- ms
 terminus drush $SITE_ENV -- mi --all --feedback='50 items'
 terminus drush $SITE_ENV -- ms
