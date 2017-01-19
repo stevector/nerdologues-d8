@@ -3,8 +3,7 @@
 set -x
 
 composer global require -n "hirak/prestissimo:^0.3"
-composer global require -n "consolidation/cgr"
-cgr "pantheon-systems/terminus:~1" --stability=beta
+
 terminus --version
 mkdir -p ~/.terminus/plugins
 # todo, do I really want the dev-reusue-multidev branch?
