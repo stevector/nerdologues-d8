@@ -14,7 +14,8 @@ machine:
     WEB_GROUP: www-data
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
     TERMINUS_SITE: nerdologues-d8
-    PATH: $PATH:~/.composer/vendor/bin
+    SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
+    PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
   hosts:
     server.local: 127.0.0.1
 
@@ -22,10 +23,11 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
     - ~/nerdologues-d8/node_modules
-  pre:
+  override:
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
+
 test:
   override:
     - composer circle-tests
