@@ -27,9 +27,10 @@ dependencies:
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
-
 test:
   override:
+    - vendor/bin/drupal --root=web/ --uri=http://default -v -n server 0.0.0.0:8888:
+        background: true
     - composer circle-tests
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
