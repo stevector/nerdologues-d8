@@ -53,13 +53,6 @@ Thumbs.db
 # Things in the core directory that Drupal 8 commits in the repository.
 !web/core/**/*.gz
 
-
-
-circle-scripts/testing/bin
-circle-scripts/testing/drush
-circle-scripts/testing/vendor
-
-
 # Ignore Drupal's file directory
 web/sites/*/files
 
