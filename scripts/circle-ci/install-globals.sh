@@ -12,7 +12,7 @@ cd ~/terminus && composer install
 terminus --version
 mkdir -p ~/.terminus/plugins
 # todo, do I really want the dev-reusue-multidev branch?
-composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:dev-reuse-multidev
+composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin
 composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:~1
 
 {
