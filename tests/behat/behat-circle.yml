@@ -8,4 +8,4 @@ imports:
 default:
   extensions:
     Behat\MinkExtension:
-      base_url: http://0.0.0.0:8888
+      base_url: http://default
