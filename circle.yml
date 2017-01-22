@@ -29,7 +29,7 @@ dependencies:
     - ./scripts/circle-ci/prepare-drupal-server.sh
 test:
   override:
-    - vendor/bin/drupal --root=web/ --uri=http://default -v -n server
+    - vendor/bin/drupal --root=web/ --uri=http://default -v -n server:
         background: true
     - composer circle-tests
   post:
