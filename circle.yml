@@ -25,6 +25,7 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
+    - vendor/bin/drupal init -n
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
 test:
