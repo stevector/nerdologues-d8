@@ -38,5 +38,5 @@ test:
     - composer circle-tests
     - curl http://127.0.0.1:8088
   post:
-    - ./scripts/circle-ci/deploy-to-multidev.sh
-    - ./scripts/run-backstop.sh
+    #- ./scripts/circle-ci/deploy-to-multidev.sh
+    #- ./scripts/run-backstop.sh
