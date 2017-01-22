@@ -31,7 +31,9 @@ test:
   override:
     - vendor/bin/drupal --root=web/ --uri=http://default -v -n server:
         background: true
+    - curl http://127.0.0.1:8088
     - composer circle-tests
+    - curl http://127.0.0.1:8088
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - ./scripts/run-backstop.sh
