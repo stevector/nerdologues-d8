@@ -30,26 +30,29 @@ class NerdEventDateField extends ProcessPluginBase {
 
     print_r($value);
 
-    /*
-        $query = Database::getConnection('default', 'drupal_7')
-          ->select('field_data_field_body', 'fdfb');
-        $query->join('field_data_field_int_start_time', 'fdfi', 'fdfi.entity_id=fdfb.entity_id');
 
-        $results = $query->fields('fdfb', ['field_body_value'])
-          ->fields('fdfi', ['field_int_start_time_value'])
-          ->condition('fdfb.entity_id', $value['value'])
-          ->condition('fdfi.bundle', 'field_fc_quotes ')
-          ->condition('fdfb.bundle', 'field_fc_quotes ')->execute();
+        $results = Database::getConnection('default', 'drupal_7')
+          ->select('field_data_field_date', 'fdf_date')
+
+          ->fields('fdf_date', ['field_date_value'])
+          ->condition('fdf_date.entity_id', $value['value'])
+          ->condition('fdf_date.bundle', 'field_fc_dates')->execute();
+
+
 
         // There really should be only one value in this loop.
         foreach ($results as $result) {
-          if (!empty($result->field_body_value)) {
-            return $this->makeParagraph($result->field_body_value, $result->field_int_start_time_value);
+
+          print_r($result);
+
+          if (!empty($result->field_date_value)) {
+
+            return str_replace(' ', 'T', $result->field_date_value);
           }
         }
 
 
-    */
+
 
     return NULL;
   }
