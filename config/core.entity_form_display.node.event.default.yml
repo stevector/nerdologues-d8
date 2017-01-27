@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.field_body
+    - field.field.node.event.field_dates
     - field.field.node.event.field_image
     - field.field.node.event.field_lede
     - field.field.node.event.field_link
@@ -12,6 +13,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.event
   module:
+    - datetime
     - image
     - link
     - path
@@ -33,6 +35,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_dates:
+    weight: 37
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
   field_image:
     weight: 31
     settings:

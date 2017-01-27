@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.field_body
+    - field.field.node.event.field_dates
     - field.field.node.event.field_image
     - field.field.node.event.field_lede
     - field.field.node.event.field_link
@@ -11,6 +12,7 @@ dependencies:
     - field.field.node.event.field_text_display_date
     - node.type.event
   module:
+    - datetime
     - image
     - link
     - text
@@ -26,6 +28,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_dates:
+    weight: 107
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
   field_image:
     weight: 101
     label: above
