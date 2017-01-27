@@ -27,32 +27,19 @@ class NerdEventDateField extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
+    $results = Database::getConnection('default', 'drupal_7')
+      ->select('field_data_field_date', 'fdf_date')
+      ->fields('fdf_date', ['field_date_value'])
+      ->condition('fdf_date.entity_id', $value['value'])
+      ->condition('fdf_date.bundle', 'field_fc_dates')->execute();
 
-    print_r($value);
+    // There really should be only one value in this loop.
+    foreach ($results as $result) {
 
-
-        $results = Database::getConnection('default', 'drupal_7')
-          ->select('field_data_field_date', 'fdf_date')
-
-          ->fields('fdf_date', ['field_date_value'])
-          ->condition('fdf_date.entity_id', $value['value'])
-          ->condition('fdf_date.bundle', 'field_fc_dates')->execute();
-
-
-
-        // There really should be only one value in this loop.
-        foreach ($results as $result) {
-
-          print_r($result);
-
-          if (!empty($result->field_date_value)) {
-
-            return str_replace(' ', 'T', $result->field_date_value);
-          }
-        }
-
-
-
+      if (!empty($result->field_date_value)) {
+        return str_replace(' ', 'T', $result->field_date_value);
+      }
+    }
 
     return NULL;
   }
