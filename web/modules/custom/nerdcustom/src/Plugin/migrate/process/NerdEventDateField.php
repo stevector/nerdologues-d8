@@ -44,6 +44,4 @@ class NerdEventDateField extends ProcessPluginBase {
     return NULL;
   }
 
-
-
 }
