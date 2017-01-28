@@ -38,7 +38,8 @@
         "drupal/paragraphs": "1.x-dev",
         "drupal/entity_reference_revisions": "1.x-dev",
         "drupal/panels": "3.x-dev",
-        "drupal/rabbit_hole": "^1.0"
+        "drupal/rabbit_hole": "^1.0",
+        "drupal/menu_block": "^1.4"
     },
     "require-dev": {
         "behat/mink": "~1.7",

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0f5260c4187570972bc6a721f504d8f",
-    "content-hash": "55a75e15cc18c70418123a1a6312c6ae",
+    "hash": "11e37ca94a48cad46685e6503bef7bb9",
+    "content-hash": "7d6a447adf2682ea423713bfd19761cb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1782,6 +1782,61 @@
             "time": "2016-07-23 12:04:28"
         },
         {
+            "name": "drupal/menu_block",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/menu_block",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menu_block-8.x-1.4.zip",
+                "reference": null,
+                "shasum": "fd8d559452a9e1e07de6fefd9955df6feadc943a"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1473063239"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "JohnAlbin",
+                    "homepage": "https://www.drupal.org/user/32095"
+                },
+                {
+                    "name": "kim.pepper",
+                    "homepage": "https://www.drupal.org/user/370574"
+                },
+                {
+                    "name": "rrrob",
+                    "homepage": "https://www.drupal.org/user/273533"
+                }
+            ],
+            "description": "Provides configurable blocks of menu links.",
+            "homepage": "https://www.drupal.org/project/menu_block",
+            "support": {
+                "source": "http://cgit.drupalcode.org/menu_block"
+            }
+        },
+        {
             "name": "drupal/migrate_plus",
             "version": "3.0.0-beta1",
             "source": {
@@ -2075,7 +2130,8 @@
                 "source": "http://git.drupal.org/project/panels.git",
                 "issues": "https://www.drupal.org/project/issues/panels",
                 "irc": "irc://irc.freenode.org/drupal-scotch"
-            }
+            },
+            "time": "2016-11-13 00:53:07"
         },
         {
             "name": "drupal/paragraphs",
