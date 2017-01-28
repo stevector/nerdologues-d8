@@ -114,9 +114,7 @@ class MenuLauncherItemCommand extends BaseCommand {
       $input->setArgument('menu-item', $parent);
       $input->setArgument('action', '');
       $this->interact($input, $output);
-
     }
-
 
 
     if ($action === 'browse') {
@@ -143,17 +141,9 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   function getParent($menuItem) {
-    $menuLinkTree = $this->getDrupalService('menu.link_tree');
-    $parameters = new MenuTreeParameters();
-    $parameters->setMaxDepth(1);
-    $parameters->setRoot($menuItem);
-    $adminMenu = $menuLinkTree->load('admin', $parameters);
-    $adminMenu = $menuLinkTree->transform($adminMenu, []);
 
+      return  $this->getMenuLinkTreeElement($menuItem)->link->getParent();
 
-    foreach ($adminMenu as $element) {
-      return $element->link->getParent();
-    }
   }
 
 
@@ -169,7 +159,7 @@ class MenuLauncherItemCommand extends BaseCommand {
     $adminMenu = $menuLinkTree->transform($adminMenu, []);
 
 
-print_r(array_keys($adminMenu));
+//print_r(array_keys($adminMenu));
     foreach ($adminMenu as $element) {
 
       //print_r(($element));
@@ -191,6 +181,23 @@ print_r(array_keys($adminMenu));
     }
 
     return $options;
+
+  }
+
+
+  function getMenuLinkTreeElement($menuItem) {
+    $menuLinkTree = $this->getDrupalService('menu.link_tree');
+    $parameters = new MenuTreeParameters();
+    $parameters->setMaxDepth(1);
+    $parameters->setRoot($menuItem);
+    $adminMenu = $menuLinkTree->load('admin', $parameters);
+    $adminMenu = $menuLinkTree->transform($adminMenu, []);
+
+
+    foreach ($adminMenu as $element) {
+      return $element;
+    }
+
 
   }
 }
