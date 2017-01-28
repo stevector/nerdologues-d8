@@ -150,19 +150,9 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   function getChildMenuItemOptions($menuItem) {
-    $options = ['blank'];
+
     $menuLinkTree = $this->getDrupalService('menu.link_tree');
-    $parameters = new MenuTreeParameters();
-    $parameters->setMaxDepth(1);
-    $parameters->setRoot($menuItem);
-    $adminMenu = $menuLinkTree->load('admin', $parameters);
-    $adminMenu = $menuLinkTree->transform($adminMenu, []);
-
-
-//print_r(array_keys($adminMenu));
-    foreach ($adminMenu as $element) {
-
-      //print_r(($element));
+      $element = $this->getMenuLinkTreeElement($menuItem);
 
       if ($element->subtree) {
         $subtree = $menuLinkTree->build($element->subtree);
@@ -178,7 +168,8 @@ class MenuLauncherItemCommand extends BaseCommand {
 //        $output = '';
 
       }
-    }
+
+
 
     return $options;
 
