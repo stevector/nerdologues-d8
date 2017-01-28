@@ -82,15 +82,32 @@ class MenuLauncherItemCommand extends BaseCommand {
   }
 
 
-  protected function getActions() {
+  protected function getActions($menuItem = '') {
 
-    return [
-      'browse' => 'Browse Children',
-      'parent' => 'See Parent',
-      'edit' => 'Edit Menu Item',
-      'open' => 'Open Menu Item',
 
-    ];
+    if (empty($menuItem())) {
+      return [
+        'browse' => 'Browse Children',
+        'parent' => 'See Parent',
+        'edit' => 'Edit Menu Item',
+        'open' => 'Open Menu Item',
+
+      ];
+
+
+    }
+    else {
+      return [
+        'browse' => 'Browse Children',
+        'parent' => 'See Parent',
+        'edit' => 'Edit Menu Item',
+        'open' => 'Open Menu Item',
+
+      ];
+
+
+    }
+
   }
 
 
