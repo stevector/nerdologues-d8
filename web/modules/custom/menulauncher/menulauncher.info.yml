@@ -1,0 +1,5 @@
+name: menulauncher
+type: module
+description: Launch menu pages from the console
+core: 8.x
+package: Custom

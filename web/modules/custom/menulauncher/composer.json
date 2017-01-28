@@ -1,0 +1,14 @@
+{
+  "name": "drupal/menulauncher",
+  "type": "drupal-module",
+  "description": "Launch menu pages from the console",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/menulauncher",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/menulauncher",
+    "source": "http://cgit.drupalcode.org/menulauncher"
+  },
+  "require": { }
+}

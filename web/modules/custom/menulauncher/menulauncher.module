@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains menulauncher.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function menulauncher_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the menulauncher module.
+    case 'help.page.menulauncher':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Launch menu pages from the console') . '</p>';
+      return $output;
+
+    default:
+  }
+}
