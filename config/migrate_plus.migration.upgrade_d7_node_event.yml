@@ -45,7 +45,9 @@ process:
       title: title
   field_body: field_body
   field_lede: field_lede
-  field_fc_dates: field_fc_dates
+  field_dates:
+    plugin: nerd_eventdate_field
+    source: field_fc_dates
   field_ref_location: field_location
   field_text_display_date: field_text_display_date
 destination:

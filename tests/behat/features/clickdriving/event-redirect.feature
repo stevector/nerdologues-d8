@@ -9,6 +9,8 @@ Feature: Event Redirect
     When I visit "node/add/event"
     And I fill in "Title" with "Your Stories in LA: Long Distance at UCB Sunset!"
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"
+    And I fill in "field_dates[0][value][date]" with "2013-01-31"
+    And I fill in "field_dates[0][value][time]" with "19:00:00"
     And I press "Save and publish"
     Then I should be on "/events/699237613563919/"
 
@@ -18,6 +20,8 @@ Feature: Event Redirect
     When I visit "node/add/event"
     And I fill in "Title" with "Your Stories in LA: Long Distance at UCB Sunset!"
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"
+    And I fill in "field_dates[0][value][date]" with "2013-01-31"
+    And I fill in "field_dates[0][value][time]" with "19:00:00"
     And I press "Save and publish"
     Then I should be on "/events/your-stories-la-long-distance-ucb-sunset"
 
