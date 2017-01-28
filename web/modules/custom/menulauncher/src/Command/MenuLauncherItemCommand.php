@@ -52,6 +52,23 @@ class MenuLauncherItemCommand extends BaseCommand {
 
     $io = new DrupalStyle($input, $output);
 
+
+    $action = $input->getArgument('action');
+
+    switch($action) {
+      case 'edit':
+        $io->info('You want to edit');
+        break;
+
+      case 'open':
+        $io->info('You want to open');
+        break;
+
+
+    }
+
+
+
     $io->info('I am a new generated command.');
   }
 
@@ -60,8 +77,9 @@ class MenuLauncherItemCommand extends BaseCommand {
 
     return [
       'browse' => 'Browse Children',
+      'parent' => 'See Parent',
       'edit' => 'Edit Menu Item',
-      'Open' => 'Open Menu Item',
+      'open' => 'Open Menu Item',
 
     ];
   }
@@ -73,18 +91,37 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
     $action = $input->getArgument('action');
-    $menuItem = $io->choice(
-      'what do you want to do with this Menu Item',
-      $this->getActions()
-    );
-
-
-    $input->setArgument('action', $action);
-
-
-
     $menuItem = $input->getArgument('menu-item');
-    $options = $this->getChildMenuItemOptions($menuItem);
+
+    if (empty($menuItem)) {
+      print_r('no handling yet for empty menuItem');
+      die();
+    }
+
+
+    if (empty($action)) {
+      $action = $io->choice(
+        'what do you want to do with this Menu Item: ' . $menuItem,
+        $this->getActions()
+      );
+      $input->setArgument('action', $action);
+    }
+
+
+    if ($action === 'parent') {
+      $menuItem = $input->getArgument('menu-item');
+      $parent = $this->getParent($menuItem);
+      $input->setArgument('menu-item', $parent);
+      $input->setArgument('action', '');
+      $this->interact($input, $output);
+
+    }
+
+
+
+    if ($action === 'browse') {
+      $menuItem = $input->getArgument('menu-item');
+      $options = $this->getChildMenuItemOptions($menuItem);
 
       $menuItem = $io->choice(
         'Choose a configuration',
@@ -92,12 +129,32 @@ class MenuLauncherItemCommand extends BaseCommand {
       );
 
       $input->setArgument('menu-item', $menuItem);
+      $input->setArgument('action', '');
+      $this->interact($input, $output);
+
+    }
 
 
-    $this->interact($input, $output);
 
   }
 
+
+
+
+
+  function getParent($menuItem) {
+    $menuLinkTree = $this->getDrupalService('menu.link_tree');
+    $parameters = new MenuTreeParameters();
+    $parameters->setMaxDepth(1);
+    $parameters->setRoot($menuItem);
+    $adminMenu = $menuLinkTree->load('admin', $parameters);
+    $adminMenu = $menuLinkTree->transform($adminMenu, []);
+
+
+    foreach ($adminMenu as $element) {
+      return $element->link->getParent();
+    }
+  }
 
 
 
@@ -111,7 +168,12 @@ class MenuLauncherItemCommand extends BaseCommand {
     $adminMenu = $menuLinkTree->load('admin', $parameters);
     $adminMenu = $menuLinkTree->transform($adminMenu, []);
 
+
+print_r(array_keys($adminMenu));
     foreach ($adminMenu as $element) {
+
+      //print_r(($element));
+
       if ($element->subtree) {
         $subtree = $menuLinkTree->build($element->subtree);
 
