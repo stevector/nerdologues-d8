@@ -54,13 +54,22 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
     $action = $input->getArgument('action');
+    $menuItem = $input->getArgument('menu-item');
+
 
     switch($action) {
       case 'edit':
         $io->info('You want to edit');
+       exec('open ' . $this->getDrupalService('url_generator')->generateFromRoute('menu_ui.link_edit', ['menu_link_plugin' => $menuItem], ['absolute' => TRUE]));
+//        menu_ui.link_edit
         break;
 
       case 'open':
+
+        $menuLink = $this->getMenuLink($menuItem);
+        //print_r(get_class_methods($menuLink->getUrlObject()->toString()));
+        exec('open ' . $menuLink->getUrlObject()->setAbsolute()->toString());
+        //print_r();
         $io->info('You want to open');
         break;
 
@@ -146,7 +155,10 @@ class MenuLauncherItemCommand extends BaseCommand {
 
   }
 
+  function getMenuLink($menuItem) {
 
+    return  $this->getMenuLinkTreeElement($menuItem)->link;
+  }
 
 
   function getChildMenuItemOptions($menuItem) {
@@ -168,8 +180,6 @@ class MenuLauncherItemCommand extends BaseCommand {
 //        $output = '';
 
       }
-
-
 
     return $options;
 
