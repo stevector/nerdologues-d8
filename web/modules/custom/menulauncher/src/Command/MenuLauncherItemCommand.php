@@ -100,9 +100,9 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
       return [
-        'parent:' . $menuItem => 'See Parent',
-        'edit:'  . $menuItem => 'Edit Menu Item',
-        'open:'  . $menuItem => 'Open Menu Item',
+        'parent' => 'See Parent',
+        'edit' => 'Edit Menu Item',
+        'open' => 'Open Menu Item',
 
       ] + $this->getChildMenuItemOptions($menuItem);
 
@@ -125,19 +125,23 @@ class MenuLauncherItemCommand extends BaseCommand {
       die();
     }
 
-
     if (empty($action)) {
-      $action_and_menu_item = $io->choice(
+      $action_or_child = $io->choice(
         'what do you want to do with this Menu Item: ' . $menuItem,
         $this->getActions($menuItem)
       );
 
-      list($action, $menuItem) = explode(":", $action_and_menu_item);
+      if (in_array($action_or_child, ['parent', 'edit', 'open'])) {
 
-      $input->setArgument('menu-item', $menuItem);
-      if ($action !== 'goto') {
-        $input->setArgument('action', $action);
+        $input->setArgument('action', $action_or_child);
       }
+      else {
+        $input->setArgument('menu-item', $action_or_child);
+      }
+
+
+
+
       $this->interact($input, $output);
     }
 
@@ -155,9 +159,7 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   function getParent($menuItem) {
-
       return  $this->getMenuLinkTreeElement($menuItem)->link->getParent();
-
   }
 
   function getMenuLink($menuItem) {
@@ -177,26 +179,12 @@ class MenuLauncherItemCommand extends BaseCommand {
         foreach ($subtree['#items'] as $key => $item) {
           if (method_exists($item['url'], 'toString')) {
             // @todo Does the title need to be escaped?
-            $options['goto:'. $key]
-
-
-
-
-
-
-
-
-
-
-
-
-            = $item['url']->toString() . '    ' . $item['title'];
+            $options[$key] = /*$item['url']->toString() . '    ' . */$item['title'];
           }
         }
 
       } else {
 //        $output = '';
-
       }
 
     return $options;
