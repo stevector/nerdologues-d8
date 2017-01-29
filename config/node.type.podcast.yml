@@ -13,6 +13,6 @@ name: Podcast
 type: podcast
 description: 'Your Stories, MBSing, And the Nerdologuecast.'
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 0
 display_submitted: false
