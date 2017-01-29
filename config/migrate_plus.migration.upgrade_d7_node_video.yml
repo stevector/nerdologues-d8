@@ -31,7 +31,14 @@ process:
   field_date_published:
     plugin: nerd_date_published
     source: field_date_published
-  field_body: field_body
+  field_body:
+    plugin: iterator
+    source: field_body
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_youtube:
     plugin: nerd_youtube_field
     source: field_file
