@@ -10,7 +10,9 @@ label: 'Filter format configuration'
 source:
   plugin: d7_filter_format
 process:
-  format: format
+  format:
+    plugin: nerd_input_format_map
+    source: format
   name: name
   cache: cache
   filters:

@@ -21,7 +21,7 @@ use Drupal\migrate\Row;
  *   id = "nerd_input_format_map"
  * )
  */
-class NerdUserRoles extends ProcessPluginBase {
+class NerdInputFormatMap extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
@@ -29,6 +29,12 @@ class NerdUserRoles extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
 
+    print_r(($value));
+
+    if ('filtered_html' === $value) {
+
+      return 'basic_html';
+    }
     return $value;
 
   }
