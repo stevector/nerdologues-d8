@@ -13,7 +13,6 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 
-
 /**
  * This plugin maps the filtered_html input format to basic_html.
  *
@@ -32,11 +31,8 @@ class NerdInputFormatMap extends ProcessPluginBase {
       return 'basic_html';
     }
     if ('Filtered HTML' === $value) {
-
       return 'Basic HTML';
     }
-
     return $value;
-
   }
 }
