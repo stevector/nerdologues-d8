@@ -15,7 +15,7 @@ use Drupal\migrate\Row;
 
 
 /**
- * This plugin maps old roles to new roles.
+ * This plugin maps the filtered_html input format to basic_html.
  *
  * @MigrateProcessPlugin(
  *   id = "nerd_input_format_map"
@@ -28,11 +28,7 @@ class NerdInputFormatMap extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
 
-
-    print_r(($value));
-
     if ('filtered_html' === $value) {
-
       return 'basic_html';
     }
     if ('Filtered HTML' === $value) {
