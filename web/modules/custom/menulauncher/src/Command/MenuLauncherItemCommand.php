@@ -85,9 +85,8 @@ class MenuLauncherItemCommand extends BaseCommand {
   protected function getActions($menuItem = '') {
 
 
-    if (empty($menuItem())) {
+    if (empty($menuItem)) {
       return [
-        'browse' => 'Browse Children',
         'parent' => 'See Parent',
         'edit' => 'Edit Menu Item',
         'open' => 'Open Menu Item',
@@ -97,13 +96,15 @@ class MenuLauncherItemCommand extends BaseCommand {
 
     }
     else {
-      return [
-        'browse' => 'Browse Children',
-        'parent' => 'See Parent',
-        'edit' => 'Edit Menu Item',
-        'open' => 'Open Menu Item',
 
-      ];
+
+
+      return [
+        'parent:' . $menuItem => 'See Parent',
+        'edit:'  . $menuItem => 'Edit Menu Item',
+        'open:'  . $menuItem => 'Open Menu Item',
+
+      ] + $this->getChildMenuItemOptions($menuItem);
 
 
     }
@@ -126,40 +127,27 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
     if (empty($action)) {
-      $action = $io->choice(
+      $action_and_menu_item = $io->choice(
         'what do you want to do with this Menu Item: ' . $menuItem,
-        $this->getActions()
+        $this->getActions($menuItem)
       );
-      $input->setArgument('action', $action);
+
+      list($action, $menuItem) = explode(":", $action_and_menu_item);
+
+      $input->setArgument('menu-item', $menuItem);
+      if ($action !== 'goto') {
+        $input->setArgument('action', $action);
+      }
+      $this->interact($input, $output);
     }
 
 
     if ($action === 'parent') {
-      $menuItem = $input->getArgument('menu-item');
       $parent = $this->getParent($menuItem);
       $input->setArgument('menu-item', $parent);
       $input->setArgument('action', '');
       $this->interact($input, $output);
     }
-
-
-    if ($action === 'browse') {
-      $menuItem = $input->getArgument('menu-item');
-      $options = $this->getChildMenuItemOptions($menuItem);
-
-      $menuItem = $io->choice(
-        'Choose a configuration',
-        $options
-      );
-
-      $input->setArgument('menu-item', $menuItem);
-      $input->setArgument('action', '');
-      $this->interact($input, $output);
-
-    }
-
-
-
   }
 
 
@@ -189,7 +177,20 @@ class MenuLauncherItemCommand extends BaseCommand {
         foreach ($subtree['#items'] as $key => $item) {
           if (method_exists($item['url'], 'toString')) {
             // @todo Does the title need to be escaped?
-            $options[$key] = $item['url']->toString() . '    ' . $item['title'];
+            $options['goto:'. $key]
+
+
+
+
+
+
+
+
+
+
+
+
+            = $item['url']->toString() . '    ' . $item['title'];
           }
         }
 
