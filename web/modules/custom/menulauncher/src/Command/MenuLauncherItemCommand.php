@@ -85,8 +85,8 @@ class MenuLauncherItemCommand extends BaseCommand {
   protected function getActions($menuItem) {
       return [
         'parent' => '--See Parent',
-        'edit' => '--Edit Menu Item',
-        'open' => '--Open Menu Item',
+        'edit' => '--Edit Menu Item in browser',
+        'open' => '--Open Menu Item in browser',
 
       ] + $this->getChildMenuItemOptions($menuItem);
   }
@@ -136,7 +136,7 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   function getParent($menuItem) {
-      return  $this->getMenuLinkTreeElement($menuItem)->link->getParent();
+      return  $this->getMenuLink($menuItem)->getParent();
   }
 
   function getMenuLink($menuItem) {
