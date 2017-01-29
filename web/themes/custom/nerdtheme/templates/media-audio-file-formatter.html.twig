@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a link to a file.
+ *
+ * Available variables:
+ * - attributes: The HTML attributes for the containing element.
+ * - link: A link to the file.
+ *
+ * @see template_preprocess_file_link()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<audio {{ extravalue }}>
+<source src="{{ media_link }}" type="{{ mimetype }}">
+</audio>
+{% if value %}
+<br><a href="{{ media_link }}" target="_blank" download>{{ 'Download mp3'|t }}</a>
+{% endif %}
