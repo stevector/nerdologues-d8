@@ -12,6 +12,6 @@ name: Event
 type: event
 description: 'Shows, Your Stories, and other fun things that we do.'
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 0
 display_submitted: false

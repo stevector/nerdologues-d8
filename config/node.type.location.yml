@@ -12,6 +12,6 @@ name: Location
 type: location
 description: 'A theater or other performance venue.'
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 0
 display_submitted: false
