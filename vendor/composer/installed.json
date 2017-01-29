@@ -8131,5 +8131,216 @@
             "GPL-2.0+"
         ],
         "description": "Drupal is an open source content management platform powering millions of websites and applications."
+    },
+    {
+        "name": "drupal/entity",
+        "version": "1.0.0-alpha4",
+        "version_normalized": "1.0.0.0-alpha4",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/entity",
+            "reference": "8.x-1.0-alpha4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-alpha4.zip",
+            "reference": "8.x-1.0-alpha4",
+            "shasum": "c081d3757c159dfee74c9e5acb63bdee81c42e18"
+        },
+        "require": {
+            "drupal/core": "~8.1"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha4",
+                "datestamp": "1481194983"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Berdir",
+                "homepage": "https://www.drupal.org/user/214652"
+            },
+            {
+                "name": "bojanz",
+                "homepage": "https://www.drupal.org/user/86106"
+            },
+            {
+                "name": "dawehner",
+                "homepage": "https://www.drupal.org/user/99340"
+            },
+            {
+                "name": "dixon_",
+                "homepage": "https://www.drupal.org/user/239911"
+            },
+            {
+                "name": "fago",
+                "homepage": "https://www.drupal.org/user/16747"
+            }
+        ],
+        "description": "Provides expanded entity APIs, which will be moved to Drupal core one day.",
+        "homepage": "http://drupal.org/project/entity",
+        "support": {
+            "source": "http://cgit.drupalcode.org/entity"
+        }
+    },
+    {
+        "name": "drupal/media_entity",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/media_entity",
+            "reference": "8.x-1.6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/media_entity-8.x-1.6.zip",
+            "reference": "8.x-1.6",
+            "shasum": "86fd1478f2448c034660faa30ef34c0e8519fecb"
+        },
+        "require": {
+            "drupal/core": "~8.1",
+            "drupal/entity": "^1.0.0-alpha3"
+        },
+        "require-dev": {
+            "drupal/entity": "*",
+            "drupal/inline_entity_form": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.6",
+                "datestamp": "1480363983"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Berdir",
+                "homepage": "https://www.drupal.org/user/214652"
+            },
+            {
+                "name": "Drupal Media Team",
+                "homepage": "https://www.drupal.org/user/3260690"
+            },
+            {
+                "name": "Drupal media CI",
+                "homepage": "https://www.drupal.org/user/3057985"
+            },
+            {
+                "name": "Primsi",
+                "homepage": "https://www.drupal.org/user/282629"
+            },
+            {
+                "name": "boztek",
+                "homepage": "https://www.drupal.org/user/134410"
+            },
+            {
+                "name": "chr.fritsch",
+                "homepage": "https://www.drupal.org/user/2103716"
+            },
+            {
+                "name": "jcisio",
+                "homepage": "https://www.drupal.org/user/210762"
+            },
+            {
+                "name": "katzilla",
+                "homepage": "https://www.drupal.org/user/260398"
+            },
+            {
+                "name": "phenaproxima",
+                "homepage": "https://www.drupal.org/user/205645"
+            },
+            {
+                "name": "seanB",
+                "homepage": "https://www.drupal.org/user/545912"
+            },
+            {
+                "name": "slashrsm",
+                "homepage": "https://www.drupal.org/user/744628"
+            }
+        ],
+        "description": "Provides a lean and simple way to store media on Drupal 8 sites.",
+        "homepage": "https://www.drupal.org/project/media_entity",
+        "keywords": [
+            "Drupal"
+        ],
+        "support": {
+            "source": "https://www.drupal.org/project/media_entity",
+            "issues": "https://www.drupal.org/project/issues/media_entity"
+        }
+    },
+    {
+        "name": "drupal/media_entity_audio",
+        "version": "dev-1.x",
+        "version_normalized": "dev-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/media_entity_audio",
+            "reference": "61dedc218a9a023699499b73d6199a3280110e06"
+        },
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/media_entity": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-beta3+7-dev",
+                "datestamp": "1475166839"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Drupal Media Team",
+                "homepage": "https://www.drupal.org/user/3260690"
+            },
+            {
+                "name": "Drupal media CI",
+                "homepage": "https://www.drupal.org/user/3057985"
+            },
+            {
+                "name": "Primsi",
+                "homepage": "https://www.drupal.org/user/282629"
+            },
+            {
+                "name": "arit_nath",
+                "homepage": "https://www.drupal.org/user/3266902"
+            },
+            {
+                "name": "slashrsm",
+                "homepage": "https://www.drupal.org/user/744628"
+            }
+        ],
+        "description": "Media entity for audio files.",
+        "homepage": "https://www.drupal.org/project/media_entity_audio",
+        "support": {
+            "source": "http://cgit.drupalcode.org/media_entity_audio"
+        }
     }
 ]
