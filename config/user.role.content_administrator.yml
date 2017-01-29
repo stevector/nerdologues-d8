@@ -86,3 +86,4 @@ permissions:
   78: 'view video revisions'
   79: 'access toolbar'
   80: 'view the administration theme'
+  81: 'use text format basic_html'
