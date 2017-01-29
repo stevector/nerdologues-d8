@@ -82,33 +82,13 @@ class MenuLauncherItemCommand extends BaseCommand {
   }
 
 
-  protected function getActions($menuItem = '') {
-
-
-    if (empty($menuItem)) {
+  protected function getActions($menuItem) {
       return [
-        'parent' => 'See Parent',
-        'edit' => 'Edit Menu Item',
-        'open' => 'Open Menu Item',
-
-      ];
-
-
-    }
-    else {
-
-
-
-      return [
-        'parent' => 'See Parent',
-        'edit' => 'Edit Menu Item',
-        'open' => 'Open Menu Item',
+        'parent' => '--See Parent',
+        'edit' => '--Edit Menu Item',
+        'open' => '--Open Menu Item',
 
       ] + $this->getChildMenuItemOptions($menuItem);
-
-
-    }
-
   }
 
 
@@ -139,9 +119,6 @@ class MenuLauncherItemCommand extends BaseCommand {
         $input->setArgument('menu-item', $action_or_child);
       }
 
-
-
-
       $this->interact($input, $output);
     }
 
@@ -169,7 +146,7 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   function getChildMenuItemOptions($menuItem) {
-
+    $options = [];
     $menuLinkTree = $this->getDrupalService('menu.link_tree');
       $element = $this->getMenuLinkTreeElement($menuItem);
 
