@@ -51,7 +51,14 @@ process:
       format:
         plugin: nerd_input_format_map
         source: format
-  field_lede: field_lede
+  field_lede:
+    plugin: iterator
+    source: field_lede
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_dates:
     plugin: nerd_eventdate_field
     source: field_fc_dates
