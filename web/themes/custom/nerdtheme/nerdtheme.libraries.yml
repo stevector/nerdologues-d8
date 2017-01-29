@@ -3,7 +3,9 @@ global-styling:
     component:
       css/styles.css: {}
       fonts.css: {}
-  # @todo, it is excessive to use this much JS for one menu toggle.
+  # @todo, https://github.com/stevector/nerdologues-d8/issues/172
+  # it is excessive to use this much JS for one menu toggle.
+  # Reconsider jquery as a requirement for anonymous
   js:
     js/nerdtheme.js: {}
   dependencies:
