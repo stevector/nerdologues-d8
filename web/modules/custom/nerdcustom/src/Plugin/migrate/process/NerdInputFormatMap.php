@@ -35,6 +35,11 @@ class NerdInputFormatMap extends ProcessPluginBase {
 
       return 'basic_html';
     }
+    if ('Filtered HTML' === $value) {
+
+      return 'Basic HTML';
+    }
+
     return $value;
 
   }

@@ -13,7 +13,9 @@ process:
   format:
     plugin: nerd_input_format_map
     source: format
-  name: name
+  name:
+    plugin: nerd_input_format_map
+    source: name
   cache: cache
 destination:
   plugin: 'entity:filter_format'
