@@ -28,7 +28,14 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_body: field_body
+  field_body:
+    plugin: iterator
+    source: field_body
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_image:
     plugin: iterator
     source: field_image
@@ -38,7 +45,14 @@ process:
       title: title
       width: width
       height: height
-  field_lede: field_lede
+  field_lede:
+    plugin: iterator
+    source: field_lede
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_term_blog_tags:
     plugin: iterator
     source: field_term_blog_tags

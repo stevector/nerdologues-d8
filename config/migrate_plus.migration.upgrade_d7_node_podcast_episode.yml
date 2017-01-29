@@ -28,11 +28,25 @@ process:
   revision_uid: revision_uid
   revision_log: log
   revision_timestamp: timestamp
-  field_body: field_body
+  field_body:
+    plugin: iterator
+    source: field_body
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_date_published:
     plugin: nerd_date_published
     source: field_date_published
-  field_lede: field_lede
+  field_lede:
+    plugin: iterator
+    source: field_lede
+    process:
+      value: value
+      format:
+        plugin: nerd_input_format_map
+        source: format
   field_link:
     plugin: iterator
     source: field_link
