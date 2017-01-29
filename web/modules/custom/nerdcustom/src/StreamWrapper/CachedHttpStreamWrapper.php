@@ -14,7 +14,8 @@ use GuzzleHttp\Exception\ServerException;
 use Drupal\remote_stream_wrapper\StreamWrapper\HttpStreamWrapper;
 use Drupal\Core\Database\Database;
 
-// @todo, these manual require statements should not be necessary.
+// @todo, https://github.com/stevector/nerdologues-d8/issues/173
+// these manual require statements should not be necessary.
 // Something about the autoloader is failing.
 require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/HttpStreamWrapper.php';
 require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
