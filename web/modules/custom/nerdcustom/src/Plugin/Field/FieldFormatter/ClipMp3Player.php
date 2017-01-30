@@ -86,16 +86,28 @@ class ClipMp3Player extends FormatterBase {
     $elements = array("#markup" => 'hello');
     $provide_download_link = $this->getSetting('provide_download_link');
     $audio_attributes = $this->getSetting('audio_attributes');
+/*
+ * ugh, I'm going to need a new theme function because media_audio_file_formatter specifically needs a File Entity.
+ *
+ *
+ *
+    // The ProcessedText element already handles cache context & tag bubbling.
+    // @see \Drupal\filter\Element\ProcessedText::preRenderText()
+    foreach ($items as $delta => $item) {
+      $elements[$delta] = array(
+        '#type' => 'processed_text',
+        '#text' => $item->value,
+        '#format' => $item->format,
+        '#langcode' => $item->getLangcode(),
+      );
+    }
 
-
-    /*
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $item = $file->_referringItem;
       $elements[$delta] = array(
         '#theme' => 'media_audio_file_formatter',
         '#file' => $file,
-        '#description' => $item->description,
         '#value' => $provide_download_link,
         '#extravalue' => $audio_attributes,
         '#cache' => array(
@@ -111,11 +123,15 @@ class ClipMp3Player extends FormatterBase {
         unset($item->_attributes);
       }
     }
+*/
 
-    */
     return $elements;
   }
 
+
+  protect function getMp3() {
+    return "https://media.nerdologues.com/clips/v1/HorrorStories22--Cover-Stories--Paint-it-Black--2643-2855.mp3";
+  }
   /**
    * A copy of a function from the mp3 clipper server. Generates a filename only.
    *
