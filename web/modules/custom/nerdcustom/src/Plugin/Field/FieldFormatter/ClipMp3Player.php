@@ -90,16 +90,15 @@ class ClipMp3Player extends FormatterBase {
     $clip_node = $items->getEntity();
     $clip_mp3 = $this->getMp3($clip_node);
 
-   foreach($items as $item) {
-     $elements[] = array("#markup" => $clip_mp3);
+    foreach($items as $item) {
+      $elements[] = array("#markup" => $clip_mp3);
 
-
-   }
-/*
- * ugh, I'm going to need a new theme function because media_audio_file_formatter specifically needs a File Entity.
- *
- *
- *
+    }
+    /*
+    * ugh, I'm going to need a new theme function because media_audio_file_formatter specifically needs a File Entity.
+    *
+    *
+    *
     // The ProcessedText element already handles cache context & tag bubbling.
     // @see \Drupal\filter\Element\ProcessedText::preRenderText()
     foreach ($items as $delta => $item) {
@@ -132,7 +131,7 @@ class ClipMp3Player extends FormatterBase {
         unset($item->_attributes);
       }
     }
-*/
+    */
 
     return $elements;
   }
@@ -140,23 +139,17 @@ class ClipMp3Player extends FormatterBase {
 
   protected function getMp3(\Drupal\Core\Entity\EntityInterface $clip_node) {
 
-
-
-
-// @todo, this if statement will need some cleanup
+    // @todo, this if statement will need some cleanup
     if (!empty($clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file->referencedEntities()[0]->getFileUri())) {
 
       $episode_mp3 = $clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file->referencedEntities()[0]->getFileUri();
 
-     $start_seconds = $clip_node->field_int_start_time->value;
+      $start_seconds = $clip_node->field_int_start_time->value;
       $end_seconds = $clip_node->field_int_end_time->value;
-     $clipCreator = \Drupal::getContainer()->get('nerdcustom.clipcreator');
-
+      $clipCreator = \Drupal::getContainer()->get('nerdcustom.clipcreator');
 
       $clip_mp3 = $clipCreator->clipMp3FileName($episode_mp3, $clip_node->label(), "https://media.nerdologues.com/clips/v1", $start_seconds, $end_seconds);
     }
-
-
 
     return $clip_mp3;
   }
