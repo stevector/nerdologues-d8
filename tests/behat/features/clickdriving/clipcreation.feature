@@ -50,6 +50,7 @@ Feature: Clip creation
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I press "Save and publish"
+    # @todo, add check of mp3 player.
     Then I should see the link "Jane Member"
 
     And I click "Jane Member"
