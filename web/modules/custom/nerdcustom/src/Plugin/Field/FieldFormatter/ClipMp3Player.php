@@ -146,9 +146,9 @@ class ClipMp3Player extends FormatterBase {
 
       $start_seconds = $clip_node->field_int_start_time->value;
       $end_seconds = $clip_node->field_int_end_time->value;
-      $clipCreator = \Drupal::getContainer()->get('nerdcustom.clipcreator');
+      $clip_creator = \Drupal::getContainer()->get('nerdcustom.clipcreator');
 
-      $clip_mp3 = $clipCreator->clipMp3FileName($episode_mp3, $clip_node->label(), "https://media.nerdologues.com/clips/v1", $start_seconds, $end_seconds);
+      $clip_mp3 = $clip_creator->clipMp3FileName($episode_mp3, $clip_node->label(), "https://media.nerdologues.com/clips/v1", $start_seconds, $end_seconds);
     }
 
     return $clip_mp3;
