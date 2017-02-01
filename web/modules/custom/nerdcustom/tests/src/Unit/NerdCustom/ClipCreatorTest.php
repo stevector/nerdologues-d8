@@ -67,4 +67,38 @@ class ClipCreatorTest extends UnitTestCase {
 
     return $data;
   }
+
+  /**
+   * Tests ClipCreator::ClipMp3FileName().
+   *
+   * @dataProvider providerMp3FileNames
+   * @covers ::clipMp3FileName
+   */
+  public function testExtractClipMp3FileName($source_file, $story_title, $base_url, $start_seconds, $end_seconds, $resulting_cip) {
+    $this->assertEquals($resulting_cip, $this->clipCreator->clipMp3FileName($source_file, $story_title, $base_url, $start_seconds, $end_seconds));
+  }
+
+
+  /**
+   * Data provider for testClipMp3FileName.
+   *
+   * @return array
+   *   An array of test data.
+   */
+  public function providerMp3FileNames() {
+    $data = array();
+
+    $data[] = [
+      "https://podcasts.nerdologues.com/yourstories/HorrorStories22.mp3",
+      "Cover Stories: Paint it Black",
+      'https://media.nerdologues.com/clips/v1',
+      // It shouldn't matter if these args are int or string.
+      2643,
+      "2855",
+      "https://media.nerdologues.com/clips/v1/HorrorStories22--Cover-Stories--Paint-it-Black--2643-2855.mp3"
+    ];
+
+    return $data;
+  }
+
 }
