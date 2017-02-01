@@ -139,6 +139,7 @@ class ClipMp3Player extends FormatterBase {
 
   protected function getMp3(\Drupal\Core\Entity\EntityInterface $clip_node) {
 
+    $clip_mp3 = '';
     // @todo, this if statement will need some cleanup
     if (!empty($clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file->referencedEntities()[0]->getFileUri())) {
 
