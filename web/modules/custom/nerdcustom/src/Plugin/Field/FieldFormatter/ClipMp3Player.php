@@ -1,18 +1,22 @@
 <?php
 
-
+/**
+ * @file
+ * A Field formatter to generate the mp3 player for clips.
+ *
+ * Only nerdologues members should have bio pages.
+ */
 
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
-use Drupal\media_entity_audio\Plugin\Field\FieldFormatter\AudioPlayerHTML5;
-
+use Drupal\node\Entity\Node;
 
 use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Plugin implementation of the 'Audio Player (HTML5)' formatter.
+ * Plugin to make an mp3 player out of the start time field.
  *
  * @FieldFormatter(
  *   id = "nerd_clip_mp3_player",
@@ -93,13 +97,16 @@ class ClipMp3Player extends FormatterBase {
       '#theme' => 'nerdcustom_mp3_player',
       '#media_link' => $clip_mp3,
       '#value' => $provide_download_link,
-      '#extravalue' => $audio_attributes
+      '#extravalue' => $audio_attributes,
     );
 
     return $elements;
   }
 
-  protected function getMp3(\Drupal\Core\Entity\EntityInterface $clip_node) {
+  /**
+   * Generate the clip mp3 url.
+   */
+  protected function getMp3(Node $clip_node) {
 
     $clip_mp3 = '';
     if (!empty($clip_node->field_ref_podcast_episode)) {
