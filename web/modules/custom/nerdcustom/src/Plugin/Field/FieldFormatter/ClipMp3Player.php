@@ -91,9 +91,17 @@ class ClipMp3Player extends FormatterBase {
     $clip_mp3 = $this->getMp3($clip_node);
 
     foreach($items as $item) {
-      $elements[] = array("#markup" => $clip_mp3);
+      //$elements[] = array("#markup" => $clip_mp3);
+
 
     }
+
+    $elements[] = array(
+      '#theme' => 'nerdcustom_mp3_player',
+      '#media_link' => $clip_mp3,
+      '#value' => $provide_download_link,
+      '#extravalue' => $audio_attributes
+    );
     /*
     * ugh, I'm going to need a new theme function because media_audio_file_formatter specifically needs a File Entity.
     *

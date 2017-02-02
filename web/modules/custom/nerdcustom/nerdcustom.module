@@ -103,3 +103,24 @@ function nerdcustom_preprocess_node(&$variables) {
     nerdcustom_canonical_helper($variables, $variables['node']);
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function nerdcustom_theme() {
+  return array(
+    'nerdcustom_mp3_player' => array(
+      'variables' => array(
+        'media_link' => NULL,
+        'mimetype' => NULL,
+        'description' => NULL,
+        'attributes' => array(),
+        'value' => NULL,
+        'extravalue' => NULL,
+      ),
+    ),
+  );
+}
+
+
+
