@@ -77,8 +77,7 @@ class ClipMp3Player extends FormatterBase {
 
     return $summary;
   }
-
-
+  
   /**
    * {@inheritdoc}
    */
@@ -90,60 +89,15 @@ class ClipMp3Player extends FormatterBase {
     $clip_node = $items->getEntity();
     $clip_mp3 = $this->getMp3($clip_node);
 
-    foreach($items as $item) {
-      //$elements[] = array("#markup" => $clip_mp3);
-
-
-    }
-
     $elements[] = array(
       '#theme' => 'nerdcustom_mp3_player',
       '#media_link' => $clip_mp3,
       '#value' => $provide_download_link,
       '#extravalue' => $audio_attributes
     );
-    /*
-    * ugh, I'm going to need a new theme function because media_audio_file_formatter specifically needs a File Entity.
-    *
-    *
-    *
-    // The ProcessedText element already handles cache context & tag bubbling.
-    // @see \Drupal\filter\Element\ProcessedText::preRenderText()
-    foreach ($items as $delta => $item) {
-      $elements[$delta] = array(
-        '#type' => 'processed_text',
-        '#text' => $item->value,
-        '#format' => $item->format,
-        '#langcode' => $item->getLangcode(),
-      );
-    }
-
-
-    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
-      $item = $file->_referringItem;
-      $elements[$delta] = array(
-        '#theme' => 'media_audio_file_formatter',
-        '#file' => $file,
-        '#value' => $provide_download_link,
-        '#extravalue' => $audio_attributes,
-        '#cache' => array(
-          'tags' => $file->getCacheTags(),
-        ),
-      );
-      // Pass field item attributes to the theme function.
-      if (isset($item->_attributes)) {
-        $elements[$delta] += array('#attributes' => array());
-        $elements[$delta]['#attributes'] += $item->_attributes;
-        // Unset field item attributes since they have been included in the
-        // formatter output and should not be rendered in the field template.
-        unset($item->_attributes);
-      }
-    }
-    */
 
     return $elements;
   }
-
 
   protected function getMp3(\Drupal\Core\Entity\EntityInterface $clip_node) {
 
