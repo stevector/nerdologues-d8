@@ -35,3 +35,9 @@ body .field__label {
   width:100px;
   margin-bottom:-7px;
 }
+
+ ul.inline li.node-readmore {
+
+   padding: 0 0 0 0;
+ }
+
