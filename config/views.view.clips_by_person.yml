@@ -219,7 +219,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<div class=\"deck-text\" >\n  <p>Welcome to our new Your Stories clip archive! At two years old, the Your Stories podcast has heard hundreds of individual stories. We at The Nerdologues are now cataloging them here on the site for easier browsing. The archive is still incomplete and in progress.</p>\n  </div>"
+          content: "<div class=\"deck-text\" >\n  <p>Welcome to our new Your Stories clip archive! At five years old, the Your Stories podcast has heard hundreds of individual stories. We at The Nerdologues are now cataloging them here on the site for easier browsing. The archive is still incomplete and in progress.</p>\n  </div>"
           plugin_id: text_custom
       footer: {  }
       empty:
