@@ -260,6 +260,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
