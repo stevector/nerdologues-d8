@@ -4,15 +4,21 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.location.field_address
     - node.type.location
   module:
+    - address
     - user
 id: node.location.teaser
 targetEntityType: node
 bundle: location
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_address:
+    type: address_default
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  field_address: true
+  links: true
