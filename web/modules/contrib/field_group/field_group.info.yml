@@ -1,0 +1,7 @@
+name: 'Field Group'
+type: module
+description: 'Provides the ability to group your fields on both form and display.'
+package : Fields
+core: 8.x
+dependencies:
+  - drupal:field

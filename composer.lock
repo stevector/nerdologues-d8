@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "79d199e4f00959f7f5bbbf369a54cc8b",
-    "content-hash": "eb976c0f212945047082965346e5afd7",
+    "hash": "11d6287ebbadd4f2a6b4c3cf56f867d0",
+    "content-hash": "43781a33f332709d4050a4215ac5533a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1791,6 +1791,60 @@
             }
         },
         {
+            "name": "drupal/field_group",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/field_group",
+                "reference": "8a123a5451c9ef28e96e8e0113a2f4a6c615fa39"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc6+5-dev",
+                    "datestamp": "1484436184"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Hydra",
+                    "homepage": "https://www.drupal.org/user/647364"
+                },
+                {
+                    "name": "Stalski",
+                    "homepage": "https://www.drupal.org/user/322618"
+                },
+                {
+                    "name": "jyve",
+                    "homepage": "https://www.drupal.org/user/591438"
+                },
+                {
+                    "name": "swentel",
+                    "homepage": "https://www.drupal.org/user/107403"
+                },
+                {
+                    "name": "zuuperman",
+                    "homepage": "https://www.drupal.org/user/361625"
+                }
+            ],
+            "description": "Provides the field_group module.",
+            "homepage": "https://www.drupal.org/project/field_group",
+            "support": {
+                "source": "http://cgit.drupalcode.org/field_group"
+            },
+            "time": "2017-01-14 23:20:19"
+        },
+        {
             "name": "drupal/layout_plugin",
             "version": "dev-1.x",
             "source": {
@@ -1984,8 +2038,7 @@
             "homepage": "https://www.drupal.org/project/media_entity_audio",
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
-            },
-            "time": "2016-09-29 16:29:04"
+            }
         },
         {
             "name": "drupal/migrate_plus",
@@ -8101,6 +8154,7 @@
         "drupal/entity_reference_revisions": 20,
         "drupal/panels": 20,
         "drupal/media_entity_audio": 20,
+        "drupal/field_group": 20,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
