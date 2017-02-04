@@ -16,7 +16,7 @@ dependencies:
   module:
     - datetime
     - ds
-    - file
+    - media_entity_audio
     - text
     - user
 third_party_settings:
@@ -66,10 +66,12 @@ content:
     type: datetime_default
   field_file:
     weight: 0
-    label: above
-    settings: {  }
+    label: hidden
+    settings:
+      provide_download_link: '1'
+      audio_attributes: controls
     third_party_settings: {  }
-    type: file_url_plain
+    type: audio_player_html5
   field_ref_podcast:
     weight: -1
     label: hidden

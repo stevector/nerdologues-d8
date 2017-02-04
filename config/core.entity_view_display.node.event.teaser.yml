@@ -110,4 +110,5 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_dates: true

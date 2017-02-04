@@ -102,4 +102,29 @@ class ClipCreator {
     }
     return $return;
   }
+
+  /**
+   * A copy of a function from the mp3 clipper server.
+   *
+   * December2012Part2--Dwight---Eric--We-Are-Young--2797-3058.mp3
+   */
+  public function clipMp3FileName($local_source_file, $story_title, $base_url, $start_seconds = 0, $end_seconds = 0) {
+    $clip_file_name = '';
+    $pathinfo = pathinfo($local_source_file);
+    $sanitized_story_title = preg_replace("/[^A-Za-z0-9]/", '-', $story_title);
+    if (!empty($pathinfo['filename'])  && !empty($pathinfo['extension']) && !empty ($sanitized_story_title)) {
+      $clip_file_name = $pathinfo['filename'] . '--' . $sanitized_story_title;
+      // Add on seconds to the file name if there are end_seconds.
+      if (!empty($end_seconds)) {
+        $seconds_portion = $end_seconds;
+        if (!empty($start_seconds)) {
+          $seconds_portion = $start_seconds . '-' . $end_seconds;
+        }
+        $clip_file_name .= '--' . $seconds_portion;
+      }
+      $clip_file_name .= '.' . $pathinfo['extension'];
+    }
+    return $base_url .  '/' . $clip_file_name;
+  }
+
 }
