@@ -110,7 +110,7 @@ class ClipMp3Player extends FormatterBase {
 
     $clip_mp3 = '';
     if (!empty($clip_node->field_ref_podcast_episode)) {
-      if (!empty($clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file)) {
+      if (!empty($clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file->referencedEntities())) {
         $episode_mp3 = $clip_node->field_ref_podcast_episode->referencedEntities()[0]->field_file->referencedEntities()[0]->getFileUri();
         $start_seconds = $clip_node->field_int_start_time->value;
         $end_seconds = $clip_node->field_int_end_time->value;
