@@ -228,6 +228,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
@@ -240,6 +244,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
