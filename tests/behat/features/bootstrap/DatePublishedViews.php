@@ -5,7 +5,6 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\DrupalExtension\Context\MinkContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 
-
 /**
  * Define application features from the specific context.
  */
