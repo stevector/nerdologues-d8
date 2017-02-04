@@ -367,7 +367,9 @@ class Page extends ConfigEntityBase implements PageInterface {
           }
           else {
             $this->contexts[$machine_name]->getContextDefinition()->setDataType($configuration['type']);
-            $this->contexts[$machine_name]->getContextDefinition()->setLabel($configuration['label']);
+            if (!empty($configuration['label'])) {
+              $this->contexts[$machine_name]->getContextDefinition()->setLabel($configuration['label']);
+            }
           }
         }
       }

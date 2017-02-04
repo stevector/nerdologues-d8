@@ -7833,7 +7833,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/page_manager",
-            "reference": "a4108a53ddf3b229152b2d1179d67d59a49a8c29"
+            "reference": "292cddfeca17bea8b95fbcad2ba09b534a913d03"
         },
         "require": {
             "drupal/core": "^8.0.5",
@@ -7845,13 +7845,10 @@
                 "dev-1.x": "1.x-dev"
             },
             "drupal": {
-                "version": "8.x-1.0-alpha24+3-dev",
-                "datestamp": "1481152983"
+                "version": "8.x-1.0-alpha24+4-dev",
+                "datestamp": "1484752084"
             },
-            "patches_applied": {
-                "tab fixer": "https://www.drupal.org/files/issues/2634276-pm-19.patch",
-                "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
-            }
+            "patches_applied": []
         },
         "installation-source": "source",
         "notification-url": "https://packages.drupal.org/8/downloads",
