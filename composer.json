@@ -121,9 +121,6 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
-            "drupal/page_manager": {
-                "canonical paths": "https://www.drupal.org/files/issues/page_manager-fix-existing-route-defaults-2820218-4.patch"
-            },
             "drupal/rabbit_hole": {
                 "trusted": "https://www.drupal.org/files/issues/trusted-2843564-1.patch"
             }
