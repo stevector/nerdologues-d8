@@ -6,6 +6,7 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 
 /**
  * Define application features from the specific context.
@@ -21,6 +22,18 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
   public function __construct(array $parameters = []) {
     // Initialize your context here
   }
+
+
+  /** @BeforeScenario */
+  // Thanks http://docs.behat.org/en/v3.0/cookbooks/context_communication.html
+  // Also see https://github.com/Behat/Behat/issues/96
+  public function gatherContexts(BeforeScenarioScope $scope)
+  {
+    $environment = $scope->getEnvironment();
+
+    $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
+  }
+
 
 //
 // Place your definition and hook methods here:
@@ -56,6 +69,7 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
 // Local dev
 // PHPStorm
 // Config lock for live env
+
 
 
     /**

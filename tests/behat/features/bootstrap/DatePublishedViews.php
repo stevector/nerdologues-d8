@@ -4,6 +4,8 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\DrupalExtension\Context\MinkContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Gherkin\Node\TableNode;
+
 
 /**
  * Define application features from the specific context.
@@ -72,4 +74,20 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
         $this->minkContext->visit('videos');
         $this->minkContext->assertLinkVisible($this->video_title);
     }
+
+  /**
+   * @Then the following aliases are created and valid
+   */
+  public function theFollowingAliasesAreCreatedAndValid(TableNode $fields)
+  {
+    foreach ($fields->getHash() as $field => $value) {
+      $this->minkContext->visit('admin/config/search/path/add');
+
+      $this->minkContext->fillField('Existing system path', $value['Existing system path']);
+      $this->minkContext->fillField('Path alias', $value['Path alias']);
+      $this->minkContext->pressButton('Save');
+      $this->minkContext->visit($value['Path alias']);
+      $this->minkContext->assertPageContainsText($value['Expected text']);
+    }
+  }
 }
