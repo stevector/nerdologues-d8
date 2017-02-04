@@ -6,9 +6,9 @@ Feature: Alias Generation
   Scenario: Bio without proper term does not appear on the nerd page.
     Given I am logged in as a user with the "administrator" role
     When I visit "admin/config/search/path/add"
-    #And I fill in "Existing system path" with "/node/81/clips"
-   # And I fill in "Path alias" with "/podcasts/your-stories/clips"
-   # And I press "Save"
+    And I fill in "Existing system path" with "/node/81/clips"
+    And I fill in "Path alias" with "/podcasts/your-stories/clips"
+    And I press "Save"
     And I visit "/podcasts/your-stories/clips"
     Then I should see "Podcast clips from Your Stories"
     Then the following aliases are created and valid
