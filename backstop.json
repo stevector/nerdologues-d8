@@ -60,6 +60,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/eric-garneau",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/eric-garneau",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -72,6 +76,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/mary-beth-smith",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/mary-beth-smith",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -84,6 +92,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/michael-jando",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/michael-jando",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
