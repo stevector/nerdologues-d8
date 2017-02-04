@@ -41,8 +41,8 @@ third_party_settings:
           layout_class: {  }
     regions:
       right:
-        - field_ref_podcast
         - field_file
+        - field_ref_podcast
         - field_date_published
         - field_body
 id: node.podcast_episode.default
@@ -51,13 +51,13 @@ bundle: podcast_episode
 mode: default
 content:
   field_body:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_date_published:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       timezone_override: ''
@@ -73,7 +73,7 @@ content:
     third_party_settings: {  }
     type: audio_player_html5
   field_ref_podcast:
-    weight: -1
+    weight: 1
     label: hidden
     settings:
       link: true
