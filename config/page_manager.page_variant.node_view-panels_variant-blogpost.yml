@@ -1,0 +1,47 @@
+uuid: 57df9582-e734-4ded-993d-6c7c3afb32a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  module:
+    - ctools
+    - panels
+id: node_view-panels_variant-blogpost
+label: Blogpost
+variant: panels_variant
+variant_settings:
+  blocks:
+    34e76a6b-91a1-44a1-acde-22fde3b9d286:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: full
+      region: middle
+      weight: 0
+      uuid: 34e76a6b-91a1-44a1-acde-22fde3b9d286
+      context_mapping:
+        entity: node
+  id: panels_variant
+  uuid: 69389842-ff42-4521-a87a-fee4f4716934
+  label: null
+  weight: 0
+  layout: onecol
+  layout_settings: {  }
+  page_title: '[node:title]'
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-blogpost
+  builder: standard
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      blogpost: blogpost
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }
