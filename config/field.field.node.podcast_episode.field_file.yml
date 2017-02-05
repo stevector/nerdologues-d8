@@ -12,7 +12,7 @@ field_name: field_file
 entity_type: node
 bundle: podcast_episode
 label: file
-description: ''
+description: 'This is the field that is replacing the Podbean url location. It should only be populated with urls from https://media.nerdologues.com/podcasts/v1 For instance, https://media.nerdologues.com/podcasts/v1/yourstories/Julypart1.mp3'
 required: false
 translatable: false
 default_value: {  }
