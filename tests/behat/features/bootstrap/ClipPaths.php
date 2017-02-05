@@ -93,14 +93,8 @@ class ClipPaths implements Context, SnippetAcceptingContext {
   public function thatEventDoesNotAppearsOnTheHomepage()
   {
     $this->minkContext->visit('/');
-    print_r($this->event_title);
-
-
     $this->minkContext->assertNotLinkVisible($this->event_title);
   }
-
-
-  //
 
   /**
    * @Then that event appears on the homepage
@@ -108,13 +102,8 @@ class ClipPaths implements Context, SnippetAcceptingContext {
   public function thatEventAppearsOnTheHomepage()
   {
     $this->minkContext->visit('/');
-    print_r($this->event_title);
-
-
     $this->minkContext->assertLinkVisible($this->event_title);
-  //  $this->minkContext->printLastResponse();
   }
-
 
   /**
    * @Then that event appears on the events page in the past events section
@@ -133,6 +122,4 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $this->minkContext->visit('events');
     $this->minkContext->assertLinkRegion($this->event_title, "Upcoming events");
   }
-
-
 }
