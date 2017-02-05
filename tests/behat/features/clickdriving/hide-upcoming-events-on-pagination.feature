@@ -13,12 +13,3 @@ Feature: Hide upcoming events on Pagination
     Then I should see the heading "Upcoming events"
     And I click on the events page pager
     Then I should not see the heading "Upcoming events"
-
-  @api
-  Scenario: Home page
-    Given there are over ten videos with published dates in the past
-    And I have made an upcoming event
-    When I click on the homepage pager
-    Then I will not see the upcoming events block.
-
-
