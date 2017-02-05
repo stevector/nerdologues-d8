@@ -164,6 +164,18 @@
       "misMatchThreshold" : 0.1
     },
     {
+      "label": "Blog post 2",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
       "label": "about",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds-are-funny",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds-are-funny",
