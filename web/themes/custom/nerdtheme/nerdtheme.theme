@@ -10,10 +10,9 @@
  */
 function nerdtheme_preprocess_page(array &$variables) {
 
-$request = \Drupal::request();
-
+  $request = \Drupal::request();
   $variables['use_hero'] = FALSE;
-  if (!empty($variables['is_front']) && empty($request->query->get('page')) ) {
+  if (!empty($variables['is_front']) && empty($request->query->get('page'))) {
     $variables['use_hero'] = TRUE;
   }
 

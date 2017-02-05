@@ -1,13 +1,19 @@
 <?php
 
+/**
+ * @file
+ * Access plugin for Views that should not display on paginated pages.
+ */
+
 namespace Drupal\nerdcustom\Plugin\views\access;
 
 use Drupal\Core\Session\AccountInterface;
 use Drupal\views\Plugin\views\PluginBase;
 use Symfony\Component\Routing\Route;
 use Drupal\views\Plugin\views\access\AccessPluginBase;
+
 /**
- * Return false if the url shows we are using the pager (and therefore not on the homepage)
+ * Return false if the url shows we are using the pager, (not on the homepage).
  *
  * @ingroup views_access_plugins
  *
@@ -19,7 +25,9 @@ use Drupal\views\Plugin\views\access\AccessPluginBase;
  */
 class Paged extends AccessPluginBase {
 
-
+  /**
+   * {@inheritdoc}
+   */
   public function summaryTitle() {
     return $this->t('No access on pagination');
   }
@@ -30,8 +38,8 @@ class Paged extends AccessPluginBase {
   public function access(AccountInterface $account) {
     $request = $this->view->getRequest();
     // Using means that if the value of page is '0',
-    //then this check will return TRUE.
-    //And that is what we want.
+    // then this check will return TRUE.
+    // And that is what we want.
     return empty($request->query->get('page'));
   }
 
@@ -47,9 +55,4 @@ class Paged extends AccessPluginBase {
    */
   public function alterRouteDefinition(Route $route) {
   }
-
 }
-
-/**
- * @}
- */
