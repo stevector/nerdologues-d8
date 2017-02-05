@@ -5,6 +5,7 @@ dependencies:
   config:
     - page_manager.page.home
     - views.view.events
+    - views.view.nerds_online
   module:
     - panels
     - views
@@ -23,6 +24,17 @@ variant_settings:
       region: middle
       weight: 0
       uuid: 32fb19f4-513b-4e96-ac84-cd836da2028e
+      context_mapping: {  }
+    9e9329ad-d5eb-408d-a65f-21670109f413:
+      id: 'views_block:nerds_online-block_1'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 5
+      uuid: 9e9329ad-d5eb-408d-a65f-21670109f413
       context_mapping: {  }
   id: panels_variant
   uuid: 75de11ce-578e-4e4d-a3d0-69379beaff1c
