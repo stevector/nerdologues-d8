@@ -7,6 +7,7 @@ dependencies:
     - node.type.event
   module:
     - datetime
+    - nerdcustom
     - node
     - user
 id: events
@@ -208,6 +209,11 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      link_url: past-events
+      link_display: '0'
+      use_more: false
+      use_more_always: false
+      use_more_text: 'More events'
     cache_metadata:
       max-age: -1
       contexts:
@@ -247,6 +253,7 @@ display:
         pager: false
         filters: false
         filter_groups: false
+        access: false
       pager:
         type: none
         options:
@@ -318,11 +325,13 @@ display:
         operator: AND
         groups:
           1: AND
+      access:
+        type: nerd_paged
+        options: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - 'user.node_grants:view'
-        - user.permissions
       tags: {  }
