@@ -26,6 +26,7 @@ default:
         From the episode: ".field--name-field-ref-podcast-episode"
         Past events: ".block-views-blockevents-block-past-events"
         Upcoming events: ".block-views-blockevents-block-upcoming"
+        Nerds Online: ".block-views-blocknerds-online-block-1"
       drupal:
         drupal_root: web
       api_driver: 'drupal'

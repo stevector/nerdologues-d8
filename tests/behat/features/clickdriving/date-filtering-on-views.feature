@@ -6,15 +6,15 @@ Feature: Date list
   @api
   Scenario: Close future date
     Given I am logged in as a user with the "content_administrator" role
+    # A video in the past is needed too, otherwise the Nerds Online section won't exist at all.
+    And I create a video with a published date in the past
     When I create a video with a published date in the future
     Then that video does not appear on the video page
-    # @todo
-    # And that video does not appear the homepage "Nerds Online" section.
+    And it does not appear the homepage "Nerds Online" region.
 
   @api
   Scenario: Close past date
     Given I am logged in as a user with the "content_administrator" role
     When I create a video with a published date in the past
     Then that video appears on the video page
-    # @todo
-    # And it appears on the homepage "Nerds Online" section.
+    And it appears on the homepage "Nerds Online" region.
