@@ -5,10 +5,14 @@ Feature: Hide upcoming events on Pagination
 
   @api
   Scenario: Events page
-    Given there are over ten events with dates in the past
+    Given I am logged in as a user with the "content_administrator" role
+    And there are over ten events with dates in the past
+
     And I have made an upcoming event
-    When I click on the events page pager
-    Then I will not see the upcoming events block.
+    And I visit "events"
+    Then I should see the heading "Upcoming events"
+    And I click on the events page pager
+    Then I should not see the heading "Upcoming events"
 
   @api
   Scenario: Home page

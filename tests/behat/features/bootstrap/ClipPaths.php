@@ -86,6 +86,41 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $this->minkContext->visit('/');
   }
 
+  /**
+   * @Given there are over ten events with dates in the past
+   */
+  public function thereAreOverTenEventsWithDatesInThePast()
+  {
+    $i = 1;
+    while ($i <= 11) {
+      $this->iCreateAnEventWithADateInThePast();
+      $i++;
+    }
+  }
+
+
+
+  /**
+   * @Given I have made an upcoming event
+   *
+   * This step is somewhat redundant. The reason for the redundancy is that it includes assertions.
+   */
+  public function iHaveMadeAnUpcomingEvent()
+  {
+    $this->iCreateAnEventWithADateInTheFuture();
+    $this->thatEventAppearsOnTheHomepage();
+    $this->thatEventAppearsOnTheEventsPageInTheUpcomingEventsSection();
+  }
+
+
+  /**
+   * @When I click on the events page pager
+   */
+  public function iClickOnTheEventsPagePager()
+  {
+    $this->minkContext->visit('events');
+    $this->minkContext->assertClick("Next page");
+  }
 
   /**
    * @Then that event does not appears on the homepage
