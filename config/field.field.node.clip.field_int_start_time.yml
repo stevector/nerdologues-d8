@@ -10,7 +10,7 @@ field_name: field_int_start_time
 entity_type: node
 bundle: clip
 label: 'Start Time'
-description: 'media.nerdologues.com will regenerate mp3 files for recently save clips every five minutes. If you have just entered a start and stop time then this clip will be generated soon.'
+description: 'media.nerdologues.com will regenerate mp3 files for recently save clips every five minutes. If you have just entered a start and end time then this clip will be generated soon.'
 required: false
 translatable: false
 default_value: {  }

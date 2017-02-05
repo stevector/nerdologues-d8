@@ -12,7 +12,7 @@ field_name: field_image_lead
 entity_type: node
 bundle: person
 label: 'Lead image'
-description: ''
+description: 'Used on listings. Should be square.'
 required: false
 translatable: false
 default_value: {  }

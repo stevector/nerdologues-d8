@@ -11,7 +11,7 @@ field_name: field_ref_creators
 entity_type: node
 bundle: blog_post
 label: Authors
-description: ''
+description: 'Enter the people who authored this blog post. This information is meant to be seen by the public. It is different from the administrative field below which tracks the username of the person who saved this blog post to the site.'
 required: false
 translatable: true
 default_value: {  }
@@ -23,4 +23,6 @@ settings:
       person: person
     sort:
       field: _none
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference
