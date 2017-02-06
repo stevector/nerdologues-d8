@@ -17,8 +17,6 @@ dependencies:
   module:
     - datetime
     - ds
-    - link
-    - media_entity_audio
     - text
     - user
 third_party_settings:
@@ -44,8 +42,8 @@ third_party_settings:
     regions:
       header:
         - links
-      right:
         - node_title
+      right:
         - field_date_published
         - field_lede
       left:
@@ -65,13 +63,6 @@ targetEntityType: node
 bundle: podcast_episode
 mode: teaser
 content:
-  field_body:
-    type: text_trimmed
-    weight: 0
-    label: above
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
   field_date_published:
     type: datetime_default
     weight: 2
@@ -80,47 +71,11 @@ content:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
-  field_file:
-    type: audio_player_html5
-    weight: 0
-    label: above
-    settings:
-      provide_download_link: true
-      audio_attributes: controls
-    third_party_settings: {  }
-  field_int_duration:
-    type: number_unformatted
-    weight: 0
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   field_lede:
     type: text_default
     weight: 3
     label: hidden
     settings: {  }
-    third_party_settings: {  }
-  field_link:
-    type: link_separate
-    weight: 0
-    label: above
-    settings:
-      trim_length: 80
-      rel: ''
-      target: ''
-      url_only: false
-      url_plain: false
-    third_party_settings: {  }
-  field_link_paywall_content:
-    type: link_separate
-    weight: 0
-    label: above
-    settings:
-      trim_length: 80
-      rel: ''
-      target: ''
-      url_only: false
-      url_plain: false
     third_party_settings: {  }
   field_ref_podcast:
     type: entity_reference_entity_view
@@ -130,15 +85,15 @@ content:
       view_mode: image_only
       link: false
     third_party_settings: {  }
-  field_text_original_mp3_url:
-    type: basic_string
-    weight: 0
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_body: true
+  field_file: true
+  field_int_duration: true
   field_int_sort_order: true
+  field_link: true
+  field_link_paywall_content: true
+  field_text_original_mp3_url: true
