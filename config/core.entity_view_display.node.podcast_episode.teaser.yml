@@ -41,6 +41,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       header:
+        - 'bundle_field:node'
         - links
         - node_title
       right:
@@ -49,6 +50,11 @@ third_party_settings:
       left:
         - field_ref_podcast
     fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -5
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1

@@ -37,6 +37,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       header:
+        - 'bundle_field:node'
         - node_title
       right:
         - field_date_published
@@ -44,6 +45,11 @@ third_party_settings:
       left:
         - field_youtube
     fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -10
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 0
