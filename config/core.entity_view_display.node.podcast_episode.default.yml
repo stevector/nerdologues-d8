@@ -74,7 +74,7 @@ content:
     type: audio_player_html5
   field_ref_podcast:
     weight: 1
-    label: hidden
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
