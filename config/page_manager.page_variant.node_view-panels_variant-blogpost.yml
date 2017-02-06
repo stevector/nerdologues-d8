@@ -8,7 +8,7 @@ dependencies:
     - ctools
     - panels
 id: node_view-panels_variant-blogpost
-label: Blogpost
+label: 'Blog post'
 variant: panels_variant
 variant_settings:
   blocks:
@@ -39,7 +39,7 @@ selection_criteria:
   -
     id: 'entity_bundle:node'
     bundles:
-      blogpost: blogpost
+      blog_post: blog_post
     negate: false
     context_mapping:
       node: node
