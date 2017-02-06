@@ -108,6 +108,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/node/72/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/72/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -120,6 +124,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/node/73/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
