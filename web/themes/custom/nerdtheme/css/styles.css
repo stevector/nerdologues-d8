@@ -56,3 +56,8 @@ body .field__label {
 }
 @media (min-width: 800px){.whitebox--hero{background-position:100% top}}
 
+
+.page-node-type-podcast-episode .teaser-with-image .l-2up {
+  margin-bottom: 0;
+  border-bottom: none;
+}
