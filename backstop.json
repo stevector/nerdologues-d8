@@ -228,6 +228,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
