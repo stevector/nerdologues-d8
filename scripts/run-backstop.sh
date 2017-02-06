@@ -4,8 +4,8 @@ set -x
 
 # run screenshots only on master branch.
 #todo, detect some pattern in branch name or commit message to also trigger run.
-if [ "$CIRCLE_BRANCH" != "master" ] && [ "$CIRCLE_BRANCH" != *"screenshot"* ]
-then
+
+if [   "$CIRCLE_BRANCH" != "master"  ]  &&   [[  $CIRCLE_BRANCH != *"screenshot"* ]]; then
     echo -e "Screenshots only run on master branch or branches containing 'screenshot' Quitting script."
     exit 0;
 fi
