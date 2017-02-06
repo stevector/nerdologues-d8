@@ -313,8 +313,21 @@ display:
       defaults:
         empty: false
         title: false
+        header: false
       display_description: 'the block for node/%/clips'
       title: ''
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content: "<div class=\"panel-pane pane-custom pane-1 deck-text\">\n<p>Welcome to our new Your Stories clip archive! At five years old, the Your Stories podcast has heard hundreds of individual stories. We at The Nerdologues are now cataloging them here on the site for easier browsing.</p>\n</div>"
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:
