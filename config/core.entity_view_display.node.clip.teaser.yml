@@ -88,10 +88,11 @@ content:
       link: true
     third_party_settings: {  }
   field_ref_podcast:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     weight: 6
     label: hidden
     settings:
+      view_mode: image_only
       link: false
     third_party_settings: {  }
   field_ref_podcast_episode:
