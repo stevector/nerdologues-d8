@@ -328,6 +328,7 @@ display:
       access:
         type: nerd_paged
         options: {  }
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
