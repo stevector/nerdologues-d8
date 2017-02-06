@@ -61,3 +61,17 @@ body .field__label {
   margin-bottom: 0;
   border-bottom: none;
 }
+
+
+.teaser-with-image-small  .field--name-bundle-fieldnode {
+  display:none;
+}
+
+.view-nerds-online .teaser-with-image-small  .field--name-bundle-fieldnode {
+  display:block;
+  margin: 0 0 0 0;
+  color: #666;
+  font-size: 1.17em;
+  line-height: 1.28205em;
+  font-weight: bold;
+}
