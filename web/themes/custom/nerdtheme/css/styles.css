@@ -86,3 +86,12 @@ body .field__label {
 .field--name-field-address br {
   display: none;
 }
+
+.pager__item.is-active a:visited,
+.pager__item.is-active a:link,
+.pager__item.is-active a {
+
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
