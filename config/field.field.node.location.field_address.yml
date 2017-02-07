@@ -40,6 +40,8 @@ settings:
     addressLine1: addressLine1
     addressLine2: addressLine2
     organization: '0'
-    recipient: '0'
+    givenName: ''
+    additionalName: ''
+    familyName: ''
   langcode_override: ''
 field_type: address
