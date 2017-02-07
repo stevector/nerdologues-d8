@@ -2259,17 +2259,16 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/panels",
-                "reference": "ddadd53d538b30a20e79ddc1ad9de394000b2c49"
+                "reference": "a7a6ebc77987abb2d6cac7f16f7fa45003ad70ea"
             },
             "require": {
                 "drupal/core": "~8.0",
                 "drupal/ctools": ">=3.0.0-alpha26",
                 "drupal/layout_plugin": ">=1.0.0-alpha22"
             },
-            "suggest": {
-                "drupal/core": "Required by drupal/panels_ipe",
-                "drupal/page_manager": "Required by drupal/panels",
-                "drupal/panelizer": "Required by drupal/panels"
+            "require-dev": {
+                "drupal/page_manager": "*",
+                "drupal/panelizer": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -2277,8 +2276,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta5+1-dev",
-                    "datestamp": "1478998440"
+                    "version": "8.x-3.0-beta5+2-dev",
+                    "datestamp": "1481218084"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2330,7 +2329,7 @@
                 "issues": "https://www.drupal.org/project/issues/panels",
                 "irc": "irc://irc.freenode.org/drupal-scotch"
             },
-            "time": "2016-11-13 00:53:07"
+            "time": "2016-12-08 17:23:10"
         },
         {
             "name": "drupal/paragraphs",

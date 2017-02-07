@@ -138,7 +138,7 @@ class StandardDisplayBuilder extends DisplayBuilderBase implements PluginWizardI
             $cacheable_metadata = CacheableMetadata::createFromObject($block_render_array);
             $cacheable_metadata->applyTo($block_render_array);
             if (isset($content['#cache'])) {
-              $block_render_array += $content['#cache'];
+              $block_render_array['#cache'] += $content['#cache'];
             }
           }
 
