@@ -75,3 +75,14 @@ body .field__label {
   line-height: 1.28205em;
   font-weight: bold;
 }
+
+
+.field--name-field-address,
+.field--name-field-address p {
+  display: inline;
+}
+
+.field--name-field-address .country,
+.field--name-field-address br {
+  display: none;
+}
