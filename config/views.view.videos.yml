@@ -57,9 +57,9 @@ display:
           id: 0
           total_pages: null
           tags:
-            previous: '‹ Previous'
+            previous: '‹ previous'
             next: 'next ›'
-            first: '« First'
+            first: '« first'
             last: 'last »'
           expose:
             items_per_page: false
