@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1edb428942e837b465bb2ec222ed140a",
-    "content-hash": "4069fd47c7e898ac1a5ec7f92724be6d",
+    "hash": "d4256bf29b7329810be32b54ced22de6",
+    "content-hash": "abfa7afc00f888ccd922c7719dc8c9ab",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1531,6 +1531,75 @@
             "time": "2016-08-20 19:59:03"
         },
         {
+            "name": "drupal/ctools_block",
+            "version": "dev-3.x",
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/ctools": "self.version"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-alpha27+0-dev",
+                    "datestamp": "1471723439"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "EclipseGc",
+                    "homepage": "https://www.drupal.org/user/61203"
+                },
+                {
+                    "name": "damiankloip",
+                    "homepage": "https://www.drupal.org/user/1037976"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "esmerel",
+                    "homepage": "https://www.drupal.org/user/164022"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "merlinofchaos",
+                    "homepage": "https://www.drupal.org/user/26979"
+                },
+                {
+                    "name": "neclimdul",
+                    "homepage": "https://www.drupal.org/user/48673"
+                },
+                {
+                    "name": "sdboyer",
+                    "homepage": "https://www.drupal.org/user/146719"
+                },
+                {
+                    "name": "sun",
+                    "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                }
+            ],
+            "description": "Provides improvements to blocks that will one day be added to Drupal core.",
+            "homepage": "https://www.drupal.org/project/ctools",
+            "support": {
+                "source": "http://cgit.drupalcode.org/ctools"
+            }
+        },
+        {
             "name": "drupal/devel",
             "version": "dev-1.x",
             "source": {
@@ -2254,6 +2323,67 @@
             "time": "2017-01-18 15:01:50"
         },
         {
+            "name": "drupal/panelizer",
+            "version": "dev-3.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/panelizer",
+                "reference": "54740e35a4dbfd2b8170239eda7da3d2c2735856"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/ctools_block": "*",
+                "drupal/panels": "*",
+                "drupal/panels_ipe": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-beta1+0-dev",
+                    "datestamp": "1486220283"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "DamienMcKenna",
+                    "homepage": "https://www.drupal.org/user/108450"
+                },
+                {
+                    "name": "EclipseGc",
+                    "homepage": "https://www.drupal.org/user/61203"
+                },
+                {
+                    "name": "dsnopek",
+                    "homepage": "https://www.drupal.org/user/266527"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "merlinofchaos",
+                    "homepage": "https://www.drupal.org/user/26979"
+                },
+                {
+                    "name": "neclimdul",
+                    "homepage": "https://www.drupal.org/user/48673"
+                }
+            ],
+            "description": "Allow any entity view mode to be rendered using a Panels display.",
+            "homepage": "https://www.drupal.org/project/panelizer",
+            "support": {
+                "source": "http://cgit.drupalcode.org/panelizer"
+            },
+            "time": "2017-02-06 21:07:21"
+        },
+        {
             "name": "drupal/panels",
             "version": "dev-3.x",
             "source": {
@@ -2330,6 +2460,71 @@
                 "irc": "irc://irc.freenode.org/drupal-scotch"
             },
             "time": "2016-12-08 17:23:10"
+        },
+        {
+            "name": "drupal/panels_ipe",
+            "version": "dev-3.x",
+            "require": {
+                "drupal/core": "*",
+                "drupal/panels": "self.version"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-beta5+2-dev",
+                    "datestamp": "1481218084"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "EclipseGc",
+                    "homepage": "https://www.drupal.org/user/61203"
+                },
+                {
+                    "name": "Letharion",
+                    "homepage": "https://www.drupal.org/user/373603"
+                },
+                {
+                    "name": "esmerel",
+                    "homepage": "https://www.drupal.org/user/164022"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "merlinofchaos",
+                    "homepage": "https://www.drupal.org/user/26979"
+                },
+                {
+                    "name": "neclimdul",
+                    "homepage": "https://www.drupal.org/user/48673"
+                },
+                {
+                    "name": "samuel.mortenson",
+                    "homepage": "https://www.drupal.org/user/2582268"
+                },
+                {
+                    "name": "sdboyer",
+                    "homepage": "https://www.drupal.org/user/146719"
+                },
+                {
+                    "name": "tim.plunkett",
+                    "homepage": "https://www.drupal.org/user/241634"
+                }
+            ],
+            "description": "Panels In-place editor.",
+            "homepage": "https://www.drupal.org/project/panels",
+            "support": {
+                "source": "http://cgit.drupalcode.org/panels"
+            }
         },
         {
             "name": "drupal/paragraphs",
@@ -8149,6 +8344,7 @@
         "drupal/panels": 20,
         "drupal/media_entity_audio": 20,
         "drupal/field_group": 20,
+        "drupal/panelizer": 20,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
