@@ -25,6 +25,7 @@ third_party_settings:
       path: themes/custom/nerdtheme
       library: ''
       disable_css: false
+      entity_classes: all_classes
       settings:
         wrappers:
           header: div
@@ -38,14 +39,21 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      right:
+      header:
+        - 'bundle_field:node'
         - node_title
+      right:
         - field_date_published
         - field_ref_creators
         - field_lede
       left:
         - field_image
     fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -10
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -60,13 +68,6 @@ targetEntityType: node
 bundle: blog_post
 mode: teaser
 content:
-  field_body:
-    type: text_trimmed
-    weight: 14
-    label: above
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
   field_date_published:
     type: datetime_default
     weight: 2
@@ -95,14 +96,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_term_blog_tags:
-    type: entity_reference_entity_id
-    weight: 13
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  links:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_body: true
+  field_term_blog_tags: true
+  links: true

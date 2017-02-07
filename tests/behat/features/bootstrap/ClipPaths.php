@@ -52,4 +52,109 @@ class ClipPaths implements Context, SnippetAcceptingContext {
       $this->minkContext->assertPageContainsText($value['Expected text']);
     }
   }
+
+  /**
+   * @When I create an Event with a date in the future
+   */
+  public function iCreateAnEventWithADateInTheFuture()
+  {
+    $time = time() + (60 * 60 * 72);
+    $this->iCreateAnEvent($time);
+  }
+
+  /**
+   * @When I create an Event with a date in the past
+   */
+  public function iCreateAnEventWithADateInThePast()
+  {
+    $time = time() - (60 * 60 * 72);
+    $this->iCreateAnEvent($time);
+  }
+
+
+  public function iCreateAnEvent($time)
+  {
+    $this->minkContext->visit('node/add/event');
+    $event_title = 'event title ' . $time;
+    $this->minkContext->fillField('title[0][value]', $event_title);
+    // @todo, is this how variable are supposed to be passed around.
+    $this->event_title = $event_title;
+    // @todo, fine-grain date and timezone handling.
+    $this->minkContext->fillField('field_dates[0][value][date]', date('Y-m-d', $time));
+    $this->minkContext->fillField('field_dates[0][value][time]', date("H:i:s", $time));
+    $this->minkContext->pressButton('Save and publish');
+    $this->minkContext->visit('/');
+  }
+
+  /**
+   * @Given there are over ten events with dates in the past
+   */
+  public function thereAreOverTenEventsWithDatesInThePast()
+  {
+    $i = 1;
+    while ($i <= 11) {
+      $this->iCreateAnEventWithADateInThePast();
+      $i++;
+    }
+  }
+
+
+
+  /**
+   * @Given I have made an upcoming event
+   *
+   * This step is somewhat redundant. The reason for the redundancy is that it includes assertions.
+   */
+  public function iHaveMadeAnUpcomingEvent()
+  {
+    $this->iCreateAnEventWithADateInTheFuture();
+    $this->thatEventAppearsOnTheHomepage();
+    $this->thatEventAppearsOnTheEventsPageInTheUpcomingEventsSection();
+  }
+
+
+  /**
+   * @When I click on the events page pager
+   */
+  public function iClickOnTheEventsPagePager()
+  {
+    $this->minkContext->visit('events');
+    $this->minkContext->assertClick("Next page");
+  }
+
+  /**
+   * @Then that event does not appears on the homepage
+   */
+  public function thatEventDoesNotAppearsOnTheHomepage()
+  {
+    $this->minkContext->visit('/');
+    $this->minkContext->assertNotLinkVisible($this->event_title);
+  }
+
+  /**
+   * @Then that event appears on the homepage
+   */
+  public function thatEventAppearsOnTheHomepage()
+  {
+    $this->minkContext->visit('/');
+    $this->minkContext->assertLinkVisible($this->event_title);
+  }
+
+  /**
+   * @Then that event appears on the events page in the past events section
+   */
+  public function thatEventAppearsOnTheEventsPageInThePastEventsSection()
+  {
+    $this->minkContext->visit('events');
+    $this->minkContext->assertLinkRegion($this->event_title, "Past events");
+  }
+
+  /**
+   * @Then that event appears on the events page in the upcoming events section
+   */
+  public function thatEventAppearsOnTheEventsPageInTheUpcomingEventsSection()
+  {
+    $this->minkContext->visit('events');
+    $this->minkContext->assertLinkRegion($this->event_title, "Upcoming events");
+  }
 }

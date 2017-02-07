@@ -60,6 +60,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/eric-garneau",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/eric-garneau",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -72,6 +76,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/mary-beth-smith",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/mary-beth-smith",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -84,6 +92,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/michael-jando",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/nerds/michael-jando",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -96,6 +108,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/node/72/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/72/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -108,6 +124,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/node/73/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/73/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],
@@ -143,6 +163,18 @@
       "label": "Blog post",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },
+    {
+      "label": "Blog post 2",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -204,6 +236,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
@@ -228,6 +264,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
@@ -240,6 +280,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-int-start-time"
+      ],
       "selectors": [
         "document"
       ],
@@ -252,6 +296,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/videos",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/videos",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".field-name-field-file",
+        ".field--name-field-youtube"
+      ],
       "selectors": [
         "document"
       ],

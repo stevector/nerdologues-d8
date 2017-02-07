@@ -118,7 +118,7 @@ Feature: Clip creation
     And I click "Someone's cool podcast"
     And I go to it's clip page
     Then the response status code should be 200
-    And I see the text "Clips from Someone's cool podcast"
+    And I see the text "Someone's cool podcast: Clip Archive"
 
 
 

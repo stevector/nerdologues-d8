@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - page_manager.page.node_view
+    - views.view.blog_posts_by_term
   module:
     - ctools
     - panels
+    - views
 id: node_view-panels_variant-0
 label: Default
 variant: panels_variant
@@ -23,6 +25,17 @@ variant_settings:
       uuid: 01ef726e-6c47-4302-9f44-e28313f7cc28
       context_mapping:
         entity: node
+    abc17285-059f-4286-94a4-5ee229775b12:
+      id: 'views_block:blog_posts_by_term-block_1'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: middle
+      weight: 0
+      uuid: abc17285-059f-4286-94a4-5ee229775b12
+      context_mapping: {  }
   id: panels_variant
   uuid: 253460ab-75af-45b7-86b5-e260cac6b5e2
   label: null

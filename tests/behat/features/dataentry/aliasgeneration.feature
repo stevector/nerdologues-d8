@@ -10,7 +10,7 @@ Feature: Alias Generation
     And I fill in "Path alias" with "/podcasts/your-stories/clips"
     And I press "Save"
     And I visit "/podcasts/your-stories/clips"
-    Then I should see "Podcast clips from Your Stories"
+    Then I should see "Your Stories: Clip Archive"
     Then the following aliases are created and valid
     | Existing system path | Path alias                                        | Expected text                                          |
     | /node/81/episodes    | /podcasts/your-stories/episodes                   | Episode Archive: Your Stories                          |

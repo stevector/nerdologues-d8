@@ -12,7 +12,7 @@ field_name: field_image
 entity_type: node
 bundle: event
 label: Image
-description: ''
+description: 'Upload a large image. It will be resized appropriately.'
 required: false
 translatable: true
 default_value: {  }
