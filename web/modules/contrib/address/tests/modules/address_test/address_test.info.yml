@@ -1,4 +1,4 @@
-name: Module for testing address events
+name: Address test
 type: module
 description: 'Provides functionality for testing the events in address module.'
 package: Testing

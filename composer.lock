@@ -114,22 +114,22 @@
         },
         {
             "name": "commerceguys/addressing",
-            "version": "v0.8.3",
+            "version": "v1.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/addressing.git",
-                "reference": "f8839e77aaf825fdc678182264be53e12bc9d3b2"
+                "reference": "3ab5a1b22598403695d99470193db1d2426d5cf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/f8839e77aaf825fdc678182264be53e12bc9d3b2",
-                "reference": "f8839e77aaf825fdc678182264be53e12bc9d3b2",
+                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/3ab5a1b22598403695d99470193db1d2426d5cf7",
+                "reference": "3ab5a1b22598403695d99470193db1d2426d5cf7",
                 "shasum": ""
             },
             "require": {
                 "commerceguys/enum": "~1.0",
                 "doctrine/collections": "~1.0",
-                "php": ">=5.4.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.*",
@@ -140,14 +140,13 @@
             },
             "suggest": {
                 "commerceguys/intl": "to use it as the source of country data",
-                "symfony/form": "to generate Symfony address forms",
                 "symfony/intl": "to use it as the source of country data",
                 "symfony/validator": "to validate addresses"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -174,7 +173,7 @@
                 "localization",
                 "postal"
             ],
-            "time": "2016-08-04 16:29:10"
+            "time": "2016-12-07 10:15:17"
         },
         {
             "name": "commerceguys/enum",
@@ -216,20 +215,19 @@
         },
         {
             "name": "commerceguys/intl",
-            "version": "v0.7.1",
+            "version": "v0.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/intl.git",
-                "reference": "94a1f8f9a452bbb2e1bc5fbb3712796beb1ed3dd"
+                "reference": "edfcfc26ed8505c4f6fcf862eb36dfda1af74b00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/intl/zipball/94a1f8f9a452bbb2e1bc5fbb3712796beb1ed3dd",
-                "reference": "94a1f8f9a452bbb2e1bc5fbb3712796beb1ed3dd",
+                "url": "https://api.github.com/repos/commerceguys/intl/zipball/edfcfc26ed8505c4f6fcf862eb36dfda1af74b00",
+                "reference": "edfcfc26ed8505c4f6fcf862eb36dfda1af74b00",
                 "shasum": ""
             },
             "require": {
-                "ext-bcmath": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -257,36 +255,37 @@
                 }
             ],
             "description": "Internationalization library powered by CLDR data.",
-            "time": "2016-04-07 12:40:00"
+            "time": "2016-12-13 12:33:19"
         },
         {
             "name": "commerceguys/zone",
-            "version": "v0.7.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/zone.git",
-                "reference": "685c49bc032305b69b2b9edee0e76bfa9a4830b4"
+                "reference": "36fe2e8f5a8091bf18417d6d409e363677122a99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/zone/zipball/685c49bc032305b69b2b9edee0e76bfa9a4830b4",
-                "reference": "685c49bc032305b69b2b9edee0e76bfa9a4830b4",
+                "url": "https://api.github.com/repos/commerceguys/zone/zipball/36fe2e8f5a8091bf18417d6d409e363677122a99",
+                "reference": "36fe2e8f5a8091bf18417d6d409e363677122a99",
                 "shasum": ""
             },
             "require": {
-                "commerceguys/addressing": "~0.5",
+                "commerceguys/addressing": "~1.0",
                 "doctrine/collections": "~1.0",
-                "php": ">=5.4.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.*",
                 "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "2.*",
                 "symfony/intl": ">=2.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -304,7 +303,7 @@
                 }
             ],
             "description": "Zone management library.",
-            "time": "2015-10-05 15:40:40"
+            "time": "2016-09-26 10:22:50"
         },
         {
             "name": "composer/installers",
@@ -1147,12 +1146,12 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/address",
-                "reference": "30d0269f9090526e939f209a4bc2cbee597259b5"
+                "reference": "bca416ec9536f2da14b2407104a0556a23343c92"
             },
             "require": {
-                "commerceguys/addressing": "~0.8",
+                "commerceguys/addressing": "~1.0",
                 "commerceguys/intl": "~0.7",
-                "commerceguys/zone": "~0.7",
+                "commerceguys/zone": "~1.0",
                 "drupal/core": "*"
             },
             "type": "drupal-module",
@@ -1161,8 +1160,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta3+11-dev",
-                    "datestamp": "1472049539"
+                    "version": "8.x-1.0-rc3+4-dev",
+                    "datestamp": "1485214683"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1188,7 +1187,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/address"
             },
-            "time": "2016-08-24 14:35:29"
+            "time": "2017-01-23 23:39:41"
         },
         {
             "name": "drupal/console",

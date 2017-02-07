@@ -84,7 +84,7 @@ class ZoneTest extends JavascriptTestBase {
       'name' => 'Test zone',
       'scope' => $this->randomMachineName(6),
       'members[0][form][name]' => 'California',
-      'members[0][form][administrative_area]' => 'US-CA',
+      'members[0][form][administrative_area]' => 'CA',
       'members[0][form][included_postal_codes]' => '123',
       'members[0][form][excluded_postal_codes]' => '456',
       'members[1][form][name]' => 'European Union',

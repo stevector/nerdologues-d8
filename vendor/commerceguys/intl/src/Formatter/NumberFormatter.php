@@ -104,10 +104,14 @@ class NumberFormatter implements NumberFormatterInterface
      * @param NumberFormatInterface $numberFormat The number format.
      * @param int                   $style        The formatting style.
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      */
     public function __construct(NumberFormatInterface $numberFormat, $style = self::DECIMAL)
     {
+        if (!extension_loaded('bcmath')) {
+            throw new \RuntimeException('The bcmath extension is required by NumberFormatter.');
+        }
         $availablePatterns = [
             self::DECIMAL => $numberFormat->getDecimalPattern(),
             self::PERCENT => $numberFormat->getPercentPattern(),
@@ -253,18 +257,14 @@ class NumberFormatter implements NumberFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function parseCurrency($value, CurrencyInterface $currency)
+    public function parse($value)
     {
         $replacements = [
+            $this->numberFormat->getGroupingSeparator() => '',
             // Convert the localized symbols back to their original form.
             $this->numberFormat->getDecimalSeparator() => '.',
             $this->numberFormat->getPlusSign() => '+',
             $this->numberFormat->getMinusSign() => '-',
-
-            // Strip any grouping separators, the currency code or symbol.
-            $this->numberFormat->getGroupingSeparator() => '',
-            $currency->getCurrencyCode() => '',
-            $currency->getSymbol() => '',
 
             // Strip whitespace (spaces and non-breaking spaces).
             ' ' => '',
@@ -283,6 +283,21 @@ class NumberFormatter implements NumberFormatterInterface
         }
 
         return is_numeric($value) ? $value : false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function parseCurrency($value, CurrencyInterface $currency)
+    {
+        $replacements = [
+            // Strip the currency code or symbol.
+            $currency->getCurrencyCode() => '',
+            $currency->getSymbol() => '',
+        ];
+        $value = strtr($value, $replacements);
+
+        return $this->parse($value);
     }
 
     /**
