@@ -57,13 +57,6 @@ class DefaultFormatterTest extends KernelTestBase {
 
     ConfigurableLanguage::createFromLangcode('zh-hant')->save();
 
-    // The address module is never installed, so the importer doesn't run
-    // automatically. Instead, we manually import the address formats we need.
-    $country_codes = ['AD', 'SV', 'TW', 'US', 'ZZ'];
-    $importer = \Drupal::service('address.address_format_importer');
-    $importer->importEntities($country_codes);
-    $importer->importTranslations(['zh-hant']);
-
     $this->entityType = 'entity_test';
     $this->bundle = $this->entityType;
     $this->fieldName = Unicode::strtolower($this->randomMachineName());
@@ -103,7 +96,7 @@ class DefaultFormatterTest extends KernelTestBase {
     $entity = EntityTest::create([]);
     $entity->{$this->fieldName} = [
       'country_code' => 'AD',
-      'locality' => 'AD-07',
+      'locality' => 'Canillo',
       'postal_code' => 'AD500',
       'address_line1' => 'C. Prat de la Creu, 62-64',
     ];
@@ -114,7 +107,7 @@ class DefaultFormatterTest extends KernelTestBase {
     $expected = implode('', [
       'line1' => '<p class="address" translate="no">',
       'line2' => '<span class="address-line1">C. Prat de la Creu, 62-64</span><br>' . "\n",
-      'line3' => '<span class="postal-code">AD500</span> <span class="locality">Parròquia d&#039;Andorra la Vella</span><br>' . "\n",
+      'line3' => '<span class="postal-code">AD500</span> <span class="locality">Canillo</span><br>' . "\n",
       'line4' => '<span class="country">Andorra</span>',
       'line5' => '</p>',
     ]);
@@ -167,13 +160,15 @@ class DefaultFormatterTest extends KernelTestBase {
     $entity->{$this->fieldName} = [
       'langcode' => 'zh-hant',
       'country_code' => 'TW',
-      'administrative_area' => 'TW-TPE',
-      'locality' => 'TW-TPE-e3cc33',
+      'administrative_area' => 'Taipei City',
+      'locality' => "Da'an District",
       'address_line1' => 'Sec. 3 Hsin-yi Rd.',
       'postal_code' => '106',
       // Any HTML in the fields is supposed to be escaped.
       'organization' => 'Giant <h2>Bike</h2> Store',
       'recipient' => 'Mr. Liu',
+      'given_name' => 'Wu',
+      'family_name' => 'Chen',
     ];
     $this->renderEntityFields($entity, $this->display);
     $expected = implode('', [
@@ -183,7 +178,7 @@ class DefaultFormatterTest extends KernelTestBase {
       'line4' => '<span class="administrative-area">台北市</span><span class="locality">大安區</span><br>' . "\n",
       'line5' => '<span class="address-line1">Sec. 3 Hsin-yi Rd.</span><br>' . "\n",
       'line6' => '<span class="organization">Giant &lt;h2&gt;Bike&lt;/h2&gt; Store</span><br>' . "\n",
-      'line7' => '<span class="recipient">Mr. Liu</span>',
+      'line7' => '<span class="family-name">Chen</span> <span class="given-name">Wu</span>',
       'line8' => '</p>',
     ]);
     $this->assertRaw($expected, 'The TW address has been properly formatted.');
@@ -196,7 +191,7 @@ class DefaultFormatterTest extends KernelTestBase {
     $entity = EntityTest::create([]);
     $entity->{$this->fieldName} = [
       'country_code' => 'US',
-      'administrative_area' => 'US-CA',
+      'administrative_area' => 'CA',
       'address_line1' => '1098 Alta Ave',
       'postal_code' => '94043',
     ];
