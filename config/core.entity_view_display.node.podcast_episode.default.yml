@@ -15,36 +15,117 @@ dependencies:
     - node.type.podcast_episode
   module:
     - datetime
-    - ds
     - media_entity_audio
+    - panelizer
     - text
     - user
 third_party_settings:
-  ds:
-    layout:
-      id: teaser_with_image
-      path: themes/custom/nerdtheme
-      library: ''
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        wrappers:
-          header: div
-          quote: div
-          right: div
-          left: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
-    regions:
-      right:
-        - field_file
-        - field_ref_podcast
-        - field_date_published
-        - field_body
+  panelizer:
+    enable: true
+    custom: false
+    allow: false
+    default: default
+    displays:
+      default:
+        blocks:
+          c9d3f3b0-839b-4cfa-9e3b-6eda7e15e729:
+            id: 'entity_field:node:field_body'
+            label: Body
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: text_default
+              settings: {  }
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 3
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: c9d3f3b0-839b-4cfa-9e3b-6eda7e15e729
+          fd2f2ef1-69e2-4980-8170-09525304ea38:
+            id: 'entity_field:node:field_date_published'
+            label: 'Date Published'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: datetime_default
+              settings:
+                timezone_override: ''
+                format_type: public_display1
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 2
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: fd2f2ef1-69e2-4980-8170-09525304ea38
+          ded79939-efce-4cd0-ab39-7d623f25db89:
+            id: 'entity_field:node:field_file'
+            label: file
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: audio_player_html5
+              settings:
+                provide_download_link: '1'
+                audio_attributes: controls
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 0
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: ded79939-efce-4cd0-ab39-7d623f25db89
+          d3c373cb-3ce7-4fd7-bec4-f5633cea3246:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: entity_reference_label
+              settings:
+                link: true
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 1
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: d3c373cb-3ce7-4fd7-bec4-f5633cea3246
+          40e8a9ee-5051-4a59-bef5-f7e688b75202:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: entity_reference_entity_view
+              settings:
+                view_mode: image_only
+              third_party_settings: {  }
+              weight: 0
+            region: left
+            weight: 0
+            uuid: 40e8a9ee-5051-4a59-bef5-f7e688b75202
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+        id: panels_variant
+        label: Default
+        uuid: 3fc0a0de-5176-4310-84d2-03d8bd64fbd1
+        weight: 0
+        layout: teaser_with_image
+        layout_settings: {  }
+        page_title: ''
+        storage_type: panelizer_default
+        storage_id: 'node:podcast_episode:default:default'
+        builder: standard
+        pattern: panelizer
+        static_context: {  }
 id: node.podcast_episode.default
 targetEntityType: node
 bundle: podcast_episode
