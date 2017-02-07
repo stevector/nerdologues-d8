@@ -133,6 +133,23 @@ third_party_settings:
             uuid: 19e7eab3-9a37-4d37-bc23-3a02936b89ba
             context_mapping:
               entity: '@panelizer.entity_context:entity'
+          1a93f9b3-7ac7-4f34-ae2c-8f70c59c0f9b:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: entity_reference_label
+              settings:
+                link: true
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: -2
+            uuid: 1a93f9b3-7ac7-4f34-ae2c-8f70c59c0f9b
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
         id: panels_variant
         label: Default
         uuid: e6ed95d4-200f-4246-ad7f-7bed68e43173
