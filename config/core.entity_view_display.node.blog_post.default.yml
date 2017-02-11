@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.blog_post.field_body
     - field.field.node.blog_post.field_date_published
     - field.field.node.blog_post.field_image
+    - field.field.node.blog_post.field_image_header
     - field.field.node.blog_post.field_lede
     - field.field.node.blog_post.field_ref_creators
     - field.field.node.blog_post.field_term_blog_tags
@@ -37,6 +38,14 @@ content:
   field_image:
     weight: 1
     label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_image_header:
+    weight: 5
+    label: above
     settings:
       image_style: ''
       image_link: ''
