@@ -65,7 +65,6 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
       $this->minkContext->visit('');
     }
 
-
     /**
      * @Then that video appears on the video page
      */
@@ -94,5 +93,15 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
     $this->minkContext->assertNotLinkRegion($this->node_title, $arg1);
   }
 
+
+  /**
+   * @Then I enter yesterday's date for the published date
+   */
+  public function iEnterYesterdaySDateForThePublishedDate()
+  {
+    $time = time() - (60 * 60 * 24);
+    $this->minkContext->fillField('field_date_published[0][value][date]', date('Y-m-d', $time));
+    $this->minkContext->fillField('field_date_published[0][value][time]', date("H:i:s", $time));
+  }
 
 }

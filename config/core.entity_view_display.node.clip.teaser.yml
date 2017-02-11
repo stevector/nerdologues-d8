@@ -16,6 +16,8 @@ dependencies:
   module:
     - ds
     - entity_reference_revisions
+    - nerdcustom
+    - panelizer
     - text
     - user
 third_party_settings:
@@ -66,6 +68,11 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.clip.teaser
 targetEntityType: node
 bundle: clip
@@ -87,11 +94,10 @@ content:
       link: ''
     third_party_settings: {  }
   field_ref_creators:
-    type: entity_reference_label
+    type: nerd_person_field_formatter
     weight: 4
     label: inline
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
   field_ref_podcast:
     type: entity_reference_entity_view

@@ -8,6 +8,18 @@
   ],
   "scenarios": [
     {
+      "label": "Clips by person, with quotes",
+      "url": "http://migr-prep2-nerdologues.pantheonsite.io/node/27/clips",
+      "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/node/27/clips",
+      "hideSelectors": [],
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+      "delay": 1500,
+      "misMatchThreshold" : 0.1
+    },    
+    {
       "label": "Homepage",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/",
@@ -18,7 +30,7 @@
       "readyEvent": null,
       "delay": 1500,
       "misMatchThreshold" : 0.1
-    },
+    }, 
     {
       "label": "Homepage, Next page",
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/home?page=1",
