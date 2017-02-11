@@ -120,9 +120,41 @@ Feature: Clip creation
     Then the response status code should be 200
     And I see the text "Someone's cool podcast: Clip Archive"
 
+  @api
+  Scenario: Visible quotes
 
+    Given I am logged in as a user with the "content_administrator" role
+    Given a "member_designations" term with the name "Viewable bio page"
 
+    #Make a person
+    When I visit "node/add/person"
+    And I fill in "title[0][value]" with "Jane Member"
+    And I check "Viewable bio page"
+    And I press "Save"
 
+    # Make a podcast and episode.
+    Given I am viewing a podcast with the title "Someone's cool podcast"
+    Given I am logged in as a user with the "content_administrator" role
+    When I visit "node/add/podcast_episode"
+    And I fill in "title[0][value]" with "That one podcast episode"
+    And I select the radio button "Someone's cool podcast"
+    And I press "Save and publish"
 
-
-
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I press "Save and publish"
+    Then I visit "admin/content"
+    Then I click "Edit" in the "A Clip of a story" row
+    And I press "Add Quotes"
+    And I fill in "field_para_quotes[0][subform][field_body_plain][0][value]" with "Quote Zero"
+    And I press "Add Quotes"
+    And I fill in "field_para_quotes[1][subform][field_body_plain][0][value]" with "Quote One"
+    And I enter yesterday's date for the published date
+    And I press "Save and keep published"
+    And I break
+    When I visit "/"
+    And I should see the text "Quote Zero"
+    And I should not see the text "Quote One"
