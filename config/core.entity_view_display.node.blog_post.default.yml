@@ -14,8 +14,15 @@ dependencies:
   module:
     - datetime
     - image
+    - panelizer
     - text
     - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.blog_post.default
 targetEntityType: node
 bundle: blog_post
@@ -35,17 +42,9 @@ content:
       format_type: public_display1
     third_party_settings: {  }
     type: datetime_default
-  field_image:
+  field_image_header:
     weight: 1
     label: hidden
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
-  field_image_header:
-    weight: 5
-    label: above
     settings:
       image_style: ''
       image_link: ''
@@ -63,5 +62,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_image: true
   field_lede: true
   field_term_blog_tags: true
