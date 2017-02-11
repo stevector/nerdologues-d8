@@ -8,6 +8,11 @@
 use \Drupal\node\NodeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+
 /**
  * Implements hook_node_links_alter().
  */
@@ -130,4 +135,20 @@ function nerdcustom_theme() {
       ),
     ),
   );
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  // Deny viewing of the date field when there is also a
+  // field_text_display_date value.
+  // That is what field_text_display_date is for.
+  if ($field_definition->getName() == 'field_dates' && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
+    $entity = $items->getEntity();
+    if (!empty($entity->field_text_display_date->getValue())) {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
 }
