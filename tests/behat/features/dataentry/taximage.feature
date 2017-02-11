@@ -10,13 +10,36 @@ Feature: Taxonomy image
     And I attach the file "fisticuffs.jpg" to "Image"
     And I press "Upload"
 
-    #And I fill in "Alternative text" with "Fisticuffs cards"
+
+    When I visit "node/1981/edit"
+    And I press "field_image_header_0_remove_button"
+    And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+    And I press "Save and keep published"
 
 
-    And I press "Save"
-  #  And print last response
-  And print current URL
-#    And I fill in "Existing system path" with "/node/81/clips"
-#    And I fill in "Path alias" with "/podcasts/your-stories/clips"
-#    And I press "Save"
-#    And I visit "/podcasts/your-stories/clips"
+  When I visit "node/2014/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
+
+  When I visit "node/2071/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
+
+  When I visit "node/2007/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
+  When I visit "node/1943/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
+  When I visit "node/1929/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
+  When I visit "node/1928/edit"
+  And I press "field_image_header_0_remove_button"
+  And I attach the file "fisticuffs-tag.jpg" to "Header Image"
+  And I press "Save and keep published"
