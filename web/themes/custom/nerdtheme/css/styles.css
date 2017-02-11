@@ -62,10 +62,15 @@ body .field__label {
   border-bottom: none;
 }
 
+.teaser-with-image        .field--name-type,
+.teaser-with-image-small  .field--name-type,
 .teaser-with-image        .field--name-bundle-fieldnode,
 .teaser-with-image-small  .field--name-bundle-fieldnode {
   display:none;
 }
+
+.view-nerds-online .teaser-with-image        .field--name-type,
+.view-nerds-online .teaser-with-image-small  .field--name-type,
 .view-nerds-online .teaser-with-image        .field--name-bundle-fieldnode,
 .view-nerds-online .teaser-with-image-small  .field--name-bundle-fieldnode {
   display:block;

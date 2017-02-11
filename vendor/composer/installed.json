@@ -7591,17 +7591,16 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/panels",
-            "reference": "ddadd53d538b30a20e79ddc1ad9de394000b2c49"
+            "reference": "a7a6ebc77987abb2d6cac7f16f7fa45003ad70ea"
         },
         "require": {
             "drupal/core": "~8.0",
             "drupal/ctools": ">=3.0.0-alpha26",
             "drupal/layout_plugin": ">=1.0.0-alpha22"
         },
-        "suggest": {
-            "drupal/core": "Required by drupal/panels_ipe",
-            "drupal/page_manager": "Required by drupal/panels",
-            "drupal/panelizer": "Required by drupal/panels"
+        "require-dev": {
+            "drupal/page_manager": "*",
+            "drupal/panelizer": "*"
         },
         "type": "drupal-module",
         "extra": {
@@ -7609,8 +7608,8 @@
                 "dev-3.x": "3.x-dev"
             },
             "drupal": {
-                "version": "8.x-3.0-beta5+1-dev",
-                "datestamp": "1478998440"
+                "version": "8.x-3.0-beta5+2-dev",
+                "datestamp": "1481218084"
             }
         },
         "installation-source": "source",
@@ -8392,5 +8391,203 @@
             }
         ],
         "description": "Internationalization library powered by CLDR data."
+    },
+    {
+        "name": "drupal/panels_ipe",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "require": {
+            "drupal/core": "*",
+            "drupal/panels": "self.version"
+        },
+        "type": "metapackage",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta5+2-dev",
+                "datestamp": "1481218084"
+            }
+        },
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "EclipseGc",
+                "homepage": "https://www.drupal.org/user/61203"
+            },
+            {
+                "name": "Letharion",
+                "homepage": "https://www.drupal.org/user/373603"
+            },
+            {
+                "name": "esmerel",
+                "homepage": "https://www.drupal.org/user/164022"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "merlinofchaos",
+                "homepage": "https://www.drupal.org/user/26979"
+            },
+            {
+                "name": "neclimdul",
+                "homepage": "https://www.drupal.org/user/48673"
+            },
+            {
+                "name": "samuel.mortenson",
+                "homepage": "https://www.drupal.org/user/2582268"
+            },
+            {
+                "name": "sdboyer",
+                "homepage": "https://www.drupal.org/user/146719"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Panels In-place editor.",
+        "homepage": "https://www.drupal.org/project/panels",
+        "support": {
+            "source": "http://cgit.drupalcode.org/panels"
+        }
+    },
+    {
+        "name": "drupal/ctools_block",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/ctools": "self.version"
+        },
+        "type": "metapackage",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-alpha27+0-dev",
+                "datestamp": "1471723439"
+            }
+        },
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "EclipseGc",
+                "homepage": "https://www.drupal.org/user/61203"
+            },
+            {
+                "name": "damiankloip",
+                "homepage": "https://www.drupal.org/user/1037976"
+            },
+            {
+                "name": "dawehner",
+                "homepage": "https://www.drupal.org/user/99340"
+            },
+            {
+                "name": "esmerel",
+                "homepage": "https://www.drupal.org/user/164022"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "merlinofchaos",
+                "homepage": "https://www.drupal.org/user/26979"
+            },
+            {
+                "name": "neclimdul",
+                "homepage": "https://www.drupal.org/user/48673"
+            },
+            {
+                "name": "sdboyer",
+                "homepage": "https://www.drupal.org/user/146719"
+            },
+            {
+                "name": "sun",
+                "homepage": "https://www.drupal.org/user/54136"
+            },
+            {
+                "name": "tim.plunkett",
+                "homepage": "https://www.drupal.org/user/241634"
+            }
+        ],
+        "description": "Provides improvements to blocks that will one day be added to Drupal core.",
+        "homepage": "https://www.drupal.org/project/ctools",
+        "support": {
+            "source": "http://cgit.drupalcode.org/ctools"
+        }
+    },
+    {
+        "name": "drupal/panelizer",
+        "version": "dev-3.x",
+        "version_normalized": "dev-3.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/panelizer",
+            "reference": "54740e35a4dbfd2b8170239eda7da3d2c2735856"
+        },
+        "require": {
+            "drupal/core": "*",
+            "drupal/ctools_block": "*",
+            "drupal/panels": "*",
+            "drupal/panels_ipe": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta1+0-dev",
+                "datestamp": "1486220283"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "DamienMcKenna",
+                "homepage": "https://www.drupal.org/user/108450"
+            },
+            {
+                "name": "EclipseGc",
+                "homepage": "https://www.drupal.org/user/61203"
+            },
+            {
+                "name": "dsnopek",
+                "homepage": "https://www.drupal.org/user/266527"
+            },
+            {
+                "name": "japerry",
+                "homepage": "https://www.drupal.org/user/45640"
+            },
+            {
+                "name": "merlinofchaos",
+                "homepage": "https://www.drupal.org/user/26979"
+            },
+            {
+                "name": "neclimdul",
+                "homepage": "https://www.drupal.org/user/48673"
+            }
+        ],
+        "description": "Allow any entity view mode to be rendered using a Panels display.",
+        "homepage": "https://www.drupal.org/project/panelizer",
+        "support": {
+            "source": "http://cgit.drupalcode.org/panelizer"
+        }
     }
 ]

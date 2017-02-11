@@ -224,6 +224,10 @@
       "url": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "referenceUrl": "http://dev-nerdologues-d8.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "hideSelectors": [],
+      "removeSelectors": [
+        ".mediaelement-audio",
+        ".field--name-field-file"
+      ],
       "selectors": [
         "document"
       ],
@@ -238,7 +242,7 @@
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
-        ".field--name-field-int-start-time"
+        ".field--name-field-file"
       ],
       "selectors": [
         "document"
