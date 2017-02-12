@@ -145,4 +145,14 @@ function nerdcustom_views_data_alter(array &$data) {
       'id' => 'nerdcustom_referenced_storytellers',
     ),
   );
+
+  $data['node_field_data']['referenced_podcast'] = array(
+    'title' => t('Referenced Podcast'),
+    'filter' => array(
+      'title' => t('Referenced Podcast'),
+      'help' => t('Filter by podcast'),
+      'field' => 'nid',
+      'id' => 'nerdcustom_referenced_podcast',
+    ),
+  );
 }
