@@ -780,7 +780,7 @@ display:
             identifier: referenced_storytellers
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -1450,9 +1450,9 @@ display:
             first: '« First'
             last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options: '10, 25, 50, 100, 200'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
@@ -1536,28 +1536,66 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_date_published_value:
-          id: field_date_published_value
-          table: node__field_date_published
-          field: field_date_published_value
-          relationship: none
+        referenced_podcast:
+          id: referenced_podcast
+          table: node_field_data
+          field: referenced_podcast
+          relationship: field_ref_podcast
           group_type: group
           admin_label: ''
-          operator: '<='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
+          operator: or
+          value: {  }
           group: 1
           exposed: true
           expose:
-            operator_id: field_date_published_value_op
-            label: 'Date Published'
+            operator_id: referenced_podcast_op
+            label: 'From the podcast'
             description: ''
-            use_operator: true
-            operator: field_date_published_value_op
-            identifier: field_date_published_value
+            use_operator: false
+            operator: referenced_podcast_op
+            identifier: referenced_podcast
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              content_administrator: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          entity_type: node
+          plugin_id: nerdcustom_referenced_podcast
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Episode title contains'
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
             required: false
             remember: false
             multiple: false
@@ -1578,7 +1616,9 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
+          entity_type: node
+          entity_field: title
+          plugin_id: string
       defaults:
         filters: false
         filter_groups: false
@@ -2223,10 +2263,10 @@ display:
             first: '« First'
             last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
+            items_per_page_options: '10, 25, 50, 100, 200'
+            items_per_page_options_all: true
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
