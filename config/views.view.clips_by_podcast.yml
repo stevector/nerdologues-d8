@@ -7,6 +7,7 @@ dependencies:
     - node.type.clip
   module:
     - datetime
+    - nerdcustom
     - node
     - user
 id: clips_by_podcast
@@ -259,6 +260,7 @@ display:
           entity_field: nid
           plugin_id: node_nid
       display_extenders: {  }
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -314,6 +316,8 @@ display:
         empty: false
         title: false
         header: false
+        filters: false
+        filter_groups: false
       display_description: 'the block for node/%/clips'
       title: ''
       header:
@@ -328,6 +332,107 @@ display:
           tokenize: false
           content: "<div class=\"panel-pane pane-custom pane-1 deck-text\">\n<p>Welcome to our new Your Stories clip archive! At five years old, the Your Stories podcast has heard hundreds of individual stories. We at The Nerdologues are now cataloging them here on the site for easier browsing.</p>\n</div>"
           plugin_id: text_custom
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            clip: clip
+          group: 1
+          exposed: false
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              content_administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        referenced_storytellers:
+          id: referenced_storytellers
+          table: node_field_data
+          field: referenced_storytellers
+          relationship: field_ref_creators
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: referenced_storytellers_op
+            label: Storyteller
+            description: ''
+            use_operator: false
+            operator: referenced_storytellers_op
+            identifier: referenced_storytellers
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              content_administrator: '0'
+            reduce: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: 0
+          entity_type: node
+          plugin_id: nerdcustom_referenced_storytellers
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
