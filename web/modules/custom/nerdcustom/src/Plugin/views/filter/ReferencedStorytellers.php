@@ -1,20 +1,24 @@
 <?php
+
 /**
  * @file
- * Definition of Drupal\mymodule\Plugin\views\filter\RelatedContentTitles.
+ * Definition of Drupal\mymodule\Plugin\views\filter\ReferencedStoryTellers.
  */
+
 namespace Drupal\nerdcustom\Plugin\views\filter;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\filter\ManyToOne;
 use Drupal\views\ViewExecutable;
+
 /**
- * Filters by given list of related content title options.
+ * Filters by given list of storytellers.
  *
  * @ingroup views_filter_handlers
  *
  * @ViewsFilter("nerdcustom_referenced_storytellers")
  */
 class ReferencedStoryTellers extends ManyToOne {
+
   /**
    * {@inheritdoc}
    */
@@ -26,22 +30,24 @@ class ReferencedStoryTellers extends ManyToOne {
 
   /**
    * Helper function that generates the options.
+   *
    * @return array
+   *   The array of Nids and Titles
    */
   public function generateOptions() {
     $storage = \Drupal::entityManager()->getStorage('node');
 
-    $relatedContentQuery = \Drupal::entityQuery('node')
-        ->condition('type', array('person'), 'IN')
+    $related_content_query = \Drupal::entityQuery('node')
+        ->condition('type', 'person')
         ->condition('status', 1)
-        ->sort('title'); //ensuring that the node is published
+        ->sort('title');
 
-    $relatedContentIds = $relatedContentQuery->execute(); //returns an array of node ID's
+    $related_content_ids = $related_content_query->execute();
 
     $res = array();
-    foreach($relatedContentIds as $contentId){
-        // building an array with nid as key and title as value
-        $res[$contentId] = $storage->load($contentId)->getTitle();
+    foreach ($related_content_ids as $content_id) {
+      // Building an array with nid as key and title as value.
+      $res[$content_id] = $storage->load($content_id)->getTitle();
     }
 
     return $res;

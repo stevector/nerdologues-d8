@@ -142,7 +142,7 @@ function nerdcustom_views_data_alter(array &$data) {
       'title' => t('Referenced Storytellers'),
       'help' => t('Filter by storyteller'),
       'field' => 'nid',
-      'id' => 'nerdcustom_referenced_storytellers'
+      'id' => 'nerdcustom_referenced_storytellers',
     ),
   );
 }
