@@ -629,9 +629,9 @@ display:
       tags:
         - 'config:field.storage.node.field_last_name'
         - 'config:field.storage.node.field_ref_term_designation'
-  page_6:
+  page_clip:
     display_plugin: page
-    id: page_6
+    id: page_clip
     display_title: clip
     position: 1
     display_options:
