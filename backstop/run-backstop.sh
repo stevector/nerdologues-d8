@@ -11,7 +11,7 @@ if [   "$CIRCLE_BRANCH" != "master"  ]  &&   [[  $CIRCLE_BRANCH != *"screenshot"
 fi
 
 # Update the backstop.json file to use the multidev environment.
-sed -i -e "s/dev-nerdologues-d8/${TERMINUS_ENV}-nerdologues-d8/g" ~/nerdologues-d8/backstop.json
+sed -i -e "s/dev-nerdologues-d8/${TERMINUS_ENV}-nerdologues-d8/g" ~/nerdologues-d8/backstop/backstop.json
 
 # install node dependencies
 echo -e "\nRunning npm install..."
