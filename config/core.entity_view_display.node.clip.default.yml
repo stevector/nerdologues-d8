@@ -131,7 +131,7 @@ third_party_settings:
         label: Default
         uuid: 023e2272-d056-435a-8c2b-1ed1ab01c4f3
         weight: 0
-        layout: teaser_with_image
+        layout: teaser_with_image_full_page
         layout_settings:
           wrappers:
             header: div
