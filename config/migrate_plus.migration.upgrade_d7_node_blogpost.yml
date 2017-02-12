@@ -50,6 +50,15 @@ process:
       title: title
       width: width
       height: height
+  field_image_header:
+    plugin: iterator
+    source: field_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
   field_lede:
     plugin: iterator
     source: field_lede

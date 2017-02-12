@@ -1,20 +1,20 @@
-uuid: 11a83caa-cca1-47ef-9c04-4e7bb674425e
+uuid: 3a127306-8017-42c2-9cec-045105fa75f9
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
+    - field.storage.node.field_image_header
     - node.type.blog_post
   module:
     - image
-id: node.blog_post.field_image
-field_name: field_image
+id: node.blog_post.field_image_header
+field_name: field_image_header
 entity_type: node
 bundle: blog_post
-label: Image
+label: 'Header Image'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

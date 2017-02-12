@@ -1,20 +1,20 @@
-uuid: 11a83caa-cca1-47ef-9c04-4e7bb674425e
+uuid: 6d527004-a060-40cb-b7cd-39bf3b581279
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
-    - node.type.blog_post
+    - field.storage.taxonomy_term.field_image
+    - taxonomy.vocabulary.blog_tags
   module:
     - image
-id: node.blog_post.field_image
+id: taxonomy_term.blog_tags.field_image
 field_name: field_image
-entity_type: node
-bundle: blog_post
+entity_type: taxonomy_term
+bundle: blog_tags
 label: Image
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
