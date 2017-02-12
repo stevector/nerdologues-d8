@@ -138,6 +138,31 @@ function nerdcustom_theme() {
 }
 
 /**
+ * Implements hook_views_data_alter().
+ */
+function nerdcustom_views_data_alter(array &$data) {
+  $data['node_field_data']['referenced_storytellers'] = array(
+    'title' => t('Referenced Storytellers'),
+    'filter' => array(
+      'title' => t('Referenced Storytellers'),
+      'help' => t('Filter by storyteller'),
+      'field' => 'nid',
+      'id' => 'nerdcustom_referenced_storytellers',
+    ),
+  );
+
+  $data['node_field_data']['referenced_podcast'] = array(
+    'title' => t('Referenced Podcast'),
+    'filter' => array(
+      'title' => t('Referenced Podcast'),
+      'help' => t('Filter by podcast'),
+      'field' => 'nid',
+      'id' => 'nerdcustom_referenced_podcast',
+    ),
+  );
+}
+
+/**
  * Implements hook_entity_field_access().
  */
 function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
