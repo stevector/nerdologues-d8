@@ -81,16 +81,30 @@ display:
           summary: ''
           description: ''
           columns:
+            edit_node: edit_node
+            title_2: title_2
             title: title
-            title_1: title_1
-            field_text_original_mp3_url: field_text_original_mp3_url
-            field_link: field_link
+            field_ref_creators: field_ref_creators
+            delta: delta
+            field_int_end_time: field_int_end_time
+            field_int_start_time: field_int_start_time
             field_date_published: field_date_published
-            uri: uri
-            field_int_duration: field_int_duration
-            filesize: filesize
-            field_link_paywall_content: field_link_paywall_content
+            field_para_quotes: field_para_quotes
           info:
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title_2:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             title:
               sortable: true
               default_sort_order: asc
@@ -98,19 +112,28 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            title_1:
+            field_ref_creators:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            delta:
               sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_text_original_mp3_url:
+            field_int_end_time:
+              sortable: true
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_link:
+            field_int_start_time:
+              sortable: true
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
@@ -122,28 +145,7 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            uri:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_int_duration:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            filesize:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_link_paywall_content:
+            field_para_quotes:
               align: ''
               separator: ''
               empty_column: false
@@ -679,36 +681,32 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
-        field_date_published_value:
-          id: field_date_published_value
-          table: node__field_date_published
-          field: field_date_published_value
+        delta:
+          id: delta
+          table: node__field_para_quotes
+          field: delta
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '<='
+          operator: empty
           value:
             min: ''
             max: ''
-            value: '2015-09-02'
-            type: date
-          group: 1
-          exposed: true
+            value: '0'
+          group: 2
+          exposed: false
           expose:
-            operator_id: field_date_published_value_op
-            label: 'Date Published (field_date_published)'
+            operator_id: ''
+            label: ''
             description: ''
             use_operator: false
-            operator: field_date_published_value_op
-            identifier: field_date_published_value
+            operator: ''
+            identifier: ''
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              content_administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -721,7 +719,46 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
+          plugin_id: numeric
+        delta_1:
+          id: delta_1
+          table: node__field_para_quotes
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
       defaults:
         filters: false
         filter_groups: false
@@ -733,6 +770,7 @@ display:
         operator: AND
         groups:
           1: AND
+          2: OR
       fields:
         edit_node:
           id: edit_node
@@ -915,71 +953,6 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-        title_1:
-          id: title_1
-          table: node_field_data
-          field: title
-          relationship: field_ref_podcast
-          group_type: group
-          admin_label: ''
-          label: Podcast
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_ref_creators:
           id: field_ref_creators
           table: node__field_ref_creators
@@ -987,7 +960,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Authors
+          label: Storytellers
           exclude: false
           alter:
             alter_text: false
@@ -1043,63 +1016,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        delta:
-          id: delta
-          table: node__field_para_quotes
-          field: delta
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Quotes (field_para_quotes:delta)'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ','
-          format_plural: false
-          format_plural_string: "1\x03@count"
-          prefix: ''
-          suffix: ''
-          plugin_id: numeric
         field_int_end_time:
           id: field_int_end_time
           table: node__field_int_end_time
@@ -1382,7 +1298,7 @@ display:
           relationship: field_ref_podcast_episode
           group_type: group
           admin_label: ''
-          order: ASC
+          order: DESC
           exposed: false
           expose:
             label: ''
@@ -1448,12 +1364,20 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      menu:
+        type: tab
+        title: Clips
+        description: ''
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: main
     cache_metadata:
       max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
@@ -2211,6 +2135,15 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+      menu:
+        type: tab
+        title: Episodes
+        description: ''
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: main
     cache_metadata:
       max-age: 0
       contexts:
