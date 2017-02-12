@@ -33,4 +33,4 @@ test:
     - composer circle-tests
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
-    - ./scripts/run-backstop.sh
+    - cd backstop && ./run-backstop.sh
