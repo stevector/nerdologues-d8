@@ -4,6 +4,17 @@ Feature: Event dates
   Events in the future will appear on the homepage and on the events page
 
   @api
+  Scenario: Events with override date text
+    Given I am logged in as a user with the "content_administrator" role
+    When I create an Event with a date in the future
+    Then that event appears on the homepage
+    And I should see the regular date text
+    When I edit the event and override the date text with "Event Coming Soon"
+    Then that event appears on the homepage
+    And I should not see the regular date text
+    And I should see the text "Event Coming Soon"
+
+  @api
   Scenario: Events in the future
     Given I am logged in as a user with the "content_administrator" role
     When I create an Event with a date in the future
