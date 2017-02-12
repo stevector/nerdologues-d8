@@ -26,4 +26,4 @@ VISUAL_REGRESSION_RESULTS=$(npm run test)
 
 echo "${VISUAL_REGRESSION_RESULTS}"
 
-rsync  -rlvz   /home/ubuntu/nerdologues-d8/backstop_data $CIRCLE_ARTIFACTS
+rsync  -rlvz   /home/ubuntu/nerdologues-d8/backstop/backstop_data $CIRCLE_ARTIFACTS

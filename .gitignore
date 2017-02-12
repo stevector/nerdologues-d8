@@ -57,3 +57,5 @@ Thumbs.db
 web/sites/*/files
 
 /.idea/
+
+/backstop/node_modules
