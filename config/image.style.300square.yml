@@ -1,0 +1,14 @@
+uuid: c1ddccaa-4956-4e42-9aae-d8938ce3c783
+langcode: en
+status: true
+dependencies: {  }
+name: 300square
+label: '300square (remove after css comparisons with D7 are done)'
+effects:
+  0df95900-b0ba-49d0-83b3-889d4d804a64:
+    uuid: 0df95900-b0ba-49d0-83b3-889d4d804a64
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 300
