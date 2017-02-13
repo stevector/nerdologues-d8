@@ -595,6 +595,7 @@ class Facade
 	/**
 	 * Convience method. Tries to find beans of a certain type,
 	 * if no beans are found, it dispenses a bean of that type.
+	 * Note that this function always returns an array.
 	 *
 	 * @param  string $type     type of bean you are looking for
 	 * @param  string $sql      SQL code for finding the bean
@@ -605,6 +606,20 @@ class Facade
 	public static function findOrDispense( $type, $sql = NULL, $bindings = array() )
 	{
 		return self::$finder->findOrDispense( $type, $sql, $bindings );
+	}
+
+	/**
+	 * Same as findOrDispense but returns just one element.
+	 *
+	 * @param  string $type     type of bean you are looking for
+	 * @param  string $sql      SQL code for finding the bean
+	 * @param  array  $bindings parameters to bind to SQL
+	 *
+	 * @return OODBBean
+	 */
+	public static function findOneOrDispense( $type, $sql = NULL, $bindings = array() )
+	{
+		return reset( self::findOrDispense( $type, $sql, $bindings ) );
 	}
 
 	/**

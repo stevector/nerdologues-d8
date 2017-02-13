@@ -38,6 +38,24 @@ class CompletionHandler
     {
         $this->application = $application;
         $this->context = $context;
+
+        $this->addHandler(
+            new Completion(
+                'help',
+                'command_name',
+                Completion::TYPE_ARGUMENT,
+                array_keys($application->all())
+            )
+        );
+
+        $this->addHandler(
+            new Completion(
+                'list',
+                'namespace',
+                Completion::TYPE_ARGUMENT,
+                $application->getNamespaces()
+            )
+        );
     }
 
     public function setContext(CompletionContext $context)
@@ -134,7 +152,7 @@ class CompletionHandler
     {
         $word = $this->context->getCurrentWord();
 
-        if (strpos($word, '-') === 0) {
+        if (substr($word, 0, 2) === '--') {
             $options = array();
 
             foreach ($this->getAllOptions() as $opt) {
@@ -159,7 +177,7 @@ class CompletionHandler
         $word = $this->context->getCurrentWord();
 
         if (strpos($word, '-') === 0 && strlen($word) == 2) {
-            $definition = $this->command ? $this->command->getDefinition() : $this->application->getDefinition();
+            $definition = $this->command ? $this->command->getNativeDefinition() : $this->application->getDefinition();
 
             if ($definition->hasShortcut(substr($word, 1))) {
                 return array($word);
@@ -184,7 +202,7 @@ class CompletionHandler
             // Complete short options
             if ($left[0] == '-' && strlen($left) == 2) {
                 $shortcut = substr($left, 1);
-                $def = $this->command->getDefinition();
+                $def = $this->command->getNativeDefinition();
 
                 if (!$def->hasShortcut($shortcut)) {
                     return false;
@@ -214,7 +232,7 @@ class CompletionHandler
 
             if (strpos($left, '--') === 0) {
                 $name = substr($left, 2);
-                $def = $this->command->getDefinition();
+                $def = $this->command->getNativeDefinition();
 
                 if (!$def->hasOption($name)) {
                     return false;
@@ -259,23 +277,28 @@ class CompletionHandler
      */
     protected function completeForCommandArguments()
     {
-        if (strpos($this->context->getCurrentWord(), '-') !== 0) {
-            if ($this->command) {
-                $argWords = $this->mapArgumentsToWords($this->command->getDefinition()->getArguments());
-                $wordIndex = $this->context->getWordIndex();
+        if (!$this->command || strpos($this->context->getCurrentWord(), '-') === 0) {
+            return false;
+        }
 
-                if (isset($argWords[$wordIndex])) {
-                    $name = $argWords[$wordIndex];
+        $definition = $this->command->getNativeDefinition();
+        $argWords = $this->mapArgumentsToWords($definition->getArguments());
+        $wordIndex = $this->context->getWordIndex();
 
-                    if ($helper = $this->getCompletionHelper($name, Completion::TYPE_ARGUMENT)) {
-                        return $helper->run();
-                    }
+        if (isset($argWords[$wordIndex])) {
+            $name = $argWords[$wordIndex];
+        } elseif (!empty($argWords) && $definition->getArgument(end($argWords))->isArray()) {
+            $name = end($argWords);
+        } else {
+            return false;
+        }
 
-                    if ($this->command instanceof CompletionAwareInterface) {
-                        return $this->command->completeArgumentValues($name, $this->context);
-                    }
-                }
-            }
+        if ($helper = $this->getCompletionHelper($name, Completion::TYPE_ARGUMENT)) {
+            return $helper->run();
+        }
+
+        if ($this->command instanceof CompletionAwareInterface) {
+            return $this->command->completeArgumentValues($name, $this->context);
         }
 
         return false;
@@ -415,7 +438,7 @@ class CompletionHandler
         }
 
         return array_merge(
-            $this->command->getDefinition()->getOptions(),
+            $this->command->getNativeDefinition()->getOptions(),
             $this->application->getDefinition()->getOptions()
         );
     }

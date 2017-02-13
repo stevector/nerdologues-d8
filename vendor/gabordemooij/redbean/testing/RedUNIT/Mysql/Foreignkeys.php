@@ -8,6 +8,10 @@ use RedBeanPHP\Facade as R;
 /**
  * Foreignkeys
  *
+ * Tests creation and validity of foreign keys,
+ * foreign key constraints and indexes in Mysql/MariaDB.
+ * Also tests whether the correct contraint action has been selected.
+ *
  * @file    RedUNIT/Mysql/Foreignkeys.php
  * @desc    Tests creation of foreign keys.
  * @author  Gabor de Mooij and the RedBeanPHP Community
@@ -19,12 +23,11 @@ use RedBeanPHP\Facade as R;
  */
 class Foreignkeys extends Mysql
 {
-
 	/**
-	* Test whether we can use foreign keys with keywords.
-	*
-	* @return void
-	*/
+	 * Test whether we can use foreign keys with keywords.
+	 *
+	 * @return void
+	 */
 	public function testKWConflicts()
 	{
 		R::nuke();

@@ -10,18 +10,53 @@ namespace Drupal\Console\Command\Generate;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Command\Command;
 use Drupal\Console\Command\Shared\ModuleTrait;
 use Drupal\Console\Command\Shared\PermissionTrait;
 use Drupal\Console\Generator\PermissionGenerator;
 use Drupal\Console\Command\Shared\ConfirmationTrait;
-use Drupal\Console\Command\GeneratorCommand;
+use Drupal\Console\Command\Shared\CommandTrait;
 use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Extension\Manager;
+use Drupal\Console\Utils\StringConverter;
 
-class PermissionCommand extends GeneratorCommand
+class PermissionCommand extends Command
 {
+    use CommandTrait;
     use ModuleTrait;
     use PermissionTrait;
     use ConfirmationTrait;
+
+    /**
+     * @var Manager
+     */
+    protected $extensionManager;
+
+    /**
+     * @var StringConverter
+     */
+    protected $stringConverter;
+
+    /**
+     * @var PermissionGenerator;
+     */
+    protected $generator;
+
+    /**
+     * PermissionCommand constructor.
+     * @param Manager         $extensionManager
+     * @param StringConverter $stringConverter
+     */
+    public function __construct(
+        Manager $extensionManager,
+        StringConverter $stringConverter,
+        PermissionGenerator $permissionGenerator
+    ) {
+        $this->extensionManager = $extensionManager;
+        $this->stringConverter = $stringConverter;
+        $this->generator = $permissionGenerator;
+        parent::__construct();
+    }
 
     /**
      * {@inheritdoc}
@@ -53,12 +88,10 @@ class PermissionCommand extends GeneratorCommand
     {
         $module = $input->getOption('module');
         $permissions = $input->getOption('permissions');
+        $learning = $input->hasOption('learning');
 
-        $learning = $input->hasOption('learning')?$input->getOption('learning'):false;
 
-        $generator = $this->getGenerator();
-        $generator->setLearning($learning);
-        $generator->generate($module, $permissions);
+        $this->generator->generate($module, $permissions, $learning);
     }
 
     /**
@@ -66,11 +99,13 @@ class PermissionCommand extends GeneratorCommand
      */
     protected function interact(InputInterface $input, OutputInterface $output)
     {
+        $io = new DrupalStyle($input, $output);
+
         // --module option
         $module = $input->getOption('module');
         if (!$module) {
             // @see Drupal\Console\Command\Shared\ModuleTrait::moduleQuestion
-            $module = $this->moduleQuestion($output);
+            $module = $this->moduleQuestion($io);
             $input->setOption('module', $module);
         }
 
@@ -78,16 +113,8 @@ class PermissionCommand extends GeneratorCommand
         $permissions = $input->getOption('permissions');
         if (!$permissions) {
             // @see \Drupal\Console\Command\Shared\PermissionTrait::permissionQuestion
-            $permissions = $this->permissionQuestion($output);
+            $permissions = $this->permissionQuestion($io);
             $input->setOption('permissions', $permissions);
         }
-    }
-
-    /**
-     * @return \Drupal\Console\Generator\PermissionGenerator.
-     */
-    protected function createGenerator()
-    {
-        return new PermissionGenerator();
     }
 }

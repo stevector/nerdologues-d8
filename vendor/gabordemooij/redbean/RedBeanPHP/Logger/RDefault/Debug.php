@@ -69,7 +69,7 @@ class Debug extends RDefault implements Logger
 			$value = substr( $value, 0, ( $this->strLen ) ).'... ';
 		}
 
-		if ( !is_numeric( $value ) && $value !== 'NULL') {
+		if ( !\RedBeanPHP\QueryWriter\AQueryWriter::canBeTreatedAsInt( $value ) && $value !== 'NULL') {
 			$value = '\''.$value.'\'';
 		}
 
@@ -124,9 +124,9 @@ class Debug extends RDefault implements Logger
 	 */
 	protected function normalizeSlots( $sql )
 	{
-		$i = 0;
 		$newSql = $sql;
-		while($i < 20 && strpos($newSql, '?') !== FALSE ){
+		$i = 0;
+		while(strpos($newSql, '?') !== FALSE ){
 			$pos   = strpos( $newSql, '?' );
 			$slot  = ':slot'.$i;
 			$begin = substr( $newSql, 0, $pos );
@@ -136,7 +136,7 @@ class Debug extends RDefault implements Logger
 			} else {
 				$newSql = "{$begin}<b style=\"color:green\">$slot</b>{$end}";
 			}
-			$i++;
+			$i ++;
 		}
 		return $newSql;
 	}

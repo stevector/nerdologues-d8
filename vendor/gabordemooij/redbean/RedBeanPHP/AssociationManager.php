@@ -40,7 +40,7 @@ class AssociationManager extends Observable
 	/**
 	 * Handles exceptions. Suppresses exceptions caused by missing structures.
 	 *
-	 * @param Exception $exception exception to handle
+	 * @param \Exception $exception exception to handle
 	 *
 	 * @return void
 	 */
@@ -145,8 +145,6 @@ class AssociationManager extends Observable
 	 * Creates a table name based on a types array.
 	 * Manages the get the correct name for the linking table for the
 	 * types provided.
-	 *
-	 * @todo find a nice way to decouple this class from QueryWriter?
 	 *
 	 * @param array $types 2 types as strings
 	 *

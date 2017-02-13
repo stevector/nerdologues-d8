@@ -30,12 +30,14 @@ use RedBeanPHP\Repository as Repository;
 class Frozen extends Repository
 {
 	/**
-	 * Handles exceptions. Suppresses exceptions caused by missing structures.
+	 * Handles exceptions.
+	 * In fluid mode, this suppresses exceptions caused by missing structures.
+	 * However the implementation in frozen mode is rather the opposite, it
+	 * will just re-throw every exception.
 	 *
 	 * @param \Exception $exception exception to handle
 	 *
 	 * @return void
-	 * @throws \Exception
 	 */
 	protected function handleException( \Exception $exception )
 	{
