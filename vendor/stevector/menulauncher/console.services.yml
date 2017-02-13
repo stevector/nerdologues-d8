@@ -1,0 +1,5 @@
+services:
+  console.menulauncher:
+    class:   \Drupal\Console\stevector\Command\MenuLauncherItemCommand
+    tags:
+      - { name: drupal.command }

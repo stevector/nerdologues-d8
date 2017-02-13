@@ -9160,5 +9160,120 @@
             "drupal",
             "symfony"
         ]
+    },
+    {
+        "name": "drupal/console-extend-plugin",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hechoendrupal/drupal-console-extend-plugin.git",
+            "reference": "fe98b54194e5f8b4953b599aa69f2ca8d921013f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hechoendrupal/drupal-console-extend-plugin/zipball/fe98b54194e5f8b4953b599aa69f2ca8d921013f",
+            "reference": "fe98b54194e5f8b4953b599aa69f2ca8d921013f",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "^1.0",
+            "symfony/finder": ">=2.7 <3.0",
+            "symfony/yaml": ">=2.7 <3.0"
+        },
+        "time": "2017-02-09 17:17:38",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Drupal\\Console\\Composer\\Plugin\\Extender"
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Drupal\\Console\\Composer\\Plugin\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jesus Manuel Olivas",
+                "email": "jesus.olivas@gmail.com"
+            }
+        ],
+        "description": "Drupal Console Extend Plugin"
+    },
+    {
+        "name": "stevector/menulauncher",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/stevector/menulauncher.git",
+            "reference": "699a6695ebf1e2c2e938c2a2b181fe0ea364df07"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/stevector/menulauncher/zipball/699a6695ebf1e2c2e938c2a2b181fe0ea364df07",
+            "reference": "699a6695ebf1e2c2e938c2a2b181fe0ea364df07",
+            "shasum": ""
+        },
+        "require": {
+            "drupal/console-extend-plugin": "dev-master"
+        },
+        "time": "2017-02-13 04:33:08",
+        "type": "drupal-console-library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Drupal\\Console\\stevector\\": "src"
+            }
+        },
+        "support": {
+            "source": "https://github.com/stevector/menulauncher/tree/master",
+            "issues": "https://github.com/stevector/menulauncher/issues"
+        }
+    },
+    {
+        "name": "drupal/console-extend-example",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hechoendrupal/drupal-console-extend-example.git",
+            "reference": "33c489a935231ebc7c3bb9fb0365189cb3e2aedf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hechoendrupal/drupal-console-extend-example/zipball/33c489a935231ebc7c3bb9fb0365189cb3e2aedf",
+            "reference": "33c489a935231ebc7c3bb9fb0365189cb3e2aedf",
+            "shasum": ""
+        },
+        "require-dev": {
+            "drupal/console-core": "~1.0"
+        },
+        "time": "2017-02-08 18:50:43",
+        "type": "drupal-console-library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Drupal\\Console\\ExtendExample\\": "src"
+            }
+        },
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jesus Manuel Olivas",
+                "email": "jesus.olivas@gmail.com"
+            }
+        ],
+        "description": "Drupal Console library extend example",
+        "support": {
+            "source": "https://github.com/hechoendrupal/drupal-console-extend-example/tree/0.1.0",
+            "issues": "https://github.com/hechoendrupal/drupal-console-extend-example/issues"
+        }
     }
 ]

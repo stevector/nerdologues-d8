@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4256bf29b7329810be32b54ced22de6",
-    "content-hash": "abfa7afc00f888ccd922c7719dc8c9ab",
+    "hash": "a764e6a44ba6b16a7dcc548ee29ea24a",
+    "content-hash": "f3c6392c9adaf7452fd1064ff8191334",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1518,6 +1518,86 @@
                 "symfony"
             ],
             "time": "2016-12-22 23:08:32"
+        },
+        {
+            "name": "drupal/console-extend-example",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hechoendrupal/drupal-console-extend-example.git",
+                "reference": "33c489a935231ebc7c3bb9fb0365189cb3e2aedf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hechoendrupal/drupal-console-extend-example/zipball/33c489a935231ebc7c3bb9fb0365189cb3e2aedf",
+                "reference": "33c489a935231ebc7c3bb9fb0365189cb3e2aedf",
+                "shasum": ""
+            },
+            "require-dev": {
+                "drupal/console-core": "~1.0"
+            },
+            "type": "drupal-console-library",
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\Console\\ExtendExample\\": "src"
+                }
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jesus Manuel Olivas",
+                    "email": "jesus.olivas@gmail.com"
+                }
+            ],
+            "description": "Drupal Console library extend example",
+            "support": {
+                "source": "https://github.com/hechoendrupal/drupal-console-extend-example/tree/0.1.0",
+                "issues": "https://github.com/hechoendrupal/drupal-console-extend-example/issues"
+            },
+            "time": "2017-02-08 18:50:43"
+        },
+        {
+            "name": "drupal/console-extend-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hechoendrupal/drupal-console-extend-plugin.git",
+                "reference": "fe98b54194e5f8b4953b599aa69f2ca8d921013f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hechoendrupal/drupal-console-extend-plugin/zipball/fe98b54194e5f8b4953b599aa69f2ca8d921013f",
+                "reference": "fe98b54194e5f8b4953b599aa69f2ca8d921013f",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "symfony/finder": ">=2.7 <3.0",
+                "symfony/yaml": ">=2.7 <3.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Drupal\\Console\\Composer\\Plugin\\Extender"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\Console\\Composer\\Plugin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jesus Manuel Olivas",
+                    "email": "jesus.olivas@gmail.com"
+                }
+            ],
+            "description": "Drupal Console Extend Plugin",
+            "time": "2017-02-09 17:17:38"
         },
         {
             "name": "drupal/core",
@@ -4232,6 +4312,35 @@
             ],
             "description": "Automatic BASH completion for Symfony Console Component based applications.",
             "time": "2016-02-24 05:08:54"
+        },
+        {
+            "name": "stevector/menulauncher",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stevector/menulauncher.git",
+                "reference": "699a6695ebf1e2c2e938c2a2b181fe0ea364df07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stevector/menulauncher/zipball/699a6695ebf1e2c2e938c2a2b181fe0ea364df07",
+                "reference": "699a6695ebf1e2c2e938c2a2b181fe0ea364df07",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/console-extend-plugin": "dev-master"
+            },
+            "type": "drupal-console-library",
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\Console\\stevector\\": "src"
+                }
+            },
+            "support": {
+                "source": "https://github.com/stevector/menulauncher/tree/master",
+                "issues": "https://github.com/stevector/menulauncher/issues"
+            },
+            "time": "2017-02-13 04:33:08"
         },
         {
             "name": "symfony-cmf/routing",
@@ -8896,6 +9005,7 @@
         "drupal/media_entity_audio": 20,
         "drupal/field_group": 20,
         "drupal/panelizer": 20,
+        "stevector/menulauncher": 20,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20

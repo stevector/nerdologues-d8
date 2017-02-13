@@ -9,12 +9,20 @@
             "role": ""
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "0": {
             "type": "composer",
-             "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8"
+        },
+        "menulauncher": {
+            "type": "vcs",
+            "url": "git@github.com:stevector/menulauncher.git"
+        },
+        "consoleexample": {
+            "type": "vcs",
+            "url": "git@github.com:hechoendrupal/drupal-console-extend-example.git"
         }
-    ],
+    },
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
@@ -41,7 +49,9 @@
         "drupal/rabbit_hole": "^1.0",
         "drupal/media_entity_audio": "1.x-dev",
         "drupal/field_group": "1.x-dev",
-        "drupal/panelizer": "3.x-dev"
+        "drupal/panelizer": "3.x-dev",
+        "stevector/menulauncher": "dev-master",
+        "drupal/console-extend-example": "^0.1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -51,18 +61,12 @@
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-
         "drush-ops/behat-drush-endpoint": "*",
         "drupal/drupal-extension": "dev-master",
         "drupal/drupal-driver": "dev-master",
-
-
         "drupal/coder": "^8.2.0-beta1",
         "squizlabs/php_codesniffer": "2.0.*@dev",
         "knplabs/friendly-contexts": "^0.7.0"
-
-
-
     },
     "replace": {
         "drupal/drupal": "*"
@@ -114,12 +118,24 @@
     },
     "extra": {
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
         },
         "patches": {
             "drupal/rabbit_hole": {
@@ -127,7 +143,6 @@
             }
         }
     },
-
     "drupal-scaffold": {
         "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
         "includes": [
