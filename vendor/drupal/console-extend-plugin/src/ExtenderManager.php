@@ -45,8 +45,6 @@ class ExtenderManager
             return false;
         }
 
-      print_r($composerContent);
-
         return $composerContent['type'] === 'drupal-console-library';
     }
 
@@ -116,29 +114,6 @@ class ExtenderManager
             ->contains('drupal-console-library')
             ->in($directory);
 
-
-      print_r("
-
-
-
-
-
-
-
-
-
-
-
-
-
-      $directory
-
-
-
-
-
-      ");
-
         foreach ($finder as $file) {
             $this->processComposerFile($file->getPathName());
         }
@@ -149,9 +124,6 @@ class ExtenderManager
      */
     private function processComposerFile($composerFile)
     {
-
-
-
         $packageDirectory = dirname($composerFile);
 
         $configFile = $packageDirectory.'/console.config.yml';

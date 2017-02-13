@@ -14,11 +14,11 @@ use Symfony\Component\Console\Command\Command;
 use Drupal\Console\Generator\PluginCKEditorButtonGenerator;
 use Drupal\Console\Command\Shared\ModuleTrait;
 use Drupal\Console\Command\Shared\ConfirmationTrait;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Style\DrupalStyle;
-use Drupal\Console\Utils\ChainQueue;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
+use Drupal\Console\Core\Utils\ChainQueue;
 use Drupal\Console\Extension\Manager;
-use Drupal\Console\Utils\StringConverter;
+use Drupal\Console\Core\Utils\StringConverter;
 
 class PluginCKEditorButtonCommand extends Command
 {
@@ -34,12 +34,12 @@ class PluginCKEditorButtonCommand extends Command
 
 
     /**
- * @var PluginCKEditorButtonGenerator  
+ * @var PluginCKEditorButtonGenerator
 */
     protected $generator;
 
     /**
- * @var Manager  
+ * @var Manager
 */
     protected $extensionManager;
 
@@ -51,6 +51,7 @@ class PluginCKEditorButtonCommand extends Command
 
     /**
      * PluginCKEditorButtonCommand constructor.
+     *
      * @param ChainQueue                    $chainQueue
      * @param PluginCKEditorButtonGenerator $generator
      * @param Manager                       $extensionManager

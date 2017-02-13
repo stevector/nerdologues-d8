@@ -15,11 +15,11 @@ use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Filesystem\Filesystem;
 use Novia713\Maginot\Maginot;
-use Drupal\Console\Command\Shared\ContainerAwareCommandTrait;
-use Drupal\Console\Style\DrupalStyle;
-use Drupal\Console\Utils\ConfigurationManager;
+use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
+use Drupal\Console\Core\Utils\ConfigurationManager;
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Console\Utils\ChainQueue;
+use Drupal\Console\Core\Utils\ChainQueue;
 
 class ModeCommand extends Command
 {
@@ -116,7 +116,7 @@ class ModeCommand extends Command
         $this->local = $input->getOption('local');
 
         $loadedConfigurations = [];
-        if (in_array($this->environment, array('dev', 'prod'))) {
+        if (in_array($this->environment, ['dev', 'prod'])) {
             $loadedConfigurations = $this->loadConfigurations($this->environment);
         } else {
             $io->error($this->trans('commands.site.mode.messages.invalid-env'));

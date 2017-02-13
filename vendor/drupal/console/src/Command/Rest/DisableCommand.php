@@ -11,9 +11,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Drupal\Console\Annotations\DrupalCommand;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Command\Shared\RestTrait;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\rest\Plugin\Type\ResourcePluginManager;
@@ -30,17 +30,18 @@ class DisableCommand extends Command
     use RestTrait;
 
     /**
-     * @var ConfigFactory  
+     * @var ConfigFactory
      */
     protected $configFactory;
 
     /**
-     * @var ResourcePluginManager  
+     * @var ResourcePluginManager
      */
     protected $pluginManagerRest;
 
     /**
      * DisableCommand constructor.
+     *
      * @param ConfigFactory         $configFactory
      * @param ResourcePluginManager $pluginManagerRest
      */

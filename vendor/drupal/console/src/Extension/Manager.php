@@ -6,6 +6,7 @@ use Drupal\Console\Utils\Site;
 
 /**
  * Class ExtensionManager
+ *
  * @package Drupal\Console
  */
 class Manager
@@ -36,6 +37,7 @@ class Manager
 
     /**
      * ExtensionManager constructor.
+     *
      * @param Site   $site
      * @param string $appRoot
      */
@@ -211,6 +213,11 @@ class Manager
             system_rebuild_module_data();
         }
 
+        if ($type === 'theme') {
+            $themeHandler = \Drupal::service('theme_handler');
+            $themeHandler->rebuildThemeData();
+        }
+
         /*
          * @see Remove DrupalExtensionDiscovery subclass once
          * https://www.drupal.org/node/2503927 is fixed.
@@ -228,6 +235,19 @@ class Manager
     public function getModule($name)
     {
         if ($extension = $this->getExtension('module', $name)) {
+            return $this->createExtension($extension);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $name
+     * @return \Drupal\Console\Extension\Extension
+     */
+    public function getProfile($name)
+    {
+        if ($extension = $this->getExtension('profile', $name)) {
             return $this->createExtension($extension);
         }
 
@@ -320,5 +340,11 @@ class Manager
         $module = $this->getModule($moduleName);
 
         return $module->getPath() . '/src/Plugin/'.$pluginType;
+    }
+
+    public function getDrupalExtension($type, $name)
+    {
+        $extension = $this->getExtension($type, $name);
+        return $this->createExtension($extension);
     }
 }

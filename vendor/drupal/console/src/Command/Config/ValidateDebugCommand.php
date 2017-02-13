@@ -12,8 +12,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
-use Drupal\Console\Command\Shared\ContainerAwareCommandTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\Serialization\Yaml;
@@ -96,7 +96,7 @@ class ValidateDebugCommand extends Command
     {
         $data_definition = $typed_config->buildDataDefinition($config_schema, $config_data);
         $this->schema = $typed_config->create($data_definition, $config_data);
-        $errors = array();
+        $errors = [];
         foreach ($config_data as $key => $value) {
             $errors = array_merge($errors, $this->checkValue($key, $value));
         }

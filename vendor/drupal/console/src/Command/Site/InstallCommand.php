@@ -17,11 +17,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Installer\Exception\AlreadyInstalledException;
-use Drupal\Console\Command\Shared\ContainerAwareCommandTrait;
+use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
 use Drupal\Console\Command\Shared\DatabaseTrait;
-use Drupal\Console\Utils\ConfigurationManager;
+use Drupal\Console\Core\Utils\ConfigurationManager;
 use Drupal\Console\Extension\Manager;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Bootstrap\Drupal;
 use Drupal\Console\Utils\Site;
 use DrupalFinder\DrupalFinder;
@@ -53,6 +53,7 @@ class InstallCommand extends Command
 
     /**
      * InstallCommand constructor.
+     *
      * @param Manager              $extensionManager
      * @param Site                 $site
      * @param ConfigurationManager $configurationManager
@@ -371,7 +372,7 @@ class InstallCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new DrupalStyle($input, $output);
-        $uri =  parse_url($input->getParameterOption(['--uri', '-l']) ?: 'default', PHP_URL_HOST);
+        $uri =  parse_url($input->getParameterOption(['--uri', '-l'], 'default'), PHP_URL_HOST);
 
         if ($this->site->multisiteMode($uri)) {
             if (!$this->site->validMultisite($uri)) {
@@ -381,7 +382,8 @@ class InstallCommand extends Command
                 exit(1);
             }
 
-            // Modify $_SERVER environment information to enable the Drupal installer use multisite configuration.
+            // Modify $_SERVER environment information to enable
+            // the Drupal installer to use the multi-site configuration.
             $_SERVER['HTTP_HOST'] = $uri;
         }
 

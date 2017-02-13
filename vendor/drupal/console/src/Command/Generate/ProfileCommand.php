@@ -13,16 +13,17 @@ use Drupal\Console\Generator\ProfileGenerator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Drupal\Console\Style\DrupalStyle;
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Drupal\Console\Extension\Manager;
-use Drupal\Console\Utils\StringConverter;
+use Drupal\Console\Core\Utils\StringConverter;
 use Drupal\Console\Utils\Validator;
 use Drupal\Console\Utils\Site;
 use GuzzleHttp\Client;
 
 /**
  * Class ProfileCommand
+ *
  * @package Drupal\Console\Command\Generate
  */
 
@@ -32,12 +33,12 @@ class ProfileCommand extends Command
     use CommandTrait;
 
     /**
- * @var Manager  
+ * @var Manager
 */
     protected $extensionManager;
 
     /**
- * @var ProfileGenerator  
+ * @var ProfileGenerator
 */
     protected $generator;
 
@@ -47,7 +48,7 @@ class ProfileCommand extends Command
     protected $stringConverter;
 
     /**
- * @var Validator  
+ * @var Validator
 */
     protected $validator;
 
@@ -63,11 +64,12 @@ class ProfileCommand extends Command
 
     /**
      * ProfileCommand constructor.
+     *
      * @param Manager          $extensionManager
      * @param ProfileGenerator $generator
      * @param StringConverter  $stringConverter
      * @param Validator        $validator
-     * @param                  $appRoot
+     * @param $appRoot
      * @param Site             $site
      * @param Client           $httpClient
      */
@@ -188,18 +190,18 @@ class ProfileCommand extends Command
     private function checkDependencies(array $dependencies)
     {
         $this->site->loadLegacyFile('/core/modules/system/system.module');
-        $local_modules = array();
+        $local_modules = [];
 
         $modules = system_rebuild_module_data();
         foreach ($modules as $module_id => $module) {
             array_push($local_modules, basename($module->subpath));
         }
 
-        $checked_dependencies = array(
-            'local_modules' => array(),
-            'drupal_modules' => array(),
-            'no_modules' => array(),
-        );
+        $checked_dependencies = [
+            'local_modules' => [],
+            'drupal_modules' => [],
+            'no_modules' => [],
+        ];
 
         foreach ($dependencies as $module) {
             if (in_array($module, $local_modules)) {
@@ -291,7 +293,8 @@ class ProfileCommand extends Command
             if ($io->confirm(
                 $this->trans('commands.generate.profile.questions.dependencies'),
                 true
-            )) {
+            )
+            ) {
                 $dependencies = $io->ask(
                     $this->trans('commands.generate.profile.options.dependencies'),
                     ''
@@ -305,7 +308,8 @@ class ProfileCommand extends Command
             if ($io->confirm(
                 $this->trans('commands.generate.profile.questions.distribution'),
                 false
-            )) {
+            )
+            ) {
                 $distribution = $io->ask(
                     $this->trans('commands.generate.profile.options.distribution'),
                     'My Kick-ass Distribution'

@@ -7,6 +7,7 @@
 
 namespace Drupal\Console\Generator;
 
+use Drupal\Console\Core\Generator\Generator;
 use Drupal\Console\Extension\Manager;
 
 class PluginBlockGenerator extends Generator
@@ -18,6 +19,7 @@ class PluginBlockGenerator extends Generator
 
     /**
      * PermissionGenerator constructor.
+     *
      * @param Manager $extensionManager
      */
     public function __construct(

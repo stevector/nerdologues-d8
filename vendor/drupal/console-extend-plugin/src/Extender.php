@@ -39,20 +39,6 @@ class Extender implements PluginInterface, EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-
-      print_r('
-
-
-
-
-
-
-
-      events!
-
-
-      ');
-
         return array(
             PackageEvents::POST_PACKAGE_INSTALL => "processPackages",
             PackageEvents::POST_PACKAGE_UPDATE => "processPackages",
@@ -66,14 +52,6 @@ class Extender implements PluginInterface, EventSubscriberInterface
      */
     public function processPackages(PackageEvent $event)
     {
-
-      print_r("
-
-
-      process the packages!!
-
-      ");
-
         $extenderManager = new ExtenderManager();
         $directory = realpath(__DIR__.'/../../../../');
         $extenderManager->processProjectPackages($directory);

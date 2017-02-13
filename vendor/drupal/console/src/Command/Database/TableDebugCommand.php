@@ -14,12 +14,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use RedBeanPHP\R;
 use Drupal\Core\Database\Connection;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Command\Shared\ConnectTrait;
 
 /**
  * Class TableDebugCommand
+ *
  * @package Drupal\Console\Command\Database
  */
 class TableDebugCommand extends Command
@@ -39,6 +40,7 @@ class TableDebugCommand extends Command
 
     /**
      * TableDebugCommand constructor.
+     *
      * @param R          $redBean
      * @param Connection $database
      */

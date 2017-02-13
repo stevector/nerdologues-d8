@@ -1,11 +1,20 @@
 <?php
 
-namespace Drupal\Console\Bootstrap;
+/**
+ * @file
+ * Contains \Drupal\Console\Core\Bootstrap.
+ */
+
+namespace Drupal\Console\Core\Bootstrap;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
+/**
+ * Class DrupalConsoleCore
+ * @package Drupal\Console\Core\Bootstrap
+ */
 class DrupalConsoleCore
 {
     /**
@@ -17,6 +26,7 @@ class DrupalConsoleCore
      * @var string
      */
     protected $appRoot;
+
     /**
      * DrupalConsole constructor.
      * @param $root
@@ -28,6 +38,9 @@ class DrupalConsoleCore
         $this->appRoot = $appRoot;
     }
 
+    /**
+     * @return ContainerBuilder
+     */
     public function boot()
     {
         $container = new ContainerBuilder();
@@ -63,6 +76,17 @@ class DrupalConsoleCore
             'console.root',
             $consoleRoot
         );
+
+        $configurationManager = $container->get('console.configuration_manager');
+        $directory = $configurationManager->getConsoleDirectory() . 'extend/';
+        $autoloadFile = $directory . 'vendor/autoload.php';
+        if (is_file($autoloadFile)) {
+            include_once $autoloadFile;
+            $extendServicesFile = $directory . 'extend.console.services.yml';
+            if (is_file($extendServicesFile)) {
+                $loader->load($extendServicesFile);
+            }
+        }
 
         $container->get('console.renderer')
             ->setSkeletonDirs(

@@ -5,7 +5,7 @@ namespace Drupal\Console\stevector\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as BaseCommand;
-use Drupal\Console\Command\Shared\ContainerAwareCommandTrait;
+use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
 use Drupal\Console\Style\DrupalStyle;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -60,7 +60,7 @@ class MenuLauncherItemCommand extends BaseCommand {
     switch($action) {
       case 'edit':
         $io->info('You want to edit');
-       exec('open ' . $this->getDrupalService('url_generator')->generateFromRoute('menu_ui.link_edit', ['menu_link_plugin' => $menuItem], ['absolute' => TRUE]));
+        exec('open ' . $this->getDrupalService('url_generator')->generateFromRoute('menu_ui.link_edit', ['menu_link_plugin' => $menuItem], ['absolute' => TRUE]));
 //        menu_ui.link_edit
         break;
 
@@ -83,12 +83,12 @@ class MenuLauncherItemCommand extends BaseCommand {
 
 
   protected function getActions($menuItem) {
-      return [
-        'parent' => '--See Parent',
-        'edit' => '--Edit Menu Item in browser',
-        'open' => '--Open Menu Item in browser',
+    return [
+      'parent' => '--See Parent',
+      'edit' => '--Edit Menu Item in browser',
+      'open' => '--Open Menu Item in browser',
 
-      ] + $this->getChildMenuItemOptions($menuItem);
+    ] + $this->getChildMenuItemOptions($menuItem);
   }
 
 
@@ -132,7 +132,7 @@ class MenuLauncherItemCommand extends BaseCommand {
   }
 
   function getParent($menuItem) {
-      return  $this->getMenuLink($menuItem)->getParent();
+    return  $this->getMenuLink($menuItem)->getParent();
   }
 
   function getMenuLink($menuItem) {
@@ -142,21 +142,21 @@ class MenuLauncherItemCommand extends BaseCommand {
   function getChildMenuItemOptions($menuItem) {
     $options = [];
     $menuLinkTree = $this->getDrupalService('menu.link_tree');
-      $element = $this->getMenuLinkTreeElement($menuItem);
+    $element = $this->getMenuLinkTreeElement($menuItem);
 
-      if ($element->subtree) {
-        $subtree = $menuLinkTree->build($element->subtree);
+    if ($element->subtree) {
+      $subtree = $menuLinkTree->build($element->subtree);
 
-        foreach ($subtree['#items'] as $key => $item) {
-          if (method_exists($item['url'], 'toString')) {
-            // @todo Does the title need to be escaped?
-            $options[$key] = /*$item['url']->toString() . '    ' . */$item['title'];
-          }
+      foreach ($subtree['#items'] as $key => $item) {
+        if (method_exists($item['url'], 'toString')) {
+          // @todo Does the title need to be escaped?
+          $options[$key] = /*$item['url']->toString() . '    ' . */$item['title'];
         }
-
-      } else {
-//        $output = '';
       }
+
+    } else {
+//        $output = '';
+    }
 
     return $options;
 

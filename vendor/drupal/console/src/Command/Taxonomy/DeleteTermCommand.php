@@ -9,8 +9,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
 
 /**
  * Class DeleteTermCommand.
@@ -30,6 +30,7 @@ class DeleteTermCommand extends Command
 
     /**
      * InfoCommand constructor.
+     *
      * @param EntityTypeManagerInterface $entityTypeManager
      */
     public function __construct(EntityTypeManagerInterface $entityTypeManager)
@@ -64,6 +65,7 @@ class DeleteTermCommand extends Command
 
     /**
    * Destroy all existing terms before import
+     *
    * @param $vid
    * @param $io
    */

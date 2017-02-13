@@ -7,6 +7,7 @@
 
 namespace Drupal\Console\Generator;
 
+use Drupal\Console\Core\Generator\Generator;
 use Drupal\Console\Extension\Manager;
 
 /**
@@ -15,12 +16,13 @@ use Drupal\Console\Extension\Manager;
 class ThemeGenerator extends Generator
 {
     /**
-     * @var Manager  
+     * @var Manager
      */
     protected $extensionManager;
 
     /**
      * AuthenticationProviderGenerator constructor.
+     *
      * @param Manager $extensionManager
      */
     public function __construct(
@@ -52,7 +54,7 @@ class ThemeGenerator extends Generator
                 );
             }
             $files = scandir($dir);
-            if ($files != array('.', '..')) {
+            if ($files != ['.', '..']) {
                 throw new \RuntimeException(
                     sprintf(
                         'Unable to generate the bundle as the target directory "%s" is not empty.',
@@ -70,7 +72,7 @@ class ThemeGenerator extends Generator
             }
         }
 
-        $parameters = array(
+        $parameters = [
         'theme' => $theme,
         'machine_name' => $machine_name,
         'type' => 'theme',
@@ -81,7 +83,7 @@ class ThemeGenerator extends Generator
         'global_library' => $global_library,
         'regions' => $regions,
         'breakpoints' => $breakpoints,
-        );
+        ];
 
         $this->renderFile(
             'theme/info.yml.twig',

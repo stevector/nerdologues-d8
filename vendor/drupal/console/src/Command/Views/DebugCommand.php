@@ -13,12 +13,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Drupal\views\Entity\View;
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 
 /**
  * Class DebugCommand
+ *
  * @package Drupal\Console\Command\Views
  */
 class DebugCommand extends Command
@@ -32,6 +33,7 @@ class DebugCommand extends Command
 
     /**
      * DebugCommand constructor.
+     *
      * @param EntityTypeManagerInterface $entityTypeManager
      */
     public function __construct(EntityTypeManagerInterface $entityTypeManager)
@@ -93,7 +95,7 @@ class DebugCommand extends Command
 
 
     /**
-     * @param \Drupal\Console\Style\DrupalStyle $io
+     * @param \Drupal\Console\Core\Style\DrupalStyle $io
      * @param $view_id
      * @return bool
      */
@@ -107,7 +109,7 @@ class DebugCommand extends Command
             return false;
         }
 
-        $configuration = array();
+        $configuration = [];
         $configuration [] = [$this->trans('commands.views.debug.messages.view-id'), $view->get('id')];
         $configuration [] = [$this->trans('commands.views.debug.messages.view-name'), (string) $view->get('label')];
         $configuration [] = [$this->trans('commands.views.debug.messages.tag'), $view->get('tag')];
@@ -142,7 +144,7 @@ class DebugCommand extends Command
     }
 
     /**
-     * @param \Drupal\Console\Style\DrupalStyle $io
+     * @param \Drupal\Console\Core\Style\DrupalStyle $io
      * @param $tag
      * @param $status
      */
@@ -186,7 +188,7 @@ class DebugCommand extends Command
      */
     protected function viewDisplayPaths(View $view, $display_id = null)
     {
-        $all_paths = array();
+        $all_paths = [];
         $executable = $view->getExecutable();
         $executable->initDisplay();
         foreach ($executable->displayHandlers as $display) {
@@ -216,7 +218,7 @@ class DebugCommand extends Command
     protected function viewDisplayList(View $view)
     {
         $displayManager = $this->getViewDisplayManager();
-        $displays = array();
+        $displays = [];
         foreach ($view->get('display') as $display) {
             $definition = $displayManager->getDefinition($display['display_plugin']);
             if (!empty($definition['admin'])) {

@@ -53,22 +53,13 @@ class DirectoryResourceTest extends \PHPUnit_Framework_TestCase
     public function testGetResource()
     {
         $resource = new DirectoryResource($this->directory);
-        $this->assertSame(realpath($this->directory), $resource->getResource(), '->getResource() returns the path to the resource');
+        $this->assertSame($this->directory, $resource->getResource(), '->getResource() returns the path to the resource');
     }
 
     public function testGetPattern()
     {
-        $resource = new DirectoryResource($this->directory, 'bar');
+        $resource = new DirectoryResource('foo', 'bar');
         $this->assertEquals('bar', $resource->getPattern());
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /The directory ".*" does not exist./
-     */
-    public function testResourceDoesNotExist()
-    {
-        $resource = new DirectoryResource('/____foo/foobar'.mt_rand(1, 999999));
     }
 
     public function testIsFresh()
@@ -76,13 +67,8 @@ class DirectoryResourceTest extends \PHPUnit_Framework_TestCase
         $resource = new DirectoryResource($this->directory);
         $this->assertTrue($resource->isFresh(time() + 10), '->isFresh() returns true if the resource has not changed');
         $this->assertFalse($resource->isFresh(time() - 86400), '->isFresh() returns false if the resource has been updated');
-    }
 
-    public function testIsFreshForDeletedResources()
-    {
-        $resource = new DirectoryResource($this->directory);
-        $this->removeDirectory($this->directory);
-
+        $resource = new DirectoryResource('/____foo/foobar'.mt_rand(1, 999999));
         $this->assertFalse($resource->isFresh(time()), '->isFresh() returns false if the resource does not exist');
     }
 
@@ -166,7 +152,7 @@ class DirectoryResourceTest extends \PHPUnit_Framework_TestCase
 
         $unserialized = unserialize(serialize($resource));
 
-        $this->assertSame(realpath($this->directory), $resource->getResource());
+        $this->assertSame($this->directory, $resource->getResource());
         $this->assertSame('/\.(foo|xml)$/', $resource->getPattern());
     }
 

@@ -17,15 +17,15 @@ use Drupal\Console\Command\Shared\MenuTrait;
 use Drupal\Console\Command\Shared\FormTrait;
 use Drupal\Console\Command\Shared\ConfirmationTrait;
 use Symfony\Component\Console\Command\Command;
-use Drupal\Console\Style\DrupalStyle;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Utils\StringConverter;
+use Drupal\Console\Core\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Utils\StringConverter;
 use Drupal\Console\Extension\Manager;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Render\ElementInfoManager;
 use Drupal\Console\Utils\Validator;
 use Drupal\Core\Routing\RouteProviderInterface;
-use Drupal\Console\Utils\ChainQueue;
+use Drupal\Console\Core\Utils\ChainQueue;
 use Drupal\webprofiler\Profiler\Profiler;
 
 class FormAlterCommand extends Command
@@ -38,12 +38,12 @@ class FormAlterCommand extends Command
     use CommandTrait;
 
     /**
- * @var Manager  
+ * @var Manager
 */
     protected $extensionManager;
 
     /**
- * @var FormAlterGenerator  
+ * @var FormAlterGenerator
 */
     protected $generator;
 
@@ -63,12 +63,12 @@ class FormAlterCommand extends Command
     protected $elementInfoManager;
 
     /**
- * @var Validator  
+ * @var Validator
 */
     protected $validator;
 
     /**
- * @var RouteProviderInterface  
+ * @var RouteProviderInterface
 */
     protected $routeProvider;
 
@@ -90,13 +90,14 @@ class FormAlterCommand extends Command
 
     /**
      * FormAlterCommand constructor.
+     *
      * @param Manager                $extensionManager
      * @param FormAlterGenerator     $generator
      * @param StringConverter        $stringConverter
      * @param ModuleHandlerInterface $moduleHandler
      * @param ElementInfoManager     $elementInfoManager
      * @param Profiler               $profiler
-     * @param                        $appRoot
+     * @param $appRoot
      * @param ChainQueue             $chainQueue
      */
     public function __construct(
@@ -256,7 +257,7 @@ class FormAlterCommand extends Command
                 true
             );
 
-            $this->metadata['unset'] = array_filter(array_map('trim',  $formItemsToHide));
+            $this->metadata['unset'] = array_filter(array_map('trim', $formItemsToHide));
         }
 
         $input->setOption('form-id', $formId);
@@ -303,7 +304,7 @@ class FormAlterCommand extends Command
     public function getWebprofilerForms()
     {
         $tokens = $this->profiler->find(null, null, 1000, null, '', '');
-        $forms = array();
+        $forms = [];
         foreach ($tokens as $token) {
             $token = [$token['token']];
             $profile = $this->profiler->loadProfile($token);

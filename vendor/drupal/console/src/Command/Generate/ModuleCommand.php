@@ -14,10 +14,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Drupal\Console\Generator\ModuleGenerator;
 use Drupal\Console\Command\Shared\ConfirmationTrait;
 use Symfony\Component\Console\Command\Command;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Utils\Validator;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Utils\StringConverter;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Utils\StringConverter;
 use Drupal\Console\Utils\DrupalApi;
 use GuzzleHttp\Client;
 use Drupal\Console\Utils\Site;
@@ -29,12 +29,12 @@ class ModuleCommand extends Command
     use CommandTrait;
 
     /**
- * @var ModuleGenerator  
+ * @var ModuleGenerator
 */
     protected $generator;
 
     /**
- * @var Validator  
+ * @var Validator
 */
     protected $validator;
 
@@ -71,14 +71,15 @@ class ModuleCommand extends Command
 
     /**
      * ModuleCommand constructor.
+     *
      * @param ModuleGenerator $generator
      * @param Validator       $validator
-     * @param                 $appRoot
+     * @param $appRoot
      * @param StringConverter $stringConverter
      * @param DrupalApi       $drupalApi
      * @param Client          $httpClient
      * @param Site            $site
-     * @param               $twigtemplate
+     * @param $twigtemplate
      */
     public function __construct(
         ModuleGenerator $generator,
@@ -88,7 +89,7 @@ class ModuleCommand extends Command
         DrupalApi $drupalApi,
         Client $httpClient,
         Site $site,
-        $twigtemplate
+        $twigtemplate = null
     ) {
         $this->generator = $generator;
         $this->validator = $validator;
@@ -251,7 +252,7 @@ class ModuleCommand extends Command
     private function checkDependencies(array $dependencies, DrupalStyle $io)
     {
         $this->site->loadLegacyFile('/core/modules/system/system.module');
-        $localModules = array();
+        $localModules = [];
 
         $modules = system_rebuild_module_data();
         foreach ($modules as $module_id => $module) {

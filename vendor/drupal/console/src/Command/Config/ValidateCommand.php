@@ -10,8 +10,8 @@ namespace Drupal\Console\Command\Config;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
-use Drupal\Console\Command\Shared\ContainerAwareCommandTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\ContainerAwareCommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Core\Config\TypedConfigManagerInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Drupal\Core\Config\Schema\SchemaCheckTrait;
@@ -27,12 +27,6 @@ class ValidateCommand extends Command
     use SchemaCheckTrait;
     use PrintConfigValidationTrait;
 
-    public function __construct($name)
-    {
-        parent::__construct($name);
-    }
-
-
     /**
    * {@inheritdoc}
    */
@@ -40,7 +34,7 @@ class ValidateCommand extends Command
     {
         $this
             ->setName('config:validate')
-            ->setDescription($this->trans('commands.config.default.description'))
+            ->setDescription($this->trans('commands.config.validate.description'))
             ->addArgument('config.name', InputArgument::REQUIRED);
     }
 
@@ -51,8 +45,8 @@ class ValidateCommand extends Command
     {
 
         /**
- * @var TypedConfigManagerInterface $typedConfigManager 
-*/
+         * @var TypedConfigManagerInterface $typedConfigManager
+         */
         $typedConfigManager = $this->get('config.typed');
 
         $io = new DrupalStyle($input, $output);
@@ -60,7 +54,7 @@ class ValidateCommand extends Command
         //Test the config name and see if a schema exists, if not it will fail
         $name = $input->getArgument('config.name');
         if (!$typedConfigManager->hasConfigSchema($name)) {
-            $io->warning($this->trans('commands.config.default.messages.noconf'));
+            $io->warning($this->trans('commands.config.validate.messages.no-conf'));
             return 1;
         }
 

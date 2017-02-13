@@ -6,14 +6,16 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Console\Annotations\DrupalCommandAnnotationReader;
 use Drupal\Console\Utils\AnnotationValidator;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Application as BaseApplication;
 
 /**
  * Class Application
+ *
  * @package Drupal\Console
  */
-class Application extends ConsoleApplication
+class Application extends BaseApplication
 {
     /**
      * @var string
@@ -23,7 +25,7 @@ class Application extends ConsoleApplication
     /**
      * @var string
      */
-    const VERSION = '1.0.0-rc12';
+    const VERSION = '1.0.0-rc16';
 
     public function __construct(ContainerInterface $container)
     {
@@ -43,13 +45,9 @@ class Application extends ConsoleApplication
         if ($clear === true || $clear === 'true') {
             $output->write(sprintf("\033\143"));
         }
-        parent::doRun($input, $output);
-        if ($this->getCommandName($input) == 'list' && $this->container->hasParameter('console.warning')) {
-            $io = new DrupalStyle($input, $output);
-            $io->warning(
-                $this->trans($this->container->getParameter('console.warning'))
-            );
-        }
+
+        $exitCode = parent::doRun($input, $output);
+        return $exitCode;
     }
 
     private function registerGenerators()
@@ -69,7 +67,13 @@ class Application extends ConsoleApplication
                 continue;
             }
 
-            $generator = $this->container->get($name);
+            try {
+                $generator = $this->container->get($name);
+            } catch (\Exception $e) {
+                echo $name . ' - ' . $e->getMessage() . PHP_EOL;
+
+                continue;
+            }
 
             if (!$generator) {
                 continue;
@@ -107,9 +111,16 @@ class Application extends ConsoleApplication
 
         $serviceDefinitions = [];
         $annotationValidator = null;
+        $annotationCommandReader = null;
         if ($this->container->hasParameter('console.service_definitions')) {
             $serviceDefinitions = $this->container
                 ->getParameter('console.service_definitions');
+
+            /**
+             * @var DrupalCommandAnnotationReader $annotationCommandReader
+             */
+            $annotationCommandReader = $this->container
+                ->get('console.annotation_command_reader');
 
             /**
              * @var AnnotationValidator $annotationValidator
@@ -135,9 +146,19 @@ class Application extends ConsoleApplication
                 continue;
             }
 
-            if ($annotationValidator) {
+            if ($annotationValidator && $annotationCommandReader) {
                 if (!$serviceDefinition = $serviceDefinitions[$name]) {
                     continue;
+                }
+
+                $annotation = $annotationCommandReader
+                    ->readAnnotation($serviceDefinition->getClass());
+                if ($annotation) {
+                    $this->container->get('console.translator_manager')
+                        ->addResourceTranslationsByExtension(
+                            $annotation['extension'],
+                            $annotation['extensionType']
+                        );
                 }
 
                 if (!$annotationValidator->isValidCommand($serviceDefinition->getClass())) {
@@ -191,8 +212,10 @@ class Application extends ConsoleApplication
             'help',
             'init',
             'list',
+            'shell',
             'server'
         ];
+
         $languages = $this->container->get('console.configuration_manager')
             ->getConfiguration()
             ->get('application.languages');

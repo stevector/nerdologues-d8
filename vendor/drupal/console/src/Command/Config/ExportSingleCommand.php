@@ -15,8 +15,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Config\CachedStorage;
-use Drupal\Console\Style\DrupalStyle;
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Drupal\Console\Command\Shared\ExportTrait;
 
 class ExportSingleCommand extends Command
@@ -43,6 +43,7 @@ class ExportSingleCommand extends Command
 
     /**
      * ExportSingleCommand constructor.
+     *
      * @param EntityTypeManagerInterface $entityTypeManager
      * @param CachedStorage              $configStorage
      */
@@ -118,9 +119,9 @@ class ExportSingleCommand extends Command
         );
 
         uasort($entity_types, 'strnatcasecmp');
-        $config_types = array(
+        $config_types = [
             'system.simple' => $this->trans('commands.config.export.single.options.simple-configuration'),
-          ) + $entity_types;
+          ] + $entity_types;
 
         return $config_types;
     }

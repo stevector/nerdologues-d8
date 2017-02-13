@@ -13,8 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Core\Config\CachedStorage;
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Style\DrupalStyle;
 
 class OverrideCommand extends Command
 {
@@ -32,6 +32,7 @@ class OverrideCommand extends Command
 
     /**
      * OverrideCommand constructor.
+     *
      * @param CachedStorage $configStorage
      * @param ConfigFactory $configFactory
      */

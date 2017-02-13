@@ -7,21 +7,21 @@
 
 namespace Drupal\Console\Command\Module;
 
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Console\Command\Shared\ProjectDownloadTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Utils\DrupalApi;
 use GuzzleHttp\Client;
 use Drupal\Console\Extension\Manager;
 use Drupal\Console\Utils\Validator;
 use Drupal\Console\Utils\Site;
-use Drupal\Console\Utils\ConfigurationManager;
-use Drupal\Console\Utils\ShellProcess;
+use Drupal\Console\Core\Utils\ConfigurationManager;
+use Drupal\Console\Core\Utils\ShellProcess;
 
 class DownloadCommand extends Command
 {
@@ -29,12 +29,12 @@ class DownloadCommand extends Command
     use ProjectDownloadTrait;
 
     /**
- * @var DrupalApi  
+ * @var DrupalApi
 */
     protected $drupalApi;
 
     /**
- * @var Client  
+ * @var Client
 */
     protected $httpClient;
 
@@ -44,22 +44,22 @@ class DownloadCommand extends Command
     protected $appRoot;
 
     /**
- * @var Manager  
+ * @var Manager
 */
     protected $extensionManager;
 
     /**
- * @var Validator  
+ * @var Validator
 */
     protected $validator;
 
     /**
- * @var ConfigurationManager  
+ * @var ConfigurationManager
 */
     protected $configurationManager;
 
     /**
- * @var ShellProcess  
+ * @var ShellProcess
 */
     protected $shellProcess;
 
@@ -70,6 +70,7 @@ class DownloadCommand extends Command
 
     /**
      * DownloadCommand constructor.
+     *
      * @param DrupalApi            $drupalApi
      * @param Client               $httpClient
      * @param $appRoot

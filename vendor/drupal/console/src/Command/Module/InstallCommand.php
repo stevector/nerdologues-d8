@@ -7,7 +7,7 @@
 
 namespace Drupal\Console\Command\Module;
 
-use Drupal\Console\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,16 +17,17 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Console\Command\Command;
 use Drupal\Console\Command\Shared\ProjectDownloadTrait;
 use Drupal\Console\Command\Shared\ModuleTrait;
-use Drupal\Console\Style\DrupalStyle;
+use Drupal\Console\Core\Style\DrupalStyle;
 use Drupal\Console\Utils\Site;
 use Drupal\Console\Utils\Validator;
 use Drupal\Core\ProxyClass\Extension\ModuleInstaller;
 use Drupal\Console\Utils\DrupalApi;
 use Drupal\Console\Extension\Manager;
-use Drupal\Console\Utils\ChainQueue;
+use Drupal\Console\Core\Utils\ChainQueue;
 
 /**
  * Class InstallCommand
+ *
  * @package Drupal\Console\Command\Module
  */
 class InstallCommand extends Command
@@ -41,22 +42,22 @@ class InstallCommand extends Command
     protected $site;
 
     /**
- * @var Validator  
+ * @var Validator
 */
     protected $validator;
 
     /**
- * @var ModuleInstaller  
+ * @var ModuleInstaller
 */
     protected $moduleInstaller;
 
     /**
- * @var DrupalApi  
+ * @var DrupalApi
 */
     protected $drupalApi;
 
     /**
- * @var Manager  
+ * @var Manager
 */
     protected $extensionManager;
 
@@ -72,6 +73,7 @@ class InstallCommand extends Command
 
     /**
      * InstallCommand constructor.
+     *
      * @param Site            $site
      * @param Validator       $validator
      * @param ModuleInstaller $moduleInstaller
@@ -154,7 +156,7 @@ class InstallCommand extends Command
         $this->site->loadLegacyFile('/core/includes/bootstrap.inc');
 
         // check module's requirements
-        $this->moduleRequirement($module);
+        $this->moduleRequirement($module, $io);
 
         if ($composer) {
             foreach ($module as $moduleItem) {

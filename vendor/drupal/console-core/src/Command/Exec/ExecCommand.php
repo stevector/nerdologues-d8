@@ -2,23 +2,24 @@
 
 /**
  * @file
- * Contains \Drupal\Console\Command\Exec\ExecCommand.
+ * Contains \Drupal\Console\Core\Command\Exec\ExecCommand.
  */
 
-namespace Drupal\Console\Command\Exec;
+namespace Drupal\Console\Core\Command\Exec;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Drupal\Console\Command\Shared\CommandTrait;
-use Drupal\Console\Utils\ShellProcess;
-use Drupal\Console\Style\DrupalStyle;
+use Symfony\Component\Process\ExecutableFinder;
+use Drupal\Console\Core\Command\Shared\CommandTrait;
+use Drupal\Console\Core\Utils\ShellProcess;
+use Drupal\Console\Core\Style\DrupalStyle;
 
 /**
  * Class ExecCommand
- * @package Drupal\Console\Command\Exec
+ * @package Drupal\Console\Core\Command\Exec
  */
 class ExecCommand extends Command
 {
@@ -56,8 +57,7 @@ class ExecCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 $this->trans('commands.exec.options.working-directory')
-            )
-        ;
+            );
     }
 
     /**
@@ -72,6 +72,23 @@ class ExecCommand extends Command
         if (!$bin) {
             $io->error(
                 $this->trans('commands.exec.messages.missing-bin')
+            );
+
+            return 1;
+        }
+
+        $name = $bin;
+        if ($index = stripos($name, " ")) {
+            $name = substr($name, 0, $index);
+        }
+
+        $finder = new ExecutableFinder();
+        if (!$finder->find($name)) {
+            $io->error(
+                sprintf(
+                    $this->trans('commands.exec.messages.binary-not-found'),
+                    $name
+                )
             );
 
             return 1;

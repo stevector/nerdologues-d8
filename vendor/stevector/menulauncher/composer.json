@@ -1,9 +1,6 @@
 {
   "name": "stevector/menulauncher",
   "type": "drupal-console-library",
-  "require": {
-    "drupal/console-extend-plugin": "dev-master"
-  },
   "autoload": {
     "psr-4": { "Drupal\\Console\\stevector\\": "src" }
   }
