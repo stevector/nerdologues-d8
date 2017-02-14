@@ -118,6 +118,7 @@ body.page-node-type-blog-post .panel-1col {
   width: 99.9%
 }
 
+.field--label-inline span.field__label,
 .field--label-inline .field__label {
   padding-right: 0.25em;
 }
