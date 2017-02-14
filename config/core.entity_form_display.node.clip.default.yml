@@ -18,6 +18,7 @@ dependencies:
     - paragraphs
     - path
     - text
+    - timeperiod
 third_party_settings:
   field_group:
     group_basic_info:
@@ -115,15 +116,29 @@ content:
   field_int_end_time:
     weight: 9
     settings:
-      placeholder: ''
+      days_step: '1'
+      hours: '1'
+      hours_step: '1'
+      minutes: '1'
+      minutes_step: '1'
+      seconds: '1'
+      seconds_step: '1'
+      days: 0
     third_party_settings: {  }
-    type: number
+    type: timeperiod
   field_int_start_time:
     weight: 8
     settings:
-      placeholder: ''
+      days_step: '1'
+      hours: '1'
+      hours_step: '1'
+      minutes: '1'
+      minutes_step: '1'
+      seconds: '1'
+      seconds_step: '1'
+      days: 0
     third_party_settings: {  }
-    type: number
+    type: timeperiod
   field_para_quotes:
     type: entity_reference_paragraphs
     weight: 12
