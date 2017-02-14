@@ -103,7 +103,7 @@ body .field__label {
 
 
 ul.pager__items {
-
+  padding: 0 0 0 0px;
   margin-top: 0;
 }
 
@@ -118,3 +118,6 @@ body.page-node-type-blog-post .panel-1col {
   width: 99.9%
 }
 
+.field--label-inline .field__label {
+  padding-right: 0.25em;
+}
