@@ -25,12 +25,18 @@ dependencies:
     - ~/nerdologues-d8/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
+    - vendor/bin/drupal init -n
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
-
 test:
   override:
+    - vendor/bin/drupal --root=web/ --uri=http://default -v -n server 0.0.0.0:8888:
+        background: true
+    - sleep 15
+    - curl http:// 0.0.0.0:8888
+    
     - composer circle-tests
+    - curl http://0.0.0.0:8888
   post:
-    - ./scripts/circle-ci/deploy-to-multidev.sh
-    - ./scripts/run-backstop.sh
+    #- ./scripts/circle-ci/deploy-to-multidev.sh
+    #- ./scripts/run-backstop.sh
