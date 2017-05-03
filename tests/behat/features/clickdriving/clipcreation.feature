@@ -154,7 +154,6 @@ Feature: Clip creation
     And I fill in "field_para_quotes[1][subform][field_body_plain][0][value]" with "Quote One"
     And I enter yesterday's date for the published date
     And I press "Save and keep published"
-    And I break
     When I visit "/"
     And I should see the text "Quote Zero"
     And I should not see the text "Quote One"

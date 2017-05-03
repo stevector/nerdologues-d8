@@ -22,6 +22,8 @@ class ClipPaths implements Context, SnippetAcceptingContext {
         $environment = $scope->getEnvironment();
 
         $this->minkContext = $environment->getContext('Drupal\DrupalExtension\Context\MinkContext');
+      $this->DrupalContext = $environment->getContext('Drupal\DrupalExtension\Context\DrupalContext');
+
     }
 
 
@@ -74,6 +76,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
 
   public function iCreateAnEvent($time)
   {
+    $this->event_time = $time;
     $this->minkContext->visit('node/add/event');
     $event_title = 'event title ' . $time;
     $this->minkContext->fillField('title[0][value]', $event_title);
@@ -84,6 +87,22 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $this->minkContext->fillField('field_dates[0][value][time]', date("H:i:s", $time));
     $this->minkContext->pressButton('Save and publish');
     $this->minkContext->visit('/');
+  }
+
+  /**
+   * @Then I should see the regular date text
+   */
+  public function iShouldSeeTheRegularDateText()
+  {
+    $this->minkContext->assertResponseContains(date('l, F j, Y - g:ia', $this->event_time));
+  }
+
+  /**
+   * @Then I should not see the regular date text
+   */
+  public function iShouldNotSeeTheRegularDateText()
+  {
+    $this->minkContext->assertResponseNotContains(date('l, F j, Y - g:ia', $this->event_time));
   }
 
   /**
@@ -156,5 +175,16 @@ class ClipPaths implements Context, SnippetAcceptingContext {
   {
     $this->minkContext->visit('events');
     $this->minkContext->assertLinkRegion($this->event_title, "Upcoming events");
+  }
+
+  /**
+   * @When I edit the event and override the date text with :arg1
+   */
+  public function iEditTheEventAndOverrideTheDateTextWith($override_text)
+  {
+    $this->minkContext->visit('admin/content');
+    $this->DrupalContext->assertClickInTableRow('Edit', $this->event_title);
+    $this->minkContext->fillField('Date display text', $override_text);
+    $this->minkContext->pressButton('Save and keep published');
   }
 }
