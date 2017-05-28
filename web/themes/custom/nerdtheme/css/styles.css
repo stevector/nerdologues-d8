@@ -100,3 +100,25 @@ body .field__label {
   text-decoration: none;
   font-weight: bold;
 }
+
+
+ul.pager__items {
+  padding: 0 0 0 0px;
+  margin-top: 0;
+}
+
+
+.inside--image-header {
+  margin-bottom: 0.5em;
+}
+
+
+/* Remove this rule after D7 image comparisons */
+body.page-node-type-blog-post .panel-1col {
+  width: 99.9%
+}
+
+.field--label-inline span.field__label,
+.field--label-inline .field__label {
+  padding-right: 0.25em;
+}

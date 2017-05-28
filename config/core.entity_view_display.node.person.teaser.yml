@@ -9,11 +9,12 @@ dependencies:
     - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
-    - image.style.teaser_square
+    - image.style.300square
     - node.type.person
   module:
     - ds
     - image
+    - panelizer
     - text
     - user
 third_party_settings:
@@ -54,6 +55,11 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.person.teaser
 targetEntityType: node
 bundle: person
@@ -70,7 +76,7 @@ content:
     weight: 4
     label: hidden
     settings:
-      image_style: teaser_square
+      image_style: 300square
       image_link: content
     third_party_settings: {  }
   links:
