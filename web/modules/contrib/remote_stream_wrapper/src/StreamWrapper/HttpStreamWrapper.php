@@ -7,6 +7,9 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 
+require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
+require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/ReadOnlyPhpStreamWrapperTrait.php';
+
 /**
  * HTTP(s) stream wrapper.
  */
