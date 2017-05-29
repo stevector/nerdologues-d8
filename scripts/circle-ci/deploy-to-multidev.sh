@@ -8,13 +8,10 @@ set -x
 git config user.email "stevepersch+circleci@gmail.com"
 git config user.name "Circle CI Automation"
 
+terminus env:wake -n "$TERMINUS_SITE.dev"
+terminus build-env:create -n "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
-terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV
 
-git remote add pantheon $(terminus connection:info $SITE_ENV --field=git_url)
-git fetch pantheon
-git checkout -b $TERMINUS_ENV
-git pull pantheon $TERMINUS_ENV
 
 
 terminus env:wake nerdologues.migr-prep2
