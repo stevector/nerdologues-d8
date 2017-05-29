@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.podcast_episode_mp3
     - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
     - field.field.node.podcast_episode.field_file
@@ -15,9 +16,9 @@ dependencies:
     - node.type.podcast_episode
   module:
     - datetime
+    - entity_browser
     - field_group
     - link
-    - nerdcustom
     - path
     - text
 third_party_settings:
@@ -144,10 +145,15 @@ content:
   field_file:
     weight: 26
     settings:
-      size: 60
-      placeholder: ''
+      entity_browser: podcast_episode_mp3
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_edit: true
+      open: false
+      view_mode: default
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: nerd_remote_uri
+    type: entity_browser_file
   field_int_duration:
     weight: 27
     settings:
