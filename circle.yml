@@ -15,6 +15,7 @@ machine:
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
     TERMINUS_SITE: nerdologues-d8
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
+    D7_ENV: migr-prep3
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
   hosts:
     server.local: 127.0.0.1
