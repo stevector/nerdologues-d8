@@ -41,7 +41,8 @@
         "drupal/rabbit_hole": "^1.0",
         "drupal/media_entity_audio": "1.x-dev",
         "drupal/field_group": "1.x-dev",
-        "drupal/panelizer": "3.x-dev"
+        "drupal/panelizer": "3.x-dev",
+        "drupal/entity_browser": "^1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -124,6 +125,9 @@
         "patches": {
             "drupal/rabbit_hole": {
                 "trusted": "https://www.drupal.org/files/issues/trusted-2843564-1.patch"
+            },
+            "drupal/remote_stream_wrapper": {
+              "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch"
             }
         }
     },

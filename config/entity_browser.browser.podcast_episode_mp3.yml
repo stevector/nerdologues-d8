@@ -1,0 +1,27 @@
+uuid: 2d6e1314-da60-4a11-b860-4d68744fcb3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - remote_stream_wrapper
+name: podcast_episode_mp3
+label: 'podcast episode mp3'
+display: modal
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select entities'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  8f0ced02-838c-4fb9-9dec-a6e27c0f2dbf:
+    settings:
+      url_field_title: 'URL to file'
+      submit_text: 'Select file'
+    uuid: 8f0ced02-838c-4fb9-9dec-a6e27c0f2dbf
+    weight: 1
+    label: remote_stream
+    id: remote_stream
