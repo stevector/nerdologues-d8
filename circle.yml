@@ -23,7 +23,7 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
-    - ~/nerdologues-d8/node_modules
+    - ~/nerdologues-d8/backstop/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
   post:
