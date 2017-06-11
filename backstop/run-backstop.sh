@@ -27,6 +27,7 @@ echo -e "\nRunning BackstopJS tests..."
 #cd node_modules/backstopjs
 
 backstop reference
+backstop test
 VISUAL_REGRESSION_RESULTS=$(backstop test)
 
 echo "${VISUAL_REGRESSION_RESULTS}"
