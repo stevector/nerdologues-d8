@@ -2,6 +2,8 @@
 
 set -x
 
+npm install -g slimerjs
+
 # run screenshots only on master branch.
 #todo, detect some pattern in branch name or commit message to also trigger run.
 
