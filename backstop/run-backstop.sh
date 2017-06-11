@@ -2,7 +2,7 @@
 
 set -x
 
-npm install -g slimerjs
+#npm install -g slimerjs
 
 npm install -g backstopjs
 
