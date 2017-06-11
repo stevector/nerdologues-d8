@@ -4,6 +4,8 @@ set -x
 
 npm install -g slimerjs
 
+npm install -g backstopjs
+
 # run screenshots only on master branch.
 #todo, detect some pattern in branch name or commit message to also trigger run.
 
@@ -17,15 +19,15 @@ sed -i -e "s/dev-nerdologues-d8/${TERMINUS_ENV}-nerdologues-d8/g" ~/nerdologues-
 
 # install node dependencies
 echo -e "\nRunning npm install..."
-npm install
+#npm install
 
 # backstop visual regression
 echo -e "\nRunning BackstopJS tests..."
 
-cd node_modules/backstopjs
+#cd node_modules/backstopjs
 
-npm run reference
-VISUAL_REGRESSION_RESULTS=$(npm run test)
+backstop reference
+VISUAL_REGRESSION_RESULTS=$(backstop test)
 
 echo "${VISUAL_REGRESSION_RESULTS}"
 
