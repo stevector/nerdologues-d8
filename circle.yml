@@ -3,6 +3,8 @@ machine:
   php:
     # https://circleci.com/docs/environment#php
     version: 5.5.11
+  node:
+    version: 5.5.0
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     # DB config. Using default CircleCI's database.
