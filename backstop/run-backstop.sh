@@ -30,6 +30,7 @@ cd node_modules/backstopjs
 #backstop test
 npm run reference
 VISUAL_REGRESSION_RESULTS=$(npm run test)
+npm run openReport
 
 echo "${VISUAL_REGRESSION_RESULTS}"
 
