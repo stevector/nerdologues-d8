@@ -51,6 +51,7 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Nelmio\\Alice\\' => array($vendorDir . '/nelmio/alice/src/Nelmio/Alice'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'League\\Csv\\' => array($vendorDir . '/league/csv/src'),
     'Humbug\\SelfUpdate\\' => array($vendorDir . '/padraic/phar-updater/src'),
     'Humbug\\' => array($vendorDir . '/padraic/humbug_get_contents/src/Humbug'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
