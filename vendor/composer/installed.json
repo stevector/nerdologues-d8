@@ -8792,7 +8792,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/views_data_export-8.x-1.0-alpha4.zip",
-            "reference": null,
+            "reference": "8.x-1.0-alpha4",
             "shasum": "d279137d6de1f8514c7ca69725b305ab58e30ed7"
         },
         "require": {
@@ -8844,6 +8844,51 @@
         "homepage": "https://www.drupal.org/project/views_data_export",
         "support": {
             "source": "http://cgit.drupalcode.org/views_data_export"
+        }
+    },
+    {
+        "name": "drupal/config_direct_save",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/config_direct_save",
+            "reference": "8.x-1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/config_direct_save-8.x-1.0.zip",
+            "reference": null,
+            "shasum": "dae776d96310aa01aa6e3c536821a1b496ffae1f"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0",
+                "datestamp": "1476108239"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "matio89",
+                "homepage": "https://www.drupal.org/user/2320090"
+            }
+        ],
+        "description": "This module allow you to export configuration after changes",
+        "homepage": "https://www.drupal.org/project/config_direct_save",
+        "support": {
+            "source": "http://cgit.drupalcode.org/config_direct_save"
         }
     }
 ]
