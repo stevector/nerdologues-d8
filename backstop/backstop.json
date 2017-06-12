@@ -359,11 +359,12 @@
   "paths": {
     "bitmaps_reference": "../../backstop_data/bitmaps_reference",
     "bitmaps_test": "../../backstop_data/bitmaps_test",
+    "html_report": "../../backstop_data/html_report",
+    "ci_report": "../../backstop_data/ci_report",
     "compare_data": "../../backstop_data/bitmaps_test/compare.json",
     "casper_scripts": "../../backstop_data/casper_scripts"
   },
-  "engine": "phantomjs",
-  "report": [ "CLI" ],
+  "report": ["browser", "CI", "CLI"],
   "casperFlags": [],
   "debug": false,
   "port": 3001

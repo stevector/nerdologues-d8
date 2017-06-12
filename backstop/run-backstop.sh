@@ -2,6 +2,10 @@
 
 set -x
 
+#npm install -g slimerjs
+
+#npm install -g backstopjs
+
 # run screenshots only on master branch.
 #todo, detect some pattern in branch name or commit message to also trigger run.
 
@@ -22,8 +26,11 @@ echo -e "\nRunning BackstopJS tests..."
 
 cd node_modules/backstopjs
 
+#backstop reference
+#backstop test
 npm run reference
 VISUAL_REGRESSION_RESULTS=$(npm run test)
+npm run openReport
 
 echo "${VISUAL_REGRESSION_RESULTS}"
 

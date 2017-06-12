@@ -3,6 +3,8 @@ machine:
   php:
     # https://circleci.com/docs/environment#php
     version: 5.5.11
+  node:
+    version: 5.5.0
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     # DB config. Using default CircleCI's database.
@@ -12,9 +14,10 @@ machine:
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
-    TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
+    TERMINUS_ENV: ci-774
     TERMINUS_SITE: nerdologues-d8
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
+    D7_ENV: migr-prep3
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
   hosts:
     server.local: 127.0.0.1
@@ -22,15 +25,16 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
-    - ~/nerdologues-d8/node_modules
+    - ~/nerdologues-d8/backstop/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
   post:
-    - ./scripts/circle-ci/prepare-drupal-server.sh
+    #- ./scripts/circle-ci/prepare-drupal-server.sh
 
 test:
   override:
-    - composer circle-tests
+    #- composer circle-tests
+    - echo "hi"
   post:
-    - ./scripts/circle-ci/deploy-to-multidev.sh
+#    - ./scripts/circle-ci/deploy-to-multidev.sh
     - cd backstop && ./run-backstop.sh
