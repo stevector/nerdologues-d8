@@ -1,0 +1,9 @@
+services:
+  pantheon_advanced_page_cache.cache_tags.invalidator:
+    class: Drupal\pantheon_advanced_page_cache\CacheTagsInvalidator
+    tags:
+      - { name: cache_tags_invalidator }
+  pantheon_advanced_page_cache.cacheable_response_subscriber:
+    class: Drupal\pantheon_advanced_page_cache\EventSubscriber\CacheableResponseSubscriber
+    tags:
+      - { name: event_subscriber }
