@@ -171,7 +171,7 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
   // That is what field_text_display_date is for.
   if ($field_definition->getName() == 'field_dates' && !is_null($items) && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
     $entity = $items->getEntity();
-    if (!empty($entity->field_text_display_date->getValue())) {
+    if (!empty($entity->field_text_display_date->getValue()) && !AccessResult::allowedIfHasPermission($account, 'edit any event content')) {
       return AccessResult::forbidden();
     }
   }
