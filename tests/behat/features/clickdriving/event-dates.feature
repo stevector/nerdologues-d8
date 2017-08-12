@@ -10,6 +10,8 @@ Feature: Event dates
     Then that event appears on the homepage
     And I should see the regular date text
     When I edit the event and override the date text with "Event Coming Soon"
+    # Todo, logged in users should see it here either.
+    And I am not logged in
     Then that event appears on the homepage
     And I should not see the regular date text
     And I should see the text "Event Coming Soon"
