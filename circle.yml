@@ -3,6 +3,8 @@ machine:
   php:
     # https://circleci.com/docs/environment#php
     version: 5.5.11
+  node:
+    version: 4.2.6
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     # DB config. Using default CircleCI's database.
@@ -13,7 +15,7 @@ machine:
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
-    TERMINUS_SITE: nerdologues-d8
+    TERMINUS_SITE: nerdologues-composer
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
   hosts:
@@ -22,7 +24,6 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
-    - ~/nerdologues-d8/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
   post:
