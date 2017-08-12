@@ -76,6 +76,7 @@
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
+      "requireSameDimensions" : false,
       "selectors": [
         "document"
       ],
@@ -105,6 +106,7 @@
       "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds/michael-jando",
       "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/michael-jando",
       "hideSelectors": [],
+      "requireSameDimensions" : false,
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
@@ -125,6 +127,7 @@
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
+      "requireSameDimensions" : false,
       "selectors": [
         "document"
       ],
@@ -137,6 +140,7 @@
       "url": "http://dev-nerdologues-composer.pantheonsite.io/node/73/videos",
       "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/73/videos",
       "hideSelectors": [],
+      "requireSameDimensions" : false,
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
@@ -322,6 +326,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
+      "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
     },
     {
@@ -338,6 +343,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
+      "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
     },
     {
