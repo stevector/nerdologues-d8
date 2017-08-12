@@ -35,3 +35,4 @@ test:
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - cd backstop && ./run-backstop.sh
+    -  terminus env:list --field=id  $TERMINUS_SITE   | grep "^ci-" |  sort   -k1.4n | tail -r | sed 1,5d | xargs -n1 -I ENV     terminus env:delete --yes $TERMINUS_SITE.ENV
