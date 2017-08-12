@@ -189,6 +189,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
+      "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
     },
     {
@@ -204,6 +205,7 @@
       ],
       "readyEvent": null,
       "delay": 1500,
+      "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
     },
     {
