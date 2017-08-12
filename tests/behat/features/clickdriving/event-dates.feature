@@ -13,7 +13,23 @@ Feature: Event dates
     # Todo, logged in users should see it here either.
     And I am not logged in
     Then that event appears on the homepage
-    And I should not see the regular date text
+
+
+
+    #And I should not see the regular date text
+
+
+
+
+
+
+
+
+
+
+
+
+
     And I should see the text "Event Coming Soon"
 
   @api
