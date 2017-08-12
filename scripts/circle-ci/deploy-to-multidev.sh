@@ -3,9 +3,9 @@
 # Deploy the current Circle CI build to multidev.
 #
 
-set -x
+set -ex
 
-terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV
+terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may have been made in advance. Return TRUE anyway"
 
 git remote add pantheon $(terminus connection:info $SITE_ENV --field=git_url)
 git fetch pantheon
