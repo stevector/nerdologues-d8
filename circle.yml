@@ -28,7 +28,7 @@ dependencies:
   override:
     - ./scripts/circle-ci/install-globals.sh
   post:
-    - ./scripts/circle-ci/prepare-drupal-server.sh
+    #- ./scripts/circle-ci/prepare-drupal-server.sh
     - echo test
 
 test:
