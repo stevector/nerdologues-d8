@@ -5,10 +5,6 @@
 
 set -x
 
-git config user.email "stevepersch+circleci@gmail.com"
-git config user.name "Circle CI Automation"
-
-
 terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV
 
 git remote add pantheon $(terminus connection:info $SITE_ENV --field=git_url)
