@@ -12,7 +12,7 @@ machine:
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
-    TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
+    TERMINUS_ENV: ci-796
     TERMINUS_SITE: nerdologues-d8
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
@@ -27,10 +27,12 @@ dependencies:
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
+    - echo test
 
 test:
   override:
-    - composer circle-tests
+    #- composer circle-tests
+    - echo test
   post:
-    - ./scripts/circle-ci/deploy-to-multidev.sh
+    #- ./scripts/circle-ci/deploy-to-multidev.sh
     - cd backstop && ./run-backstop.sh
