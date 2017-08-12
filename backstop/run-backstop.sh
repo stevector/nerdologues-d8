@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [   "$CIRCLE_BRANCH" != "master"  ]  &&   [[  $CIRCLE_BRANCH != *"screenshot"* ]]; then
+    echo -e "Screenshots only run on master branch or branches containing 'screenshot' Quitting script."
+    exit 0;
+fi
+
 npm install -g backstopjs
 
 # Update the URLs in the backstop file to use the new multidev
