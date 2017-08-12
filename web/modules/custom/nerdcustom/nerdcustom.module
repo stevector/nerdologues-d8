@@ -169,9 +169,9 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
   // Deny viewing of the date field when there is also a
   // field_text_display_date value.
   // That is what field_text_display_date is for.
-  if ($field_definition->getName() == 'field_dates' && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
+  if ($field_definition->getName() == 'field_dates' && !is_null($items) && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
     $entity = $items->getEntity();
-    if (!empty($entity->field_text_display_date->getValue())) {
+    if (!empty($entity->field_text_display_date->getValue()) && !AccessResult::allowedIfHasPermission($account, 'edit any event content')) {
       return AccessResult::forbidden();
     }
   }
