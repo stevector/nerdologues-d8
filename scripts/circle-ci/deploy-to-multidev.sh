@@ -38,5 +38,5 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict --stop-on-failure
