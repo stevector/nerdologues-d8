@@ -13,10 +13,7 @@ Feature: Event dates
     # Todo, logged in users should see it here either.
     And I am not logged in
     Then that event appears on the homepage
-
-    # @todo Fix this test
-    #  https://github.com/stevector/nerdologues-d8/issues/211
-    #And I should not see the regular date text
+    And I should not see the regular date text
     And I should see the text "Event Coming Soon"
 
   @api
