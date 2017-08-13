@@ -171,8 +171,15 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
   // That is what field_text_display_date is for.
   if ($field_definition->getName() == 'field_dates' && !is_null($items) && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
     $entity = $items->getEntity();
-    if (!empty($entity->field_text_display_date->getValue()) && !AccessResult::allowedIfHasPermission($account, 'edit any event content')) {
-      return AccessResult::forbidden();
+    if (!empty($entity->field_text_display_date->getValue())) {
+
+      // Deny if we are not in an admin route.
+      // @todo, ideal the access logic would be on an access plugin on a pane.
+      $route = \Drupal::routeMatch()->getRouteObject();
+      $is_admin = \Drupal::service('router.admin_context')->isAdminRoute($route);
+      if (!$is_admin) {
+        return AccessResult::forbidden();
+      }
     }
   }
   return AccessResult::neutral();
