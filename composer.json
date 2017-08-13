@@ -42,7 +42,8 @@
         "drupal/media_entity_audio": "1.x-dev",
         "drupal/field_group": "1.x-dev",
         "drupal/panelizer": "3.x-dev",
-        "drupal/entity_browser": "^1.0"
+        "drupal/entity_browser": "^1.0",
+        "drupal/chosen": "^2.4"
     },
     "require-dev": {
         "behat/mink": "~1.7",
