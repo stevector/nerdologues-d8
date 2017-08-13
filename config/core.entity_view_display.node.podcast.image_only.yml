@@ -7,11 +7,12 @@ dependencies:
     - field.field.node.podcast.field_body
     - field.field.node.podcast.field_image
     - field.field.node.podcast.field_int_sort_order
-    - image.style.teaser_square
+    - image.style.large
     - node.type.podcast
   module:
     - ds
     - image
+    - panelizer
     - user
 third_party_settings:
   ds:
@@ -25,6 +26,11 @@ third_party_settings:
     regions:
       middle:
         - field_image
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.podcast.image_only
 targetEntityType: node
 bundle: podcast
@@ -34,7 +40,7 @@ content:
     weight: 1
     label: hidden
     settings:
-      image_style: teaser_square
+      image_style: large
       image_link: content
     third_party_settings: {  }
     type: image

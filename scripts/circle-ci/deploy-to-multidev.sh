@@ -3,13 +3,9 @@
 # Deploy the current Circle CI build to multidev.
 #
 
-set -x
+set -ex
 
-git config user.email "stevepersch+circleci@gmail.com"
-git config user.name "Circle CI Automation"
-
-
-terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV
+terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may have been made in advance. Return TRUE anyway"
 
 git remote add pantheon $(terminus connection:info $SITE_ENV --field=git_url)
 git fetch pantheon
@@ -42,5 +38,5 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict --stop-on-failure

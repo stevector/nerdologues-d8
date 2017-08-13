@@ -3,6 +3,8 @@ machine:
   php:
     # https://circleci.com/docs/environment#php
     version: 5.5.11
+  node:
+    version: 4.2.6
   environment:
     DOCROOT: "$HOME/$CIRCLE_PROJECT_REPONAME/web"
     # DB config. Using default CircleCI's database.
@@ -22,7 +24,6 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
-    - ~/nerdologues-d8/node_modules
   override:
     - ./scripts/circle-ci/install-globals.sh
   post:
