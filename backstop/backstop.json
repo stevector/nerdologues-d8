@@ -64,7 +64,7 @@
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
