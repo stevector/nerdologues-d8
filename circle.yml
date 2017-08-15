@@ -25,6 +25,8 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
   override:
+    - npm install -g lighthouse
+    - lighthouse https://www.nerdologues.com
     - ./scripts/circle-ci/install-globals.sh
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
