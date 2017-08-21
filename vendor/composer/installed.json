@@ -8718,7 +8718,8 @@
                 }
             },
             "patches_applied": {
-                "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch"
+                "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch",
+                "require hack": "https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch"
             }
         },
         "installation-source": "dist",
