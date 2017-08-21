@@ -7154,59 +7154,6 @@
         ]
     },
     {
-        "name": "drupal/remote_stream_wrapper",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/remote_stream_wrapper",
-            "reference": "8.x-1.0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/remote_stream_wrapper-8.x-1.0.zip",
-            "reference": "8.x-1.0",
-            "shasum": "442094c0a6c097b5d7d757a9c17a6006f2618caa"
-        },
-        "require": {
-            "drupal/core": "~8.0"
-        },
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-1.x": "1.x-dev"
-            },
-            "drupal": {
-                "version": "8.x-1.0",
-                "datestamp": "1471532939"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packages.drupal.org/8/downloads",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "authors": [
-            {
-                "name": "Dave Reid",
-                "homepage": "https://www.drupal.org/user/53892"
-            },
-            {
-                "name": "arthurf",
-                "homepage": "https://www.drupal.org/user/27259"
-            },
-            {
-                "name": "becw",
-                "homepage": "https://www.drupal.org/user/81067"
-            }
-        ],
-        "description": "Provides the ability to use external files over HTTP",
-        "homepage": "https://www.drupal.org/project/remote_stream_wrapper",
-        "support": {
-            "source": "http://cgit.drupalcode.org/remote_stream_wrapper"
-        }
-    },
-    {
         "name": "asm89/stack-cors",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -8602,7 +8549,7 @@
         "dist": {
             "type": "zip",
             "url": "https://ftp.drupal.org/files/projects/entity_browser-8.x-1.0.zip",
-            "reference": null,
+            "reference": "8.x-1.0",
             "shasum": "6bd7bbcda1eebacc3685e9edaad2ad29b525b2ad"
         },
         "require": {
@@ -8670,6 +8617,133 @@
             "source": "http://cgit.drupalcode.org/entity_browser",
             "issues": "http://drupal.org/project/issues/entity_browser",
             "irc": "irc://irc.freenode.org/drupal-contribute"
+        }
+    },
+    {
+        "name": "drupal/pantheon_advanced_page_cache",
+        "version": "1.0.0-alpha1",
+        "version_normalized": "1.0.0.0-alpha1",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/pantheon_advanced_page_cache",
+            "reference": "8.x-1.0-alpha1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/pantheon_advanced_page_cache-8.x-1.0-alpha1.zip",
+            "reference": "8.x-1.0-alpha1",
+            "shasum": "537b9e17ec6fcb0b1643d77c7878b89e8ad03ad7"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "require-dev": {
+            "drupal/coder": "2.0-beta1",
+            "drupal/drupal-extension": "dev-master",
+            "drush-ops/behat-drush-endpoint": "*",
+            "squizlabs/php_codesniffer": "2.0.*@dev"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha1",
+                "datestamp": "1500476643",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Project has not opted into security advisory coverage!"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Ari Gold",
+                "homepage": "https://www.drupal.org/user/329006"
+            },
+            {
+                "name": "David Strauss",
+                "homepage": "https://www.drupal.org/user/93254"
+            },
+            {
+                "name": "Fabianx",
+                "homepage": "https://www.drupal.org/user/693738"
+            },
+            {
+                "name": "stevector",
+                "homepage": "https://www.drupal.org/user/179805"
+            }
+        ],
+        "description": "Advanced page cache capabilities for Pantheon.",
+        "homepage": "https://www.drupal.org/project/pantheon_advanced_page_cache",
+        "support": {
+            "source": "http://cgit.drupalcode.org/pantheon_advanced_page_cache"
+        }
+    },
+    {
+        "name": "drupal/remote_stream_wrapper",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/remote_stream_wrapper",
+            "reference": "8.x-1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/remote_stream_wrapper-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "442094c0a6c097b5d7d757a9c17a6006f2618caa"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0",
+                "datestamp": "1471532939",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            },
+            "patches_applied": {
+                "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Dave Reid",
+                "homepage": "https://www.drupal.org/user/53892"
+            },
+            {
+                "name": "arthurf",
+                "homepage": "https://www.drupal.org/user/27259"
+            },
+            {
+                "name": "becw",
+                "homepage": "https://www.drupal.org/user/81067"
+            }
+        ],
+        "description": "Provides the ability to use external files over HTTP",
+        "homepage": "https://www.drupal.org/project/remote_stream_wrapper",
+        "support": {
+            "source": "http://cgit.drupalcode.org/remote_stream_wrapper"
         }
     }
 ]
