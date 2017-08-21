@@ -1,0 +1,7 @@
+# An authority as defined in RFC3986. An authority consists of host, optional userinfo and optional port. The host can
+# be an IP address or registered domain name.
+# @see https://tools.ietf.org/html/rfc3986#section-3.2
+# @see \Drupal\cdn\CdnSettings::isValidCdnDomain()
+cdn.domain:
+  type: string
+  label: 'Domain'
