@@ -1,0 +1,17 @@
+services:
+  asset.css.collection_renderer.http2_server_push:
+    public: false
+    class: \Drupal\http2_server_push\Asset\CssCollectionRenderer
+    decorates: asset.css.collection_renderer
+    arguments: ['@asset.css.collection_renderer.http2_server_push.inner', '@request_stack']
+  asset.js.collection_renderer.http2_server_push:
+    public: false
+    class: \Drupal\http2_server_push\Asset\JsCollectionRenderer
+    decorates: asset.js.collection_renderer
+    arguments: ['@asset.js.collection_renderer.http2_server_push.inner', '@request_stack']
+
+  html_response.attachments_processor.http2_server_push:
+    public: false
+    class: \Drupal\http2_server_push\Render\HtmlResponseAttachmentsProcessor
+    decorates: html_response.attachments_processor
+    arguments: ['@html_response.attachments_processor.http2_server_push.inner', '@request_stack']

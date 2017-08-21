@@ -8795,5 +8795,54 @@
         "support": {
             "source": "http://cgit.drupalcode.org/cdn"
         }
+    },
+    {
+        "name": "drupal/http2_server_push",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/http2_server_push",
+            "reference": "8.x-1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/http2_server_push-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "cc2df591201313f1407e55424cfe7cf35127fa47"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0",
+                "datestamp": "1489057084",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Wim Leers",
+                "homepage": "https://www.drupal.org/user/99777"
+            }
+        ],
+        "description": "Pushes CSS & JS files to the client on servers using HTTP/2.",
+        "homepage": "https://www.drupal.org/project/http2_server_push",
+        "support": {
+            "source": "http://cgit.drupalcode.org/http2_server_push"
+        }
     }
 ]
