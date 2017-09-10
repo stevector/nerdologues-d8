@@ -5,3 +5,7 @@ entity_browser
 Source: https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch
 
 
+require hack
+Source: https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch
+
+

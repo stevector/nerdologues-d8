@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4b74ae69a9a551d3b83ba73370fbed0",
+    "content-hash": "9ae314daa2902fedf1396d5b979c28fd",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1189,6 +1189,53 @@
             "time": "2017-01-23 23:39:41"
         },
         {
+            "name": "drupal/cdn",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/cdn",
+                "reference": "8.x-3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/cdn-8.x-3.1.zip",
+                "reference": "8.x-3.1",
+                "shasum": "0ffbaebd369e7a0ad669d77eb46b319899a3a694"
+            },
+            "require": {
+                "drupal/core": "^8.1.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.1",
+                    "datestamp": "1499610676",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                }
+            ],
+            "description": "Serves files (CSS, JS, images …) from a CDN.",
+            "homepage": "https://www.drupal.org/project/cdn",
+            "support": {
+                "source": "http://cgit.drupalcode.org/cdn"
+            }
+        },
+        {
             "name": "drupal/console",
             "version": "1.0.0-beta3",
             "source": {
@@ -1992,6 +2039,53 @@
             "time": "2017-01-14 23:20:19"
         },
         {
+            "name": "drupal/http2_server_push",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/http2_server_push",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/http2_server_push-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "cc2df591201313f1407e55424cfe7cf35127fa47"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1489057084",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                }
+            ],
+            "description": "Pushes CSS & JS files to the client on servers using HTTP/2.",
+            "homepage": "https://www.drupal.org/project/http2_server_push",
+            "support": {
+                "source": "http://cgit.drupalcode.org/http2_server_push"
+            }
+        },
+        {
             "name": "drupal/layout_plugin",
             "version": "dev-1.x",
             "source": {
@@ -2606,6 +2700,71 @@
             }
         },
         {
+            "name": "drupal/pantheon_advanced_page_cache",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/pantheon_advanced_page_cache",
+                "reference": "8.x-1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/pantheon_advanced_page_cache-8.x-1.0-alpha1.zip",
+                "reference": "8.x-1.0-alpha1",
+                "shasum": "537b9e17ec6fcb0b1643d77c7878b89e8ad03ad7"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/coder": "2.0-beta1",
+                "drupal/drupal-extension": "dev-master",
+                "drush-ops/behat-drush-endpoint": "*",
+                "squizlabs/php_codesniffer": "2.0.*@dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1",
+                    "datestamp": "1500476643",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Gold",
+                    "homepage": "https://www.drupal.org/user/329006"
+                },
+                {
+                    "name": "David Strauss",
+                    "homepage": "https://www.drupal.org/user/93254"
+                },
+                {
+                    "name": "Fabianx",
+                    "homepage": "https://www.drupal.org/user/693738"
+                },
+                {
+                    "name": "stevector",
+                    "homepage": "https://www.drupal.org/user/179805"
+                }
+            ],
+            "description": "Advanced page cache capabilities for Pantheon.",
+            "homepage": "https://www.drupal.org/project/pantheon_advanced_page_cache",
+            "support": {
+                "source": "http://cgit.drupalcode.org/pantheon_advanced_page_cache"
+            }
+        },
+        {
             "name": "drupal/paragraphs",
             "version": "dev-1.x",
             "source": {
@@ -2788,7 +2947,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/remote_stream_wrapper-8.x-1.0.zip",
-                "reference": null,
+                "reference": "8.x-1.0",
                 "shasum": "442094c0a6c097b5d7d757a9c17a6006f2618caa"
             },
             "require": {
@@ -2801,10 +2960,15 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0",
-                    "datestamp": "1471532939"
+                    "datestamp": "1471532939",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 },
                 "patches_applied": {
-                    "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch"
+                    "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch",
+                    "require hack": "https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -8427,6 +8591,7 @@
         "drupal/media_entity_audio": 20,
         "drupal/field_group": 20,
         "drupal/panelizer": 20,
+        "drupal/pantheon_advanced_page_cache": 15,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
