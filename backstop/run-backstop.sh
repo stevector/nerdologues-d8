@@ -5,7 +5,7 @@ if [   "$CIRCLE_BRANCH" != "master"  ]  &&   [[  $CIRCLE_BRANCH != *"screenshot"
     exit 0;
 fi
 
-npm install -g backstopjs
+npm install -g backstopjs@2.7.3
 
 # Update the URLs in the backstop file to use the new multidev
 sed -i -e "s/dev-${TERMINUS_SITE}/${TERMINUS_ENV}-${TERMINUS_SITE}/g" ~/$CIRCLE_PROJECT_REPONAME/backstop/backstop.json
