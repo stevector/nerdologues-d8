@@ -6,7 +6,7 @@
 set -ex
 
 # removing settings.local.php is necessary because build tools will force commit everything.
-rm web/sites/default/settings.local.php
+sudo rm web/sites/default/settings.local.php
 
 #terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only 
