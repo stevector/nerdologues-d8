@@ -5,6 +5,7 @@
 
 set -ex
 
+terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 
 
 
@@ -13,7 +14,6 @@ export D7_MYSQL_URL=$(terminus connection:info nerdologues.migr-prep2 --field=my
 terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 
 
-terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 
 
 # @todo Don't switch to sftp after
