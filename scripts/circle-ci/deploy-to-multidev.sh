@@ -5,19 +5,17 @@
 
 set -ex
 
-terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may have been made in advance. Return TRUE anyway"
 
-git remote add pantheon $(terminus connection:info $SITE_ENV --field=git_url)
-git fetch pantheon
-git checkout -b $TERMINUS_ENV
-git pull pantheon $TERMINUS_ENV
 
 
 terminus env:wake nerdologues.migr-prep2
 export D7_MYSQL_URL=$(terminus connection:info nerdologues.migr-prep2 --field=mysql_url)
 terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 
-git push pantheon $TERMINUS_ENV -f
+
+terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
+
+
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus connection:set $SITE_ENV sftp

@@ -16,7 +16,7 @@ cgr "drush/drush:~8"
 terminus --version
 mkdir -p ~/.terminus/plugins
 # todo, do I really want the dev-reusue-multidev branch?
-composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin
+composer -n create-project -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:$BUILD_TOOLS_VERSION
 composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secrets-plugin:~1
 
 {
