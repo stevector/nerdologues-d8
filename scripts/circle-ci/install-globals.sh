@@ -25,5 +25,5 @@ composer create-project -n -d ~/.terminus/plugins pantheon-systems/terminus-secr
 
 terminus whoami
 
-echo "Installing gulp globally"
-npm install -g gulp
+#echo "Installing gulp globally"
+#npm install -g gulp
