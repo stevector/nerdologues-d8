@@ -5,6 +5,10 @@
 
 set -ex
 
+terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may have been made in advance. Return TRUE anyway"
+
+# Create a drush alias file so that Behat tests can be executed against Pantheon.
+terminus aliases
 # removing settings.local.php is necessary because build tools will force commit everything.
 sudo rm web/sites/default/settings.local.php
 
@@ -31,10 +35,8 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 #terminus drush $SITE_ENV -- mi --all --feedback='50 items'
 #terminus drush $SITE_ENV -- ms
 
-# Create a drush alias file so that Behat tests can be executed against Pantheon.
 
-mkdir ~/.drush/ || echo 'no error'
-terminus aliases
+
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
