@@ -10,8 +10,8 @@ composer global require -n "consolidation/cgr"
 composer global require -n "hirak/prestissimo:^0.3"
 cgr "drush/drush:~8"
 
-/usr/bin/env COMPOSER_BIN_DIR=$HOME/bin composer -n --working-dir=$HOME require pantheon-systems/terminus "^1"
-
+git clone --branch master https://github.com/pantheon-systems/terminus.git ~/terminus		 +/usr/bin/env COMPOSER_BIN_DIR=$HOME/bin composer -n --working-dir=$HOME require pantheon-systems/terminus "^1"
+cd ~/terminus && composer install
 
 terminus --version
 mkdir -p ~/.terminus/plugins
