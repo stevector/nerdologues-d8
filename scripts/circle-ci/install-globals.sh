@@ -11,7 +11,7 @@ composer global require -n "hirak/prestissimo:^0.3"
 cgr "drush/drush:~8"
 
 git clone --branch master https://github.com/pantheon-systems/terminus.git ~/terminus
-cd ~/terminus && composer install
+cd ~/terminus && git checkout 1.5.0 && composer install
 
 terminus --version
 mkdir -p ~/.terminus/plugins
