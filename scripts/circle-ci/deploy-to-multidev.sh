@@ -32,6 +32,8 @@ terminus drush $SITE_ENV -- mi --all --feedback='50 items'
 terminus drush $SITE_ENV -- ms
 
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
+
+mkdir ~/.drush/ || echo 'no error'
 terminus aliases
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
