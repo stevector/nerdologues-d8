@@ -46,7 +46,7 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
 # Copy the settings.local into place
-cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
+sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict --stop-on-failure
