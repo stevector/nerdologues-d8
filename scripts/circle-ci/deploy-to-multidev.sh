@@ -13,6 +13,8 @@ terminus aliases
 sudo rm web/sites/default/settings.local.php
 sudo rm -r web/sites/default/files
 
+# delete old multidevs before making a new one
+terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 
 terminus env:wake nerdologues.migr-prep2
