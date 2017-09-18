@@ -13,17 +13,11 @@ terminus aliases
 sudo rm web/sites/default/settings.local.php
 sudo rm -r web/sites/default/files
 
-#terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
-terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only 
-
-
+terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 
 terminus env:wake nerdologues.migr-prep2
 export D7_MYSQL_URL=$(terminus connection:info nerdologues.migr-prep2 --field=mysql_url)
 terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
-
-
-
 
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
@@ -36,7 +30,6 @@ terminus drush $SITE_ENV -- ms
 terminus drush $SITE_ENV -- mi --all --feedback='50 items'
 terminus drush $SITE_ENV -- ms
 
-
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
@@ -44,7 +37,9 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-# Copy the settings.local into place
+# Copy the settings.local back into place (after deleting it above)
+# because somehow autoloading with in Behat fails
+# If the local Drupal install is broken.
 sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
