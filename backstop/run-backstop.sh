@@ -25,7 +25,7 @@ else
    EXIT=0
 fi
 
-#rsync -rlvz backstop_data $CIRCLE_ARTIFACTS
+rsync -rlvz backstop_data $CIRCLE_ARTIFACTS
 
 artifact_base_url="https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS"
 
