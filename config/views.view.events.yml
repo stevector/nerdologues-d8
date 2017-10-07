@@ -226,21 +226,19 @@ display:
             group_items: {  }
           plugin_id: numeric
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_dates_value:
+          id: field_dates_value
+          table: node__field_dates
+          field: field_dates_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          plugin_id: datetime
       title: 'Past Events'
       header: {  }
       footer: {  }
