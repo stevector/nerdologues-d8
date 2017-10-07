@@ -15,7 +15,7 @@ bundle: location
 mode: teaser
 content:
   field_address:
-    type: address_default
+    type: address_plain
     weight: 0
     label: hidden
     settings: {  }
