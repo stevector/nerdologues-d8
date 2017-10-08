@@ -1,6 +1,6 @@
 uuid: 9e9b7103-794f-43f3-8137-55726fad5254
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -8,7 +8,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_branding
 theme: nerdtheme
-region: header
+region: '-1'
 weight: 0
 provider: null
 plugin: system_branding_block
