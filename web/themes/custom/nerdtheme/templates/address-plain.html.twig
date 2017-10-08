@@ -53,8 +53,8 @@
 
 
   {% if administrative_area.code %}
-    {{ administrative_area.code }}
+    {{ administrative_area.code }}{% if postal_code  %}, {{ postal_code }}{% endif %}
   {% endif %}
-  {% if postal_code  %} {{ postal_code }}{% endif %}
+
 
 </p>
