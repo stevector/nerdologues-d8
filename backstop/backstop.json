@@ -281,6 +281,9 @@
       "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories/clips",
       "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips",
       "hideSelectors": [],
+      "removeSelectors": [
+        "form"
+      ],
       "selectors": [
         "document"
       ],
