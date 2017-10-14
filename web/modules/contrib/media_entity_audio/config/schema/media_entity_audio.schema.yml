@@ -1,7 +1,0 @@
-media_entity.bundle.type.audio:
-  type: mapping
-  label: 'Audio configuration'
-  mapping:
-    source_field:
-      type: string
-      label: 'Audio file'
