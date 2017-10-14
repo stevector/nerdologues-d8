@@ -1,0 +1,9 @@
+type: module
+name: Panelizer Quick Edit
+description: 'Enables Quick Edit to function normally when using Panelizer.'
+package: Layout
+version: VERSION
+core: 8.x
+dependencies:
+  - panelizer
+  - quickedit

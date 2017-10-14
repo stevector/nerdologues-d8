@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function remote_stream_wrapper_entity_type_alter(&$entity_types) {
+  if (isset($entity_types['image_style'])) {
+    $entity_types['image_style']->setClass('Drupal\remote_stream_wrapper\Entity\ImageStyle');
+  }
+}
+
+function file_is_scheme_remote($scheme) {
+  if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaScheme($scheme)) {
+    return file_is_wrapper_remote($wrapper);
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function file_is_uri_remote($uri) {
+  if ($wrapper = \Drupal::service('stream_wrapper_manager')->getViaUri($uri)) {
+    return file_is_wrapper_remote($wrapper);
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function file_is_wrapper_remote($wrapper) {
+  return $wrapper && is_subclass_of($wrapper, '\Drupal\remote_stream_wrapper\StreamWrapper\RemoteStreamWrapperInterface');
+}

@@ -1,0 +1,2 @@
+route_callbacks:
+  - '\Drupal\remote_stream_wrapper\Routing\RemoteImageStyleRoutes::routes'
