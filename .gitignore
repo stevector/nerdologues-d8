@@ -63,3 +63,4 @@ web/sites/*/files
 
 
 /vendor
+/web/modules/contrib
