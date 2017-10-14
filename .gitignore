@@ -62,5 +62,6 @@ web/sites/*/files
 
 
 
-/vendor
-/web/modules/contrib
+/vendor/
+/web/modules/contrib/
+/web/core/
