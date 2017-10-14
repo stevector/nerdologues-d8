@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ae314daa2902fedf1396d5b979c28fd",
+    "content-hash": "49091fbf98840d5859a24d280d1076f1",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1328,12 +1328,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "fbf10f63dba6b312e1d1b67bac521db1648384f3"
+                "reference": "12ec8a14c0cd269af823375bc05b0738b5293e2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/fbf10f63dba6b312e1d1b67bac521db1648384f3",
-                "reference": "fbf10f63dba6b312e1d1b67bac521db1648384f3",
+                "url": "https://api.github.com/repos/drupal/core/zipball/12ec8a14c0cd269af823375bc05b0738b5293e2a",
+                "reference": "12ec8a14c0cd269af823375bc05b0738b5293e2a",
                 "shasum": ""
             },
             "require": {
@@ -1589,8 +1589,12 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha27+0-dev",
-                    "datestamp": "1471723439"
+                    "version": "8.x-3.0+3-dev",
+                    "datestamp": "1499795342",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1745,9 +1749,9 @@
                 "drupal/core": "~8.0",
                 "drupal/layout_plugin": "*"
             },
-            "suggest": {
-                "drupal/devel": "Required by drupal/ds_devel",
-                "drupal/field_group": "Required by drupal/ds"
+            "require-dev": {
+                "drupal/devel": "*",
+                "drupal/field_group": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -1756,7 +1760,11 @@
                 },
                 "drupal": {
                     "version": "8.x-2.5",
-                    "datestamp": "1466764739"
+                    "datestamp": "1495040310",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1821,7 +1829,11 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-alpha4",
-                    "datestamp": "1481194983"
+                    "datestamp": "1505895844",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1888,7 +1900,11 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0",
-                    "datestamp": "1492678144"
+                    "datestamp": "1502200443",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1982,7 +1998,8 @@
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
-            }
+            },
+            "time": "2016-10-16 06:30:58"
         },
         {
             "name": "drupal/field_group",
@@ -2164,7 +2181,11 @@
                 },
                 "drupal": {
                     "version": "8.x-1.6",
-                    "datestamp": "1480363983"
+                    "datestamp": "1480363983",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2175,6 +2196,10 @@
                 {
                     "name": "Berdir",
                     "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
                     "name": "Drupal Media Team",
@@ -2203,6 +2228,10 @@
                 {
                     "name": "katzilla",
                     "homepage": "https://www.drupal.org/user/260398"
+                },
+                {
+                    "name": "marcoscano",
+                    "homepage": "https://www.drupal.org/user/1288796"
                 },
                 {
                     "name": "phenaproxima",
@@ -2246,7 +2275,11 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-beta3+7-dev",
-                    "datestamp": "1475166839"
+                    "datestamp": "1475166839",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2279,7 +2312,8 @@
             "homepage": "https://www.drupal.org/project/media_entity_audio",
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
-            }
+            },
+            "time": "2016-09-29 16:29:04"
         },
         {
             "name": "drupal/migrate_plus",
@@ -2298,10 +2332,11 @@
             "require": {
                 "drupal/core": "^8.2"
             },
+            "require-dev": {
+                "drupal/migrate_example_advanced_setup": "*",
+                "drupal/migrate_example_setup": "*"
+            },
             "suggest": {
-                "drupal/core": "Required by drupal/migrate_example_advanced",
-                "drupal/migrate_example_advanced_setup": "Required by drupal/migrate_example_advanced",
-                "drupal/migrate_example_setup": "Required by drupal/migrate_example",
                 "sainsburys/guzzle-oauth2-plugin": "3.0 required for the OAuth2 authentication plugin"
             },
             "type": "drupal-module",
@@ -2311,7 +2346,11 @@
                 },
                 "drupal": {
                     "version": "8.x-3.0-beta1",
-                    "datestamp": "1476307739"
+                    "datestamp": "1494450485",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2323,6 +2362,10 @@
                     "name": "Mike Ryan",
                     "homepage": "https://www.drupal.org/u/mikeryan",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "mikeryan",
+                    "homepage": "https://www.drupal.org/user/4420"
                 }
             ],
             "description": "Enhancements to core migration support.",
@@ -2358,7 +2401,11 @@
                 },
                 "drupal": {
                     "version": "8.x-3.0-beta1",
-                    "datestamp": "1476313439"
+                    "datestamp": "1494450485",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2367,8 +2414,16 @@
             ],
             "authors": [
                 {
+                    "name": "heddn",
+                    "homepage": "https://www.drupal.org/user/1463982"
+                },
+                {
                     "name": "mikeryan",
                     "homepage": "https://www.drupal.org/user/4420"
+                },
+                {
+                    "name": "moshe weitzman",
+                    "homepage": "https://www.drupal.org/user/23"
                 }
             ],
             "description": "Tools to assist in developing and running migrations.",
@@ -2402,7 +2457,11 @@
                 },
                 "drupal": {
                     "version": "8.x-3.0-rc1",
-                    "datestamp": "1476200639"
+                    "datestamp": "1504384144",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2411,12 +2470,12 @@
             ],
             "authors": [
                 {
-                    "name": "Ryan Weal",
-                    "homepage": "https://www.drupal.org/user/412402"
-                },
-                {
                     "name": "abhishek-anand",
                     "homepage": "https://www.drupal.org/user/468982"
+                },
+                {
+                    "name": "heddn",
+                    "homepage": "https://www.drupal.org/user/1463982"
                 },
                 {
                     "name": "ksenzee",
@@ -2647,8 +2706,12 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta5+2-dev",
-                    "datestamp": "1481218084"
+                    "version": "8.x-3.0-beta6+3-dev",
+                    "datestamp": "1491608583",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2729,7 +2792,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-alpha1",
-                    "datestamp": "1500476643",
+                    "datestamp": "1505400543",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2816,7 +2879,8 @@
             "homepage": "https://www.drupal.org/project/paragraphs",
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
-            }
+            },
+            "time": "2016-11-01 21:46:42"
         },
         {
             "name": "drupal/pathauto",
@@ -2897,7 +2961,11 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-beta1",
-                    "datestamp": "1480471987"
+                    "datestamp": "1486311483",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
                 },
                 "patches_applied": {
                     "trusted": "https://www.drupal.org/files/issues/trusted-2843564-1.patch"
@@ -2968,7 +3036,7 @@
                 },
                 "patches_applied": {
                     "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch",
-                    "require hack": "https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch"
+                    "custom require hack": "https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6838,7 +6906,7 @@
                 "test",
                 "web"
             ],
-            "time": "2016-06-20T16:28:37+00:00"
+            "time": "2016-06-20 16:28:37"
         },
         {
             "name": "drupal/drupal-extension",
@@ -6899,7 +6967,7 @@
                 "test",
                 "web"
             ],
-            "time": "2016-08-26T21:41:11+00:00"
+            "time": "2016-08-26 21:41:11"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
@@ -7345,11 +7413,11 @@
             ],
             "authors": [
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
-                    "name": "Pedrotroller",
+                    "name": "PedroTroller",
                     "homepage": "https://github.com/PedroTroller"
                 }
             ],
