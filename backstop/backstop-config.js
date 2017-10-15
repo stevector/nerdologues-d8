@@ -237,7 +237,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.69999999999999999999
     },
     {
       "label": "Your stories",
