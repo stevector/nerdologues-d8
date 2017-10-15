@@ -17,7 +17,7 @@ machine:
     TERMINUS_ENV: "ci-909"
     TERMINUS_SITE: "nerdologues-composer"
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
-    #MIGRATION_SOURCE_URL: "http://migr-prep2-nerdologues.pantheonsite.io"
+    MIGRATION_SOURCE_URL: "http://migr-prep2-nerdologues.pantheonsite.io"
     #PANTHEON_SITE_URL: "http://"$TERMINUS_ENV"-"$TERMINUS_SITE.pantheonsite.io"
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
     NOTIFY: 'scripts/github/add-commit-comment {project} {sha} "Created multidev environment [{site}#{env}]({dashboard-url})." {site-url}'
