@@ -13,6 +13,10 @@
         {
             "type": "composer",
              "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/stevector/timeperiod.git"
         }
     ],
     "require": {
@@ -45,7 +49,8 @@
         "drupal/entity_browser": "^1.0",
         "drupal/pantheon_advanced_page_cache": "^1.0@alpha",
         "drupal/cdn": "^3.1",
-        "drupal/http2_server_push": "^1.0"
+        "drupal/http2_server_push": "^1.0",
+        "drupal/timeperiod": "dev-composerfile"
     },
     "require-dev": {
         "behat/mink": "~1.7",

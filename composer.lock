@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "49091fbf98840d5859a24d280d1076f1",
+    "content-hash": "50f4e9ec3ab24e97003aa084799b0b2d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3062,6 +3062,17 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/remote_stream_wrapper"
             }
+        },
+        {
+            "name": "drupal/timeperiod",
+            "version": "dev-composerfile",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stevector/timeperiod.git",
+                "reference": "2c642610ba2462d097841546e38de156c8bc9e79"
+            },
+            "type": "drupal-module",
+            "time": "2017-10-15 11:34:45"
         },
         {
             "name": "drupal/token",
@@ -8660,6 +8671,7 @@
         "drupal/field_group": 20,
         "drupal/panelizer": 20,
         "drupal/pantheon_advanced_page_cache": 15,
+        "drupal/timeperiod": 20,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
