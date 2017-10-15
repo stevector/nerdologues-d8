@@ -127,3 +127,6 @@ body.page-node-type-blog-post .panel-1col {
 .main-nav .menu-item {
   padding-top: 0;
 }
+.main-nav ul.menu a.is-active {
+  color: #FC9494;
+}
