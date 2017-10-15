@@ -66,4 +66,4 @@ web/sites/*/files
 /web/core/
 /web/modules/contrib/
 /web/profiles/contrib/
-
+/drush/contrib/
