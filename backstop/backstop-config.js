@@ -258,7 +258,9 @@ module.exports = {
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
-        ".field--name-field-file"
+        ".field--name-field-file",
+        ".todo--dont-remove-the-selctor--------pane-node-field-link-paywall-content",
+        " pane-node-field-link-paywall-content"
       ],
       "selectors": [
         "document"
