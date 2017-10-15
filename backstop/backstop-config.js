@@ -260,7 +260,7 @@ module.exports = {
         ".mediaelement-audio",
         ".field--name-field-file",
         ".todo--dont-remove-the-selctor--------pane-node-field-link-paywall-content",
-        " pane-node-field-link-paywall-content"
+        ".pane-node-field-link-paywall-content"
       ],
       "selectors": [
         "document"
