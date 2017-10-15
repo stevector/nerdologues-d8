@@ -1,8 +1,0 @@
-name: Example Layouts
-type: module
-description: 'Registers a few example layouts to use for testing or demonstration.'
-core: 8.x
-package: Examples
-hidden: true
-dependencies:
-  - layout_plugin
