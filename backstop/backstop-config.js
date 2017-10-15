@@ -249,7 +249,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.22222222222222222222
     },
     {
       "label": "Episode",
