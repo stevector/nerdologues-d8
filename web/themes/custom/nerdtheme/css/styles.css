@@ -122,3 +122,8 @@ body.page-node-type-blog-post .panel-1col {
 .field--label-inline .field__label {
   padding-right: 0.25em;
 }
+
+
+.main-nav .menu-item {
+  padding-top: 0;
+}
