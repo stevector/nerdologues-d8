@@ -1,4 +1,11 @@
-{
+
+'use strict';
+
+const BackstopReferenceBaseUrl = ;
+const BackstopTestUrl = process.env.PANTHEON_SITE_URL;
+
+
+module.exports = {
   "viewports": [
     {
       "name": "desktop",
@@ -9,8 +16,8 @@
   "scenarios": [
     {
       "label": "Clips by person, with quotes",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/node/27/clips",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/27/clips",
+      "url": BackstopTestUrl + "/node/27/clips",
+      "referenceUrl": BackstopReferenceBaseUrl + "/node/27/clips",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -21,8 +28,8 @@
     },
     {
       "label": "Homepage",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/",
+      "url": BackstopTestUrl + "/",
+      "referenceUrl": BackstopReferenceBaseUrl + "/",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -33,8 +40,8 @@
     },
     {
       "label": "Homepage, Next page",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/home?page=1",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/home?page=1",
+      "url": BackstopTestUrl + "/home?page=1",
+      "referenceUrl": BackstopReferenceBaseUrl + "/home?page=1",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -45,8 +52,8 @@
     },
     {
       "label": "Events",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/events",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/events",
+      "url": BackstopTestUrl + "/events",
+      "referenceUrl": BackstopReferenceBaseUrl + "/events",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -57,8 +64,8 @@
     },
     {
       "label": "Nerds",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds",
+      "url": BackstopTestUrl + "/nerds",
+      "referenceUrl": BackstopReferenceBaseUrl + "/nerds",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -69,8 +76,8 @@
     },
     {
       "label": "Nerd bio",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds/eric-garneau",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/eric-garneau",
+      "url": BackstopTestUrl + "/nerds/eric-garneau",
+      "referenceUrl": BackstopReferenceBaseUrl + "/nerds/eric-garneau",
       "hideSelectors": [],
       "removeSelectors": [
         ".field-name-field-file",
@@ -86,8 +93,8 @@
     },
     {
       "label": "Nerd bio 2, MBS",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds/mary-beth-smith",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/mary-beth-smith",
+      "url": BackstopTestUrl + "/nerds/mary-beth-smith",
+      "referenceUrl": BackstopReferenceBaseUrl + "/nerds/mary-beth-smith",
       "hideSelectors": [],
       "removeSelectors": [
         ".field-name-field-file",
@@ -103,8 +110,8 @@
     },
     {
       "label": "Nerd bio, No clips, Jando",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds/michael-jando",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds/michael-jando",
+      "url": BackstopTestUrl + "/nerds/michael-jando",
+      "referenceUrl": BackstopReferenceBaseUrl + "/nerds/michael-jando",
       "hideSelectors": [],
       "requireSameDimensions" : false,
       "removeSelectors": [
@@ -120,8 +127,8 @@
     },
     {
       "label": "Nerd videos",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/node/72/videos",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/72/videos",
+      "url": BackstopTestUrl + "/node/72/videos",
+      "referenceUrl": BackstopReferenceBaseUrl + "/node/72/videos",
       "hideSelectors": [],
       "removeSelectors": [
         ".field-name-field-file",
@@ -137,8 +144,8 @@
     },
     {
       "label": "Nerd videos 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/node/73/videos",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/73/videos",
+      "url": BackstopTestUrl + "/node/73/videos",
+      "referenceUrl": BackstopReferenceBaseUrl + "/node/73/videos",
       "hideSelectors": [],
       "requireSameDimensions" : false,
       "removeSelectors": [
@@ -154,8 +161,8 @@
     },
     {
       "label": "Clips by person",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/node/29/clips",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/29/clips",
+      "url": BackstopTestUrl + "/node/29/clips",
+      "referenceUrl": BackstopReferenceBaseUrl + "/node/29/clips",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -166,8 +173,8 @@
     },
     {
       "label": "Clips by person 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/node/73/clips",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/node/73/clips",
+      "url": BackstopTestUrl + "/node/73/clips",
+      "referenceUrl": BackstopReferenceBaseUrl + "/node/73/clips",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -178,8 +185,8 @@
     },
     {
       "label": "Blog post",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "url": BackstopTestUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
+      "referenceUrl": BackstopReferenceBaseUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -194,8 +201,8 @@
     },
     {
       "label": "Blog post 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
+      "url": BackstopTestUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
+      "referenceUrl": BackstopReferenceBaseUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -210,8 +217,8 @@
     },
     {
       "label": "about",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/nerds-are-funny",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/nerds-are-funny",
+      "url": BackstopTestUrl + "/nerds-are-funny",
+      "referenceUrl": BackstopReferenceBaseUrl + "/nerds-are-funny",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -222,8 +229,8 @@
     },
     {
       "label": "podcasts",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts",
+      "url": BackstopTestUrl + "/podcasts",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -234,8 +241,8 @@
     },
     {
       "label": "Your stories",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories",
+      "url": BackstopTestUrl + "/podcasts/your-stories",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories",
       "hideSelectors": [],
       "selectors": [
         "document"
@@ -246,8 +253,8 @@
     },
     {
       "label": "Episode",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/episodes/may-2015-press-start-part-1",
+      "url": BackstopTestUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
@@ -262,8 +269,8 @@
     },
     {
       "label": "Episode 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
+      "url": BackstopTestUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
@@ -278,8 +285,8 @@
     },
     {
       "label": "Clip archive",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories/clips",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips",
+      "url": BackstopTestUrl + "/podcasts/your-stories/clips",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips",
       "hideSelectors": [],
       "removeSelectors": [
         "form"
@@ -293,8 +300,8 @@
     },
     {
       "label": "clip 1",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/cover-stories-because-night",
+      "url": BackstopTestUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
@@ -309,8 +316,8 @@
     },
     {
       "label": "clip 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "url": BackstopTestUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
@@ -325,8 +332,8 @@
     },
     {
       "label": "videos",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/videos",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/videos",
+      "url": BackstopTestUrl + "/videos",
+      "referenceUrl": BackstopReferenceBaseUrl + "/videos",
       "hideSelectors": [],
       "removeSelectors": [
         ".field-name-field-file",
@@ -342,8 +349,8 @@
     },
     {
       "label": "Video 1",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/videos/twerking-hard-or-hardly-twerking",
+      "url": BackstopTestUrl + "/videos/twerking-hard-or-hardly-twerking",
+      "referenceUrl": BackstopReferenceBaseUrl + "/videos/twerking-hard-or-hardly-twerking",
       "removeSelectors": [
         "iframe",
         ".field-name-field-file",
@@ -359,8 +366,8 @@
     },
     {
       "label": "Video 2",
-      "url": "http://dev-nerdologues-composer.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
-      "referenceUrl": "http://migr-prep2-nerdologues.pantheonsite.io/videos/friends-nerdologues-tim-dunn",
+      "url": BackstopTestUrl + "/videos/friends-nerdologues-tim-dunn",
+      "referenceUrl": BackstopReferenceBaseUrl + "/videos/friends-nerdologues-tim-dunn",
       "removeSelectors": [
         "iframe",
         ".field-name-field-file",
