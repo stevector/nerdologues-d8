@@ -1,7 +1,0 @@
-name: Time period
-description: Defines time period widgets and formatters to be used with Integer fields.
-package: Field types
-core: 8.x
-dependencies:
-  - field
-type: module
