@@ -1,7 +1,7 @@
 
 'use strict';
 
-const BackstopReferenceBaseUrl = ;
+const BackstopReferenceBaseUrl = process.env.MIGRATION_SOURCE_URL;
 const BackstopTestUrl = process.env.PANTHEON_SITE_URL;
 
 
