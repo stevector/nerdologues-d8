@@ -274,7 +274,10 @@ module.exports = {
       "hideSelectors": [],
       "removeSelectors": [
         ".mediaelement-audio",
-        ".field--name-field-file"
+        ".field--name-field-file",
+        ".todo----dont-remove-p-tags",
+        ".block-entity-fieldnodefield-body p",
+        ".field-name-field-body p",
       ],
       "selectors": [
         "document"
