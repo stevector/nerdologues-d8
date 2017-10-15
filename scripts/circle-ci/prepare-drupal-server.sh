@@ -2,8 +2,6 @@
 
 set -ex
 
-composer install  --optimize-autoloader
-
 # Copy the settings.local into place
 cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 

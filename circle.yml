@@ -28,6 +28,7 @@ dependencies:
     - ~/.composer/cache
   override:
     - ./scripts/circle-ci/install-globals.sh
+    - composer install  --optimize-autoloader
   post:
     ##############################- ./scripts/circle-ci/prepare-drupal-server.sh
 
