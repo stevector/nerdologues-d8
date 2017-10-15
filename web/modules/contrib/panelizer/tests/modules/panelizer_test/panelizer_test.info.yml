@@ -1,4 +1,0 @@
-type: module
-name: Panelizer Test
-description: 'Required for Panelizer simpletests only.'
-core: 8.x

@@ -5,7 +5,11 @@ set -x
 git config user.email "stevepersch+circleci@gmail.com"
 git config user.name "Circle CI Automation"
 
-composer config --global github-oauth.github.com $GITHUB_TOKEN
+{
+  composer config --global github-oauth.github.com $GITHUB_TOKEN
+} &> /dev/null
+
+
 composer global require -n "consolidation/cgr"
 composer global require -n "hirak/prestissimo:^0.3"
 cgr "drush/drush:~8"

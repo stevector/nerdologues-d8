@@ -1,5 +1,0 @@
-name: Layout Plugin
-type: module
-description: 'Provides a way for modules or themes to register layouts.'
-core: 8.x
-package: Layout

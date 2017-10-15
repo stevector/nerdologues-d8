@@ -1,5 +1,0 @@
-name: Chaos tools
-type: module
-description: 'Provides a number of utility and helper APIs for Drupal developers and site builders.'
-package: Chaos tool suite
-core: 8.x

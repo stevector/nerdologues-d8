@@ -59,3 +59,9 @@ web/sites/*/files
 /.idea/
 
 /backstop/node_modules
+
+
+
+/vendor/
+/web/core/
+/web/modules/contrib/
