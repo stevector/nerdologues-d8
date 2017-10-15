@@ -60,7 +60,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.404444444444444444444444
     },
     {
       "label": "Nerds",
