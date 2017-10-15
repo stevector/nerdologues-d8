@@ -294,6 +294,7 @@ module.exports = {
       "selectors": [
         "document"
       ],
+      "requireSameDimensions" : false,
       "readyEvent": null,
       "delay": 1500,
       "misMatchThreshold" : 0.1
