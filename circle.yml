@@ -33,7 +33,6 @@ dependencies:
     - composer install  --optimize-autoloader
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
-    - terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
 
 test:
   override:
