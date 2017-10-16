@@ -53,7 +53,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 10
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
@@ -180,6 +180,20 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: nid
+          plugin_id: standard
       title: 'Podcast Clips'
       header: {  }
       footer: {  }
@@ -203,15 +217,6 @@ display:
           group_type: group
           admin_label: 'field_ref_podcast_episode: Content'
           required: true
-          plugin_id: standard
-        field_ref_creators:
-          id: field_ref_creators
-          table: node__field_ref_creators
-          field: field_ref_creators
-          relationship: none
-          group_type: group
-          admin_label: 'field_ref_creators: Content'
-          required: false
           plugin_id: standard
         field_ref_podcast:
           id: field_ref_podcast
@@ -389,9 +394,9 @@ display:
           plugin_id: bundle
         referenced_storytellers:
           id: referenced_storytellers
-          table: node_field_data
+          table: node__field_ref_creators
           field: referenced_storytellers
-          relationship: field_ref_creators
+          relationship: none
           group_type: group
           admin_label: ''
           operator: or
@@ -400,11 +405,11 @@ display:
           exposed: true
           expose:
             operator_id: referenced_storytellers_op
-            label: Storyteller
+            label: 'Referenced Storytellers'
             description: ''
             use_operator: false
             operator: referenced_storytellers_op
-            identifier: referenced_storytellers
+            identifier: storytellers
             required: false
             remember: false
             multiple: false
@@ -427,7 +432,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: 0
-          entity_type: node
           plugin_id: nerdcustom_referenced_storytellers
       filter_groups:
         operator: AND

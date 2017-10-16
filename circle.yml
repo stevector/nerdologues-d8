@@ -15,8 +15,10 @@ machine:
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
-    TERMINUS_SITE: nerdologues-composer
+    TERMINUS_SITE: "nerdologues-composer"
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
+    MIGRATION_SOURCE_URL: "http://migr-prep2-nerdologues.pantheonsite.io"
+    PANTHEON_SITE_URL: "http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io"
     PATH: $PATH:~/.composer/vendor/bin:~/terminus/bin
     NOTIFY: 'scripts/github/add-commit-comment {project} {sha} "Created multidev environment [{site}#{env}]({dashboard-url})." {site-url}'
     BUILD_TOOLS_VERSION: '^1'
@@ -28,6 +30,7 @@ dependencies:
     - ~/.composer/cache
   override:
     - ./scripts/circle-ci/install-globals.sh
+    - composer install  --optimize-autoloader
   post:
     - ./scripts/circle-ci/prepare-drupal-server.sh
 
