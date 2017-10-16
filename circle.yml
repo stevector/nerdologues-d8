@@ -14,7 +14,7 @@ machine:
     SERVER: server.local
     WEB_USER: $(whoami)
     WEB_GROUP: www-data
-    TERMINUS_ENV: "ci-909"
+    TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
     TERMINUS_SITE: "nerdologues-composer"
     SITE_ENV: $TERMINUS_SITE.$TERMINUS_ENV
     MIGRATION_SOURCE_URL: "http://migr-prep2-nerdologues.pantheonsite.io"
@@ -32,13 +32,12 @@ dependencies:
     - ./scripts/circle-ci/install-globals.sh
     - composer install  --optimize-autoloader
   post:
-    ##############################- ./scripts/circle-ci/prepare-drupal-server.sh
+    - ./scripts/circle-ci/prepare-drupal-server.sh
     - terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
 
 test:
   override:
-    - echo 'hi'
-    ##############################- composer circle-tests
+    - composer circle-tests
   post:
-    ##############################- ./scripts/circle-ci/deploy-to-multidev.sh
+    - ./scripts/circle-ci/deploy-to-multidev.sh
     - cd backstop && ./run-backstop.sh
