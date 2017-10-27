@@ -11,7 +11,7 @@ terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may h
 terminus aliases
 # removing settings.local.php is necessary because build tools will force commit everything.
 ##################################### sudo rm web/sites/default/settings.local.php
-sudo rm -r web/sites/default/files
+##################################### sudo rm -r web/sites/default/files
 
 # delete old multidevs before making a new one
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
