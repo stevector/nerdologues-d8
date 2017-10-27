@@ -2,7 +2,7 @@
 machine:
   php:
     # https://circleci.com/docs/environment#php
-    version: 5.5.11
+    version: 7.0.4
   node:
     version: 4.2.6
   environment:
