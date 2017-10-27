@@ -130,6 +130,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_body:
     weight: 9
     settings:
@@ -137,11 +138,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_date_published:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_file:
     weight: 26
     settings:
@@ -154,12 +157,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: entity_browser_file
+    region: content
   field_int_duration:
     weight: 27
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
   field_lede:
     weight: 8
     settings:
@@ -167,6 +172,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_link:
     weight: 10
     settings:
@@ -174,6 +180,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_link_paywall_content:
     weight: 11
     settings:
@@ -181,11 +188,13 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_ref_podcast:
     weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_text_original_mp3_url:
     weight: 11
     settings:
@@ -193,23 +202,27 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   path:
     type: path
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 3
     third_party_settings: {  }
+    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 4
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -217,6 +230,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 1
@@ -225,4 +239,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

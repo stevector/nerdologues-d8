@@ -18,12 +18,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   field_int_start_time:
     weight: 1
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
 hidden:
   created: true
   status: true

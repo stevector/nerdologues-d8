@@ -10,7 +10,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_footer
 theme: nerdtheme
-region: '-1'
+region: page_title
 weight: -6
 provider: null
 plugin: 'system_menu_block:footer'

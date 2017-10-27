@@ -8,7 +8,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_branding
 theme: nerdtheme
-region: '-1'
+region: page_title
 weight: 0
 provider: null
 plugin: system_branding_block

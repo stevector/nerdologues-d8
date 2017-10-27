@@ -70,6 +70,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_date_published:
     type: datetime_default
     weight: 1
@@ -78,6 +79,7 @@ content:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
+    region: content
   field_youtube:
     type: youtube_thumbnail
     weight: 4
@@ -86,6 +88,7 @@ content:
       image_style: large
       image_link: content
     third_party_settings: {  }
+    region: content
 hidden:
   field_ref_creators: true
   links: true

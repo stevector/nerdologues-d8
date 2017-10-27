@@ -137,6 +137,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_date_published:
     weight: 2
     label: hidden
@@ -145,6 +146,7 @@ content:
       format_type: public_display1
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_file:
     weight: 0
     label: hidden
@@ -153,6 +155,7 @@ content:
       audio_attributes: controls
     third_party_settings: {  }
     type: audio_player_html5
+    region: content
   field_ref_podcast:
     weight: 1
     label: inline
@@ -160,6 +163,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
 hidden:
   field_int_duration: true
   field_lede: true

@@ -10,7 +10,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_tools
 theme: nerdtheme
-region: '-1'
+region: page_title
 weight: -3
 provider: null
 plugin: 'system_menu_block:tools'
