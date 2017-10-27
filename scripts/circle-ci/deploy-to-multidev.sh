@@ -10,7 +10,7 @@ terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may h
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
 terminus aliases
 # removing settings.local.php is necessary because build tools will force commit everything.
-sudo rm web/sites/default/settings.local.php
+##################################### sudo rm web/sites/default/settings.local.php
 sudo rm -r web/sites/default/files
 
 # delete old multidevs before making a new one
