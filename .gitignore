@@ -65,3 +65,4 @@ web/sites/*/files
 /vendor/
 /web/core/
 /web/modules/contrib/
+/web/profiles/contrib/
