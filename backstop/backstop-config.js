@@ -59,8 +59,8 @@ module.exports = {
         "document"
       ],
       "removeSelectors": [
-        ".entity-id-3035.node--view-mode-teaser img",
-        "node-teaser.node-3035 img"
+        ".entity-id-3035 img",
+        ".node-3035 img"
       ],
       "readyEvent": null,
       "delay": 1500,
