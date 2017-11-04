@@ -58,7 +58,15 @@ module.exports = {
       "selectors": [
         "document"
       ],
+      "removeSelectors": [
+        "todo-dont-use-such-broad-image-suppression",
+        ".views-element-container img",
+        ".view-content img",
+        ".entity-id-3035 img",
+        ".node-3035 img"
+      ],
       "readyEvent": null,
+      "requireSameDimensions" : false,
       "delay": 1500,
       "misMatchThreshold" : 0.404444444444444444444444
     },
