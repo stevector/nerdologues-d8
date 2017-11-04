@@ -41,6 +41,4 @@ test:
     - echo "hello world"
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
-    - ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict --stop-on-failure
-    - ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict --stop-on-failure
     - cd backstop && ./run-backstop.sh
