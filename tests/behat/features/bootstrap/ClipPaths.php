@@ -85,7 +85,9 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     // @todo, fine-grain date and timezone handling.
     $this->minkContext->fillField('field_dates[0][value][date]', date('Y-m-d', $time));
     $this->minkContext->fillField('field_dates[0][value][time]', date("H:i:s", $time));
-    $this->minkContext->pressButton('Save and publish');
+
+    $this->minkContext->checkOption("Publishing status");
+    $this->minkContext->pressButton('Save');
     $this->minkContext->visit('/');
   }
 

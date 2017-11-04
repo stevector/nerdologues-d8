@@ -10,8 +10,8 @@ terminus env:create $TERMINUS_SITE.dev $TERMINUS_ENV || echo "The multidev may h
 # Create a drush alias file so that Behat tests can be executed against Pantheon.
 terminus aliases
 # removing settings.local.php is necessary because build tools will force commit everything.
-sudo rm web/sites/default/settings.local.php
-sudo rm -r web/sites/default/files
+##################################### sudo rm web/sites/default/settings.local.php
+##################################### sudo rm -r web/sites/default/files
 
 # delete old multidevs before making a new one
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
@@ -44,5 +44,5 @@ curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 # If the local Drupal install is broken.
 sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/dataentry/ --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict --stop-on-failure

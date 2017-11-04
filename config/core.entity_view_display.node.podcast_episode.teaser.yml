@@ -185,6 +185,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   field_date_published:
     type: datetime_default
     weight: 2
@@ -193,6 +194,7 @@ content:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
+    region: content
   field_file:
     type: audio_player_html5
     weight: 0
@@ -201,18 +203,21 @@ content:
       provide_download_link: true
       audio_attributes: controls
     third_party_settings: {  }
+    region: content
   field_int_duration:
     type: number_unformatted
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_lede:
     type: text_default
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_link:
     type: link_separate
     weight: 0
@@ -224,6 +229,7 @@ content:
       url_only: false
       url_plain: false
     third_party_settings: {  }
+    region: content
   field_link_paywall_content:
     type: link_separate
     weight: 0
@@ -235,6 +241,7 @@ content:
       url_only: false
       url_plain: false
     third_party_settings: {  }
+    region: content
   field_ref_podcast:
     type: entity_reference_entity_view
     weight: 4
@@ -243,15 +250,18 @@ content:
       view_mode: image_only
       link: false
     third_party_settings: {  }
+    region: content
   field_text_original_mp3_url:
     type: basic_string
     weight: 0
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   field_int_sort_order: true

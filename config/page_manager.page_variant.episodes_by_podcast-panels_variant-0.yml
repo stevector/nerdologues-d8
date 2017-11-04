@@ -28,7 +28,7 @@ variant_settings:
   uuid: 4a7a0700-a448-4b3b-876d-6a45cf93279a
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: 'Episode Archive: [node:title]'
   storage_type: page_manager

@@ -39,7 +39,7 @@ variant_settings:
   uuid: fde6f42a-bdc0-4495-83cb-a8df406cb916
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: Events
   storage_type: page_manager

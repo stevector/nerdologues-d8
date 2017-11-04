@@ -8,7 +8,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_search
 theme: nerdtheme
-region: '-1'
+region: page_title
 weight: -4
 provider: null
 plugin: search_form_block

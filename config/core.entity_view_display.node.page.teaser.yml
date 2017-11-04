@@ -4,6 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_body
+    - field.field.node.page.field_image
+    - field.field.node.page.field_lede
+    - field.field.node.page.field_term_blog_tags
     - node.type.page
   module:
     - user
@@ -14,6 +18,7 @@ mode: teaser
 content:
   links:
     weight: 101
+    region: content
 hidden:
   field_body: true
   field_image: true

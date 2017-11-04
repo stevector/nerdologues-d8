@@ -7,10 +7,10 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
-  0: 'access content'
-  2: 'access comments'
-  3: 'post comments'
-  4: 'skip comment approval'
-  5: 'access site-wide contact form'
-  6: 'access shortcuts'
-  7: 'search content'
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'

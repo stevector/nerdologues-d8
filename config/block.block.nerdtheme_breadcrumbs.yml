@@ -8,7 +8,7 @@ dependencies:
     - nerdtheme
 id: nerdtheme_breadcrumbs
 theme: nerdtheme
-region: '-1'
+region: page_title
 weight: -7
 provider: null
 plugin: system_breadcrumb_block

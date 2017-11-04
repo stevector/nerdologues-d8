@@ -28,6 +28,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_dates:
     weight: 107
     label: above
@@ -36,6 +37,7 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_image:
     weight: 101
     label: above
@@ -44,12 +46,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   field_lede:
     weight: 103
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_link:
     weight: 102
     label: above
@@ -61,6 +65,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   field_ref_location:
     weight: 104
     label: above
@@ -68,12 +73,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_text_display_date:
     weight: 105
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   links:
     weight: 100
+    region: content
 hidden: {  }

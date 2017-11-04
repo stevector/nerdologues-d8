@@ -161,6 +161,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_int_start_time:
     type: nerd_clip_mp3_player
     weight: 0
@@ -169,12 +170,14 @@ content:
       provide_download_link: true
       audio_attributes: controls
     third_party_settings: {  }
+    region: content
   field_ref_creators:
     weight: 3
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: nerd_person_field_formatter
+    region: content
   field_ref_podcast:
     weight: 1
     label: inline
@@ -182,6 +185,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_ref_podcast_episode:
     weight: 2
     label: inline
@@ -189,6 +193,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
 hidden:
   field_date_published: true
   field_int_end_time: true

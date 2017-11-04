@@ -40,7 +40,7 @@ variant_settings:
   uuid: 75de11ce-578e-4e4d-a3d0-69379beaff1c
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: 'Nerds are Funny'
   storage_type: page_manager

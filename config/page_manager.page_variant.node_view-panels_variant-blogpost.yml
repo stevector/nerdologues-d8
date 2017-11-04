@@ -27,7 +27,7 @@ variant_settings:
   uuid: 69389842-ff42-4521-a87a-fee4f4716934
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: '[node:title]'
   storage_type: page_manager
