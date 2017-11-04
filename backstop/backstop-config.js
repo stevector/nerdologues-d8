@@ -79,7 +79,7 @@ module.exports = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 3000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -205,7 +205,7 @@ module.exports = {
       "readyEvent": null,
       "delay": 1500,
       "requireSameDimensions" : false,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.4777777777777777777
     },
     {
       "label": "Blog post 2",
