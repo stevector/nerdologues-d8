@@ -216,7 +216,10 @@ module.exports = {
         "document"
       ],
       "removeSelectors": [
-        ".center-wrapper"
+        ".center-wrapper",
+        "todo-remove-this-img-suppression",
+        ".panel-col-top.panel-panel img",
+        ".field--name-field-image-header img"
       ],
       "readyEvent": null,
       "delay": 1500,
