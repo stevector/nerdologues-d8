@@ -74,6 +74,7 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
+    region: right
   field_image:
     type: image
     weight: 0
@@ -82,6 +83,7 @@ content:
       image_style: large
       image_link: content
     third_party_settings: {  }
+    region: left
   field_lede:
     type: text_trimmed
     weight: 2
@@ -89,6 +91,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: right
   field_ref_location:
     type: entity_reference_entity_view
     weight: 0
@@ -97,6 +100,7 @@ content:
       view_mode: teaser
       link: false
     third_party_settings: {  }
+    region: right
   field_text_display_date:
     type: text_trimmed
     weight: -8
@@ -104,6 +108,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: right
 hidden:
   field_body: true
   field_link: true

@@ -20,7 +20,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: full
-      region: middle
+      region: content
       weight: 0
       uuid: 01ef726e-6c47-4302-9f44-e28313f7cc28
       context_mapping:
@@ -32,7 +32,7 @@ variant_settings:
       label_display: visible
       views_label: ''
       items_per_page: none
-      region: middle
+      region: content
       weight: 0
       uuid: abc17285-059f-4286-94a4-5ee229775b12
       context_mapping: {  }
@@ -40,7 +40,7 @@ variant_settings:
   uuid: 253460ab-75af-45b7-86b5-e260cac6b5e2
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: '[node:title]'
   storage_type: page_manager

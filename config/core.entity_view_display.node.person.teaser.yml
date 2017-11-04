@@ -71,6 +71,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: right
   field_image_lead:
     type: image
     weight: 4
@@ -79,10 +80,12 @@ content:
       image_style: 300square
       image_link: content
     third_party_settings: {  }
+    region: left
   links:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: right
 hidden:
   field_image: true
   field_last_name: true

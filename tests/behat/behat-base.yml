@@ -5,8 +5,8 @@ default:
   suites:
     default:
       paths:
-        - %paths.base%/features
-      contexts:
+        - %paths.base%/features/clickdriving
+      contexts: &defaultcontexts
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
@@ -14,6 +14,21 @@ default:
         - Knp\FriendlyContexts\Context\TableContext
         - DatePublishedViews
         - ClipPaths
+    clickdriving:
+      paths:
+        - %paths.base%/features/clickdriving
+      contexts:
+        <<: *defaultcontexts
+    dataentry:
+      paths:
+        - %paths.base%/features/dataentry
+      contexts:
+        <<: *defaultcontexts
+    migration:
+      paths:
+        - %paths.base%/features/migration
+      contexts:
+        <<: *defaultcontexts
   extensions:
     Behat\MinkExtension:
       goutte: ~

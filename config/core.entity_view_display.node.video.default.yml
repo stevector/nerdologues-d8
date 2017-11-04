@@ -26,6 +26,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_date_published:
     weight: 0
     label: hidden
@@ -34,6 +35,7 @@ content:
       format_type: public_display1
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_ref_creators:
     weight: 1
     label: inline
@@ -42,6 +44,7 @@ content:
       ds:
         ds_limit: ''
     type: nerd_person_field_formatter
+    region: content
   field_youtube:
     weight: 2
     label: hidden
@@ -57,5 +60,6 @@ content:
       youtube_iv_load_policy: false
     third_party_settings: {  }
     type: youtube_video
+    region: content
 hidden:
   links: true
