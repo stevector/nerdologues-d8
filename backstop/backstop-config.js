@@ -59,6 +59,9 @@ module.exports = {
         "document"
       ],
       "removeSelectors": [
+        "todo-dont-use-such-broad-image-suppression",
+        ".views-element-container img",
+        ".view-content img",
         ".entity-id-3035 img",
         ".node-3035 img"
       ],
