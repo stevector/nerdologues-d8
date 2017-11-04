@@ -11,7 +11,8 @@ Feature: Event Redirect
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"
     And I fill in "field_dates[0][value][date]" with "2013-01-31"
     And I fill in "field_dates[0][value][time]" with "19:00:00"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should be on "/events/699237613563919/"
 
   @api
@@ -22,6 +23,7 @@ Feature: Event Redirect
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"
     And I fill in "field_dates[0][value][date]" with "2013-01-31"
     And I fill in "field_dates[0][value][time]" with "19:00:00"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should be on "/events/your-stories-la-long-distance-ucb-sunset"
 

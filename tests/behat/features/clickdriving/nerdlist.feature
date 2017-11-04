@@ -21,7 +21,8 @@ Feature: Nerdlist
       # @todo, figure out random handling.
       And I fill in "title[0][value]" with "New Nerdologues Member"
       And I check "Current Member"
-      And I press "Save and publish"
+      And I check the box "Publishing status"
+      And I press "Save"
       Then I should see "New Nerdologues Member"
 
       When I visit "nerds"

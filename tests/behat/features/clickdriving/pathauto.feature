@@ -7,7 +7,8 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "A Blog Post Title"
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
     And I fill in "field_date_published[0][value][time]" with "15:05:05"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/blog/2015-10-31/blog-post-title\" />"
 
   @api
@@ -21,7 +22,8 @@ Feature: Pathauto
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-podcast-episode\" />"
 
     # CLIP
@@ -29,7 +31,8 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "A Clip of a story"
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/clip-story\" />"
 
   @api
