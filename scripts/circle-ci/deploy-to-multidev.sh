@@ -41,7 +41,7 @@ curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
 # Copy the settings.local back into place (after deleting it above)
 # because somehow autoloading with in Behat fails
-# If the local Drupal install is broken.
+# if the local Drupal install is broken.
 sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure
