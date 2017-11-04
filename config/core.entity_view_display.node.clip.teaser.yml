@@ -85,7 +85,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
-    region: content
+    region: right
   field_para_quotes:
     type: entity_reference_revisions_entity_view
     weight: 2
@@ -94,14 +94,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
+    region: quote
   field_ref_creators:
     type: nerd_person_field_formatter
     weight: 4
     label: inline
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: right
   field_ref_podcast:
     type: entity_reference_entity_view
     weight: 6
@@ -110,7 +110,7 @@ content:
       view_mode: image_only
       link: false
     third_party_settings: {  }
-    region: content
+    region: left
   field_ref_podcast_episode:
     type: entity_reference_label
     weight: 3
@@ -118,12 +118,12 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    region: content
+    region: right
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: header
 hidden:
   field_date_published: true
   field_int_end_time: true

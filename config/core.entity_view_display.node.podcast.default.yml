@@ -48,7 +48,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-    region: content
+    region: right
   field_image:
     weight: 1
     label: hidden
@@ -57,7 +57,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
-    region: content
+    region: left
 hidden:
   field_int_sort_order: true
   links: true

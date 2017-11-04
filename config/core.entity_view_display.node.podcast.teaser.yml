@@ -62,7 +62,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    region: content
+    region: right
   field_image:
     type: image
     weight: 2
@@ -71,7 +71,7 @@ content:
       image_style: large
       image_link: content
     third_party_settings: {  }
-    region: content
+    region: left
 hidden:
   field_int_sort_order: true
   links: true

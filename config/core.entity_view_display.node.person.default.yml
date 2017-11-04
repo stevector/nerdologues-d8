@@ -57,7 +57,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-    region: content
+    region: right
   field_image_lead:
     type: image
     weight: 0
@@ -66,7 +66,7 @@ content:
       image_style: 300square
       image_link: ''
     third_party_settings: {  }
-    region: content
+    region: left
 hidden:
   field_image: true
   field_last_name: true
