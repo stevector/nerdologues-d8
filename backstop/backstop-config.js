@@ -66,6 +66,7 @@ module.exports = {
         ".node-3035 img"
       ],
       "readyEvent": null,
+      "requireSameDimensions" : false,
       "delay": 1500,
       "misMatchThreshold" : 0.404444444444444444444444
     },
