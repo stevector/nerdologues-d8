@@ -20,14 +20,17 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 ##################################### sudo rm web/sites/default/settings.local.php
 ##################################### sudo rm -r web/sites/default/files
 
-# Copy the settings.local back into place (after deleting it above)
-# because somehow autoloading with in Behat fails
-# if the local Drupal install is broken.
-sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
+
 
 # delete old multidevs before making a new one
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+
+
+# Copy the settings.local back into place (after deleting it above)
+# because somehow autoloading with in Behat fails
+# if the local Drupal install is broken.
+sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
