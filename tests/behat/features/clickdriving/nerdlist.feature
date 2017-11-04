@@ -8,7 +8,8 @@ Feature: Nerdlist
     Given I am logged in as a user with the "content_administrator" role
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Some Random Name"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should see "Some Random Name"
     When I visit "nerds"
     Then I should not see "Some Random Name"
