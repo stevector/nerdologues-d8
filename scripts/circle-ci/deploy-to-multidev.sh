@@ -15,17 +15,25 @@ terminus aliases
 
 # delete old multidevs before making a new one
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
-terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
-
-terminus env:wake nerdologues.$D7_ENV
-export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
-terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
+terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
 
 # @todo Don't switch to sftp after
 # https://www.drupal.org/node/2156401 lands
 terminus connection:set $SITE_ENV sftp
 # Send to dev null so that the generated admin password does not show.
 # Hiding all output might be overkill for accomplishing that goal.
+terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict --stop-on-failure
+
+
+
+
+terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+
+terminus env:wake nerdologues.$D7_ENV
+export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
+terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
+
 terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 terminus drush $SITE_ENV -- ms
