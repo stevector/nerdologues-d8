@@ -220,6 +220,7 @@ module.exports = {
         "todo-remove-this-img-suppression",
         ".panel-col-top.panel-panel img",
         ".field--name-field-image-header img"
+        "img"
       ],
       "readyEvent": null,
       "delay": 1500,
