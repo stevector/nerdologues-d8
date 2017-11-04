@@ -21,7 +21,7 @@ variant_settings:
       label_display: visible
       views_label: 'Nerds in Real Life'
       items_per_page: none
-      region: middle
+      region: content
       weight: 0
       uuid: 32fb19f4-513b-4e96-ac84-cd836da2028e
       context_mapping: {  }
@@ -32,7 +32,7 @@ variant_settings:
       label_display: visible
       views_label: ''
       items_per_page: none
-      region: middle
+      region: content
       weight: 5
       uuid: 9e9329ad-d5eb-408d-a65f-21670109f413
       context_mapping: {  }

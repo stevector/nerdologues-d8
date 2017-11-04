@@ -21,7 +21,7 @@ variant_settings:
       label_display: '0'
       views_label: ''
       items_per_page: none
-      region: middle
+      region: content
       weight: 0
       uuid: 1921da64-72e5-4c90-a8e6-e6cd1542d99c
       context_mapping: {  }

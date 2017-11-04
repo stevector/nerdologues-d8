@@ -18,7 +18,7 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: full
-      region: middle
+      region: content
       weight: 0
       uuid: 34e76a6b-91a1-44a1-acde-22fde3b9d286
       context_mapping:
