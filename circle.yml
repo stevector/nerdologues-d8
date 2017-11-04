@@ -30,7 +30,7 @@ dependencies:
     - ~/.composer/cache
   override:
     - ./scripts/circle-ci/install-globals.sh
-    - composer install  --optimize-autoloader
+    - composer install  --optimize-autoloader --ignore-platform-reqs
   post:
    # - ./scripts/circle-ci/prepare-drupal-server.sh
    - echo "hello world"
