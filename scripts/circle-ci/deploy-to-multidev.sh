@@ -17,8 +17,8 @@ sudo rm -r web/sites/default/files
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content --db-only --notify="$NOTIFY"
 
-terminus env:wake nerdologues.migr-prep2
-export D7_MYSQL_URL=$(terminus connection:info nerdologues.migr-prep2 --field=mysql_url)
+terminus env:wake nerdologues.$D7_ENV
+export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
 terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 
 # @todo Don't switch to sftp after
@@ -41,7 +41,7 @@ curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
 # Copy the settings.local back into place (after deleting it above)
 # because somehow autoloading with in Behat fails
-# If the local Drupal install is broken.
+# if the local Drupal install is broken.
 sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml tests/behat/features/migration/ --strict --stop-on-failure

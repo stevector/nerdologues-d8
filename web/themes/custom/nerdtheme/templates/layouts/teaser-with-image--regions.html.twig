@@ -1,4 +1,14 @@
-<div class="l-2up clearfix">
+
+{%
+set classes = [
+"entity-id-"~node.id,
+"l-2up",
+"clearfix"
+]
+
+%}
+
+<div {{ attributes.addClass(classes) }}>
   {# I don't understand why an empty quote reports as having
   a length of 1.
   #}
