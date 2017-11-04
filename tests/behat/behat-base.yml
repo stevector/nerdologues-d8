@@ -26,7 +26,7 @@ default:
         <<: *defaultcontexts
     migration:
       paths:
-        - %paths.base%/features/dataentry
+        - %paths.base%/features/migration
       contexts:
         <<: *defaultcontexts
   extensions:
