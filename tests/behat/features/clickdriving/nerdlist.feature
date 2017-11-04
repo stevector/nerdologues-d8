@@ -8,7 +8,7 @@ Feature: Nerdlist
     Given I am logged in as a user with the "content_administrator" role
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Some Random Name"
-    And I check the box "Publishing status"
+    And I check the box "Published"
     And I press "Save"
     Then I should see "Some Random Name"
     When I visit "nerds"
@@ -22,7 +22,7 @@ Feature: Nerdlist
       # @todo, figure out random handling.
       And I fill in "title[0][value]" with "New Nerdologues Member"
       And I check "Current Member"
-      And I check the box "Publishing status"
+      And I check the box "Published"
       And I press "Save"
       Then I should see "New Nerdologues Member"
 
