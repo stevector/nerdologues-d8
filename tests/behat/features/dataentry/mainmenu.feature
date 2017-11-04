@@ -42,7 +42,7 @@ Feature: Main Main
 
     When I visit "admin/structure/menu/manage/main/add"
     And I fill in "Menu link title" with "Fisticuffs!"
-    And I fill in "Link" with "/fisticufss"
+    And I fill in "Link" with "/fisticuffs"
     And I fill in "Weight" with "20"
     And I press "Save"
 
