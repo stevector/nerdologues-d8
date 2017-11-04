@@ -43,8 +43,13 @@ curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
 
 
-
+sudo rm web/sites/default/settings.local.php
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+# Copy the settings.local back into place (after deleting it above)
+# because somehow autoloading with in Behat fails
+# if the local Drupal install is broken.
+sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
+
 
 terminus env:wake nerdologues.$D7_ENV
 export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
