@@ -21,7 +21,9 @@
     And I fill in "title[0][value]" with "Some video"
     And I fill in "field_ref_creators[0][target_id]" with "Jane Member"
     And I press "Save"
+    And print last response
     Then I visit "admin/content"
+    And print last response
     Then I click "Edit" in the "Some video" row
     And I fill in "field_ref_creators[1][target_id]" with "Joe Non-member"
     And I press "Save"
