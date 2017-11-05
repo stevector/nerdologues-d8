@@ -30,7 +30,7 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   include $migrate_settings;
 }
 
-$settings['install_profile'] = 'standard';
+$settings['install_profile'] = 'config_installer';
 $config_directories['sync'] = 'sites/default/config';
 
 
