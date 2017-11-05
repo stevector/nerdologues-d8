@@ -2,7 +2,7 @@ Feature: Main Main
 
   @api
   Scenario: Bio without proper term does not appear on the nerd page.
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/structure/menu/link/standard.front_page/edit"
     And I uncheck the box "Enable menu link"
     And I press "Save"

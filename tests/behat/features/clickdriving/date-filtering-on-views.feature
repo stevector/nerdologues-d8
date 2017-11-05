@@ -5,7 +5,7 @@ Feature: Date list
 
   @api
   Scenario: Close future date
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     # A video in the past is needed too, otherwise the Nerds Online section won't exist at all.
     And I create a video with a published date in the past
     When I create a video with a published date in the future
@@ -14,7 +14,7 @@ Feature: Date list
 
   @api
   Scenario: Close past date
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I create a video with a published date in the past
     Then that video appears on the video page
     And it appears on the homepage "Nerds Online" region.

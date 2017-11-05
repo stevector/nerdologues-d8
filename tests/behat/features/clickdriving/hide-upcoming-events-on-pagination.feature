@@ -5,7 +5,7 @@ Feature: Hide upcoming events on Pagination
 
   @api
   Scenario: Events page
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     And there are over ten events with dates in the past
 
     And I have made an upcoming event

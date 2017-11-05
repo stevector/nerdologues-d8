@@ -2,7 +2,7 @@ Feature: Pathauto
 
   @api
   Scenario: blog post
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/blog_post"
     And I fill in "title[0][value]" with "A Blog Post Title"
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
@@ -18,22 +18,22 @@ Feature: Pathauto
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast\" />"
 
     # PODCAST EPISODE
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
-    And I fill in "title[0][value]" with "That one podcast episode"
+    And I fill in "title[0][value]" with "That one pod episode"
     And I select the radio button "Someone's cool podcast"
     And I check the box "Publishing status"
     And I press "Save"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-podcast-episode\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-pod-episode\" />"
 
     # CLIP
     When I visit "node/add/clip"
-    And I fill in "title[0][value]" with "A Clip of a story"
+    And I fill in "title[0][value]" with "A cool Clip of a story"
     And I select the radio button "Someone's cool podcast"
-    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one pod episode"
     And I check the box "Publishing status"
     And I press "Save"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/clip-story\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/cool-clip-story\" />"
 
   @api
   Scenario: Basic page
