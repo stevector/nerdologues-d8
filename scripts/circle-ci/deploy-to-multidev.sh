@@ -90,5 +90,5 @@ curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict --stop-on-failure
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict
