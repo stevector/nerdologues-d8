@@ -48,7 +48,7 @@ jobs:
                 # Set TERMINUS_ENV and related environment variables.
                 # https://github.com/pantheon-systems/docker-build-tools-ci/blob/1.x/scripts/set-environment
                 name: dependencies
-                command: /scripts/circle-ci/variables.sh
+                command: ./scripts/circle-ci/variables.sh
 
 
 
