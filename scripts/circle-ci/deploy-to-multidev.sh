@@ -41,10 +41,10 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 
 {
-  terminus drush nerdologues-composer.ci-974 -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-add-role administrator   $BEHAT_USER_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
+  terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
+  terminus drush $SITE_ENV -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
 
 } &> /dev/null
 
@@ -69,10 +69,10 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 
 {
-  terminus drush nerdologues-composer.ci-974 -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-add-role administrator   $BEHAT_USER_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
-  terminus drush nerdologues-composer.ci-974 -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
+  terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
+  terminus drush $SITE_ENV -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
 
 } &> /dev/null
 
