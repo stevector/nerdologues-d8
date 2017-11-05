@@ -224,4 +224,13 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
     $this->minkContext->fillField('Password', getenv('BEHAT_PASS_CONTENT_ADMIN'));
     $this->minkContext->pressButton('Log in');
   }
+
+  /**
+   * @Given I log in as an admin
+   */
+  public function iLogInAsAnAdmin2()
+  {
+    $this->ILogInAsAnAdmin();
+  }
+
 }
