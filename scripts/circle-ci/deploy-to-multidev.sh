@@ -48,9 +48,10 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 } &> /dev/null
 
-curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict --stop-on-failure
 
+curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict
+#########################./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict   --stop-on-failure
 
 
 sudo rm web/sites/default/settings.local.php

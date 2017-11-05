@@ -20,11 +20,11 @@ Feature: Pathauto
     # PODCAST EPISODE
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
-    And I fill in "title[0][value]" with "That one podcast episode"
+    And I fill in "title[0][value]" with "That one pod episode"
     And I select the radio button "Someone's cool podcast"
     And I check the box "Publishing status"
     And I press "Save"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-podcast-episode\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-pod-episode\" />"
 
     # CLIP
     When I visit "node/add/clip"
