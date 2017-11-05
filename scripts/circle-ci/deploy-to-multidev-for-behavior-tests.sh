@@ -5,8 +5,7 @@
 
 set -ex
 
-# Create a drush alias file so that Behat tests can be executed against Pantheon.
-terminus aliases
+
 # Drush Behat driver fails without this option.
 echo "\$options['strict'] = 0;" >> ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
@@ -16,12 +15,9 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # delete old multidevs before making a new one
 terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --notify="$NOTIFY"
+# Create a drush alias file so that Behat tests can be executed against Pantheon.
+terminus aliases
 
-
-# Copy the settings.local back into place (after deleting it above)
-# because somehow autoloading with in Behat fails
-# if the local Drupal install is broken.
-sudo cp scripts/circle-ci/settings.cirlceci.php web/sites/default/settings.local.php
 
 terminus connection:set $SITE_ENV sftp
 # Send to dev null so that the generated admin password does not show.

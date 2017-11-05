@@ -50,11 +50,6 @@ jobs:
                 name: dependencies
                 command: ./scripts/circle-ci/variables.sh
 
-
-
-
-
-
             - run:
                 name: everything
                 command: |
@@ -63,7 +58,6 @@ jobs:
                     composer circle-tests
                     ./scripts/circle-ci/deploy-to-multidev.sh
                     cd backstop && ./run-backstop.sh
-
 
     behavioral:
         <<: *defaults
@@ -75,11 +69,6 @@ jobs:
                 # https://github.com/pantheon-systems/docker-build-tools-ci/blob/1.x/scripts/set-environment
                 name: dependencies
                 command: ./scripts/circle-ci/variables.sh
-
-
-
-
-
 
             - run:
                 name: everything
