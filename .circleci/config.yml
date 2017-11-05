@@ -56,7 +56,8 @@ jobs:
                     ./scripts/circle-ci/install-globals.sh
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
-                    ./scripts/circle-ci/deploy-to-multidev.sh
+                    ./scripts/circle-ci/deploy-to-multidev-for-behavior-tests.sh
+                    #####################./scripts/circle-ci/deploy-to-multidev.sh
                     cd backstop && ./run-backstop.sh
 
     behavioral:
