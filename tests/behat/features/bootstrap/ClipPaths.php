@@ -195,6 +195,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
    */
   public function ILogInAsAnAdmin()
   {
+    $this->minkContext->visit('user/logout');
     $this->minkContext->visit('user');
     $this->minkContext->fillField('Username', getenv('BEHAT_USER_ADMIN'));
     $this->minkContext->fillField('Password', getenv('BEHAT_PASS_ADMIN'));
@@ -205,6 +206,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
    */
   public function ILogInAsAnContentAdmin()
   {
+    $this->minkContext->visit('user/logout');
     $this->minkContext->visit('user');
     $this->minkContext->fillField('Username', getenv('BEHAT_USER_CONTENT_ADMIN'));
     $this->minkContext->fillField('Password', getenv('BEHAT_PASS_CONTENT_ADMIN'));
