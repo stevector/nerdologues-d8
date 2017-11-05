@@ -71,9 +71,18 @@ jobs:
                 command: ./scripts/circle-ci/variables.sh
 
             - run:
+                command: ./scripts/circle-ci/install-globals.sh
+
+# @todo caching
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+
+
+            - run:
                 name: everything
                 command: |
-                    ./scripts/circle-ci/install-globals.sh
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
                     ./scripts/circle-ci/deploy-to-multidev-for-behavior-tests.sh
