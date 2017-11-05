@@ -69,6 +69,14 @@ terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 
+
+
+terminus drush $SITE_ENV -- ms
+terminus drush $SITE_ENV -- mi --all --feedback='50 items'
+terminus drush $SITE_ENV -- ms
+
+
+
 {
 
   terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
@@ -77,13 +85,6 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
   terminus drush $SITE_ENV -- user-add-role content_administrator   $BEHAT_USER_CONTENT_ADMIN
 
 } &> /dev/null
-
-
-terminus drush $SITE_ENV -- ms
-terminus drush $SITE_ENV -- mi --all --feedback='50 items'
-terminus drush $SITE_ENV -- ms
-curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
-
 
 
 
