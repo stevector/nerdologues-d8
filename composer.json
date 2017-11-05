@@ -49,8 +49,7 @@
         "drupal/http2_server_push": "^1.0",
         "drupal/timeperiod": "dev-composerfile",
         "drupal/config_installer": "1.4",
-        "drush/drush": "^8.1",
-        "phpunit/phpunit": "^5.7"
+        "drush/drush": "^8.1"
     },
 
     "require-dev": {
@@ -68,7 +67,8 @@
 
         "drupal/coder": "^8.2.0-beta1",
         "squizlabs/php_codesniffer": "2.0.*@dev",
-        "knplabs/friendly-contexts": "^0.7.0"
+        "knplabs/friendly-contexts": "^0.7.0",
+        "phpunit/phpunit": ">=4.8.35 <5"
 
 
 
@@ -93,9 +93,7 @@
         ],
         "circle-tests": [
             "@code-sniff",
-            "@unit-test",
-            "echo 'cURLing server because Behat tests fail without the server getting hit first'; curl $SERVER",
-            "behat --config=tests/behat/behat-circle.yml tests/behat/features/clickdriving --strict"
+            "@unit-test"
         ],
         "rsync-down": [
             "rsync -rlvz --exclude 'advagg_*'  --exclude='twig_cache*' --size-only --ipv4 --progress -e 'ssh -p 2222' live.90be258b-259e-4ea9-b674-6a35e65cc86d@appserver.live.90be258b-259e-4ea9-b674-6a35e65cc86d.drush.in:code/sites/default/files/ web/sites/default/files/_from_d7/sites/default/files"
