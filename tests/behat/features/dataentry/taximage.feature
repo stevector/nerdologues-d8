@@ -4,7 +4,7 @@ Feature: Taxonomy image
 
   @api
   Scenario: Bio without proper term does not appear on the nerd page.
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/structure/taxonomy/manage/blog_tags/overview"
     Then I click "Edit" in the "Fisticuffs" row
     And I attach the file "fisticuffs.jpg" to "Image"

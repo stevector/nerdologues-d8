@@ -2,7 +2,7 @@ Feature: Pathauto
 
   @api
   Scenario: blog post
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/blog_post"
     And I fill in "title[0][value]" with "A Blog Post Title"
     And I fill in "field_date_published[0][value][date]" with "2015-10-31"
@@ -18,7 +18,7 @@ Feature: Pathauto
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast\" />"
 
     # PODCAST EPISODE
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"

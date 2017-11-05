@@ -5,7 +5,7 @@ Feature: Event Redirect
 
   @api
   Scenario: Redirect event for content_administrator
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/event"
     And I fill in "Title" with "Your Stories in LA: Long Distance at UCB Sunset!"
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"
@@ -17,7 +17,7 @@ Feature: Event Redirect
 
   @api
   Scenario: Don't redirect event for administrator
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "node/add/event"
     And I fill in "Title" with "Your Stories in LA: Long Distance at UCB Sunset!"
     And I fill in "URL" with "https://www.facebook.com/events/699237613563919/"

@@ -5,7 +5,8 @@ Feature: Clip creation
 
   @api
   Scenario: Clip nodes created for each list item in a your stories podcast
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as an admin
+    And print last response
     Given I am viewing a podcast with the title "Your Stories"
     When I visit "node/add/podcast_episode"
     And I select the radio button "Your Stories"
@@ -28,7 +29,7 @@ Feature: Clip creation
   @api
   Scenario: More link becomes visible after three clips
 
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
@@ -39,7 +40,7 @@ Feature: Clip creation
 
     # Make a podcast and episode.
     Given I am viewing a podcast with the title "Someone's cool podcast"
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
@@ -129,7 +130,7 @@ Feature: Clip creation
   @api
   Scenario: Visible quotes
 
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
@@ -140,7 +141,7 @@ Feature: Clip creation
 
     # Make a podcast and episode.
     Given I am viewing a podcast with the title "Someone's cool podcast"
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"

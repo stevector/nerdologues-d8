@@ -4,7 +4,7 @@
 
   @api
   Scenario: video and clips
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
    Given a "member_designations" term with the name "Viewable bio page"
 
     # Make two people
@@ -35,7 +35,7 @@
     # CLIP
     Given I am viewing a podcast with the title "Someone's cool podcast"
     # PODCAST EPISODE
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"

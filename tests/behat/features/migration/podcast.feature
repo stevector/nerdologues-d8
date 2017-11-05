@@ -2,7 +2,7 @@ Feature: Podcast
 
   @api
   Scenario: Podcast nodes
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/content-migration/podcast"
     Then I should see the following table portion
       | Title                                 | Content type | URI                                                           |
