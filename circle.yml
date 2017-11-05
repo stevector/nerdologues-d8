@@ -37,8 +37,7 @@ dependencies:
 
 test:
   override:
-    #- composer circle-tests
-    - echo "hello world"
+    - composer circle-tests
   post:
     - ./scripts/circle-ci/deploy-to-multidev.sh
     - cd backstop && ./run-backstop.sh

@@ -43,14 +43,15 @@ terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 {
   terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
   terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
-  terminus drush $SITE_ENV -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
-  terminus drush $SITE_ENV -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_CONTENT_ADMIN  --password=$BEHAT_PASS_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-add-role content_administrator   $BEHAT_USER_CONTENT_ADMIN
 
 } &> /dev/null
 
-curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict --stop-on-failure
 
+curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict
+#########################./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=clickdriving --strict   --stop-on-failure
 
 
 sudo rm web/sites/default/settings.local.php
@@ -68,25 +69,27 @@ terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
 terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
 
 
-{
-  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
-  terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
-  terminus drush $SITE_ENV -- user-create   BEHAT_USER_CONTENT_ADMIN  --password=BEHAT_PASS_CONTENT_ADMIN
-  terminus drush $SITE_ENV -- user-add-role content_administrator   BEHAT_USER_CONTENT_ADMIN
-
-} &> /dev/null
 
 
 terminus drush $SITE_ENV -- ms
 terminus drush $SITE_ENV -- mi --all --feedback='50 items'
 terminus drush $SITE_ENV -- ms
+
+
+
+{
+
+  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
+  terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
+  terminus drush $SITE_ENV -- user-create   $BEHAT_USER_CONTENT_ADMIN  --password=$BEHAT_PASS_CONTENT_ADMIN
+  terminus drush $SITE_ENV -- user-add-role content_administrator   $BEHAT_USER_CONTENT_ADMIN
+
+} &> /dev/null
+
+
+
+
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-
-
-
-
-curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
-
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict --stop-on-failure
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict --stop-on-failure
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=migration --strict
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --suite=dataentry --strict
