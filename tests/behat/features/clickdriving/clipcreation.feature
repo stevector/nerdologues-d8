@@ -5,7 +5,7 @@ Feature: Clip creation
 
   @api
   Scenario: Clip nodes created for each list item in a your stories podcast
-    Given I log in as an admin
+    Given I log in as an administrator
     And print last response
     Given I am viewing a podcast with the title "Your Stories"
     When I visit "node/add/podcast_episode"

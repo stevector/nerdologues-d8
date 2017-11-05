@@ -204,33 +204,5 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
         return false;
     }
 
-  /**
-   * @Given I log in as an administrator
-   */
-  public function ILogInAsAnAdmin()
-  {
-    $this->minkContext->visit('user');
-    $this->minkContext->fillField('Username', getenv('BEHAT_USER_ADMIN'));
-    $this->minkContext->fillField('Password', getenv('BEHAT_PASS_ADMIN'));
-    $this->minkContext->pressButton('Log in');
-  }
-  /**
-   * @Given I log in as a content_administrator
-   */
-  public function ILogInAsAnContentAdmin()
-  {
-    $this->minkContext->visit('user');
-    $this->minkContext->fillField('Username', getenv('BEHAT_USER_CONTENT_ADMIN'));
-    $this->minkContext->fillField('Password', getenv('BEHAT_PASS_CONTENT_ADMIN'));
-    $this->minkContext->pressButton('Log in');
-  }
-
-  /**
-   * @Given I log in as an admin
-   */
-  public function iLogInAsAnAdmin2()
-  {
-    $this->ILogInAsAnAdmin();
-  }
 
 }
