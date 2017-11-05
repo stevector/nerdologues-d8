@@ -64,6 +64,10 @@ jobs:
         steps:
             - checkout
 
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
+
             - run:
                 # Set TERMINUS_ENV and related environment variables.
                 # https://github.com/pantheon-systems/docker-build-tools-ci/blob/1.x/scripts/set-environment
@@ -78,7 +82,10 @@ jobs:
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
-
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
 
             - run:
                 name: everything
