@@ -56,13 +56,11 @@ jobs:
                     ./scripts/circle-ci/install-globals.sh
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
-
-                    cd scripts/circle-ci/
-                    ./deploy-to-multidev.sh
-                    ./add-behat-users.sh
-                    ./run-migration.sh
-                    ./migration-behat.sh
-                    cd ../../backstop && ./run-backstop.sh
+                    ./scripts/circle-ci/deploy-to-multidev.sh
+                    ./scripts/circle-ci/add-behat-users.sh
+                    ./scripts/circle-ci/run-migration.sh
+                    ./scripts/circle-ci/migration-behat.sh
+                    cd backstop && ./run-backstop.sh
 
 
 
@@ -99,13 +97,10 @@ jobs:
                 command: |
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
-                    cd scripts/circle-ci/
-                    ./deploy-to-multidev.sh
-                    ./add-behat-users.sh
-                    ./clickdriving-behat.sh
 
-
-
+                    ./scripts/circle-ci/deploy-to-multidev.sh
+                    ./scripts/circle-ci/add-behat-users.sh
+                    ./scripts/circle-ci/clickdriving-behat.sh
 
 
 workflows:
