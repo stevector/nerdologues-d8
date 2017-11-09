@@ -37,7 +37,8 @@ defaults: &defaults
     TERM: dumb
 
 version: 2
-jobs:    build:
+jobs:
+    build:
         <<: *defaults
         steps:
             - checkout
