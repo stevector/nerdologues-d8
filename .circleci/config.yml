@@ -56,9 +56,15 @@ jobs:
                     ./scripts/circle-ci/install-globals.sh
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
-                    ./scripts/circle-ci/deploy-to-multidev-for-behavior-tests.sh
-                    #####################./scripts/circle-ci/deploy-to-multidev.sh
-                    cd backstop && ./run-backstop.sh
+
+                    cd scripts/circle-ci/
+                    ./deploy-to-multidev.sh
+                    ./add-behat-users.sh
+                    ./run-migration.sh
+                    ./migration-behat.sh
+                    cd ../../backstop && ./run-backstop.sh
+
+
 
     behavioral:
         <<: *defaults
@@ -93,9 +99,10 @@ jobs:
                 command: |
                     composer install  --optimize-autoloader --ignore-platform-reqs
                     composer circle-tests
-                    ./scripts/circle-ci/deploy-to-multidev-for-behavior-tests.sh
-
-
+                    cd scripts/circle-ci/
+                    ./deploy-to-multidev.sh
+                    ./add-behat-users.sh
+                    ./clickdriving-behat.sh
 
 
 
