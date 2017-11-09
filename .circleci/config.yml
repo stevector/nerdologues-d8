@@ -55,7 +55,7 @@ jobs:
                     mkdir globals
                     echo $TERMINUS_ENV > globals/TERMINUS_ENV
 
-           - persist_to_workspace:
+            - persist_to_workspace:
                 # Must be relative path from working_directory
                 root: .
                 # Must be relative path from root
