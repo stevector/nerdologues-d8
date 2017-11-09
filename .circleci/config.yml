@@ -125,5 +125,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - backstop
+      - backstop:
+          requires:
+             - build
  #     - behavioral
