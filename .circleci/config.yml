@@ -15,21 +15,43 @@ jobs:
         steps:
             - checkout
 
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
+
             - run:
-                name: Set variables
+                name: variables
                 command: ./scripts/circle-ci/variables.sh
+
+            - run:
+                command: ./scripts/circle-ci/install-globals.sh
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
+
+            - run:
+                command: composer circle-tests
 
             - run:
                 name: everything
                 command: |
-                    ./scripts/circle-ci/install-globals.sh
-                    composer install  --optimize-autoloader --ignore-platform-reqs
-                    composer circle-tests
                     ./scripts/circle-ci/deploy-to-multidev.sh
-                    ./scripts/circle-ci/add-behat-users.sh
                     ./scripts/circle-ci/run-migration.sh
+
+            - run:
+                name: Behat
+                command: |
+                    ./scripts/circle-ci/add-behat-users.sh
                     ./scripts/circle-ci/migration-behat.sh
-                    cd backstop && ./run-backstop.sh
+
+            - run:
+                name: Backstop
+                command: cd backstop && ./run-backstop.sh
 
     behavioral:
         <<: *defaults
@@ -56,14 +78,17 @@ jobs:
                   - vendor
 
             - run:
-                name: everything
-                command: |
-                    composer install  --optimize-autoloader --ignore-platform-reqs
-                    composer circle-tests
+                command: composer circle-tests
 
-                    ./scripts/circle-ci/deploy-to-multidev.sh
+            - run:
+                command: ./scripts/circle-ci/deploy-to-multidev.sh
+
+            - run:
+                name: Behat
+                command: |
                     ./scripts/circle-ci/add-behat-users.sh
                     ./scripts/circle-ci/clickdriving-behat.sh
+
 
 workflows:
   version: 2
