@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 (
   echo 'export D7_ENV=migr-prep3'
   echo 'export TERMINUS_ENV=ci-$CIRCLE_BUILD_NUM'
