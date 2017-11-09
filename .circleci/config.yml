@@ -40,14 +40,14 @@ jobs:
             - run:
                 name: everything
                 command: |
-                    ./scripts/circle-ci/deploy-to-multidev.sh
-                    ./scripts/circle-ci/run-migration.sh
+                    ./.circleci/deploy/deploy-to-multidev.sh
+                    ./.circleci/deploy/run-migration.sh
 
             - run:
                 name: Behat
                 command: |
-                    ./scripts/circle-ci/add-behat-users.sh
-                    ./scripts/circle-ci/migration-behat.sh
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/migration-behat.sh
 
             - run:
                 name: Backstop
@@ -81,13 +81,13 @@ jobs:
                 command: composer circle-tests
 
             - run:
-                command: ./scripts/circle-ci/deploy-to-multidev.sh
+                command: ./.circleci/deploy/deploy-to-multidev.sh
 
             - run:
                 name: Behat
                 command: |
-                    ./scripts/circle-ci/add-behat-users.sh
-                    ./scripts/circle-ci/clickdriving-behat.sh
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/clickdriving-behat.sh
 
 
 workflows:
