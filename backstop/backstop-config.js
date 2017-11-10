@@ -408,10 +408,13 @@ module.exports = {
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
-    "compare_data": "backstop_data/bitmaps_test/compare.json",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
   },
-  "engine": "phantomjs",
-  "report": [ "CLI" ],
+  "report": ["browser"],
+  "engine": "chrome",
+  "engineFlags": [],
   "debug": false,
-  "port": 3001
+  "debugWindow": false
 }
