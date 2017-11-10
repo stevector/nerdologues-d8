@@ -42,6 +42,7 @@ jobs:
                 command: |
                     ./.circleci/deploy/deploy-to-multidev.sh
                     ./.circleci/deploy/run-migration.sh
+                    ./.circleci/behat-runners/add-behat-users.sh
                     ./.circleci/behat-runners/dataentry-behat.sh
 
             - run:
