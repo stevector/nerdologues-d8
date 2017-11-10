@@ -23,31 +23,31 @@ jobs:
                 name: variables
                 command: ./scripts/circle-ci/variables.sh
 
-#            - run:
-#                command: ./scripts/circle-ci/install-globals.sh
-#
-#            - run:
-#                command: composer install  --optimize-autoloader --ignore-platform-reqs
-#
-#            - save_cache:
-#                key: composer-{{ checksum "composer.lock" }}
-#                paths:
-#                  - vendor
-#
-#            - run:
-#                command: composer circle-tests
-#
-#            - run:
-#                name: everything
-#                command: |
-#                    ./.circleci/deploy/deploy-to-multidev.sh
-#                    ./.circleci/deploy/run-migration.sh
-#
-#            - run:
-#                name: Behat
-#                command: |
-#                    ./.circleci/behat-runners/add-behat-users.sh
-#                    ./.circleci/behat-runners/migration-behat.sh
+            - run:
+                command: ./scripts/circle-ci/install-globals.sh
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
+
+            - run:
+                command: composer circle-tests
+
+            - run:
+                name: everything
+                command: |
+                    ./.circleci/deploy/deploy-to-multidev.sh
+                    ./.circleci/deploy/run-migration.sh
+
+            - run:
+                name: Behat
+                command: |
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/migration-behat.sh
 
             - run:
                 name: Set TERMINUS_ENV for Backstop
