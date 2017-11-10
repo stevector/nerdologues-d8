@@ -43,12 +43,6 @@ jobs:
                     ./.circleci/deploy/deploy-to-multidev.sh
                     ./.circleci/deploy/run-migration.sh
 
-#            - run:
-#                name: Behat
-#                command: |
-#                    ./.circleci/behat-runners/add-behat-users.sh
-#                    ./.circleci/behat-runners/migration-behat.sh
-
             - run:
                 name: Set TERMINUS_ENV for Backstop
                 command: |
@@ -63,22 +57,38 @@ jobs:
                     - globals
 
 
-
-    backstop:
+    behat:
         <<: *defaults
         steps:
             - checkout
 
+            - attach_workspace:
+                # Must be absolute path or relative path from working_directory
+                at: /tmp
+
+            - run:
+                name: Global vars
+                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
 
 
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
 
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
 
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
 
-
-
-
-
-
+            - run:
+                name: Behat
+                command: |
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/migration-behat.sh
 
     backstop:
         docker:
@@ -87,13 +97,9 @@ jobs:
         steps:
             - checkout
 
-
-
             - attach_workspace:
                 # Must be absolute path or relative path from working_directory
                 at: /tmp
-
-
 
             - run:
                 name: Global vars
@@ -113,26 +119,6 @@ jobs:
             - store_artifacts:
                 path: /tmp/artifacts
                 destination: artifacts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     behavioral:
@@ -177,7 +163,11 @@ workflows:
   build_and_test:
     jobs:
       - build
+      - behavioral
+      - behat:
+          requires:
+             - build
       - backstop:
           requires:
              - build
- #     - behavioral
+
