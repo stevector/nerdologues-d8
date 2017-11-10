@@ -409,11 +409,9 @@ module.exports = {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
     "compare_data": "backstop_data/bitmaps_test/compare.json",
-    "casper_scripts": "backstop_data/casper_scripts"
   },
   "engine": "phantomjs",
   "report": [ "CLI" ],
-  "casperFlags": [],
   "debug": false,
   "port": 3001
 }
