@@ -48,7 +48,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.144444444
     },
     {
       "label": "Events",
@@ -97,7 +97,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.222222
     },
     {
       "label": "Nerd bio 2, MBS",
