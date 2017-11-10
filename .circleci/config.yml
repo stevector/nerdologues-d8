@@ -63,23 +63,83 @@ jobs:
                     - globals
 
 
-            - run:
-                name: Backstop
-                command: cd backstop && ./run-backstop.sh
-
 
     backstop:
         <<: *defaults
         steps:
             - checkout
 
+
+
+
+
+
+
+
+
+
+
+
+    backstop:
+        docker:
+            - image: quay.io/stevector/pantheon-ci-testing:latest
+        working_directory: ~/example_drops_8_composer
+        steps:
+            - checkout
+
+
+
             - attach_workspace:
                 # Must be absolute path or relative path from working_directory
                 at: /tmp
 
+
+
+            - run:
+                name: Global vars
+                # Set TERMINUS_ENV and related environment variables.
+                # https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: /build-tools-ci/scripts/set-up-global-vars.sh
+
+
             - run:
                 name: check var
-                command: cat /tmp/globals/TERMINUS_ENV
+                command: |
+                cat /tmp/globals/TERMINUS_ENV
+                TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)
+                echo 'export TERMINUS_ENV=${TERMINUS_ENV}' >> $BASH_ENV
+
+            - run:
+                name: check var
+                command: |
+                echo $TERMINUS_ENV
+
+
+            - run:
+                name: run-backstop
+                command: cd backstop && ./run-backstop.sh
+            - store_artifacts:
+                path: /tmp/artifacts
+                destination: artifacts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
