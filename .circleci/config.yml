@@ -107,6 +107,7 @@ jobs:
                 command: |
                   cat /tmp/globals/TERMINUS_ENV
                   ./.circleci/global-persistent-variables.sh
+                  echo $TERMINUS_ENV
 
 
             - run:
