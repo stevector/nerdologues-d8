@@ -1,40 +1,38 @@
 #!/bin/bash
 
-if [   "$CIRCLE_BRANCH" != "master"  ]  &&   [[  $CIRCLE_BRANCH != *"screenshot"* ]]; then
-    echo -e "Screenshots only run on master branch or branches containing 'screenshot' Quitting script."
-    exit 0;
-fi
+set -ex
 
-npm install -g backstopjs@2.7.3
 
+echo $PANTHEON_DEV_SITE_URL
+echo $PANTHEON_SITE_URL
 
 
 backstop reference --config=backstop-config.js
 VISUAL_REGRESSION_RESULTS=$(backstop test --config=backstop-config.js || echo 'true')
 
-if [[ ${VISUAL_REGRESSION_RESULTS} == *"Mismatch errors found"* ]]
+rsync -rlvz backstop_data $CIRCLE_ARTIFACTS_DIR
+
+cd $CIRCLE_ARTIFACTS_DIR
+DIFF_IMAGE=$(find * -type f -name "failed_diff*.png" | head -n 1)
+
+# Use a diff image if there is one. Otherwise just grab the first image.
+if [ -z "$DIFF_IMAGE" ]
 then
-    # Visual Regression Failed. Get Visual Difference Image
-    echo -e "\nVisual regression tests failed!"
-    comment="### Visual regression report (failed):"
-    EXIT=1
+  IMAGE_TO_LINK=$(find * -type f -name "*desktop*.png" | head -n 1)
+
 else
-    echo -e "\nVisual regression tests passed"
-   comment="### Visual regression report (passed):"
-   EXIT=0
+  IMAGE_TO_LINK=$DIFF_IMAGE
 fi
 
-rsync -rlvz backstop_data $CIRCLE_ARTIFACTS
 
-artifact_base_url="https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM/artifacts/0$CIRCLE_ARTIFACTS"
-
-diff_image=$(find * | grep png | grep diff | head -n 1)
-diff_image_url=$artifact_base_url/$diff_image
-report_url=$artifact_base_url/backstop_data/html_report/index.html
+diff_image_url=${CIRCLE_ARTIFACTS_URL}/${IMAGE_TO_LINK}
+report_url=${CIRCLE_ARTIFACTS_URL}/backstop_data/html_report/index.html
 report_link="[![Visual report]($diff_image_url)]($report_url)"
+comment="### Visual regression report:"
 
 
-token="$(composer config --global github-oauth.github.com)"
-curl -d '{ "body": "'"$comment\\n\\n$report_link"'" }' -X POST https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/commits/$CIRCLE_SHA1/comments?access_token=$token
+ls -al /tmp/artifacts
 
-exit $EXIT
+{
+  curl -d '{ "body": "'"$comment\\n\\n$report_link"'" }' -X POST https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/commits/$CIRCLE_SHA1/comments?access_token=$GITHUB_TOKEN
+} &> /dev/null
