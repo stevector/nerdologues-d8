@@ -88,9 +88,11 @@ jobs:
 
             - run:
                 name: Behat
-                command: |
-                    ./.circleci/behat-runners/add-behat-users.sh
-                    ./.circleci/behat-runners/migration-behat.sh
+                command: ./.circleci/behat-runners/add-behat-users.sh
+
+            - run:
+                name: Behat
+                command: ./.circleci/behat-runners/migration-behat.sh
 
     backstop:
         docker:
