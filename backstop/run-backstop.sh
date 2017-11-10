@@ -3,7 +3,7 @@
 set -ex
 
 
-echo $PANTHEON_DEV_SITE_URL
+echo $MIGRATION_SOURCE_URL
 echo $PANTHEON_SITE_URL
 
 
