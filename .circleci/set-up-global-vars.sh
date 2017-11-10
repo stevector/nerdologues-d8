@@ -12,10 +12,6 @@ set -ex
 #=====================================================================================================================
 
 
-
-echo 'export CIRCLE_ENV=ci-$CIRCLE_BUILD_NUM
-
-
 	if [ -f /tmp/globals/TERMINUS_ENV ]
 	then
 		TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)
