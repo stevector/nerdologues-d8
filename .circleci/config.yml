@@ -97,17 +97,8 @@ jobs:
 
             - run:
                 name: Global vars
-                # Set TERMINUS_ENV and related environment variables.
-                # https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: /build-tools-ci/scripts/set-up-global-vars.sh
-
-
-            - run:
-                name: check var
-                command: |
-                  cat /tmp/globals/TERMINUS_ENV
-                  ./.circleci/global-persistent-variables.sh
-                  echo $TERMINUS_ENV
+                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
 
 
             - run:
