@@ -88,7 +88,12 @@ jobs:
 
             - run:
                 name: Behat
-                command: ./.circleci/behat-runners/add-behat-users.sh
+                command: |
+                 {
+                  terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
+                 } &> /dev/null
+
+                ./.circleci/behat-runners/add-behat-users.sh
 
             - run:
                 name: Behat
