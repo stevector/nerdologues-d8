@@ -19,10 +19,10 @@ DIFF_IMAGE=$(find * -type f -name "failed_diff*.png" | head -n 1)
 if [ -z "$DIFF_IMAGE" ]
 then
   IMAGE_TO_LINK=$(find * -type f -name "*desktop*.png" | head -n 1)
-  EXITCODE=1
+  EXITCODE=0
 else
   IMAGE_TO_LINK=$DIFF_IMAGE
-  EXITCODE=0
+  EXITCODE=1
 fi
 
 
