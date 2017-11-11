@@ -43,7 +43,7 @@ jobs:
                     ./.circleci/deploy/deploy-to-multidev.sh
                     ./.circleci/deploy/run-migration.sh
                     ./.circleci/behat-runners/add-behat-users.sh
-                    ./.circleci/behat-runners/dataentry-behat.sh
+                    ./.circleci/behat-runners/behat-wrapper.sh  --suite=dataentry
 
             - run:
                 name: Set TERMINUS_ENV for Backstop
@@ -97,7 +97,7 @@ jobs:
 
             - run:
                 name: Behat
-                command: ./.circleci/behat-runners/migration-behat.sh
+                command: ./.circleci/behat-runners/behat-wrapper.sh --suite=migration
 
     backstop:
         docker:
@@ -164,7 +164,8 @@ jobs:
                 name: Behat
                 command: |
                     ./.circleci/behat-runners/add-behat-users.sh
-                    ./.circleci/behat-runners/clickdriving-behat.sh
+                    ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving
+
 
 
 workflows:
