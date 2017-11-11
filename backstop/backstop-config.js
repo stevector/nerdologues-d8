@@ -5,7 +5,7 @@ const BackstopReferenceBaseUrl = process.env.MIGRATION_SOURCE_URL;
 const BackstopTestUrl = process.env.PANTHEON_SITE_URL;
 
 
-module.exports = {
+const config = {
   "viewports": [
     {
       "name": "desktop",
@@ -24,7 +24,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.36999999999999999
     },
     {
       "label": "Homepage",
@@ -36,7 +36,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.139999999999999
     },
     {
       "label": "Homepage, Next page",
@@ -48,7 +48,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.144444444
     },
     {
       "label": "Events",
@@ -97,7 +97,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.24999999999999
     },
     {
       "label": "Nerd bio 2, MBS",
@@ -131,7 +131,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.3000999999999
     },
     {
       "label": "Nerd videos",
@@ -177,7 +177,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.6100099999999
     },
     {
       "label": "Clips by person 2",
@@ -189,7 +189,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.420999999
     },
     {
       "label": "Blog post",
@@ -205,7 +205,7 @@ module.exports = {
       "readyEvent": null,
       "delay": 1500,
       "requireSameDimensions" : false,
-      "misMatchThreshold" : 0.4777777777777777777
+      "misMatchThreshold" : 0.59099999999
     },
     {
       "label": "Blog post 2",
@@ -219,13 +219,13 @@ module.exports = {
         ".center-wrapper",
         "todo-remove-this-img-suppression",
         ".panel-col-top.panel-panel img",
-        ".field--name-field-image-header img"
+        ".field--name-field-image-header img",
         "img"
       ],
       "readyEvent": null,
       "delay": 1500,
       "requireSameDimensions" : false,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.460099999
     },
     {
       "label": "about",
@@ -237,7 +237,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.12099999
     },
     {
       "label": "podcasts",
@@ -319,7 +319,7 @@ module.exports = {
       "requireSameDimensions" : false,
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.70999999999
     },
     {
       "label": "clip 1",
@@ -335,7 +335,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.180999999
     },
     {
       "label": "clip 2",
@@ -351,7 +351,7 @@ module.exports = {
       ],
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.260099999
     },
     {
       "label": "videos",
@@ -385,7 +385,7 @@ module.exports = {
       "readyEvent": null,
       "delay": 1500,
       "requireSameDimensions" : false,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.2809999
     },
     {
       "label": "Video 2",
@@ -402,18 +402,24 @@ module.exports = {
       "requireSameDimensions" : false,
       "readyEvent": null,
       "delay": 1500,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.14099999
     }
   ],
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
-    "compare_data": "backstop_data/bitmaps_test/compare.json",
-    "casper_scripts": "backstop_data/casper_scripts"
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
   },
-  "engine": "phantomjs",
-  "report": [ "CLI" ],
-  "casperFlags": [],
+  "report": ["browser"],
+  "engine": "chrome",
+  "engineFlags": [],
   "debug": false,
-  "port": 3001
+  "debugWindow": false
 }
+
+
+console.log(config);
+
+module.exports = config;
