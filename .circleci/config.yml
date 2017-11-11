@@ -24,9 +24,6 @@ jobs:
                 command: ./.circleci/variables.sh
 
             - run:
-                command: ./.circleci/install-globals.sh
-
-            - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
@@ -138,9 +135,6 @@ jobs:
             - run:
                 name: variables
                 command: ./.circleci/variables.sh
-
-            - run:
-                command: ./.circleci/install-globals.sh
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
