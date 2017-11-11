@@ -9,6 +9,8 @@ set -ex
 # @todo This command is not deleting multidevs in the right order,
 # nor retain the correct number.
 #terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=8 --yes
+
+
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
 
 terminus connection:set $SITE_ENV sftp

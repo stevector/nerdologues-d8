@@ -14,13 +14,12 @@ mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
 # See: https://discuss.circleci.com/t/circle-2-0-global-environment-variables/8681
 #=====================================================================================================================
 
-	if [ -f /tmp/globals/TERMINUS_ENV ]
-	then
-    echo 'export TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)' >> $BASH_ENV
-	else
-    echo 'export TERMINUS_ENV=ci-$CIRCLE_BUILD_NUM' >> $BASH_ENV
-	fi
-
+if [ -f /tmp/globals/TERMINUS_ENV ]
+then
+  echo 'export TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)' >> $BASH_ENV
+else
+  echo 'export TERMINUS_ENV=ci-$CIRCLE_BUILD_NUM' >> $BASH_ENV
+fi
 
 # Make artifacts directory
 CIRCLE_ARTIFACTS_DIR='/tmp/artifacts'
