@@ -19,9 +19,10 @@ DIFF_IMAGE=$(find * -type f -name "failed_diff*.png" | head -n 1)
 if [ -z "$DIFF_IMAGE" ]
 then
   IMAGE_TO_LINK=$(find * -type f -name "*desktop*.png" | head -n 1)
-
+  EXITCODE=1
 else
   IMAGE_TO_LINK=$DIFF_IMAGE
+  EXITCODE=0
 fi
 
 
@@ -36,3 +37,5 @@ ls -al /tmp/artifacts
 {
   curl -d '{ "body": "'"$comment\\n\\n$report_link"'" }' -X POST https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/commits/$CIRCLE_SHA1/comments?access_token=$GITHUB_TOKEN
 } &> /dev/null
+
+exit $EXITCODE
