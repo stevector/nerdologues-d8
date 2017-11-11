@@ -4,6 +4,8 @@
 echo "TEST"
 
 echo $SITE_ENV
+echo $TERMINUS_SITE
+echo $TERMINUS_ENV
 
   terminus drush $SITE_ENV -- user-create   $BEHAT_USER_ADMIN  --password=$BEHAT_PASS_ADMIN
   terminus drush $SITE_ENV -- user-add-role administrator   $BEHAT_USER_ADMIN
