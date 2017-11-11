@@ -213,5 +213,19 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $this->minkContext->pressButton('Log in');
   }
 
+  /**
+   * @Then the output matches the XML of :page on the Drupal 7 site.
+   */
+  public function theOutputMatchesTheXmlOfOnTheDrupalSite($page)
+  {
+    $d8_response = $this->minkContext->getSession()->getPage()->getContent();
+    print_r($d8_response);
+    $d7_base_url = "http://migr-prep3-nerdologues.pantheonsite.io/";
+    $this->minkContext->visit($d7_base_url . $page);
+    $this->minkContext->printLastResponse();
+  }
+
+
+
 
 }

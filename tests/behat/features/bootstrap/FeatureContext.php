@@ -248,13 +248,6 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
   }
 
 
-  /**
-   * @Then the output matches the XML of :page on the Drupal 7 site.
-   */
-  public function theOutputMatchesTheXmlOfOnTheDrupalSite($page)
-  {
-    throw new PendingException();
-  }
 
 
 
