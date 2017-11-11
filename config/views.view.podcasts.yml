@@ -199,7 +199,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<div class=\"deck-text\" >\n<p>The Nerdologues started podcasting with Your Stories back in 2011. We loved sharing our night of nerding out across the world. Now a few hundred stories later we've grown the podcast family to four by adding The Nerdologuecast and bringing ensemble member Mary Beth Smith's MBSing and Tim Dunn and Clayton Margeson's Talking Games podcast into the fold.</p>\n </div>"
+          content: "<div class=\"deck-text\" >\n<p>The Nerdologues started podcasting with Your Stories back in 2011. We loved sharing our night of nerding out across the world. Since then, we've started a bit of a podcast family, including long-running shows like the Nerdologues' own Mary Beth Smith's MBSing, a biweekly sports show called Sports Retorts, a show about mixtapes called Blank Cassette, and more!</p>\n </div>"
           plugin_id: text_custom
       footer: {  }
       empty: {  }
