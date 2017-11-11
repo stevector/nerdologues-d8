@@ -2,6 +2,9 @@
 
 set -ex
 
+mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
+
+
 #=====================================================================================================================
 # Start EXPORTing needed environment variables
 # Circle CI 2.0 does not yet expand environment variables so they have to be manually EXPORTed
