@@ -223,6 +223,14 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $d7_base_url = "http://migr-prep3-nerdologues.pantheonsite.io/";
     $this->minkContext->visit($d7_base_url . $page);
     $this->minkContext->printLastResponse();
+
+    $d7_response = $this->minkContext->getSession()->getPage()->getContent();
+
+    //$this->minkContext->assertSession()->assert($d7_response, $d8_response);
+
+    if ($d7_response !== $d8_response) {
+      throw new \Exception('D7 feed does not match D8 feed');
+    }
   }
 
 
