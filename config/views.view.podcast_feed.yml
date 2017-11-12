@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_body
+    - field.storage.node.field_date_published
+    - field.storage.node.field_int_duration
+    - field.storage.node.field_ref_podcast
     - node.type.podcast_episode
   module:
+    - datetime
     - node
     - rest
     - serialization
     - text
     - user
+    - views_rss_podcast
 id: podcast_feed
 label: 'Podcast feed'
 module: views
@@ -31,7 +36,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -163,7 +168,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -182,6 +187,299 @@ display:
           click_sort_column: value
           type: text_default
           settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          entity_type: node
+          plugin_id: entity_link
+        field_date_published:
+          id: field_date_published
+          table: node__field_date_published
+          field: field_date_published
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: html_datetime
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_ref_podcast:
+          id: field_ref_podcast
+          table: node__field_ref_podcast
+          field: field_ref_podcast
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        path:
+          id: path
+          table: node
+          field: path
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          absolute: false
+          entity_type: node
+          plugin_id: node_path
+        field_int_duration:
+          id: field_int_duration
+          table: node__field_int_duration
+          field: field_int_duration
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -282,19 +580,34 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_body'
+        - 'config:field.storage.node.field_date_published'
+        - 'config:field.storage.node.field_int_duration'
+        - 'config:field.storage.node.field_ref_podcast'
   feed_1:
     display_plugin: feed
     id: feed_1
     display_title: Feed
-    position: 1
+    position: 2
     display_options:
       display_extenders: {  }
       row:
-        type: node_rss
+        type: rss_podcast_fields
         options:
-          relationship: none
-          view_mode: default
-      path: node/%/feedzz
+          title_field: title
+          link_field: view_node
+          description_field: field_body
+          creator_field: field_ref_podcast
+          date_field: field_date_published
+          guid_field_options:
+            guid_field: path
+            guid_field_is_permalink: 1
+          duration_field: field_int_duration
+      path: node/%/feed
+      pager:
+        type: some
+        options:
+          items_per_page: 1
+          offset: 0
     cache_metadata:
       max-age: -1
       contexts:
@@ -305,6 +618,9 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_body'
+        - 'config:field.storage.node.field_date_published'
+        - 'config:field.storage.node.field_int_duration'
+        - 'config:field.storage.node.field_ref_podcast'
   rest_export_1:
     display_plugin: rest_export
     id: rest_export_1
@@ -312,7 +628,7 @@ display:
     position: 2
     display_options:
       display_extenders: {  }
-      path: node/%/feed
+      path: node/%/feedrest
       row:
         type: data_field
         options:
@@ -339,3 +655,6 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_body'
+        - 'config:field.storage.node.field_date_published'
+        - 'config:field.storage.node.field_int_duration'
+        - 'config:field.storage.node.field_ref_podcast'
