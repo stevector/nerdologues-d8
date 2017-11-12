@@ -11,8 +11,6 @@ dependencies:
   module:
     - datetime
     - node
-    - rest
-    - serialization
     - text
     - user
     - views_rss_podcast
@@ -602,6 +600,7 @@ display:
             guid_field: path
             guid_field_is_permalink: 1
           duration_field: field_int_duration
+          summary_field: field_body
       path: node/%/feed
       pager:
         type: some
