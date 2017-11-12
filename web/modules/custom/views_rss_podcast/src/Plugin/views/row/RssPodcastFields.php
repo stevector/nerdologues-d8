@@ -149,12 +149,32 @@ class RssPodcastFields extends RssFields {
     foreach($this->extra_fields() as $field_def) {
 
 
-      $build['#row']->elements[] = [
+
+
+      if (in_array($field_def['fapi_key'], ["enclosure_size", "enclosure_type"] )) {
+        continue;
+      }
+
+
+      $element_definition =[
         'key' => $field_def["feed_key"],
-        'value' => $this->getField($row_index, $this->options[$field_def["fapi_key"]]),
+
       ];
 
+      if (!in_array($field_def['fapi_key'], ["enclosure_url"] )) {
+        $element_definition['value'] = $this->getField($row_index, $this->options[$field_def["fapi_key"]]);
+      }
+      else {
 
+        $element_definition['attributes'] = [
+          "url"=> $this->getField($row_index, $this->options["enclosure_url"]),
+          'length' => $this->getField($row_index, $this->options["enclosure_size"]),
+          'type' => $this->getField($row_index, $this->options["enclosure_type"]),
+        ];
+      }
+
+
+      $build['#row']->elements[] = $element_definition;
 
 
     }
@@ -168,16 +188,43 @@ class RssPodcastFields extends RssFields {
   function extra_fields() {
 
     return [
-      ["feed_key" => "itunes:duration",
-      "fapi_key" => "duration_field",
+      [
+        "feed_key" => "enclosure",
+        "fapi_key" => "enclosure_url",
+        "fapi_title" => "mp3 url",
+        "fapi_description" => "absolute url to mp3 file"
+      ],
+      [
+        "feed_key" => "enclosure_size",
+        "fapi_key" => "enclosure_size",
+        "fapi_title" => "mp3 file size",
+        "fapi_description" => "An unformatted integer"
+      ],
+      [
+        "feed_key" => "enclosure_type",
+        "fapi_key" => "enclosure_type",
+        "fapi_title" => "mp3 file type",
+        "fapi_description" => "Mime type"
+      ],
+
+
+
+      [
+        "feed_key" => "itunes:duration",
+        "fapi_key" => "duration_field",
         "fapi_title" => "Itunes item duration",
         "fapi_description" => "The number of seconds in the mp3"
       ],
-      ["feed_key" => "itunes:summary",
+      [
+        "feed_key" => "itunes:summary",
         "fapi_key" => "summary_field",
         "fapi_title" => "Itunes item summary",
         "fapi_description" => "The description of the item"
       ]
+
+
+
+
 
     ];
 
