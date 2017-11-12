@@ -36,14 +36,36 @@ class RssPodcastFields extends RssFields {
     $view_fields_labels = $this->displayHandler->getFieldLabels();
     $view_fields_labels = array_merge($initial_labels, $view_fields_labels);
 
-    $form['duration_field'] = [
-      '#type' => 'select',
-      '#title' => $this->t('Duration field'),
-      '#description' => $this->t('The number of seconds in the mp3'),
-      '#options' => $view_fields_labels,
-      '#default_value' => $this->options['title_field'],
-      '#required' => TRUE,
-    ];
+//    $form['duration_field'] = [
+//      '#type' => 'select',
+//      '#title' => $this->t('Duration field'),
+//      '#description' => $this->t('The number of seconds in the mp3'),
+//      '#options' => $view_fields_labels,
+//      '#default_value' => $this->options['duration_field'],
+//      '#required' => TRUE,
+//    ];
+
+
+
+    foreach($this->extra_fields() as $field_def) {
+
+      $form[$field_def["fapi_key"]] = [
+        '#type' => 'select',
+        '#title' => $this->t($field_def["fapi_title"]),
+        '#description' => $this->t($field_def["fapi_description"]),
+        '#options' => $view_fields_labels,
+        '#default_value' => $this->options[$field_def["fapi_key"]],
+        '#required' => TRUE,
+      ];
+    }
+//
+//    ["feed_key" => "itunes:duration",
+//      "fapi_key" => "duration_field",
+//      "fapi_title" => "Itunes item duration",
+//      "fapi_description" => "The number of seconds in the mp3"
+//    ]
+//
+
   }
 
 
@@ -120,12 +142,48 @@ class RssPodcastFields extends RssFields {
     $build = parent::render($row);
 
 
-    $build['#row']->elements[] = [
-      'key' => 'itunes:duration',
-      'value' => $this->getField($row_index, $this->options['duration_field']),
-    ];
+
+
+
+
+    foreach($this->extra_fields() as $field_def) {
+
+
+      $build['#row']->elements[] = [
+        'key' => $field_def["feed_key"],
+        'value' => $this->getField($row_index, $this->options[$field_def["fapi_key"]]),
+      ];
+
+
+
+
+    }
+  //  itunes:image
+
+
+
     return $build;
   }
+
+  function extra_fields() {
+
+    return [
+      ["feed_key" => "itunes:duration",
+      "fapi_key" => "duration_field",
+        "fapi_title" => "Itunes item duration",
+        "fapi_description" => "The number of seconds in the mp3"
+      ],
+      ["feed_key" => "itunes:summary",
+        "fapi_key" => "summary_field",
+        "fapi_title" => "Itunes item summary",
+        "fapi_description" => "The description of the item"
+      ]
+
+    ];
+
+
+  }
+
 
 
 }
