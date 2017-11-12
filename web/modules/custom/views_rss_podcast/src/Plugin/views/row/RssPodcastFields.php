@@ -209,6 +209,14 @@ class RssPodcastFields extends RssFields {
 
 
 
+
+      [
+        "feed_key" => "itunes:author",
+        "fapi_key" => "itunes_author",
+        "fapi_title" => "Itunes author duration",
+        "fapi_description" => "text to appear in itunes:author"
+      ],
+
       [
         "feed_key" => "itunes:duration",
         "fapi_key" => "duration_field",
