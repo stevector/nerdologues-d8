@@ -28,8 +28,22 @@ function views_rss_podcast_help($route_name, RouteMatchInterface $route_match) {
  */
 function views_rss_podcast_theme() {
   return [
-    'views_rss_podcast' => [
+    'views_rss_podcast_row' => [
       'render element' => 'children',
     ],
   ];
+}
+
+
+/**
+ * Prepares variables for views RSS item templates.
+ *
+ * Default template: views-view-row-podcast-rss.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - row: The raw results rows.
+ */
+function template_preprocess_views_view_row_podcast_rss(&$variables) {
+  template_preprocess_views_view_row_rss($variables);
 }
