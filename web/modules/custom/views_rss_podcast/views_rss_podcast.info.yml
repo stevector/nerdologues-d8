@@ -1,0 +1,7 @@
+name: views_rss_podcast
+type: module
+description: Extends Views RSS capability to use itunes fields
+core: 8.x
+package: Custom
+dependencies:
+  - views
