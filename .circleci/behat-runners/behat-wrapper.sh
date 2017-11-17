@@ -6,6 +6,7 @@
 set -ex
 
 terminus aliases
+cat ~/.drush/pantheon.aliases.drushrc.php
 # Update Behat Params so that migration tests can be run against Pantheon.
 export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "http://'$TERMINUS_ENV'-'$TERMINUS_SITE'.pantheonsite.io/"}, "Drupal\\DrupalExtension" : {"drush" :   {  "alias":  "@pantheon.'$TERMINUS_SITE'.'$TERMINUS_ENV'" }}}}'
 # Make sure the site is accessible over the web before making requests to it with Behat.
