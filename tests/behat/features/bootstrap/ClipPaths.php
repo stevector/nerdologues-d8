@@ -51,7 +51,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
       $this->minkContext->fillField('Path alias', $value['Path alias']);
       $this->minkContext->pressButton('Save');
       $this->minkContext->visit($value['Path alias']);
-      $this->minkContext->assertPageContainsText($value['Expected text']);
+      $this->minkContext->assertResponseContains($value['Expected text']);
     }
   }
 
