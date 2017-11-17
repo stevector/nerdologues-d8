@@ -7,6 +7,7 @@
 
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
+use Drupal\Core\Cache\CacheableMetadata;
 use  Drupal\image\Plugin\Field\FieldFormatter\ImageUrlFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 
