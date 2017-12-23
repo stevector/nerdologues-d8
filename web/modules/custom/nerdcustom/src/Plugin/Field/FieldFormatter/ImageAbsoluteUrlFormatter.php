@@ -56,5 +56,4 @@ class ImageAbsoluteUrlFormatter extends ImageUrlFormatter {
     }
     return $elements;
   }
-
 }
