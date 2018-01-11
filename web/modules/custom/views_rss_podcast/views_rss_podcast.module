@@ -16,7 +16,7 @@ function views_rss_podcast_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.views_rss_podcast':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Extends Views RSS capability to use itunes fields') . '</p>';
+      $output .= '<p>' . t('Extends Views RSS capability to use iTunes fields') . '</p>';
       return $output;
 
     default:
