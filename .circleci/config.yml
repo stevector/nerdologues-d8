@@ -37,7 +37,6 @@ jobs:
             - run:
                 name: deploy
                 command: |
-                    terminus env:list --field=id $TERMINUS_SITE | grep "^ci-" | sort -k1.4n | tail -r | sed 1,5d | xargs -n1 -I ENV terminus env:delete --yes $TERMINUS_SITE.ENV
                     ./.circleci/deploy/deploy-to-multidev.sh
 
             - run:
