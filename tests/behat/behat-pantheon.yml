@@ -9,3 +9,6 @@ default:
   extensions:
     Drupal\DrupalExtension:
       api_driver: 'drush'
+      drush:
+        alias: 'self'
+        binary: "terminus drush $TERMINUS_SITE.$TERMINUS_ENV -- "
