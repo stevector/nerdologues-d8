@@ -23,7 +23,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.36999999999999999
     },
     {
@@ -35,7 +35,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.139999999999999
     },
     {
@@ -47,7 +47,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.144444444
     },
     {
@@ -67,7 +67,7 @@ const config = {
       ],
       "readyEvent": null,
       "requireSameDimensions" : false,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.404444444444444444444444
     },
     {
@@ -96,7 +96,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.24999999999999
     },
     {
@@ -113,7 +113,7 @@ const config = {
       ],
       "requireSameDimensions" : false,
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -130,7 +130,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.3000999999999
     },
     {
@@ -147,7 +147,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -164,7 +164,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -176,7 +176,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.6100099999999
     },
     {
@@ -188,7 +188,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.420999999
     },
     {
@@ -203,7 +203,7 @@ const config = {
         ".center-wrapper"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.59099999999
     },
@@ -223,7 +223,7 @@ const config = {
         "img"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.460099999
     },
@@ -236,7 +236,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.12099999
     },
     {
@@ -248,7 +248,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.69999999999999999999
     },
     {
@@ -260,7 +260,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.22222222222222222222
     },
     {
@@ -282,7 +282,7 @@ const config = {
       ],
       "requireSameDimensions" : false,
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -302,7 +302,7 @@ const config = {
       ],
       "requireSameDimensions" : false,
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -318,7 +318,7 @@ const config = {
       ],
       "requireSameDimensions" : false,
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.70999999999
     },
     {
@@ -334,7 +334,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.180999999
     },
     {
@@ -350,7 +350,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.260099999
     },
     {
@@ -366,7 +366,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
     },
@@ -383,7 +383,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.2809999
     },
@@ -401,7 +401,7 @@ const config = {
       ],
       "requireSameDimensions" : false,
       "readyEvent": null,
-      "delay": 1500,
+      "delay": 3000,
       "misMatchThreshold" : 0.14099999
     }
   ],
