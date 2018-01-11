@@ -18,10 +18,10 @@ variant_settings:
       id: 'views_block:clips_by_podcast-block_2'
       label: ''
       provider: views
-      label_display: visible
+      label_display: '0'
       views_label: ''
       items_per_page: none
-      region: middle
+      region: content
       weight: 0
       uuid: 1921da64-72e5-4c90-a8e6-e6cd1542d99c
       context_mapping: {  }
@@ -29,9 +29,9 @@ variant_settings:
   uuid: 1965a06d-baf9-49a1-91eb-b44f28fad20d
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
-  page_title: 'Clips from [node:title]'
+  page_title: '[node:title]: Clip Archive'
   storage_type: page_manager
   storage_id: clips-panels_variant-1
   builder: standard

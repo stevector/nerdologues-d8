@@ -7,23 +7,28 @@ dependencies:
     - field.field.node.podcast.field_body
     - field.field.node.podcast.field_image
     - field.field.node.podcast.field_int_sort_order
-    - image.style.teaser_square
+    - image.style.large
     - node.type.podcast
   module:
     - ds
     - image
+    - panelizer
     - user
 third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
   ds:
     layout:
-      id: onecol
-      path: modules/contrib/panels/layouts/onecol
-      library: layout_plugin/onecol
+      id: layout_onecol
+      library: layout_discovery/onecol
       disable_css: false
       entity_classes: all_classes
       settings: {  }
     regions:
-      middle:
+      content:
         - field_image
 id: node.podcast.image_only
 targetEntityType: node
@@ -31,13 +36,14 @@ bundle: podcast
 mode: image_only
 content:
   field_image:
-    weight: 1
+    type: image
+    weight: 0
+    region: content
     label: hidden
     settings:
-      image_style: teaser_square
-      image_link: content
+      image_style: large
+      image_link: ''
     third_party_settings: {  }
-    type: image
 hidden:
   field_body: true
   field_int_sort_order: true

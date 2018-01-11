@@ -10,6 +10,7 @@ base theme: classy
 #Using Classy as a base theme https://www.drupal.org/theme-guide/8/classy
 
 regions:
+  page_title: Page Title
   content: Content
   header: Header
   footer: Footer

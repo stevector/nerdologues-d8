@@ -1,7 +1,0 @@
-{
-  "name": "nerdologues-d8",
-  "author": "Steve Persch",
-  "devDependencies": {
-    "backstopjs": "^1.3.5"
-  }
-}

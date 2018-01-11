@@ -1,0 +1,48 @@
+uuid: 74eb34e9-d050-465c-bb32-c0d84db1032c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.blog_tags.field_image
+    - image.style.thumbnail
+    - taxonomy.vocabulary.blog_tags
+  module:
+    - image
+    - path
+    - text
+id: taxonomy_term.blog_tags.default
+targetEntityType: taxonomy_term
+bundle: blog_tags
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 31
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  name:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

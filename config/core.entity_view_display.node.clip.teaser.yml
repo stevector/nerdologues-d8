@@ -16,6 +16,8 @@ dependencies:
   module:
     - ds
     - entity_reference_revisions
+    - nerdcustom
+    - panelizer
     - text
     - user
 third_party_settings:
@@ -40,6 +42,7 @@ third_party_settings:
           layout_class: {  }
     regions:
       header:
+        - 'bundle_field:node'
         - node_title
         - links
       quote:
@@ -51,6 +54,11 @@ third_party_settings:
       left:
         - field_ref_podcast
     fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -10
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 0
@@ -60,6 +68,11 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.clip.teaser
 targetEntityType: node
 bundle: clip
@@ -72,6 +85,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: right
   field_para_quotes:
     type: entity_reference_revisions_entity_view
     weight: 2
@@ -80,20 +94,23 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: quote
   field_ref_creators:
-    type: entity_reference_label
+    type: nerd_person_field_formatter
     weight: 4
     label: inline
-    settings:
-      link: true
+    settings: {  }
     third_party_settings: {  }
+    region: right
   field_ref_podcast:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     weight: 6
     label: hidden
     settings:
+      view_mode: image_only
       link: false
     third_party_settings: {  }
+    region: left
   field_ref_podcast_episode:
     type: entity_reference_label
     weight: 3
@@ -101,10 +118,12 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+    region: right
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: header
 hidden:
   field_date_published: true
   field_int_end_time: true

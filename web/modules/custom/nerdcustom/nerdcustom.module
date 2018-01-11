@@ -6,6 +6,12 @@
  */
 
 use \Drupal\node\NodeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Field\FieldItemListInterface;
 
 /**
  * Implements hook_node_links_alter().
@@ -86,6 +92,16 @@ function nerdcustom_canonical_helper(&$variables, $node) {
 /**
  * Implements hook_preprocess_HOOK().
  */
+function nerdcustom_preprocess_panelizer_view_mode(&$variables) {
+  if ($variables['view_mode'] === 'full' && !empty($variables['entity'])   && $variables['entity']  instanceof NodeInterface) {
+    $node = $variables['entity'];
+    nerdcustom_canonical_helper($variables, $node);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function nerdcustom_preprocess_ds_entity_view(&$variables) {
 
   if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
@@ -101,4 +117,73 @@ function nerdcustom_preprocess_node(&$variables) {
   if ($variables['view_mode'] === 'full') {
     nerdcustom_canonical_helper($variables, $variables['node']);
   }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function nerdcustom_theme() {
+  return array(
+    'nerdcustom_mp3_player' => array(
+      'variables' => array(
+        'media_link' => NULL,
+        'mimetype' => NULL,
+        'description' => NULL,
+        'attributes' => array(),
+        'value' => NULL,
+        'extravalue' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function nerdcustom_views_data_alter(array &$data) {
+
+  $data['node__field_ref_creators']['referenced_storytellers'] = array(
+    'title' => t('Referenced Storytellers'),
+    'filter' => array(
+      'title' => t('Referenced Storytellers'),
+      'help' => t('Filter by storyteller'),
+      'field' => 'field_ref_creators_target_id',
+      'group' => 'Content',
+      'real field' => 'field_ref_creators_target_id',
+      'id' => 'nerdcustom_referenced_storytellers',
+    ),
+  );
+
+  $data['node_field_data']['referenced_podcast'] = array(
+    'title' => t('Referenced Podcast'),
+    'filter' => array(
+      'title' => t('Referenced Podcast'),
+      'help' => t('Filter by podcast'),
+      'field' => 'nid',
+      'id' => 'nerdcustom_referenced_podcast',
+    ),
+  );
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  // Deny viewing of the date field when there is also a
+  // field_text_display_date value.
+  // That is what field_text_display_date is for.
+  if ($field_definition->getName() == 'field_dates' && !is_null($items) && $items->getEntity()->bundle() === 'event' && $operation == 'view') {
+    $entity = $items->getEntity();
+    if (!empty($entity->field_text_display_date->getValue())) {
+
+      // Deny if we are not in an admin route.
+      // @todo, ideal the access logic would be on an access plugin on a pane.
+      $route = \Drupal::routeMatch()->getRouteObject();
+      $is_admin = \Drupal::service('router.admin_context')->isAdminRoute($route);
+      if (!$is_admin) {
+        return AccessResult::forbidden();
+      }
+    }
+  }
+  return AccessResult::neutral();
 }

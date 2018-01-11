@@ -2,7 +2,7 @@ Feature: Clip
 
   @api
   Scenario: Clip
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/content-migration/clip?field_date_published_value="
     Then I should see the following table portion
 
@@ -107,3 +107,19 @@ Feature: Clip
       | Nora Seidman: A Luke & Leia Thing                                          | Your Stories | Nora Seidman                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                 | 0                                | 1525     | 1222       | June 2012: Family Matters                                |                |
       | Rebecca: Piano Bar Fun                                                     | Your Stories | Rebecca M                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                 | 0                                | 3045     | 2783       | June 2012: Family Matters                                |                |
       | Sawyer Heppes: … But I See Your Party Has No Wizard                        | Your Stories | Sawyer Heppes                                                                                                        |                                                                                                                                                                                                                                                                                                                                                                                                 | 0                                | 1222     | 537        | June 2012: Family Matters                                |                |
+
+
+
+  Scenario: Clip Mp3s
+    When I visit "podcasts/your-stories/clips/dwight-eric-i-want-it-way"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/AprilPart1--Dwight---Eric--I-Want-It-That-Way--2492-2658.mp3"
+    When I visit "podcasts/your-stories/clips/cover-stories-save-tonight"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/KidsAgain1--Cover-Stories--Save-Tonight--433-642.mp3"
+    When I visit "podcasts/your-stories/clips/eric-garneau-born-monologue"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/January--Eric-Garneau--Born-to-Monologue--2380-2733.mp3"
+    When I visit "podcasts/your-stories/clips/cover-stories-no-more-mr-nice-guy"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/HorrorStories22--Cover-Stories--No-More-Mr--Nice-Guy--192-426.mp3"
+    When I visit "podcasts/your-stories/clips/dwight-eric-take-me-home-tonight"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/OctoberPart1--Dwight---Eric--Take-Me-Home-Tonight--195-410.mp3"
+    When I visit "podcasts/your-stories/clips/claire-dwight-eric-all-she-wants"
+    Then the response should contain "https://media.nerdologues.com/clips/v1/October2013Part1--Claire--Dwight----Eric--All-That-She-Wants--309-515.mp3"

@@ -14,9 +14,83 @@ dependencies:
     - node.type.clip
   module:
     - datetime
+    - field_group
     - paragraphs
     - path
     - text
+    - timeperiod
+third_party_settings:
+  field_group:
+    group_basic_info:
+      children:
+        - field_ref_creators
+        - field_int_start_time
+        - field_int_end_time
+      parent_name: group_info
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Basic Info'
+    group_info:
+      children:
+        - group_basic_info
+        - group_automatic_podcast_info
+        - group_quotes
+        - group_front_page_sort_date
+      parent_name: ''
+      weight: 2
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: Info
+    group_automatic_podcast_info:
+      children:
+        - field_ref_podcast
+        - field_ref_podcast_episode
+      parent_name: group_info
+      weight: 3
+      format_type: tab
+      format_settings:
+        label: 'Automatic Podcast Info'
+        formatter: closed
+        description: 'These fields should not have to be edited'
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Automatic Podcast Info'
+    group_quotes:
+      children:
+        - field_para_quotes
+      parent_name: group_info
+      weight: 4
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Quotes
+    group_front_page_sort_date:
+      children:
+        - field_date_published
+      parent_name: group_info
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Front page sort date'
 id: node.clip.default
 targetEntityType: node
 bundle: clip
@@ -24,36 +98,55 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 4
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_body:
-    weight: 35
+    weight: 1
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_date_published:
-    weight: 38
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_int_end_time:
-    weight: 37
+    weight: 9
     settings:
-      placeholder: ''
+      days_step: '1'
+      hours: '1'
+      hours_step: '1'
+      minutes: '1'
+      minutes_step: '1'
+      seconds: '1'
+      seconds_step: '1'
+      days: 0
     third_party_settings: {  }
-    type: number
+    type: timeperiod
+    region: content
   field_int_start_time:
-    weight: 36
+    weight: 8
     settings:
-      placeholder: ''
+      days_step: '1'
+      hours: '1'
+      hours_step: '1'
+      minutes: '1'
+      minutes_step: '1'
+      seconds: '1'
+      seconds_step: '1'
+      days: 0
     third_party_settings: {  }
-    type: number
+    type: timeperiod
+    region: content
   field_para_quotes:
     type: entity_reference_paragraphs
-    weight: 39
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -61,57 +154,73 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
   field_ref_creators:
-    weight: 32
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
+    region: content
   field_ref_podcast:
-    weight: 33
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_ref_podcast_episode:
-    weight: 34
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-  path:
-    type: path
-    weight: 30
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 15
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 16
-    third_party_settings: {  }
-  title:
-    type: string_textfield
-    weight: -5
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
     weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  path:
+    type: path
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 121
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
 hidden: {  }

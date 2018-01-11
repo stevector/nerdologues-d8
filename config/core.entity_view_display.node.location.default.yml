@@ -19,6 +19,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: address_default
-  links:
-    weight: 100
-hidden: {  }
+    region: content
+hidden:
+  links: true

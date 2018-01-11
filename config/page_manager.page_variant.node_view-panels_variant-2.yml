@@ -20,26 +20,26 @@ variant_settings:
       provider: ctools
       label_display: '0'
       view_mode: full
-      region: middle
+      region: content
       weight: 0
       uuid: 34e76a6b-91a1-44a1-acde-22fde3b9d286
       context_mapping:
         entity: node
     0adb000d-92e3-45fd-bb21-0858f27338c7:
       id: 'views_block:episodes_by_podcast-block_1'
-      label: ''
+      label: Episodes
       provider: views
       label_display: visible
-      views_label: ''
+      views_label: Episodes
       items_per_page: none
-      region: middle
+      region: content
       weight: 0
       uuid: 0adb000d-92e3-45fd-bb21-0858f27338c7
       context_mapping: {  }
   id: panels_variant
   label: null
   weight: 0
-  layout: onecol
+  layout: layout_onecol
   layout_settings: {  }
   page_title: '[node:title]'
   storage_type: page_manager

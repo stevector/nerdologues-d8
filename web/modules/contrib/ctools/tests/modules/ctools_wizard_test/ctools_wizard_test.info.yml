@@ -1,6 +1,0 @@
-name: Chaos Wizard Test
-type: module
-description: 'Provides testing for ctools wizard'
-package: Testing
-version: 3.x
-core: 8.x

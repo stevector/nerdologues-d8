@@ -8,11 +8,12 @@ dependencies:
     - field.field.node.person.field_image_lead
     - field.field.node.person.field_last_name
     - field.field.node.person.field_ref_term_designation
-    - image.style.teaser_square
+    - image.style.300square
     - node.type.person
   module:
     - ds
     - image
+    - panelizer
     - text
     - user
 third_party_settings:
@@ -36,10 +37,15 @@ third_party_settings:
         classes:
           layout_class: {  }
     regions:
-      header:
-        - field_body
       left:
         - field_image_lead
+      right:
+        - field_body
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -51,39 +57,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_image:
-    type: image
-    weight: 0
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
+    region: right
   field_image_lead:
     type: image
     weight: 0
     label: hidden
     settings:
-      image_style: teaser_square
+      image_style: 300square
       image_link: ''
     third_party_settings: {  }
-  field_last_name:
-    type: string
-    weight: 0
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-  field_ref_term_designation:
-    type: entity_reference_entity_view
-    weight: 0
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-  links:
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-hidden: {  }
+    region: left
+hidden:
+  field_image: true
+  field_last_name: true
+  field_ref_term_designation: true
+  links: true

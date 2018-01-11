@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.podcast_episode_mp3
     - field.field.node.podcast_episode.field_body
     - field.field.node.podcast_episode.field_date_published
     - field.field.node.podcast_episode.field_file
@@ -15,10 +16,110 @@ dependencies:
     - node.type.podcast_episode
   module:
     - datetime
+    - entity_browser
+    - field_group
     - link
-    - nerdcustom
     - path
     - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_required
+        - group_mp3
+        - group_teaser_and_body
+        - group_patreon
+        - group_unused
+        - group_podbean_specific_info
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: Tabs
+    group_required:
+      children:
+        - field_date_published
+        - field_ref_podcast
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Required
+    group_mp3:
+      children:
+        - field_file
+        - field_int_duration
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: MP3
+    group_teaser_and_body:
+      children:
+        - field_lede
+        - field_body
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Teaser and Body'
+    group_patreon:
+      children:
+        - field_link_paywall_content
+      parent_name: group_tabs
+      weight: 23
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Patreon
+    group_unused:
+      children: {  }
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Unused
+    group_podbean_specific_info:
+      children:
+        - field_link
+        - field_text_original_mp3_url
+      parent_name: group_tabs
+      weight: 25
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Podbean-specific info'
 id: node.podcast_episode.default
 targetEntityType: node
 bundle: podcast_episode
@@ -29,6 +130,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_body:
     weight: 9
     settings:
@@ -36,24 +138,33 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_date_published:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_file:
     weight: 26
     settings:
-      size: 60
-      placeholder: ''
+      entity_browser: podcast_episode_mp3
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_edit: true
+      open: false
+      view_mode: default
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: nerd_remote_uri
+    type: entity_browser_file
+    region: content
   field_int_duration:
     weight: 27
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
   field_lede:
     weight: 8
     settings:
@@ -61,6 +172,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_link:
     weight: 10
     settings:
@@ -68,6 +180,7 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_link_paywall_content:
     weight: 11
     settings:
@@ -75,35 +188,48 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_ref_podcast:
     weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
   field_text_original_mp3_url:
-    weight: 12
+    weight: 11
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: string_textarea
+    region: content
   path:
     type: path
     weight: 5
     settings: {  }
     third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 3
     third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 121
+    third_party_settings: {  }
+    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 4
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -111,6 +237,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 1
@@ -119,4 +246,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

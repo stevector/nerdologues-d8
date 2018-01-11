@@ -1,0 +1,34 @@
+commit d3ddcc57ae75a5ffcb51e7781986063ecd6e2dc4
+Author: Steve Persch <steve@stevepersch.com>
+Date:   Sun Aug 13 15:05:42 2017 -0500
+
+    patch
+
+diff --git a/src/Controller/RemoteImageStyleDownloadController.php b/src/Controller/RemoteImageStyleDownloadController.php
+index c5c10ae..9b8f29a 100644
+--- a/src/Controller/RemoteImageStyleDownloadController.php
++++ b/src/Controller/RemoteImageStyleDownloadController.php
+@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+ 
++require_once "core/modules/image/src/Controller/ImageStyleDownloadController.php";
++
+ /**
+  * Defines a controller to serve image styles.
+  */
+diff --git a/src/StreamWrapper/HttpStreamWrapper.php b/src/StreamWrapper/HttpStreamWrapper.php
+index 46269eb..7103787 100644
+--- a/src/StreamWrapper/HttpStreamWrapper.php
++++ b/src/StreamWrapper/HttpStreamWrapper.php
+@@ -7,6 +7,10 @@ use GuzzleHttp\ClientInterface;
+ use GuzzleHttp\Exception\ClientException;
+ use GuzzleHttp\Exception\ServerException;
+ 
++require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
++require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/ReadOnlyPhpStreamWrapperTrait.php';
++
++
+ /**
+  * HTTP(s) stream wrapper.
+  */

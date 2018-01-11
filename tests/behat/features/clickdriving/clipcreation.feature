@@ -5,14 +5,16 @@ Feature: Clip creation
 
   @api
   Scenario: Clip nodes created for each list item in a your stories podcast
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as an administrator
+    And print last response
     Given I am viewing a podcast with the title "Your Stories"
     When I visit "node/add/podcast_episode"
     And I select the radio button "Your Stories"
     And I fill in "title[0][value]" with "Some Random Episode"
     And I fill in "field_body[0][value]" with "<p>Maybe it seems weird</p><ul><li>Cover Stories: Love Never Felt So Good</li><li>James D'Amato: Progression</li><li>Nathan Robert: Will You Please Spend New Years Eve with Me?</li></ul><p>If you're in Chicago, come on down to our</p><ul><li>Cover Stories: Take Me to Church</li></ul>"
 
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I visit "admin/content"
     Then I should see the link "Cover Stories: Love Never Felt So Good"
     Then I should see the link "James D'Amato: Progression"
@@ -27,7 +29,7 @@ Feature: Clip creation
   @api
   Scenario: More link becomes visible after three clips
 
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
@@ -38,18 +40,21 @@ Feature: Clip creation
 
     # Make a podcast and episode.
     Given I am viewing a podcast with the title "Someone's cool podcast"
-    Given I am logged in as a user with the "content_administrator" role
+    Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
     And I select the radio button "Someone's cool podcast"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
+    # @todo, add check of mp3 player.
     Then I should see the link "Jane Member"
 
     And I click "Jane Member"
@@ -65,7 +70,8 @@ Feature: Clip creation
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should see the link "Jane Member"
 
     And I click "Jane Member"
@@ -80,7 +86,8 @@ Feature: Clip creation
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should see the link "Jane Member"
 
     And I click "Jane Member"
@@ -95,7 +102,8 @@ Feature: Clip creation
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
-    And I press "Save and publish"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then I should see the link "Jane Member"
 
     And I click "Jane Member"
@@ -117,11 +125,45 @@ Feature: Clip creation
     And I click "Someone's cool podcast"
     And I go to it's clip page
     Then the response status code should be 200
-    And I see the text "Clips from Someone's cool podcast"
+    And I see the text "Someone's cool podcast: Clip Archive"
 
+  @api
+  Scenario: Visible quotes
 
+    Given I log in as a content_administrator
+    Given a "member_designations" term with the name "Viewable bio page"
 
+    #Make a person
+    When I visit "node/add/person"
+    And I fill in "title[0][value]" with "Jane Member"
+    And I check "Viewable bio page"
+    And I press "Save"
 
+    # Make a podcast and episode.
+    Given I am viewing a podcast with the title "Someone's cool podcast"
+    Given I log in as a content_administrator
+    When I visit "node/add/podcast_episode"
+    And I fill in "title[0][value]" with "That one podcast episode"
+    And I select the radio button "Someone's cool podcast"
+    And I check the box "Publishing status"
+    And I press "Save"
 
-
-
+    When I visit "node/add/clip"
+    And I fill in "title[0][value]" with "A Clip of a story"
+    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
+    And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I check the box "Publishing status"
+    And I press "Save"
+    Then I visit "admin/content"
+    Then I click "Edit" in the "A Clip of a story" row
+    And I press "Add Quotes"
+    And I fill in "field_para_quotes[0][subform][field_body_plain][0][value]" with "Quote Zero"
+    And I press "Add Quotes"
+    And I fill in "field_para_quotes[1][subform][field_body_plain][0][value]" with "Quote One"
+    And I enter yesterday's date for the published date
+    And I check the box "Publishing status"
+    And I press "Save"
+    When I visit "/"
+    And I should see the text "Quote Zero"
+    And I should not see the text "Quote One"

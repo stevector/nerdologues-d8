@@ -12,6 +12,6 @@ name: 'Blog Post'
 type: blog_post
 description: "Use this content type for single blog posts. This content type may be used for announcements, editorial work, musings, and other prose.\r\n"
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 0
 display_submitted: false

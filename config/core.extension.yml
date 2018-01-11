@@ -6,25 +6,30 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
-  comment: 0
   config: 0
   contact: 0
   contextual: 0
   ctools: 0
+  ctools_block: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  entity: 0
+  entity_browser: 0
   entity_reference_revisions: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0
   help: 0
   history: 0
   image: 0
-  layout_plugin: 0
+  layout_discovery: 0
   link: 0
+  media_entity: 0
+  media_entity_audio: 0
   menu_ui: 0
   migrate: 0
   migrate_drupal: 0
@@ -36,9 +41,10 @@ module:
   page_cache: 0
   page_manager: 0
   page_manager_ui: 0
+  panelizer: 0
   panels: 0
+  panels_ipe: 0
   path: 0
-  quickedit: 0
   rabbit_hole: 0
   rdf: 0
   remote_stream_wrapper: 0
@@ -48,6 +54,7 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  timeperiod: 0
   token: 0
   toolbar: 0
   tour: 0
@@ -67,3 +74,4 @@ theme:
   seven: 0
   stable: 0
   nerdtheme: 0
+profile: standard

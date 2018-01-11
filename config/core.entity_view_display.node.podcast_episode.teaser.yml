@@ -17,38 +17,19 @@ dependencies:
   module:
     - datetime
     - ds
+    - link
+    - media_entity_audio
+    - panelizer
     - text
     - user
 third_party_settings:
   ds:
-    layout:
-      id: teaser_with_image
-      path: themes/custom/nerdtheme
-      library: ''
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        wrappers:
-          header: div
-          quote: div
-          right: div
-          left: div
-        outer_wrapper: div
-        attributes: ''
-        link_attribute: ''
-        link_custom: ''
-        classes:
-          layout_class: {  }
-    regions:
-      header:
-        - links
-      right:
-        - node_title
-        - field_date_published
-        - field_lede
-      left:
-        - field_ref_podcast
     fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -5
+        label: hidden
+        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -58,11 +39,153 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+  panelizer:
+    enable: true
+    custom: false
+    allow: false
+    default: default
+    displays:
+      default:
+        blocks:
+          68ff417e-1759-466d-b079-8d8d58a2c0be:
+            id: 'entity_field:node:field_date_published'
+            label: 'Date Published'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: datetime_default
+              settings:
+                timezone_override: ''
+                format_type: public_display1
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 2
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 68ff417e-1759-466d-b079-8d8d58a2c0be
+          90f83d81-643f-423f-956b-1b9e30f82b8c:
+            id: 'entity_field:node:field_lede'
+            label: Summary/Teaser
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: text_default
+              settings: {  }
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 10
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 90f83d81-643f-423f-956b-1b9e30f82b8c
+          93ab6caa-3975-4d80-938e-104c325cce5a:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: entity_reference_entity_view
+              settings:
+                view_mode: image_only
+                link: false
+              third_party_settings: {  }
+              weight: 0
+            region: left
+            weight: -5
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 93ab6caa-3975-4d80-938e-104c325cce5a
+          47aa18f5-6fe8-4f70-911f-7431a1b617cf:
+            id: 'entity_field:node:type'
+            label: 'Content type'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: entity_reference_label
+              settings:
+                link: false
+              third_party_settings: {  }
+              weight: 0
+            region: header
+            weight: 0
+            uuid: 47aa18f5-6fe8-4f70-911f-7431a1b617cf
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+          19e7eab3-9a37-4d37-bc23-3a02936b89ba:
+            id: 'entity_field:node:title'
+            label: Title
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: string
+              settings:
+                link_to_entity: true
+              third_party_settings: {  }
+              weight: 0
+            region: header
+            weight: 0
+            uuid: 19e7eab3-9a37-4d37-bc23-3a02936b89ba
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+          1a93f9b3-7ac7-4f34-ae2c-8f70c59c0f9b:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: entity_reference_label
+              settings:
+                link: true
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: -2
+            uuid: 1a93f9b3-7ac7-4f34-ae2c-8f70c59c0f9b
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+        id: panels_variant
+        label: Default
+        uuid: e6ed95d4-200f-4246-ad7f-7bed68e43173
+        weight: 0
+        layout: teaser_with_image_small
+        layout_settings:
+          wrappers:
+            header: div
+            quote: div
+            right: div
+            left: div
+          outer_wrapper: div
+          attributes: ''
+          link_attribute: ''
+          link_custom: ''
+          classes:
+            layout_class: {  }
+        page_title: ''
+        storage_type: panelizer_default
+        storage_id: 'node:podcast_episode:teaser:default'
+        builder: standard
+        pattern: panelizer
+        static_context: {  }
 id: node.podcast_episode.teaser
 targetEntityType: node
 bundle: podcast_episode
 mode: teaser
 content:
+  field_body:
+    type: text_trimmed
+    weight: 0
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
   field_date_published:
     type: datetime_default
     weight: 2
@@ -71,12 +194,54 @@ content:
       timezone_override: ''
       format_type: public_display1
     third_party_settings: {  }
+    region: content
+  field_file:
+    type: audio_player_html5
+    weight: 0
+    label: above
+    settings:
+      provide_download_link: true
+      audio_attributes: controls
+    third_party_settings: {  }
+    region: content
+  field_int_duration:
+    type: number_unformatted
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   field_lede:
     type: text_default
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_link:
+    type: link_separate
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    region: content
+  field_link_paywall_content:
+    type: link_separate
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    region: content
   field_ref_podcast:
     type: entity_reference_entity_view
     weight: 4
@@ -85,15 +250,18 @@ content:
       view_mode: image_only
       link: false
     third_party_settings: {  }
+    region: content
+  field_text_original_mp3_url:
+    type: basic_string
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
-  field_body: true
-  field_file: true
-  field_int_duration: true
   field_int_sort_order: true
-  field_link: true
-  field_link_paywall_content: true
-  field_text_original_mp3_url: true

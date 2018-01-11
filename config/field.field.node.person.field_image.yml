@@ -12,7 +12,7 @@ field_name: field_image
 entity_type: node
 bundle: person
 label: Image
-description: ''
+description: 'Used on the full bio page.'
 required: false
 translatable: true
 default_value: {  }

@@ -1,0 +1,52 @@
+uuid: 106a1ee6-b276-4774-9bd8-532327e0f6ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.events
+    - views.view.events
+  module:
+    - panels
+    - views
+id: events-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    b5ad55ed-7394-42e0-a1ff-2868c16eec2d:
+      id: 'views_block:events-block_upcoming'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: -10
+      uuid: b5ad55ed-7394-42e0-a1ff-2868c16eec2d
+      context_mapping: {  }
+    6803fe56-91ab-43d5-b727-9c8c281c9bf1:
+      id: 'views_block:events-block_past_events'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 6803fe56-91ab-43d5-b727-9c8c281c9bf1
+      context_mapping: {  }
+  id: panels_variant
+  uuid: fde6f42a-bdc0-4495-83cb-a8df406cb916
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: Events
+  storage_type: page_manager
+  storage_id: events-panels_variant-0
+  builder: standard
+page: events
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

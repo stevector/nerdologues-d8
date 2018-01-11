@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies: {  }
 id: upgrade_d7_filter_format
+class: null
+field_plugin_method: null
+cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
 migration_group: migrate_drupal_7
@@ -10,26 +13,13 @@ label: 'Filter format configuration'
 source:
   plugin: d7_filter_format
 process:
-  format: format
-  name: name
+  format:
+    plugin: nerd_input_format_map
+    source: format
+  name:
+    plugin: nerd_input_format_map
+    source: name
   cache: cache
-  filters:
-    plugin: iterator
-    source: filters
-    key: '@id'
-    process:
-      id:
-        plugin: static_map
-        bypass: true
-        source: name
-        map:
-          php_code: filter_null
-      settings:
-        plugin: filter_settings
-        source: settings
-      status:
-        plugin: default_value
-        default_value: true
 destination:
   plugin: 'entity:filter_format'
 migration_dependencies:
