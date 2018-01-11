@@ -6,7 +6,6 @@ Feature: Events
     When I visit "admin/content-migration/event"
     Then I should see the following table portion
 
-
       | Title                                                                                | Dates                                                                                                     | Content type | Location                              | Link                                                                                             | URI                                                                    |
       | SATURDAY / saturday                                                                  | 2012-09-08T22:30:00-0500                                                                                  | Event        | iO Chicago (Wrigleyville)             | Facebook Pagehttps://www.facebook.com/Saturdayx2                                                 | public://iospheretheaterpng.png                                        |
       | Superhero Bar Crawl                                                                  | 2012-08-24T19:00:00-0500                                                                                  | Event        |                                       | Facebook Eventhttps://www.facebook.com/events/342535039165471/                                   | public://field_image/page/195791_342535039165471_2027587031_n.jpeg     |
