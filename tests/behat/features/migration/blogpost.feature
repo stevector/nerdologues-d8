@@ -2,10 +2,11 @@ Feature: blogpost
 
   @api
   Scenario: blogpost nodes
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/content-migration/blogpost"
     Then I should see the following table portion
     | Title                                                           | Content type | URI                                                         | Blog tags  | Authors      | Date Published |
+    | Hey, where did my Your Stories episodes go??                    | Blog Post    |                                                             |            | Eric Garneau | 2016-04-01     |
     | MORE Best of Your Stories 2015 -- So Many Stories!              | Blog Post    | public://YourStorieslogo.jpg                                |            | Eric Garneau | 2015-12-28     |
     | Help Us Put Together The "Best Of" Your Stories 2015!           | Blog Post    | public://YourStorieslogo.jpg                                |            | Eric Garneau | 2015-11-02     |
     | Fisticuffs! in the Chicago Reader                               | Blog Post    | public://fisticuffs.jpg                                     | Fisticuffs |              | 2015-10-28     |

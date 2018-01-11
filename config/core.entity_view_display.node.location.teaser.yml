@@ -1,0 +1,25 @@
+uuid: 18a3e4a0-59c0-459d-b218-24882ba309aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.location.field_address
+    - node.type.location
+  module:
+    - address
+    - user
+id: node.location.teaser
+targetEntityType: node
+bundle: location
+mode: teaser
+content:
+  field_address:
+    type: address_plain
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  links: true

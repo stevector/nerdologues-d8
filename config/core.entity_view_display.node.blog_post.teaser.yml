@@ -1,0 +1,108 @@
+uuid: 7a540d8c-f7db-483d-8d47-711e91d6ba1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.blog_post.field_body
+    - field.field.node.blog_post.field_date_published
+    - field.field.node.blog_post.field_image
+    - field.field.node.blog_post.field_image_header
+    - field.field.node.blog_post.field_lede
+    - field.field.node.blog_post.field_ref_creators
+    - field.field.node.blog_post.field_term_blog_tags
+    - image.style.large
+    - node.type.blog_post
+  module:
+    - datetime
+    - ds
+    - image
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      header:
+        - 'bundle_field:node'
+        - node_title
+      right:
+        - field_date_published
+        - field_ref_creators
+        - field_lede
+      left:
+        - field_image
+    fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -10
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+id: node.blog_post.teaser
+targetEntityType: node
+bundle: blog_post
+mode: teaser
+content:
+  field_date_published:
+    type: datetime_default
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: public_display1
+    third_party_settings: {  }
+    region: right
+  field_image:
+    type: image
+    weight: 5
+    label: hidden
+    settings:
+      image_style: large
+      image_link: content
+    third_party_settings: {  }
+    region: left
+  field_lede:
+    type: text_default
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: right
+  field_ref_creators:
+    type: entity_reference_entity_id
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: right
+hidden:
+  field_body: true
+  field_image_header: true
+  field_term_blog_tags: true
+  links: true

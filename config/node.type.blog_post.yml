@@ -1,0 +1,17 @@
+uuid: 359ffb1b-7179-41ce-a659-891bd0e83ad8
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Blog Post'
+type: blog_post
+description: "Use this content type for single blog posts. This content type may be used for announcements, editorial work, musings, and other prose.\r\n"
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

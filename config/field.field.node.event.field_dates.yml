@@ -1,0 +1,21 @@
+uuid: afef6279-4bc8-409a-af43-eb24afbc0464
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dates
+    - node.type.event
+  module:
+    - datetime
+id: node.event.field_dates
+field_name: field_dates
+entity_type: node
+bundle: event
+label: Dates
+description: 'List the dates in reverse chronological order.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

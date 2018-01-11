@@ -68,13 +68,7 @@
 {% else %}
   <div{{ attributes.addClass(classes) }}>
     <span {{ title_attributes.addClass(title_classes) }}>{{ label }}</span>
-    {% if multiple %}
-      <div class="field__items">
-    {% endif %}
     {% for item in items %}{% if not loop.first  %}{% if not loop.last  %},{% else  %} and {% endif  %}{% endif  %}
     {{ item.content }}{% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
   </div>
 {% endif %}

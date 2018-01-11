@@ -5,24 +5,41 @@ default:
   suites:
     default:
       paths:
-        - %paths.base%/features
-      contexts:
+        - %paths.base%/features/clickdriving
+      contexts: &defaultcontexts
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Knp\FriendlyContexts\Context\TableContext
         - DatePublishedViews
+        - ClipPaths
+    clickdriving:
+      paths:
+        - %paths.base%/features/clickdriving
+      contexts:
+        <<: *defaultcontexts
+    dataentry:
+      paths:
+        - %paths.base%/features/dataentry
+      contexts:
+        <<: *defaultcontexts
+    migration:
+      paths:
+        - %paths.base%/features/migration
+      contexts:
+        <<: *defaultcontexts
   extensions:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      files_path: './data-files'
+      files_path: %paths.base%/data-files
     Drupal\DrupalExtension:
       blackbox: ~
       region_map:
-        From the podcast: ".field--name-field-ref-podcast"
+        From the podcast: ".block-region-right .field--name-field-ref-podcast"
         From the episode: ".field--name-field-ref-podcast-episode"
-      drupal:
-        drupal_root: ../web
+        Past events: ".block-views-blockevents-block-past-events"
+        Upcoming events: ".block-views-blockevents-block-upcoming"
+        Nerds Online: ".block-views-blocknerds-online-block-1"
       api_driver: 'drupal'

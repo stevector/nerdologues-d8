@@ -1,0 +1,18 @@
+uuid: 20d49060-57d9-43f3-8d60-96967912732b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - nerdtheme
+id: nerdtheme_page_title
+theme: nerdtheme
+region: page_title
+weight: -7
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

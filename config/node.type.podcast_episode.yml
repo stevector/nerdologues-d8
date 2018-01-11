@@ -1,0 +1,17 @@
+uuid: 042bb2c2-25cb-48e2-8500-e586ca40f052
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Podcast Episode'
+type: podcast_episode
+description: 'The things imported from an RSS feed. Things like Your Stories episodes.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

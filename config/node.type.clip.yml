@@ -1,0 +1,17 @@
+uuid: ce014061-1b99-4bd5-ad00-a0c94d61ab42
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Clip
+type: clip
+description: 'A sound clip, commonly from a Your Stories episode.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

@@ -1,0 +1,17 @@
+uuid: 3f3ec04f-83ad-4941-a65a-906c4ed70a78
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Video
+type: video
+description: 'Youtube videos'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,43 @@
+uuid: e92dab78-eee9-4a63-b600-cd69e90e3327
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_body
+    - field.field.node.page.field_image
+    - field.field.node.page.field_lede
+    - field.field.node.page.field_term_blog_tags
+    - node.type.page
+  module:
+    - image
+    - text
+    - user
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  field_body:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_lede: true
+  field_term_blog_tags: true

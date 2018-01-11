@@ -1,0 +1,66 @@
+uuid: 39835461-019b-4817-8e09-9cba3cfbacbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.token
+    - field.field.node.blog_post.field_body
+    - field.field.node.blog_post.field_date_published
+    - field.field.node.blog_post.field_image
+    - field.field.node.blog_post.field_image_header
+    - field.field.node.blog_post.field_lede
+    - field.field.node.blog_post.field_ref_creators
+    - field.field.node.blog_post.field_term_blog_tags
+    - node.type.blog_post
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.blog_post.token
+targetEntityType: node
+bundle: blog_post
+mode: token
+content:
+  field_body:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_date_published:
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_ref_creators:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_image_header: true
+  field_lede: true
+  field_term_blog_tags: true

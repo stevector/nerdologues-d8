@@ -13,3 +13,35 @@ teaser_with_image:
       label: right
     left:
       label: left
+teaser_with_image_full_page:
+  label: Teaser with Image (Full Page)
+  category: Custom
+  template: templates/layouts/teaser-with-image-full-page
+  type: partial
+  class: '\Drupal\ds\Plugin\DsLayout'
+  regions:
+    header:
+      label: header
+    quote:
+      label: Quote
+    right:
+      label: right
+    left:
+      label: left
+
+
+teaser_with_image_small:
+  label: Teaser with Image (Small)
+  category: Custom
+  template: templates/layouts/teaser-with-image-small
+  type: partial
+  class: '\Drupal\ds\Plugin\DsLayout'
+  regions:
+    header:
+      label: header
+    quote:
+      label: Quote
+    right:
+      label: right
+    left:
+      label: left

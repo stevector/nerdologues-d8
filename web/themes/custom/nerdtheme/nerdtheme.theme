@@ -8,5 +8,12 @@
 /**
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
-function nerdtheme_preprocess_html(array &$variables) {
+function nerdtheme_preprocess_page(array &$variables) {
+
+  $request = \Drupal::request();
+  $variables['use_hero'] = FALSE;
+  if (!empty($variables['is_front']) && empty($request->query->get('page'))) {
+    $variables['use_hero'] = TRUE;
+  }
+
 }

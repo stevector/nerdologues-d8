@@ -1,0 +1,7 @@
+name: nerdologues-composer
+recipe: pantheon
+config:
+  framework: drupal8
+  env: dev
+  site: nerdologues-composer
+  id: f8b6bd4b-bde6-45de-b354-3bf2c6c1f757

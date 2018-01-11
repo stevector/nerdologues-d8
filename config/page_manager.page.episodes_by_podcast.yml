@@ -1,0 +1,25 @@
+uuid: 6e92b7be-41df-49b6-865f-79ce53c88828
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+id: episodes_by_podcast
+label: 'Episodes by Podcast'
+description: ''
+use_admin_theme: false
+path: '/node/{node}/episodes'
+access_logic: and
+access_conditions:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      podcast: podcast
+    negate: false
+    context_mapping:
+      node: node
+parameters:
+  node:
+    machine_name: node
+    type: 'entity:node'
+    label: Node

@@ -1,0 +1,38 @@
+uuid: bb42c7f4-0d3e-4219-8700-b3493eb1ff50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image
+    - node.type.person
+  module:
+    - image
+id: node.person.field_image
+field_name: field_image
+entity_type: node
+bundle: person
+label: Image
+description: 'Used on the full bio page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: person-images
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

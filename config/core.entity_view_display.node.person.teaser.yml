@@ -1,0 +1,92 @@
+uuid: 0099c30c-0bee-4461-9b48-72233f86de77
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.person.field_body
+    - field.field.node.person.field_image
+    - field.field.node.person.field_image_lead
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_ref_term_designation
+    - image.style.300square
+    - node.type.person
+  module:
+    - ds
+    - image
+    - panelizer
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      header:
+        - node_title
+      right:
+        - field_body
+        - links
+      left:
+        - field_image_lead
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: node.person.teaser
+targetEntityType: node
+bundle: person
+mode: teaser
+content:
+  field_body:
+    type: text_default
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: right
+  field_image_lead:
+    type: image
+    weight: 4
+    label: hidden
+    settings:
+      image_style: 300square
+      image_link: content
+    third_party_settings: {  }
+    region: left
+  links:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: right
+hidden:
+  field_image: true
+  field_last_name: true
+  field_ref_term_designation: true

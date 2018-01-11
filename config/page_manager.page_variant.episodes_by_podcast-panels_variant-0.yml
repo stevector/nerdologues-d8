@@ -1,0 +1,41 @@
+uuid: 7892eaf3-ddd8-4390-b3d8-4f602c793e54
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.episodes_by_podcast
+    - views.view.episodes_by_podcast
+  module:
+    - panels
+    - views
+id: episodes_by_podcast-panels_variant-0
+label: Panels
+variant: panels_variant
+variant_settings:
+  blocks:
+    d55e74d5-a354-471c-adcd-30c3596c8846:
+      id: 'views_block:episodes_by_podcast-block_2'
+      label: ''
+      provider: views
+      label_display: '0'
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: d55e74d5-a354-471c-adcd-30c3596c8846
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 4a7a0700-a448-4b3b-876d-6a45cf93279a
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: 'Episode Archive: [node:title]'
+  storage_type: page_manager
+  storage_id: episodes_by_podcast-panels_variant-0
+  builder: standard
+page: episodes_by_podcast
+weight: 0
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

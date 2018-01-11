@@ -1,0 +1,28 @@
+uuid: 6f6100f3-165f-4804-b504-049e1c2cfff8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ref_creators
+    - node.type.blog_post
+    - node.type.person
+id: node.blog_post.field_ref_creators
+field_name: field_ref_creators
+entity_type: node
+bundle: blog_post
+label: Authors
+description: 'Enter the people who authored this blog post. This information is meant to be seen by the public. It is different from the administrative field below which tracks the username of the person who saved this blog post to the site.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

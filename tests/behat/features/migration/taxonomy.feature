@@ -2,7 +2,7 @@ Feature: Taxonomy migration
 
   @api
   Scenario: Bio without proper term does not appear on the nerd page.
-    Given I am logged in as a user with the "administrator" role
+    Given I log in as an administrator
     When I visit "admin/structure/taxonomy"
     Then I should see "Blog Tags"
     Then I should see "iTunes Category"

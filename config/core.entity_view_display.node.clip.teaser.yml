@@ -1,0 +1,130 @@
+uuid: 25f34f99-14a1-4762-b604-4e3e15f88b99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.clip.field_body
+    - field.field.node.clip.field_date_published
+    - field.field.node.clip.field_int_end_time
+    - field.field.node.clip.field_int_start_time
+    - field.field.node.clip.field_para_quotes
+    - field.field.node.clip.field_ref_creators
+    - field.field.node.clip.field_ref_podcast
+    - field.field.node.clip.field_ref_podcast_episode
+    - node.type.clip
+  module:
+    - ds
+    - entity_reference_revisions
+    - nerdcustom
+    - panelizer
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: teaser_with_image_small
+      path: themes/custom/nerdtheme
+      library: ''
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        wrappers:
+          header: div
+          quote: div
+          right: div
+          left: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        classes:
+          layout_class: {  }
+    regions:
+      header:
+        - 'bundle_field:node'
+        - node_title
+        - links
+      quote:
+        - field_para_quotes
+      right:
+        - field_ref_podcast_episode
+        - field_ref_creators
+        - field_body
+      left:
+        - field_ref_podcast
+    fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: -10
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          wrapper: h2
+          class: ''
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+id: node.clip.teaser
+targetEntityType: node
+bundle: clip
+mode: teaser
+content:
+  field_body:
+    type: text_trimmed
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: right
+  field_para_quotes:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: quote
+  field_ref_creators:
+    type: nerd_person_field_formatter
+    weight: 4
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    region: right
+  field_ref_podcast:
+    type: entity_reference_entity_view
+    weight: 6
+    label: hidden
+    settings:
+      view_mode: image_only
+      link: false
+    third_party_settings: {  }
+    region: left
+  field_ref_podcast_episode:
+    type: entity_reference_label
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: right
+  links:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: header
+hidden:
+  field_date_published: true
+  field_int_end_time: true
+  field_int_start_time: true

@@ -1,0 +1,32 @@
+uuid: 4342e74b-0b33-4f92-a8b0-eb38ca608146
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quotes.field_body_plain
+    - field.field.paragraph.quotes.field_int_start_time
+    - paragraphs.paragraphs_type.quotes
+id: paragraph.quotes.default
+targetEntityType: paragraph
+bundle: quotes
+mode: default
+content:
+  field_body_plain:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_int_start_time:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

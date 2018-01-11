@@ -1,0 +1,65 @@
+uuid: 20e12bbf-1b00-4adf-8600-cb4838d221f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.video.field_body
+    - field.field.node.video.field_date_published
+    - field.field.node.video.field_ref_creators
+    - field.field.node.video.field_youtube
+    - node.type.video
+  module:
+    - datetime
+    - ds
+    - nerdcustom
+    - text
+    - user
+    - youtube
+id: node.video.default
+targetEntityType: node
+bundle: video
+mode: default
+content:
+  field_body:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_date_published:
+    weight: 0
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: public_display1
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_ref_creators:
+    weight: 1
+    label: inline
+    settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    type: nerd_person_field_formatter
+    region: content
+  field_youtube:
+    weight: 2
+    label: hidden
+    settings:
+      youtube_size: responsive
+      youtube_width: ''
+      youtube_height: ''
+      youtube_autoplay: false
+      youtube_loop: false
+      youtube_showinfo: false
+      youtube_controls: false
+      youtube_autohide: false
+      youtube_iv_load_policy: false
+    third_party_settings: {  }
+    type: youtube_video
+    region: content
+hidden:
+  links: true

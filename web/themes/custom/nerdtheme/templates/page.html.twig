@@ -1,10 +1,28 @@
 {{ page.header }}
+
+{% if use_hero %}
+<div class="whitebox--hero">
+  {{ page.page_title }}
+  <p><a href="/nerds">Comedy and stories from the people who stand up and come out as nerds</a></p>
+</div>
+{% endif %}
+
+
 <div class="main">
   <div class="main-content whitebox" role="main">
    <a id="main-content"></a>
    {{ page.system }}
+
+
 	 <div id="content" role="main">
-	  {{ page.content }}
+
+     {% if not use_hero %}
+      {# Even paginated homepage shouldn't show title here. @todo, reconsider that. #}
+     {% if not is_front %}
+       {{ page.page_title }}
+     {% endif %}
+     {% endif %}
+     {{ page.content }}
 		</div>
   </div>
 </div>

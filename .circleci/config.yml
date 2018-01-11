@@ -1,0 +1,171 @@
+defaults: &defaults
+  docker:
+    - image: quay.io/stevector/docker-build-tools-ci:latest
+  working_directory: ~/example_drops_8_composer
+  environment:
+    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    ADMIN_USERNAME: admin
+    BUILD_TOOLS_VERSION: dev-master
+    TERM: dumb
+
+version: 2
+jobs:
+    build:
+        <<: *defaults
+        steps:
+            - checkout
+
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
+
+            - run:
+                name: variables
+                command: ./.circleci/variables.sh
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
+
+            - run:
+                command: composer circle-tests
+
+            - run:
+                name: deploy
+                command: |
+                    ./.circleci/deploy/deploy-to-multidev.sh
+
+            - run:
+                name: Migration
+                command: |
+                    ./.circleci/deploy/run-migration.sh
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/behat-wrapper.sh  --suite=dataentry
+
+            - run:
+                name: Set TERMINUS_ENV for Backstop
+                command: |
+                    mkdir globals
+                    echo $TERMINUS_ENV > globals/TERMINUS_ENV
+
+            - persist_to_workspace:
+                root: .
+                paths:
+                    - globals
+
+    behat:
+        <<: *defaults
+        steps:
+            - checkout
+
+            - attach_workspace:
+                at: /tmp
+
+            - run:
+                name: Global vars
+                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
+
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
+
+            - run:
+                name: login
+                command: terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
+
+            - run:
+                name: Behat users
+                command: ./.circleci/behat-runners/add-behat-users.sh
+
+            - run:
+                name: Behat
+                command: ./.circleci/behat-runners/behat-wrapper.sh --suite=migration
+
+    backstop:
+        docker:
+            - image: quay.io/stevector/pantheon-ci-testing:latest
+        working_directory: ~/example_drops_8_composer
+        steps:
+            - checkout
+
+            - attach_workspace:
+                at: /tmp
+
+            - run:
+                name: Global vars
+                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
+
+            - run:
+                name: check var
+                command: |
+                 echo $TERMINUS_ENV
+
+            - run:
+                name: run-backstop
+                command: cd backstop && ./run-backstop.sh
+
+            - store_artifacts:
+                path: /tmp/artifacts
+                destination: artifacts
+
+
+    behavioral:
+        <<: *defaults
+        steps:
+            - checkout
+
+            - restore_cache:
+                keys:
+                    - composer-{{ checksum "composer.lock" }}
+
+            - run:
+                name: variables
+                command: ./.circleci/variables.sh
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer-{{ checksum "composer.lock" }}
+                paths:
+                  - vendor
+
+            - run:
+                command: composer circle-tests
+
+            - run:
+                command: ./.circleci/deploy/deploy-to-multidev.sh
+
+            - run:
+                name: Behat
+                command: |
+                    ./.circleci/behat-runners/add-behat-users.sh
+                    ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - behavioral
+      - behat:
+          requires:
+             - build
+      - backstop:
+          requires:
+             - build
+

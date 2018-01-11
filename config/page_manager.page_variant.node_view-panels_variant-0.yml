@@ -1,0 +1,53 @@
+uuid: e499ceaa-8f23-4309-87f8-10e053544b44
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+    - views.view.blog_posts_by_term
+  module:
+    - ctools
+    - panels
+    - views
+id: node_view-panels_variant-0
+label: Default
+variant: panels_variant
+variant_settings:
+  blocks:
+    01ef726e-6c47-4302-9f44-e28313f7cc28:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: 01ef726e-6c47-4302-9f44-e28313f7cc28
+      context_mapping:
+        entity: node
+    abc17285-059f-4286-94a4-5ee229775b12:
+      id: 'views_block:blog_posts_by_term-block_1'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: abc17285-059f-4286-94a4-5ee229775b12
+      context_mapping: {  }
+  id: panels_variant
+  uuid: 253460ab-75af-45b7-86b5-e260cac6b5e2
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: '[node:title]'
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-0
+  builder: standard
+page: node_view
+weight: 7
+selection_criteria: {  }
+selection_logic: and
+static_context: {  }

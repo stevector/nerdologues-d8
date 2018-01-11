@@ -1,0 +1,27 @@
+uuid: 4156ec45-e5ab-4763-9392-b679a8a537d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file
+    - node.type.podcast_episode
+  module:
+    - file
+id: node.podcast_episode.field_file
+field_name: field_file
+entity_type: node
+bundle: podcast_episode
+label: file
+description: 'This is the field that is replacing the Podbean url location. It should only be populated with urls from https://media.nerdologues.com/podcasts/v1 For instance, https://media.nerdologues.com/podcasts/v1/yourstories/Julypart1.mp3'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'mp3 m4a'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

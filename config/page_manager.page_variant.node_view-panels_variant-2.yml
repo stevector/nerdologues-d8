@@ -1,0 +1,60 @@
+uuid: 9839b626-b6cc-40f3-bbb2-56bec1f7a3f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+    - views.view.episodes_by_podcast
+  module:
+    - ctools
+    - panels
+    - views
+id: node_view-panels_variant-2
+label: Podcast
+variant: panels_variant
+variant_settings:
+  blocks:
+    34e76a6b-91a1-44a1-acde-22fde3b9d286:
+      id: 'entity_view:node'
+      label: 'Entity view (Content)'
+      provider: ctools
+      label_display: '0'
+      view_mode: full
+      region: content
+      weight: 0
+      uuid: 34e76a6b-91a1-44a1-acde-22fde3b9d286
+      context_mapping:
+        entity: node
+    0adb000d-92e3-45fd-bb21-0858f27338c7:
+      id: 'views_block:episodes_by_podcast-block_1'
+      label: Episodes
+      provider: views
+      label_display: visible
+      views_label: Episodes
+      items_per_page: none
+      region: content
+      weight: 0
+      uuid: 0adb000d-92e3-45fd-bb21-0858f27338c7
+      context_mapping: {  }
+  id: panels_variant
+  label: null
+  weight: 0
+  layout: layout_onecol
+  layout_settings: {  }
+  page_title: '[node:title]'
+  storage_type: page_manager
+  storage_id: node_view-panels_variant-2
+  builder: standard
+  uuid: a5daefc7-87f5-46d7-9d25-0b838e94cf45
+page: node_view
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    bundles:
+      podcast: podcast
+    negate: false
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }

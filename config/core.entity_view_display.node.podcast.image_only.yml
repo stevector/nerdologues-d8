@@ -1,0 +1,50 @@
+uuid: bc896c07-67f0-4793-b5ac-d19c3c7b3a7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.image_only
+    - field.field.node.podcast.field_body
+    - field.field.node.podcast.field_image
+    - field.field.node.podcast.field_int_sort_order
+    - image.style.large
+    - node.type.podcast
+  module:
+    - ds
+    - image
+    - panelizer
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings: {  }
+    regions:
+      content:
+        - field_image
+id: node.podcast.image_only
+targetEntityType: node
+bundle: podcast
+mode: image_only
+content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  field_body: true
+  field_int_sort_order: true
+  links: true
