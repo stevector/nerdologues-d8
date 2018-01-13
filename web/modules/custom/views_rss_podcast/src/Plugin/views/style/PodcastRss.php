@@ -42,7 +42,7 @@ class PodcastRss extends Rss {
       [
         '#type' => 'html_tag',
         '#tag' => 'itunes:image',
-        "#value" => $this->tokenizeValue($this->options['itunesimage'], 0),
+        "#attributes" =>['href' => $this->tokenizeValue($this->options['itunesimage'], 0)],
       ]
     ];
   }
@@ -52,6 +52,11 @@ class PodcastRss extends Rss {
     $return = parent::render();
     // Channel elements depend on rows having already been prepared.
     $this->channel_elements = $this->getChannelElements();
+    $this->namespaces = [];
+
+    $this->namespaces = [
+      'xmlns:dc' => 'http://purl.org/dc/elements/1.1/',
+      'xmlns:itunes' => "http://www.itunes.com/dtds/podcast-1.0.dtd"];
     return $return;
   }
 
