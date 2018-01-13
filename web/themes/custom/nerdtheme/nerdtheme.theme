@@ -17,3 +17,10 @@ function nerdtheme_preprocess_page(array &$variables) {
   }
 
 }
+function nerdtheme_preprocess_views_view_field(&$variables) {
+  // @todo, https://github.com/stevector/nerdologues-d8/issues/239
+  // take out this hack.
+  $output = $variables['output'] . '';
+  $variables['output'] = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $output);
+
+}
