@@ -29,24 +29,22 @@ class PodcastRss extends Rss {
    */
   protected $usesRowPlugin = TRUE;
 
-  protected function defineOptions() {
-    $options = parent::defineOptions();
-
-    $options['description'] = ['default' => ''];
-
-    return $options;
-  }
-
+  /**
+   * {@inheritdoc}
+   */
   protected function getChannelElements() {
     return [
       [
         '#type' => 'html_tag',
         '#tag' => 'itunes:image',
-        "#attributes" =>['href' => $this->tokenizeValue($this->options['itunesimage'], 0)],
+        "#attributes" => ['href' => $this->tokenizeValue($this->options['itunesimage'], 0)],
       ]
     ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function render() {
 
     $return = parent::render();
@@ -60,7 +58,9 @@ class PodcastRss extends Rss {
     return $return;
   }
 
-
+  /**
+   * {@inheritdoc}
+   */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
