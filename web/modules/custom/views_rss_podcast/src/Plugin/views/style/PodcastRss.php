@@ -37,6 +37,25 @@ class PodcastRss extends Rss {
     return $options;
   }
 
+  protected function getChannelElements() {
+    return [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'itunes:image',
+        "#value" => $this->tokenizeValue($this->options['itunesimage'], 0),
+      ]
+    ];
+  }
+
+  public function render() {
+
+    $return = parent::render();
+    // Channel elements depend on rows having already been prepared.
+    $this->channel_elements = $this->getChannelElements();
+    return $return;
+  }
+
+
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     parent::buildOptionsForm($form, $form_state);
 
@@ -47,6 +66,15 @@ class PodcastRss extends Rss {
       '#description' => $this->t('This will appear in the RSS feed itself!'),
       '#maxlength' => 1024,
     ];
+
+    $form['itunesimage'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Itunes image'),
+      '#default_value' => $this->options['itunesimage'],
+      '#description' => $this->t('itunes:image. Use token substitution from fields'),
+      '#maxlength' => 1024,
+    ];
+
   }
 
   /**
