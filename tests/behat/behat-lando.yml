@@ -1,0 +1,19 @@
+#
+# behat config file for testing within Lando.
+#
+
+imports:
+- behat-base.yml
+
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: 'http://nginx/'
+      sessions:
+          default:
+              goutte:
+                  guzzle_parameters:
+                      verify: false
+    Drupal\DrupalExtension:
+      drush:
+        root: '/app/web'
