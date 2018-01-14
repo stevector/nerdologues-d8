@@ -8,13 +8,13 @@ dependencies:
     - ctools
     - nerdcustom
 id: node_view-http_status_code-0
-label: '403 Person'
+label: '404 Person'
 variant: http_status_code
 variant_settings:
   id: http_status_code
   label: null
   weight: 0
-  status_code: 403
+  status_code: 404
   uuid: 3e5efbfe-6ca9-4747-8ece-ba4d90adf909
 page: node_view
 weight: 0
