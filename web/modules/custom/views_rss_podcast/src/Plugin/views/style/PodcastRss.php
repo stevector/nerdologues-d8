@@ -79,7 +79,13 @@ class PodcastRss extends Rss {
       '#description' => $this->t('itunes:image. Use token substitution from fields'),
       '#maxlength' => 1024,
     ];
-
+    $form['itunesexplicit'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Itunes explicit'),
+      '#default_value' => $this->options['itunesexplicit'],
+      '#description' => $this->t('itunes:explicit.'),
+      '#maxlength' => 1024,
+    ];
   }
 
   /**

@@ -1051,6 +1051,8 @@ display:
           enclosure_size: filesize
           enclosure_type: filemime
           itunes_author: field_ref_podcast
+          image_field: field_image
+          explicit_field: ''
           duration_field: field_int_duration
           summary_field: field_body
       path: node/%/feed
@@ -1065,6 +1067,7 @@ display:
           grouping: {  }
           description: '{{ field_body_1 }}'
           itunesimage: '{{ field_image }}'
+          itunesexplicit: 'Yes'
     cache_metadata:
       max-age: -1
       contexts:

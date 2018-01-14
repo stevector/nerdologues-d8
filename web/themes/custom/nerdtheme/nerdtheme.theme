@@ -25,5 +25,4 @@ function nerdtheme_preprocess_views_view_field(&$variables) {
   // take out this hack.
   $output = $variables['output'] . '';
   $variables['output'] = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $output);
-
 }

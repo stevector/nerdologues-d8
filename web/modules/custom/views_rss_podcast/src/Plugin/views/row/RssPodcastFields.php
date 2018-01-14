@@ -42,7 +42,7 @@ class RssPodcastFields extends RssFields {
         '#description' => $this->t($field_def["fapi_description"]),
         '#options' => $view_fields_labels,
         '#default_value' => $this->options[$field_def["fapi_key"]],
-        '#required' => TRUE,
+        //'#required' => TRUE,
       ];
     }
   }
@@ -113,6 +113,18 @@ class RssPodcastFields extends RssFields {
         "fapi_key" => "itunes_author",
         "fapi_title" => "Itunes author duration",
         "fapi_description" => "text to appear in itunes:author"
+      ],
+      [
+        "feed_key" => "itunes:image",
+        "fapi_key" => "image_field",
+        "fapi_title" => "Itunes image",
+        "fapi_description" => "Absolute url for image"
+      ],
+      [
+        "feed_key" => "itunes:explicit",
+        "fapi_key" => "explicit_field",
+        "fapi_title" => "Itunes explicit",
+        "fapi_description" => "yes or no"
       ],
       [
         "feed_key" => "itunes:duration",
