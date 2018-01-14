@@ -43,8 +43,11 @@ Feature: Pathauto
 
   @api
   Scenario: People
-    Given I am an anonymous user
-    Given I am viewing a person with the title "Another person"
+    When I visit "node/add/person"
+    And I fill in "title[0][value]" with "Another person"
+    And I check the box "Viewable bio page"
+    And I check the box "Publishing status"
+    And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/nerds/another-person\" />"
 
   @api
