@@ -1,0 +1,8 @@
+uuid: 680f88b0-b155-4859-b8cb-66396417334d
+langcode: en
+status: true
+dependencies: {  }
+id: rfc2822
+label: RFC2822
+locked: false
+pattern: 'D, d M Y H:i:s O'

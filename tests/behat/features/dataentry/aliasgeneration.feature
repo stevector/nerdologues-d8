@@ -21,13 +21,11 @@ Feature: Alias Generation
     | /node/1894/episodes  | /podcasts/ketchup/episodes                        | Episode Archive: The Ketchup                           |
     | /node/2199/episodes  | /podcasts/sports-retorts-hooli-and-joe/episodes   | Episode Archive: Sports Retorts with Hooli and The Joe |
     | /node/2621/episodes  | /podcasts/blank-cassette/episodes                 | Episode Archive: Blank Cassette                        |
-
-#  @todo https://github.com/stevector/nerdologues-d8/issues/183
-# node/81/feed	podcasts/your-stories/feed
-# node/82/feed	podcasts/mbsing/feed
-# node/83/feed	podcasts/nerdologuecast/feed
-# node/700/feed	podcasts/talking-games/feed
-# node/1041/feed	podcasts/poor-choices/feed
-# node/1894/feed	podcasts/ketchup/feed
-# node/2199/feed	podcasts/sports-retorts-hooli-and-joe/feed
-# node/2621/feed	podcasts/blank-cassette/feed
+    | /node/81/feed    | /podcasts/your-stories/feed                   | Your Stories                          |
+    | /node/82/feed    | /podcasts/mbsing/feed                         | MBSing                                |
+    | /node/83/feed    | /podcasts/nerdologuecast/feed                 | The Nerdologuecast                    |
+    | /node/700/feed   | /podcasts/talking-games/feed                  | Talking Games                         |
+    | /node/1041/feed  | /podcasts/poor-choices/feed                   | Poor Choices                          |
+    | /node/1894/feed  | /podcasts/ketchup/feed                        | The Ketchup                           |
+    | /node/2199/feed  | /podcasts/sports-retorts-hooli-and-joe/feed   | Sports Retorts with Hooli and The Joe |
+    | /node/2621/feed  | /podcasts/blank-cassette/feed                 | Blank Cassette                        |
