@@ -6,6 +6,7 @@ dependencies:
     - page_manager.page.node_view
   module:
     - ctools
+    - nerdcustom
 id: node_view-http_status_code-0
 label: '403 Person'
 variant: http_status_code
@@ -18,11 +19,18 @@ variant_settings:
 page: node_view
 weight: 0
 selection_criteria:
-  -
+  0:
     id: 'entity_bundle:node'
     bundles:
       person: person
     negate: false
+    context_mapping:
+      node: node
+  2:
+    id: person_is_viewable
+    taxonomytermstring: null
+    bundles: {  }
+    negate: true
     context_mapping:
       node: node
 selection_logic: and
