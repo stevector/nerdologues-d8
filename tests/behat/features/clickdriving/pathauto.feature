@@ -43,6 +43,7 @@ Feature: Pathauto
 
   @api
   Scenario: People
+    Given I log in as a content_administrator
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Another person"
     And I check the box "Viewable bio page"
