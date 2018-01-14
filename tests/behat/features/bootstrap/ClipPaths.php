@@ -51,7 +51,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
       $this->minkContext->fillField('Path alias', $value['Path alias']);
       $this->minkContext->pressButton('Save');
       $this->minkContext->visit($value['Path alias']);
-      $this->minkContext->assertPageContainsText($value['Expected text']);
+      $this->minkContext->assertResponseContains($value['Expected text']);
     }
   }
 
@@ -212,6 +212,28 @@ class ClipPaths implements Context, SnippetAcceptingContext {
     $this->minkContext->fillField('Password', getenv('BEHAT_PASS_CONTENT_ADMIN'));
     $this->minkContext->pressButton('Log in');
   }
+
+  /**
+   * @Then the output matches the XML of :page on the Drupal 7 site.
+   */
+  public function theOutputMatchesTheXmlOfOnTheDrupalSite($page)
+  {
+    $d8_response = $this->minkContext->getSession()->getPage()->getContent();
+    print_r($d8_response);
+    $d7_base_url = "http://migr-prep3-nerdologues.pantheonsite.io/";
+    $this->minkContext->visit($d7_base_url . $page);
+    $this->minkContext->printLastResponse();
+
+    $d7_response = $this->minkContext->getSession()->getPage()->getContent();
+
+    //$this->minkContext->assertSession()->assert($d7_response, $d8_response);
+
+    if ($d7_response !== $d8_response) {
+      throw new \Exception('D7 feed does not match D8 feed');
+    }
+  }
+
+
 
 
 }

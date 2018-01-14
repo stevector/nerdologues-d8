@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains views_rss_podcast.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function views_rss_podcast_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the views_rss_podcast module.
+    case 'help.page.views_rss_podcast':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Extends Views RSS capability to use iTunes fields') . '</p>';
+      return $output;
+
+    default:
+  }
+}
