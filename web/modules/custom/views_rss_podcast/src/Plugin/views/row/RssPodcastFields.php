@@ -42,7 +42,7 @@ class RssPodcastFields extends RssFields {
         '#description' => $this->t($field_def["fapi_description"]),
         '#options' => $view_fields_labels,
         '#default_value' => $this->options[$field_def["fapi_key"]],
-        //'#required' => TRUE,
+        // '#required' => TRUE,
       ];
     }
   }
