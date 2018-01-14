@@ -44,6 +44,7 @@ Feature: Pathauto
   @api
   Scenario: People
     Given I log in as a content_administrator
+    And a "member_designations" term with the name "Viewable bio page"
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Another person"
     And I check the box "Viewable bio page"
