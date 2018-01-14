@@ -4,8 +4,6 @@ web_docroot: true
 
 php_version: 7.0
 
-
-
 workflows:
   deploy:
     after:
