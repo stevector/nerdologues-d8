@@ -14,9 +14,71 @@ dependencies:
     - node.type.blog_post
   module:
     - datetime
+    - field_group
     - image
     - path
     - text
+third_party_settings:
+  field_group:
+    group_info:
+      children:
+        - group_basic_info
+        - group_images
+        - group_body
+      parent_name: ''
+      weight: 11
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: info
+      region: content
+    group_body:
+      children:
+        - field_body
+      parent_name: group_info
+      weight: 22
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Body
+      region: content
+    group_images:
+      children:
+        - field_image
+        - field_image_header
+      parent_name: group_info
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: images
+      region: content
+    group_basic_info:
+      children:
+        - field_date_published
+        - field_ref_creators
+        - field_term_blog_tags
+      parent_name: group_info
+      weight: 20
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Basic info'
+      region: content
 id: node.blog_post.default
 targetEntityType: node
 bundle: blog_post
@@ -24,12 +86,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
   field_body:
-    weight: 11
+    weight: 12
     settings:
       rows: 5
       placeholder: ''
@@ -37,13 +99,13 @@ content:
     type: text_textarea
     region: content
   field_date_published:
-    weight: 9
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_image:
-    weight: 0
+    weight: 2
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -51,7 +113,7 @@ content:
     type: image_image
     region: content
   field_image_header:
-    weight: 1
+    weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -59,7 +121,7 @@ content:
     type: image_image
     region: content
   field_lede:
-    weight: 10
+    weight: 9
     settings:
       rows: 5
       placeholder: ''
@@ -67,7 +129,7 @@ content:
     type: text_textarea
     region: content
   field_ref_creators:
-    weight: 3
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -76,14 +138,14 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_term_blog_tags:
-    weight: -5
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   path:
     type: path
-    weight: 8
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -91,26 +153,26 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 4
     third_party_settings: {  }
     region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 10
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 5
     third_party_settings: {  }
     region: content
   title:
     type: string_textfield
-    weight: -10
+    weight: 0
     settings:
       size: 60
       placeholder: ''
@@ -118,7 +180,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60

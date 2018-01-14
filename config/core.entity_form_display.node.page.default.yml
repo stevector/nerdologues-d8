@@ -10,9 +10,54 @@ dependencies:
     - image.style.thumbnail
     - node.type.page
   module:
+    - field_group
     - image
     - path
     - text
+third_party_settings:
+  field_group:
+    group_info:
+      children:
+        - group_body
+        - group_basic_info
+      parent_name: ''
+      weight: 11
+      format_type: tabs
+      format_settings:
+        id: ''
+        classes: ''
+        direction: vertical
+      label: Info
+      region: content
+    group_basic_info:
+      children:
+        - field_term_blog_tags
+        - field_image
+      parent_name: group_info
+      weight: 14
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Basic Info'
+      region: content
+    group_body:
+      children:
+        - field_body
+      parent_name: group_info
+      weight: 13
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Body
+      region: content
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -74,7 +119,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 10
     third_party_settings: {  }
     region: content
   sticky:
