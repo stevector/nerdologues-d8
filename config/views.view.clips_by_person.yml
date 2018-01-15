@@ -211,17 +211,7 @@ display:
       title: 'Podcast clips'
       header: {  }
       footer: {  }
-      empty:
-        http_status_code:
-          id: http_status_code
-          table: views
-          field: http_status_code
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          status_code: 404
-          plugin_id: http_status_code
+      empty: {  }
       relationships:
         field_ref_podcast_episode:
           id: field_ref_podcast_episode

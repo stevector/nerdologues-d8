@@ -1,0 +1,37 @@
+uuid: 70921e77-379c-47d4-9fbb-ff2722e4f6b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - page_manager.page.node_view
+  module:
+    - ctools
+    - nerdcustom
+id: node_view-http_status_code-0
+label: '404 Person'
+variant: http_status_code
+variant_settings:
+  id: http_status_code
+  label: null
+  weight: 0
+  status_code: 404
+  uuid: 3e5efbfe-6ca9-4747-8ece-ba4d90adf909
+page: node_view
+weight: 0
+selection_criteria:
+  0:
+    id: 'entity_bundle:node'
+    bundles:
+      person: person
+    negate: false
+    context_mapping:
+      node: node
+  2:
+    id: person_is_viewable
+    taxonomytermstring: null
+    bundles: {  }
+    negate: true
+    context_mapping:
+      node: node
+selection_logic: and
+static_context: {  }
