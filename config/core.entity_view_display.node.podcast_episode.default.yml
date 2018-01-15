@@ -69,9 +69,9 @@ third_party_settings:
             label_display: '0'
             formatter:
               label: hidden
-              type: audio_player_html5
+              type: podcast_episode_audio_player_html5
               settings:
-                provide_download_link: '1'
+                provide_download_link: 1
                 audio_attributes: controls
               third_party_settings: {  }
               weight: 0
