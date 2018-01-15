@@ -31,7 +31,7 @@ Feature: Pathauto
     And I fill in "title[0][value]" with "A cool Clip of a story"
     And I select the radio button "Someone's cool podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one pod episode"
-    And I check the box "Published"
+    And I check the box "Publishing status"
     And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/cool-clip-story\" />"
 
@@ -48,7 +48,7 @@ Feature: Pathauto
     When I visit "node/add/person"
     And I fill in "title[0][value]" with "Another person"
     And I check the box "Viewable bio page"
-    And I check the box "Publishing status"
+    And I check the box "Published"
     And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/nerds/another-person\" />"
 
