@@ -39,7 +39,7 @@ class FeatureContext extends RawDrupalContext implements Context, SnippetAccepti
     $html = $page->getContent();
     $html = static::trimHead($html);
     print "::::::::::::::::::::::::::::::::::::::::::::::::\n";
-  //  print $html . "\n";
+    print $html . "\n";
     print "::::::::::::::::::::::::::::::::::::::::::::::::\n";
   }
   /**
