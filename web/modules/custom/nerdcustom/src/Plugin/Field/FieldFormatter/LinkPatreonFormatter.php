@@ -38,7 +38,7 @@ class LinkPatreonFormatter extends LinkFormatter  {
     foreach ($items as &$item) {
       $value = $item->getValue();
       if (empty($value['title'])) {
-        $value['title'] = "Support us on Patreon to get MP3 access";
+        $value['title'] = "Support us on Patreon to listen to the full episode!";
         $item->setValue($value);
       }
     }
