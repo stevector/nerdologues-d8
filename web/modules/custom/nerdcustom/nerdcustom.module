@@ -185,5 +185,26 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
       }
     }
   }
+
+
+
+  if ($field_definition->getName() == 'field_file_asdf' && $items->getEntity()->bundle() === 'podcast_episode' && $operation == 'view') {
+    $entity = $items->getEntity();
+    if (!empty($entity->field_date_published->first()->getString())) {
+      if (!empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
+        $date = $entity->field_date_published->first()->getString();
+
+
+      }
+
+    }
+
+
+    return AccessResult::forbidden();
+  }
+
+
+
   return AccessResult::neutral();
 }
+
