@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * A Link formatter with a fallback to default text and a check for mp3s/date.
+ */
+
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
 
@@ -24,20 +29,18 @@ class LinkPatreonFormatter extends LinkFormatter  {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
 
-
     $entity = $items->getEntity();
     // If the mp3 is allowed, then we don't need the patreon link.
     if (nerdcustom_allow_mp3_print($entity)) {
       return [];
     }
 
-    foreach($items as &$item) {
+    foreach ($items as &$item) {
       $value = $item->getValue();
       if (empty($value['title'])) {
         $value['title'] = "Support us on Patreon to get MP3 access";
         $item->setValue($value);
       }
-
     }
     return parent::viewElements($items, $langcode);
   }

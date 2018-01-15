@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ * A player that checks the date/patreon link.
+ */
 
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
@@ -17,8 +21,8 @@ use Drupal\Core\Field\FieldItemListInterface;
  *     "file"
  *   }
  * )
- */class PodcastEpisodePlayer extends  AudioPlayerHTML5 {
-
+ */
+class PodcastEpisodePlayer extends AudioPlayerHTML5 {
 
   /**
    * {@inheritdoc}
