@@ -24,6 +24,13 @@ class LinkPatreonFormatter extends LinkFormatter  {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
 
+
+    $entity = $items->getEntity();
+    // If the mp3 is allowed, then we don't need the patreon link.
+    if (nerdcustom_allow_mp3_print($entity)) {
+      return [];
+    }
+
     foreach($items as &$item) {
       $value = $item->getValue();
       if (empty($value['title'])) {
