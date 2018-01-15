@@ -47,7 +47,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 6000,
+      "delay": 8000,
       "misMatchThreshold" : 0.144444444
     },
     {
