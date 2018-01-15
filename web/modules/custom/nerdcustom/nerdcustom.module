@@ -137,33 +137,25 @@ function nerdcustom_theme() {
   );
 }
 
+/**
+ * Implements hook_preprocess_HOOK().
+ */
 function nerdcustom_preprocess_html(&$vars) {
-
-  //dsm(array_keys($vars));
-  //dsm());
-  $vars['page']['#post_render'][] = 'custom_rewrite_live_ssl';
+  $vars['page']['#post_render'][] = 'nerdcustom_rewrite_live_ssl';
 }
-
 
 /**
- * Implements hook_preprocess_html().
- * @param array $variables
+ * Change https to http for domains with broken https.
  */
-function custom_page_alter(&$variables) {
-
-}
-
-function custom_rewrite_live_ssl($html, $elements) {
-  // all references to the live site should be https.
+function nerdcustom_rewrite_live_ssl($html, $elements) {
+  // All references to the live site should be https.
   $html = str_replace('http://www.nerdologues.com', '//www.nerdologues.com', $html);
-  // @todo, send audio back to https
+  // @todo, send audio back to https https://github.com/stevector/nerdologues-d8/issues/239
   $html = str_replace('https://media.nerdologues.com', 'http://media.nerdologues.com', $html);
   $html = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $html);
   $html = str_replace('http://www.youtube.com/embed', '//www.youtube.com/embed', $html);
   return $html;
 }
-
-
 
 /**
  * Implements hook_views_data_alter().
