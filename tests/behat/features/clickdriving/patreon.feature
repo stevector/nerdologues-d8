@@ -1,6 +1,6 @@
 Feature: Patreon
 
-  @api @current
+  @api @incomplete
   Scenario: A. Manually entered Patreon link text
     Given I log in as a content_administrator
     When I make an old episode
@@ -11,7 +11,7 @@ Feature: Patreon
     Then I should see "Support us on Patreon to get MP3 access"
     Then I should not see "Download mp3"
 
-  @api
+  @api @incomplete
   Scenario: A2. Default Patreon Link text
     Given I log in as a content_administrator
     When I make an old episode
@@ -26,7 +26,7 @@ Feature: Patreon
 
 # @todo, find the gitsubmmodule that was accidentally committed.
 
-  @api
+  @api @incomplete
   Scenario: B. No Patreon Link at all. Old episode
     Given I log in as a content_administrator
     When I make an old episode
@@ -38,7 +38,7 @@ Feature: Patreon
     When I visit the podcast feed
     Then the response should contain "Episode 23"
 
-  @api
+  @api @incomplete
   Scenario: C. No Patreon link for recent episodes but with Patreon info entered
     Given I log in as a content_administrator
     When I make an new episode episode
@@ -54,7 +54,7 @@ Feature: Patreon
     Then the response should contain "Episode 23"
 
 
-  @api
+  @api @incomplete
   Scenario: D. No Patreon Link at all. New episode
     Given I log in as a content_administrator
     When I make an old episode
