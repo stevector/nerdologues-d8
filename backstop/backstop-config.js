@@ -23,7 +23,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 3000,
+      "delay": 6000,
       "misMatchThreshold" : 0.36999999999999999
     },
     {
