@@ -137,6 +137,17 @@ function nerdcustom_theme() {
   );
 }
 
+function nerdcustom_preprocess_html(&$vars) {
+
+
+  $vars['page'] = str_replace('https://media.nerdologues.com', 'http://media.nerdologues.com', $vars['page']);
+  $vars['page'] = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $vars['page']);
+
+}
+
+
+
+
 /**
  * Implements hook_views_data_alter().
  */
@@ -194,7 +205,7 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
  */
 function nerdcustom_allow_mp3_print(Drupal\Core\Entity\EntityInterface $entity) {
   if (!empty($entity->field_date_published->first()->getString())) {
-    if (!empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
+    if (!empty($entity->field_link_paywall_content->first()) && !empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
       $date = $entity->field_date_published->first()->getString();
       if (strtotime($date) < (time() - (365 * 24 * 60 * 60))) {
         return FALSE;
