@@ -15,7 +15,6 @@ services:
          BEHAT_PASS_CONTENT_ADMIN: BEHAT_PASS_CONTENT_ADMIN
          BEHAT_USER_CONTENT_ADMIN: BEHAT_USER_CONTENT_ADMIN
 
-
 events:
   post-db-import:
     - appserver: "drush user-create $BEHAT_USER_ADMIN --password=$BEHAT_PASS_ADMIN && drush user-add-role administrator $BEHAT_USER_ADMIN && drush user-create $BEHAT_USER_CONTENT_ADMIN --password=$BEHAT_PASS_CONTENT_ADMIN && drush user-add-role content_administrator $BEHAT_USER_CONTENT_ADMIN"
