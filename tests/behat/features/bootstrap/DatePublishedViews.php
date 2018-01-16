@@ -111,16 +111,12 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
    */
   public function iMakeAnOldEpisode()
   {
-
-
     $time = time();
 
     $this->minkContext->visit('node/add/podcast');
     $podcast_title = 'podcast title ' . $time . ' ' . rand();
-    $this->minkContext->fillField('title[0][value]', $podcast_title);
-    // @todo, is this how variable are supposed to be passed around.
     $this->podcast_title = $podcast_title;
-
+    $this->minkContext->fillField('title[0][value]', $podcast_title);
     $this->minkContext->checkOption("Published");
     $this->minkContext->pressButton('Save');
 
@@ -135,13 +131,6 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
     $this->podcast_episode_title = $podcast_episode_title;
     $this->minkContext->checkOption("Publishing status");
 
-
-//
 //    $this->node_title = $podcast_episode_title;
-//    // @todo, fine-grain date and timezone handling.
-//    $this->minkContext->visit('');
   }
-
-
-
 }
