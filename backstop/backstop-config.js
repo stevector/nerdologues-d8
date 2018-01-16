@@ -47,7 +47,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 3000,
+      "delay": 8000,
       "misMatchThreshold" : 0.144444444
     },
     {
@@ -273,6 +273,7 @@ const config = {
         ".field--name-field-file",
         ".todo--dont-remove-the-selctor--------pane-node-field-link-paywall-content",
         ".pane-node-field-link-paywall-content",
+        ".block-entity-fieldnodefield-link-paywall-content",
         ".todo----dont-remove-p-tags",
         ".block-entity-fieldnodefield-body p",
         ".field-name-field-body p",

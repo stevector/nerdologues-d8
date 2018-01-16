@@ -105,4 +105,32 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
     $this->minkContext->fillField('field_date_published[0][value][time]', date("H:i:s", $time));
   }
 
+
+  /**
+   * @When I make an old episode
+   */
+  public function iMakeAnOldEpisode()
+  {
+    $time = time();
+
+    $this->minkContext->visit('node/add/podcast');
+    $podcast_title = 'podcast title ' . $time . ' ' . rand();
+    $this->podcast_title = $podcast_title;
+    $this->minkContext->fillField('title[0][value]', $podcast_title);
+    $this->minkContext->checkOption("Published");
+    $this->minkContext->pressButton('Save');
+
+
+    $this->minkContext->visit('node/add/podcast_episode');
+    $podcast_episode_title = 'podcast_episode title ' . $time . ' ' . rand();
+    $this->minkContext->fillField('title[0][value]', $podcast_episode_title);
+    $year_ago = $time - (367 * 24 * 60 * 60);
+    $this->minkContext->fillField('field_date_published[0][value][date]', date('Y-m-d', $year_ago));
+    $this->minkContext->fillField('field_date_published[0][value][time]', date("H:i:s", $year_ago));
+    $this->minkContext->assertSelectRadioById($podcast_title);
+    $this->podcast_episode_title = $podcast_episode_title;
+    $this->minkContext->checkOption("Publishing status");
+
+//    $this->node_title = $podcast_episode_title;
+  }
 }

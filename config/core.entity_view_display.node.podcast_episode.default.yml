@@ -40,7 +40,7 @@ third_party_settings:
               third_party_settings: {  }
               weight: 0
             region: right
-            weight: 3
+            weight: 2
             context_mapping:
               entity: '@panelizer.entity_context:entity'
             uuid: c9d3f3b0-839b-4cfa-9e3b-6eda7e15e729
@@ -58,7 +58,7 @@ third_party_settings:
               third_party_settings: {  }
               weight: 0
             region: right
-            weight: 2
+            weight: 1
             context_mapping:
               entity: '@panelizer.entity_context:entity'
             uuid: fd2f2ef1-69e2-4980-8170-09525304ea38
@@ -69,14 +69,14 @@ third_party_settings:
             label_display: '0'
             formatter:
               label: hidden
-              type: audio_player_html5
+              type: podcast_episode_audio_player_html5
               settings:
-                provide_download_link: '1'
+                provide_download_link: 1
                 audio_attributes: controls
               third_party_settings: {  }
               weight: 0
             region: right
-            weight: 0
+            weight: -2
             context_mapping:
               entity: '@panelizer.entity_context:entity'
             uuid: ded79939-efce-4cd0-ab39-7d623f25db89
@@ -93,7 +93,7 @@ third_party_settings:
               third_party_settings: {  }
               weight: 0
             region: right
-            weight: 1
+            weight: 0
             context_mapping:
               entity: '@panelizer.entity_context:entity'
             uuid: d3c373cb-3ce7-4fd7-bec4-f5633cea3246
@@ -112,6 +112,27 @@ third_party_settings:
             region: left
             weight: 0
             uuid: 40e8a9ee-5051-4a59-bef5-f7e688b75202
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+          734d451c-dbdb-4085-ac19-f552f1a36f42:
+            id: 'entity_field:node:field_link_paywall_content'
+            label: 'Patreon link'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: link_patreon
+              settings:
+                trim_length: '80'
+                url_only: false
+                url_plain: false
+                rel: 0
+                target: 0
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: -1
+            uuid: 734d451c-dbdb-4085-ac19-f552f1a36f42
             context_mapping:
               entity: '@panelizer.entity_context:entity'
         id: panels_variant
