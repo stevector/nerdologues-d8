@@ -271,6 +271,9 @@ const config = {
       "removeSelectors": [
         ".mediaelement-audio",
         ".field--name-field-file",
+        ".todo--dont-remove-the-selctor--------pane-node-field-link-paywall-content",
+        ".pane-node-field-link-paywall-content",
+        ".block-entity-fieldnodefield-link-paywall-content",
         ".todo----dont-remove-p-tags",
         ".block-entity-fieldnodefield-body p",
         ".field-name-field-body p",
