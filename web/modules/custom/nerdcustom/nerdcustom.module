@@ -213,7 +213,7 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
  * Check if a podcast episode should allow for mp3 to be printed.
  */
 function nerdcustom_allow_mp3_print(Drupal\Core\Entity\EntityInterface $entity) {
-  if (!empty($entity->field_date_published->first()->getString())) {
+  if (!empty($entity->field_date_published->first()) && !empty($entity->field_date_published->first()->getString())) {
     if (!empty($entity->field_link_paywall_content->first()) && !empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
       $date = $entity->field_date_published->first()->getString();
       if (strtotime($date) < (time() - (365 * 24 * 60 * 60))) {
