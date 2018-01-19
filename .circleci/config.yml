@@ -186,6 +186,8 @@ workflows:
           requires:
              - behat
              - backstop
+             - build
+             - behavioral
           filters:
             branches:
               only: master
