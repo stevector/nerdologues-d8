@@ -122,7 +122,6 @@ jobs:
                 path: /tmp/artifacts
                 destination: artifacts
 
-
     behavioral:
         <<: *defaults
         steps:
