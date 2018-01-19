@@ -156,6 +156,20 @@ jobs:
                     ./.circleci/behat-runners/add-behat-users.sh
                     ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving
 
+    merge:
+        <<: *defaults
+        steps:
+            - checkout
+
+            - run:
+                name: variables
+                command: ./.circleci/variables.sh
+
+            - run:
+                name: merge to master
+                command: ./.circleci/merge-to-master.sh
+
+
 workflows:
   version: 2
   build_and_test:
@@ -168,4 +182,10 @@ workflows:
       - backstop:
           requires:
              - build
-
+      - merge:
+          requires:
+             - behat
+             - backstop
+          filters:
+            branches:
+              only: master
