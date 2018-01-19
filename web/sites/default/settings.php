@@ -47,7 +47,7 @@ if ('lando' === $_ENV['PANTHEON_ENVIRONMENT']) {
 
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
 
-if ('live' !== $_ENV['PANTHEON_ENVIRONMENT'] && 'test' !== $_ENV['PANTHEON_ENVIRONMENT'] ) {
+if ('live' === $_ENV['PANTHEON_ENVIRONMENT'] || 'test' === $_ENV['PANTHEON_ENVIRONMENT'] ) {
   $settings['config_readonly'] = TRUE;
 }
 
