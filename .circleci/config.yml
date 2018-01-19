@@ -169,7 +169,6 @@ jobs:
                 name: merge to master
                 command: ./.circleci/merge-to-master.sh
 
-
 workflows:
   version: 2
   build_and_test:
