@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0e3c2f5c6bf1c769a7269d3858529e8",
+    "content-hash": "e04bbe0719b25f60cac7530a21dcfdf7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1385,6 +1385,73 @@
             }
         },
         {
+            "name": "drupal/config_readonly",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/config_readonly",
+                "reference": "8.x-1.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_readonly-8.x-1.0-beta2.zip",
+                "reference": "8.x-1.0-beta2",
+                "shasum": "d3309a69ee9950a3e696a407981673ce5b041a16"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta2",
+                    "datestamp": "1453962636",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "beejeebus",
+                    "homepage": "https://www.drupal.org/user/38580"
+                },
+                {
+                    "name": "effulgentsia",
+                    "homepage": "https://www.drupal.org/user/78040"
+                },
+                {
+                    "name": "moshe weitzman",
+                    "homepage": "https://www.drupal.org/user/23"
+                },
+                {
+                    "name": "pwolanin",
+                    "homepage": "https://www.drupal.org/user/49851"
+                },
+                {
+                    "name": "scor",
+                    "homepage": "https://www.drupal.org/user/52142"
+                },
+                {
+                    "name": "wheatpenny",
+                    "homepage": "https://www.drupal.org/user/1128182"
+                }
+            ],
+            "description": "Enables making the active configuration store read-only to prevent configuration changes on a Drupal site.",
+            "homepage": "https://www.drupal.org/project/config_readonly",
+            "support": {
+                "source": "http://cgit.drupalcode.org/config_readonly"
+            }
+        },
+        {
             "name": "drupal/console",
             "version": "1.0.2",
             "source": {
@@ -1680,16 +1747,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.4.0",
+            "version": "8.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "d4be8e12d9e8b4db82ece760c632213247f56fa7"
+                "reference": "c6585ffaea5df4ed529e2bdf4371850f8fc3b88c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/d4be8e12d9e8b4db82ece760c632213247f56fa7",
-                "reference": "d4be8e12d9e8b4db82ece760c632213247f56fa7",
+                "url": "https://api.github.com/repos/drupal/core/zipball/c6585ffaea5df4ed529e2bdf4371850f8fc3b88c",
+                "reference": "c6585ffaea5df4ed529e2bdf4371850f8fc3b88c",
                 "shasum": ""
             },
             "require": {
@@ -1752,6 +1819,7 @@
                 "drupal/core-annotation": "self.version",
                 "drupal/core-assertion": "self.version",
                 "drupal/core-bridge": "self.version",
+                "drupal/core-class-finder": "self.version",
                 "drupal/core-datetime": "self.version",
                 "drupal/core-dependency-injection": "self.version",
                 "drupal/core-diff": "self.version",
@@ -1863,7 +1931,7 @@
                 "GPL-2.0+"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2017-10-04T19:25:32+00:00"
+            "time": "2018-01-03T19:27:53+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -2102,7 +2170,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-10-05 09:36:49"
+            "time": "2017-10-05T09:36:49+00:00"
         },
         {
             "name": "drupal/ds",
@@ -2375,7 +2443,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
             },
-            "time": "2017-08-16 12:09:25"
+            "time": "2017-08-16T12:09:25+00:00"
         },
         {
             "name": "drupal/field_group",
@@ -2433,7 +2501,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/field_group"
             },
-            "time": "2017-07-13 22:41:32"
+            "time": "2017-07-13T22:41:32+00:00"
         },
         {
             "name": "drupal/http2_server_push",
@@ -2534,7 +2602,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/layout_plugin"
             },
-            "time": "2016-10-03 18:36:43"
+            "time": "2016-10-03T18:36:43+00:00"
         },
         {
             "name": "drupal/media_entity",
@@ -2697,7 +2765,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
             },
-            "time": "2016-09-29 16:29:04"
+            "time": "2016-09-29T16:29:04+00:00"
         },
         {
             "name": "drupal/migrate_plus",
@@ -2943,7 +3011,7 @@
                 "issues": "https://www.drupal.org/project/issues/page_manager",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-08-26 23:12:05"
+            "time": "2017-08-26T23:12:05+00:00"
         },
         {
             "name": "drupal/panelizer",
@@ -3015,7 +3083,7 @@
                 "issues": "https://www.drupal.org/project/issues/panelizer",
                 "irc": "irc://irc.freenode.org/drupal-scotch"
             },
-            "time": "2017-10-27 11:13:09"
+            "time": "2017-10-27T11:13:09+00:00"
         },
         {
             "name": "drupal/panels",
@@ -3302,7 +3370,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2017-09-20 06:26:03"
+            "time": "2017-09-20T06:26:03+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -3503,7 +3571,7 @@
                 "reference": "2c642610ba2462d097841546e38de156c8bc9e79"
             },
             "type": "drupal-module",
-            "time": "2017-10-15 11:34:45"
+            "time": "2017-10-15T11:34:45+00:00"
         },
         {
             "name": "drupal/token",
@@ -3624,7 +3692,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/youtube"
             },
-            "time": "2017-10-27 03:49:41"
+            "time": "2017-10-27T03:49:41+00:00"
         },
         {
             "name": "drush/drush",
@@ -7518,7 +7586,7 @@
                 "test",
                 "web"
             ],
-            "time": "2017-04-09 08:39:37"
+            "time": "2017-04-09T08:39:37+00:00"
         },
         {
             "name": "drupal/drupal-extension",
@@ -7579,7 +7647,7 @@
                 "test",
                 "web"
             ],
-            "time": "2017-09-13 19:53:22"
+            "time": "2017-09-13T19:53:22+00:00"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
@@ -9328,6 +9396,7 @@
         "drupal/field_group": 20,
         "drupal/pantheon_advanced_page_cache": 15,
         "drupal/timeperiod": 20,
+        "drupal/config_readonly": 10,
         "drupal/drupal-extension": 20,
         "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
