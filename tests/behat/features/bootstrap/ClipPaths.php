@@ -220,7 +220,7 @@ class ClipPaths implements Context, SnippetAcceptingContext {
   {
     $d8_response = $this->minkContext->getSession()->getPage()->getContent();
     print_r($d8_response);
-    $d7_base_url = "http://migr-prep3-nerdologues.pantheonsite.io/";
+    $d7_base_url = "http://migr-prep5-nerdologues.pantheonsite.io/";
     $this->minkContext->visit($d7_base_url . $page);
     $this->minkContext->printLastResponse();
 
