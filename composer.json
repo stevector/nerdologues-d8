@@ -50,7 +50,8 @@
         "drupal/timeperiod": "dev-composerfile",
         "drupal/config_installer": "1.4",
         "drush/drush": "^8.1",
-        "drupal/config_readonly": "^1.0@beta"
+        "drupal/config_readonly": "^1.0@beta",
+        "drupal/google_analytics": "^2.2"
     },
 
     "require-dev": {
