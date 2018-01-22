@@ -1,6 +1,6 @@
 Feature: blogpost
 
-  @api @current
+  @api
   Scenario: blogpost nodes
     Given I log in as an administrator
     When I visit "admin/content-migration/blogpost"
