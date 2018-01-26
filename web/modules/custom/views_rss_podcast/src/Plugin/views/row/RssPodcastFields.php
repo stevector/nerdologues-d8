@@ -61,8 +61,6 @@ class RssPodcastFields extends RssFields {
 
     foreach ($this->extraFields() as $field_def) {
 
-
-      dsm($field_def);
       if (in_array($field_def['fapi_key'], ["enclosure_size", "enclosure_type"])) {
         continue;
       }
@@ -81,7 +79,7 @@ class RssPodcastFields extends RssFields {
           'type' => $this->getField($row_index, $this->options["enclosure_type"]),
         ];
       }
-dsm($element_definition);
+
       $build['#row']->elements[] = $element_definition;
     }
     // itunes:image

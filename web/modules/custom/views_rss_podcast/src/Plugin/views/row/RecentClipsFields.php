@@ -18,7 +18,7 @@ use Drupal\views\Plugin\views\row\RssFields;
  * @ViewsRow(
  *   id = "rss_clips_fields",
  *   title = @Translation("Clips Fields"),
- *   help = @Translation("Display fields as RSS items for recently saved clips."),
+ *   help = @Translation("Display fields for recently saved clips."),
  *   theme = "views_view_row_rss",
  *   display_types = {"feed"}
  * )
@@ -29,14 +29,11 @@ class RecentClipsFields extends RssFields {
    * {@inheritdoc}
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
-   // parent::buildOptionsForm($form, $form_state);
-
     $initial_labels = ['' => $this->t('- None -')];
     $view_fields_labels = $this->displayHandler->getFieldLabels();
     $view_fields_labels = array_merge($initial_labels, $view_fields_labels);
 
     foreach ($this->extraFields() as $field_def) {
-
       $form[$field_def["fapi_key"]] = [
         '#type' => 'select',
         '#title' => $this->t($field_def["fapi_title"]),
@@ -47,15 +44,12 @@ class RecentClipsFields extends RssFields {
       ];
     }
 
-
     unset($form['title_field']);
-    unset($form['link_field'] );
+    unset($form['link_field']);
     unset($form['description_field']);
-    unset($form['creator_field'] );
-    unset($form['date_field'] );
-
-    unset( $form['guid_field_options']);
-
+    unset($form['creator_field']);
+    unset($form['date_field']);
+    unset($form['guid_field_options']);
   }
 
   /**
@@ -71,41 +65,28 @@ class RecentClipsFields extends RssFields {
   private function extraFields() {
 
     $extra_fields = [
-    "title",
-    "originalmp3",
-
-    "int_end_time",
-    "int_start_time",
-    "creators",
-      
-
-    "body",
-
-    "episodetitle",
-
-    "podcast",
-
-    "podcastimage"
-      ];
+      "title",
+      "originalmp3",
+      "int_end_time",
+      "int_start_time",
+      "creators",
+      "body",
+      "episodetitle",
+      "podcast",
+      "podcastimage"
+    ];
     $return = [];
     foreach ($extra_fields as $extra_field) {
       $return[] = [
-
-          "feed_key" => $extra_field,
+        "feed_key" => $extra_field,
         "fapi_key" => $extra_field,
         "fapi_title" => $extra_field,
         "fapi_description" => $extra_field,
-
       ];
     }
 
-
-
-
     return $return;
   }
-
-
 
   /**
    * {@inheritdoc}
@@ -119,19 +100,11 @@ class RecentClipsFields extends RssFields {
     $build = parent::render($row);
 
     foreach ($this->extraFields() as $field_def) {
-
-      $element_definition = [
-        'key' => $field_def["feed_key"],
+      $build['#row']->elements[] = [
+       'key' => $field_def["feed_key"],
+       'value' => $this->getField($row_index, $this->options[$field_def["fapi_key"]]),
       ];
-
-
-         $element_definition['value'] = $this->getField($row_index, $this->options[$field_def["fapi_key"]]);
-
-
-       $build['#row']->elements[] = $element_definition;
     }
-    // itunes:image
     return $build;
   }
-
 }
