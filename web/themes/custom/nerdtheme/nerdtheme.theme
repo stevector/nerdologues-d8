@@ -26,3 +26,44 @@ function nerdtheme_preprocess_views_view_field(&$variables) {
   $output = $variables['output'] . '';
   $variables['output'] = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $output);
 }
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function nerdtheme_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+print_r("
+
+
+");
+
+  print_r($hook);
+
+
+if ('views_view_rss' === $hook) {
+$suggestions = array_merge($suggestions, $variables['view']->buildThemeFunctions($hook));
+}
+
+
+//print_r(array_keys($variables));
+
+print_r("
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+");
+
+
+}
