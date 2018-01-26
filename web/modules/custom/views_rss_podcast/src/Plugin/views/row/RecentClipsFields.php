@@ -23,13 +23,29 @@ use Drupal\views\Plugin\views\row\RssFields;
  *   display_types = {"feed"}
  * )
  */
-class RecentClipsFields extends RssPodcastFields {
+class RecentClipsFields extends RssFields {
 
   /**
    * {@inheritdoc}
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
-    parent::buildOptionsForm($form, $form_state);
+   // parent::buildOptionsForm($form, $form_state);
+
+    $initial_labels = ['' => $this->t('- None -')];
+    $view_fields_labels = $this->displayHandler->getFieldLabels();
+    $view_fields_labels = array_merge($initial_labels, $view_fields_labels);
+
+    foreach ($this->extraFields() as $field_def) {
+
+      $form[$field_def["fapi_key"]] = [
+        '#type' => 'select',
+        '#title' => $this->t($field_def["fapi_title"]),
+        '#description' => $this->t($field_def["fapi_description"]),
+        '#options' => $view_fields_labels,
+        '#default_value' => $this->options[$field_def["fapi_key"]],
+        // '#required' => TRUE,
+      ];
+    }
 
 
     unset($form['title_field']);
@@ -61,10 +77,7 @@ class RecentClipsFields extends RssPodcastFields {
     "int_end_time",
     "int_start_time",
     "creators",
-
-    "float-end-time",
-
-    "float-start-time",
+      
 
     "body",
 
@@ -78,13 +91,14 @@ class RecentClipsFields extends RssPodcastFields {
     foreach ($extra_fields as $extra_field) {
       $return[] = [
 
-          "feed_key" => $extra_fields,
-        "fapi_key" => $extra_fields,
-        "fapi_title" => $extra_fields,
-        "fapi_description" => $extra_fields,
-      
+          "feed_key" => $extra_field,
+        "fapi_key" => $extra_field,
+        "fapi_title" => $extra_field,
+        "fapi_description" => $extra_field,
+
       ];
     }
+
 
 
 
@@ -92,5 +106,32 @@ class RecentClipsFields extends RssPodcastFields {
   }
 
 
+
+  /**
+   * {@inheritdoc}
+   */
+  public function render($row) {
+    static $row_index;
+    if (!isset($row_index)) {
+      $row_index = 0;
+    }
+
+    $build = parent::render($row);
+
+    foreach ($this->extraFields() as $field_def) {
+
+      $element_definition = [
+        'key' => $field_def["feed_key"],
+      ];
+
+
+         $element_definition['value'] = $this->getField($row_index, $this->options[$field_def["fapi_key"]]);
+
+
+       $build['#row']->elements[] = $element_definition;
+    }
+    // itunes:image
+    return $build;
+  }
 
 }
