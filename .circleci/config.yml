@@ -160,9 +160,18 @@ jobs:
         steps:
             - checkout
 
+            - attach_workspace:
+                at: /tmp
+
             - run:
-                name: variables
-                command: ./.circleci/variables.sh
+                name: Global vars
+                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
+
+            - run:
+                name: check var
+                command: |
+                 echo $TERMINUS_ENV
 
             - run:
                 name: merge to master
