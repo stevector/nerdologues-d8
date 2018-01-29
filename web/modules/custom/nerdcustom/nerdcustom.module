@@ -7,7 +7,7 @@
 
 use \Drupal\node\NodeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -222,4 +222,13 @@ function nerdcustom_allow_mp3_print(Drupal\Core\Entity\EntityInterface $entity) 
     }
   }
   return TRUE;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function nerdcustom_node_presave(NodeInterface $node) {
+  // @todo https://github.com/stevector/nerdologues-d8/issues/257
+  // More granular caching needed.
+  Cache::invalidateTags(['node_view', 'block_view']);
 }
