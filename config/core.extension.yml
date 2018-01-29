@@ -46,6 +46,7 @@ module:
   panelizer: 0
   panels: 0
   panels_ipe: 0
+  pantheon_advanced_page_cache: 0
   path: 0
   rabbit_hole: 0
   rdf: 0
@@ -62,6 +63,7 @@ module:
   tour: 0
   update: 0
   user: 0
+  views_custom_cache_tag: 0
   views_rss_podcast: 0
   views_ui: 0
   youtube: 0
