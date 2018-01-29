@@ -1,0 +1,10 @@
+uuid: ccbd9d06-8786-43ff-b2db-eab4da378bd9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.clip_id3
+label: clip-id3
+targetEntityType: node
+cache: true

@@ -1,0 +1,208 @@
+uuid: 529ce84a-052e-4317-904c-b94e8ea69255
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.clip_id3
+    - field.field.node.clip.field_body
+    - field.field.node.clip.field_date_published
+    - field.field.node.clip.field_int_end_time
+    - field.field.node.clip.field_int_start_time
+    - field.field.node.clip.field_para_quotes
+    - field.field.node.clip.field_ref_creators
+    - field.field.node.clip.field_ref_podcast
+    - field.field.node.clip.field_ref_podcast_episode
+    - node.type.clip
+  module:
+    - nerdcustom
+    - panelizer
+    - text
+    - user
+third_party_settings:
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
+    displays:
+      default:
+        blocks:
+          5fd25f8f-189e-473b-9915-2428d325ec73:
+            id: 'entity_field:node:field_body'
+            label: 'Story description'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: text_default
+              settings: {  }
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 4
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 5fd25f8f-189e-473b-9915-2428d325ec73
+          42d1ed98-1330-46ad-975c-452dbe02547f:
+            id: 'entity_field:node:field_int_start_time'
+            label: 'Start Time'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: nerd_clip_mp3_player
+              settings:
+                provide_download_link: true
+                audio_attributes: controls
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 0
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 42d1ed98-1330-46ad-975c-452dbe02547f
+          904a7eb1-b386-4b34-9783-2bfd6cc28440:
+            id: 'entity_field:node:field_ref_creators'
+            label: Storytellers
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: nerd_person_field_formatter
+              settings: {  }
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 3
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: 904a7eb1-b386-4b34-9783-2bfd6cc28440
+          e8c26fce-0cb3-46ce-9b88-bd6ad86d2803:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: entity_reference_label
+              settings:
+                link: true
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 1
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: e8c26fce-0cb3-46ce-9b88-bd6ad86d2803
+          e0b33a23-051e-4faf-b78e-28e006a49db7:
+            id: 'entity_field:node:field_ref_podcast_episode'
+            label: 'From the episode'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: inline
+              type: entity_reference_label
+              settings:
+                link: true
+              third_party_settings: {  }
+              weight: 0
+            region: right
+            weight: 2
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+            uuid: e0b33a23-051e-4faf-b78e-28e006a49db7
+          4c912ac6-cade-4295-a1d9-5bfe2f66ef6f:
+            id: 'entity_field:node:field_ref_podcast'
+            label: 'From the podcast'
+            provider: ctools_block
+            label_display: '0'
+            formatter:
+              label: hidden
+              type: entity_reference_entity_view
+              settings:
+                view_mode: image_only
+              third_party_settings: {  }
+              weight: 0
+            region: left
+            weight: 0
+            uuid: 4c912ac6-cade-4295-a1d9-5bfe2f66ef6f
+            context_mapping:
+              entity: '@panelizer.entity_context:entity'
+        id: panels_variant
+        label: Default
+        uuid: 023e2272-d056-435a-8c2b-1ed1ab01c4f3
+        weight: 0
+        layout: teaser_with_image_full_page
+        layout_settings:
+          wrappers:
+            header: div
+            quote: div
+            right: div
+            left: div
+          outer_wrapper: div
+          attributes: ''
+          link_attribute: ''
+          link_custom: ''
+          classes:
+            layout_class: {  }
+        page_title: ''
+        storage_type: panelizer_default
+        storage_id: 'node:clip:default:default'
+        builder: standard
+        pattern: panelizer
+        static_context: {  }
+id: node.clip.clip_id3
+targetEntityType: node
+bundle: clip
+mode: clip_id3
+content:
+  field_body:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_int_end_time:
+    type: number_integer
+    weight: 1
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+  field_int_start_time:
+    type: number_unformatted
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_ref_creators:
+    weight: 4
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: nerd_person_field_formatter
+    region: content
+  field_ref_podcast:
+    weight: 2
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_ref_podcast_episode:
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  field_date_published: true
+  field_para_quotes: true
+  links: true
