@@ -6,6 +6,7 @@ defaults: &defaults
     TZ: "/usr/share/zoneinfo/America/Los_Angeles"
     ADMIN_USERNAME: admin
     BUILD_TOOLS_VERSION: dev-master
+    D7_ENV: live
     TERM: dumb
 
 version: 2
