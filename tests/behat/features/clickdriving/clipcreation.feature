@@ -48,6 +48,7 @@ Feature: Clip creation
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
     And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
@@ -66,6 +67,7 @@ Feature: Clip creation
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A second Clip of a story"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
     And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
@@ -85,6 +87,8 @@ Feature: Clip creation
     And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
+
     And I check the box "Publishing status"
     And I press "Save"
     Then I should see the link "Jane Member"
@@ -98,6 +102,7 @@ Feature: Clip creation
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A 4th Clip of a story"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
     And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
