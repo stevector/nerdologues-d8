@@ -99,10 +99,10 @@
             "@unit-test"
         ],
         "rsync-down": [
-            "rsync -rlvz --exclude 'advagg_*'  --exclude='twig_cache*' --size-only --ipv4 --progress -e 'ssh -p 2222' live.90be258b-259e-4ea9-b674-6a35e65cc86d@appserver.live.90be258b-259e-4ea9-b674-6a35e65cc86d.drush.in:code/sites/default/files/ web/sites/default/files/_from_d7/sites/default/files"
+            "rsync -rlvz --exclude 'advagg_*'  --exclude='twig_cache*' --exclude='styles/*' --size-only --ipv4 --progress -e 'ssh -p 2222' live.90be258b-259e-4ea9-b674-6a35e65cc86d@appserver.live.90be258b-259e-4ea9-b674-6a35e65cc86d.drush.in:code/sites/default/files/ web/sites/default/files/"
         ],
         "rsync-up": [
-            "rsync -rlvz --exclude 'advagg_*' --exclude='twig_cache*'  --exclude='oembed' --exclude='php' --exclude='js' --exclude='styles' --size-only --ipv4 --progress -e 'ssh -p 2222' web/sites/default/files/_from_d7/sites/default/files/* --temp-dir=../tmp/ dev.75e82cc3-b2b2-4710-b22f-51216f1308a5@appserver.dev.75e82cc3-b2b2-4710-b22f-51216f1308a5.drush.in:files/_from_d7/sites/default/files"
+            "rsync -rlvz --exclude 'advagg_*' --exclude='twig_cache*'  --exclude='oembed' --exclude='php' --exclude='js' --exclude='styles' --size-only --ipv4 --progress -e 'ssh -p 2222' web/sites/default/files/ --temp-dir=../tmp dev.75e82cc3-b2b2-4710-b22f-51216f1308a5@appserver.dev.75e82cc3-b2b2-4710-b22f-51216f1308a5.drush.in:files/"
         ],
         "rsync-files": [
             "@rsync-down",

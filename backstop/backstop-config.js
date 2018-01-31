@@ -114,7 +114,7 @@ const config = {
       "requireSameDimensions" : false,
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.133333333333333
     },
     {
       "label": "Nerd bio, No clips, Jando",
@@ -261,7 +261,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.22222222222222222222
+      "misMatchThreshold" : 0.3333333333333333
     },
     {
       "label": "Episode",
@@ -336,7 +336,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.180999999
+      "misMatchThreshold" : 0.2333333333333
     },
     {
       "label": "clip 2",
@@ -352,7 +352,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.260099999
+      "misMatchThreshold" : 0.29999999999
     },
     {
       "label": "videos",

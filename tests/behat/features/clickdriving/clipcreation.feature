@@ -6,7 +6,6 @@ Feature: Clip creation
   @api
   Scenario: Clip nodes created for each list item in a your stories podcast
     Given I log in as an administrator
-    And print last response
     Given I am viewing a podcast with the title "Your Stories"
     When I visit "node/add/podcast_episode"
     And I select the radio button "Your Stories"
@@ -39,17 +38,18 @@ Feature: Clip creation
     And I press "Save"
 
     # Make a podcast and episode.
-    Given I am viewing a podcast with the title "Someone's cool podcast"
+    Given I am viewing a podcast with the title "Another great podcast"
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Another great podcast"
     And I check the box "Publishing status"
     And I press "Save"
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
+    And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I check the box "Publishing status"
@@ -67,7 +67,8 @@ Feature: Clip creation
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A second Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
+    And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I check the box "Publishing status"
@@ -83,9 +84,11 @@ Feature: Clip creation
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A third Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
+
     And I check the box "Publishing status"
     And I press "Save"
     Then I should see the link "Jane Member"
@@ -96,10 +99,10 @@ Feature: Clip creation
     And I should see the text "A third Clip of a story"
     And I should not see the link "More Podcast Clips"
 
-
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A 4th Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I fill in "field_int_end_time[0][seconds]" with "30"
+    And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I check the box "Publishing status"
@@ -122,10 +125,10 @@ Feature: Clip creation
 
 
     And I click "That one podcast episode"
-    And I click "Someone's cool podcast"
+    And I click "Another great podcast"
     And I go to it's clip page
     Then the response status code should be 200
-    And I see the text "Someone's cool podcast: Clip Archive"
+    And I see the text "Another great podcast: Clip Archive"
 
   @api
   Scenario: Visible quotes
@@ -140,17 +143,17 @@ Feature: Clip creation
     And I press "Save"
 
     # Make a podcast and episode.
-    Given I am viewing a podcast with the title "Someone's cool podcast"
+    Given I am viewing a podcast with the title "Another great podcast"
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Another great podcast"
     And I check the box "Publishing status"
     And I press "Save"
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Another great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I check the box "Publishing status"

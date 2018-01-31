@@ -3,21 +3,35 @@ langcode: en
 status: true
 dependencies: {  }
 id: upgrade_d7_file
-class: null
+class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
 migration_group: migrate_drupal_7
-label: Files
+label: 'Public files'
 source:
   plugin: d7_file
-  scheme:
-    - public
+  scheme: public
+  constants:
+    source_base_path: 'https://www.nerdologues.com/'
 process:
   fid: fid
   filename: filename
-  uri: uri
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - filepath
+    -
+      plugin: urlencode
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - uri
   filemime: filemime
   status: status
   created: timestamp
@@ -25,9 +39,6 @@ process:
   uid: uid
 destination:
   plugin: 'entity:file'
-  source_path_property: filepath
-  urlencode: true
-  source_base_path: sites/default/files/_from_d7/
 migration_dependencies:
   required: {  }
   optional: {  }
