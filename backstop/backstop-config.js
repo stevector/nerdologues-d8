@@ -1,9 +1,7 @@
-
 'use strict';
 
 const BackstopReferenceBaseUrl = process.env.MIGRATION_SOURCE_URL;
 const BackstopTestUrl = process.env.PANTHEON_SITE_URL;
-
 
 const config = {
   "viewports": [
@@ -419,8 +417,5 @@ const config = {
   "debug": false,
   "debugWindow": false
 }
-
-
-console.log(config);
 
 module.exports = config;
