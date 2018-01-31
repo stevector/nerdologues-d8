@@ -99,7 +99,6 @@ Feature: Clip creation
     And I should see the text "A third Clip of a story"
     And I should not see the link "More Podcast Clips"
 
-
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A 4th Clip of a story"
     And I fill in "field_int_end_time[0][seconds]" with "30"
