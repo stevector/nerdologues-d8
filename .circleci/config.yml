@@ -126,7 +126,7 @@ jobs:
 
     backstop:
         docker:
-            - image: quay.io/stevector/pantheon-ci-testing:latest
+            - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
             - checkout
@@ -146,7 +146,7 @@ jobs:
 
             - run:
                 name: run-backstop
-                command: cd backstop && ./run-backstop.sh
+                command: cd backstop && /build-tools-ci/scripts/backstop/run-backstop.sh
 
             - store_artifacts:
                 path: /tmp/artifacts
