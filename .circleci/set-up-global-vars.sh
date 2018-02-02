@@ -26,6 +26,7 @@ CIRCLE_ARTIFACTS_DIR='/tmp/artifacts'
 mkdir -p $CIRCLE_ARTIFACTS_DIR
 
 echo 'export SITE_ENV=${TERMINUS_SITE}.${TERMINUS_ENV}' >> $BASH_ENV
+echo 'export D7_ENV=migr-prep5' >> $BASH_ENV
 echo 'export MIGRATION_SOURCE_URL="http://$D7_ENV-nerdologues.pantheonsite.io"' >> $BASH_ENV
 
 echo 'export PANTHEON_DEV_SITE_URL=https://dev-${TERMINUS_SITE}.pantheonsite.io' >> $BASH_ENV
