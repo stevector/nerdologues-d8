@@ -79,15 +79,15 @@ class PersonIsViewable extends ConditionPluginBase implements ContainerFactoryPl
 
     $node = $this->getContextValue('node');
     $return = FALSE;
+    if (!empty($node->field_ref_term_designation)) {
+      $terms = $node->field_ref_term_designation->referencedEntities();
 
-    $terms = $node->field_ref_term_designation->referencedEntities();
-
-    foreach ($terms as $term) {
-      if ('viewablebiopage' === str_replace(' ', '', strtolower($term->label()))) {
-        return TRUE;
+      foreach ($terms as $term) {
+        if ('viewablebiopage' === str_replace(' ', '', strtolower($term->label()))) {
+          return TRUE;
+        }
       }
     }
-
     return $return;
   }
 

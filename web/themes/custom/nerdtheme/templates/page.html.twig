@@ -9,6 +9,19 @@
 
 
 <div class="main">
+  {% if use_hero %}
+
+    {% set rendered_events = upcoming_events|render %}
+    {% set stripped_events = rendered_events|striptags|trim %}
+    {% if stripped_events %}
+    <div class="main-content whitebox" role="main">
+      <h2>Nerds in Real Life</h2>
+      {{ rendered_events }}
+
+      {{ stripped_events }}{{ stripped_events }}{{ stripped_events }}{{ stripped_events }}{{ stripped_events }}{{ stripped_events }}{{ stripped_events }}{{ stripped_events }}
+    </div>
+  {% endif %}{% endif %}
+
   <div class="main-content whitebox" role="main">
    <a id="main-content"></a>
    {{ page.system }}
@@ -23,7 +36,7 @@
      {% endif %}
      {% endif %}
      {{ page.content }}
-		</div>
+   </div>
   </div>
 </div>
 {{ page.footer }}

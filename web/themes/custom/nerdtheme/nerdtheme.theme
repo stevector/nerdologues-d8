@@ -14,6 +14,11 @@ function nerdtheme_preprocess_page(array &$variables) {
   $variables['use_hero'] = FALSE;
   if (!empty($variables['is_front']) && empty($request->query->get('page'))) {
     $variables['use_hero'] = TRUE;
+    // Placing this view as a block in the highlighted region isn't rendering.
+    // So directly embed.
+     $embed = views_embed_view('events', 'block_upcoming');
+     dsm($embed);
+     $variables['upcoming_events'] = $embed;
   }
 }
 

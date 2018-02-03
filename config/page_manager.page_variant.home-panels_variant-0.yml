@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - page_manager.page.home
-    - views.view.events
     - views.view.nerds_online
   module:
     - panels
@@ -14,17 +13,6 @@ label: Panels
 variant: panels_variant
 variant_settings:
   blocks:
-    32fb19f4-513b-4e96-ac84-cd836da2028e:
-      id: 'views_block:events-block_upcoming'
-      label: 'Nerds in Real Life'
-      provider: views
-      label_display: visible
-      views_label: 'Nerds in Real Life'
-      items_per_page: none
-      region: content
-      weight: 0
-      uuid: 32fb19f4-513b-4e96-ac84-cd836da2028e
-      context_mapping: {  }
     9e9329ad-d5eb-408d-a65f-21670109f413:
       id: 'views_block:nerds_online-block_1'
       label: ''
