@@ -175,7 +175,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.6100099999999
+      "misMatchThreshold" : 0.68888888888
     },
     {
       "label": "Clips by person 2",
@@ -282,7 +282,7 @@ const config = {
       "requireSameDimensions" : false,
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.144444
     },
     {
       "label": "Episode 2",
@@ -334,7 +334,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.2333333333333
+      "misMatchThreshold" : 0.277777777777
     },
     {
       "label": "clip 2",
@@ -350,7 +350,7 @@ const config = {
       ],
       "readyEvent": null,
       "delay": 9000,
-      "misMatchThreshold" : 0.29999999999
+      "misMatchThreshold" : 0.333333333
     },
     {
       "label": "videos",

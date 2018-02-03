@@ -11,6 +11,7 @@ base theme: classy
 
 regions:
   page_title: Page Title
+  highlighted: Highlighted
   content: Content
   header: Header
   footer: Footer

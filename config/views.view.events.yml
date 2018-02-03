@@ -291,6 +291,7 @@ display:
         filters: false
         filter_groups: false
         access: false
+        sorts: false
       pager:
         type: none
         options:
@@ -405,6 +406,20 @@ display:
         type: nerd_paged
         options: {  }
       block_hide_empty: true
+      sorts:
+        field_dates_value:
+          id: field_dates_value
+          table: node__field_dates
+          field: field_dates_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          plugin_id: datetime
     cache_metadata:
       max-age: -1
       contexts:

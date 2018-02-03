@@ -146,7 +146,7 @@ jobs:
 
             - run:
                 name: run-backstop
-                command: cd backstop && /build-tools-ci/scripts/backstop/run-backstop.sh
+                command: cd backstop && ./run-backstop.sh
 
             - store_artifacts:
                 path: /tmp/artifacts
