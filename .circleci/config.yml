@@ -183,7 +183,7 @@ jobs:
             - run:
                 name: Behat
                 command: |
-                    ./.circleci/behat-runners/add-behat-users.sh
+                    # ./.circleci/behat-runners/add-behat-users.sh
                     ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving --stop-on-failure
 
     merge:
