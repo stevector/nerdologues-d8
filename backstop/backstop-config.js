@@ -16,11 +16,8 @@ const config = {
       "label": "Clips by person, with quotes",
       "url": BackstopTestUrl + "/node/27/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/27/clips",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.36999999999999999
     },
@@ -28,11 +25,8 @@ const config = {
       "label": "Homepage",
       "url": BackstopTestUrl + "/",
       "referenceUrl": BackstopReferenceBaseUrl + "/",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.139999999999999
     },
@@ -40,11 +34,8 @@ const config = {
       "label": "Homepage, Next page",
       "url": BackstopTestUrl + "/home?page=1",
       "referenceUrl": BackstopReferenceBaseUrl + "/home?page=1",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.144444444
     },
@@ -52,10 +43,7 @@ const config = {
       "label": "Events",
       "url": BackstopTestUrl + "/events",
       "referenceUrl": BackstopReferenceBaseUrl + "/events",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
+
       "removeSelectors": [
         "todo-dont-use-such-broad-image-suppression",
         ".views-element-container img",
@@ -63,7 +51,7 @@ const config = {
         ".entity-id-3035 img",
         ".node-3035 img"
       ],
-      "readyEvent": null,
+
       "requireSameDimensions" : false,
       "delay": 9000,
       "misMatchThreshold" : 0.404444444444444444444444
@@ -72,11 +60,8 @@ const config = {
       "label": "Nerds",
       "url": BackstopTestUrl + "/nerds",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
@@ -84,16 +69,13 @@ const config = {
       "label": "Nerd bio",
       "url": BackstopTestUrl + "/nerds/eric-garneau",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/eric-garneau",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
       "requireSameDimensions" : false,
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.24999999999999
     },
@@ -101,16 +83,13 @@ const config = {
       "label": "Nerd bio 2, MBS",
       "url": BackstopTestUrl + "/nerds/mary-beth-smith",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/mary-beth-smith",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
       "requireSameDimensions" : false,
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.133333333333333
     },
@@ -118,16 +97,13 @@ const config = {
       "label": "Nerd bio, No clips, Jando",
       "url": BackstopTestUrl + "/nerds/michael-jando",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/michael-jando",
-      "hideSelectors": [],
+
       "requireSameDimensions" : false,
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.3000999999999
     },
@@ -135,16 +111,13 @@ const config = {
       "label": "Nerd videos",
       "url": BackstopTestUrl + "/node/72/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/72/videos",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
       "requireSameDimensions" : false,
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
@@ -152,16 +125,13 @@ const config = {
       "label": "Nerd videos 2",
       "url": BackstopTestUrl + "/node/73/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/73/videos",
-      "hideSelectors": [],
+
       "requireSameDimensions" : false,
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
@@ -169,11 +139,8 @@ const config = {
       "label": "Clips by person",
       "url": BackstopTestUrl + "/node/29/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/29/clips",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.68888888888
     },
@@ -181,11 +148,8 @@ const config = {
       "label": "Clips by person 2",
       "url": BackstopTestUrl + "/node/73/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/73/clips",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.420999999
     },
@@ -193,14 +157,11 @@ const config = {
       "label": "Blog post",
       "url": BackstopTestUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "referenceUrl": BackstopReferenceBaseUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
+
       "removeSelectors": [
         ".center-wrapper"
       ],
-      "readyEvent": null,
+
       "delay": 9000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.59099999999
@@ -209,10 +170,7 @@ const config = {
       "label": "Blog post 2",
       "url": BackstopTestUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
       "referenceUrl": BackstopReferenceBaseUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
+
       "removeSelectors": [
         ".center-wrapper",
         "todo-remove-this-img-suppression",
@@ -220,7 +178,7 @@ const config = {
         ".field--name-field-image-header img",
         "img"
       ],
-      "readyEvent": null,
+
       "delay": 9000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.460099999
@@ -229,11 +187,8 @@ const config = {
       "label": "about",
       "url": BackstopTestUrl + "/nerds-are-funny",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds-are-funny",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.12099999
     },
@@ -241,11 +196,8 @@ const config = {
       "label": "podcasts",
       "url": BackstopTestUrl + "/podcasts",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.69999999999999999999
     },
@@ -253,11 +205,8 @@ const config = {
       "label": "Your stories",
       "url": BackstopTestUrl + "/podcasts/your-stories",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
+
       "delay": 9000,
       "misMatchThreshold" : 0.3333333333333333
     },
@@ -265,7 +214,7 @@ const config = {
       "label": "Episode",
       "url": BackstopTestUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".mediaelement-audio",
         ".field--name-field-file",
@@ -276,11 +225,8 @@ const config = {
         ".block-entity-fieldnodefield-body p",
         ".field-name-field-body p",
       ],
-      "selectors": [
-        "document"
-      ],
       "requireSameDimensions" : false,
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.144444
     },
@@ -288,7 +234,7 @@ const config = {
       "label": "Episode 2",
       "url": BackstopTestUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".mediaelement-audio",
         ".field--name-field-file",
@@ -296,11 +242,8 @@ const config = {
         ".block-entity-fieldnodefield-body p",
         ".field-name-field-body p",
       ],
-      "selectors": [
-        "document"
-      ],
       "requireSameDimensions" : false,
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
@@ -308,15 +251,12 @@ const config = {
       "label": "Clip archive",
       "url": BackstopTestUrl + "/podcasts/your-stories/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips",
-      "hideSelectors": [],
+
       "removeSelectors": [
         "form"
       ],
-      "selectors": [
-        "document"
-      ],
       "requireSameDimensions" : false,
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.70999999999
     },
@@ -324,15 +264,12 @@ const config = {
       "label": "clip 1",
       "url": BackstopTestUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".mediaelement-audio",
         ".field--name-field-int-start-time"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.277777777777
     },
@@ -340,15 +277,12 @@ const config = {
       "label": "clip 2",
       "url": BackstopTestUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".mediaelement-audio",
         ".field--name-field-int-start-time"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.333333333
     },
@@ -356,15 +290,12 @@ const config = {
       "label": "videos",
       "url": BackstopTestUrl + "/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos",
-      "hideSelectors": [],
+
       "removeSelectors": [
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.1
@@ -378,10 +309,7 @@ const config = {
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
+
       "delay": 9000,
       "requireSameDimensions" : false,
       "misMatchThreshold" : 0.2809999
@@ -395,11 +323,8 @@ const config = {
         ".field-name-field-file",
         ".field--name-field-youtube"
       ],
-      "selectors": [
-        "document"
-      ],
       "requireSameDimensions" : false,
-      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.14099999
     }
