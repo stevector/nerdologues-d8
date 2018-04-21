@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "46af2da019720d25fd351402c9358f29",
+    "content-hash": "c983ce398ca195dfc21d0b35c459ba00",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1347,17 +1347,17 @@
         },
         {
             "name": "drupal/config_installer",
-            "version": "1.4.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/config_installer",
-                "reference": "8.x-1.4"
+                "reference": "8.x-1.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_installer-8.x-1.4.zip",
-                "reference": "8.x-1.4",
-                "shasum": "5371ced3d688f6c932992066fa0d5f44f7d6e7dd"
+                "url": "https://ftp.drupal.org/files/projects/config_installer-8.x-1.7.zip",
+                "reference": "8.x-1.7",
+                "shasum": "263006c947e814f766ff8420d1b7e4ea8c258ecd"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -1368,8 +1368,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.4",
-                    "datestamp": "1506257944",
+                    "version": "8.x-1.7",
+                    "datestamp": "1520542980",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1378,7 +1378,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
