@@ -6,7 +6,7 @@ Feature: Podcast
     When I visit "admin/content-migration/podcast"
     Then I should see the following table portion
       | Title                                 | Content type | URI                                                           |
-      | Your Stories                          | Podcast      | public://field_image/podcast/YSfortnight_0.jpg                |
+      | Your Stories                          | Podcast      | public://field_image/podcast/2017-your-stories.jpg            |
       | MBSing                                | Podcast      | public://field_image/podcast/Nerdologues-2017-refresh-16.png  |
       | The Nerdologuecast                    | Podcast      | public://field_image/podcast/Nerdologues-2017-refresh-15.png  |
       | Talking Games                         | Podcast      | public://field_image/podcast/Nerdologues-2017-refresh-14.png  |
@@ -15,3 +15,5 @@ Feature: Podcast
       | Sports Retorts with Hooli and The Joe | Podcast      | public://field_image/podcast/SportsRetorts_1400x1400_Rev1.png |
       | Blank Cassette                        | Podcast      | public://field_image/podcast/bclogo.jpg                       |
       | Let's Get It On                       | Podcast      | public://field_image/podcast/LGIO alt logo pwy.jpg            |
+      | Average Strength                      | Podcast      | public://field_image/podcast/logo6big_0.png                   |
+      | She-Ra: Progressive of Power          | Podcast      | public://field_image/podcast/logo.jpg                         |
