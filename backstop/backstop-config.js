@@ -262,7 +262,8 @@ const config = {
         "document"
       ],
       "removeSelectors": [
-        "img",
+        "img"
+      ],
       "readyEvent": null,
       "delay": 9000,
       "misMatchThreshold" : 0.3333333333333333
