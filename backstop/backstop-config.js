@@ -41,6 +41,10 @@ const config = {
       "url": BackstopTestUrl + "/home?page=1",
       "referenceUrl": BackstopReferenceBaseUrl + "/home?page=1",
       "hideSelectors": [],
+      "removeSelectors": [
+        "todo-dont-use-such-broad-image-suppression",
+        ".node--type-blog-post p"
+      ],
       "selectors": [
         "document"
       ],
