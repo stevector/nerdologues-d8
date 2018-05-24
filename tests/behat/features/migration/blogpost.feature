@@ -19,6 +19,6 @@ Feature: blogpost
       | Help Us Put Together The "Best Of" Your Stories 2015!                | Blog Post    | public://YourStorieslogo.jpg                                |            | Eric Garneau | 2015-11-02     |
       | MORE Best of Your Stories 2015 -- So Many Stories!                   | Blog Post    | public://YourStorieslogo.jpg                                |            | Eric Garneau | 2015-12-28     |
       | Hey, where did my Your Stories episodes go??                         | Blog Post    |                                                             |            | Eric Garneau | 2016-04-01     |
-      | Your Stories Best of 2017 nominations are open!                      | Blog Post    |                                                             |            | Eric Garneau | 2017-11-01     |
-      | We made an album!                                                    | Blog Post    |                                                             |            | Eric Garneau | 2018-03-15     |
-      | Submissions Now Closed for the Nerdologues Podcast Mentoring Program | Blog Post    |                                                             |            | Eric Garneau | 2018-04-21     |
+      | Your Stories Best of 2017 nominations are open!                      | Blog Post    | public://kingsresized.jpg                                   |            | Eric Garneau | 2017-11-01     |
+      | We made an album!                                                    | Blog Post    | public://field_image/page/Nerdologues002.jpg                |            | Eric Garneau | 2018-03-15     |
+      | Submissions Now Closed for the Nerdologues Podcast Mentoring Program | Blog Post    | public://Splinter.jpeg                                      |            | Eric Garneau | 2018-04-21     |
