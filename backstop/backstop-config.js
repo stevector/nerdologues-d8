@@ -41,6 +41,11 @@ const config = {
       "url": BackstopTestUrl + "/home?page=1",
       "referenceUrl": BackstopReferenceBaseUrl + "/home?page=1",
       "hideSelectors": [],
+      "removeSelectors": [
+        "todo-dont-use-such-broad-image-suppression",
+        ".node--type-blog-post p",
+        ".node-blogpost p"
+      ],
       "selectors": [
         "document"
       ],
@@ -256,6 +261,9 @@ const config = {
       "hideSelectors": [],
       "selectors": [
         "document"
+      ],
+      "removeSelectors": [
+        "img"
       ],
       "readyEvent": null,
       "delay": 9000,

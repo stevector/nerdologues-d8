@@ -17,14 +17,15 @@ dependencies:
     - datetime
     - ds
     - image
+    - nerdcustom
+    - panelizer
     - text
     - user
 third_party_settings:
   ds:
     layout:
       id: teaser_with_image
-      path: themes/custom/nerdtheme
-      library: ''
+      library: null
       disable_css: false
       entity_classes: all_classes
       settings:
@@ -44,17 +45,12 @@ third_party_settings:
         - 'bundle_field:node'
         - node_title
       right:
-        - field_date_published
         - field_ref_creators
+        - field_date_published
         - field_lede
       left:
         - field_image
     fields:
-      'bundle_field:node':
-        plugin_id: 'bundle_field:node'
-        weight: -10
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 1
@@ -64,6 +60,16 @@ third_party_settings:
           link: true
           wrapper: h2
           class: ''
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 0
+        label: hidden
+        formatter: default
+  panelizer:
+    enable: false
+    custom: false
+    allow: false
+    default: default
 id: node.blog_post.teaser
 targetEntityType: node
 bundle: blog_post
@@ -71,7 +77,7 @@ mode: teaser
 content:
   field_date_published:
     type: datetime_default
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       timezone_override: ''
@@ -95,8 +101,8 @@ content:
     third_party_settings: {  }
     region: right
   field_ref_creators:
-    type: entity_reference_entity_id
-    weight: 3
+    type: nerd_person_field_formatter
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
