@@ -43,7 +43,8 @@ const config = {
       "hideSelectors": [],
       "removeSelectors": [
         "todo-dont-use-such-broad-image-suppression",
-        ".node--type-blog-post p"
+        ".node--type-blog-post p",
+        ".node-blogpost p"
       ],
       "selectors": [
         "document"
