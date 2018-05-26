@@ -143,8 +143,8 @@ jobs:
 
             - run:
                 command: |
-                ./.circleci/deploy/deploy-to-multidev.sh
-                terminus  --quiet drush $SITE_ENV -- si -y config_installer
+                    ./.circleci/deploy/deploy-to-multidev.sh
+                    terminus  --quiet drush $SITE_ENV -- si -y config_installer
 
 
 
