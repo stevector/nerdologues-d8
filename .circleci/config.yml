@@ -188,7 +188,6 @@ workflows:
       - backstop:
           requires:
              - build
-             - migration
       - merge:
           requires:
              - migrationcheck
