@@ -3623,10 +3623,10 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stevector/timeperiod.git",
-                "reference": "2c642610ba2462d097841546e38de156c8bc9e79"
+                "reference": "1b0fbf9a85aec6d288bcd3688c64682a25845524"
             },
             "type": "drupal-module",
-            "time": "2017-10-15T11:34:45+00:00"
+            "time": "2018-04-21T20:15:43+00:00"
         },
         {
             "name": "drupal/token",

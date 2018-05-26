@@ -21,13 +21,13 @@ function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array
   if ($entity->bundle() === 'person') {
     $links['node']['#links']['node-readmore'] = array(
       'title' => t('Full bio, podcast clips and links<span class="visually-hidden"> for @title</span>', array(
-        '@title' => $node_title_stripped,
+        '@title' => $entity->label(),
       )),
       'url' => $entity->urlInfo(),
       'language' => $entity->language(),
       'attributes' => array(
         'rel' => 'tag',
-        'title' => $node_title_stripped,
+        'title' => $entity->label(),
       ),
     );
   }

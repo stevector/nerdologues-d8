@@ -28,6 +28,11 @@ const config = {
       "label": "Homepage, Next page",
       "url": BackstopTestUrl + "/home?page=1",
       "referenceUrl": BackstopReferenceBaseUrl + "/home?page=1",
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
+
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
@@ -133,6 +138,10 @@ const config = {
       "label": "Your stories",
       "url": BackstopTestUrl + "/podcasts/your-stories",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories",
+      "selectors": [
+        "document"
+      ],
+      "readyEvent": null,
       "delay": 9000,
       "misMatchThreshold" : 0.1
     },
