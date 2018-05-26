@@ -37,6 +37,7 @@ jobs:
             - run:
                 name: deploy
                 command: |
+                    terminus env:list --field=id $TERMINUS_SITE | grep "^ci-" | cut -c 4-  | grep -Eo '[0-9]{1,9}' | sort --numeric-sort --reverse | sed 1,7d | xargs -n1 -I ENV terminus env:delete --yes $TERMINUS_SITE.ci-ENV
                     ./.circleci/deploy/deploy-to-multidev.sh
 
             - run:
@@ -49,43 +50,6 @@ jobs:
                 root: .
                 paths:
                     - globals
-
-    migration:
-        <<: *defaults
-        steps:
-            - checkout
-
-            - attach_workspace:
-                at: /tmp
-
-            - run:
-                name: Global vars
-                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: ./.circleci/set-up-global-vars.sh
-
-            - restore_cache:
-                keys:
-                    - composer-{{ checksum "composer.lock" }}
-
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
-
-            - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
-                paths:
-                  - vendor
-
-            - run:
-                name: login
-                command: terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
-
-            - run:
-                name: Migration
-                command: |
-                    exit 0;
-                    ./.circleci/deploy/run-migration.sh
-                    ./.circleci/behat-runners/add-behat-users.sh
-                    ./.circleci/behat-runners/behat-wrapper.sh  --suite=dataentry
 
 
     migrationcheck:
@@ -214,13 +178,9 @@ workflows:
     jobs:
       - build
       - behavioral
-      - migration:
-          requires:
-             - build
       - migrationcheck:
           requires:
              - build
-             - migration
       - backstop:
           requires:
              - build
