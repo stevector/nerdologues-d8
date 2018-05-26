@@ -142,7 +142,11 @@ jobs:
                 command: composer circle-tests
 
             - run:
-                command: ./.circleci/deploy/deploy-to-multidev.sh
+                command: |
+                ./.circleci/deploy/deploy-to-multidev.sh
+                terminus  --quiet drush $SITE_ENV -- si -y config_installer
+
+
 
             - run:
                 name: Behat
