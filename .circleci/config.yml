@@ -105,11 +105,6 @@ jobs:
                 command: ./.circleci/set-up-global-vars.sh
 
             - run:
-                name: check var
-                command: |
-                 echo $TERMINUS_ENV
-
-            - run:
                 name: run-backstop
                 command: cd backstop && ./run-backstop.sh
 
@@ -146,8 +141,6 @@ jobs:
                     ./.circleci/deploy/deploy-to-multidev.sh
                     # terminus  --quiet drush $SITE_ENV -- si -y config_installer
 
-
-
             - run:
                 name: Behat
                 command: |
@@ -166,11 +159,6 @@ jobs:
                 name: Global vars
                 # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
                 command: ./.circleci/set-up-global-vars.sh
-
-            - run:
-                name: check var
-                command: |
-                 echo $TERMINUS_ENV
 
             - run:
                 name: merge to master
