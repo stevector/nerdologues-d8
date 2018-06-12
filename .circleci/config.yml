@@ -110,50 +110,7 @@ jobs:
 
             - store_artifacts:
                 path: /tmp/artifacts
-                destination: artifacts
-
-    # This job puts a fair bit of complexity in this yml config rather than hiding it
-    # In scripts called from the job. That decision is made so that in training sessions
-    # done by Pantheon, this job is usable with only with copying/pasting changes to this
-    # config.yml file.
-    lighthouse:
-        docker:
-            - image: quay.io/stevector/ci-lighthouse:master
-        working_directory: ~/example_wordpress_composer
-        steps:
-            - checkout
-            - run:
-                name: dependencies
-                # Set TERMINUS_ENV and related environment variables.
-                # https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: |
-                  /build-tools-ci/scripts/set-up-global-vars.sh
-                  ./.circleci/set-up-global-vars.sh
-                
-            - run:
-                name: install lighthouse-ci
-                command: |
-                  cd .circleci
-                  git clone https://github.com/stevector/lighthouse-ci
-                  cd lighthouse-ci/frontend
-                  yarn install
-                  cp no_pwa.js /tmp/artifacts/
-            - run:
-                name: lighthouse
-                command: |
-                  # curl the homepage to prime varnish cache.
-                  curl https://${TERMINUS_ENV}-${TERMINUS_SITE}.pantheonsite.io
-                  sleep 1
-                  cd /tmp/artifacts
-                  lighthouse --chrome-flags="--headless --disable-gpu --no-sandbox" "https://${TERMINUS_ENV}-${TERMINUS_SITE}.pantheonsite.io" --save-artifacts --save-assets --config-path=no_pwa.js --output=json --output=html
-            - run:
-                name: report results
-                command: |
-                  cd .circleci/lighthouse-ci/frontend
-                  node pass_fail_pr.js --resultspath=$(find /tmp/artifacts/ -type f -name "*report.json" | head -n 1) --reporturl=${CIRCLE_ARTIFACTS_URL}/$(find /tmp/artifacts/ -type f -name "*report.html"  -exec basename {} \;  | head -n 1)
-            - store_artifacts:
-                path: /tmp/artifacts
-                destination: artifacts
+                destination: artifact
 
     behavioral:
         <<: *defaults
@@ -219,9 +176,9 @@ workflows:
       - backstop:
           requires:
              - build
-      - lighthouse:
-          requires:
-             - build
+#      - lighthouse:
+#          requires:
+#             - build
       - merge:
           requires:
              - migrationcheck
