@@ -150,7 +150,7 @@ jobs:
                   node pass_fail_pr.js --resultspath=$(find /tmp/artifacts/ -type f -name "*report.json" | head -n 1) --reporturl=${CIRCLE_ARTIFACTS_URL}/$(find /tmp/artifacts/ -type f -name "*report.html"  -exec basename {} \;  | head -n 1)
             - store_artifacts:
                 path: /tmp/artifacts
-destination: artifacts
+                destination: artifacts
 
     behavioral:
         <<: *defaults
