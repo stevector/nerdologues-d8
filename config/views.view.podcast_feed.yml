@@ -1059,7 +1059,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 99
+          items_per_page: 0
           offset: 0
       style:
         type: podcastrss
