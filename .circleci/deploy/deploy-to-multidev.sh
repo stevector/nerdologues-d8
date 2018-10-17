@@ -13,4 +13,6 @@ terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
 terminus connection:set $SITE_ENV sftp
 # Send to dev null so that the generated admin password does not show.
 # Hiding all output might be overkill for accomplishing that goal.
-terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
+#terminus drush $SITE_ENV -- si -y config_installer > /dev/null 2>&1
+terminus --quiet drupal $SITE_ENV -- site:install   --force --no-interaction
+terminus --quiet drupal $SITE_ENV -- config:import --no-interaction
