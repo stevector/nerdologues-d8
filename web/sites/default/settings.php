@@ -51,9 +51,6 @@ if ('live' === $_ENV['PANTHEON_ENVIRONMENT'] || 'test' === $_ENV['PANTHEON_ENVIR
   $settings['config_readonly'] = TRUE;
 }
 
-
-$settings['install_profile'] = 'standard';
-
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && 'lando' !== $_ENV['PANTHEON_ENVIRONMENT'] && php_sapi_name() != 'cli') {
   // Redirect to https://$primary_domain in the Live environment
   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
