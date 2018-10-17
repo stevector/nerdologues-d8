@@ -27,7 +27,7 @@ index 46269eb..7103787 100644
 
 +require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
 +require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/ReadOnlyPhpStreamWrapperTrait.php';
-+require_once 'modules/contrib/remote_stream_wrapper/src/HttpClientTrait.php'
++require_once 'modules/contrib/remote_stream_wrapper/src/HttpClientTrait.php';
 +
  /**
   * HTTP(s) stream wrapper.
