@@ -23,7 +23,6 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": ">=8.6.1",
         "drupal/console": "~1.0",
         "drupal/address": "~1.0",
         "drupal/devel": "1.x-dev",
@@ -52,7 +51,8 @@
         "drush/drush": "^8.1",
         "drupal/config_readonly": "^1.0@beta",
         "drupal/google_analytics": "^2.2",
-        "drupal/views_custom_cache_tag": "^1.0"
+        "drupal/views_custom_cache_tag": "^1.0",
+        "phpunit/phpunit": ">6 <7"
     },
 
     "require-dev": {
@@ -68,7 +68,7 @@
         "drupal/coder": "^8.2.0-beta1",
         "squizlabs/php_codesniffer": "2.0.*@dev",
         "knplabs/friendly-contexts": "^0.7.0",
-        "phpunit/phpunit": ">=4.8.35 <5"
+        "symfony/phpunit-bridge": "*"
     },
     "replace": {
         "drupal/drupal": "*"
@@ -86,7 +86,7 @@
             "phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom"
         ],
         "unit-test": [
-            "phpunit -c web/core/ --group=nerdcustom web/modules/custom/ -v"
+            "phpunit  --group=nerdcustom web/modules/custom/ -v"
         ],
         "circle-tests": [
             "@code-sniff",
