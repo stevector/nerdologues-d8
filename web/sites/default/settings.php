@@ -31,6 +31,7 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $config_directories['sync'] = 'sites/default/config';
+$settings['install_profile'] = 'standard';
 
 
 $local_services_file = __DIR__ . '/services.local.yml';
