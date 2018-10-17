@@ -11,7 +11,7 @@ index c5c10ae..9b8f29a 100644
 @@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
  use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
- 
+
 +require_once "core/modules/image/src/Controller/ImageStyleDownloadController.php";
 +
  /**
@@ -24,10 +24,10 @@ index 46269eb..7103787 100644
 @@ -7,6 +7,10 @@ use GuzzleHttp\ClientInterface;
  use GuzzleHttp\Exception\ClientException;
  use GuzzleHttp\Exception\ServerException;
- 
+
 +require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/RemoteStreamWrapperInterface.php';
 +require_once 'modules/contrib/remote_stream_wrapper/src/StreamWrapper/ReadOnlyPhpStreamWrapperTrait.php';
-+
++require_once 'modules/contrib/remote_stream_wrapper/src/HttpClientTrait.php'
 +
  /**
   * HTTP(s) stream wrapper.
