@@ -15,6 +15,7 @@ then
 fi
 
 
+
 terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes
 
 terminus connection:set $SITE_ENV sftp
