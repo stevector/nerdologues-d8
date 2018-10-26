@@ -16,6 +16,7 @@ variant_settings:
   weight: 0
   status_code: 404
   uuid: 3e5efbfe-6ca9-4747-8ece-ba4d90adf909
+  redirect_location: ''
 page: node_view
 weight: 0
 selection_criteria:

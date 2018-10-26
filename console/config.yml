@@ -1,0 +1,4 @@
+application:
+  overrides:
+    config:
+      skip-validate-site-uuid: true
