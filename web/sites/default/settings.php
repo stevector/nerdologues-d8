@@ -31,6 +31,7 @@ if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 }
 
 $config_directories['sync'] = 'sites/default/config';
+$settings['install_profile'] = 'standard';
 
 
 $local_services_file = __DIR__ . '/services.local.yml';
@@ -50,9 +51,6 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
 if ('live' === $_ENV['PANTHEON_ENVIRONMENT'] || 'test' === $_ENV['PANTHEON_ENVIRONMENT'] ) {
   $settings['config_readonly'] = TRUE;
 }
-
-
-$settings['install_profile'] = 'standard';
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && 'lando' !== $_ENV['PANTHEON_ENVIRONMENT'] && php_sapi_name() != 'cli') {
   // Redirect to https://$primary_domain in the Live environment
