@@ -129,6 +129,13 @@ const config = {
       "misMatchThreshold" : 0.1
     },
     {
+      "label": "podcasts",
+      "url": BackstopTestUrl + "/podcasts",
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts",
+      "delay": 9000,
+      "misMatchThreshold" : 0.1
+    },
+    {
       "label": "Your stories",
       "url": BackstopTestUrl + "/podcasts/your-stories",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories",
