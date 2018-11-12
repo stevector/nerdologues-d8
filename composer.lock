@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05e433bb73da578af4e085044539b137",
+    "content-hash": "335c5cf53fb158496255b07d93ee5220",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2176,7 +2176,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-10-10T19:04:05+00:00"
+            "time": "2018-10-10 19:04:05"
         },
         {
             "name": "drupal/ds",
@@ -2449,7 +2449,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
             },
-            "time": "2018-10-15T07:04:55+00:00"
+            "time": "2018-10-15 07:04:55"
         },
         {
             "name": "drupal/field_group",
@@ -2507,7 +2507,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/field_group"
             },
-            "time": "2018-08-06T10:30:37+00:00"
+            "time": "2018-08-06 10:30:37"
         },
         {
             "name": "drupal/google_analytics",
@@ -2664,7 +2664,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/layout_plugin"
             },
-            "time": "2016-10-03T18:36:43+00:00"
+            "time": "2016-10-03 18:36:43"
         },
         {
             "name": "drupal/media_entity",
@@ -2823,7 +2823,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
             },
-            "time": "2016-09-29T16:29:04+00:00"
+            "time": "2016-09-29 16:29:04"
         },
         {
             "name": "drupal/migrate_plus",
@@ -3081,7 +3081,7 @@
                 "issues": "https://www.drupal.org/project/issues/page_manager",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-04-14T01:41:41+00:00"
+            "time": "2018-04-14 01:41:41"
         },
         {
             "name": "drupal/panelizer",
@@ -3471,7 +3471,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2018-10-15T20:59:21+00:00"
+            "time": "2018-10-15 20:59:21"
         },
         {
             "name": "drupal/pathauto",
@@ -3672,7 +3672,7 @@
                 "reference": "1b0fbf9a85aec6d288bcd3688c64682a25845524"
             },
             "type": "drupal-module",
-            "time": "2018-04-21T20:15:43+00:00"
+            "time": "2018-04-21 20:15:43"
         },
         {
             "name": "drupal/token",
@@ -3840,7 +3840,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/youtube"
             },
-            "time": "2018-08-10T12:10:57+00:00"
+            "time": "2018-08-10 12:10:57"
         },
         {
             "name": "drush/drush",
@@ -8817,6 +8817,58 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+            "name": "bex/behat-step-time-logger",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tkotosz/behat-step-time-logger.git",
+                "reference": "f633518f564c0603e81715ca464007e1cf21ecb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tkotosz/behat-step-time-logger/zipball/f633518f564c0603e81715ca464007e1cf21ecb3",
+                "reference": "f633518f564c0603e81715ca464007e1cf21ecb3",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "^3.0.0",
+                "php": ">=5.5",
+                "symfony/filesystem": ">=2.3 || ^3.0.0"
+            },
+            "require-dev": {
+                "behat/mink-selenium2-driver": "^1.3.0",
+                "bex/behat-test-runner": "dev-master",
+                "jakoch/phantomjs-installer": "^1.9.8",
+                "phpspec/phpspec": "2.4.0-alpha2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tibor Kotosz",
+                    "email": "kotosy@gmail.com",
+                    "homepage": "https://github.com/tkotosz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extension for behat to help find slow scenario steps by logging the step times",
+            "homepage": "https://github.com/tkotosz/behat-step-time-logger",
+            "keywords": [
+                "BDD",
+                "Behat",
+                "TDD"
+            ],
+            "time": "2018-10-12T07:06:30+00:00"
+        },
+        {
             "name": "container-interop/container-interop",
             "version": "1.2.0",
             "source": {
@@ -8993,7 +9045,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-09-21T19:08:45+00:00"
+            "time": "2018-09-21 19:08:45"
         },
         {
             "name": "drupal/drupal-extension",
@@ -9064,7 +9116,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-10-02T17:17:19+00:00"
+            "time": "2018-10-02 17:17:19"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
