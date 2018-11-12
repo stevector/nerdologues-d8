@@ -129,13 +129,6 @@ const config = {
       "misMatchThreshold" : 0.1
     },
     {
-      "label": "podcasts",
-      "url": BackstopTestUrl + "/podcasts",
-      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts",
-      "delay": 9000,
-      "misMatchThreshold" : 0.1
-    },
-    {
       "label": "Your stories",
       "url": BackstopTestUrl + "/podcasts/your-stories",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories",
@@ -206,7 +199,7 @@ const config = {
       "url": BackstopTestUrl + "/videos/friends-nerdologues-tim-dunn",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos/friends-nerdologues-tim-dunn",
       "delay": 9000,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 1.6
     }
   ],
   "paths": {
