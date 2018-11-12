@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 set -x
 
 git config user.email "stevepersch+circleci@gmail.com"
@@ -12,14 +10,11 @@ mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
   composer config --global github-oauth.github.com $GITHUB_TOKEN
 } &> /dev/null
 
-
-
 {
  terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 } &> /dev/null
 
-terminus whoami
-
+# terminus whoami
 
 (
   echo 'export D7_ENV=live'
