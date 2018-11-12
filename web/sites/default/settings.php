@@ -56,7 +56,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && 'lando' !== $_ENV['PANTHEON_ENVIRONM
   // Redirect to https://$primary_domain in the Live environment
   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
     /** Replace www.example.com with your registered domain name */
-    $primary_domain = 'live-nerdologues-composer.pantheonsite.io';
+    $primary_domain = 'new.nerdologues.com';
   }
   else {
     // Redirect to HTTPS on every Pantheon environment.

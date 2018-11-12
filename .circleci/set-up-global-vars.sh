@@ -29,6 +29,9 @@ echo 'export SITE_ENV=${TERMINUS_SITE}.${TERMINUS_ENV}' >> $BASH_ENV
 echo 'export D7_ENV=live' >> $BASH_ENV
 echo 'export MIGRATION_SOURCE_URL="http://$D7_ENV-nerdologues.pantheonsite.io"' >> $BASH_ENV
 
+echo 'export BACKSTOP_REFERENCE_BASE_URL="http://dev-${TERMINUS_SITE}.pantheonsite.io"' >> $BASH_ENV
+
+
 echo 'export PANTHEON_DEV_SITE_URL=https://dev-${TERMINUS_SITE}.pantheonsite.io' >> $BASH_ENV
 echo 'export PANTHEON_SITE_URL=https://${TERMINUS_ENV}-${TERMINUS_SITE}.pantheonsite.io' >> $BASH_ENV
 echo 'CIRCLE_ARTIFACTS_DIR="/tmp/artifacts"' >> $BASH_ENV

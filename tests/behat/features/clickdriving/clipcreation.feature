@@ -143,17 +143,22 @@ Feature: Clip creation
     And I press "Save"
 
     # Make a podcast and episode.
-    Given I am viewing a podcast with the title "Another great podcast"
+    When I visit "node/add/podcast"
+    And I fill in "title[0][value]" with "This great podcast"
+    And I check the box "Published"
+    And I press "Save"
+
+
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
-    And I select the radio button "Another great podcast"
+    And I select the radio button "This great podcast"
     And I check the box "Publishing status"
     And I press "Save"
 
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A Clip of a story"
-    And I select the radio button "Another great podcast"
+    And I select the radio button "This great podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one podcast episode"
     And I fill in "field_ref_creators[target_id]" with "Jane Member"
     And I check the box "Publishing status"
@@ -166,6 +171,7 @@ Feature: Clip creation
     And I fill in "field_para_quotes[1][subform][field_body_plain][0][value]" with "Quote One"
     And I enter yesterday's date for the published date
     And I check the box "Publishing status"
+    And I select the radio button "This great podcast"
     And I press "Save"
     When I visit "/"
     And I should see the text "Quote Zero"
