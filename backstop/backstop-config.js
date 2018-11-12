@@ -199,7 +199,7 @@ const config = {
       "url": BackstopTestUrl + "/videos/twerking-hard-or-hardly-twerking",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos/twerking-hard-or-hardly-twerking",
       "delay": 9000,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.9
     },
     {
       "label": "Video 2",
