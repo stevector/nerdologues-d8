@@ -5,7 +5,6 @@
 
 set -ex
 
-
 # Only run on even numbered builds to reduce the likelihood of this
 # script running on two containers at the same time and causing
 # errors.
