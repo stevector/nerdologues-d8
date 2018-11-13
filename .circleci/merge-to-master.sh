@@ -5,7 +5,6 @@ set -ex
 {
  terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 } &> /dev/null
-
 terminus whoami
 
 git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
