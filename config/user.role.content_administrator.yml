@@ -8,7 +8,9 @@ weight: 3
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access podcast_episode_mp3 entity browser pages'
   - 'access toolbar'
+  - 'administer entity browsers'
   - 'administer nodes'
   - 'create blog_post content'
   - 'create clip content'
