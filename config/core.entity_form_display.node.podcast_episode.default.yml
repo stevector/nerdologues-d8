@@ -39,6 +39,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: Tabs
+      region: content
     group_required:
       children:
         - field_date_published
@@ -53,6 +54,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Required
+      region: content
     group_mp3:
       children:
         - field_file
@@ -67,6 +69,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: MP3
+      region: content
     group_teaser_and_body:
       children:
         - field_lede
@@ -81,6 +84,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Teaser and Body'
+      region: content
     group_patreon:
       children:
         - field_link_paywall_content
@@ -94,6 +98,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Patreon
+      region: content
     group_unused:
       children: {  }
       parent_name: group_tabs
@@ -106,6 +111,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Unused
+      region: content
     group_podbean_specific_info:
       children:
         - field_link
@@ -120,6 +126,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Podbean-specific info'
+      region: content
 id: node.podcast_episode.default
 targetEntityType: node
 bundle: podcast_episode
@@ -155,6 +162,7 @@ content:
       open: false
       view_mode: default
       preview_image_style: thumbnail
+      field_widget_replace: false
     third_party_settings: {  }
     type: entity_browser_file
     region: content
