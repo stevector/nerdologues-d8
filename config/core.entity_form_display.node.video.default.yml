@@ -28,6 +28,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: Tabs
+      region: content
     group_body:
       children:
         - field_body
@@ -41,6 +42,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Body
+      region: content
     group_basic_info:
       children:
         - field_date_published
@@ -55,6 +57,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Basic Info'
+      region: content
 id: node.video.default
 targetEntityType: node
 bundle: video
@@ -91,7 +94,8 @@ content:
     region: content
   field_youtube:
     weight: 5
-    settings: {  }
+    settings:
+      placeholder_url: ''
     third_party_settings: {  }
     type: youtube
     region: content
