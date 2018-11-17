@@ -176,6 +176,7 @@ workflows:
       - backstop:
           requires:
              - build
+             - migrationcheck
 #      - lighthouse:
 #          requires:
 #             - build
