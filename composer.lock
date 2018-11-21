@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "05e433bb73da578af4e085044539b137",
@@ -2104,7 +2104,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "7eb4b0c10f5f3b1bddf20d1ac907b04e1afde17d"
+                "reference": "46ab1195eff51aed6fa2607fcc753b8e5d453203"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -2116,8 +2116,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+31-dev",
-                    "datestamp": "1539845580",
+                    "version": "8.x-1.2+29-dev",
+                    "datestamp": "1539067380",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2176,7 +2176,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-10-25T07:18:21+00:00"
+            "time": "2018-10-10T19:04:05+00:00"
         },
         {
             "name": "drupal/ds",
@@ -2275,7 +2275,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.0-rc1",
-                    "datestamp": "1539272769",
+                    "datestamp": "1539272580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -3404,7 +3404,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "5e4bbe3d2648a201f49e3c4f10858df635261355"
+                "reference": "726b3d13b24020847bfbec56df2ea1241d4cfd41"
             },
             "require": {
                 "drupal/core": "~8",
@@ -3432,8 +3432,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.5+6-dev",
-                    "datestamp": "1541548380",
+                    "version": "8.x-1.3+15-dev",
+                    "datestamp": "1539590580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3471,7 +3471,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2018-11-10T16:24:08+00:00"
+            "time": "2018-10-15T20:59:21+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -8942,12 +8942,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "e0204a7957f68accf39ae4b908a033cbce69c7c6"
+                "reference": "395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/e0204a7957f68accf39ae4b908a033cbce69c7c6",
-                "reference": "e0204a7957f68accf39ae4b908a033cbce69c7c6",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa",
+                "reference": "395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa",
                 "shasum": ""
             },
             "require": {
@@ -8993,7 +8993,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-11-06T20:21:27+00:00"
+            "time": "2018-09-21T19:08:45+00:00"
         },
         {
             "name": "drupal/drupal-extension",
@@ -9001,12 +9001,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/drupalextension.git",
-                "reference": "6654a015b66c1d34e16f306a8495f42b7145e180"
+                "reference": "2d98cc639736766063621d8cf960d493e77413a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/6654a015b66c1d34e16f306a8495f42b7145e180",
-                "reference": "6654a015b66c1d34e16f306a8495f42b7145e180",
+                "url": "https://api.github.com/repos/jhedstrom/drupalextension/zipball/2d98cc639736766063621d8cf960d493e77413a9",
+                "reference": "2d98cc639736766063621d8cf960d493e77413a9",
                 "shasum": ""
             },
             "require": {
@@ -9064,7 +9064,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-10-26T20:04:28+00:00"
+            "time": "2018-10-02T17:17:19+00:00"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
