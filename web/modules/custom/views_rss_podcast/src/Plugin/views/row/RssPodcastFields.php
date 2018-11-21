@@ -81,6 +81,7 @@ class RssPodcastFields extends RssFields {
       }
 
       $build['#row']->elements[] = $element_definition;
+      $row_index++;
     }
     // itunes:image
     return $build;
