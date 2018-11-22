@@ -16,4 +16,8 @@ Feature: Podcast
       | Blank Cassette                        | Podcast      | public://field_image/podcast/bclogo.jpg                       |
       | Let's Get It On                       | Podcast      | public://field_image/podcast/LGIO alt logo pwy.jpg            |
       | Average Strength                      | Podcast      | public://field_image/podcast/logo6big_0.png                   |
-      | She-Ra: Progressive of Power          | Podcast      | public://field_image/podcast/logo.jpg                         |
+      | She-Ra: Progressive of Power          | Podcast      | public://she-ra 5.png                                         |
+      | Beyond the Board                      | Podcast      | public://field_image/podcast/Beyond-the-Board-Logo-2.png      |
+      | The After Disaster Broadcast          | Podcast      | public://field_image/podcast/TADBLogoNew.jpg                  |
+      | LOW                                   | Podcast      | public://field_image/podcast/LOW-LOGO-FINAL.jpg               |
+      | Batman at Bat                         | Podcast      | public://field_image/podcast/showlogo.jpg                     |
