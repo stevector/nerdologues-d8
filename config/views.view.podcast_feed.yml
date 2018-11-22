@@ -1050,7 +1050,7 @@ display:
           date_field: field_date_published
           guid_field_options:
             guid_field: path
-            guid_field_is_permalink: 1
+            guid_field_is_permalink: 0
           enclosure_url: field_file
           enclosure_size: filesize
           enclosure_type: filemime
