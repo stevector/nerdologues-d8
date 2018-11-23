@@ -15,14 +15,14 @@ const config = {
       "label": "Clips by person, with quotes",
       "url": BackstopTestUrl + "/node/27/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/27/clips",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Homepage",
       "url": BackstopTestUrl + "/",
       "referenceUrl": BackstopReferenceBaseUrl + "/",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -34,21 +34,21 @@ const config = {
       ],
       "readyEvent": null,
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Events",
       "url": BackstopTestUrl + "/events",
       "referenceUrl": BackstopReferenceBaseUrl + "/events",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Nerds",
       "url": BackstopTestUrl + "/nerds",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -56,7 +56,8 @@ const config = {
       "url": BackstopTestUrl + "/nerds/eric-garneau",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/eric-garneau",
 
-      "delay": 20000,
+      "delay": 
+      ,
       "misMatchThreshold" : 0.1
     },
     {
@@ -64,7 +65,7 @@ const config = {
       "url": BackstopTestUrl + "/nerds/mary-beth-smith",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/mary-beth-smith",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -72,7 +73,7 @@ const config = {
       "url": BackstopTestUrl + "/nerds/michael-jando",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/michael-jando",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -80,7 +81,7 @@ const config = {
       "url": BackstopTestUrl + "/node/72/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/72/videos",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -88,21 +89,21 @@ const config = {
       "url": BackstopTestUrl + "/node/73/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/73/videos",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Clips by person",
       "url": BackstopTestUrl + "/node/29/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/29/clips",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Clips by person 2",
       "url": BackstopTestUrl + "/node/73/clips",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/73/clips",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -110,7 +111,7 @@ const config = {
       "url": BackstopTestUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
       "referenceUrl": BackstopReferenceBaseUrl + "/blog/2014-12-29/more-best-your-stories-2014-stuff-wouldnt-fit",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -118,14 +119,14 @@ const config = {
       "url": BackstopTestUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
       "referenceUrl": BackstopReferenceBaseUrl + "/blog/2015-09-08/fisticuffs-character-update-4-metal-devil",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "about",
       "url": BackstopTestUrl + "/nerds-are-funny",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds-are-funny",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -136,7 +137,7 @@ const config = {
         "document"
       ],
       "readyEvent": null,
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -144,7 +145,7 @@ const config = {
       "url": BackstopTestUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/episodes/may-2015-press-start-part-1",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -152,7 +153,7 @@ const config = {
       "url": BackstopTestUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/mbsing/episodes/episode-101-mbsing-sean-cooley-idiots",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -162,21 +163,21 @@ const config = {
       "removeSelectors": [
         "form"
       ],
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "clip 1",
       "url": BackstopTestUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/cover-stories-because-night",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "clip 2",
       "url": BackstopTestUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
       "referenceUrl": BackstopReferenceBaseUrl + "/podcasts/your-stories/clips/mike-chuck-bretzlaff-selfie-closure",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
@@ -184,21 +185,21 @@ const config = {
       "url": BackstopTestUrl + "/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos",
 
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.1
     },
     {
       "label": "Video 1",
       "url": BackstopTestUrl + "/videos/twerking-hard-or-hardly-twerking",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos/twerking-hard-or-hardly-twerking",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 0.9
     },
     {
       "label": "Video 2",
       "url": BackstopTestUrl + "/videos/friends-nerdologues-tim-dunn",
       "referenceUrl": BackstopReferenceBaseUrl + "/videos/friends-nerdologues-tim-dunn",
-      "delay": 20000,
+      "delay": 5000,
       "misMatchThreshold" : 1.6
     }
   ],
@@ -212,7 +213,7 @@ const config = {
   "report": ["browser"],
   "engine": "chrome",
   "engineFlags": [],
-  "asyncCaptureLimit": 2,
+ // "asyncCaptureLimit": 2,
   "debug": false,
   "debugWindow": false
 }
