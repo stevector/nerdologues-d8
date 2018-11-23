@@ -35,6 +35,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: tabs
+      region: content
     group_teaser_info:
       children:
         - field_image
@@ -48,6 +49,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Teaser Info'
+      region: content
     group_event_info:
       children:
         - field_link
@@ -63,6 +65,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Event Info'
+      region: content
     group_unused:
       children:
         - field_body
@@ -76,6 +79,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Unused
+      region: content
     group_date_override_text:
       children:
         - field_text_display_date
@@ -89,6 +93,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Date override text'
+      region: content
 id: node.event.default
 targetEntityType: node
 bundle: event

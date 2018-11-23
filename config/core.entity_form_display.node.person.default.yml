@@ -29,6 +29,7 @@ third_party_settings:
         classes: ''
         id: ''
       label: tabs
+      region: content
     group_nerdologues_members:
       children:
         - field_last_name
@@ -44,6 +45,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Nerdologues Members'
+      region: content
     group_bio:
       children:
         - field_body
@@ -57,6 +59,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: bio
+      region: content
 id: node.person.default
 targetEntityType: node
 bundle: person

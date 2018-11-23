@@ -49,14 +49,14 @@ if ('lando' === $_ENV['PANTHEON_ENVIRONMENT']) {
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
 
 if ('live' === $_ENV['PANTHEON_ENVIRONMENT'] || 'test' === $_ENV['PANTHEON_ENVIRONMENT'] ) {
-  $settings['config_readonly'] = TRUE;
+ // $settings['config_readonly'] = TRUE;
 }
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT']) && 'lando' !== $_ENV['PANTHEON_ENVIRONMENT'] && php_sapi_name() != 'cli') {
   // Redirect to https://$primary_domain in the Live environment
-  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+  if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live-todo-update-this-after-launch') {
     /** Replace www.example.com with your registered domain name */
-    $primary_domain = 'new.nerdologues.com';
+    // $primary_domain = 'www.nerdologues.com';
   }
   else {
     // Redirect to HTTPS on every Pantheon environment.

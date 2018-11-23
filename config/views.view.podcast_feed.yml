@@ -348,7 +348,7 @@ display:
           id: view_node
           table: node
           field: view_node
-          relationship: none
+          relationship: field_ref_podcast
           group_type: group
           admin_label: ''
           label: ''
@@ -393,10 +393,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           text: view
+          output_url_as_text: false
+          absolute: true
           entity_type: node
           plugin_id: entity_link
-          output_url_as_text: false
-          absolute: false
         field_date_published:
           id: field_date_published
           table: node__field_date_published
@@ -572,10 +572,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          text: view
+          output_url_as_text: true
           absolute: false
           entity_type: node
           plugin_id: entity_link
-          output_url_as_text: true
         field_int_duration:
           id: field_int_duration
           table: node__field_int_duration
@@ -994,7 +995,7 @@ display:
           plugin_id: node_nid
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1017,7 +1018,7 @@ display:
     display_options:
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1049,7 +1050,7 @@ display:
           date_field: field_date_published
           guid_field_options:
             guid_field: path
-            guid_field_is_permalink: 1
+            guid_field_is_permalink: 0
           enclosure_url: field_file
           enclosure_size: filesize
           enclosure_type: filemime
