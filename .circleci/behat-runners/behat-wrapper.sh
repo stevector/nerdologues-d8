@@ -10,4 +10,4 @@ export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "ht
 # Make sure the site is accessible over the web before making requests to it with Behat.
 curl http://$TERMINUS_ENV-$TERMINUS_SITE.pantheonsite.io/
 
-./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict bin/behat --log-step-times "$@"
+./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict --log-step-times "$@"
