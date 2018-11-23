@@ -56,7 +56,7 @@ const config = {
       "url": BackstopTestUrl + "/nerds/eric-garneau",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/eric-garneau",
 
-      "delay": 
+      "delay": 5000,
       ,
       "misMatchThreshold" : 0.1
     },
