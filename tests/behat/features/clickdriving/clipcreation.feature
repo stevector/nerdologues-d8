@@ -3,7 +3,7 @@ Feature: Clip creation
   As a content adminstrator
   I want podcast clips created for each story in an episode
 
-  @api @timing
+  @api
   Scenario: Clip nodes created for each list item in a your stories podcast
     Given I log in as an administrator
     Given  I make and view a podcast with the title "Your Stories"
@@ -25,7 +25,7 @@ Feature: Clip creation
     Then I should see the link "Some Random Episode" in the "From the episode" region
 
 
-  @api  @timing
+  @api
   Scenario: More link becomes visible after three clips
 
     Given I log in as a content_administrator
@@ -130,7 +130,7 @@ Feature: Clip creation
     Then the response status code should be 200
     And I see the text "Another great podcast: Clip Archive"
 
-  @api  @timings
+  @api
   Scenario: Visible quotes
 
     Given I log in as a content_administrator

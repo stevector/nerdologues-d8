@@ -66,8 +66,8 @@ Feature: Pathauto
 #    Given I am viewing a event with the title "Your Stories November"
 #    Then the response should contain "<link rel=\"canonical\" href=\"/events/your-stories-november\" />"
 
-  @api @video
+  @api
   Scenario: Video
     Given I log in as a content_administrator
-    When I make and view a video with the title "Here is a videoss"
-    Then the response should contain "<link rel=\"canonical\" href=\"/videos/here-videoss\" />"
+    When I make and view a video with the title "Here is a video"
+    Then the response should contain "<link rel=\"canonical\" href=\"/videos/here-video\" />"
