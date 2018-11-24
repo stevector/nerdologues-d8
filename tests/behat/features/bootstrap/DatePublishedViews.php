@@ -143,7 +143,7 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
   {
     $this->minkContext->visit('node/add/' . $type);
     $this->minkContext->fillField('Title', $title);
-    if ('podcast' !== $type) {
+    if ('podcast' !== $type && 'page' !== $type) {
       $this->minkContext->checkOption("Publishing status");
     }
     $this->minkContext->pressButton('Save');
