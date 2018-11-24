@@ -5,7 +5,7 @@
   @api
   Scenario: video and clips
     Given I log in as a content_administrator
-   Given a "member_designations" term with the name "Viewable bio page"
+   # Given a "member_designations" term with the name "Viewable bio page"
 
     # Make two people
     When I visit "node/add/person"
@@ -33,7 +33,7 @@
     Then I should not see the link "Joe Non-member"
 
     # CLIP
-    Given I am viewing a podcast with the title "Someone's cool podcast"
+    Given I make and view a podcast with the title "Someone's cool podcast"
     # PODCAST EPISODE
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
