@@ -6,7 +6,7 @@ Feature: Clip creation
   @api
   Scenario: Clip nodes created for each list item in a your stories podcast
     Given I log in as an administrator
-    Given I am viewing a podcast with the title "Your Stories"
+    Given  I make and view a podcast with the title "Your Stories"
     When I visit "node/add/podcast_episode"
     And I select the radio button "Your Stories"
     And I fill in "title[0][value]" with "Some Random Episode"
@@ -29,7 +29,7 @@ Feature: Clip creation
   Scenario: More link becomes visible after three clips
 
     Given I log in as a content_administrator
-    Given a "member_designations" term with the name "Viewable bio page"
+  #  Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
     When I visit "node/add/person"
@@ -38,7 +38,7 @@ Feature: Clip creation
     And I press "Save"
 
     # Make a podcast and episode.
-    Given I am viewing a podcast with the title "Another great podcast"
+    Given I make and view a podcast with the title "Another great podcast"
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one podcast episode"
@@ -134,7 +134,8 @@ Feature: Clip creation
   Scenario: Visible quotes
 
     Given I log in as a content_administrator
-    Given a "member_designations" term with the name "Viewable bio page"
+    # This step is not necessary anymore now that tests run on a populated database.
+    #Given a "member_designations" term with the name "Viewable bio page"
 
     #Make a person
     When I visit "node/add/person"

@@ -69,7 +69,8 @@
         "drupal/coder": "^8.2.0-beta1",
         "squizlabs/php_codesniffer": "2.0.*@dev",
         "knplabs/friendly-contexts": "^0.7.0",
-        "symfony/phpunit-bridge": "*"
+        "symfony/phpunit-bridge": "*",
+        "bex/behat-step-time-logger": "^2.0"
     },
     "replace": {
         "drupal/drupal": "*"

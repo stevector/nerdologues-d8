@@ -133,4 +133,19 @@ class DatePublishedViews implements Context, SnippetAcceptingContext {
 
 //    $this->node_title = $podcast_episode_title;
   }
+
+
+  /**
+   * @When I make and view a :type with the title :title
+   *
+   */
+  public function fasterNodeCreation($type, $title)
+  {
+    $this->minkContext->visit('node/add/' . $type);
+    $this->minkContext->fillField('Title', $title);
+    if ('podcast' !== $type && 'page' !== $type) {
+      $this->minkContext->checkOption("Publishing status");
+    }
+    $this->minkContext->pressButton('Save');
+  }
 }

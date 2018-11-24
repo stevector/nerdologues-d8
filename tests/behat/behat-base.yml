@@ -30,6 +30,7 @@ default:
       contexts:
         <<: *defaultcontexts
   extensions:
+    Bex\Behat\StepTimeLoggerExtension: ~
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~

@@ -3,7 +3,7 @@ Feature: Nerdlist
   As a content creator
   I need to create bios and have them appear on the nerd list
 
-  @api
+  @api @timing
   Scenario: Bio without proper term does not appear on the nerd page.
     Given I log in as a content_administrator
     When I visit "node/add/person"
@@ -20,8 +20,8 @@ Feature: Nerdlist
   @api
     Scenario: Bio with 'Current Member' term does appear on nerd page..
       Given I log in as a content_administrator
-      And a "member_designations" term with the name "Current Member"
-      And a "member_designations" term with the name "Viewable bio page"
+    #  And a "member_designations" term with the name "Current Member"
+    #  And a "member_designations" term with the name "Viewable bio page"
       When I visit "node/add/person"
       # @todo, figure out random handling.
       And I fill in "title[0][value]" with "New Nerdologues Member"
