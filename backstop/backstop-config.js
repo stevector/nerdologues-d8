@@ -71,7 +71,6 @@ const config = {
       "label": "Nerd bio, No clips, Jando",
       "url": BackstopTestUrl + "/nerds/michael-jando",
       "referenceUrl": BackstopReferenceBaseUrl + "/nerds/michael-jando",
-
       "delay": 8000,
       "misMatchThreshold" : 0.1
     },
@@ -79,7 +78,6 @@ const config = {
       "label": "Nerd videos",
       "url": BackstopTestUrl + "/node/72/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/72/videos",
-
       "delay": 8000,
       "misMatchThreshold" : 0.1
     },
@@ -87,9 +85,15 @@ const config = {
       "label": "Nerd videos 2",
       "url": BackstopTestUrl + "/node/73/videos",
       "referenceUrl": BackstopReferenceBaseUrl + "/node/73/videos",
-
       "delay": 8000,
       "misMatchThreshold" : 0.1
+    },
+    {	
+      "label": "podcasts",	
+      "url": BackstopTestUrl + "/podcasts",	
+      "referenceUrl": BackstopReferenceBaseUrl + "/podcasts",	
+      "delay": 9000,	
+      "misMatchThreshold" : 0.1	
     },
     {
       "label": "Clips by person",
