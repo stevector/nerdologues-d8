@@ -14,26 +14,26 @@ Feature: Pathauto
   @api
     Scenario: Podcast, Podcast Episode, and clip
     Given I log in as a content_administrator
-    Given I make and view a podcast with the title "Someone's cool podcast"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast\" />"
+    Given I make and view a podcast with the title "Someone's best podcast"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-best-podcast\" />"
 
     # PODCAST EPISODE
     Given I log in as a content_administrator
     When I visit "node/add/podcast_episode"
     And I fill in "title[0][value]" with "That one pod episode"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Someone's best podcast"
     And I check the box "Publishing status"
     And I press "Save"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/episodes/one-pod-episode\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-best-podcast/episodes/one-pod-episode\" />"
 
     # CLIP
     When I visit "node/add/clip"
     And I fill in "title[0][value]" with "A cool Clip of a story"
-    And I select the radio button "Someone's cool podcast"
+    And I select the radio button "Someone's best podcast"
     And I fill in "field_ref_podcast_episode[0][target_id]" with "That one pod episode"
     And I check the box "Publishing status"
     And I press "Save"
-    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-cool-podcast/clips/cool-clip-story\" />"
+    Then the response should contain "<link rel=\"canonical\" href=\"/podcasts/someones-best-podcast/clips/cool-clip-story\" />"
 
   @api
   Scenario: Basic page
