@@ -112,9 +112,11 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
+            "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
@@ -135,14 +137,23 @@
               "entity_browser": "https://www.drupal.org/files/issues/entity-browser-widget-2775505-7.patch",
               "custom require hack": "https://raw.githubusercontent.com/stevector/nerdologues-d8/master/patches/remote_stream_wrapper_require.patch?testing"
             }
+        },
+        "drupal-scaffold": {
+            "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8-scaffolding/{version}/{path}",
+            "includes": [
+                "sites/default/default.services.pantheon.preproduction.yml",
+                "sites/default/settings.pantheon.php"
+            ],
+            "excludes": [
+                ".csslintrc",
+                ".editorconfig",
+                ".eslintignore",
+                ".eslintrc.json",
+                ".htaccess",
+                "web.config"
+            ]
         }
-    },
-
-    "drupal-scaffold": {
-        "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8/{version}/{path}",
-        "includes": [
-            "sites/default/default.services.pantheon.preproduction.yml",
-            "sites/default/settings.pantheon.php"
-        ]
     }
+
+
 }
