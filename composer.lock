@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "335c5cf53fb158496255b07d93ee5220",
+    "content-hash": "4a73ef37f29776015b9186fa7cf6ec09",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1692,16 +1692,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.6.1",
+            "version": "8.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970"
+                "reference": "b66c9334d4a4264589c8b8a2fef73eefcb34a26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
-                "reference": "1c8b96c89288daf4d145c6dbcf1e8f0d0c9d7970",
+                "url": "https://api.github.com/repos/drupal/core/zipball/b66c9334d4a4264589c8b8a2fef73eefcb34a26e",
+                "reference": "b66c9334d4a4264589c8b8a2fef73eefcb34a26e",
                 "shasum": ""
             },
             "require": {
@@ -1867,7 +1867,7 @@
                 "jcalderonzumba/gastonjs": "^1.0.2",
                 "jcalderonzumba/mink-phantomjs-driver": "^0.3.1",
                 "mikey179/vfsstream": "^1.2",
-                "phpspec/prophecy": "^1.4",
+                "phpspec/prophecy": "^1.7",
                 "phpunit/phpunit": "^4.8.35 || ^6.5",
                 "symfony/css-selector": "^3.4.0",
                 "symfony/debug": "^3.4.0",
@@ -1926,7 +1926,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2018-09-10T11:50:07+00:00"
+            "time": "2019-01-02T21:52:52+00:00"
         },
         {
             "name": "drupal/ctools",
@@ -2176,7 +2176,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-10-10 19:04:05"
+            "time": "2018-10-10T19:04:05+00:00"
         },
         {
             "name": "drupal/ds",
@@ -2449,7 +2449,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/entity_reference_revisions"
             },
-            "time": "2018-10-15 07:04:55"
+            "time": "2018-10-15T07:04:55+00:00"
         },
         {
             "name": "drupal/field_group",
@@ -2507,7 +2507,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/field_group"
             },
-            "time": "2018-08-06 10:30:37"
+            "time": "2018-08-06T10:30:37+00:00"
         },
         {
             "name": "drupal/google_analytics",
@@ -2664,7 +2664,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/layout_plugin"
             },
-            "time": "2016-10-03 18:36:43"
+            "time": "2016-10-03T18:36:43+00:00"
         },
         {
             "name": "drupal/media_entity",
@@ -2823,7 +2823,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/media_entity_audio"
             },
-            "time": "2016-09-29 16:29:04"
+            "time": "2016-09-29T16:29:04+00:00"
         },
         {
             "name": "drupal/migrate_plus",
@@ -3081,7 +3081,7 @@
                 "issues": "https://www.drupal.org/project/issues/page_manager",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-04-14 01:41:41"
+            "time": "2018-04-14T01:41:41+00:00"
         },
         {
             "name": "drupal/panelizer",
@@ -3471,7 +3471,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/paragraphs"
             },
-            "time": "2018-10-15 20:59:21"
+            "time": "2018-10-15T20:59:21+00:00"
         },
         {
             "name": "drupal/pathauto",
@@ -3672,7 +3672,7 @@
                 "reference": "1b0fbf9a85aec6d288bcd3688c64682a25845524"
             },
             "type": "drupal-module",
-            "time": "2018-04-21 20:15:43"
+            "time": "2018-04-21T20:15:43+00:00"
         },
         {
             "name": "drupal/token",
@@ -3840,7 +3840,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/youtube"
             },
-            "time": "2018-08-10 12:10:57"
+            "time": "2018-08-10T12:10:57+00:00"
         },
         {
             "name": "drush/drush",
@@ -9045,7 +9045,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-09-21 19:08:45"
+            "time": "2018-09-21T19:08:45+00:00"
         },
         {
             "name": "drupal/drupal-extension",
@@ -9116,7 +9116,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-10-02 17:17:19"
+            "time": "2018-10-02T17:17:19+00:00"
         },
         {
             "name": "drush-ops/behat-drush-endpoint",
