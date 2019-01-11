@@ -8,25 +8,6 @@ defaults: &defaults
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
 
-jobs: &jobs
-  - build
-  - behavioral
-  - migrationcheck:
-      requires:
-         - build
-  - backstop:
-      requires:
-         - build
-  - merge:
-      requires:
-         - migrationcheck
-         - backstop
-         - build
-         - behavioral
-      filters:
-        branches:
-          only: master
-
 version: 2
 jobs:
     build:
@@ -186,7 +167,20 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      <<: *jobs
+      - build
+      - behavioral
+      - migrationcheck:
+          requires:
+             - build
+      - backstop:
+          requires:
+             - build
+      - merge:
+          requires:
+             - migrationcheck
+             - backstop
+             - build
+             - behavioral
   nightly:
     triggers:
       - schedule:
@@ -196,7 +190,21 @@ workflows:
               only:
                 - master
     jobs:
-      <<: *jobs
+      - build
+      - behavioral
+      - migrationcheck:
+          requires:
+             - build
+      - backstop:
+          requires:
+             - build
+      - merge:
+          requires:
+             - migrationcheck
+             - backstop
+             - build
+             - behavioral
+
 
 
 
