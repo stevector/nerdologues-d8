@@ -175,16 +175,36 @@ workflows:
       - backstop:
           requires:
              - build
-             # - migrationcheck
-#      - lighthouse:
-#          requires:
-#             - build
       - merge:
           requires:
              - migrationcheck
              - backstop
              - build
              - behavioral
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
           filters:
             branches:
-              only: master
+              only:
+                - master
+    jobs:
+      - build
+      - behavioral
+      - migrationcheck:
+          requires:
+             - build
+      - backstop:
+          requires:
+             - build
+      - merge:
+          requires:
+             - migrationcheck
+             - backstop
+             - build
+             - behavioral
+
+
+
+
