@@ -21,7 +21,7 @@ jobs:
 
             - run:
                 name: variables
-                command: ./.circleci/variables.sh
+                command: ./.circleci/set-up-global-vars.sh
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
@@ -122,7 +122,7 @@ jobs:
 
             - run:
                 name: variables
-                command: ./.circleci/variables.sh
+                command: ./.circleci/set-up-global-vars.sh
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
