@@ -11,6 +11,10 @@ mkdir -p $CIRCLE_ARTIFACTS_DIR
  terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 } &> /dev/null
 
+{
+  composer config --global github-oauth.github.com $GITHUB_TOKEN
+} &> /dev/null
+
 
 # The TERMINUS_ENV might be persisting from job to job.
 if [ -f /tmp/globals/TERMINUS_ENV ]
