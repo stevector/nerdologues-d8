@@ -20,7 +20,7 @@ fi
   echo 'export PANTHEON_DEV_SITE_URL=https://dev-${TERMINUS_SITE}.pantheonsite.io'
   echo 'export PANTHEON_SITE_URL=https://${TERMINUS_ENV}-${TERMINUS_SITE}.pantheonsite.io'
   echo 'CIRCLE_ARTIFACTS_DIR="/tmp/artifacts"'
-  echo 'export CIRCLE_ARTIFACTS_URL=${CIRCLE_BUILD_URL}/artifacts/$CIRCLE_NODE_INDEX/artifacts'
+  echo 'export CIRCLE_ARTIFACTS_URL=${CIRCLE_BUILD_URL}/artifacts/$CIRCLE_NODE_INDEX/artifact'
   echo 'export PR_NUMBER=${CIRCLE_PULL_REQUEST##*/}'
 ) >> $BASH_ENV
 
