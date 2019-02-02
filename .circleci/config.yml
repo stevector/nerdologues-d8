@@ -20,6 +20,10 @@ jobs:
                     - composer-{{ checksum "composer.lock" }}
 
             - run:
+                name: logins
+                command: ./.circleci/logins.sh
+
+            - run:
                 name: variables
                 command: ./.circleci/set-up-global-vars.sh
 
@@ -119,6 +123,10 @@ jobs:
             - restore_cache:
                 keys:
                     - composer-{{ checksum "composer.lock" }}
+
+            - run:
+                name: logins
+                command: ./.circleci/logins.sh
 
             - run:
                 name: variables

@@ -7,17 +7,6 @@ mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
 CIRCLE_ARTIFACTS_DIR='/tmp/artifacts'
 mkdir -p $CIRCLE_ARTIFACTS_DIR
 
-{
- terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
-} &> /dev/null
-
-{
-  git config user.email "stevepersch+circleci@gmail.com"
-  git config user.name "Circle CI Automation"
-  composer config --global github-oauth.github.com $GITHUB_TOKEN
-} &> /dev/null
-
-
 # The TERMINUS_ENV might be persisting from job to job.
 if [ -f /tmp/globals/TERMINUS_ENV ]
 then
