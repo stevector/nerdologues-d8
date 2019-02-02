@@ -24,4 +24,8 @@ mkdir -p $CIRCLE_ARTIFACTS_DIR
   echo 'export CIRCLE_ARTIFACTS_URL=${CIRCLE_BUILD_URL}/artifacts/$CIRCLE_NODE_INDEX/artifacts'
   echo 'export PR_NUMBER=${CIRCLE_PULL_REQUEST##*/}'
 ) >> $BASH_ENV
+
+
+echo $BASH_ENV
+
 source $BASH_ENV
