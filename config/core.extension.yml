@@ -71,7 +71,6 @@ module:
   pathauto: 1
   views: 10
   paragraphs: 11
-  standard: 1000
 theme:
   classy: 0
   bartik: 0
