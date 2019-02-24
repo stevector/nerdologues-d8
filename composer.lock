@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a73ef37f29776015b9186fa7cf6ec09",
+    "content-hash": "638dcee1d26d33a5002e6ebb0d26b363",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3569,8 +3569,7 @@
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
-                },
-                "patches_applied": []
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
@@ -5309,6 +5308,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
@@ -9031,16 +9031,16 @@
         },
         {
             "name": "drupal/drupal-driver",
-            "version": "dev-master",
+            "version": "v2.0.0-alpha6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa"
+                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa",
-                "reference": "395de88a9ea73b0dcaa89a3ffc2c29248cccc4aa",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/732f2c7b3c262487bed0876a209e5326bc3935e4",
+                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4",
                 "shasum": ""
             },
             "require": {
@@ -9086,7 +9086,7 @@
                 "test",
                 "web"
             ],
-            "time": "2018-09-21T19:08:45+00:00"
+            "time": "2018-12-18T23:21:10+00:00"
         },
         {
             "name": "drupal/drupal-extension",
@@ -9623,52 +9623,6 @@
             "time": "2016-01-04T10:44:38+00:00"
         },
         {
-            "name": "mikey179/vfsStream",
-            "version": "v1.6.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mikey179/vfsStream.git",
-                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
-                "reference": "d5fec95f541d4d71c4823bb5e30cf9b9e5b96145",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "org\\bovigo\\vfs\\": "src/main/php"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Virtual file system to mock the real file system in unit tests.",
-            "homepage": "http://vfs.bovigo.org/",
-            "time": "2017-08-01T08:02:14+00:00"
-        },
-        {
             "name": "nelmio/alice",
             "version": "v2.3.5",
             "source": {
@@ -10067,7 +10021,6 @@
         "drupal/timeperiod": 20,
         "drupal/config_readonly": 10,
         "drupal/drupal-extension": 20,
-        "drupal/drupal-driver": 20,
         "squizlabs/php_codesniffer": 20
     },
     "prefer-stable": true,
