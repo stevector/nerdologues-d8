@@ -58,7 +58,6 @@
     },
 
     "require-dev": {
-        "mikey179/vfsStream": "~1.2",
         "drush-ops/behat-drush-endpoint": "*",
         "drupal/drupal-extension": "dev-master",
         "drupal/coder": "^8.2.0-beta1",
