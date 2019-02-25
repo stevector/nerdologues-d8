@@ -2,13 +2,3 @@ services:
   nerdcustom.clipcreator:
     class: Drupal\nerdcustom\ClipCreator
     arguments: ["@entity.manager"]
-  stream_wrapper.http:
-    class: Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper
-    arguments: ['@http_client']
-    tags:
-      - { name: stream_wrapper, scheme: http }
-  stream_wrapper.https:
-    class: Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper
-    arguments: ['@http_client']
-    tags:
-      - { name: stream_wrapper, scheme: https }
