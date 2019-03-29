@@ -20,8 +20,8 @@ Feature: Event dates
   Scenario: Events in the future
     Given I log in as a content_administrator
     When I create an Event with a date in the future
-    And that event appears on the events page in the upcoming events section
-    Then that event appears on the homepage
+    Then that event appears on the events page in the upcoming events section
+    And that event appears on the homepage
 
   @api
   Scenario: Events in the past
