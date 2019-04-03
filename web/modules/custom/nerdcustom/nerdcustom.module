@@ -2,6 +2,7 @@
 
 /**
  * @file
+ *
  * Contains nerdcustom.module..
  */
 
@@ -16,19 +17,19 @@ use Drupal\Core\Field\FieldItemListInterface;
 /**
  * Implements hook_node_links_alter().
  */
-function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array &$context) {
+function nerdcustom_node_links_alter( array &$links, NodeInterface $entity, array &$context) {
 
   if ($entity->bundle() === 'person') {
-    $links['node']['#links']['node-readmore'] = array(
+   $links['node']['#links']['node-readmore'] = array(
       'title' => t('Full bio, podcast clips and links<span class="visually-hidden"> for @title</span>', array(
-        '@title' => $entity->label(),
+        '@title' =>$entity->label(),
       )),
-      'url' => $entity->urlInfo(),
+      'url'  => $entity->urlInfo(),
       'language' => $entity->language(),
       'attributes' => array(
         'rel' => 'tag',
         'title' => $entity->label(),
-      ),
+       ),
     );
   }
   else {
@@ -55,8 +56,7 @@ function nerdcustom_canonical_helper(&$variables, $node) {
 
   foreach ($node->uriRelationships() as $rel) {
     $url = $node->toUrl($rel);
-    // Add link relationships if the user is authenticated or if the anonymous
-    // user has access. Access checking must be done for anonymous users to
+    // Add link relationships if the user is authenticated or if the anonymous user has access. Access checking must be done for anonymous users to
     // avoid traffic to inaccessible pages from web crawlers. For
     // authenticated users, showing the links in HTML head does not impact
     // user experience or security, since the routes are access checked when
@@ -150,12 +150,16 @@ function nerdcustom_preprocess_html(&$vars) {
 function nerdcustom_rewrite_live_ssl($html, $elements) {
   // All references to the live site should be https.
   $html = str_replace('http://www.nerdologues.com', '//www.nerdologues.com', $html);
-  // @todo, send audio back to https https://github.com/stevector/nerdologues-d8/issues/239
+  //@todo, send audio back to https https://github.com/stevector/nerdologues-d8/issues/239
   $html = str_replace('https://media.nerdologues.com', 'http://media.nerdologues.com', $html);
   $html = str_replace('https://podcasts.nerdologues.com', 'http://podcasts.nerdologues.com', $html);
   $html = str_replace('http://www.youtube.com/embed', '//www.youtube.com/embed', $html);
   return $html;
 }
+
+
+
+
 
 /**
  * Implements hook_views_data_alter().
