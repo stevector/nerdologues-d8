@@ -5,9 +5,13 @@
 
 set -ex
 
-terminus env:wake nerdologues.$D7_ENV
-export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
-terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
+
+{
+  terminus env:wake nerdologues.$D7_ENV
+  export D7_MYSQL_URL=$(terminus connection:info nerdologues.$D7_ENV --field=mysql_url)
+  terminus secrets:set $SITE_ENV migrate_source_db__url $D7_MYSQL_URL
+} &> /dev/null
+
 
 terminus drush $SITE_ENV -- cr
 terminus drush $SITE_ENV -- ms
