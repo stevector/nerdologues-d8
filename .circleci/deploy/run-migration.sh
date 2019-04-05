@@ -5,6 +5,7 @@
 
 set -ex
 
+echo "Starting migration"
 
 {
   terminus env:wake nerdologues.$D7_ENV
