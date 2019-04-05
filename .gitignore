@@ -102,5 +102,6 @@ web/sites/*/files
 
 /.idea/
 
+# Backstop dependencies and artifacts
 /backstop/node_modules
 /backstop/backstop_data/
