@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\nerdcustom\ClipCreator.
- */
-
 namespace Drupal\nerdcustom;
 
 use Drupal\Core\Entity\EntityManagerInterface;
@@ -35,7 +30,7 @@ class ClipCreator {
   /**
    * Create podcast clips based on an episode.
    *
-   * @param NodeInterface $podcast_episode_node
+   * @param Drupal\node\NodeInterface $podcast_episode_node
    *   The node being passed in from hook_entity_insert.
    */
   public function createClips(NodeInterface $podcast_episode_node) {
@@ -55,7 +50,7 @@ class ClipCreator {
         'title' => strip_tags($clip_title),
         // @todo, is there a cleaner way to target this id?
         'field_ref_podcast' => $podcast_episode_node->field_ref_podcast->referencedEntities()[0],
-        'field_ref_podcast_episode' => $podcast_episode_node->id()
+        'field_ref_podcast_episode' => $podcast_episode_node->id(),
       ];
 
       $clip = $this->entityManager->getStorage('node')->create($clip_values);
@@ -66,7 +61,7 @@ class ClipCreator {
   /**
    * Validate that this node should have clips created for it.
    *
-   * @param NodeInterface $podcast_episode_node
+   * @param Drupal\node\NodeInterface $podcast_episode_node
    *   The node being passed in from hook_entity_insert. This node might not
    *   actually be a podcast_episode.
    */
@@ -112,7 +107,7 @@ class ClipCreator {
     $clip_file_name = '';
     $pathinfo = pathinfo($local_source_file);
     $sanitized_story_title = preg_replace("/[^A-Za-z0-9]/", '-', $story_title);
-    if (!empty($pathinfo['filename'])  && !empty($pathinfo['extension']) && !empty ($sanitized_story_title)) {
+    if (!empty($pathinfo['filename']) && !empty($pathinfo['extension']) && !empty($sanitized_story_title)) {
       $clip_file_name = $pathinfo['filename'] . '--' . $sanitized_story_title;
       // Add on seconds to the file name if there are end_seconds.
       if (!empty($end_seconds)) {
@@ -124,7 +119,7 @@ class ClipCreator {
       }
       $clip_file_name .= '.' . $pathinfo['extension'];
     }
-    return $base_url .  '/' . $clip_file_name;
+    return $base_url . '/' . $clip_file_name;
   }
 
 }

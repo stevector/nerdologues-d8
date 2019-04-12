@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Swaps services.
- */
-
 namespace Drupal\nerdcustom;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
@@ -24,4 +19,5 @@ class NerdCustomServiceProvider extends ServiceProviderBase {
     $definition = $container->getDefinition('stream_wrapper.https');
     $definition->setClass('\Drupal\nerdcustom\StreamWrapper\CachedHttpStreamWrapper');
   }
+
 }

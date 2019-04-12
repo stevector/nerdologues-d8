@@ -1,17 +1,11 @@
 <?php
 
-/**
- * @file
- * A process plugin to create quote paragraph entities from field collections.
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 use Drupal\Core\Database\Database;
-use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * A process plugin to create date values from field collections.

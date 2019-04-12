@@ -1,19 +1,11 @@
 <?php
 
-/**
- * @file
- * A process plugin to map old roles to new.
- *
- * Only nerdologues members should have bio pages.
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
 use Drupal\Core\Database\Database;
-
 
 /**
  * This plugin maps old roles to new roles.
@@ -39,9 +31,10 @@ class NerdYoutubeField extends ProcessPluginBase {
       $url = str_replace('&feature=youtu.be', '', $url);
       $return = [
         'input' => $url,
-        'video_id' => youtube_get_video_id($url)
+        'video_id' => youtube_get_video_id($url),
       ];
       return $return;
     }
   }
+
 }

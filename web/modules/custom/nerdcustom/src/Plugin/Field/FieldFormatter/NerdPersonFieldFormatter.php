@@ -1,18 +1,8 @@
 <?php
 
-/**
- * @file
- * A field formatter to return a person node as a link or plain text.
- *
- * Only nerdologues members should have bio pages.
- */
-
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
@@ -28,7 +18,8 @@ use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter
  *   }
  * )
  */
-class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
+class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter {
+
   /**
    * {@inheritdoc}
    */
@@ -55,14 +46,14 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $view_mode = $this->getSetting('view_mode');
-    $elements = array();
+    $elements = [];
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
       if ($this->showEntityLink($entity)) {
-        $elements[$delta] = array('#markup' => $entity->link());
+        $elements[$delta] = ['#markup' => $entity->link()];
       }
       else {
-        $elements[$delta] = array('#markup' => $entity->label());
+        $elements[$delta] = ['#markup' => $entity->label()];
       }
       $elements[$delta]['#cache']['tags'] = $entity->getCacheTags();
     }
@@ -73,8 +64,10 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
   /**
    * Get the referenced entities as an array of labels (strings).
    *
-   * @param EntityInterface $entity
+   * @param Drupal\Core\Entity\EntityInterface $entity
    *   The person node to be checked.
+   * @param string $field_name
+   *   The field doing the referencing.
    *
    * @return array
    *   An array of strings that are the entity labels.
@@ -91,7 +84,7 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
   /**
    * Determine of the entity should be shown as a link.
    *
-   * @param EntityInterface $entity
+   * @param Drupal\Core\Entity\EntityInterface $entity
    *   The person node to be checked.
    *
    * @return bool
@@ -101,4 +94,5 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter  {
     $labels = $this->getReferencedEntityLabels($entity, 'field_ref_term_designation');
     return in_array('Viewable bio page', $labels);
   }
+
 }

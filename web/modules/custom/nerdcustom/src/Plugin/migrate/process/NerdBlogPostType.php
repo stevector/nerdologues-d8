@@ -1,17 +1,10 @@
 <?php
 
-/**
- * @file
- * This plugin maps "blogpost" to "blog_post".
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
-use Drupal\Core\Database\Database;
-
 
 /**
  * This plugin maps "blogpost" to "blog_post".
@@ -29,4 +22,5 @@ class NerdBlogPostType extends ProcessPluginBase {
 
     return 'blog_post';
   }
+
 }
