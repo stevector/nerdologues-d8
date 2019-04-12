@@ -1,14 +1,10 @@
 <?php
 
-/**
- * @file
- * Extend the core Rss plugin to make a podcast feed.
- */
-
 namespace Drupal\views_rss_podcast\Plugin\views\style;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\style\Rss;
+
 /**
  * Default style plugin to render an RSS feed.
  *
@@ -38,7 +34,7 @@ class PodcastRss extends Rss {
         '#type' => 'html_tag',
         '#tag' => 'itunes:image',
         "#attributes" => ['href' => $this->tokenizeValue($this->options['itunesimage'], 0)],
-      ]
+      ],
     ];
   }
 
@@ -54,7 +50,9 @@ class PodcastRss extends Rss {
 
     $this->namespaces = [
       'xmlns:dc' => 'http://purl.org/dc/elements/1.1/',
-      'xmlns:itunes' => "http://www.itunes.com/dtds/podcast-1.0.dtd"];
+      'xmlns:itunes' => "http://www.itunes.com/dtds/podcast-1.0.dtd",
+    ];
+
     return $return;
   }
 
@@ -102,4 +100,5 @@ class PodcastRss extends Rss {
 
     return $description;
   }
+
 }

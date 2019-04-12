@@ -45,7 +45,7 @@ class NerdPersonFieldFormatter extends EntityReferenceEntityFormatter {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $view_mode = $this->getSetting('view_mode');
+
     $elements = [];
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {

@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @file
- * Extend the core RssFields plugin to make a podcast feed.
- */
-
 namespace Drupal\views_rss_podcast\Plugin\views\row;
-
 
 use Drupal\Core\Form\FormStateInterface;
 
@@ -39,11 +33,10 @@ class RssPodcastFields extends RssFields {
 
       $form[$field_def["fapi_key"]] = [
         '#type' => 'select',
-        '#title' => $this->t($field_def["fapi_title"]),
-        '#description' => $this->t($field_def["fapi_description"]),
+        '#title' => $field_def["fapi_title"],
+        '#description' => $field_def["fapi_description"],
         '#options' => $view_fields_labels,
         '#default_value' => $this->options[$field_def["fapi_key"]],
-        // '#required' => TRUE,
       ];
     }
   }
@@ -84,7 +77,6 @@ class RssPodcastFields extends RssFields {
 
     }
     $row_index++;
-    // itunes:image
     return $build;
   }
 
@@ -97,50 +89,51 @@ class RssPodcastFields extends RssFields {
         "feed_key" => "enclosure",
         "fapi_key" => "enclosure_url",
         "fapi_title" => "mp3 url",
-        "fapi_description" => "absolute url to mp3 file"
+        "fapi_description" => "absolute url to mp3 file",
       ],
       [
         "feed_key" => "enclosure_size",
         "fapi_key" => "enclosure_size",
         "fapi_title" => "mp3 file size",
-        "fapi_description" => "An unformatted integer"
+        "fapi_description" => "An unformatted integer",
       ],
       [
         "feed_key" => "enclosure_type",
         "fapi_key" => "enclosure_type",
         "fapi_title" => "mp3 file type",
-        "fapi_description" => "Mime type"
+        "fapi_description" => "Mime type",
       ],
       [
         "feed_key" => "itunes:author",
         "fapi_key" => "itunes_author",
         "fapi_title" => "Itunes author duration",
-        "fapi_description" => "text to appear in itunes:author"
+        "fapi_description" => "text to appear in itunes:author",
       ],
       [
         "feed_key" => "itunes:image",
         "fapi_key" => "image_field",
         "fapi_title" => "Itunes image",
-        "fapi_description" => "Absolute url for image"
+        "fapi_description" => "Absolute url for image",
       ],
       [
         "feed_key" => "itunes:explicit",
         "fapi_key" => "explicit_field",
         "fapi_title" => "Itunes explicit",
-        "fapi_description" => "yes or no"
+        "fapi_description" => "yes or no",
       ],
       [
         "feed_key" => "itunes:duration",
         "fapi_key" => "duration_field",
         "fapi_title" => "Itunes item duration",
-        "fapi_description" => "The number of seconds in the mp3"
+        "fapi_description" => "The number of seconds in the mp3",
       ],
       [
         "feed_key" => "itunes:summary",
         "fapi_key" => "summary_field",
         "fapi_title" => "Itunes item summary",
-        "fapi_description" => "The description of the item"
-      ]
+        "fapi_description" => "The description of the item",
+      ],
     ];
   }
+
 }

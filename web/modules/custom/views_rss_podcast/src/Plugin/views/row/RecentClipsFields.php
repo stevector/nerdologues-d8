@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @file
- * Extend the core RssFields plugin to make a podcast feed.
- */
-
 namespace Drupal\views_rss_podcast\Plugin\views\row;
-
 
 use Drupal\Core\Form\FormStateInterface;
 
@@ -36,11 +30,10 @@ class RecentClipsFields extends RssFields {
     foreach ($this->extraFields() as $field_def) {
       $form[$field_def["fapi_key"]] = [
         '#type' => 'select',
-        '#title' => $this->t($field_def["fapi_title"]),
-        '#description' => $this->t($field_def["fapi_description"]),
+        '#title' => $field_def["fapi_title"],
+        '#description' => $field_def["fapi_description"],
         '#options' => $view_fields_labels,
         '#default_value' => $this->options[$field_def["fapi_key"]],
-        // '#required' => TRUE,
       ];
     }
 
@@ -73,7 +66,7 @@ class RecentClipsFields extends RssFields {
       "body",
       "episodetitle",
       "podcast",
-      "podcastimage"
+      "podcastimage",
     ];
     $return = [];
     foreach ($extra_fields as $extra_field) {
@@ -101,10 +94,11 @@ class RecentClipsFields extends RssFields {
 
     foreach ($this->extraFields() as $field_def) {
       $build['#row']->elements[] = [
-       'key' => $field_def["feed_key"],
-       'value' => $this->getField($row_index, $this->options[$field_def["fapi_key"]]),
+        'key' => $field_def["feed_key"],
+        'value' => $this->getField($row_index, $this->options[$field_def["fapi_key"]]),
       ];
     }
     return $build;
   }
+
 }
