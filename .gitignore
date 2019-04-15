@@ -105,3 +105,6 @@ web/sites/*/files
 # Backstop dependencies and artifacts
 /backstop/node_modules
 /backstop/backstop_data/
+
+# Used for Cypress
+/node_modules
