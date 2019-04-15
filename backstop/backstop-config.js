@@ -215,7 +215,7 @@ const config = {
   "report": ["browser"],
   "engine": "chrome",
   "engineFlags": [],
-  "asyncCaptureLimit": 5,
+  "asyncCaptureLimit": 10,
   "debug": false,
   "debugWindow": false
 }
