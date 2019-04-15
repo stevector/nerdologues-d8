@@ -77,10 +77,6 @@
         ]
     },
     "scripts": {
-        "code-sniff-old": [
-            "phpcs --report=full --extensions=php,module,inc,theme,info --ignore=CachedHttpStreamWrapper.php --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/modules/custom",
-            "phpcs --report=full --extensions=php,module,inc,theme,info --standard=vendor/drupal/coder/coder_sniffer/Drupal/ web/themes/custom"
-        ],
         "code-sniff": [
             "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
             "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom"
@@ -91,12 +87,6 @@
         "circle-tests": [
             "@code-sniff",
             "@unit-test"
-        ],
-        "rsync-down": [
-            "rsync -rlvz --exclude 'advagg_*'  --exclude='twig_cache*' --exclude='styles/*' --size-only --ipv4 --progress -e 'ssh -p 2222' live.90be258b-259e-4ea9-b674-6a35e65cc86d@appserver.live.90be258b-259e-4ea9-b674-6a35e65cc86d.drush.in:code/sites/default/files/ web/sites/default/files/"
-        ],
-        "rsync-up": [
-            "rsync -rlvz --exclude 'advagg_*' --exclude='twig_cache*'  --exclude='oembed' --exclude='php' --exclude='js' --exclude='styles' --size-only --ipv4 --progress -e 'ssh -p 2222' web/sites/default/files/ --temp-dir=../tmp dev.75e82cc3-b2b2-4710-b22f-51216f1308a5@appserver.dev.75e82cc3-b2b2-4710-b22f-51216f1308a5.drush.in:files/"
         ],
         "rsync-files": [
             "@rsync-down",
