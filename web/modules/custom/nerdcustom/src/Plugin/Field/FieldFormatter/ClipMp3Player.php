@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @file
- * A Field formatter to generate the mp3 player for clips.
- *
- * Only nerdologues members should have bio pages.
- */
-
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
 use Drupal\node\Entity\Node;
@@ -27,7 +20,6 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class ClipMp3Player extends FormatterBase {
-
 
   /**
    * {@inheritdoc}
@@ -86,19 +78,19 @@ class ClipMp3Player extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = array();
+    $elements = [];
     $provide_download_link = $this->getSetting('provide_download_link');
     $audio_attributes = $this->getSetting('audio_attributes');
 
     $clip_node = $items->getEntity();
     $clip_mp3 = $this->getMp3($clip_node);
 
-    $elements[] = array(
+    $elements[] = [
       '#theme' => 'nerdcustom_mp3_player',
       '#media_link' => $clip_mp3,
       '#value' => $provide_download_link,
       '#extravalue' => $audio_attributes,
-    );
+    ];
 
     return $elements;
   }

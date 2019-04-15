@@ -5,6 +5,7 @@
  * Statically cache file sizes during a migration.
  */
 
+// phpcs:ignoreFile
 namespace Drupal\nerdcustom\StreamWrapper;
 
 use Drupal\Core\StreamWrapper\StreamWrapperInterface;

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * A process plugin to create quote paragraph entities from field collections.
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
@@ -53,13 +48,13 @@ class NerdQuotesField extends ProcessPluginBase {
   protected function makeParagraph($body, $int_start = NULL) {
 
     $paragraph = Paragraph::create([
-        'type' => 'quotes',
-        'field_body_plain' => [
-            'value' => $body,
-        ],
-        'field_int_start_time' => [
-            'value' => $int_start,
-        ],
+      'type' => 'quotes',
+      'field_body_plain' => [
+        'value' => $body,
+      ],
+      'field_int_start_time' => [
+        'value' => $int_start,
+      ],
     ]);
 
     $paragraph->save();
@@ -69,4 +64,5 @@ class NerdQuotesField extends ProcessPluginBase {
       'target_revision_id' => $paragraph->getRevisionId(),
     ];
   }
+
 }

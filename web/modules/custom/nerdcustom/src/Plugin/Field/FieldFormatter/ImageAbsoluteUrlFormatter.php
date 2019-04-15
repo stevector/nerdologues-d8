@@ -1,16 +1,10 @@
 <?php
 
-/**
- * @file
- * Generate absolute urls for images.
- */
-
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Cache\CacheableMetadata;
-use  Drupal\image\Plugin\Field\FieldFormatter\ImageUrlFormatter;
+use Drupal\image\Plugin\Field\FieldFormatter\ImageUrlFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
-
 
 /**
  * Plugin implementation of the 'image_url' formatter.
@@ -56,4 +50,5 @@ class ImageAbsoluteUrlFormatter extends ImageUrlFormatter {
     }
     return $elements;
   }
+
 }

@@ -5,36 +5,35 @@
  * Contains nerdcustom.module..
  */
 
-use \Drupal\node\NodeInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\node\NodeInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_node_links_alter().
  */
 function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array &$context) {
-
   if ($entity->bundle() === 'person') {
-    $links['node']['#links']['node-readmore'] = array(
-      'title' => t('Full bio, podcast clips and links<span class="visually-hidden"> for @title</span>', array(
+    $links['node']['#links']['node-readmore'] = [
+      'title' => t('Full bio, podcast clips and links<span class="visually-hidden"> for @title</span>', [
         '@title' => $entity->label(),
-      )),
+      ]),
       'url' => $entity->urlInfo(),
       'language' => $entity->language(),
-      'attributes' => array(
+      'attributes' => [
         'rel' => 'tag',
         'title' => $entity->label(),
-      ),
-    );
+      ],
+    ];
   }
   else {
 
     if (!empty($links['node']['#links']['node-readmore'])) {
-      unset ($links['node']['#links']['node-readmore']);
+      unset($links['node']['#links']['node-readmore']);
     }
   }
 }
@@ -42,9 +41,9 @@ function nerdcustom_node_links_alter(array &$links, NodeInterface $entity, array
 /**
  * Implements hook_entity_insert().
  */
-function nerdcustom_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+function nerdcustom_entity_insert(EntityInterface $entity) {
   if ($entity instanceof NodeInterface) {
-    \Drupal::service('nerdcustom.clipcreator')->createClips($entity);
+    Drupal::service('nerdcustom.clipcreator')->createClips($entity);
   }
 }
 
@@ -67,24 +66,24 @@ function nerdcustom_canonical_helper(&$variables, $node) {
     // metadata if we have to check access.
     if ($variables['user']->isAuthenticated() || $url->access($variables['user'])) {
       // Set the node path as the canonical URL to prevent duplicate content.
-      $variables['#attached']['html_head_link'][] = array(
-        array(
+      $variables['#attached']['html_head_link'][] = [
+        [
           'rel' => $rel,
           'href' => $url->toString(),
-        ),
+        ],
         TRUE,
-      );
+      ];
     }
 
     if ($rel == 'canonical') {
       // Set the non-aliased canonical path as a default shortlink.
-      $variables['#attached']['html_head_link'][] = array(
-        array(
+      $variables['#attached']['html_head_link'][] = [
+        [
           'rel' => 'shortlink',
           'href' => $url->setOption('alias', TRUE)->toString(),
-        ),
+        ],
         TRUE,
-      );
+      ];
     }
   }
 }
@@ -123,18 +122,18 @@ function nerdcustom_preprocess_node(&$variables) {
  * Implements hook_theme().
  */
 function nerdcustom_theme() {
-  return array(
-    'nerdcustom_mp3_player' => array(
-      'variables' => array(
+  return [
+    'nerdcustom_mp3_player' => [
+      'variables' => [
         'media_link' => NULL,
         'mimetype' => NULL,
         'description' => NULL,
-        'attributes' => array(),
+        'attributes' => [],
         'value' => NULL,
         'extravalue' => NULL,
-      ),
-    ),
-  );
+      ],
+    ],
+  ];
 }
 
 /**
@@ -162,27 +161,27 @@ function nerdcustom_rewrite_live_ssl($html, $elements) {
  */
 function nerdcustom_views_data_alter(array &$data) {
 
-  $data['node__field_ref_creators']['referenced_storytellers'] = array(
+  $data['node__field_ref_creators']['referenced_storytellers'] = [
     'title' => t('Referenced Storytellers'),
-    'filter' => array(
+    'filter' => [
       'title' => t('Referenced Storytellers'),
       'help' => t('Filter by storyteller'),
       'field' => 'field_ref_creators_target_id',
       'group' => 'Content',
       'real field' => 'field_ref_creators_target_id',
       'id' => 'nerdcustom_referenced_storytellers',
-    ),
-  );
+    ],
+  ];
 
-  $data['node_field_data']['referenced_podcast'] = array(
+  $data['node_field_data']['referenced_podcast'] = [
     'title' => t('Referenced Podcast'),
-    'filter' => array(
+    'filter' => [
       'title' => t('Referenced Podcast'),
       'help' => t('Filter by podcast'),
       'field' => 'nid',
       'id' => 'nerdcustom_referenced_podcast',
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -212,7 +211,7 @@ function nerdcustom_entity_field_access($operation, FieldDefinitionInterface $fi
 /**
  * Check if a podcast episode should allow for mp3 to be printed.
  */
-function nerdcustom_allow_mp3_print(Drupal\Core\Entity\EntityInterface $entity) {
+function nerdcustom_allow_mp3_print(EntityInterface $entity) {
   if (!empty($entity->field_date_published->first()) && !empty($entity->field_date_published->first()->getString())) {
     if (!empty($entity->field_link_paywall_content->first()) && !empty($entity->field_link_paywall_content->first()->get('uri')->getString())) {
       $date = $entity->field_date_published->first()->getString();
