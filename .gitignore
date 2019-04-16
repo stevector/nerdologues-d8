@@ -108,3 +108,7 @@ web/sites/*/files
 
 # Used for Cypress
 /node_modules
+
+# Cypress Artifacts #
+cypress/screenshots/
+cypress/videos/
