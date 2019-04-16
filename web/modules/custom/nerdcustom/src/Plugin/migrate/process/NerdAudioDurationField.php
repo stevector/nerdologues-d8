@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @file
- * A process plugin to set audio duration.
- *
- * Only nerdologues members should have bio pages.
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\process;
 
 use Drupal\migrate\ProcessPluginBase;
@@ -39,4 +32,5 @@ class NerdAudioDurationField extends ProcessPluginBase {
     }
     return $return;
   }
+
 }

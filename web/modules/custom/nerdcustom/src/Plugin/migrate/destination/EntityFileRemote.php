@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Overriding core file migration for remote files.
- */
-
 namespace Drupal\nerdcustom\Plugin\migrate\destination;
 
 use Drupal\file\Plugin\migrate\destination\EntityFile;
@@ -37,7 +32,7 @@ class EntityFileRemote extends EntityFile {
   /**
    * {@inheritdoc}
    */
-  public function import(Row $row, array $old_destination_id_values = array()) {
+  public function import(Row $row, array $old_destination_id_values = []) {
 
     $this->rollbackAction = MigrateIdMapInterface::ROLLBACK_DELETE;
     $entity = $this->getEntity($row, $old_destination_id_values);
@@ -51,4 +46,5 @@ class EntityFileRemote extends EntityFile {
     }
     return $ids;
   }
+
 }

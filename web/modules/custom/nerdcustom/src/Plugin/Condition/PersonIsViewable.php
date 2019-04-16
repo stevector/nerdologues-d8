@@ -1,18 +1,12 @@
 <?php
 
-/**
- * @file
- * Condition plugin for use on person content type.
- */
-
 namespace Drupal\nerdcustom\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\node\Plugin\Condition\NodeType;
+
 /**
  * Provides a 'Person is Viewable' condition.
  *
@@ -97,4 +91,5 @@ class PersonIsViewable extends ConditionPluginBase implements ContainerFactoryPl
   public function defaultConfiguration() {
     return [];
   }
+
 }
