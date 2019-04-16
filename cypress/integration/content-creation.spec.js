@@ -3,8 +3,8 @@ describe('Hello world ', function(){
     it('Logs in', function(){
 
       cy.visit('user');
-      cy.get('input[name=name]').type(Cypress.env('DRUPAL_USERNAME'))
-      cy.get('input[name=pass]').type(Cypress.env('DRUPAL_USERPASS') + '{enter}')
+      cy.get('input[name=name]').type(Cypress.env('USER_CONTENT_ADMIN'))
+      cy.get('input[name=pass]').type(Cypress.env('PASS_CONTENT_ADMIN.') + '{enter}')
 
       cy.visit('node/add/article');
       var d = new Date();
