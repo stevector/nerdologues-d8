@@ -200,9 +200,6 @@ workflows:
              - backstop
              - build
              - behavioral
-          branches:
-            only:
-               - master
   nightly:
     triggers:
       - schedule:
