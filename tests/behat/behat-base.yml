@@ -24,11 +24,6 @@ default:
         - %paths.base%/features/dataentry
       contexts:
         <<: *defaultcontexts
-    migration:
-      paths:
-        - %paths.base%/features/migration
-      contexts:
-        <<: *defaultcontexts
   extensions:
     Bex\Behat\StepTimeLoggerExtension: ~
     Behat\MinkExtension:
