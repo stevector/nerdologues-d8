@@ -1,14 +1,8 @@
 <?php
 
-/**
- * @file
- * Access plugin for Views that should not display on paginated pages.
- */
-
 namespace Drupal\nerdcustom\Plugin\views\access;
 
 use Drupal\Core\Session\AccountInterface;
-use Drupal\views\Plugin\views\PluginBase;
 use Symfony\Component\Routing\Route;
 use Drupal\views\Plugin\views\access\AccessPluginBase;
 
@@ -55,4 +49,5 @@ class Paged extends AccessPluginBase {
    */
   public function alterRouteDefinition(Route $route) {
   }
+
 }

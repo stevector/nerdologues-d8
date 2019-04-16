@@ -1,11 +1,7 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\nerdcustom\Unit\ClipCreator\ClipCreatorTest.
- */
-
 namespace Drupal\Tests\nerdcustom\Unit\ClipCreator;
+
 use Drupal\Tests\UnitTestCase;
 use Drupal\nerdcustom\ClipCreator;
 
@@ -48,11 +44,11 @@ class ClipCreatorTest extends UnitTestCase {
    *   An array of test data.
    */
   public function providerClipTitles() {
-    $data = array();
+    $data = [];
 
     $data[] = [
       '<ul><li>Test</li></ul>',
-      ['Test']
+      ['Test'],
     ];
 
     $data[] = [
@@ -61,8 +57,8 @@ class ClipCreatorTest extends UnitTestCase {
         "Cover Stories: Love Never Felt So Good",
         "James D'Amato: Progression",
         "Nathan Robert: Will You Please Spend New Years Eve with Me?",
-        "Cover Stories: Take Me to Church"
-      ]
+        "Cover Stories: Take Me to Church",
+      ],
     ];
 
     return $data;
@@ -78,7 +74,6 @@ class ClipCreatorTest extends UnitTestCase {
     $this->assertEquals($resulting_cip, $this->clipCreator->clipMp3FileName($source_file, $story_title, $base_url, $start_seconds, $end_seconds));
   }
 
-
   /**
    * Data provider for testClipMp3FileName.
    *
@@ -86,7 +81,7 @@ class ClipCreatorTest extends UnitTestCase {
    *   An array of test data.
    */
   public function providerMp3FileNames() {
-    $data = array();
+    $data = [];
 
     $data[] = [
       "https://podcasts.nerdologues.com/yourstories/HorrorStories22.mp3",
@@ -95,7 +90,7 @@ class ClipCreatorTest extends UnitTestCase {
       // It shouldn't matter if these args are int or string.
       2643,
       "2855",
-      "https://media.nerdologues.com/clips/v1/HorrorStories22--Cover-Stories--Paint-it-Black--2643-2855.mp3"
+      "https://media.nerdologues.com/clips/v1/HorrorStories22--Cover-Stories--Paint-it-Black--2643-2855.mp3",
     ];
 
     return $data;

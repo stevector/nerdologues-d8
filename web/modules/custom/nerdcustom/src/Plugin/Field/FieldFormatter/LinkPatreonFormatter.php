@@ -1,12 +1,6 @@
 <?php
 
-/**
- * @file
- * A Link formatter with a fallback to default text and a check for mp3s/date.
- */
-
 namespace Drupal\nerdcustom\Plugin\Field\FieldFormatter;
-
 
 use Drupal\link\Plugin\Field\FieldFormatter\LinkFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -22,7 +16,7 @@ use Drupal\Core\Field\FieldItemListInterface;
  *   }
  * )
  */
-class LinkPatreonFormatter extends LinkFormatter  {
+class LinkPatreonFormatter extends LinkFormatter {
 
   /**
    * {@inheritdoc}
