@@ -22,7 +22,7 @@ Feature: Page
       | iO Chicago                            | Location     | 1501 N Kingsbury St Chicago, IL 60642 United States     |
       | UCB Sunset                            | Location     | 5419 W Sunset Blvd Los Angeles, CA 90027 United States  |
       | Threadless HQ                         | Location     | 1260 W Madison St Chicago, IL 60607 United States       |
-      | Some Office                           | Location     | 1917 N Elston Ave Chicago, IL United States             |
+      | Cards Against Humanity Theater        | Location     | 1551 W Homer St Chicago, IL 60642 United States         |
       | Adler Planetarium                     | Location     | 1300 S Lake Shore Drive Chicago, IL 60605 United States |
       | The Arcade Comedy Theatre             | Location     | 811 Liberty Ave Pittsburgh, PA 15222 United States      |
       | Chicago Design Museum                 | Location     | 108 N State St, Fl 3rd Chicago, IL 60602 United States  |
