@@ -2,11 +2,13 @@
 
 set -eo pipefail
 
+
+
 #
 # This script handles all operations that must be done when a
 # pull request is merged back into the master branch.
 #
-if [[ $CI_BRANCH != "master" ]] ; then
+if [[ $CIRCLE_BRANCH != "master" ]] ; then
   exit 0
 fi
 
