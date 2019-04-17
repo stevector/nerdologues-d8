@@ -101,6 +101,11 @@ jobs:
                 name: variables
                 command: /build-tools-ci/scripts/set-environment
 
+
+            - run:
+                name: variables
+                command: echo "$TERMINUS_SITE.$TERMINUS_ENV"
+
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
