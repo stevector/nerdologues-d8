@@ -54,7 +54,7 @@
         "drupal/views_custom_cache_tag": "^1.0",
         "phpunit/phpunit": ">6 <7",
         "webflo/drupal-core-strict": "^8.6",
-        "drupal/core": "8.6.10"
+        "drupal/core": "^8"
     },
 
     "require-dev": {
