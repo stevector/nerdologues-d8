@@ -75,7 +75,7 @@ class ClipCreator {
   }
 
   /**
-   * Take a body field string and return all the potential clip titles in lis.
+   * Take a body field string and return all the potential clip titles in list.
    *
    * @param string $body_text
    *   A node's body field.
