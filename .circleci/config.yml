@@ -61,44 +61,6 @@ jobs:
                 paths:
                     - globals
 
-
-    migrationcheck:
-        <<: *defaults
-        steps:
-            - checkout
-
-            - attach_workspace:
-                at: /tmp
-
-            - run:
-                name: Global vars
-                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: ./.circleci/set-up-global-vars.sh
-
-            - restore_cache:
-                keys:
-                    - composer-{{ checksum "composer.lock" }}
-
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
-
-            - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
-                paths:
-                  - vendor
-
-            - run:
-                name: login
-                command: terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
-
-            - run:
-                name: Behat users
-                command: ./.circleci/behat-runners/add-behat-users.sh
-
-            - run:
-                name: Behat
-                command: ./.circleci/behat-runners/behat-wrapper.sh --suite=migration
-
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
@@ -188,15 +150,11 @@ workflows:
     jobs:
       - build
       - behavioral
-      - migrationcheck:
-          requires:
-             - build
       - backstop:
           requires:
              - build
       - merge:
           requires:
-             - migrationcheck
              - backstop
              - build
              - behavioral
@@ -211,15 +169,11 @@ workflows:
     jobs:
       - build
       - behavioral
-      - migrationcheck:
-          requires:
-             - build
       - backstop:
           requires:
              - build
       - merge:
           requires:
-             - migrationcheck
              - backstop
              - build
              - behavioral

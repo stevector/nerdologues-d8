@@ -24,12 +24,6 @@ if (file_exists($local_settings)) {
   include $local_settings;
 }
 
-# When on Pantheon, connect to a D7 database.
-$migrate_settings = __DIR__ . "/settings.migrate-on-pantheon.php";
-if (file_exists($migrate_settings) && isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  include $migrate_settings;
-}
-
 $config_directories['sync'] = 'sites/default/config';
 $settings['install_profile'] = 'standard';
 
