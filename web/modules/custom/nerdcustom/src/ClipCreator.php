@@ -93,7 +93,7 @@ class ClipCreator {
     $xml = new SimpleXMLElement('<root>' . $cleaned_body . '</root>');
     $result = $xml->xpath('//li');
 
-    foreach ($result as $item ) {
+    foreach ($result as $item) {
       $return[] = $item[0] . '';
     }
 
