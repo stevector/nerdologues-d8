@@ -6,7 +6,7 @@ set -eo pipefail
 # This script handles all operations that must be done when a
 # pull request is merged back into the master branch.
 #
-if [[ $CI_BRANCH != "master" ]] ; then
+if [[ $CIRCLE_BRANCH != "master" ]] ; then
   exit 0
 fi
 
@@ -14,6 +14,7 @@ fi
  terminus auth:login -n --machine-token="$TERMINUS_TOKEN"
 } &> /dev/null
 
+git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
 # Merge the multidev for the PR into the dev environment
 terminus -n build:env:merge "$TERMINUS_SITE.$TERMINUS_ENV" --yes
 
