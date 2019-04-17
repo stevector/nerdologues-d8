@@ -17,7 +17,7 @@ jobs:
 
             - restore_cache:
                 keys:
-                    - composer-{{ checksum "composer.lock" }}
+                    - composer
 
             - run:
                 name: logins
@@ -31,9 +31,9 @@ jobs:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
+                key: composer
                 paths:
-                  - vendor
+                  - $HOME/.composer/cache
 
             - run:
                 command: composer circle-tests
@@ -91,7 +91,7 @@ jobs:
 
             - restore_cache:
                 keys:
-                    - composer-{{ checksum "composer.lock" }}
+                    - composer
 
             - run:
                 name: logins
@@ -105,9 +105,9 @@ jobs:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
+                key: composer
                 paths:
-                  - vendor
+                  - $HOME/.composer/cache
 
             - run:
                 command: composer circle-tests
