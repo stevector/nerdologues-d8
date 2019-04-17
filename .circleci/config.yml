@@ -149,7 +149,6 @@ jobs:
                 name: merge to master
                 command: ./.circleci/merge-to-master.sh
 
-
 orbs:
   cypress: cypress-io/cypress@1
 workflows:
@@ -192,7 +191,3 @@ workflows:
              - backstop
              - build
              - behavioral
-
-
-
-
