@@ -15,9 +15,9 @@ jobs:
         steps:
             - checkout
 
-#            - restore_cache:
-#                keys:
-#                    - composer
+            - restore_cache:
+                keys:
+                    - composer
 
             - run:
                 name: logins
@@ -89,9 +89,9 @@ jobs:
         steps:
             - checkout
 
-#            - restore_cache:
-#                keys:
-#                    - composer
+            - restore_cache:
+                keys:
+                    - composer
 
             - run:
                 name: logins
