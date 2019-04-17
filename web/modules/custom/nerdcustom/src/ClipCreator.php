@@ -75,7 +75,7 @@ class ClipCreator {
   }
 
   /**
-   * Take a body field string and return all the potential clip titles in lis.
+   * Take a body field string and return all the potential clip titles in list.
    *
    * @param string $body_text
    *   A node's body field.
@@ -92,9 +92,11 @@ class ClipCreator {
     // Strip tags that aren't ul and li because font tags were causing errors.
     $xml = new SimpleXMLElement('<root>' . $cleaned_body . '</root>');
     $result = $xml->xpath('//li');
-    while (list(, $thing) = each($result)) {
-      $return[] = $thing . '';
+
+    foreach ($result as $item) {
+      $return[] = $item[0] . '';
     }
+
     return $return;
   }
 

@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: quay.io/pantheon-public/build-tools-ci:1.x
+   - image: quay.io/pantheon-public/build-tools-ci:4.x
   working_directory: ~/example_drops_8_composer
   environment:
     TZ: "/usr/share/zoneinfo/America/Los_Angeles"
@@ -17,7 +17,7 @@ jobs:
 
             - restore_cache:
                 keys:
-                    - composer-{{ checksum "composer.lock" }}
+                    - composer
 
             - run:
                 name: logins
@@ -31,9 +31,9 @@ jobs:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
+                key: composer
                 paths:
-                  - vendor
+                  - $HOME/.composer/cache
 
             - run:
                 command: composer circle-tests
@@ -91,7 +91,7 @@ jobs:
 
             - restore_cache:
                 keys:
-                    - composer-{{ checksum "composer.lock" }}
+                    - composer
 
             - run:
                 name: logins
@@ -110,9 +110,9 @@ jobs:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
+                key: composer
                 paths:
-                  - vendor
+                  - $HOME/.composer/cache
 
             - run:
                 command: composer circle-tests
