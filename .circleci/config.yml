@@ -172,6 +172,7 @@ workflows:
              - backstop
              - build
              - behavioral
+             - cypress/run
   nightly:
     triggers:
       - schedule:
@@ -185,9 +186,10 @@ workflows:
       - behavioral
       - backstop:
           requires:
-             - build
-      - merge:
+      - cypress/run:
           requires:
-             - backstop
-             - build
-             - behavioral
+          - behavioral
+          store_artifacts: true
+          pre-steps:
+          - run:
+              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV             - build
