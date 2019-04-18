@@ -50,18 +50,12 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
 
-            - persist_to_workspace:
-                root: .
-
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
             - checkout
-
-            - attach_workspace:
-                at: /tmp
 
             - run:
                 name: Global vars
@@ -97,9 +91,6 @@ jobs:
         <<: *defaults
         steps:
             - checkout
-
-            - attach_workspace:
-                at: /tmp
 
             - run:
                 name: Global vars
