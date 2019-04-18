@@ -8,7 +8,7 @@ defaults: &defaults
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
 
-version: 2
+version: 2.1
 jobs:
     build:
         <<: *defaults
@@ -99,7 +99,12 @@ jobs:
 
             - run:
                 name: variables
-                command: ./.circleci/set-up-global-vars.sh
+                command: /build-tools-ci/scripts/set-environment
+
+
+            - run:
+                name: variables
+                command: echo "$TERMINUS_SITE.$TERMINUS_ENV"
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
@@ -144,6 +149,8 @@ jobs:
                 name: merge to master
                 command: ./.circleci/merge-to-master.sh
 
+orbs:
+  cypress: cypress-io/cypress@1
 workflows:
   version: 2
   build_and_test:
@@ -153,11 +160,19 @@ workflows:
       - backstop:
           requires:
              - build
+      - cypress/run:
+          requires:
+          - behavioral
+          store_artifacts: true
+          pre-steps:
+          - run:
+              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV
       - merge:
           requires:
              - backstop
              - build
              - behavioral
+             - cypress/run
   nightly:
     triggers:
       - schedule:
@@ -172,12 +187,10 @@ workflows:
       - backstop:
           requires:
              - build
-      - merge:
+      - cypress/run:
           requires:
-             - backstop
-             - build
-             - behavioral
-
-
-
-
+          - behavioral
+          store_artifacts: true
+          pre-steps:
+          - run:
+              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV             - build
