@@ -186,6 +186,7 @@ workflows:
       - behavioral
       - backstop:
           requires:
+             - build
       - cypress/run:
           requires:
           - behavioral
