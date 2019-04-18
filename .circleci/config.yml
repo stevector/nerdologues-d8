@@ -25,7 +25,7 @@ jobs:
 
             - run:
                 name: variables
-                command: ./.circleci/set-up-global-vars.sh
+                command: /build-tools-ci/scripts/set-environment
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
@@ -41,7 +41,6 @@ jobs:
             - run:
                 name: deploy
                 command: |
-                  terminus env:list --field=id $TERMINUS_SITE | grep "^ci-" | cut -c 4-  | grep -Eo '[0-9]{1,9}' | sort --numeric-sort --reverse | sed 1,7d | xargs -n1 -I ENV terminus env:delete --yes $TERMINUS_SITE.ci-ENV
                   terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
             - run:
@@ -50,11 +49,6 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
-            - run:
-                name: Set TERMINUS_ENV for Backstop
-                command: |
-                    mkdir globals
-                    echo $TERMINUS_ENV > globals/TERMINUS_ENV
 
             - persist_to_workspace:
                 root: .
@@ -92,40 +86,9 @@ jobs:
             - restore_cache:
                 keys:
                     - composer
-
-            - run:
-                name: logins
-                command: ./.circleci/logins.sh
-
             - run:
                 name: variables
                 command: /build-tools-ci/scripts/set-environment
-
-
-            - run:
-                name: variables
-                command: echo "$TERMINUS_SITE.$TERMINUS_ENV"
-
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
-
-            - save_cache:
-                key: composer
-                paths:
-                  - $HOME/.composer/cache
-
-            - run:
-                command: composer circle-tests
-
-            - run:
-                command: terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
-
-            - run:
-                name: updb and import
-                command: |
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
-
             - run:
                 name: Behat
                 command: |
@@ -156,21 +119,21 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - behavioral
+      - behavioral:
+          requires:
+          - backstop
       - backstop:
           requires:
              - build
       - cypress/run:
           requires:
-          - behavioral
+          - backstop
           store_artifacts: true
           pre-steps:
           - run:
               command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV
       - merge:
           requires:
-             - backstop
-             - build
              - behavioral
              - cypress/run
   nightly:
@@ -182,14 +145,17 @@ workflows:
               only:
                 - master
     jobs:
-      - build
-      - behavioral
-      - backstop:
-          requires:
-      - cypress/run:
-          requires:
-          - behavioral
-          store_artifacts: true
-          pre-steps:
-          - run:
-              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV             - build
+    - build
+    - behavioral:
+        requires:
+        - backstop
+    - backstop:
+        requires:
+        - build
+    - cypress/run:
+        requires:
+        - backstop
+        store_artifacts: true
+        pre-steps:
+        - run:
+            command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV

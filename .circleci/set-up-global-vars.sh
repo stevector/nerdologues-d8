@@ -12,7 +12,7 @@ if [ -f /tmp/globals/TERMINUS_ENV ]
 then
   echo 'export TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)' >> $BASH_ENV
 else
-  echo 'export TERMINUS_ENV=ci-$CIRCLE_BUILD_NUM' >> $BASH_ENV
+  echo 'export TERMINUS_ENV=pr-$CIRCLE_PULL_REQUEST' >> $BASH_ENV
 fi
 
 (
