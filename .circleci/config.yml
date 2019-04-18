@@ -17,7 +17,7 @@ jobs:
 
             - restore_cache:
                 keys:
-                    - composer
+                  - composer
 
             - run:
                 name: logins
@@ -75,12 +75,27 @@ jobs:
         steps:
             - checkout
 
+
             - restore_cache:
                 keys:
-                    - composer
+                  - composer
+
+            - run:
+                name: logins
+                command: ./.circleci/logins.sh
+
             - run:
                 name: variables
                 command: /build-tools-ci/scripts/set-environment
+
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
+
+            - save_cache:
+                key: composer
+                paths:
+                - $HOME/.composer/cache
+
             - run:
                 name: Behat
                 command: |
