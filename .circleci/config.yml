@@ -44,9 +44,7 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
-           - run:
-                name: clone-bash-env
-                command: cp $BASH_ENV bash_env.txt
+            - run: cp $BASH_ENV bash_env.txt
 
             # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
             - persist_to_workspace:
