@@ -8,13 +8,7 @@ defaults: &defaults
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
 
-sharedbeginningsteps: &sharedbeginningsteps
-    - checkout
 
-    - attach_workspace:
-        at: /tmp/workspace
-    - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-    - run: source $BASH_ENV
 
 version: 2.1
 jobs:
@@ -62,7 +56,18 @@ jobs:
             - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
-            <<: *sharedbeginningsteps
+
+
+            - checkout
+            - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+
+
+
+
+
 
             - run: cd backstop && ./run-backstop.sh
 
@@ -75,7 +80,18 @@ jobs:
     behavioral:
         <<: *defaults
         steps:
-            <<: *sharedbeginningsteps
+
+
+            - checkout
+            - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+
+
+
+
+
 
             - restore_cache:
                 keys:
@@ -100,7 +116,19 @@ jobs:
     merge:
         <<: *defaults
         steps:
-            <<: *sharedbeginningsteps
+
+
+            - checkout
+            - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+
+
+
+
+
+
             - run: ./.circleci/merge-to-master.sh
 
 orbs:
@@ -121,7 +149,19 @@ workflows:
           - backstop
           store_artifacts: true
           pre-steps:
-            <<: *sharedbeginningsteps
+
+
+            - checkout
+            - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+
+
+
+
+
+
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
       - merge:
