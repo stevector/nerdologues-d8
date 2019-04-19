@@ -24,6 +24,7 @@ fi
 TERMINUS_ENV=${TERMINUS_ENV:-$DEFAULT_ENV}
 
 (
+  echo "export TERMINUS_ENV='$TERMINUS_ENV'"
   echo 'export SITE_ENV=${TERMINUS_SITE}.${TERMINUS_ENV}'
   echo 'export PANTHEON_DEV_SITE_URL=https://dev-${TERMINUS_SITE}.pantheonsite.io'
   echo 'export PANTHEON_SITE_URL=https://${TERMINUS_ENV}-${TERMINUS_SITE}.pantheonsite.io'
