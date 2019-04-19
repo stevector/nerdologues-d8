@@ -134,7 +134,7 @@ workflows:
           store_artifacts: true
           pre-steps:
           - run:
-              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV
+              command: ./.circleci/set-up-global-vars.sh
       - merge:
           requires:
              - behavioral
@@ -155,10 +155,11 @@ workflows:
     - backstop:
         requires:
         - build
+ Nightly does not run on a "pr-" env. Need to in
     - cypress/run:
         requires:
         - backstop
         store_artifacts: true
         pre-steps:
         - run:
-            command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV
+            command: ./.circleci/set-up-global-vars.sh
