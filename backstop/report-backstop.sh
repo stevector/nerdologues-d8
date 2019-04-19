@@ -2,10 +2,9 @@
 
 set -ex
 
-CIRCLE_ARTIFACTS_DIR="/tmp/artifacts"
 CIRCLE_ARTIFACTS_URL=${CIRCLE_BUILD_URL}/artifacts/$CIRCLE_NODE_INDEX/artifact
 
-cd $CIRCLE_ARTIFACTS_DIR
+cd $ARTIFACTS_FULL_DIR
 DIFF_IMAGE=$(find * -type f -name "failed_diff*.png" | head -n 1)
 
 # Use a diff image if there is one. Otherwise just grab the first image.
