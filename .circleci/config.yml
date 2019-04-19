@@ -50,7 +50,6 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
-
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
@@ -63,17 +62,17 @@ jobs:
                 # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
                 command: ./.circleci/set-up-global-vars.sh
 
-            - run:
-                name: run-backstop
-                command: cd backstop && ./run-backstop.sh
+            # - run:
+            #     name: run-backstop
+            #     command: ####################################### cd backstop && ./run-backstop.sh
 
-            - store_artifacts:
-                path: /tmp/artifacts
-                destination: artifact
+            # - store_artifacts:
+            #     path: /tmp/artifacts
+            #     destination: artifact
 
-            - run:
-                name: test
-                command: echo "test whether commands can run after artifacts"
+            # - run:
+            #     name: test
+            #     command: echo "test whether commands can run after artifacts"
 
     behavioral:
         <<: *defaults
