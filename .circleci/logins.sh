@@ -9,4 +9,3 @@
   git config user.name "Circle CI Automation"
   composer config --global github-oauth.github.com $GITHUB_TOKEN
 } &> /dev/null
-
