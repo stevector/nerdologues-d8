@@ -20,7 +20,6 @@ jobs:
                   - composer
 
             - run:
-                name: logins
                 command: ./.circleci/logins.sh
 
             - run:
@@ -62,7 +61,6 @@ jobs:
                 command: ./.circleci/set-up-global-vars.sh
 
             - run:
-                name: run-backstop
                 command: cd backstop && ./run-backstop.sh
 
             - store_artifacts:
@@ -70,8 +68,7 @@ jobs:
                 destination: artifact
 
             - run:
-                name: report-backstop
-                command: ./backstop/run-backstop.sh
+                command: ./backstop/report-backstop.sh
 
     behavioral:
         <<: *defaults
@@ -83,7 +80,6 @@ jobs:
                   - composer
 
             - run:
-                name: logins
                 command: ./.circleci/logins.sh
 
             - run:
@@ -139,7 +135,6 @@ workflows:
             - checkout
             - run:
                 command: ./.circleci/set-up-global-vars.sh
-          #command: ./.circleci/set-up-global-vars.sh &&  echo "looking for the cypress base url $CYPRESS_baseUrl"  && npx cypress run
       - merge:
           requires:
              - behavioral
