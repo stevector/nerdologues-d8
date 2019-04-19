@@ -9568,10 +9568,10 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stevector/docker-build-tools-ci.git",
-                "reference": "b71d46dba9c323092388d8176e62ed04764f0791"
+                "reference": "6256260137ece48f7c02090b7804e05c6038698a"
             },
             "type": "library",
-            "time": "2019-04-19T17:14:10+00:00"
+            "time": "2019-04-19T18:18:41+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
