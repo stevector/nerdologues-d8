@@ -99,7 +99,7 @@ jobs:
 
             - run:
                 name: variables
-                command: /build-tools-ci/scripts/set-environment
+                command: ./.circleci/set-up-global-vars.sh
 
             - run:
                 command: composer install  --optimize-autoloader --ignore-platform-reqs
@@ -148,6 +148,8 @@ workflows:
           store_artifacts: true
           pre-steps:
             - checkout
+            - attach_workspace:
+                at: /tmp
             - run:
                 command: ./.circleci/set-up-global-vars.sh
       - merge:
@@ -176,5 +178,7 @@ workflows:
         store_artifacts: true
         pre-steps:
         - checkout
+        - attach_workspace:
+            at: /tmp
         - run:
             command: ./.circleci/set-up-global-vars.sh
