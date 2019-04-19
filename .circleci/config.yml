@@ -134,7 +134,7 @@ workflows:
           store_artifacts: true
           pre-steps:
             - checkout
-           - attach_workspace:
+            - attach_workspace:
                 at: /tmp/workspace
             - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
             - run: source $BASH_ENV
