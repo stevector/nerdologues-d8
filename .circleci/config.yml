@@ -35,13 +35,15 @@ jobs:
             - run:
                 name: Deploy to Multidev
                 command: |
-                  terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
+                  echo "commenting out the slow commands"
+                ## terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
             - run:
                 name: updb and import
                 command: |
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
+                  echo "commenting out the slow commands"
+ #                 terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
+#                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
             - run: cp $BASH_ENV bash_env.txt
 
