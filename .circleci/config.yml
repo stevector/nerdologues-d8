@@ -20,11 +20,8 @@ jobs:
                   - composer
 
             - run: ./.circleci/logins.sh
-
-            - run: /build-tools-ci/scripts/set-environment
-
             - run: composer install  --optimize-autoloader --ignore-platform-reqs
-            - run: npm install
+            - run:  ./vendor/pantheon-systems/docker-build-tools-ci/scripts/set-environment
 
             - save_cache:
                 key: composer
@@ -34,7 +31,7 @@ jobs:
             - run: composer circle-tests
 
             - run:
-                name: deploy
+                name: Deploy to Multidev
                 command: |
                   terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
@@ -103,7 +100,8 @@ jobs:
                 name: Behat
                 command: |
                     # ./.circleci/behat-runners/add-behat-users.sh
-                    ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving --stop-on-failure
+                    ######### @todo, take out the timing tag. That's just here for debugging to run the whole suite faster.
+                    ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving --stop-on-failure                                                                                                                                                                                                                                                           --tags=timing
 
     merge:
         <<: *defaults
@@ -136,10 +134,12 @@ workflows:
           store_artifacts: true
           pre-steps:
             - checkout
-            - attach_workspace:
-                at: /tmp
-            - run:
-                command: ./.circleci/set-up-global-vars.sh
+           - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+            - run: source $BASH_ENV
       - merge:
           requires:
              - behavioral

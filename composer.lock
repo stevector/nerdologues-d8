@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe5abdf3200fbb0f8453f378355d544c",
+    "content-hash": "a58176cd1eec08cda68c630fbbb8b08d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -9563,6 +9563,17 @@
             "time": "2018-04-07T09:33:52+00:00"
         },
         {
+            "name": "pantheon-systems/docker-build-tools-ci",
+            "version": "dev-4.x-package",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stevector/docker-build-tools-ci.git",
+                "reference": "b71d46dba9c323092388d8176e62ed04764f0791"
+            },
+            "type": "library",
+            "time": "2019-04-19T17:14:10+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.4.2",
             "source": {
@@ -9877,7 +9888,8 @@
         "drupal/pantheon_advanced_page_cache": 15,
         "drupal/timeperiod": 20,
         "drupal/config_readonly": 10,
-        "drupal/drupal-extension": 20
+        "drupal/drupal-extension": 20,
+        "pantheon-systems/docker-build-tools-ci": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
