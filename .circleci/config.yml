@@ -137,10 +137,7 @@ workflows:
           requires:
           - backstop
           store_artifacts: true
-          pre-steps:
-          - checkout
-          - run:
-              command: ./.circleci/set-up-global-vars.sh
+          command: ./.circleci/set-up-global-vars.sh && npx cypress run
       - merge:
           requires:
              - behavioral
