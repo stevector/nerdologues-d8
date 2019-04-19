@@ -8,7 +8,7 @@ CIRCLE_ARTIFACTS_DIR='/tmp/artifacts'
 mkdir -p $CIRCLE_ARTIFACTS_DIR
 
 
-
+PR_NUMBER=${PR_NUMBER:-$CI_PULL_REQUEST}
 CI_BUILD_NUMBER=${CI_BUILD_NUMBER:-$CIRCLE_BUILD_NUM}
 
 # By default, we will make the environment name after the circle build number.
