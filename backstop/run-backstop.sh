@@ -2,6 +2,8 @@
 
 set -ex
 
+CIRCLE_ARTIFACTS_DIR="/tmp/artifacts"
+
 backstop reference --config=backstop-config.js
 backstop test --config=backstop-config.js
 

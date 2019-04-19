@@ -8,6 +8,14 @@ defaults: &defaults
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
 
+sharedbeginningsteps: &sharedbeginningsteps
+    - checkout
+
+    - attach_workspace:
+        at: /tmp/workspace
+    - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+    - run: source $BASH_ENV
+
 version: 2.1
 jobs:
     build:
@@ -54,13 +62,7 @@ jobs:
             - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
-            - checkout
-
-            - attach_workspace:
-                at: /tmp/workspace
-
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
+            <<: *sharedbeginningsteps
 
             - run: cd backstop && ./run-backstop.sh
 
@@ -73,21 +75,13 @@ jobs:
     behavioral:
         <<: *defaults
         steps:
-            - checkout
-
-            - attach_workspace:
-                at: /tmp/workspace
-
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
+            <<: *sharedbeginningsteps
 
             - restore_cache:
                 keys:
                   - composer
 
             - run: ./.circleci/logins.sh
-
-            - run: ./.circleci/set-up-global-vars.sh
 
             - run: composer install  --optimize-autoloader --ignore-platform-reqs
 
@@ -106,13 +100,7 @@ jobs:
     merge:
         <<: *defaults
         steps:
-            - checkout
-
-            - run:
-                name: Global vars
-                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: ./.circleci/set-up-global-vars.sh
-
+            <<: *sharedbeginningsteps
             - run: ./.circleci/merge-to-master.sh
 
 orbs:
@@ -133,11 +121,7 @@ workflows:
           - backstop
           store_artifacts: true
           pre-steps:
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
+            <<: *sharedbeginningsteps
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
       - merge:
