@@ -19,36 +19,35 @@ jobs:
                 keys:
                   - composer
 
-            # - run:
-            #     name: logins
-            #     command: ./.circleci/logins.sh
+             - run:
+                 name: logins
+                 command: ./.circleci/logins.sh
 
             - run:
                 name: variables
                 command: /build-tools-ci/scripts/set-environment
 
-            ################## - run:
-            ##################     command: composer install  --optimize-autoloader --ignore-platform-reqs
+            - run:
+                command: composer install  --optimize-autoloader --ignore-platform-reqs
 
-            # - save_cache:
-            #     key: composer
-            #     paths:
-            #       - $HOME/.composer/cache
+            - save_cache:
+                key: composer
+                paths:
+                  - $HOME/.composer/cache
 
-            # - run:
-            #     command: composer circle-tests
+            - run:
+                command: composer circle-tests
 
             - run:
                 name: deploy
                 command: |
-                  echo "comment out to speed up debugging"
-                  # terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
+                  terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
-            # - run:
-            #     name: updb and import
-            #     command: |
-            #       terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-            #       terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
+             - run:
+                 name: updb and import
+                 command: |
+                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
+                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
     backstop:
         docker:
@@ -62,17 +61,17 @@ jobs:
                 # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
                 command: ./.circleci/set-up-global-vars.sh
 
-            # - run:
-            #     name: run-backstop
-            #     command: ####################################### cd backstop && ./run-backstop.sh
+             - run:
+                 name: run-backstop
+                 command: cd backstop && ./run-backstop.sh
 
-            # - store_artifacts:
-            #     path: /tmp/artifacts
-            #     destination: artifact
+             - store_artifacts:
+                 path: /tmp/artifacts
+                 destination: artifact
 
-            # - run:
-            #     name: test
-            #     command: echo "test whether commands can run after artifacts"
+             - run:
+                 name: test
+                 command: echo "test whether commands can run after artifacts"
 
     behavioral:
         <<: *defaults
