@@ -49,15 +49,14 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
             - run:
-                name: clone-bash-env
-                command: cp $BASH_ENV bash_env.txt
-
-            # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+                name: Set TERMINUS_ENV for Backstop
+                command: |
+                    mkdir globals
+                    echo $TERMINUS_ENV > globals/TERMINUS_ENV
             - persist_to_workspace:
                 root: .
                 paths:
-                  - bash_env.txt
-
+                  - globals
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
