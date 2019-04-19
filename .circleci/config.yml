@@ -155,7 +155,6 @@ workflows:
     - backstop:
         requires:
         - build
- Nightly does not run on a "pr-" env. Need to in
     - cypress/run:
         requires:
         - backstop
