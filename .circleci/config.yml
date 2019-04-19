@@ -139,7 +139,7 @@ workflows:
           pre-steps:
             - checkout
             - run:
-              command: ./.circleci/set-up-global-vars.sh
+                command: ./.circleci/set-up-global-vars.sh
           #command: ./.circleci/set-up-global-vars.sh &&  echo "looking for the cypress base url $CYPRESS_baseUrl"  && npx cypress run
       - merge:
           requires:
