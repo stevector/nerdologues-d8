@@ -9,6 +9,16 @@ defaults: &defaults
     TERM: dumb
 
 
+commands:
+  setbashenv:
+    description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
+    steps:
+        - checkout
+        - attach_workspace:
+            at: /tmp/workspace
+        - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+        - run: source $BASH_ENV
+
 
 version: 2.1
 jobs:
@@ -23,12 +33,11 @@ jobs:
 
             - run: ./.circleci/logins.sh
             - run: composer install  --optimize-autoloader --ignore-platform-reqs
-            - run:  ./vendor/pantheon-systems/docker-build-tools-ci/scripts/set-environment
-
             - save_cache:
                 key: composer
                 paths:
                   - $HOME/.composer/cache
+            - run:  ./vendor/pantheon-systems/docker-build-tools-ci/scripts/set-environment
 
             - run: composer circle-tests
 
@@ -59,13 +68,7 @@ jobs:
         working_directory: ~/example_drops_8_composer
         steps:
 
-
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
-
+            - setbashenv
 
             - run: cd backstop && ./run-backstop.sh
 
@@ -78,18 +81,7 @@ jobs:
     behavioral:
         <<: *defaults
         steps:
-
-
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
-
-
-
-
-
+            - setbashenv
 
             - restore_cache:
                 keys:
@@ -114,19 +106,7 @@ jobs:
     merge:
         <<: *defaults
         steps:
-
-
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
-
-
-
-
-
-
+            - setbashenv
             - run: ./.circleci/merge-to-master.sh
 
 orbs:
@@ -147,19 +127,7 @@ workflows:
           - backstop
           store_artifacts: true
           pre-steps:
-
-
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
-
-
-
-
-
-
+            - setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
       - merge:
@@ -181,14 +149,12 @@ workflows:
         - backstop
     - backstop:
         requires:
-        - build
+          - build
     - cypress/run:
         requires:
-        - backstop
+          - backstop
         store_artifacts: true
         pre-steps:
-        - checkout
-        - attach_workspace:
-            at: /tmp
-        - run:
-            command: ./.circleci/set-up-global-vars.sh
+          - setbashenv
+          - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+          - run: source $BASH_ENV
