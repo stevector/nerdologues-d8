@@ -48,12 +48,25 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
+            - run:
+                name: clone-bash-env
+                command: cp $BASH_ENV bash_env.txt
+
+            # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - bash_env.txt
+
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
             - checkout
+
+            - attach_workspace:
+                at: /tmp
 
             - run:
                 name: Global vars
@@ -74,6 +87,9 @@ jobs:
         <<: *defaults
         steps:
             - checkout
+
+            - attach_workspace:
+                at: /tmp
 
             - restore_cache:
                 keys:

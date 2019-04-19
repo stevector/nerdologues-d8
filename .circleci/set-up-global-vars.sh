@@ -23,6 +23,16 @@ fi
 
 TERMINUS_ENV=${TERMINUS_ENV:-$DEFAULT_ENV}
 
+# The TERMINUS_ENV might be persisting from job to job.
+if [ -f /tmp/globals/TERMINUS_ENV ]
+then
+  echo 'export TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)' >> $BASH_ENV
+  TERMINUS_ENV=$(cat /tmp/globals/TERMINUS_ENV)
+else
+  TERMINUS_ENV=${TERMINUS_ENV:-$DEFAULT_ENV}
+  echo "export TERMINUS_ENV='$TERMINUS_ENV'"
+fi
+
 (
   echo "export TERMINUS_ENV='$TERMINUS_ENV'"
   echo 'export SITE_ENV=${TERMINUS_SITE}.${TERMINUS_ENV}'
