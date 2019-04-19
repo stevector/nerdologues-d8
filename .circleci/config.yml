@@ -41,7 +41,8 @@ jobs:
             - run:
                 name: deploy
                 command: |
-                  terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
+                echo "comment out to speed up debugging"
+                 # terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
             - run:
                 name: updb and import
@@ -69,6 +70,10 @@ jobs:
             - store_artifacts:
                 path: /tmp/artifacts
                 destination: artifact
+
+            - run:
+                name: test
+                command: echo "test whether commands can run after artifacts"
 
     behavioral:
         <<: *defaults
