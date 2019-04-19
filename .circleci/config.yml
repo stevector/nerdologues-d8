@@ -19,23 +19,19 @@ jobs:
                 keys:
                   - composer
 
-            - run:
-                command: ./.circleci/logins.sh
+            - run: ./.circleci/logins.sh
 
-            - run:
-                name: variables
-                command: /build-tools-ci/scripts/set-environment
+            - run: /build-tools-ci/scripts/set-environment
 
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
+            - run: composer install  --optimize-autoloader --ignore-platform-reqs
+            - run: npm install
 
             - save_cache:
                 key: composer
                 paths:
                   - $HOME/.composer/cache
 
-            - run:
-                command: composer circle-tests
+            - run: composer circle-tests
 
             - run:
                 name: deploy
@@ -48,15 +44,16 @@ jobs:
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
-            - run:
-                name: Set TERMINUS_ENV for Backstop
-                command: |
-                    mkdir globals
-                    echo $TERMINUS_ENV > globals/TERMINUS_ENV
+           - run:
+                name: clone-bash-env
+                command: cp $BASH_ENV bash_env.txt
+
+            # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
             - persist_to_workspace:
                 root: .
                 paths:
-                  - globals
+                  - bash_env.txt
+
     backstop:
         docker:
             - image: quay.io/stevector/ci-backstop:latest
@@ -65,22 +62,18 @@ jobs:
             - checkout
 
             - attach_workspace:
-                at: /tmp
+                at: /tmp/workspace
 
-            - run:
-                name: Global vars
-                # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
-                command: ./.circleci/set-up-global-vars.sh
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
 
-            - run:
-                command: cd backstop && ./run-backstop.sh
+            - run: cd backstop && ./run-backstop.sh
 
             - store_artifacts:
                 path: /tmp/artifacts
                 destination: artifact
 
-            - run:
-                command: ./backstop/report-backstop.sh
+            - run: ./backstop/report-backstop.sh
 
     behavioral:
         <<: *defaults
@@ -88,21 +81,20 @@ jobs:
             - checkout
 
             - attach_workspace:
-                at: /tmp
+                at: /tmp/workspace
+
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
 
             - restore_cache:
                 keys:
                   - composer
 
-            - run:
-                command: ./.circleci/logins.sh
+            - run: ./.circleci/logins.sh
 
-            - run:
-                name: variables
-                command: ./.circleci/set-up-global-vars.sh
+            - run: ./.circleci/set-up-global-vars.sh
 
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
+            - run: composer install  --optimize-autoloader --ignore-platform-reqs
 
             - save_cache:
                 key: composer
@@ -125,9 +117,7 @@ jobs:
                 # Override of https://github.com/stevector/docker-build-tools-ci/blob/master/dockerfiles/pantheon-ci-testing/scripts/set-up-global-vars.sh
                 command: ./.circleci/set-up-global-vars.sh
 
-            - run:
-                name: merge to master
-                command: ./.circleci/merge-to-master.sh
+            - run: ./.circleci/merge-to-master.sh
 
 orbs:
   cypress: cypress-io/cypress@1

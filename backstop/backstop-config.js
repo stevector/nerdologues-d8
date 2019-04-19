@@ -1,6 +1,6 @@
 'use strict';
 const BackstopReferenceBaseUrl = "https://dev-nerdologues-composer.pantheonsite.io";
-const BackstopTestUrl = process.env.PANTHEON_SITE_URL;
+const BackstopTestUrl = process.env.MULTIDEV_SITE_URL;
 const config = {
   "viewports": [
     {
