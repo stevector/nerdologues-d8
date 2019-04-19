@@ -59,7 +59,7 @@ jobs:
                   - globals
     backstop:
         docker:
-            - image: quay.io/stevector/ci-backstop:latest
+            - image: backstopjs/backstopjs:3.9.5
         working_directory: ~/example_drops_8_composer
         steps:
             - checkout
