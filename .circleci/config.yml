@@ -19,6 +19,18 @@ commands:
         - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
         - run: source $BASH_ENV
 
+  composer_install_and_cache:
+    description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
+    steps:
+        - restore_cache:
+            keys:
+                - composer
+        - run: composer install  --optimize-autoloader --ignore-platform-reqs
+        - save_cache:
+            key: composer
+            paths:
+                - $HOME/.composer/cache
+
 
 version: 2.1
 jobs:
@@ -26,33 +38,22 @@ jobs:
         <<: *defaults
         steps:
             - checkout
-
-            - restore_cache:
-                keys:
-                  - composer
-
             - run: ./.circleci/logins.sh
-            - run: composer install  --optimize-autoloader --ignore-platform-reqs
-            - save_cache:
-                key: composer
-                paths:
-                  - $HOME/.composer/cache
+            - composer_install_and_cache
+
             - run:  ./vendor/pantheon-systems/docker-build-tools-ci/scripts/set-environment
 
             - run: composer circle-tests
 
             - run:
                 name: Deploy to Multidev
-                command: |
-                  echo "commenting out the slow commands"
-                ## terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
+                command: terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
             - run:
                 name: updb and import
                 command: |
-                  echo "commenting out the slow commands"
- #                 terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-#                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
+                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
+                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
             - run: cp $BASH_ENV bash_env.txt
 
@@ -67,9 +68,7 @@ jobs:
             - image: quay.io/stevector/ci-backstop:latest
         working_directory: ~/example_drops_8_composer
         steps:
-
             - setbashenv
-
             - run: cd backstop && ./run-backstop.sh
 
             - store_artifacts:
@@ -83,25 +82,14 @@ jobs:
         steps:
             - setbashenv
 
-            - restore_cache:
-                keys:
-                  - composer
-
             - run: ./.circleci/logins.sh
 
-            - run: composer install  --optimize-autoloader --ignore-platform-reqs
-
-            - save_cache:
-                key: composer
-                paths:
-                - $HOME/.composer/cache
+            - composer_install_and_cache
 
             - run:
                 name: Behat
-                command: |
-                    # ./.circleci/behat-runners/add-behat-users.sh
-                    ######### @todo, take out the timing tag. That's just here for debugging to run the whole suite faster.
-                    ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving --stop-on-failure                                                                                                                                                                                                                                                           --tags=timing
+                # ./.circleci/behat-runners/add-behat-users.sh
+                command: ./.circleci/behat-runners/behat-wrapper.sh --suite=clickdriving --stop-on-failure
 
     merge:
         <<: *defaults
