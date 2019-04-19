@@ -20,8 +20,8 @@ jobs:
                   - composer
 
              - run:
-                 name: logins
-                 command: ./.circleci/logins.sh
+                name: logins
+                command: ./.circleci/logins.sh
 
             - run:
                 name: variables
