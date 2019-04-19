@@ -19,7 +19,7 @@ commands:
         - run: source $BASH_ENV
 
   composer_install_and_cache:
-    description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
+    description: "Restore composer cache, do a composer install, cache again."
     steps:
         - restore_cache:
             keys:
@@ -49,8 +49,6 @@ jobs:
                 command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/02-init-site-under-test-clone-existing
 
             - run: cp $BASH_ENV bash_env.txt
-
-            # https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
             - persist_to_workspace:
                 root: .
                 paths:

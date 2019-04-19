@@ -52,12 +52,13 @@ Feature: Pathauto
     And I press "Save"
     Then the response should contain "<link rel=\"canonical\" href=\"/nerds/another-person\" />"
 
-  @api
-  Scenario: location
-    Given I log in as a content_administrator
-    Given I am viewing a location with the title "A theatre test"
-    Given I am an anonymous user
-    Then the response should contain "<link rel=\"canonical\" href=\"/locations/theatre-test\" />"
+# @ todo https://github.com/stevector/nerdologues-d8/issues/321
+#  @api
+#  Scenario: location
+#    Given I log in as a content_administrator
+#    Given I am viewing a location with the title "A theatre test"
+#    Given I am an anonymous user
+#    Then the response should contain "<link rel=\"canonical\" href=\"/locations/theatre-test\" />"
 
 # Events are made to redirect to external pages so I'm not concerned with their pathauto settings.
 #  @api
