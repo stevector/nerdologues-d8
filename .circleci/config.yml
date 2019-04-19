@@ -133,6 +133,7 @@ workflows:
           - backstop
           store_artifacts: true
           pre-steps:
+          - checkout
           - run:
               command: ./.circleci/set-up-global-vars.sh
       - merge:
@@ -160,5 +161,6 @@ workflows:
         - backstop
         store_artifacts: true
         pre-steps:
+        - checkout
         - run:
             command: ./.circleci/set-up-global-vars.sh
