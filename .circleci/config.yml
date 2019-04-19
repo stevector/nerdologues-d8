@@ -19,7 +19,7 @@ jobs:
                 keys:
                   - composer
 
-             - run:
+            - run:
                 name: logins
                 command: ./.circleci/logins.sh
 
@@ -43,11 +43,11 @@ jobs:
                 command: |
                   terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
-             - run:
-                 name: updb and import
-                 command: |
-                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-                   terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
+            - run:
+                name: updb and import
+                command: |
+                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
+                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
     backstop:
         docker:
