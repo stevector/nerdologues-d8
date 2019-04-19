@@ -19,24 +19,24 @@ jobs:
                 keys:
                   - composer
 
-            - run:
-                name: logins
-                command: ./.circleci/logins.sh
+            # - run:
+            #     name: logins
+            #     command: ./.circleci/logins.sh
 
             - run:
                 name: variables
                 command: /build-tools-ci/scripts/set-environment
 
-            - run:
-                command: composer install  --optimize-autoloader --ignore-platform-reqs
+            ################## - run:
+            ##################     command: composer install  --optimize-autoloader --ignore-platform-reqs
 
-            - save_cache:
-                key: composer
-                paths:
-                  - $HOME/.composer/cache
+            # - save_cache:
+            #     key: composer
+            #     paths:
+            #       - $HOME/.composer/cache
 
-            - run:
-                command: composer circle-tests
+            # - run:
+            #     command: composer circle-tests
 
             - run:
                 name: deploy
@@ -44,11 +44,11 @@ jobs:
                   echo "comment out to speed up debugging"
                   # terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes  --clone-content
 
-            - run:
-                name: updb and import
-                command: |
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
-                  terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
+            # - run:
+            #     name: updb and import
+            #     command: |
+            #       terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updb -y
+            #       terminus drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import -y
 
     backstop:
         docker:
@@ -136,7 +136,7 @@ workflows:
           requires:
           - backstop
           store_artifacts: true
-          command: ./.circleci/set-up-global-vars.sh && npx cypress run
+          command: ./.circleci/set-up-global-vars.sh &&  echo "looking for the cypress base url $CYPRESS_baseUrl"  && npx cypress run
       - merge:
           requires:
              - behavioral
