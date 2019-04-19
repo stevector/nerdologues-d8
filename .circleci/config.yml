@@ -69,7 +69,7 @@ jobs:
                 path: /tmp/artifacts
                 destination: artifact
 
-          - run:
+            - run:
                 name: report-backstop
                 command: ./backstop/run-backstop.sh
 
