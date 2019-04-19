@@ -187,10 +187,3 @@ workflows:
       - backstop:
           requires:
              - build
-      - cypress/run:
-          requires:
-          - behavioral
-          store_artifacts: true
-          pre-steps:
-          - run:
-              command: echo 'export CYPRESS_baseUrl="https://pr-${CIRCLE_PULL_REQUEST##*/}-${TERMINUS_SITE}.pantheonsite.io/"' >> $BASH_ENV             - build
