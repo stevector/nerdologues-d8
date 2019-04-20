@@ -16,6 +16,10 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/stevector/docker-build-tools-ci.git"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/stevector/timeperiod.git"
         }
     ],
@@ -61,7 +65,8 @@
         "drupal/coder": "^8.3.1",
         "knplabs/friendly-contexts": "^0.7.0",
         "symfony/phpunit-bridge": "*",
-        "bex/behat-step-time-logger": "^2.0"
+        "bex/behat-step-time-logger": "^2.0",
+        "pantheon-systems/docker-build-tools-ci": "dev-4.x-package"
     },
     "replace": {
         "drupal/drupal": "*"

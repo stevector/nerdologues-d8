@@ -1,5 +1,6 @@
 {
   "devDependencies": {
-    "cypress": "^3.1.5"
+    "cypress": "^3.1.5",
+    "pantheon-systems-docker-build-tools-ci": "git://github.com/stevector/docker-build-tools-ci#4.x-package"
   }
 }
