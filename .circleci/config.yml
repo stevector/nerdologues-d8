@@ -10,17 +10,6 @@ defaults: &defaults
 
 version: 2.1
 
-commands:
-  setbashenv:
-    description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
-    steps:
-        - checkout
-        - attach_workspace:
-            at: /tmp/workspace
-        - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-        - run: source $BASH_ENV
-
-
 orbs:
   cypress: cypress-io/cypress@1
   my-orb:
@@ -117,7 +106,7 @@ workflows:
           - my-orb/backstop
           store_artifacts: true
           pre-steps:
-            - setbashenv
+            - my-orb/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
       - my-orb/merge:
