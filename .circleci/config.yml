@@ -85,7 +85,6 @@ orbs:
                     - $HOME/.composer/cache
 
     jobs:
-
       build:
         <<: *defaults
         steps:
