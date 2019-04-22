@@ -116,6 +116,7 @@ orbs:
               - store_artifacts:
                   path: /tmp/artifacts
                   destination: artifact
+              - run: ./backstop/report-backstop.sh
 
       behavioral:
           <<: *defaults
