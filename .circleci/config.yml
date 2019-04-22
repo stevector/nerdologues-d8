@@ -94,7 +94,17 @@ orbs:
             - composer_install_and_cache
             - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
 
-            - run: composer circle-tests
+            - run:
+                name: Lint PHP code for syntax errors
+                command: composer -n lint
+
+            - run:
+                name: Check coding standards
+                command: composer -n code-sniff
+
+            - run:
+                name: Run unit tests
+                command: composer -n unit-test
 
             - run:
                 name: Deploy to Multidev

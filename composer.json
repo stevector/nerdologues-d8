@@ -86,13 +86,11 @@
         "unit-test": [
             "phpunit  --group=nerdcustom web/modules/custom/ -v"
         ],
+        "lint": "find web/modules/custom web/themes/custom -name '*.php' -exec php -l {} \\;",
         "circle-tests": [
             "@code-sniff",
-            "@unit-test"
-        ],
-        "rsync-files": [
-            "@rsync-down",
-            "@rsync-up"
+            "@unit-test",
+            "@lint"
         ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
