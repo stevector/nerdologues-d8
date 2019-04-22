@@ -115,7 +115,7 @@ orbs:
 
             - run:
                 name: Deploy to Multidev
-                command: echo hi ############### ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/02-init-site-under-test-clone-existing
+                command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/02-init-site-under-test-clone-existing
 
             - run: cp $BASH_ENV bash_env.txt
             - persist_to_workspace:
