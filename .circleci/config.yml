@@ -1,3 +1,45 @@
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - my-orb/build
+      - my-orb/behavioral:
+          requires:
+          - my-orb/backstop
+      - my-orb/backstop:
+          requires:
+             - my-orb/build
+      - cypress/run:
+          requires:
+          - my-orb/backstop
+          store_artifacts: true
+          pre-steps:
+            - my-orb/setbashenv
+            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+            - run: source $BASH_ENV
+      - my-orb/merge:
+          requires:
+             - my-orb/behavioral
+             - cypress/run
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+    - my-orb/build
+    # @todo, add back all the other jobs
+
+
+
+
+
+
+
+
 defaults: &defaults
   docker:
    - image: quay.io/pantheon-public/build-tools-ci:4.x
@@ -36,7 +78,6 @@ orbs:
                     - $HOME/.composer/cache
 
     jobs:
-
       behavioral:
           <<: *defaults
           steps:
@@ -69,7 +110,6 @@ orbs:
 
 
       build:
-        # executor: specialthingsexecutor
         <<: *defaults
         steps:
             - checkout
@@ -88,39 +128,3 @@ orbs:
                 root: .
                 paths:
                   - bash_env.txt
-
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - my-orb/build
-      - my-orb/behavioral:
-          requires:
-          - my-orb/backstop
-      - my-orb/backstop:
-          requires:
-             - my-orb/build
-      - cypress/run:
-          requires:
-          - my-orb/backstop
-          store_artifacts: true
-          pre-steps:
-            - my-orb/setbashenv
-            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
-            - run: source $BASH_ENV
-      - my-orb/merge:
-          requires:
-             - my-orb/behavioral
-             - cypress/run
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-    - my-orb/build
-    # @todo, add back all the other jobs
