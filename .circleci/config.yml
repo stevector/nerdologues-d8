@@ -8,10 +8,17 @@ defaults: &defaults
     BUILD_TOOLS_VERSION: dev-master
     TERM: dumb
 
-
 version: 2.1
 
-
+commands:
+  setbashenv:
+    description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
+    steps:
+        - checkout
+        - attach_workspace:
+            at: /tmp/workspace
+        - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+        - run: source $BASH_ENV
 
 
 orbs:
