@@ -53,20 +53,6 @@ jobs:
                 paths:
                   - bash_env.txt
 
-    backstop:
-        docker:
-            - image: backstopjs/backstopjs:3.9.5
-        working_directory: ~/example_drops_8_composer
-        steps:
-            - setbashenv
-
-            - run: cd backstop && ./run-backstop.sh
-
-            - store_artifacts:
-                path: /tmp/artifacts
-                destination: artifact
-
-            - run: ./backstop/report-backstop.sh
 
     behavioral:
         <<: *defaults
@@ -76,7 +62,7 @@ jobs:
             - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
             - run:
                 name: Behat
-                command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/run-behat --stop-on-failure --strict --log-step-times --suite=clickdriving
+                command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/run-behat --stop-on-failure --strict --log-step-times --suite=clickdriving                                                                                                                                                                                                   --tags=timing
 
     merge:
         <<: *defaults
@@ -97,6 +83,15 @@ orbs:
     #     docker:
     #       - image: circleci/ruby:1.4.2
     commands:
+      setbashenv:
+        description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
+        steps:
+            - checkout
+            - attach_workspace:
+                at: /tmp/workspace
+            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
+            - run: source $BASH_ENV
+
       composer_install_and_cache:
         description: "Restore composer cache, do a composer install, cache again."
         steps:
@@ -110,6 +105,21 @@ orbs:
                     - $HOME/.composer/cache
 
     jobs:
+      backstop:
+          docker:
+              - image: backstopjs/backstopjs:3.9.5
+          working_directory: ~/example_drops_8_composer
+          steps:
+              - setbashenv
+
+              - run: cd backstop && ./run-backstop.sh
+
+              - store_artifacts:
+                  path: /tmp/artifacts
+                  destination: artifact
+
+              - run: ./backstop/report-backstop.sh
+
       build:
         # executor: specialthingsexecutor
         <<: *defaults
@@ -139,13 +149,13 @@ workflows:
       - my-orb/build
       - behavioral:
           requires:
-          - backstop
-      - backstop:
+          - my-orb/backstop
+      - my-orb/backstop:
           requires:
              - my-orb/build
       - cypress/run:
           requires:
-          - backstop
+          - my-orb/backstop
           store_artifacts: true
           pre-steps:
             - setbashenv
@@ -165,17 +175,4 @@ workflows:
                 - master
     jobs:
     - build
-    - behavioral:
-        requires:
-        - backstop
-    - backstop:
-        requires:
-          - build
-    - cypress/run:
-        requires:
-          - backstop
-        store_artifacts: true
-        pre-steps:
-          - setbashenv
-          - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
-          - run: source $BASH_ENV
+    # @todo, add back all the other jobs
