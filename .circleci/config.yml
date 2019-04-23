@@ -81,10 +81,10 @@ orbs:
         steps:
             - restore_cache:
                 keys:
-                    - composer
+                    - composer-{{ checksum "composer.lock" }}
             - run: composer install --optimize-autoloader --ignore-platform-reqs
             - save_cache:
-                key: composer
+                key: composer-{{ checksum "composer.lock" }}
                 paths:
                     - $HOME/.composer/cache
 
