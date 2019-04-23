@@ -21,6 +21,7 @@ function nerdtheme_preprocess_page(array &$variables) {
   }
 }
 
+
 /**
  * Implements hook_preprocess_HOOK() for views-view-field.html.twig.
  */
