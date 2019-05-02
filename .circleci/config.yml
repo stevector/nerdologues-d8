@@ -23,10 +23,14 @@ workflows:
             - playground/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
-      - merge:
+      - playground/merge:
           requires:
              - behavioral
              - cypress/run
+          post-steps:
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
 
 defaults: &defaults
   docker:
@@ -42,7 +46,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:fifth
+  playground: fauxalgore/playground@dev:sixth
 
 jobs:
   backstop:
@@ -65,13 +69,6 @@ jobs:
           - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
           - run:
               name: Behat
-              command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/run-behat --stop-on-failure --strict --log-step-times --suite=clickdriving
-
-  merge:
-      <<: *defaults
-      steps:
-          - playground/setbashenv
-          - playground/composer_install_and_cache
-          - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
-          - run: git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
-          - run: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/05-merge-master
+              command: |
+                export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "https://'$TERMINUS_ENV'-'$TERMINUS_SITE'.pantheonsite.io/"}}}'
+                ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict --colors  --stop-on-failure --strict --log-step-times --suite=clickdriving "$@"
