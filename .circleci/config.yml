@@ -27,10 +27,11 @@ workflows:
           requires:
              - behavioral
              - cypress/run
+          # todo, these steps even if the branch is not master. figure out a way around that.
           post-steps:
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
+            - run: terminus -n drush "$TERMINUS_SITE.dev" -- updatedb -y
+            - run: terminus -n drush "$TERMINUS_SITE.dev" cr
+            - run: terminus -n drush "$TERMINUS_SITE.dev" -- config-import --yes
 
 version: 2.1
 
