@@ -32,16 +32,6 @@ workflows:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
 
-defaults: &defaults
-  docker:
-   - image: quay.io/pantheon-public/build-tools-ci:4.x
-  working_directory: ~/example_drops_8_composer
-  environment:
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
-    ADMIN_USERNAME: admin
-    BUILD_TOOLS_VERSION: dev-master
-    TERM: dumb
-
 version: 2.1
 
 orbs:
@@ -62,7 +52,8 @@ jobs:
           - run: ./backstop/report-backstop.sh
 
   behavioral:
-      <<: *defaults
+      docker:
+       - image: quay.io/pantheon-public/build-tools-ci:4.x
       steps:
           - playground/setbashenv
           - playground/composer_install_and_cache
