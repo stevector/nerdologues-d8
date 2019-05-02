@@ -2,7 +2,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - my-orb/unit
+      - playground/unit
       - playground/build:
           post-steps:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
@@ -11,7 +11,7 @@ workflows:
       - my-orb/backstop:
           requires:
              - playground/build
-             - my-orb/unit
+             - playground/unit
       - my-orb/behavioral:
           requires:
              - my-orb/backstop
@@ -20,7 +20,7 @@ workflows:
              - my-orb/backstop
           store_artifacts: true
           pre-steps:
-            - my-orb/setbashenv
+            - playground/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
       - my-orb/merge:
@@ -42,18 +42,9 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:third
+  playground: fauxalgore/playground@dev:fourth
   my-orb:
     commands:
-      setbashenv:
-        description: "Copy the bash_env from the first job so that TERMINUS_ENV persists."
-        steps:
-            - checkout
-            - attach_workspace:
-                at: /tmp/workspace
-            - run: cp /tmp/workspace/bash_env.txt $BASH_ENV
-            - run: source $BASH_ENV
-
       composer_install_and_cache:
         description: "Restore composer cache, do a composer install, cache again."
         steps:
@@ -66,37 +57,13 @@ orbs:
                 paths:
                     - $HOME/.composer/cache
 
-
-
-
-
     jobs:
-      unit:
-        <<: *defaults
-        steps:
-        - checkout
-        - run: /build-tools-ci/scripts/set-environment
-        - composer_install_and_cache
-        - run:
-            name: Lint PHP code for syntax errors
-            command: composer -n lint
-
-        - run:
-            name: Check coding standards
-            command: composer -n code-sniff
-
-        - run:
-            name: Run unit tests
-            command: composer -n unit-test
-
-
-
       backstop:
           docker:
               - image: backstopjs/backstopjs:3.9.5
           working_directory: ~/example_drops_8_composer
           steps:
-              - setbashenv
+              - playground/setbashenv
               - run: cd backstop && ./run-backstop.sh
               - store_artifacts:
                   path: /tmp/artifacts
@@ -106,7 +73,7 @@ orbs:
       behavioral:
           <<: *defaults
           steps:
-              - setbashenv
+              - playground/setbashenv
               - composer_install_and_cache
               - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
               - run:
@@ -116,7 +83,7 @@ orbs:
       merge:
           <<: *defaults
           steps:
-              - setbashenv
+              - playground/setbashenv
               - composer_install_and_cache
               - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
               - run: git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
