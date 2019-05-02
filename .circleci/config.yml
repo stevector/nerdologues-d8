@@ -3,10 +3,14 @@ workflows:
   build_and_test:
     jobs:
       - my-orb/unit
-      - my-orb/build
+      - playground/build:
+          post-steps:
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
       - my-orb/backstop:
           requires:
-             - my-orb/build
+             - playground/build
              - my-orb/unit
       - my-orb/behavioral:
           requires:
@@ -23,33 +27,6 @@ workflows:
           requires:
              - my-orb/behavioral
              - cypress/run
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - my-orb/unit
-      - my-orb/build
-      - my-orb/backstop:
-          requires:
-             - my-orb/build
-             - my-orb/unit
-      - my-orb/behavioral:
-          requires:
-             - my-orb/backstop
-      - cypress/run:
-          requires:
-             - my-orb/backstop
-          store_artifacts: true
-          pre-steps:
-            - my-orb/setbashenv
-            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
-            - run: source $BASH_ENV
-
 
 defaults: &defaults
   docker:
@@ -65,6 +42,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
+  playground: fauxalgore/playground@dev:third
   my-orb:
     commands:
       setbashenv:
@@ -89,22 +67,6 @@ orbs:
                     - $HOME/.composer/cache
 
 
-#      make_multidev_from_existing_env:
-#        description: ""
-#        steps:
-#
-#        - run: terminus -n env:wake "$TERMINUS_SITE.dev"
-#        - run: terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content
-#        - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-#        - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
-#        - run:  if [ -f "config/system.site.yml" ] ; then
-#                  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
-#                  fi
-#
-#
-#
-
-
 
 
 
@@ -127,54 +89,7 @@ orbs:
             name: Run unit tests
             command: composer -n unit-test
 
-      build:
-        <<: *defaults
-        steps:
-            - checkout
-            - run: /build-tools-ci/scripts/set-environment
-            - restore_cache:
-                keys:
-                - composer
-            - run: composer -n build-assets
-            - save_cache:
-                key: composer
-                paths:
-                - $HOME/.composer/cache
-            - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
 
-            - run:
-                name: Delete old Multidevs and other prepare steps
-                command: terminus -n build:env:delete:ci "$TERMINUS_SITE" --keep=2 --yes      #./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/01-prepare
-
-#            - run:
-#                name: Deploy to Multidev
-#                command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/02-init-site-under-test-clone-existing
-
-            - run:
-                name: deploy
-                command: |
-                    # Create a new multidev site to test on
-                    terminus -n env:wake "$TERMINUS_SITE.dev"
-                    terminus -n build:env:create "$TERMINUS_SITE.dev" "$TERMINUS_ENV" --yes --clone-content
-
-                    # Run updatedb to ensure that the cloned database is updated for the new code.
-                    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-
-                    # If any modules, or theme files have been moved around or reorganized, in order to avoid
-                    # "The website encountered an unexpected error. Please try again later." error on First Visit
-                    terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
-
-                    # If exported configuration is available, then import it.
-                    if [ -f "config/system.site.yml" ] ; then
-                      terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
-                    fi
-
-
-            - run: cp $BASH_ENV bash_env.txt
-            - persist_to_workspace:
-                root: .
-                paths:
-                  - bash_env.txt
 
       backstop:
           docker:
