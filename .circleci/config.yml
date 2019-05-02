@@ -49,7 +49,6 @@ jobs:
     - run: backstop test --config=backstop/backstop-config.js || touch backstop_failed.txt
     - store_artifacts:
         path: backstop_data
-
     - run:
         name: Report
         command: |
@@ -62,7 +61,6 @@ jobs:
                 curl -d '{ "body": "'"${BODY}"'" }' -X POST "${GITHUB_URL}"
               } &> /dev/null
 
-
     - run:
         name: Report
         command: |
@@ -70,15 +68,6 @@ jobs:
             echo "Backstop report failed."
             exit 1
           fi
-
-
-
-
-
-
-
-
-
 
 
   behavioral:
