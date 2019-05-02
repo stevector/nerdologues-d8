@@ -8,24 +8,24 @@ workflows:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
-      - my-orb/backstop:
+      - backstop:
           requires:
              - playground/build
              - playground/unit
-      - my-orb/behavioral:
+      - behavioral:
           requires:
-             - my-orb/backstop
+             - backstop
       - cypress/run:
           requires:
-             - my-orb/backstop
+             - backstop
           store_artifacts: true
           pre-steps:
             - playground/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
-      - my-orb/merge:
+      - merge:
           requires:
-             - my-orb/behavioral
+             - behavioral
              - cypress/run
 
 defaults: &defaults
@@ -42,49 +42,36 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:fourth
-  my-orb:
-    commands:
-      composer_install_and_cache:
-        description: "Restore composer cache, do a composer install, cache again."
-        steps:
-            - restore_cache:
-                keys:
-                    - composer-{{ checksum "composer.lock" }}
-            - run: composer install --optimize-autoloader --ignore-platform-reqs
-            - save_cache:
-                key: composer-{{ checksum "composer.lock" }}
-                paths:
-                    - $HOME/.composer/cache
+  playground: fauxalgore/playground@dev:fifth
 
-    jobs:
-      backstop:
-          docker:
-              - image: backstopjs/backstopjs:3.9.5
-          working_directory: ~/example_drops_8_composer
-          steps:
-              - playground/setbashenv
-              - run: cd backstop && ./run-backstop.sh
-              - store_artifacts:
-                  path: /tmp/artifacts
-                  destination: artifact
-              - run: ./backstop/report-backstop.sh
+jobs:
+  backstop:
+      docker:
+          - image: backstopjs/backstopjs:3.9.5
+      working_directory: ~/example_drops_8_composer
+      steps:
+          - playground/setbashenv
+          - run: cd backstop && ./run-backstop.sh
+          - store_artifacts:
+              path: /tmp/artifacts
+              destination: artifact
+          - run: ./backstop/report-backstop.sh
 
-      behavioral:
-          <<: *defaults
-          steps:
-              - playground/setbashenv
-              - composer_install_and_cache
-              - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
-              - run:
-                  name: Behat
-                  command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/run-behat --stop-on-failure --strict --log-step-times --suite=clickdriving
+  behavioral:
+      <<: *defaults
+      steps:
+          - playground/setbashenv
+          - playground/composer_install_and_cache
+          - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+          - run:
+              name: Behat
+              command: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/run-behat --stop-on-failure --strict --log-step-times --suite=clickdriving
 
-      merge:
-          <<: *defaults
-          steps:
-              - playground/setbashenv
-              - composer_install_and_cache
-              - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
-              - run: git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
-              - run: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/05-merge-master
+  merge:
+      <<: *defaults
+      steps:
+          - playground/setbashenv
+          - playground/composer_install_and_cache
+          - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+          - run: git remote add pantheon $(terminus connection:info $TERMINUS_SITE.dev --field=git_url)
+          - run: ./vendor/pantheon-systems/docker-build-tools-ci/scripts/from-example-drops-8-composer/ci-scripts/05-merge-master
