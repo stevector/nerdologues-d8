@@ -80,7 +80,7 @@ jobs:
        - image: quay.io/pantheon-public/build-tools-ci:4.x
       steps:
           - playground/setbashenv
-          - playground/composer_install_and_cache
+          - playground/composer_install
           - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
           - run:
               name: Behat
