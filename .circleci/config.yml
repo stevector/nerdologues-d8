@@ -41,7 +41,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:seventh
+  playground: fauxalgore/playground@dev:ninth
 
 jobs:
   backstop:
