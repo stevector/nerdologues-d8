@@ -14,7 +14,7 @@ workflows:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
       - backstop:
           requires:
-             - playground/build
+             - playground/push
              - playground/unit
       - behavioral:
           requires:
