@@ -3,7 +3,11 @@ workflows:
   build_and_test:
     jobs:
       - playground/unit
-      - playground/build:
+      - playground/push:
+          pre-steps:
+            - playground/composer_install_no_dev
+            - attach_workspace:
+                at: .
           post-steps:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
@@ -37,7 +41,7 @@ version: 2.1
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:sixth
+  playground: fauxalgore/playground@dev:seventh
 
 jobs:
   backstop:
