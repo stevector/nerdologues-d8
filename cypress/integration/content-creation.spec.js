@@ -13,6 +13,7 @@ describe('Hello world ', function(){
       cy.get('input[name="title[0][value]"]').type(title, {force: true})
       cy.get('#edit-submit').click();
       cy.wait(500);
+
       cy.get('h1.page-title').contains(title);
     })
   })
