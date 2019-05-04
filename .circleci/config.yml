@@ -3,39 +3,39 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - playground/unit
-      - playground/push:
-          pre-steps:
-            - checkout
-            - playground/composer_install_no_dev
-          post-steps:
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
-            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
-      - playground/backstop:
-          requires:
-             - playground/push
-             - playground/unit
-      - behavioral:
-          requires:
-             - playground/backstop
+#      - playground/unit
+#      - playground/push:
+#          pre-steps:
+#            - checkout
+#            - playground/composer_install_no_dev
+#          post-steps:
+#            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+#            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
+#            - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
+#      - playground/backstop:
+#          requires:
+#             - playground/push
+#             - playground/unit
+#      - behavioral:
+#          requires:
+#             - playground/backstop
       - cypress/run:
-          requires:
-             - playground/backstop
+#          requires:
+#             - playground/backstop
           store_artifacts: true
           pre-steps:
             - playground/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
-      - playground/merge:
-          requires:
-             - behavioral
-             - cypress/run
-          # todo, these steps even if the branch is not master. figure out a way around that.
-          post-steps:
-            - run: terminus -n drush "$TERMINUS_SITE.dev" -- updatedb -y
-            - run: terminus -n drush "$TERMINUS_SITE.dev" cr
-            - run: terminus -n drush "$TERMINUS_SITE.dev" -- config-import --yes
+#      - playground/merge:
+#          requires:
+#             - behavioral
+#             - cypress/run
+#          # todo, these steps even if the branch is not master. figure out a way around that.
+#          post-steps:
+#            - run: terminus -n drush "$TERMINUS_SITE.dev" -- updatedb -y
+#            - run: terminus -n drush "$TERMINUS_SITE.dev" cr
+#            - run: terminus -n drush "$TERMINUS_SITE.dev" -- config-import --yes
 
 orbs:
   cypress: cypress-io/cypress@1
