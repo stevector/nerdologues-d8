@@ -48,35 +48,25 @@ cy.get('#edit-field-file summary').click();
 
     cy.contains('Select entities').click();
 
-      cy.wait(1000);
+      cy.wait(2000);
       cy.get('iframe.entity-browser-modal-iframe').then($iframe => {
-
-
-
-        //cy.wait(1000);
+        cy.wait(2000);
         const iframe = $iframe.contents();
-
+        cy.wait(2000);
         cy.wrap(iframe.find('body')).contains('remote_stream').click();
-        cy.wait(1000);
-
-
-        //you don't need to trigger events like keyup or change
-
+        cy.wait(2000);
       });
 
 
 
 
       cy.get('iframe.entity-browser-modal-iframe').then($iframe => {
-        cy.wait(1000);
+        cy.wait(2000);
         const iframe = $iframe.contents();
-
-
-
 
         const myInput = iframe.find("#edit-url");
 
-        cy.wait(1000);
+        cy.wait(2000);
         var d = new Date();
         var n = d.getTime();
         const title = 'Hello World ' + n;
@@ -85,22 +75,7 @@ cy.get('#edit-field-file summary').click();
 
         const mySubmit = iframe.find("#edit-submit");
         cy.wrap(mySubmit).click();
-
-
-
-
-
       });
-
-
-
-
-
-
-
-
-
-
 
       cy.wait(3000);
 
@@ -110,16 +85,7 @@ cy.get('#edit-field-file summary').click();
 
       cy.get('h1.page-title').contains(title);
 
-//      cy.get('.field--name-field-file').contains('<a href="http://podcasts.nerdologues.com/yourstories/Decemberpart1.mp3" target="_blank" download="">Download mp3</a>');
-
-     // cy.contains('Download mp3').click();
-
       cy.get('.field--name-field-file a').should('have.attr', 'href', 'http://podcasts.nerdologues.com/yourstories/Decemberpart1.mp3');
-
-
-    //  cy.url().should('eq', 'http://podcasts.nerdologues.com/yourstories/Decemberpart1.mp3')
-
-      //
 
     })
   })
