@@ -48,25 +48,25 @@ cy.get('#edit-field-file summary').click();
 
     cy.contains('Select entities').click();
 
-      cy.wait(2000);
+      cy.wait(6000);
       cy.get('iframe.entity-browser-modal-iframe').then($iframe => {
-        cy.wait(2000);
+        cy.wait(6000);
         const iframe = $iframe.contents();
-        cy.wait(2000);
+        cy.wait(6000);
         cy.wrap(iframe.find('body')).contains('remote_stream').click();
-        cy.wait(2000);
+        cy.wait(6000);
       });
 
 
 
 
       cy.get('iframe.entity-browser-modal-iframe').then($iframe => {
-        cy.wait(2000);
+        cy.wait(6000);
         const iframe = $iframe.contents();
 
         const myInput = iframe.find("#edit-url");
 
-        cy.wait(2000);
+        cy.wait(6000);
         var d = new Date();
         var n = d.getTime();
         const title = 'Hello World ' + n;
