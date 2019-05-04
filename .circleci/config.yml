@@ -6,6 +6,7 @@ workflows:
       - playground/unit
       - playground/push:
           pre-steps:
+            - checkout
             - playground/composer_install_no_dev
           post-steps:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
