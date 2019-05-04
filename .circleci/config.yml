@@ -24,8 +24,9 @@ workflows:
 #             - playground/backstop
           store_artifacts: true
           pre-steps:
-            - playground/setbashenv
-            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+            #- playground/setbashenv
+#            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+            - run: echo 'export CYPRESS_baseUrl="https://pr-329-nerdologues-composer.pantheonsite.io/"' >> $BASH_ENV
             - run: source $BASH_ENV
 #      - playground/merge:
 #          requires:
