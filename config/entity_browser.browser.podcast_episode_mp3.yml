@@ -14,7 +14,7 @@ display_configuration:
   auto_open: false
 selection_display: no_display
 selection_display_configuration: {  }
-widget_selector: single
+widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:
   8f0ced02-838c-4fb9-9dec-a6e27c0f2dbf:
@@ -22,6 +22,16 @@ widgets:
       url_field_title: 'URL to file'
       submit_text: 'Select file'
     uuid: 8f0ced02-838c-4fb9-9dec-a6e27c0f2dbf
-    weight: 1
+    weight: -9
     label: remote_stream
     id: remote_stream
+  4a6e4934-2ccf-4897-ae00-f5ef1703085a:
+    settings:
+      upload_location: 'public://'
+      multiple: true
+      submit_text: 'Select files'
+      extensions: mp3
+    uuid: 4a6e4934-2ccf-4897-ae00-f5ef1703085a
+    weight: -10
+    label: upload
+    id: upload
