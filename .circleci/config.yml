@@ -39,7 +39,7 @@ workflows:
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:tenth
+  playground: fauxalgore/playground@dev:eleventh
 
 jobs:
   backstop:
