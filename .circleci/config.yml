@@ -4,7 +4,7 @@ workflows:
   build_and_test:
     jobs:
       - playground/unit
-      - playground/push:
+      - pantheon/push:
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
@@ -14,7 +14,7 @@ workflows:
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
       - playground/backstop:
           requires:
-             - playground/push
+             - pantheon/push
              - playground/unit
       - behavioral:
           requires:
@@ -40,6 +40,7 @@ workflows:
 orbs:
   cypress: cypress-io/cypress@1
   playground: fauxalgore/playground@dev:12
+  pantheon: stevector/pantheon@dev:stevector
 
 jobs:
   behavioral:
