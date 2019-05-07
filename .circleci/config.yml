@@ -38,7 +38,7 @@ jobs:
             - checkout
             - run:  /build-tools-ci/scripts/set-environment
             - composer_install_and_cache
-            - composer prepare-for
+            - composer prepare-for-pantheon
             - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
 
             - run: composer circle-tests
