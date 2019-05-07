@@ -104,6 +104,7 @@ function nerdcustom_preprocess_panelizer_view_mode(&$variables) {
 function nerdcustom_preprocess_ds_entity_view(&$variables) {
 
   if ($variables['content']['#view_mode'] === 'full' && $variables['content']['#entity_type'] === 'node') {
+    // Remove this code when display suite is removed.
     $node = $variables['content']['#' . $variables['content']['#entity_type']];
     nerdcustom_canonical_helper($variables, $node);
   }
