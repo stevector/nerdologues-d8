@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="cdn">
+    <exclude-pattern>README.txt</exclude-pattern>
+
+    <!-- Use the Drupal coding standard, but … -->
+    <rule ref="Drupal">
+        <!-- Don't require boilerplate docs anywhere. -->
+        <exclude name="Drupal.Commenting.DocComment.MissingShort"/>
+        <exclude name="Drupal.Commenting.FunctionComment.MissingReturnComment"/>
+    </rule>
+
+    <!-- Don't require boilerplate function docs for tests. @covers already covers it. -->
+    <rule ref="Drupal.Commenting.FunctionComment.Missing">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <!-- Don't require boilerplate class docs for particular kinds of classes. -->
+    <rule ref="Drupal.Commenting.ClassComment.Missing">
+        <exclude-pattern>*Controller.php</exclude-pattern>
+        <exclude-pattern>*Subscriber.php</exclude-pattern>
+    </rule>
+</ruleset>

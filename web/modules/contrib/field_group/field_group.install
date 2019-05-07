@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Update hooks for the Field Group module.
+ */
+
+/**
+ * Set the `region` portion of each field group.
+ */
+function field_group_update_8301() {
+  foreach (['entity_form_display', 'entity_view_display'] as $entity_type) {
+    foreach (\Drupal::entityTypeManager()->getStorage($entity_type)->loadMultiple() as $display) {
+      /** @var \Drupal\Core\Entity\Display\EntityDisplayInterface $display */
+      if (in_array('field_group', $display->getThirdPartyProviders())) {
+        $field_groups = $display->getThirdPartySettings('field_group');
+        $updated = FALSE;
+        foreach ($field_groups as $group_name => $data) {
+          if (!isset($data['region'])) {
+            $data['region'] = 'content';
+            $display->setThirdPartySetting('field_group', $group_name, $data);
+            $updated = TRUE;
+          }
+        }
+        if ($updated) {
+          $display->save();
+        }
+      }
+    }
+  }
+}

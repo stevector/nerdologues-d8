@@ -1,0 +1,4 @@
+type: module
+name: Page Manager Routing Test
+description: 'Required for Page Manager tests.'
+core: 8.x

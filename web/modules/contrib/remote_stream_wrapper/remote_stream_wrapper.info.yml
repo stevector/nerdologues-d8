@@ -1,0 +1,10 @@
+name: Remote stream wrapper
+type: module
+description: Provides the ability to use external files over HTTP
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2018-06-15
+version: '8.x-1.2'
+core: '8.x'
+project: 'remote_stream_wrapper'
+datestamp: 1529089727

@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Update functions for the CDN module.
+ */
+
+/**
+ * Update the default settings if they are not modified by the user.
+ */
+function cdn_update_8001() {
+  $cdn_settings = \Drupal::configFactory()->getEditable('cdn.settings');
+  $mapping = $cdn_settings->get('mapping');
+  if ($mapping['type'] === 'simple' && $mapping['conditions'] === []) {
+    $cdn_settings->set('mapping.conditions', [
+      'not' => [
+        'extensions' => ['css', 'js'],
+      ],
+    ]);
+    $cdn_settings->save();
+  }
+}

@@ -1,0 +1,11 @@
+cdn.farfuture.download:
+  path: '/cdn/farfuture/{security_token}/{mtime}'
+  defaults:
+    _controller: '\Drupal\cdn\CdnFarfutureController::download'
+    # Ensure the redirect module does not redirect to add a language prefix.
+    # @see \Drupal\redirect\EventSubscriber\RouteNormalizerRequestSubscriber
+    # @todo Update this comment when https://www.drupal.org/project/drupal/issues/2641118 lands.
+    _disable_route_normalizer: TRUE
+  requirements:
+    _access: 'TRUE'
+    mtime: \d+

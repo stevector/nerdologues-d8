@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/drupal/coder" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/drupal/drupal-extension" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/pantheon-systems/docker-build-tools-ci" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/devel" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/entity_reference_revisions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/field_group" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/layout_plugin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/media_entity_audio" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/page_manager" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/paragraphs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/timeperiod" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/youtube" vcs="Git" />
+  </component>
+</project>

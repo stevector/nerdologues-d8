@@ -1,0 +1,6 @@
+name: 'Field Group Test'
+description: 'Test module for Field Group'
+core: 8.x
+package: 'Fields'
+type: module
+hidden: TRUE
