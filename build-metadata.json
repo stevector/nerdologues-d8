@@ -1,1 +1,1 @@
-{"url":"git@github.com:stevector/nerdologues-d8.git","ref":"no-force-p","sha":"153fdb573a8d7036008b7d8785d64315f3789df0","comment":"prepare for pantheon. ci fix","commit-date":"2019-05-06 19:50:43 -0500","build-date":"2019-05-07 21:13:33 +0000"}
+{"url":"git@github.com:stevector/nerdologues-d8.git","ref":"no-force-p","sha":"6f30edda65950c2b24c5f33e3cbdef0cfb37553a","comment":"Build assets for no-force-p.","commit-date":"2019-05-07 16:13:36 -0500","build-date":"2019-05-07 21:18:57 +0000"}
