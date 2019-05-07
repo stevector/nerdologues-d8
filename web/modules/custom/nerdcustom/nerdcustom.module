@@ -229,6 +229,6 @@ function nerdcustom_allow_mp3_print(EntityInterface $entity) {
  */
 function nerdcustom_node_presave(NodeInterface $node) {
   // @todo https://github.com/stevector/nerdologues-d8/issues/257
-  // More granular caching needed.
+  // More granular caching needed. Use PAPC.
   Cache::invalidateTags(['node_view', 'block_view']);
 }
