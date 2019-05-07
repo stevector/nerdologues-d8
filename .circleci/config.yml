@@ -5,7 +5,7 @@ defaults: &defaults
   environment:
     TZ: "/usr/share/zoneinfo/America/Los_Angeles"
     ADMIN_USERNAME: admin
-    BUILD_TOOLS_VERSION: dev-master
+    BUILD_TOOLS_VERSION: dev-option-for-no-force
     TERM: dumb
 
 commands:
