@@ -10,6 +10,7 @@ workflows:
             - playground/composer_install_no_dev
           post-steps:
             - run: cd "/tmp/pantheon_repo_for_$TERMINUS_SITE" && git status
+            - run: echo "testing CI on master"
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
