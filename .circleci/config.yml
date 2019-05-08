@@ -5,6 +5,7 @@ workflows:
     jobs:
       - playground/unit
       - pantheon/push:
+          checkout: false
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
