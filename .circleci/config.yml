@@ -32,7 +32,7 @@ workflows:
           requires:
              - behavioral
              - cypress/run
-          # todo, these steps even if the branch is not master. figure out a way around that.
+          # todo, these steps run even if the branch is not master. figure out a way around that.
           post-steps:
             - run: terminus -n drush "$TERMINUS_SITE.dev" -- updatedb -y
             - run: terminus -n drush "$TERMINUS_SITE.dev" cr
