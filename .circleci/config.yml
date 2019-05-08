@@ -28,15 +28,6 @@ workflows:
             - playground/setbashenv
             - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
             - run: source $BASH_ENV
-      - playground/merge:
-          requires:
-             - behavioral
-             - cypress/run
-          # todo, These steps run even if the branch is not master. figure out a way around that.
-          post-steps:
-            - run: terminus -n drush "$TERMINUS_SITE.dev" -- updatedb -y
-            - run: terminus -n drush "$TERMINUS_SITE.dev" cr
-            - run: terminus -n drush "$TERMINUS_SITE.dev" -- config-import --yes
 
 orbs:
   cypress: cypress-io/cypress@1
