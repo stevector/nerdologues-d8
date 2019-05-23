@@ -9,6 +9,8 @@ workflows:
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
+            - run: composer prepare-for-pantheon
+            - run: cat .gitignore
           post-steps:
             - run: cd "/tmp/pantheon_repo_for_$TERMINUS_SITE" && git status
             - run: echo "testing CI on master branch"
