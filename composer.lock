@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef0f195a68610d4367e41ded5872da8f",
+    "content-hash": "cd069e0d942416dd75ce386732a55a59",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2224,6 +2224,65 @@
             "time": "2018-10-10T19:04:05+00:00"
         },
         {
+            "name": "drupal/drupal-driver",
+            "version": "v2.0.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jhedstrom/DrupalDriver.git",
+                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/732f2c7b3c262487bed0876a209e5326bc3935e4",
+                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core-utility": "^8.4",
+                "php": ">=5.5.9",
+                "symfony/dependency-injection": "~2.6|~3.0",
+                "symfony/process": "~2.5|~3.0"
+            },
+            "require-dev": {
+                "drupal/coder": "~8.2.0",
+                "drush-ops/behat-drush-endpoint": "*",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "mockery/mockery": "0.9.4",
+                "phpspec/phpspec": "~2.0 || ~4.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Drupal\\Driver": "src/",
+                    "Drupal\\Tests\\Driver": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Hedstrom",
+                    "email": "jhedstrom@gmail.com"
+                }
+            ],
+            "description": "A collection of reusable Drupal drivers",
+            "homepage": "http://github.com/jhedstrom/DrupalDriver",
+            "keywords": [
+                "drupal",
+                "test",
+                "web"
+            ],
+            "time": "2018-12-18T23:21:10+00:00"
+        },
+        {
             "name": "drupal/ds",
             "version": "3.2.0",
             "source": {
@@ -3693,6 +3752,44 @@
                 "source": "https://git.drupalcode.org/project/youtube"
             },
             "time": "2018-08-10T12:10:57+00:00"
+        },
+        {
+            "name": "drush-ops/behat-drush-endpoint",
+            "version": "8.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drush-ops/behat-drush-endpoint.git",
+                "reference": "1a32b4f2b11f5f928f55368fa74c11a30bcd3bf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drush-ops/behat-drush-endpoint/zipball/1a32b4f2b11f5f928f55368fa74c11a30bcd3bf8",
+                "reference": "1a32b4f2b11f5f928f55368fa74c11a30bcd3bf8",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/drupal-driver": "*",
+                "php": ">=5.3.0"
+            },
+            "conflict": {
+                "drush/drush": "<8.0 || >=9.0"
+            },
+            "type": "drupal-drush",
+            "extra": {
+                "installer-name": "BehatDrushEndpoint"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Drush commandfile for use with drupal/drupal-driver.",
+            "homepage": "https://github.com/drush-ops/behat-drush-endpoint",
+            "keywords": [
+                "Behat",
+                "Drush",
+                "testing"
+            ],
+            "time": "2019-03-29T17:19:24+00:00"
         },
         {
             "name": "drush/drush",
@@ -8968,65 +9065,6 @@
             "time": "2018-09-21T14:22:49+00:00"
         },
         {
-            "name": "drupal/drupal-driver",
-            "version": "v2.0.0-alpha6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/732f2c7b3c262487bed0876a209e5326bc3935e4",
-                "reference": "732f2c7b3c262487bed0876a209e5326bc3935e4",
-                "shasum": ""
-            },
-            "require": {
-                "drupal/core-utility": "^8.4",
-                "php": ">=5.5.9",
-                "symfony/dependency-injection": "~2.6|~3.0",
-                "symfony/process": "~2.5|~3.0"
-            },
-            "require-dev": {
-                "drupal/coder": "~8.2.0",
-                "drush-ops/behat-drush-endpoint": "*",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "mockery/mockery": "0.9.4",
-                "phpspec/phpspec": "~2.0 || ~4.0",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Drupal\\Driver": "src/",
-                    "Drupal\\Tests\\Driver": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Hedstrom",
-                    "email": "jhedstrom@gmail.com"
-                }
-            ],
-            "description": "A collection of reusable Drupal drivers",
-            "homepage": "http://github.com/jhedstrom/DrupalDriver",
-            "keywords": [
-                "drupal",
-                "test",
-                "web"
-            ],
-            "time": "2018-12-18T23:21:10+00:00"
-        },
-        {
             "name": "drupal/drupal-extension",
             "version": "dev-master",
             "source": {
@@ -9096,44 +9134,6 @@
                 "web"
             ],
             "time": "2018-10-02T17:17:19+00:00"
-        },
-        {
-            "name": "drush-ops/behat-drush-endpoint",
-            "version": "8.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/drush-ops/behat-drush-endpoint.git",
-                "reference": "2dfa934284cbb19efda5f879011879e7ee67ef2e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/behat-drush-endpoint/zipball/2dfa934284cbb19efda5f879011879e7ee67ef2e",
-                "reference": "2dfa934284cbb19efda5f879011879e7ee67ef2e",
-                "shasum": ""
-            },
-            "require": {
-                "drupal/drupal-driver": "*",
-                "php": ">=5.3.0"
-            },
-            "conflict": {
-                "drush/drush": "<8.0 || >=10.0"
-            },
-            "type": "drupal-drush",
-            "extra": {
-                "installer-name": "BehatDrushEndpoint"
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Drush commandfile for use with drupal/drupal-driver.",
-            "homepage": "https://github.com/drush-ops/behat-drush-endpoint",
-            "keywords": [
-                "Behat",
-                "Drush",
-                "testing"
-            ],
-            "time": "2018-09-24T22:42:22+00:00"
         },
         {
             "name": "fabpot/goutte",
