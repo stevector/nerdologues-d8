@@ -56,11 +56,11 @@
         "phpunit/phpunit": ">6 <7",
         "webflo/drupal-core-strict": "8.6.16",
         "drupal/core": "8.6.16",
-        "typo3/phar-stream-wrapper": "2.1.1"
+        "typo3/phar-stream-wrapper": "2.1.1",
+        "drush-ops/behat-drush-endpoint": "*"
     },
 
     "require-dev": {
-        "drush-ops/behat-drush-endpoint": "*",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
         "drupal/drupal-extension": "dev-master",
         "drupal/coder": "^8.3.1",
@@ -98,12 +98,6 @@
         ],
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
         "post-install-cmd": [
             "@drupal-scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
