@@ -36,7 +36,7 @@ workflows:
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:12
+  playground: fauxalgore/playground@0.0.2
   pantheon: stevector/pantheon@dev:stevector
 
 jobs:
