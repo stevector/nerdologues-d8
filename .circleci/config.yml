@@ -36,8 +36,8 @@ workflows:
 
 orbs:
   cypress: cypress-io/cypress@1
-  playground: fauxalgore/playground@dev:12
-  pantheon: stevector/pantheon@dev:stevector
+  playground: fauxalgore/playground@0.0.2
+  pantheon: pantheon-systems/pantheon@dev:master
 
 jobs:
   behavioral:
