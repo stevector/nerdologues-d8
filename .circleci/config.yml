@@ -37,7 +37,7 @@ workflows:
 orbs:
   cypress: cypress-io/cypress@1
   playground: fauxalgore/playground@0.0.2
-  pantheon: pantheon-systems/pantheon@dev:master
+  pantheon: pantheon-systems/pantheon@dev:yml-tweaks-in-readme-examples
 
 jobs:
   behavioral:
