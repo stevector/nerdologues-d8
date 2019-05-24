@@ -13,7 +13,7 @@ workflows:
             - run: cat .gitignore
             - run: git status
           post-steps:
-            - run: cd "/tmp/pantheon_repo_for_$TERMINUS_SITE" && git status
+            - run: cd "/tmp/pantheon_repo" && git status
             - run: echo "testing CI on master branch"
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
             - run: terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" cr
