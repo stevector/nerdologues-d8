@@ -24,7 +24,7 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.0.20",
+        "composer/installers": "^1.6.0",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
         "drupal/console": "~1.0",
@@ -54,9 +54,8 @@
         "drupal/google_analytics": "^2.2",
         "drupal/views_custom_cache_tag": "^1.0",
         "phpunit/phpunit": ">6 <7",
-        "webflo/drupal-core-strict": "8.6.16",
-        "drupal/core": "8.6.16",
-        "typo3/phar-stream-wrapper": "2.1.1",
+        "webflo/drupal-core-strict": "8.7.2",
+        "drupal/core": "8.7.2",
         "drush-ops/behat-drush-endpoint": "*"
     },
 
@@ -123,7 +122,7 @@
             }
         },
         "drupal-scaffold": {
-            "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8-scaffolding/8.6.15/{path}",
+            "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8-scaffolding/{version}/{path}",
             "includes": [
                 "sites/default/default.services.pantheon.preproduction.yml",
                 "sites/default/settings.pantheon.php"
