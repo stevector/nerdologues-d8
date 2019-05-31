@@ -45,7 +45,6 @@ orbs:
   # https://github.com/pantheon-systems/circleci-orb
   pantheon: pantheon-systems/pantheon@dev:commit-message
 
-
 jobs:
   behavioral:
       docker:
