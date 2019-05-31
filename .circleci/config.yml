@@ -12,6 +12,8 @@ workflows:
             - run: composer prepare-for-pantheon
             - run: cat .gitignore
             - run: git status
+          # The steps defined by the orb run in between
+          # the pre-steps and the post-steps.
           post-steps:
             - run: cd "/tmp/pantheon_repo" && git status
             - run: echo "testing CI on master branch"
