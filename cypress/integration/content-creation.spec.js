@@ -6,7 +6,7 @@ describe('Hello world ', function(){
       cy.get('input[name=name]').type(Cypress.env('USER_CONTENT_ADMIN'))
       cy.get('input[name=pass]').type(Cypress.env('PASS_CONTENT_ADMIN') + '{enter}')
 
-      cy.visit('node/add/blog_post');
+      cy.visit('node/add/podcast_episode');
       var d = new Date();
       var n = d.getTime();
       const title = 'Hello World ' + n;
