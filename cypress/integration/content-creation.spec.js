@@ -6,12 +6,15 @@ describe('Hello world ', function(){
       cy.get('input[name=name]').type(Cypress.env('USER_CONTENT_ADMIN'))
       cy.get('input[name=pass]').type(Cypress.env('PASS_CONTENT_ADMIN') + '{enter}')
 
-      cy.visit('node/add/podcast_episode');
+      cy.visit('node/add/event');
       var d = new Date();
       var n = d.getTime();
       const title = 'Hello World ' + n;
       cy.get('input[name="title[0][value]"]').type(title, {force: true})
+     // cy.get('[type="radio"]').check('81',  {force: true });
+      cy.contains('Event Info').click({force: true});
       cy.get('#edit-submit').click();
+
       cy.wait(500);
       cy.get('h1.page-title').contains(title);
     })
