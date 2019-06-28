@@ -56,8 +56,8 @@
         "phpunit/phpunit": ">6 <7",
         "webflo/drupal-core-strict": "8.7.2",
         "drupal/core": "8.7.2",
-        "drush-ops/behat-drush-endpoint": "*",
-        "pantheon-systems/quicksilver-pushback": "^1.0"
+        "pantheon-systems/quicksilver-pushback": "^1.0",
+        "drush-ops/behat-drush-endpoint": "^9.3"
     },
 
     "require-dev": {
