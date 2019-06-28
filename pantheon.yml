@@ -8,3 +8,8 @@ workflows:
       - type: webphp
         description: Import configuration from .yml files
         script: private/scripts/drush_config_import/drush_config_import.php
+  sync_code:
+    after:
+    - type: webphp
+      description: Push changes back to GitHub if needed
+      script: private/scripts/quicksilver/quicksilver-pushback/push-back-to-github.php
