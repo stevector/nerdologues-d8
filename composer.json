@@ -49,14 +49,16 @@
         "drupal/http2_server_push": "^1.0",
         "drupal/timeperiod": "dev-composerfile",
         "drupal/config_installer": ">=1.8",
-        "drush/drush": "^8.1",
         "drupal/config_readonly": "^1.0@beta",
         "drupal/google_analytics": "^2.2",
         "drupal/views_custom_cache_tag": "^1.0",
         "phpunit/phpunit": ">6 <7",
         "webflo/drupal-core-strict": "8.7.2",
         "drupal/core": "8.7.2",
-        "drush-ops/behat-drush-endpoint": "*"
+        "drush-ops/behat-drush-endpoint": "^9.3",
+        "drush/drush": "8.2.3",
+        "rvtraveller/qs-composer-installer": "^1.1",
+        "pantheon-systems/quicksilver-pushback": "^1.0"
     },
 
     "require-dev": {
@@ -113,6 +115,7 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/private/scripts/quicksilver": ["type:quicksilver-script"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
