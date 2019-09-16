@@ -9,7 +9,7 @@ describe('Hello world ', function(){
       cy.visit('node/add/blog_post');
       var d = new Date();
       var n = d.getTime();
-      const title = 'Hello World ' + n;
+      const title = 'Cypress Orb Demo ' + n;
       cy.get('input[name="title[0][value]"]').type(title, {force: true})
       cy.get('#edit-submit').click();
       cy.wait(500);
