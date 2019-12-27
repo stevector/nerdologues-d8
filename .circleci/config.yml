@@ -7,7 +7,7 @@ workflows:
       - pantheon/push:
           checkout: false
           terminus_clone_env: smalldb
-          env_create_max_time:11m
+          env_create_max_time: 11m
           
           pre-steps:
             - checkout
