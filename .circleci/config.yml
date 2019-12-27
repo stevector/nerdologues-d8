@@ -6,6 +6,9 @@ workflows:
       - playground/unit
       - pantheon/push:
           checkout: false
+          terminus_clone_env: smalldb
+          env_create_max_time:11m
+          
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
