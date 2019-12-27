@@ -8,6 +8,7 @@ workflows:
           checkout: false
           terminus_clone_env: smalldb
           env_create_max_time: 11m
+          directory_to_push" "."
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
@@ -41,7 +42,7 @@ workflows:
 orbs:
   cypress: cypress-io/cypress@1
   playground: fauxalgore/playground@0.0.2
-  pantheon: pantheon-systems/pantheon@dev:add-clone-env
+  pantheon: pantheon-systems/pantheon@dev:directory_to_push
 
 jobs:
   behavioral:
