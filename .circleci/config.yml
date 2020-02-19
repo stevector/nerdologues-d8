@@ -12,6 +12,7 @@ workflows:
             - run: composer prepare-for-pantheon
             - run: cat .gitignore
             - run: git status
+            - run: composer -v
           post-steps:
             - run: cd "/tmp/pantheon_repo" && git status
             - run: echo "testing CI on master branch"
@@ -48,6 +49,7 @@ jobs:
       steps:
           - playground/setbashenv
           - playground/composer_install
+          - run: composer -v
           - run: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
           - run:
               name: Behat
