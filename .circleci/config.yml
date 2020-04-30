@@ -37,7 +37,7 @@ workflows:
             - run: source $BASH_ENV
 
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@1.20.0
   playground: fauxalgore/playground@0.0.2
   pantheon: pantheon-systems/pantheon@0.2.0
 
