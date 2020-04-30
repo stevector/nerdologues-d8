@@ -29,15 +29,32 @@ workflows:
              - playground/backstop
       - cypress/run:
           requires:
-             - playground/backstop
-          store_artifacts: true
+          - playground/backstop
+          # store_artifacts: true
+          working_directory: tests/cypress
+
+          cache-key: >-
+            cache-{{ arch }}-{{ .Branch }}-{{ checksum "tests/cypress/package-lock.json"
+            }}
+          post-steps:
+          - store_artifacts:
+              path: tests/cypress/cypress/videos
+          - store_artifacts:
+              path: tests/cypress/cypress/screenshots
+
           pre-steps:
-            - playground/setbashenv
-            - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
-            - run: source $BASH_ENV
+          - playground/setbashenv
+          - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
+          - run: source $BASH_ENV
+
+
+
+
+
+
 
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@1.20.0
   playground: fauxalgore/playground@0.0.2
   pantheon: pantheon-systems/pantheon@0.2.0
 
