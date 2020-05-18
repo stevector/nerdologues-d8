@@ -25,6 +25,7 @@ if (file_exists($local_settings)) {
 }
 
 $config_directories['sync'] = '../config';
+$settings['config_sync_directory'] = '../config';
 $settings['install_profile'] = 'standard';
 
 
