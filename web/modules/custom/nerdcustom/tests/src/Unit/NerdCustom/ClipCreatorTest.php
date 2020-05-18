@@ -18,7 +18,7 @@ class ClipCreatorTest extends UnitTestCase {
    */
   protected function setUp() {
     parent::setUp();
-    $this->entityManager = $this->getMock('Drupal\Core\Entity\EntityManagerInterface');
+    $this->entityManager = $this->createMock('Drupal\Core\Entity\EntityManagerInterface');
     $this->clipCreator = new ClipCreator($this->entityManager);
   }
 
