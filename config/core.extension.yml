@@ -44,6 +44,7 @@ module:
   panels_ipe: 0
   pantheon_advanced_page_cache: 0
   path: 0
+  path_alias: 0
   rabbit_hole: 0
   rdf: 0
   remote_stream_wrapper: 0
