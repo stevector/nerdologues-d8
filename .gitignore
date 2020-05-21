@@ -113,3 +113,5 @@ Thumbs.db
 cypress/screenshots/
 cypress/videos/
 /tests/cypress/node_modules/
+
+/console/language
