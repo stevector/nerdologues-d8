@@ -5,6 +5,7 @@ workflows:
     jobs:
       - playground/unit
       - pantheon/push:
+          resource_class: "small"
           checkout: false
           pre-steps:
             - checkout
@@ -49,14 +50,10 @@ workflows:
 
 
 
-
-
-
-
 orbs:
   cypress: cypress-io/cypress@1.20.0
   playground: fauxalgore/playground@0.0.2
-  pantheon: pantheon-systems/pantheon@dev:1d4a2b5
+  pantheon: pantheon-systems/pantheon@dev:resource-class
 
 jobs:
   behavioral:
