@@ -43,7 +43,6 @@ workflows:
               path: tests/cypress/cypress/videos
           - store_artifacts:
               path: tests/cypress/cypress/screenshots
-
           pre-steps:
           - playground/setbashenv
           - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
@@ -67,4 +66,3 @@ jobs:
               command: |
                 export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"base_url" : "https://'$TERMINUS_ENV'-'$TERMINUS_SITE'.pantheonsite.io/"}}}'
                 ./vendor/bin/behat --config=tests/behat/behat-pantheon.yml --strict --colors  --stop-on-failure --strict --log-step-times --suite=clickdriving "$@"
-
