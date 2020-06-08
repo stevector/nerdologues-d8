@@ -9,6 +9,7 @@ workflows:
           checkout: false
           pre-steps:
             - checkout
+            - composer config http://repositories.packagist.org composer https://repo-eu-uk-1.packagist.org
             - playground/composer_install_no_dev
             - run: composer prepare-for-pantheon
             - run: cat .gitignore
