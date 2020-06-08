@@ -33,7 +33,6 @@ workflows:
           - playground/backstop
           # store_artifacts: true
           working_directory: tests/cypress
-
           cache-key: >-
             cache-{{ arch }}-{{ .Branch }}-{{ checksum "tests/cypress/package-lock.json"
             }}
@@ -47,8 +46,6 @@ workflows:
           - playground/setbashenv
           - run: echo 'export CYPRESS_baseUrl="${MULTIDEV_SITE_URL}"' >> $BASH_ENV
           - run: source $BASH_ENV
-
-
 
 orbs:
   cypress: cypress-io/cypress@1.20.0
