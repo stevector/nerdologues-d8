@@ -7,7 +7,7 @@ workflows:
       - pantheon/push:
           resource_class: "small"
           checkout: false
-          clone_content: true
+          clone_content: false
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
@@ -51,7 +51,7 @@ workflows:
 orbs:
   cypress: cypress-io/cypress@1.20.0
   playground: fauxalgore/playground@0.0.2
-  pantheon: pantheon-systems/pantheon@dev:no-clone-option
+  pantheon: pantheon-systems/pantheon@dev:master
 
 
 jobs:
