@@ -7,7 +7,7 @@ workflows:
       - pantheon/push:
           resource_class: "small"
           checkout: false
-          clone_content: false
+          clone_content: true
           pre-steps:
             - checkout
             - playground/composer_install_no_dev
