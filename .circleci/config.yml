@@ -52,7 +52,7 @@ workflows:
 orbs:
   cypress: cypress-io/cypress@1.20.0
   playground: fauxalgore/playground@0.0.2
-  pantheon: pantheon-systems/pantheon@dev:no-clone-option
+  pantheon: pantheon-systems/pantheon@dev:no-clone-option 
 
 jobs:
   behavioral:
