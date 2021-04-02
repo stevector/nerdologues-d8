@@ -25,6 +25,7 @@ default:
       contexts:
         <<: *defaultcontexts
   extensions:
+    # do we need the StepTimer?
     Bex\Behat\StepTimeLoggerExtension: ~
     Behat\MinkExtension:
       goutte: ~
