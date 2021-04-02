@@ -52,12 +52,9 @@
         "drupal/google_analytics": "^2.2",
         "drupal/views_custom_cache_tag": "^1.0",
         "phpunit/phpunit": ">6 <7",
-        "webflo/drupal-core-strict": "^8.9",
         "drupal/core": "^8.9",
         "drush-ops/behat-drush-endpoint": "^9.3",
-        "drush/drush": "8.2.3",
-        "rvtraveller/qs-composer-installer": "^1.1",
-        "pantheon-systems/quicksilver-pushback": "^1.0"
+        "drush/drush": "8.2.3"
     },
 
     "require-dev": {
