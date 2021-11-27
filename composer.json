@@ -26,6 +26,7 @@
     "require": {
         "cweagans/composer-patches": "~1.0",
         "drupal/address": "~1.0",
+        "drupal/core-composer-scaffold": "^8.8.1",
         "drupal/devel": "1.x-dev",
         "drupal/ds": "~3.0",
         "drupal/layout_plugin": "1.x-dev",
@@ -115,19 +116,15 @@
             }
         },
         "drupal-scaffold": {
-            "source": "https://raw.githubusercontent.com/pantheon-systems/drops-8-scaffolding/{version}/{path}",
-            "includes": [
-                "sites/default/default.services.pantheon.preproduction.yml",
-                "sites/default/settings.pantheon.php"
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
             ],
-            "excludes": [
-                ".csslintrc",
-                ".editorconfig",
-                ".eslintignore",
-                ".eslintrc.json",
-                ".htaccess",
-                "web.config"
-            ]
+            "locations": {
+                "web-root": "./web"
+            },
+            "file-mapping": {
+                "[project-root]/.editorconfig": false
+            }
         }
     }
 }
