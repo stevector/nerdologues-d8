@@ -52,16 +52,12 @@
         "drupal/google_analytics": "^2.2",
         "drupal/views_custom_cache_tag": "^1.0",
         "phpunit/phpunit": ">6 <7",
-        "webflo/drupal-core-strict": "^8.9",
         "drupal/core": "^8.9",
         "drush-ops/behat-drush-endpoint": "^9.3",
-        "drush/drush": "8.2.3",
-        "rvtraveller/qs-composer-installer": "^1.1",
-        "pantheon-systems/quicksilver-pushback": "^1.0"
+        "drush/drush": "8.2.3"
     },
 
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
         "drupal/drupal-extension": "dev-master",
         "drupal/coder": "^8.3.1",
         "knplabs/friendly-contexts": "^0.7.0",
@@ -82,19 +78,6 @@
         "build-assets": [
             "@prepare-for-pantheon",
             "composer install --optimize-autoloader --no-dev"
-        ],
-        "code-sniff": [
-            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor ./web/modules/custom",
-            "./vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,info,txt,md --ignore=node_modules,bower_components,vendor ./web/themes/custom"
-        ],
-        "unit-test": [
-            "phpunit  --group=nerdcustom web/modules/custom/ -v"
-        ],
-        "lint": "find web/modules/custom web/themes/custom -name '*.php' -exec php -l {} \\;",
-        "circle-tests": [
-            "@code-sniff",
-            "@unit-test",
-            "@lint"
         ],
         "prepare-for-pantheon": "DrupalProject\\composer\\ScriptHandler::prepareForPantheon",
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",

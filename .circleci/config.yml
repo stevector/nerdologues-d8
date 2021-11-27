@@ -3,7 +3,6 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - playground/unit
       - pantheon/push:
           resource_class: "small"
           checkout: false
@@ -25,7 +24,6 @@ workflows:
       - playground/backstop:
           requires:
              - pantheon/push
-             - playground/unit
       - behavioral:
           requires:
              - playground/backstop
